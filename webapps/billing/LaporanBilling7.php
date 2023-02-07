@@ -79,7 +79,7 @@
                                                <td><font color='333333' size='3'  face='Tahoma'>Untuk Pembayaran</font></td>
                                                <td><font color='333333' size='3'  face='Tahoma'>:</font></td>
                                                <td><font color='333333' size='3'  face='Tahoma'>Pelayanan Kesehatan Rawat Jalan di ".$setting["nama_instansi"]." a/n ".str_replace(":","",getOne("select temp2 from temporary_bayar_ralan where temp9='$petugas' and temp1='Nama Pasien'")).", 
-                                                   RM ".str_replace(":","",getOne("select temp2 from temporary_bayar_ralan where temp9='$petugas' and temp1='No.RM'"))."
+                                                   RM ".str_replace(":","",getOne("select temp2 from temporary_bayar_ralan where temp9='$petugas' and temp1='No.RM'"))." {$norawat}
                                                    </font></td>
                                             </tr>                           
                                             <tr>
