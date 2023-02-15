@@ -5,4 +5,8 @@
 /lib/**/*
 /report/.settings/**/*
 /report/.project
+!build.xml
+!lisensi.txt
+!readme.txt
+!*.sql
 !.gitignore
