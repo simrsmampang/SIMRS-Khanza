@@ -435,6 +435,14 @@
         mysqli_close($konektor);
         return $result;
     }
+
+    function queryps($sql, $ps)
+    {
+        $konektor = bukakoneksi();
+
+        $expr = $konektor->prepare($sql);
+        $expr->bind_param()
+    }
     
     function fetch_assoc($sql) {
         $result = mysqli_fetch_assoc(bukaquery($sql));

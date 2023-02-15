@@ -1,0 +1,8 @@
+/__raw
+/build/**/*
+/dist/**/*
+/cache/**/*
+/lib/**/*
+/report/.settings/**/*
+/report/.project
+!.gitignore
