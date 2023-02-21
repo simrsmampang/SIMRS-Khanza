@@ -18,21 +18,4 @@
             </bookmark>
         </file>
     </editor-bookmarks>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-<<<<<<< HEAD
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/fungsi/validasi.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/bridging/OrthancDICOM.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/setting/database.xml</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/bridging/ApiOrthanc.java</file>
-=======
-            <file>file:/C:/Users/USER/Projects/simrs-khanza/src/keuangan/KeuanganBubes.java</file>
-            <file>file:/C:/Users/USER/Projects/simrs-khanza/src/inventory/DlgRekapPenerimaan.java</file>
-            <file>file:/C:/Users/USER/Projects/simrs-khanza/src/keuangan/DlgRBObatDokterPeresep.java</file>
-            <file>file:/C:/Users/USER/Projects/simrs-khanza/src/simrskhanza/frmUtama.java</file>
-            <file>file:/C:/Users/USER/Projects/simrs-khanza/src/fungsi/sekuel.java</file>
-            <file>file:/C:/Users/USER/Projects/simrs-khanza/src/keuangan/DlgRekeningTahun.java</file>
->>>>>>> 9881d911dbc8c2f7ab4baa92765229a17f38945e
-        </group>
-    </open-files>
 </project-private>

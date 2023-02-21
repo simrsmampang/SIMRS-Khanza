@@ -1,5 +1,5 @@
-/build/**/*
-/dist/**/*
-/cache/**/*
-/lib/**/*
+/build/**
+/dist/**
+/cache/**
+/lib/**
 !.gitignore
