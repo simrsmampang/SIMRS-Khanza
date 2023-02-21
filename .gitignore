@@ -1,11 +1,7 @@
-/__raw
+/.vscode
 /build/**/*
-/dist/**/*
 /cache/**/*
-/lib/**/*
-/report/.settings/**/*
-/report/.project
-!build.xml
+/nbproject/**/*
 !lisensi.txt
 !readme.txt
 !*.sql
