@@ -131,7 +131,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[O]Periode Laporan TB","[O]Rujukan TB","[O]Riwayat TB","[O]Tipe Diagnosis TB","[O]Status HIV TB","[O]Skoring Anak TB","[O]Konfirmasi Skoring 5 TB",
                 "[O]Konfirmasi Skoring 6 TB","[O]Sumber Obat TB","[O]Hasil Akhir Pengobatan TB","[O]Hasil Tes HIV TB","[D]Kadaluarsa Batch","[D]Sisa Stok",
                 "[D]Obat Per Resep","[G]Pemakaian Air PDAM","[G]Limbah Padat B3 Medis","[O]Pemakaian Air PDAM Per Tanggal","[O]Pemakaian Air PDAM Per Bulan",
-                "[O]Limbah B3 Medis Per Tanggal","[O]Limbah B3 Medis Per Bulan","[G]Limbah Padat Domestik","[O]Limbah Padat Domestik Per Tanggal",
+                "[O]Limbah B3 Padat Per Tanggal","[O]Limbah B3 Padat Per Bulan","[G]Limbah Padat Domestik","[O]Limbah Padat Domestik Per Tanggal",
                 "[O]Limbah Padat Domestik Per Bulan","[G]Mutu Air Limbah","[G]Pest Control","[Q]Ruang Perpustakaan","[Q]Kategori Koleksi","[Q]Jenis Koleksi",
                 "[Q]Pengarang/Penulis","[Q]Penerbit Koleksi","[Q]Koleksi Perpustakaan","[Q]Inventaris Perpustakaan","[Q]Pengaturan Peminjaman","[Q]Denda Perpustakaan",
                 "[Q]Anggota Perpustakaan","[Q]Peminjaman Koleksi Perpustakaan","[Q]Bayar Denda Perpustakaan","[Q]Data Koleksi Ebook","[C]Jenis Cidera K3",
@@ -223,7 +223,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Catatan Cek GDS","[L]Kirim Condition Satu Sehat","[M]Check List Pre Operasi","[L]Kirim Observation-TTV Satu Sehat","[M]Sign-In Sebelum Anestesi",
                 "[L]Kirim Procedure Satu Sehat","[J]Operasi Per Bulan","[M]Time-Out Sebelum Insisi","[M]Sign-Out Sebelum Menutup Luka","[F]Barang Dapur","[F]Stok Opname Dapur",
                 "[L]Mapping Vaksin Satu Sehat","[F]Suplier Dapur","[L]Kirim Imunisasi Satu Sehat","[M]Check List Post Operasi","[F]Pengadaan Barang Dapur","[F]Stok Keluar Dapur",
-                "[F]Riwayat Barang Dapur","[F]Permintaan Barang Dapur","[M]Rekonsiliasi Obat","[F]Biaya Pengadaan Dapur","[F]Rekap Pengadaan Dapur","[G]Limbah Cair B3 Medis"
+                "[F]Riwayat Barang Dapur","[F]Permintaan Barang Dapur","[M]Rekonsiliasi Obat","[F]Biaya Pengadaan Dapur","[F]Rekap Pengadaan Dapur","[G]Limbah Cair B3 Medis",
+                "[O]Limbah B3 Cair Per Tanggal","[O]Limbah B3 Cair Per Bulan","[I]Rekap Biaya Registrasi"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -475,6 +476,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -488,7 +490,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 923;i++) {
+        for (i = 0; i < 926;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2711,6 +2713,15 @@ public class DlgUser extends javax.swing.JDialog {
                 case 922:
                     column.setPreferredWidth(127);
                     break;
+                case 923:
+                    column.setPreferredWidth(157);
+                    break;
+                case 924:
+                    column.setPreferredWidth(146);
+                    break;
+                case 925:
+                    column.setPreferredWidth(130);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3212,7 +3223,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -4177,7 +4188,10 @@ public class DlgUser extends javax.swing.JDialog {
                     "rekonsiliasi_obat='"+tbUser.getValueAt(i,919).toString()+"',"+
                     "biaya_pengadaan_dapur='"+tbUser.getValueAt(i,920).toString()+"',"+
                     "rekap_pengadaan_dapur='"+tbUser.getValueAt(i,921).toString()+"',"+
-                    "kesling_limbah_b3medis_cair='"+tbUser.getValueAt(i,922).toString()+"'");
+                    "kesling_limbah_b3medis_cair='"+tbUser.getValueAt(i,922).toString()+"',"+
+                    "grafik_limbahb3cair_pertanggal='"+tbUser.getValueAt(i,923).toString()+"',"+
+                    "grafik_limbahb3cair_perbulan='"+tbUser.getValueAt(i,924).toString()+"',"+
+                    "rekap_biaya_registrasi='"+tbUser.getValueAt(i,925).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -5181,7 +5195,10 @@ public class DlgUser extends javax.swing.JDialog {
                                         "rekonsiliasi_obat='"+tbUser.getValueAt(barisdicopy,919).toString()+"',"+
                                         "biaya_pengadaan_dapur='"+tbUser.getValueAt(barisdicopy,920).toString()+"',"+
                                         "rekap_pengadaan_dapur='"+tbUser.getValueAt(barisdicopy,921).toString()+"',"+
-                                        "kesling_limbah_b3medis_cair='"+tbUser.getValueAt(barisdicopy,922).toString()+"'");
+                                        "kesling_limbah_b3medis_cair='"+tbUser.getValueAt(barisdicopy,922).toString()+"',"+
+                                        "grafik_limbahb3cair_pertanggal='"+tbUser.getValueAt(barisdicopy,923).toString()+"',"+
+                                        "grafik_limbahb3cair_perbulan='"+tbUser.getValueAt(barisdicopy,924).toString()+"',"+
+                                        "rekap_biaya_registrasi='"+tbUser.getValueAt(barisdicopy,925).toString()+"'");
                                 }    
                                 userdicopy="";
                                 copyhakakses="";
@@ -5565,7 +5582,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.satu_sehat_kirim_observationttv,user.signin_sebelum_anestesi,user.satu_sehat_kirim_procedure,user.operasi_per_bulan,user.timeout_sebelum_insisi,"+
                 "user.signout_sebelum_menutup_luka,user.dapur_barang,user.dapur_opname,user.satu_sehat_mapping_vaksin,user.dapur_suplier,user.satu_sehat_kirim_Immunization,"+
                 "user.checklist_post_operasi,user.dapur_pembelian,user.dapur_stok_keluar,user.dapur_riwayat_barang,user.permintaan_dapur,user.rekonsiliasi_obat,"+
-                "user.biaya_pengadaan_dapur,user.rekap_pengadaan_dapur,user.kesling_limbah_b3medis_cair from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.biaya_pengadaan_dapur,user.rekap_pengadaan_dapur,user.kesling_limbah_b3medis_cair,user.grafik_limbahb3cair_pertanggal,user.grafik_limbahb3cair_perbulan,"+
+                "user.rekap_biaya_registrasi from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6500,7 +6518,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("rekonsiliasi_obat"),
                                rs.getBoolean("biaya_pengadaan_dapur"),
                                rs.getBoolean("rekap_pengadaan_dapur"),
-                               rs.getBoolean("kesling_limbah_b3medis_cair")
+                               rs.getBoolean("kesling_limbah_b3medis_cair"),
+                               rs.getBoolean("grafik_limbahb3cair_pertanggal"),
+                               rs.getBoolean("grafik_limbahb3cair_perbulan"),
+                               rs.getBoolean("rekap_biaya_registrasi")
                             });
                         }   
                     } catch (Exception e) {
@@ -7424,7 +7445,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("rekonsiliasi_obat"),
                            rs.getBoolean("biaya_pengadaan_dapur"),
                            rs.getBoolean("rekap_pengadaan_dapur"),
-                           rs.getBoolean("kesling_limbah_b3medis_cair")
+                           rs.getBoolean("kesling_limbah_b3medis_cair"),
+                           rs.getBoolean("grafik_limbahb3cair_pertanggal"),
+                           rs.getBoolean("grafik_limbahb3cair_perbulan"),
+                           rs.getBoolean("rekap_biaya_registrasi")
                         });
                     }                                             
                  }
