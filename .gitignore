@@ -3,6 +3,7 @@
 /dist/**
 /cache/**
 /nbproject/**
+/__raw
 *.*
 !lisensi.txt
 !readme.txt
