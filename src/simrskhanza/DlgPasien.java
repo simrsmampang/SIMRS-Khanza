@@ -3381,7 +3381,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-12-2022" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2023" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3513,7 +3513,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(743, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-12-2022" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2023" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -5016,26 +5016,35 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         case 1:
             for(z=0;z<tbPasien.getRowCount();z++){ 
                  if(tbPasien.getValueAt(z,0).toString().equals("true")){
-                     Sequel.meghapus("pasien","no_rkm_medis",tbPasien.getValueAt(z,1).toString());
+                     if(Sequel.meghapustf("pasien","no_rkm_medis",tbPasien.getValueAt(z,1).toString())==true){
+                        tabMode.removeRow(z);
+                        z--;
+                     }
                  }
             } 
-            tampil();
+            LCount.setText(""+tabMode.getRowCount());
             break;
         case 2:
             for(z=0;z<tbPasien2.getRowCount();z++){ 
                  if(tbPasien2.getValueAt(z,0).toString().equals("true")){
-                     Sequel.meghapus("pasien","no_rkm_medis",tbPasien2.getValueAt(z,1).toString());
+                     if(Sequel.meghapustf("pasien","no_rkm_medis",tbPasien2.getValueAt(z,1).toString())==true){
+                         tabMode2.removeRow(z);
+                         z--;
+                     }
                  }
             } 
-            tampiltni();
+            LCount.setText(""+tabMode2.getRowCount());
             break;
         case 3:
             for(z=0;z<tbPasien3.getRowCount();z++){ 
                  if(tbPasien3.getValueAt(z,0).toString().equals("true")){
-                     Sequel.meghapus("pasien","no_rkm_medis",tbPasien3.getValueAt(z,1).toString());
+                     if(Sequel.meghapustf("pasien","no_rkm_medis",tbPasien3.getValueAt(z,1).toString())==true){
+                         tabMode3.removeRow(z);
+                         z--;
+                     }
                  }
             } 
-            tampilpolri();
+            LCount.setText(""+tabMode3.getRowCount());
             break;
         default:
             break;
@@ -5207,9 +5216,54 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     Sequel.meghapus("pasien_polri","no_rkm_medis",TNo.getText());
                 }
 
+                if(tbPasien.getSelectedRow()>-1){
+                    tbPasien.setValueAt(TNo.getText(),tbPasien.getSelectedRow(), 1);
+                    tbPasien.setValueAt(TNm.getText(),tbPasien.getSelectedRow(), 2);
+                    tbPasien.setValueAt(TKtp.getText(),tbPasien.getSelectedRow(), 3);
+                    tbPasien.setValueAt(CmbJk.getSelectedItem().toString().substring(0,1),tbPasien.getSelectedRow(), 4);
+                    tbPasien.setValueAt(TTmp.getText(),tbPasien.getSelectedRow(), 5);
+                    tbPasien.setValueAt(Valid.SetTgl(DTPLahir.getSelectedItem()+""),tbPasien.getSelectedRow(), 6);
+                    tbPasien.setValueAt(NmIbu.getText(),tbPasien.getSelectedRow(), 7);
+                    tbPasien.setValueAt(Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText()+", "+Propinsi.getText(),tbPasien.getSelectedRow(), 8);
+                    tbPasien.setValueAt(CMbGd.getSelectedItem().toString(),tbPasien.getSelectedRow(), 9);
+                    tbPasien.setValueAt(Pekerjaan.getText(),tbPasien.getSelectedRow(), 10);
+                    tbPasien.setValueAt(CmbStts.getSelectedItem().toString(),tbPasien.getSelectedRow(), 11);
+                    tbPasien.setValueAt(cmbAgama.getSelectedItem().toString(),tbPasien.getSelectedRow(), 12);
+                    tbPasien.setValueAt(DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),tbPasien.getSelectedRow(), 13);
+                    tbPasien.setValueAt(TTlp.getText(),tbPasien.getSelectedRow(), 14);
+                    tbPasien.setValueAt(TUmurTh.getText()+" Th "+TUmurBl.getText()+" Bl "+TUmurHr.getText()+" Hr",tbPasien.getSelectedRow(), 15);
+                    tbPasien.setValueAt(CMbPnd.getSelectedItem().toString(),tbPasien.getSelectedRow(), 16);
+                    tbPasien.setValueAt(klg,tbPasien.getSelectedRow(), 17);
+                    tbPasien.setValueAt(Saudara.getText(),tbPasien.getSelectedRow(), 18);
+                    tbPasien.setValueAt(nmpnj.getText(),tbPasien.getSelectedRow(), 19);
+                    tbPasien.setValueAt(TNoPeserta.getText(),tbPasien.getSelectedRow(), 20);
+                    tbPasien.setValueAt(PekerjaanPj.getText(),tbPasien.getSelectedRow(), 22);
+                    tbPasien.setValueAt(AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText()+", "+PropinsiPj.getText(),tbPasien.getSelectedRow(), 23);
+                    tbPasien.setValueAt(kdsuku.getText(),tbPasien.getSelectedRow(), 24);
+                    tbPasien.setValueAt(nmsukubangsa.getText(),tbPasien.getSelectedRow(), 25);
+                    tbPasien.setValueAt(kdbahasa.getText(),tbPasien.getSelectedRow(), 26);
+                    tbPasien.setValueAt(nmbahasa.getText(),tbPasien.getSelectedRow(), 27);
+                    tbPasien.setValueAt(kdperusahaan.getText(),tbPasien.getSelectedRow(), 28);
+                    tbPasien.setValueAt(nmperusahaan.getText(),tbPasien.getSelectedRow(), 29);
+                    tbPasien.setValueAt(NIP.getText(),tbPasien.getSelectedRow(), 30);
+                    tbPasien.setValueAt(EMail.getText(),tbPasien.getSelectedRow(), 31);
+                    tbPasien.setValueAt(kdcacat.getText(),tbPasien.getSelectedRow(), 32);
+                    tbPasien.setValueAt(nmcacat.getText(),tbPasien.getSelectedRow(), 33);
+                    tbPasien.setValueAt(Kdpnj.getText(),tbPasien.getSelectedRow(), 34);
+                    tbPasien.setValueAt(Alamat.getText(),tbPasien.getSelectedRow(), 35);
+                    tbPasien.setValueAt(Kelurahan.getText(),tbPasien.getSelectedRow(), 36);
+                    tbPasien.setValueAt(Kecamatan.getText(),tbPasien.getSelectedRow(), 37);
+                    tbPasien.setValueAt(Kabupaten.getText(),tbPasien.getSelectedRow(), 38);
+                    tbPasien.setValueAt(Propinsi.getText(),tbPasien.getSelectedRow(), 39);
+                    tbPasien.setValueAt(AlamatPj.getText(),tbPasien.getSelectedRow(), 40);
+                    tbPasien.setValueAt(KelurahanPj.getText(),tbPasien.getSelectedRow(), 41);
+                    tbPasien.setValueAt(KecamatanPj.getText(),tbPasien.getSelectedRow(), 42);
+                    tbPasien.setValueAt(KabupatenPj.getText(),tbPasien.getSelectedRow(), 43);
+                    tbPasien.setValueAt(PropinsiPj.getText(),tbPasien.getSelectedRow(), 44);
+                }
+                    
                 emptTeks();
                 TabRawat.setSelectedIndex(1);
-                tampil();
             }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -7636,9 +7690,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             Sequel.mengedit("tagihan_bpd_jateng","no_rkm_medis=?","no_rkm_medis=?",2,new String[]{
                 NoRmTujuan.getText(),TNo.getText()
             });
-            Sequel.meghapus("pasien","no_rkm_medis",TNo.getText());
-            tampil();
-            emptTeks();
+            if(Sequel.meghapustf("pasien","no_rkm_medis",TNo.getText())==true){
+                if(tbPasien.getSelectedRow()!= -1){ 
+                    tabMode.removeRow(tbPasien.getSelectedRow());
+                }
+                emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
+            }
+                
             WindowGabungRM.dispose();
         }
     }//GEN-LAST:event_BtnSimpan6ActionPerformed

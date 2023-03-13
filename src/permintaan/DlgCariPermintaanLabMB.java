@@ -29,7 +29,6 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariPoli;
-import simrskhanza.DlgPeriksaLaboratorium;
 import simrskhanza.DlgPeriksaLaboratoriumMB;
 
 public class DlgCariPermintaanLabMB extends javax.swing.JDialog {
@@ -1669,7 +1668,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             Sequel.queryu("delete from antrilabmb");
                             Sequel.queryu("insert into antrilabmb values('1')");
                             TeksKosong();
-                            tampil();
+                            tbLabRalan.setValueAt(Valid.SetTgl(TanggalPulang.getSelectedItem()+""),tbLabRalan.getSelectedRow(),5);
+                            tbLabRalan.setValueAt(TanggalPulang.getSelectedItem().toString().substring(11,19),tbLabRalan.getSelectedRow(),6);
                     }
                 }
             }else{            
@@ -1708,7 +1708,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             } catch (Exception e) {
                             }
                             TeksKosong();
-                            tampil3();
+                            tbLabRanap.setValueAt(Valid.SetTgl(TanggalPulang.getSelectedItem()+""),tbLabRanap.getSelectedRow(),5);
+                            tbLabRanap.setValueAt(TanggalPulang.getSelectedItem().toString().substring(11,19),tbLabRanap.getSelectedRow(),6);
                     }
                 }
             }else{            
@@ -2539,7 +2540,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
                 "(permintaan_labmb.noorder like ? or permintaan_labmb.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                 "pasien.nm_pasien like ? or permintaan_labmb.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ? )")+
-                "group by permintaan_labmb.noorder order by permintaan_labmb.status='ranap' and permintaan_labmb.tgl_permintaan,permintaan_labmb.jam_permintaan desc");
+                "group by permintaan_labmb.noorder order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -2661,7 +2662,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "(permintaan_labmb.noorder like ? or permintaan_labmb.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or template_laboratorium.Pemeriksaan like ? or "+
                     "permintaan_labmb.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
-                    "group by permintaan_labmb.noorder,permintaan_detail_permintaan_labmb.id_template order by permintaan_labmb.tgl_permintaan,permintaan_labmb.jam_permintaan desc");
+                    "group by permintaan_labmb.noorder,permintaan_detail_permintaan_labmb.id_template order by permintaan_labmb.tgl_permintaan desc,permintaan_labmb.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));

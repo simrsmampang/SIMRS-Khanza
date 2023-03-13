@@ -1632,7 +1632,8 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     })==true){
                         Sequel.queryu("delete from antriradiologi");
                         Sequel.queryu("insert into antriradiologi values('1')");
-                        tampil();
+                        tbRadiologiRalan.setValueAt(Valid.SetTgl(TanggalPulang.getSelectedItem()+""),tbRadiologiRalan.getSelectedRow(),5);
+                        tbRadiologiRalan.setValueAt(TanggalPulang.getSelectedItem().toString().substring(11,19),tbRadiologiRalan.getSelectedRow(),6);
                         WindowAmbilSampel.dispose();
                     }
                 }
@@ -1648,7 +1649,8 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     if(Sequel.mengedittf("permintaan_radiologi","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
                         Valid.SetTgl(TanggalPulang.getSelectedItem()+""),TanggalPulang.getSelectedItem().toString().substring(11,19),tbRadiologiRanap.getValueAt(tbRadiologiRanap.getSelectedRow(),0).toString()
                     })==true){
-                        tampil3();
+                        tbRadiologiRanap.setValueAt(Valid.SetTgl(TanggalPulang.getSelectedItem()+""),tbRadiologiRanap.getSelectedRow(),5);
+                        tbRadiologiRanap.setValueAt(TanggalPulang.getSelectedItem().toString().substring(11,19),tbRadiologiRanap.getSelectedRow(),6);
                         WindowAmbilSampel.dispose();
                     }
                 }
@@ -2584,7 +2586,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     "(permintaan_radiologi.noorder like ? or permintaan_radiologi.no_rawat like ? or "+
                     "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                     "permintaan_radiologi.diagnosa_klinis like ? or dokter.nm_dokter like ?)")+
-                    "group by permintaan_radiologi.noorder order by permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan desc");
+                    "group by permintaan_radiologi.noorder order by permintaan_radiologi.tgl_permintaan desc,permintaan_radiologi.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -2673,7 +2675,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     "(permintaan_radiologi.noorder like ? or permintaan_radiologi.no_rawat like ? or "+
                     "reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                     "permintaan_radiologi.diagnosa_klinis like ? or jns_perawatan_radiologi.nm_perawatan like ? or "+
-                    "dokter.nm_dokter like ?)")+" group by permintaan_radiologi.noorder,jns_perawatan_radiologi.kd_jenis_prw order by permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan desc");
+                    "dokter.nm_dokter like ?)")+" group by permintaan_radiologi.noorder,jns_perawatan_radiologi.kd_jenis_prw order by permintaan_radiologi.tgl_permintaan desc,permintaan_radiologi.jam_permintaan desc,kamar_inap.tgl_masuk desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
