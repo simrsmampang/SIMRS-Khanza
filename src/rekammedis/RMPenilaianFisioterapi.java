@@ -35,7 +35,6 @@ import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPegawai;
-import kepegawaian.DlgCariPetugas;
 
 
 /**
@@ -2697,14 +2696,14 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     private void hapus() {
         if(Sequel.queryu2tf("delete from penilaian_fisioterapi where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }

@@ -7747,7 +7747,6 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     private void isMenu(){
@@ -7877,7 +7876,8 @@ public final class RMPenilaianAwalKeperawatanKebidananRanap extends javax.swing.
             TPasien1.setText("");
             ChkAccor.setSelected(false);
             isMenu();
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }

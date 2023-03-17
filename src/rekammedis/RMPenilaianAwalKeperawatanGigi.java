@@ -4010,7 +4010,6 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     private void tampilMasalah() {
@@ -4280,7 +4279,8 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         Valid.tabelKosong(tabModeDetailRencana);
         ChkAccor.setSelected(false);
         isMenu();
-        tampil();
+        tabMode.removeRow(tbObat.getSelectedRow());
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     private void ganti() {

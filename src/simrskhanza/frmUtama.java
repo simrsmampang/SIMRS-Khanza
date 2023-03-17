@@ -832,6 +832,7 @@ import rekammedis.RMPenilaianKorbanKekerasan;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhAnak;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhDewasa;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhLansia;
+import rekammedis.RMPenilaianPasienPenyakitMenular;
 import rekammedis.RMPenilaianPasienTerminal;
 import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
@@ -842,6 +843,7 @@ import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
+import rekammedis.RMSkriningMPP;
 import rekammedis.RMSkriningNutrisiAnak;
 import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
@@ -19968,6 +19970,33 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningManagerPelayananPasienActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningMPP aplikasi=new RMSkriningMPP(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenilaianPasienPenyakitMenularActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianPasienPenyakitMenular aplikasi=new RMPenilaianPasienPenyakitMenular(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20636,7 +20665,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBarangDapur,btnSignOutSebelumMenutupLuka,btnOpnameDapur,btnSuplierDapur,btnMappingVaksinSatuSehat,btnKirimVaksinSatuSehat,btnPembelianDapur,
             btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair,
             btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat,
-            btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia;
+            btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
+            btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular;
     
     public void isWall(){
         try{            
@@ -24035,6 +24065,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getpenilaian_pasien_penyakit_menular()==true){
+                Panelmenu.add(btnPenilaianPasienPenyakitMenular);
+                jmlmenu++;
+            }
+            
             if(akses.getcatatan_observasi_igd()==true){
                 Panelmenu.add(btnCatatanObservasiIGD);
                 jmlmenu++;
@@ -24172,6 +24207,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getrekonsiliasi_obat()==true){
                 Panelmenu.add(btnRekonsiliasiObat);
+                jmlmenu++;
+            }
+            
+            if(akses.getmpp_skrining()==true){
+                Panelmenu.add(btnSkriningManagerPelayananPasien);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -28644,6 +28684,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnPenilaianKorbanKekerasan);
             jmlmenu++;
         }
+        
+        if(akses.getpenilaian_pasien_penyakit_menular()==true){
+            Panelmenu.add(btnPenilaianPasienPenyakitMenular);
+            jmlmenu++;
+        }
 
         if(akses.getcatatan_observasi_igd()==true){
             Panelmenu.add(btnCatatanObservasiIGD);
@@ -28782,6 +28827,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getrekonsiliasi_obat()==true){
             Panelmenu.add(btnRekonsiliasiObat);
+            jmlmenu++;
+        }
+        
+        if(akses.getmpp_skrining()==true){
+            Panelmenu.add(btnSkriningManagerPelayananPasien);
             jmlmenu++;
         }
 
@@ -34556,6 +34606,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_pasien_penyakit_menular()==true){
+            if(btnPenilaianPasienPenyakitMenular.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianPasienPenyakitMenular);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getcatatan_observasi_igd()==true){
             if(btnCatatanObservasiIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCatatanObservasiIGD);
@@ -34748,6 +34805,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getrekonsiliasi_obat()==true){
             if(btnRekonsiliasiObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekonsiliasiObat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmpp_skrining()==true){
+            if(btnSkriningManagerPelayananPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningManagerPelayananPasien);
                 jmlmenu++;
             }                
         }
@@ -40126,5 +40190,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianKorbanKekerasan.setName("btnPenilaianKorbanKekerasan"); 
         btnPenilaianKorbanKekerasan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianKorbanKekerasan.addActionListener(this::btnPenilaianKorbanKekerasanActionPerformed);
+        
+        btnSkriningManagerPelayananPasien = new widget.ButtonBig();
+        btnSkriningManagerPelayananPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9016855_stay_at_home_covid-19_virus_icon.png")));
+        btnSkriningManagerPelayananPasien.setText("Skrining Manager Pelayanan Pasien");
+        btnSkriningManagerPelayananPasien.setIconTextGap(0);
+        btnSkriningManagerPelayananPasien.setName("btnSkriningManagerPelayananPasien"); 
+        btnSkriningManagerPelayananPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningManagerPelayananPasien.addActionListener(this::btnSkriningManagerPelayananPasienActionPerformed);
+        
+        
+        btnPenilaianPasienPenyakitMenular = new widget.ButtonBig();
+        btnPenilaianPasienPenyakitMenular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5980337_coronavirus_data_disease_information_research_icon.png")));
+        btnPenilaianPasienPenyakitMenular.setText("Penilaian Pasien Penyakit Menular");
+        btnPenilaianPasienPenyakitMenular.setIconTextGap(0);
+        btnPenilaianPasienPenyakitMenular.setName("btnPenilaianPasienPenyakitMenular"); 
+        btnPenilaianPasienPenyakitMenular.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianPasienPenyakitMenular.addActionListener(this::btnPenilaianPasienPenyakitMenularActionPerformed);
     }
 }

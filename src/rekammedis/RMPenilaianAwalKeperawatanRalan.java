@@ -4085,7 +4085,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
 
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
-       tampil();
     }
     
     private void tampilMasalah() {
@@ -4358,7 +4357,8 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             Valid.tabelKosong(tabModeDetailRencana);
             ChkAccor.setSelected(false);
             isMenu();
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
