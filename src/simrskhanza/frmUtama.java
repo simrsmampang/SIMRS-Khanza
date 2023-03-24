@@ -844,6 +844,7 @@ import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningMPP;
+import rekammedis.RMSkriningMPPFormA;
 import rekammedis.RMSkriningNutrisiAnak;
 import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
@@ -1077,9 +1078,9 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         edAdmin = new widget.PasswordBox();
         edPwd = new widget.PasswordBox();
-        jLabel6 = new javax.swing.JLabel();
         BtnLogin = new widget.Button();
         BtnCancel = new widget.Button();
+        jLabel6 = new javax.swing.JLabel();
         DlgHome = new javax.swing.JDialog();
         panelMenu = new widget.InternalFrame();
         panelisi2 = new widget.panelisi();
@@ -1650,15 +1651,15 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(255, 39, 140));
-        internalFrame2.setWarnaBawah(new java.awt.Color(237, 1, 122));
+        internalFrame2.setWarnaAtas(new java.awt.Color(245, 39, 140));
+        internalFrame2.setWarnaBawah(new java.awt.Color(232, 1, 122));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setRequestFocusEnabled(false);
-        internalFrame3.setWarnaAtas(new java.awt.Color(255, 210, 210));
-        internalFrame3.setWarnaBawah(new java.awt.Color(255, 250, 250));
+        internalFrame3.setWarnaAtas(new java.awt.Color(250, 215, 225));
+        internalFrame3.setWarnaBawah(new java.awt.Color(255, 240, 250));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);
@@ -1711,16 +1712,10 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame3.add(panelGlass1);
         panelGlass1.setBounds(-1, 25, 342, 76);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/LaST (Cobalt) Lock n Gear.png"))); // NOI18N
-        jLabel6.setName("jLabel6"); // NOI18N
-        internalFrame3.add(jLabel6);
-        jLabel6.setBounds(105, 5, 135, 145);
-
         BtnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/lock.png"))); // NOI18N
         BtnLogin.setMnemonic('Z');
         BtnLogin.setText("Log-in");
         BtnLogin.setToolTipText("Alt+Z");
-        BtnLogin.setGlassColor(new java.awt.Color(235, 255, 245));
         BtnLogin.setName("BtnLogin"); // NOI18N
         BtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1734,7 +1729,6 @@ public class frmUtama extends javax.swing.JFrame {
         BtnCancel.setMnemonic('Y');
         BtnCancel.setText("Batal");
         BtnCancel.setToolTipText("Alt+Y");
-        BtnCancel.setGlassColor(new java.awt.Color(235, 255, 245));
         BtnCancel.setName("BtnCancel"); // NOI18N
         BtnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1743,6 +1737,11 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame3.add(BtnCancel);
         BtnCancel.setBounds(177, 110, 105, 32);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/LaST (Cobalt) Lock n Gear.png"))); // NOI18N
+        jLabel6.setName("jLabel6"); // NOI18N
+        internalFrame3.add(jLabel6);
+        jLabel6.setBounds(105, 5, 135, 145);
 
         internalFrame2.add(internalFrame3);
         internalFrame3.setBounds(2, 12, 295, 155);
@@ -1850,7 +1849,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02/03/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/03/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6931,8 +6930,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 42));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(255, 245, 250));
-        internalFrame1.setWarnaBawah(new java.awt.Color(240, 180, 185));
+        internalFrame1.setWarnaAtas(new java.awt.Color(255, 240, 250));
+        internalFrame1.setWarnaBawah(new java.awt.Color(240, 175, 185));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -7152,8 +7151,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(240, 190, 195));
-        internalFrame4.setWarnaBawah(new java.awt.Color(255, 245, 250));
+        internalFrame4.setWarnaAtas(new java.awt.Color(240, 185, 195));
+        internalFrame4.setWarnaBawah(new java.awt.Color(255, 240, 250));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7303,7 +7302,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(PanelUtama, java.awt.BorderLayout.CENTER);
 
-        MenuBar.setBackground(new java.awt.Color(255, 255, 254));
+        MenuBar.setBackground(new java.awt.Color(124, 42, 90));
         MenuBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         MenuBar.setForeground(new java.awt.Color(255, 255, 255));
         MenuBar.setName("MenuBar"); // NOI18N
@@ -19983,6 +19982,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningMPPFormAActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningMPPFormA aplikasi=new RMSkriningMPPFormA(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnPenilaianPasienPenyakitMenularActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
@@ -20666,7 +20679,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnChecklistPostOperasi,btnPengeluaranDapur,btnRiwayatBarangDapur,btnPermintaanDapur,btnRBiayaDapur,btnRekapPengadaanDapur,btnLimbahB3MedisCair,
             btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat,
             btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
-            btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular;
+            btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA;
     
     public void isWall(){
         try{            
@@ -24212,6 +24225,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmpp_skrining()==true){
                 Panelmenu.add(btnSkriningManagerPelayananPasien);
+                jmlmenu++;
+                Panelmenu.add(btnSkriningMPPFormA);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -28832,6 +28847,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmpp_skrining()==true){
             Panelmenu.add(btnSkriningManagerPelayananPasien);
+            jmlmenu++;
+            Panelmenu.add(btnSkriningMPPFormA);
             jmlmenu++;
         }
 
@@ -34813,7 +34830,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(btnSkriningManagerPelayananPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSkriningManagerPelayananPasien);
                 jmlmenu++;
-            }                
+            }
+            if(btnSkriningMPPFormA.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningMPPFormA);
+                jmlmenu++;
+            }  
         }
         
         if(akses.getpengambilan_utd2()==true){
@@ -40193,11 +40214,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnSkriningManagerPelayananPasien = new widget.ButtonBig();
         btnSkriningManagerPelayananPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9016855_stay_at_home_covid-19_virus_icon.png")));
-        btnSkriningManagerPelayananPasien.setText("Skrining Manager Pelayanan Pasien");
+        btnSkriningManagerPelayananPasien.setText("Skrining Manajer Pelayanan Pasien");
         btnSkriningManagerPelayananPasien.setIconTextGap(0);
         btnSkriningManagerPelayananPasien.setName("btnSkriningManagerPelayananPasien"); 
         btnSkriningManagerPelayananPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningManagerPelayananPasien.addActionListener(this::btnSkriningManagerPelayananPasienActionPerformed);
+        
+        btnSkriningMPPFormA = new widget.ButtonBig();
+        btnSkriningMPPFormA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088113_computer_record_scan_screening_virus_icon.png")));
+        btnSkriningMPPFormA.setText("Evaluasi Awal Manajer Pelayanan Pasien");
+        btnSkriningMPPFormA.setIconTextGap(0);
+        btnSkriningMPPFormA.setName("btnSkriningMPPFormA"); 
+        btnSkriningMPPFormA.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningMPPFormA.addActionListener(this::btnSkriningMPPFormAActionPerformed);
         
         
         btnPenilaianPasienPenyakitMenular = new widget.ButtonBig();
