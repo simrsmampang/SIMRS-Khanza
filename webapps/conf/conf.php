@@ -216,7 +216,7 @@
             $save=str_replace("+","",$save);
             $save=str_replace("^","",$save);
             $save=str_replace("#","",$save);
-            $save=str_replace("!","",$save);
+            // $save=str_replace("!","",$save);
             $save=str_replace("='","",$save);
             $save=str_replace("=/","",$save);
             $save=str_replace("=","",$save);
