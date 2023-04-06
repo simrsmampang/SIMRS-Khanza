@@ -441,7 +441,7 @@
         $konektor = bukakoneksi();
 
         $expr = $konektor->prepare($sql);
-        $expr->bind_param()
+        $expr->bind_param();
     }
     
     function fetch_assoc($sql) {
