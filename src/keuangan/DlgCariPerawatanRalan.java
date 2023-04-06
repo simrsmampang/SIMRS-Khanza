@@ -608,11 +608,6 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
         Nip2.setHighlighter(null);
         Nip2.setName("Nip2"); // NOI18N
         Nip2.setPreferredSize(new java.awt.Dimension(120, 23));
-        Nip2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nip2KeyPressed(evt);
-            }
-        });
         FormInput.add(Nip2);
         Nip2.setBounds(61, 40, 99, 23);
 
@@ -1107,10 +1102,6 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         tampil();
     }//GEN-LAST:event_ppPetugasDokterActionPerformed
 
-    private void Nip2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nip2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Nip2KeyPressed
-
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1416,7 +1407,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         Nip2.setText(kdpetugas2);
         NmPetugas2.setText(nmpetugas2);
         this.pilihtable=pilihtable;
-        this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt);
+        this.kd_pj=Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt);
         this.kd_poli=Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",norwt);
         switch (pilihtable) {
             case "rawat_jl_dr":

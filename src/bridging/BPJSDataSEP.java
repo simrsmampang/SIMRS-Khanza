@@ -861,8 +861,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         
         try{
-            KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
-            NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));            
+            KdPPK.setText(akses.getkodeppkbpjs());
+            NmPPK.setText(akses.getnamars());            
         }catch(Exception e){
             System.out.println(e);
         }
@@ -4546,6 +4546,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
             tampil();
+        }else if(TabRawat.getSelectedIndex()==2){
+            tampilInternal();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -6460,9 +6462,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                                  Valid.SetTgl(TanggalSEP.getSelectedItem()+""),
                                  response.asText()
-                            });
-                            emptTeks();                         
-                            tampil();     
+                            });           
                      } 
                      if(!prb.equals("")){
                         if(Sequel.menyimpantf("bpjs_prb","?,?","PRB",2,new String[]{response.asText(),prb})==true){
@@ -6492,9 +6492,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                Sequel.mengedit("bridging_sep_internal","no_sep=?","tglpulang=?",2,new String[]{                             
                                     Valid.SetTgl(TanggalSEP.getSelectedItem()+""),
                                     response.asText()
-                               });
-                               emptTeks();                         
-                               tampil();     
+                               });           
                         } 
                         if(!prb.equals("")){
                            if(Sequel.menyimpantf("bpjs_prb","?,?","PRB",2,new String[]{response.asText(),prb})==true){
@@ -6528,6 +6526,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     if(TujuanKunjungan.getSelectedItem().toString().equals("2. Konsul Dokter")&&AsesmenPoli.getSelectedItem().toString().equals("5. Tujuan Kontrol")){
                         jeniskunjungan="3";
                         noreferensi=NoSKDP.getText();
+                        if(noreferensi.equals("")){
+                            noreferensi=NoRujukan.getText();
+                        }
                     }else{
                         jeniskunjungan="2";
                         if(!NoRujukan.getText().equals("")){
@@ -6537,6 +6538,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         }
                     }
                 }
+            }
+            if(noreferensi.equals("")){
+                noreferensi=TNoRw.getText();
             }
             
             try {
@@ -6571,7 +6575,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 try {
                     ps.setString(1,hari);
                     ps.setString(2,kodepolireg);
-                    ps.setString(3,kodepolireg);
+                    ps.setString(3,kodedokterreg);
                     rs=ps.executeQuery();
                     if(rs.next()){
                         jammulai=rs.getString("jam_mulai");
