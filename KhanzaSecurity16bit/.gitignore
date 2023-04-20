@@ -1,6 +1,8 @@
 /build/**
 /dist/**
-/cache/**
 /lib/**
 /nbproject/**
 !.gitignore
+!/nbproject/project.xml
+!/nbproject/config.conf
+!/nbproject/project.properties
