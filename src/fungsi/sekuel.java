@@ -15,6 +15,7 @@ package fungsi;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -50,7 +51,7 @@ import uz.ncipro.calendar.JDateTimePicker;
  */
 public final class sekuel {
     private javax.swing.ImageIcon icon = null;
-    private String folder,AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
+    private String folder, AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
     private final Connection connect=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
@@ -63,8 +64,85 @@ public final class sekuel {
     public sekuel(){
         super();
     }
+    
+    public void insertTampJurnal(String kdRek, String nmRek, double d, double k)
+    {
+        String query = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
+        String bindings = "(" + String.join("|", kdRek, nmRek, String.valueOf(d), String.valueOf(k), akses.getkode(), akses.getalamatip()) + ")";
+        
+        try {
+            ps = connect.prepareStatement(query);
+            ps.setString(0, kdRek);
+            ps.setString(1, nmRek);
+            ps.setString(2, String.valueOf(d));
+            ps.setString(3, String.valueOf(k));
+            ps.setString(4, akses.getkode());
+            ps.setString(5, akses.getalamatip());
+            
+            ps.executeUpdate();
+            
+            SimpanTrack(query + " " + bindings);
+            
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi: " + e);
+            
+            JOptionPane.showMessageDialog(null, "Gagal menyimpan data! Kemungkinan ada " + nmRek + " yang sama sebelumnya!");
+        }
+    }
+    
+    public void deleteTampJurnal()
+    {
+        String query = "delete from tampjurnal_smc where user_id = ? and ip = ?";
+        String bindings = "(" + String.join("|", akses.getkode(), akses.getalamatip()) + ")";
+        
+        try {
+            ps = connect.prepareStatement(query);
+            ps.setString(0, akses.getkode());
+            ps.setString(1, akses.getalamatip());
+            
+            ps.executeUpdate();
 
+            SimpanTrack(query + " " + bindings);
+            
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("Notifikasi: " + e);
+            
+            JOptionPane.showMessageDialog(null, "Gagal memproses data!");
+        }
+    }
+    
+    public void updateTampJurnal(double d, double k, String kdrek)
+    {
+        String query = "update tampjurnal_smc set debet = ?, kredit = ? where kd_rek = ? and user_id = ? and ip = ?";
+        String bindings = "(" + String.join("|", String.valueOf(d), String.valueOf(k), kdrek, akses.getkode(), akses.getalamatip()) + ")";
+        
+        try {
+            ps = connect.prepareStatement(query);
+            ps.setString(0, String.valueOf(d));
+            ps.setString(1, String.valueOf(k));
+            ps.setString(2, kdrek);
+            ps.setString(3, akses.getkode());
+            ps.setString(4, akses.getalamatip());
+            
+            ps.executeUpdate();
 
+            SimpanTrack(query + " " + bindings);
+            
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi: " + e);
+            JOptionPane.showMessageDialog(null, "Gagal mengupdate data!");
+        }
+    }
+    
     public void menyimpan(String table,String value,String sama){
         try {
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");
