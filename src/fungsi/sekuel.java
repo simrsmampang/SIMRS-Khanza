@@ -72,12 +72,12 @@ public final class sekuel {
         
         try {
             ps = connect.prepareStatement(query);
-            ps.setString(0, kdRek);
-            ps.setString(1, nmRek);
-            ps.setString(2, String.valueOf(d));
-            ps.setString(3, String.valueOf(k));
-            ps.setString(4, akses.getkode());
-            ps.setString(5, akses.getalamatip());
+            ps.setString(1, kdRek);
+            ps.setString(2, nmRek);
+            ps.setString(3, String.valueOf(d));
+            ps.setString(4, String.valueOf(k));
+            ps.setString(5, akses.getkode());
+            ps.setString(6, akses.getalamatip());
             
             ps.executeUpdate();
             
@@ -100,8 +100,8 @@ public final class sekuel {
         
         try {
             ps = connect.prepareStatement(query);
-            ps.setString(0, akses.getkode());
-            ps.setString(1, akses.getalamatip());
+            ps.setString(1, akses.getkode());
+            ps.setString(2, akses.getalamatip());
             
             ps.executeUpdate();
 
@@ -111,7 +111,7 @@ public final class sekuel {
                 ps.close();
             }
         } catch (HeadlessException | SQLException e) {
-            System.out.println("Notifikasi: " + e);
+            System.out.println("Notifikasi : " + e);
             
             JOptionPane.showMessageDialog(null, "Gagal memproses data!");
         }
@@ -124,11 +124,11 @@ public final class sekuel {
         
         try {
             ps = connect.prepareStatement(query);
-            ps.setString(0, String.valueOf(d));
-            ps.setString(1, String.valueOf(k));
-            ps.setString(2, kdrek);
-            ps.setString(3, akses.getkode());
-            ps.setString(4, akses.getalamatip());
+            ps.setString(1, String.valueOf(d));
+            ps.setString(2, String.valueOf(k));
+            ps.setString(3, kdrek);
+            ps.setString(4, akses.getkode());
+            ps.setString(5, akses.getalamatip());
             
             ps.executeUpdate();
 
@@ -138,9 +138,57 @@ public final class sekuel {
                 ps.close();
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi: " + e);
+            System.out.println("Notifikasi : " + e);
+            
             JOptionPane.showMessageDialog(null, "Gagal mengupdate data!");
         }
+    }
+
+    public double cariIsiDouble(String sql, String bindings)
+    {
+        try {
+            ps = connect.prepareStatement(sql);
+            ps.setString(1, bindings);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double output = rs.getDouble(1);
+
+                ps.close();
+
+                return output;
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+
+        return 0;
+    }
+
+    public double cariIsiDouble(String sql, String[] bindings)
+    {
+        try {
+            ps = connect.prepareStatement(sql);
+
+            for (int i = 0; i < bindings.length; i++) {
+                ps.setString(i + 1, bindings[i]);
+            }
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double output = rs.getDouble(1);
+
+                ps.close();
+
+                return output;
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+
+        return 0;
     }
     
     public void menyimpan(String table,String value,String sama){
