@@ -809,20 +809,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
                       Sequel.deleteTampJurnal();
                       Sequel.insertTampJurnal(rs.getString("kd_rek_aset"), "PEMBELIAN", 0, rs.getDouble("total"));
-                      // Sequel.queryu("delete from tampjurnal");
-                      // Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                      //     rs.getString("kd_rek_aset"),"PEMBELIAN","0",rs.getString("total")
-                      // });    
+
                       if(rs.getDouble("ppn")>0){
-                        Sequel.insertTampJurnal(PPN_Masukan, "PPN Masukan Inventaris", 0, rs.getDouble("ppn"))
-                          // Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          //   PPN_Masukan,"PPN Masukan Inventaris","0",rs.getString("ppn")
-                          // }); 
+                        Sequel.insertTampJurnal(PPN_Masukan, "PPN Masukan Inventaris", 0, rs.getDouble("ppn"));
                       }
                       Sequel.insertTampJurnal(rs.getString("kd_rek"), "KAS DI TANGAN", rs.getDouble("tagihan"), 0);
-                      // Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                      //     rs.getString("kd_rek"),"KAS DI TANGAN",rs.getString("tagihan"),"0"
-                      // }); 
                       sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","PEMBATALAN PENGADAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
                       if(sukses==true){
                           Sequel.queryu2("delete from inventaris_pembelian where no_faktur=?",1,new String[]{rs.getString("no_faktur")});

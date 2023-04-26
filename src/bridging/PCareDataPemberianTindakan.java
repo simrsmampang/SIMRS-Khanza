@@ -657,7 +657,6 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ttlpendapatan=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),15).toString());
 
                 Sequel.deleteTampJurnal();
-                // Sequel.queryu("delete from tampjurnal");
                 if(ttlpendapatan>0){
                     Sequel.menyimpan(
                         "tampjurnal_smc",
@@ -851,7 +850,6 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ttlpendapatan=Double.parseDouble(tbDokter2.getValueAt(tbDokter2.getSelectedRow(),15).toString());
 
                 Sequel.deleteTampJurnal();
-                // Sequel.queryu("delete from tampjurnal");
                 if(ttlpendapatan>0){
                     Sequel.menyimpan(
                         "tampjurnal_smc",

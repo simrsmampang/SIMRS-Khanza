@@ -875,14 +875,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 if(sukses){
                     Sequel.deleteTampJurnal();
                     Sequel.insertTampJurnal(akunaset, "PENERIMAAN ASET INVENTARIS", (ttl + meterai), 0);
-                    // Sequel.queryu("delete from tampjurnal");
-                    // Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunaset,"PENERIMAAN ASET INVENTARIS",""+(ttl+meterai),"0"});
                     if(ppn>0){
                         Sequel.insertTampJurnal(Sequel.cariIsi("select PPN_Masukan from set_akun"), "PPN Masukan Barang Inventaris", ppn, 0);
-                        // Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Barang Inventaris",""+ppn,"0"});
                     }
                     Sequel.insertTampJurnal(Kontra_Penerimaan_AsetInventaris, "HUTANG BARANG ASET/INVENTARIS", 0, (ttl + ppn + meterai));
-                    // Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS","0",""+(ttl+ppn+meterai)}); 
                     sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN BARANG ASET/INVENTARIS"+", OLEH "+akses.getkode());
                 }
                 

@@ -813,14 +813,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 if(sukses){
                     Sequel.deleteTampJurnal();
                     Sequel.insertTampJurnal(akunaset, "PEMBELIAN", (ttl + meterai), 0);
-                    // Sequel.queryu("delete from tampjurnal");
-                    // Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunaset,"PEMBELIAN",""+(ttl+meterai),"0"});
                     if(ppn>0){
                         Sequel.insertTampJurnal(PPN_Masukan, "PPN Masukan Inventaris", ppn, 0);
-                        // Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{PPN_Masukan,"PPN Masukan Inventaris",""+ppn,"0"});
                     }
                     Sequel.insertTampJurnal(akunbayar, "KAS KELUAR", 0, (ttl + ppn + meterai));
-                    // Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunbayar,"KAS KELUAR","0",""+(ttl+ppn+meterai)}); 
                     sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PEMBELIAN ASET/INVETARIS "+", OLEH "+akses.getkode());
                 }
                 if(sukses){
