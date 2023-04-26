@@ -789,9 +789,10 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                         Sequel.mengedit("piutang_pasien","no_rawat='"+NoRawat.getText()+"'","status='Lunas'");
                     }   
                     Sequel.mengedit("detail_piutang_pasien","no_rawat='"+NoRawat.getText()+"' and nama_bayar='"+AkunPiutang.getSelectedItem().toString()+"'","sisapiutang=sisapiutang-"+Cicilan.getText());
-                    Sequel.queryu("delete from tampjurnal");                    
-                    Sequel.menyimpan("tampjurnal","'"+kontraakun+"','BAYAR PIUTANG','0','"+Cicilan.getText()+"'","Rekening");    
-                    Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','"+Cicilan.getText()+"','0'","Rekening"); 
+
+                    Sequel.deleteTampJurnal();
+                    Sequel.insertTampJurnal(kontraakun, "BAYAR PIUTANG", 0, Double.parseDouble(Cicilan.getText()));
+                    Sequel.insertTampJurnal(koderekening, AkunBayar.getSelectedItem().toString(), Double.parseDouble(Cicilan.getText()), 0);
                     sukses=jur.simpanJurnal(NoRawat.getText(),"U","BAYAR PIUTANG"+", OLEH "+akses.getkode());                   
             }else{
                 sukses=false;
@@ -837,12 +838,13 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                     tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString(),
                     tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()
                 })==true){
-                    Sequel.mengedit("piutang_pasien","no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"'","status='Belum Lunas'");                      
+                    Sequel.mengedit("piutang_pasien","no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"'","status='Belum Lunas'");
                     Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"' and nama_bayar='"+Sequel.cariIsi("select nama_bayar from akun_piutang where kd_rek=?",tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString())+"'","sisapiutang=sisapiutang+"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString());
-                    Sequel.queryu("delete from tampjurnal");                    
-                    Sequel.menyimpan("tampjurnal","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"','BAYAR PIUTANG','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"','0'","Rekening");    
-                    Sequel.menyimpan("tampjurnal","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"','Kontra Akun','0','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"'","Rekening"); 
-                    sukses=jur.simpanJurnal(NoRawat.getText(),"U","PEMBATALAN BAYAR PIUTANG"+", OLEH "+akses.getkode());     
+                    
+                    Sequel.deleteTampJurnal();
+                    Sequel.insertTampJurnal(tbKamar.getValueAt(tbKamar.getSelectedRow(), 7).toString(), "BAYAR PIUTANG", Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(), 3).toString()), 0);
+                    Sequel.insertTampJurnal(tbKamar.getValueAt(tbKamar.getSelectedRow(), 6).toString(), "Kontra Akun", 0, Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(), 3).toString()));
+                    sukses=jur.simpanJurnal(NoRawat.getText(),"U","PEMBATALAN BAYAR PIUTANG"+", OLEH "+akses.getkode());
                 }else{
                     sukses=false;
                 }
