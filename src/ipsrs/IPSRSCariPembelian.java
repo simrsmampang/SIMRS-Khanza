@@ -886,18 +886,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                           }
                       }
 
-                      Sequel.queryu("delete from tampjurnal");
-                      Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          akunpengadaan,"PEMBELIAN","0",rs.getString("total")
-                      });    
-                      if(rs.getDouble("ppn")>0){
-                          Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                            PPN_Masukan,"PPN Masukan IPSRS","0",rs.getString("ppn")
-                          }); 
+                      Sequel.deleteTampJurnal();
+                      Sequel.insertTampJurnal(akunpengadaan, "PEMBELIAN", 0, rs.getDouble("total"));
+
+                      if (rs.getDouble("ppn") > 0) {
+                        Sequel.insertTampJurnal(PPN_Masukan, "PPN Masukan IPSRS", 0, rs.getDouble("ppn"));
                       }
-                      Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          rs.getString("kd_rek"),"KAS DI TANGAN",rs.getString("tagihan"),"0"
-                      }); 
+
+                      Sequel.insertTampJurnal(rs.getString("kd_rek"), "KAS DI TANGAN", rs.getDouble("tagihan"), 0);
+                      
                       sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","PEMBATALAN PEMBELIAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
                       if(sukses==true){
                           Sequel.queryu2("delete from ipsrspembelian where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
