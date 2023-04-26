@@ -787,18 +787,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
 
                             if(sukses==true){
-                                Sequel.queryu("delete from tampjurnal");
-                                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                    Sequel.cariIsi("select set_akun.Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG","0",rs.getString("total")
-                                });   
+                                Sequel.deleteTampJurnal();
+                                Sequel.insertTampJurnal(Sequel.cariIsi("select Pemesanan_Obat from set_akun"), "PERSEDIAAN BARANG", 0, rs.getDouble("total"));
+                                
                                 if(rs.getDouble("ppn")>0){
-                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                        Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Obat","0",rs.getString("ppn")
-                                    }); 
+                                    Sequel.insertTampJurnal(Sequel.cariIsi("select PPN_Masukan from set_akun"), "PPN Masukan Obat", 0, rs.getDouble("ppn"));
                                 }
-                                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                    Sequel.cariIsi("select set_akun.Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA",rs.getString("tagihan"),"0"
-                                }); 
+                                Sequel.insertTampJurnal(Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"), "HUTANG USAHA", rs.getDouble("tagihan"), 0);
+                                
                                 sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase()+", OLEH "+akses.getkode());
                             }
                             

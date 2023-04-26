@@ -89,7 +89,7 @@ public final class sekuel {
         } catch (SQLException e) {
             System.out.println("Notifikasi: " + e);
             
-            JOptionPane.showMessageDialog(null, "Gagal menyimpan data! Kemungkinan ada " + nmRek + " yang sama sebelumnya!");
+            JOptionPane.showMessageDialog(null, "Gagal menyimpan data! Kemungkinan ada rekening yang sama dimasukkan sebelumnya!");
         }
     }
     

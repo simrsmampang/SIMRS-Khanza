@@ -4141,11 +4141,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
         if(verifikasi_penjualan_di_kasir.equals("No")){
             if(sukses==true){
-                Sequel.queryu("delete from tampjurnal");                    
-                Sequel.menyimpan2("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN OBAT BEBAS','0','"+(ttl+ongkir+besarppnobat)+"'","Rekening");    
-                Sequel.menyimpan2("tampjurnal","'"+kode_akun_bayar+"','"+AkunBayar.getSelectedItem().toString()+"','"+(ttl+ongkir+besarppnobat)+"','0'","Rekening"); 
-                Sequel.menyimpan2("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");    
-                Sequel.menyimpan2("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");                              
+                Sequel.deleteTampJurnal();
+                Sequel.insertTampJurnal(Penjualan_Obat, "PENJUALAN OBAT BEBAS", 0, (ttl + ongkir + besarppnobat));
+                Sequel.insertTampJurnal(kode_akun_bayar, AkunBayar.getSelectedItem().toString(), (ttl + ongkir + besarppnobat), 0);
+                Sequel.insertTampJurnal(HPP_Obat_Jual_Bebas, "HPP Obat Jual Bebas", ttlhpp, 0);
+                Sequel.insertTampJurnal(Persediaan_Obat_Jual_Bebas, "Persediaan Obat Jual Bebas", 0, ttlhpp);
+                
                 sukses=jur.simpanJurnal(NoNota.getText(),"U","PENJUALAN DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());     
                 if(sukses==true){
                     sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+NoNota.getText()+"','"+kdmem.getText()+"','"+nmmem.getText().replaceAll("'","")+"','-',concat('"+Valid.SetTgl(Tgl.getSelectedItem()+"")+
