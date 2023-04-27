@@ -4,6 +4,7 @@
  */
 package keuangan;
 
+import fungsi.akses;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -27,7 +28,7 @@ public class Jurnal {
     public boolean simpanJurnal(String nobukti, String jenis, String keterangan) {
         try {
             pscek = koneksi.prepareStatement(
-                    "select count(*) as jml,current_date() as tanggal,current_time() as jam,sum(tampjurnal.debet) as debet,sum(tampjurnal.kredit) as kredit from tampjurnal");
+                    "select count(*) as jml,current_date() as tanggal,current_time() as jam,sum(tampjurnal_smc.debet) as debet,sum(tampjurnal_smc.kredit) as kredit from tampjurnal_smc where user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");
             try {
                 rscek = pscek.executeQuery();
                 if (rscek.next()) {
@@ -59,8 +60,7 @@ public class Jurnal {
 
                                 if (sukses == false) {
                                     nojur = Valid.autoNomer3(
-                                            "select ifnull(MAX(CONVERT(RIGHT(jurnal.no_jurnal,6),signed)),0) from jurnal where jurnal.tgl_jurnal='"
-                                                    + rscek.getString("tanggal") + "' ",
+                                            "select ifnull(MAX(CONVERT(RIGHT(jurnal.no_jurnal,6),signed)),0) from jurnal where jurnal.tgl_jurnal='" + rscek.getString("tanggal") + "' ",
                                             "JR" + rscek.getString("tanggal").replaceAll("-", ""), 6);
                                     sukses = true;
                                     ps = koneksi.prepareStatement("insert into jurnal values(?,?,?,?,?,?)");
@@ -85,7 +85,7 @@ public class Jurnal {
                                 if (sukses == true) {
                                     try {
                                         rs = koneksi.prepareStatement(
-                                                "select tampjurnal.kd_rek,tampjurnal.nm_rek,tampjurnal.debet,tampjurnal.kredit from tampjurnal")
+                                                "select tampjurnal_smc.kd_rek,tampjurnal_smc.nm_rek,tampjurnal_smc.debet,tampjurnal_smc.kredit from tampjurnal_smc where user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'")
                                                 .executeQuery();
                                         while (rs.next()) {
                                             ps2 = koneksi.prepareStatement("insert into detailjurnal values(?,?,?,?)");
@@ -112,7 +112,7 @@ public class Jurnal {
                                             rs.close();
                                         }
                                     }
-                                    Sequel.queryu2("delete from tampjurnal");
+                                    Sequel.queryu2("delete from tampjurnal_smc where user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");
                                 }
                             } catch (Exception ex) {
                                 sukses = false;

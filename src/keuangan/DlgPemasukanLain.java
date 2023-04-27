@@ -718,7 +718,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                 Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                 KdKategori.getText(),pemasukan.getText(),KdPtg.getText(),Keterangan.getText(),Keperluan.getText()
             })==true){
-                Sequel.queryu("delete from tampjurnal");
+                Sequel.deleteTampJurnal();
                 try {
                     psakun=koneksi.prepareStatement(
                         "select kd_rek,'Akun',kd_rek2,'Kontra Akun' from kategori_pemasukan_lain where kode_kategori=?");
@@ -726,8 +726,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                         psakun.setString(1,KdKategori.getText());
                         rs=psakun.executeQuery();
                         if(rs.next()){
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",pemasukan.getText()});
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),pemasukan.getText(),"0"}); 
+                            Sequel.insertTampJurnal(rs.getString(1), rs.getString(2), 0, Double.parseDouble(pemasukan.getText()));
+                            Sequel.insertTampJurnal(rs.getString(3), rs.getString(4), Double.parseDouble(pemasukan.getText()), 0);
                             sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
                         }
                     } catch (Exception e) {
@@ -804,15 +804,15 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                     tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()
                 })==true){
                     try {
-                        Sequel.queryu("delete from tampjurnal");
+                        Sequel.deleteTampJurnal();
                         psakun=koneksi.prepareStatement(
                             "select kd_rek,'Akun',kd_rek2,'Kontra Akun' from kategori_pemasukan_lain where kode_kategori=?");
                         try{
                             psakun.setString(1,KdKategori.getText());
                             rs=psakun.executeQuery();
                             if(rs.next()){
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),pemasukan.getText(),"0"});
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",pemasukan.getText()}); 
+                                Sequel.insertTampJurnal(rs.getString(1), rs.getString(2), Double.parseDouble(pemasukan.getText()), 0);
+                                Sequel.insertTampJurnal(rs.getString(3), rs.getString(4), 0, Double.parseDouble(pemasukan.getText())); 
                                 sukses=jur.simpanJurnal(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
                             } 
                         } catch (Exception e) {
