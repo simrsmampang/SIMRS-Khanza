@@ -2853,11 +2853,10 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));            
 
                 Sequel.deleteTampJurnal();
-                // Sequel.queryu2("delete from tampjurnal");
                 if((-1*ttlPotongan)>0){
                     Sequel.menyimpan(
                         "tampjurnal_smc",
-                        "'" + Potongan_Ralan + "', 'Potongan_Ralan', '0', '" + (-1*ttlPotongan) + "','" + akses.getkode() + "','" + akses.getalamatip() + "'",
+                        "'" + Potongan_Ralan + "', 'Potongan_Ralan', '0', '" + (-1 * ttlPotongan) + "','" + akses.getkode() + "','" + akses.getalamatip() + "'",
                         "kredit = kredit + '" + (-1*ttlPotongan) + "'",
                         "kd_rek = '"+Potongan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip()
                     ); 
