@@ -745,9 +745,9 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),Kdmem.getText(),Cicilan.getText(),
                         Keterangan.getText(),NoNota.getText(),koderekening,kontraakun
                     })==true){
-                        Sequel.queryu("delete from tampjurnal");                    
-                        Sequel.menyimpan("tampjurnal","'"+kontraakun+"','BAYAR PIUTANG TOKO','0','"+Cicilan.getText()+"'","Rekening");    
-                        Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','"+Cicilan.getText()+"','0'","Rekening"); 
+                        Sequel.deleteTampJurnal();
+                        Sequel.insertTampJurnal(kontraakun, "BAYAR PIUTANG TOKO", 0, Double.parseDouble(Cicilan.getText()));    
+                        Sequel.insertTampJurnal(koderekening, AkunBayar.getSelectedItem().toString(), Double.parseDouble(Cicilan.getText()), 0); 
                         sukses=jur.simpanJurnal(NoNota.getText(),"U","BAYAR PIUTANG TOKO"+", OLEH "+akses.getkode());                   
                 }else{
                     sukses=false;
@@ -796,9 +796,9 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
                     tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString(),
                     tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()
                 })==true){
-                    Sequel.queryu("delete from tampjurnal");                    
-                    Sequel.menyimpan("tampjurnal","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"','BAYAR PIUTANG TOKO','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"','0'","Rekening");    
-                    Sequel.menyimpan("tampjurnal","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"','Kontra Akun','0','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"'","Rekening"); 
+                    Sequel.deleteTampJurnal();
+                    Sequel.insertTampJurnal(tbKamar.getValueAt(tbKamar.getSelectedRow(), 7).toString(), "BAYAR PIUTANG TOKO", Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()), 0);    
+                    Sequel.insertTampJurnal(tbKamar.getValueAt(tbKamar.getSelectedRow(), 6).toString(), "Kontra Akun", 0, Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()));
                     sukses=jur.simpanJurnal(NoNota.getText(),"U","PEMBATALAN BAYAR PIUTANG TOKO"+", OLEH "+akses.getkode());     
                 }else{
                     sukses=false;

@@ -915,13 +915,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         }
                     }
                         
-                    Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Retur_Jual_Toko from set_akun"),"RETUR JUAL TOKO","0",rs.getString("total")
-                    });    
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Kontra_Retur_Jual_Toko from set_akun"),"KONTRA RETUR JUAL TOKO",rs.getString("total"),"0"
-                    }); 
+                    Sequel.deleteTampJurnal();
+                    Sequel.insertTampJurnal(Sequel.cariIsi("select Retur_Jual_Toko from set_akun"),"RETUR JUAL TOKO",0,rs.getDouble("total"));
+                    Sequel.insertTampJurnal(Sequel.cariIsi("select Kontra_Retur_Jual_Toko from set_akun"),"KONTRA RETUR JUAL TOKO",rs.getDouble("total"),0);
                     
                     sukses=jur.simpanJurnal(rs.getString("no_retur_jual"),"U","BATAL TRANSAKSI RETUR JUAL TOKO"+", OLEH "+akses.getkode());
                     
