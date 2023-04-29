@@ -842,6 +842,8 @@ import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
+import rekammedis.RMPenilaianTambahanMelarikanDiri;
+import rekammedis.RMPenilaianTambahanPerilakuKekerasan;
 import rekammedis.RMPerencanaanPemulangan;
 import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
@@ -8142,6 +8144,7 @@ public class frmUtama extends javax.swing.JFrame {
                 akses.setpermintaanlabfalse();
                 akses.setperiksalabfalse();
                 akses.setperiksalabpafalse();
+                akses.setperiksalabmbfalse();
                 akses.setpermintaanradiologifalse();
                 akses.setperiksaradiologifalse();
                 edAdmin.setText("");
@@ -20078,6 +20081,32 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianTambahanPerilakuKekerasanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianTambahanPerilakuKekerasan aplikasi=new RMPenilaianTambahanPerilakuKekerasan(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenilaianTambahanMelarikanDiriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianTambahanMelarikanDiri aplikasi=new RMPenilaianTambahanMelarikanDiri(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20748,7 +20777,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikLimbahB3MedisCairPerTanggal,btnGrafikLimbahB3MedisCairPerBulan,btnRekapBiayaRegistrasi,btnRekonsiliasiObat,btnKirimClinicalImpressionSatuSehat,
             btnPenilaianPasienTerminal,btnPersetujuanRawatInap,btnMonitoringReaksiTranfusi,btnPenilaianKorbanKekerasan,btnPenilaianRisikoJatuhLansia,
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
-            btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri;
+            btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
+            btnPenilaianTambahanMelarikanDiri;
     
     public void isWall(){
         try{            
@@ -24145,6 +24175,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_tambahan_bunuh_diri()==true){
                 Panelmenu.add(btnPenilaianTambahanBunuhDiri);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_tambahan_perilaku_kekerasan()==true){
+                Panelmenu.add(btnPenilaianTambahanPerilakuKekerasan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_tambahan_beresiko_melarikan_diri()==true){
+                Panelmenu.add(btnPenilaianTambahanMelarikanDiri);
                 jmlmenu++;
             }
             
@@ -28789,6 +28829,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_tambahan_bunuh_diri()==true){
             Panelmenu.add(btnPenilaianTambahanBunuhDiri);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_tambahan_perilaku_kekerasan()==true){
+            Panelmenu.add(btnPenilaianTambahanPerilakuKekerasan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_tambahan_beresiko_melarikan_diri()==true){
+            Panelmenu.add(btnPenilaianTambahanMelarikanDiri);
             jmlmenu++;
         }
         
@@ -34737,6 +34787,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_tambahan_perilaku_kekerasan()==true){
+            if(btnPenilaianTambahanPerilakuKekerasan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianTambahanPerilakuKekerasan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_tambahan_beresiko_melarikan_diri()==true){
+            if(btnPenilaianTambahanMelarikanDiri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianTambahanMelarikanDiri);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_pasien_terminal()==true){
             if(btnPenilaianPasienTerminal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianPasienTerminal);
@@ -40421,5 +40485,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianTambahanBunuhDiri.setName("btnPenilaianTambahanBunuhDiri");
         btnPenilaianTambahanBunuhDiri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianTambahanBunuhDiri.addActionListener(this::btnPenilaianTambahanBunuhDiriActionPerformed);
+        
+        btnPenilaianTambahanPerilakuKekerasan = new widget.ButtonBig();
+        btnPenilaianTambahanPerilakuKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9191525_nonviolence_violence_weapon_criminal_combat_icon.png"))); 
+        btnPenilaianTambahanPerilakuKekerasan.setText("Penilaian Tambahan Perilaku Kekerasan");
+        btnPenilaianTambahanPerilakuKekerasan.setIconTextGap(0);
+        btnPenilaianTambahanPerilakuKekerasan.setName("btnPenilaianTambahanPerilakuKekerasan");
+        btnPenilaianTambahanPerilakuKekerasan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianTambahanPerilakuKekerasan.addActionListener(this::btnPenilaianTambahanPerilakuKekerasanActionPerformed);
+        
+        btnPenilaianTambahanMelarikanDiri = new widget.ButtonBig();
+        btnPenilaianTambahanMelarikanDiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6141439_healthcare_marathon_run_running_exercise regularly_icon.png"))); 
+        btnPenilaianTambahanMelarikanDiri.setText("Penilaian Tambahan Melarikan Diri");
+        btnPenilaianTambahanMelarikanDiri.setIconTextGap(0);
+        btnPenilaianTambahanMelarikanDiri.setName("btnPenilaianTambahanMelarikanDiri");
+        btnPenilaianTambahanMelarikanDiri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianTambahanMelarikanDiri.addActionListener(this::btnPenilaianTambahanMelarikanDiriActionPerformed);
     }
 }

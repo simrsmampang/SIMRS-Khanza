@@ -323,8 +323,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanLanjutanRisikoJatuhAnak = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhLansia = new widget.CekBox();
         chkAsuhanGizi = new widget.CekBox();
-        chkAsuhanTambahanGeriatri = new widget.CekBox();
-        chkAsuhanTambahanBunuhDiri = new widget.CekBox();
         chkHasilPemeriksaanUSG = new widget.CekBox();
         chkPerencanaanPemulangan = new widget.CekBox();
         chkUjiFungsiKFR = new widget.CekBox();
@@ -339,6 +337,10 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkPelayananInformasiObat = new widget.CekBox();
         chkBerkasDigital = new widget.CekBox();
         chkTransferAntarRuang = new widget.CekBox();
+        chkAsuhanTambahanGeriatri = new widget.CekBox();
+        chkAsuhanTambahanBunuhDiri = new widget.CekBox();
+        chkAsuhanTambahanPerilakuKekerasan = new widget.CekBox();
+        chkAsuhanTambahanMelarikanDiri = new widget.CekBox();
         chkPenilaianPasienTerminal = new widget.CekBox();
         chkPenilaianKorbanKekerasan = new widget.CekBox();
         chkPenilaianPasienPenyakitMenular = new widget.CekBox();
@@ -604,7 +606,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2100));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2148));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1060,22 +1062,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanGizi.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanGizi);
 
-        chkAsuhanTambahanGeriatri.setSelected(true);
-        chkAsuhanTambahanGeriatri.setText("Tambahan Pasien Geriatri");
-        chkAsuhanTambahanGeriatri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkAsuhanTambahanGeriatri.setName("chkAsuhanTambahanGeriatri"); // NOI18N
-        chkAsuhanTambahanGeriatri.setOpaque(false);
-        chkAsuhanTambahanGeriatri.setPreferredSize(new java.awt.Dimension(245, 22));
-        FormMenu.add(chkAsuhanTambahanGeriatri);
-
-        chkAsuhanTambahanBunuhDiri.setSelected(true);
-        chkAsuhanTambahanBunuhDiri.setText("Tambahan Bunuh Diri");
-        chkAsuhanTambahanBunuhDiri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkAsuhanTambahanBunuhDiri.setName("chkAsuhanTambahanBunuhDiri"); // NOI18N
-        chkAsuhanTambahanBunuhDiri.setOpaque(false);
-        chkAsuhanTambahanBunuhDiri.setPreferredSize(new java.awt.Dimension(245, 22));
-        FormMenu.add(chkAsuhanTambahanBunuhDiri);
-
         chkHasilPemeriksaanUSG.setSelected(true);
         chkHasilPemeriksaanUSG.setText("Hasil Pemeriksaan USG");
         chkHasilPemeriksaanUSG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1187,6 +1173,38 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkTransferAntarRuang.setOpaque(false);
         chkTransferAntarRuang.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkTransferAntarRuang);
+
+        chkAsuhanTambahanGeriatri.setSelected(true);
+        chkAsuhanTambahanGeriatri.setText("Tambahan Pasien Geriatri");
+        chkAsuhanTambahanGeriatri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanTambahanGeriatri.setName("chkAsuhanTambahanGeriatri"); // NOI18N
+        chkAsuhanTambahanGeriatri.setOpaque(false);
+        chkAsuhanTambahanGeriatri.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanTambahanGeriatri);
+
+        chkAsuhanTambahanBunuhDiri.setSelected(true);
+        chkAsuhanTambahanBunuhDiri.setText("Tambahan Bunuh Diri");
+        chkAsuhanTambahanBunuhDiri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanTambahanBunuhDiri.setName("chkAsuhanTambahanBunuhDiri"); // NOI18N
+        chkAsuhanTambahanBunuhDiri.setOpaque(false);
+        chkAsuhanTambahanBunuhDiri.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanTambahanBunuhDiri);
+
+        chkAsuhanTambahanPerilakuKekerasan.setSelected(true);
+        chkAsuhanTambahanPerilakuKekerasan.setText("Tambahan Perilaku Kekerasan");
+        chkAsuhanTambahanPerilakuKekerasan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanTambahanPerilakuKekerasan.setName("chkAsuhanTambahanPerilakuKekerasan"); // NOI18N
+        chkAsuhanTambahanPerilakuKekerasan.setOpaque(false);
+        chkAsuhanTambahanPerilakuKekerasan.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanTambahanPerilakuKekerasan);
+
+        chkAsuhanTambahanMelarikanDiri.setSelected(true);
+        chkAsuhanTambahanMelarikanDiri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanTambahanMelarikanDiri.setLabel("Tambahan Melarikan Diri");
+        chkAsuhanTambahanMelarikanDiri.setName("chkAsuhanTambahanMelarikanDiri"); // NOI18N
+        chkAsuhanTambahanMelarikanDiri.setOpaque(false);
+        chkAsuhanTambahanMelarikanDiri.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanTambahanMelarikanDiri);
 
         chkPenilaianPasienTerminal.setSelected(true);
         chkPenilaianPasienTerminal.setText("Penilaian Pasien Terminal");
@@ -1634,7 +1652,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     }else if(tabModeRegistrasi.getRowCount()!=0){
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-                        Sequel.queryu("truncate table temporary_resume");
+                        Sequel.queryu("delete from temporary_resume");
 
                         for(int i=0;i<tabModeRegistrasi.getRowCount();i++){  
                             Sequel.menyimpan("temporary_resume","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
@@ -1818,6 +1836,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkEdukasiPasienTerintegrasiRawatJalan.setSelected(true);
             chkPemantauanPEWSDewasa.setSelected(true);
             chkAsuhanTambahanBunuhDiri.setSelected(true);
+            chkAsuhanTambahanPerilakuKekerasan.setSelected(true);
+            chkAsuhanTambahanMelarikanDiri.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1909,6 +1929,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkEdukasiPasienTerintegrasiRawatJalan.setSelected(false);
             chkPemantauanPEWSDewasa.setSelected(false);
             chkAsuhanTambahanBunuhDiri.setSelected(false);
+            chkAsuhanTambahanPerilakuKekerasan.setSelected(false);
+            chkAsuhanTambahanMelarikanDiri.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2016,6 +2038,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanPsikolog;
     private widget.CekBox chkAsuhanTambahanBunuhDiri;
     private widget.CekBox chkAsuhanTambahanGeriatri;
+    private widget.CekBox chkAsuhanTambahanMelarikanDiri;
+    private widget.CekBox chkAsuhanTambahanPerilakuKekerasan;
     private widget.CekBox chkBerkasDigital;
     private widget.CekBox chkCatatanCekGDS;
     private widget.CekBox chkCatatanDokter;
@@ -2543,6 +2567,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanTambahanGeriatri(rs.getString("no_rawat"));
                     //menampilkan penilaian tambahan bunuh diri
                     menampilkanTambahanBunuhDiri(rs.getString("no_rawat"));
+                    //menampilkan penilaian tambahan perilaku kekerasan
+                    menampilkanTambahanPerilakuKekerasan(rs.getString("no_rawat"));
+                    //menampilkan penilaian tambahan melarikan diri
+                    menampilkanTambahanMelarikanDiri(rs.getString("no_rawat"));
                     //menampilkan skrining gizi lanjut
                     menampilkanEWS(rs.getString("no_rawat"));
                     //menampilkan checlist pre operasi
@@ -16570,6 +16598,372 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Tambahan Bunuh Diri : "+e);
+        }
+    }
+    
+    private void menampilkanTambahanPerilakuKekerasan(String norawat) {
+        try {
+            if(chkAsuhanTambahanPerilakuKekerasan.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select penilaian_tambahan_perilaku_kekerasan.tanggal,penilaian_tambahan_perilaku_kekerasan.statik_insiden_kekerasan_baru_ini,penilaian_tambahan_perilaku_kekerasan.statik_skorinsiden_kekerasan_baru_ini,"+
+                            "penilaian_tambahan_perilaku_kekerasan.statik_riwayat_penggunaan_senjata,penilaian_tambahan_perilaku_kekerasan.statik_skorriwayat_penggunaan_senjata,"+
+                            "penilaian_tambahan_perilaku_kekerasan.statik_laki_laki,penilaian_tambahan_perilaku_kekerasan.statik_skorlaki_laki,penilaian_tambahan_perilaku_kekerasan.statik_usia_dibawah_35,"+
+                            "penilaian_tambahan_perilaku_kekerasan.statik_skorusia_dibawah_35,penilaian_tambahan_perilaku_kekerasan.statik_riwayat_kriminal,"+
+                            "penilaian_tambahan_perilaku_kekerasan.statik_skorriwayat_kriminal,penilaian_tambahan_perilaku_kekerasan.statik_ide_kekerasan,penilaian_tambahan_perilaku_kekerasan.statik_skoride_kekerasan,"+
+                            "penilaian_tambahan_perilaku_kekerasan.statik_kekerasan_anak_anak,penilaian_tambahan_perilaku_kekerasan.statik_skorkekerasan_anak_anak,"+
+                            "penilaian_tambahan_perilaku_kekerasan.statik_peran_dalam_hidup,penilaian_tambahan_perilaku_kekerasan.statik_skorperan_dalam_hidup,"+
+                            "penilaian_tambahan_perilaku_kekerasan.statik_penggunaan_napza,penilaian_tambahan_perilaku_kekerasan.statik_skorpenggunaan_napza,"+
+                            "penilaian_tambahan_perilaku_kekerasan.statik_skortotal,penilaian_tambahan_perilaku_kekerasan.dinamis_ide_melukai_orang_lain,penilaian_tambahan_perilaku_kekerasan.dinamis_skoride_melukai_orang_lain,"+
+                            "penilaian_tambahan_perilaku_kekerasan.dinamis_akses_kekerasan,penilaian_tambahan_perilaku_kekerasan.dinamis_skorakses_kekerasan,"+
+                            "penilaian_tambahan_perilaku_kekerasan.dinamis_ide_paranoid,penilaian_tambahan_perilaku_kekerasan.dinamis_skoride_paranoid,penilaian_tambahan_perilaku_kekerasan.dinamis_perintah_halusinasi,"+
+                            "penilaian_tambahan_perilaku_kekerasan.dinamis_skorperintah_halusinasi,penilaian_tambahan_perilaku_kekerasan.dinamis_frustasi_agitasi,"+
+                            "penilaian_tambahan_perilaku_kekerasan.dinamis_skorfrustasi_agitasi,penilaian_tambahan_perilaku_kekerasan.dinamis_kesenangan_kekerasan,"+
+                            "penilaian_tambahan_perilaku_kekerasan.dinamis_skorkesenangan_kekerasan,penilaian_tambahan_perilaku_kekerasan.dinamis_seksual_tidak_wajar,"+
+                            "penilaian_tambahan_perilaku_kekerasan.dinamis_skorseksual_tidak_wajar,penilaian_tambahan_perilaku_kekerasan.dinamis_hilangnya_kontrol_diri,"+
+                            "penilaian_tambahan_perilaku_kekerasan.dinamis_skorhilangnya_kontrol_diri,penilaian_tambahan_perilaku_kekerasan.dinamis_pengguaan_napza,"+
+                            "penilaian_tambahan_perilaku_kekerasan.dinamis_skorpengguaan_napza,penilaian_tambahan_perilaku_kekerasan.dinamis_skortotal,penilaian_tambahan_perilaku_kekerasan.faktor_faktor_pencegahan,"+
+                            "penilaian_tambahan_perilaku_kekerasan.total_skor,penilaian_tambahan_perilaku_kekerasan.level_skor,penilaian_tambahan_perilaku_kekerasan.nip,petugas.nama "+
+                            "from penilaian_tambahan_perilaku_kekerasan inner join petugas on penilaian_tambahan_perilaku_kekerasan.nip=petugas.nip where "+
+                            "penilaian_tambahan_perilaku_kekerasan.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Tambahan Perilaku Kekerasan</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='67%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "FAKTOR-FAKTOR PERILAKU KEKERASAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='35%' bgcolor='#FFFAF8' align='center'>Faktor Statik</td>"+
+                                              "<td width='10%' bgcolor='#FFFAF8' align='center'>Skala</td>"+
+                                              "<td width='5%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                              "<td width='35%' bgcolor='#FFFAF8' align='center'>Faktor Dinamis</td>"+
+                                              "<td width='10%' bgcolor='#FFFAF8' align='center'>Skala</td>"+
+                                              "<td width='5%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Insiden Kekerasan Baru-baru Ini</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_insiden_kekerasan_baru_ini")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorinsiden_kekerasan_baru_ini")+"</td>"+
+                                              "<td width='35%'>Mengekspresikan Ide Untuk Melukai Orang Lain</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_ide_melukai_orang_lain")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skoride_melukai_orang_lain")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Riwayat Penggunaan Senjata</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_riwayat_penggunaan_senjata")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorriwayat_penggunaan_senjata")+"</td>"+
+                                              "<td width='35%'>Akses Untuk Melakukan Tindakan Kekerasan</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_akses_kekerasan")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorakses_kekerasan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Laki-laki</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_laki_laki")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorlaki_laki")+"</td>"+
+                                              "<td width='35%'>Ide Paranoid Atau Lainnya</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_ide_paranoid")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skoride_paranoid")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Usia Dibawah 35 Tahun</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_usia_dibawah_35")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorusia_dibawah_35")+"</td>"+
+                                              "<td width='35%'>Perintah Halusinasi Untuk Tindakan Kekerasan</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_perintah_halusinasi")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorperintah_halusinasi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Riwayat Kriminal</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_riwayat_kriminal")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorriwayat_kriminal")+"</td>"+
+                                              "<td width='35%'>Kemarahan, Frustasi Atau Agitasi</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_frustasi_agitasi")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorfrustasi_agitasi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Riwayat Melakukan Tindakan Berbahaya</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_ide_kekerasan")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skoride_kekerasan")+"</td>"+
+                                              "<td width='35%'>Kesenangan Untuk Ide/Tindakan Kekerasan</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_kesenangan_kekerasan")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorkesenangan_kekerasan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Riwayat Kekerasan Masa Kanak-kanak</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_kekerasan_anak_anak")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorkekerasan_anak_anak")+"</td>"+
+                                              "<td width='35%'>Perilaku Seksual Yang Tidak Wajar</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_seksual_tidak_wajar")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorseksual_tidak_wajar")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Kurangnya Peran Dalam Hidup</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_peran_dalam_hidup")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorperan_dalam_hidup")+"</td>"+
+                                              "<td width='35%'>Berkurangnya/Hilangnya Untuk Kontrol Diri</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_hilangnya_kontrol_diri")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorhilangnya_kontrol_diri")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Riwayat Penggunaan NAPZA</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_penggunaan_napza")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorpenggunaan_napza")+"</td>"+
+                                              "<td width='35%'>Penggunaan Napza</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_pengguaan_napza")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorpengguaan_napza")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='45%' colspan='2'>Jumlah Skor</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skortotal")+"</td>"+
+                                              "<td width='45%' colspan='2'>Jumlah Skor</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skortotal")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "FAKTOR-FAKTOR PENCEGAHAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("faktor_faktor_pencegahan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "TOTAL SKOR & LEVEL"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Total Skor Risiko Perilaku Kekerasan : "+rs2.getString("total_skor")+"</td>"+
+                                              "<td width='50%' border='0'>Level : "+rs2.getString("level_skor")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Tambahan Perilaku Kekerasan : "+e);
+        }
+    }
+    
+    private void menampilkanTambahanMelarikanDiri(String norawat) {
+        try {
+            if(chkAsuhanTambahanMelarikanDiri.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select penilaian_tambahan_beresiko_melarikan_diri.tanggal,penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_melarikan_diri,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_melarikan_diri,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_penolakan_pengobatan,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_penolakan_pengobatan,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.statik_usia_dibawah_35,penilaian_tambahan_beresiko_melarikan_diri.statik_skorusia_dibawah_35,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.statik_laki_laki,penilaian_tambahan_beresiko_melarikan_diri.statik_skorlaki_laki,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.statik_diagnosis_skizofrenia,penilaian_tambahan_beresiko_melarikan_diri.statik_skordiagnosis_skizofrenia,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.statik_belum_menikah,penilaian_tambahan_beresiko_melarikan_diri.statik_skorbelum_menikah,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_penggunaan_napza,penilaian_tambahan_beresiko_melarikan_diri.statik_skoriwayat_penggunaan_napza,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.statik_diagnosis_gangguan_kepribadian,penilaian_tambahan_beresiko_melarikan_diri.statik_skordiagnosis_gangguan_kepribadian,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_kriminal,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_kriminal,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.statik_skortotal,penilaian_tambahan_beresiko_melarikan_diri.dinamis_anti_treatment,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skoranti_treatment,penilaian_tambahan_beresiko_melarikan_diri.dinamis_penggunaan_napza,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorpenggunaan_napza,penilaian_tambahan_beresiko_melarikan_diri.dinamis_kebosanan,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorkebosanan,penilaian_tambahan_beresiko_melarikan_diri.dinamis_perintah_halusinasi,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorperintah_halusinasi,penilaian_tambahan_beresiko_melarikan_diri.dinamis_hilangnya_kontrol_diri,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorhilangnya_kontrol_diri,penilaian_tambahan_beresiko_melarikan_diri.dinamis_seksual_tidak_wajar,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorseksual_tidak_wajar,penilaian_tambahan_beresiko_melarikan_diri.dinamis_kemarahan_frustasi,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorkemarahan_frustasi,penilaian_tambahan_beresiko_melarikan_diri.dinamis_ketakutan_perawatan,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.dinamis_skorketakutan_perawatan,penilaian_tambahan_beresiko_melarikan_diri.dinamis_skortotal,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.faktor_faktor_pencegahan,penilaian_tambahan_beresiko_melarikan_diri.total_skor,"+
+                            "penilaian_tambahan_beresiko_melarikan_diri.level_skor,penilaian_tambahan_beresiko_melarikan_diri.nip,petugas.nama "+
+                            "from penilaian_tambahan_beresiko_melarikan_diri inner join petugas on penilaian_tambahan_beresiko_melarikan_diri.nip=petugas.nip where "+
+                            "penilaian_tambahan_beresiko_melarikan_diri.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Tambahan Berisiko Melarikan Diri</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='67%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "FAKTOR-FAKTOR MELARIKAN DIRI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='35%' bgcolor='#FFFAF8' align='center'>Faktor Statik</td>"+
+                                              "<td width='10%' bgcolor='#FFFAF8' align='center'>Skala</td>"+
+                                              "<td width='5%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                              "<td width='35%' bgcolor='#FFFAF8' align='center'>Faktor Dinamis</td>"+
+                                              "<td width='10%' bgcolor='#FFFAF8' align='center'>Skala</td>"+
+                                              "<td width='5%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Riwayat Melarikan Diri</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_riwayat_melarikan_diri")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorriwayat_melarikan_diri")+"</td>"+
+                                              "<td width='35%'>Anti Treatment/Insight Jelek</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_anti_treatment")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skoranti_treatment")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Riwayat Penolakan Pengobatan</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_riwayat_penolakan_pengobatan")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorriwayat_penolakan_pengobatan")+"</td>"+
+                                              "<td width='35%'>Penggunaan NAPZA</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_penggunaan_napza")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorpenggunaan_napza")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Usia Dibawah 35 Tahun</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_usia_dibawah_35")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorusia_dibawah_35")+"</td>"+
+                                              "<td width='35%'>Kebosanan</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_kebosanan")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorkebosanan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Laki-laki</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_laki_laki")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorlaki_laki")+"</td>"+
+                                              "<td width='35%'>Perintah halusinasi Untuk Melarikan Diri</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_perintah_halusinasi")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorperintah_halusinasi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Diagnosis Skizofrenia</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_diagnosis_skizofrenia")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skordiagnosis_skizofrenia")+"</td>"+
+                                              "<td width='35%'>Berkurangnya/Kehilangan Kontrol Diri (Dimensia)</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_hilangnya_kontrol_diri")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorhilangnya_kontrol_diri")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Belum Menikah</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_belum_menikah")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorbelum_menikah")+"</td>"+
+                                              "<td width='35%'>Perilaku Seksual Yang Tidak Wajar</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_seksual_tidak_wajar")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorseksual_tidak_wajar")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Riwayat Penggunaan NAPZA</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_riwayat_penggunaan_napza")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skoriwayat_penggunaan_napza")+"</td>"+
+                                              "<td width='35%'>Kemarahan Frustasi</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_kemarahan_frustasi")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorkemarahan_frustasi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Diagnosis Gangguan Kepribadian</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_diagnosis_gangguan_kepribadian")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skordiagnosis_gangguan_kepribadian")+"</td>"+
+                                              "<td width='35%'>Ketakutan Perawatan (Pasien, Nakes, Pengobatan)</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("dinamis_ketakutan_perawatan")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skorketakutan_perawatan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='35%'>Riwayat Kriminal</td>"+
+                                              "<td width='10%' align='center'>"+rs2.getString("statik_riwayat_kriminal")+"</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skorriwayat_kriminal")+"</td>"+
+                                              "<td width='35%'></td>"+
+                                              "<td width='10%' align='center'></td>"+
+                                              "<td width='5%' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='45%' colspan='2'>Jumlah Skor</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("statik_skortotal")+"</td>"+
+                                              "<td width='45%' colspan='2'>Jumlah Skor</td>"+
+                                              "<td width='5%' align='center'>"+rs2.getString("dinamis_skortotal")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "FAKTOR-FAKTOR PENCEGAHAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("faktor_faktor_pencegahan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "TOTAL SKOR & LEVEL"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Total Skor Risiko Melarikan Diri : "+rs2.getString("total_skor")+"</td>"+
+                                              "<td width='50%' border='0'>Level : "+rs2.getString("level_skor")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Tambahan Perilaku Kekerasan : "+e);
         }
     }
 }
