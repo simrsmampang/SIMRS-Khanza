@@ -134,20 +134,21 @@
             ?>
         </table>
         <br>
-        <form method="POST" action="pages/storeImage.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
+        <!-- <form method="POST" action="pages/storeImage.php" onsubmit="return validasiIsi();" enctype=multipart/form-data> -->
+        <form method="POST" action="pages/storeImage.php">
             <input type="hidden" name="noresep" value="<?=$noresep;?>">
             <div class="row">
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <div id="my_camera"></div>
                     <input type="hidden" name="image" class="image-tag" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
                 </div>
                 <div class="col-md-6">
                     <div id="results"><h7 class="text-success"><center>Gambar akan diambil jika anda sudah mengerti</center></h7></div>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
-                </div>
+                </div> -->
                 <div class="col-md-12 text-center">
-                    <br>
-                    <input type="button" class="btn btn-warning" value="Ya, Saya mengerti" onClick="take_snapshot()">
+                    <!-- <br>
+                    <input type="button" class="btn btn-warning" value="Ya, Saya mengerti" onClick="take_snapshot()"> -->
                     <button class="btn btn-danger">Simpan</button>
                     <button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button>
                 </div>
