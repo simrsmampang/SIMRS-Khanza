@@ -3,7 +3,7 @@
 <properties>
     <comment>KhanzaHMS</comment> 
     <entry key="HOST">5k7+C7EnUw9nUv2Nix+DBA==</entry>
-    <entry key="DATABASE">AZHNccBwSmSho84f+X8GyQ==</entry>
+    <entry key="DATABASE">7i+66ZI7J9jR7lpI1nRVUA==</entry>
     <entry key="PORT">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USER">kMR3WfAwUK6MbhCyydxa0g==</entry>
     <entry key="PAS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
@@ -11,7 +11,7 @@
     <entry key="HOSTHYBRIDWEB">5k7+C7EnUw9nUv2Nix+DBA==</entry>
     <entry key="USERHYBRIDWEB">nmXqCKzrz9i8GTZlq7JruQ==</entry>
     <entry key="PASHYBRIDWEB">AsJ/0/gCnYnD+gK4fw9uKA==</entry>
-    <entry key="HYBRIDWEB">webapps</entry>
+    <entry key="HYBRIDWEB">webapps-lokal</entry>
     <entry key="PORTWEB">80</entry>
     <entry key="AKTIFKANWARNARALAN">no</entry>
     <entry key="ANTRIAN">player</entry>
@@ -22,15 +22,15 @@
     <entry key="STOKKOSONGRESEP">no</entry>
     <entry key="HPPFARMASI">dasar</entry>
     <entry key="HPPTOKO">dasar</entry>
-    <entry key="ALARMLAB">yes</entry>
+    <entry key="ALARMLAB">no</entry>
     <entry key="FORMALARMLAB">ralan + ranap</entry>
-    <entry key="ALARMRADIOLOGI">yes</entry>
+    <entry key="ALARMRADIOLOGI">no</entry>
     <entry key="FORMALARMRADIOLOGI">ralan + ranap</entry>
-    <entry key="ALARMRSISRUTE">yes</entry>
-    <entry key="ALARMBOOKINGPERIKSA">yes</entry>
-    <entry key="ALARMPENGADUANPASIEN">yes</entry>
-    <entry key="ALARMPERMINTAANRANAP">yes</entry>
-    <entry key="MENUTRANSPARAN">yes</entry>
+    <entry key="ALARMRSISRUTE">no</entry>
+    <entry key="ALARMBOOKINGPERIKSA">no</entry>
+    <entry key="ALARMPENGADUANPASIEN">no</entry>
+    <entry key="ALARMPERMINTAANRANAP">no</entry>
+    <entry key="MENUTRANSPARAN">no</entry>
     <entry key="URLAPIBPJS">https://apijkn.bpjs-kesehatan.go.id/vclaim-rest</entry>
     <entry key="SECRETKEYAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
@@ -104,7 +104,7 @@
     <entry key="USERDUKCAPIL">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PASSDUKCAPIL">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="IPUSERDUKCAPIL">10.160.57.2</entry>
-    <entry key="AKTIFKANTRACKSQL">cj8o6eBdSn+TiUrBgGoElQ==</entry>
+    <entry key="AKTIFKANTRACKSQL">88tE0ZUstuza/UrtfBYkFA==</entry>
     <entry key="HOSTWSLICA">http://localhost/bridging-lica/public</entry>
     <entry key="KEYWSLICA">yLT3/8b0KAb5QK1ueFkW7g==</entry>
     <entry key="HOSTFUJI">5k7+C7EnUw9nUv2Nix+DBA==</entry>
