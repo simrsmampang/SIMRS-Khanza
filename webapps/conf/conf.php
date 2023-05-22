@@ -860,6 +860,8 @@
     
     function Terbilang($x){
         $abil = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+        $x = intval($x);
+
         if ($x < 12)
           return " " . $abil[$x];
         elseif ($x < 20)

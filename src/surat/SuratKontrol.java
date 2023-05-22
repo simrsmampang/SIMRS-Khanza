@@ -1310,9 +1310,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()
                   })==true){
                     Sequel.mengedit3("booking_registrasi","no_rkm_medis=? and tanggal_periksa=?","tanggal_booking=?,no_rkm_medis=?,tanggal_periksa=?,kd_dokter=?,kd_poli=?,no_reg=?",8,new String[]{
-                         Valid.SetTgl(TanggalSurat.getSelectedItem()+""),TNoRM.getText(),
-                         Valid.SetTgl(TanggalPeriksa.getSelectedItem()+""),KdDokter.getText(),
-                         KdPoli.getText(),NoReg.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),
+                         Valid.SetTgl(TanggalSurat.getSelectedItem()+""),
+                        TNoRM.getText(),
+                         Valid.SetTgl(TanggalPeriksa.getSelectedItem()+""),
+                         KdDokter.getText(),
+                         KdPoli.getText(),
+                         NoReg.getText(),
+                         tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),
                          tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()
                     });
                     tbObat.setValueAt(TanggalPeriksa.getSelectedItem().toString().substring(6,10),tbObat.getSelectedRow(),0);
