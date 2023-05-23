@@ -11,6 +11,8 @@
 
 package simrskhanza;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -18,10 +20,12 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -38,6 +42,13 @@ public class DlgKecamatan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
+    private File file;
+    private FileWriter fileWriter;
+    private String iyem;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode response;
+    private FileReader myObj;
 
     /** Creates new form Dlgkecamatan
      * @param parent
@@ -55,8 +66,6 @@ public class DlgKecamatan extends javax.swing.JDialog {
         };
 
         tbkecamatan.setModel(tabMode);
-        //tampil();
-        //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbkecamatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbkecamatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -78,19 +87,19 @@ public class DlgKecamatan extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
             });
@@ -326,7 +335,7 @@ public class DlgKecamatan extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Kecamatan");
         }else{
             Sequel.menyimpan("kecamatan","'0','"+Nama.getText()+"'","Kode kecamatan");
-            tampil();
+            tampil2();
             emptTeks();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -354,7 +363,7 @@ public class DlgKecamatan extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Kecamatan");
         }else{
             if(tbkecamatan.getSelectedRow()!= -1){
-                if(Sequel.meghapustf("kecamatan","nm_kec",tbkecamatan.getValueAt(tbkecamatan.getSelectedRow(),1).toString())==true){
+                if(Sequel.meghapustf("kecamatan","nm_kec",Nama.getText())==true){
                     tabMode.removeRow(tbkecamatan.getSelectedRow());
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());
@@ -394,7 +403,7 @@ public class DlgKecamatan extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        tampil2();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -493,12 +502,16 @@ public class DlgKecamatan extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{ 
-            ps=koneksi.prepareStatement("select nm_kec,kd_kec from kecamatan where nm_kec like ? ");
+            file=new File("./cache/masterkecamatan.iyem");
+            file.createNewFile();
+            fileWriter = new FileWriter(file);
+            iyem="";
+            ps=koneksi.prepareStatement("select kecamatan.nm_kec,kecamatan.kd_kec from kecamatan");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    iyem=iyem+"{\"NamaKec\":\""+rs.getString(1)+"\",\"KodeKec\":\""+rs.getString(2)+"\"},";
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -510,15 +523,93 @@ public class DlgKecamatan extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-        }catch(SQLException e){
+            fileWriter.write("{\"masterkecamatan\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.flush();
+            fileWriter.close();
+            iyem=null;
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }
+    
+    private void tampil2() {
+        try {
+            myObj = new FileReader("./cache/masterkecamatan.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("masterkecamatan");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NamaKec").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{
+                            list.path("NamaKec").asText(),list.path("KodeKec").asText()
+                        });
+                    }
+                }
+            }
+            myObj.close();
+            if(tabMode.getRowCount()==0){
+                ps=koneksi.prepareStatement("select kecamatan.nm_kec,kecamatan.kd_kec from kecamatan where kecamatan.nm_kec like ? ");
+                try {
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        LCount.setText(""+tabMode.getRowCount());
+    }
+    
+    public String tampil3(String nama) {
+        try {
+            if(Valid.daysOld("./cache/masterkecamatan.iyem")>7){
+                tampil();
+            }
+        } catch (Exception e) {
+            if(e.toString().contains("No such file or directory")){
+                tampil();
+            }
+        }
+        
+        iyem="";
+        try {
+            myObj = new FileReader("./cache/masterkecamatan.iyem");
+            root = mapper.readTree(myObj);
+            Valid.tabelKosong(tabMode);
+            response = root.path("masterkecamatan");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    if(list.path("NamaKec").asText().toLowerCase().equals(nama)){
+                        iyem=list.path("KodeKec").asText();
+                    }
+                }
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+        if(iyem.equals("")){
+            iyem=Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",nama);
+        }
+        return iyem;
+    }
 
     public void emptTeks() {
         Nama.setText("");
-        TCari.setText("");
         Nama.requestFocus();
     }
 
@@ -533,6 +624,7 @@ public class DlgKecamatan extends javax.swing.JDialog {
     }
     
     public void onCari(){
+        TCari.setText("");
         TCari.requestFocus();
     }
 }

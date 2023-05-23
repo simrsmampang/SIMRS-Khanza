@@ -379,6 +379,10 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         TglAsuhan = new widget.Tanggal();
         jSeparator17 = new javax.swing.JSeparator();
         jLabel104 = new widget.Label();
+        jLabel34 = new widget.Label();
+        jLabel36 = new widget.Label();
+        jLabel14 = new widget.Label();
+        jLabel42 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -650,10 +654,11 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(644, 10, 80, 23);
 
-        jLabel9.setText("Riwayat Penggunaan Obat :");
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel9.setText("Riwayat Penggunaan Obat");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 190, 180, 23);
+        jLabel9.setBounds(44, 190, 150, 23);
 
         Jk.setEditable(false);
         Jk.setHighlighter(null);
@@ -883,7 +888,7 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         FormInput.add(scrollPane3);
         scrollPane3.setBounds(184, 140, 255, 42);
 
-        jLabel32.setText("Riwayat Penyakit Keluarga :");
+        jLabel32.setText(":");
         jLabel32.setName("jLabel32"); // NOI18N
         FormInput.add(jLabel32);
         jLabel32.setBounds(0, 140, 180, 23);
@@ -965,10 +970,11 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         FormInput.add(Hubungan);
         Hubungan.setBounds(774, 40, 80, 23);
 
-        jLabel33.setText("Keluhan Utama :");
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel33.setText("Keluhan Utama");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(0, 90, 125, 23);
+        jLabel33.setBounds(44, 90, 90, 23);
 
         scrollPane7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane7.setName("scrollPane7"); // NOI18N
@@ -1024,10 +1030,11 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         FormInput.add(Kesadaran);
         Kesadaran.setBounds(339, 260, 130, 23);
 
-        jLabel41.setText("Keadaan Umum :");
+        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel41.setText("Keadaan Umum");
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
-        jLabel41.setBounds(0, 260, 127, 23);
+        jLabel41.setBounds(44, 260, 90, 23);
 
         jLabel29.setText("SpO2 :");
         jLabel29.setName("jLabel29"); // NOI18N
@@ -1333,7 +1340,7 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2022 10:58:45" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-05-2023 22:44:29" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1357,6 +1364,27 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         jLabel104.setName("jLabel104"); // NOI18N
         FormInput.add(jLabel104);
         jLabel104.setBounds(10, 1210, 190, 23);
+
+        jLabel34.setText(":");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(0, 90, 125, 23);
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel36.setText("Riwayat Penyakit Keluarga");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(44, 140, 150, 23);
+
+        jLabel14.setText(":");
+        jLabel14.setName("jLabel14"); // NOI18N
+        FormInput.add(jLabel14);
+        jLabel14.setBounds(0, 190, 180, 23);
+
+        jLabel42.setText(":");
+        jLabel42.setName("jLabel42"); // NOI18N
+        FormInput.add(jLabel42);
+        jLabel42.setBounds(0, 260, 127, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1399,7 +1427,7 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-05-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1413,7 +1441,7 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-05-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2089,6 +2117,7 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
     private widget.Label jLabel11;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
+    private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
@@ -2107,12 +2136,15 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
     private widget.Label jLabel31;
     private widget.Label jLabel32;
     private widget.Label jLabel33;
+    private widget.Label jLabel34;
     private widget.Label jLabel35;
+    private widget.Label jLabel36;
     private widget.Label jLabel37;
     private widget.Label jLabel38;
     private widget.Label jLabel39;
     private widget.Label jLabel40;
     private widget.Label jLabel41;
+    private widget.Label jLabel42;
     private widget.Label jLabel44;
     private widget.Label jLabel45;
     private widget.Label jLabel46;

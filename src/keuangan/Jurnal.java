@@ -234,8 +234,9 @@ public class Jurnal {
                                 System.out.println("Notifikasi : " + ex);
                             }
                         }
-                    } else {
-                        sukses = false;
+                    }else{
+                        System.out.println("Notif : Debet dan Kredit tidak sama");
+                        sukses=false;
                     }
                 }
             } catch (Exception e) {
