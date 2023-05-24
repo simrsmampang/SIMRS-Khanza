@@ -93,6 +93,96 @@ public final class sekuel {
         }
     }
     
+    public void insertTampJurnal(String kdRek, String nmRek, String d, String k)
+    {
+        String track;
+        String query = track = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, "+d+", "+k+", ?, ?)";
+        
+        track = track.replaceFirst("\\?", kdRek);
+        track = track.replaceFirst("\\?", nmRek);
+        track = track.replaceFirst("\\?", akses.getkode());
+        track = track.replaceFirst("\\?", akses.getalamatip());
+        
+        try {
+            ps = connect.prepareStatement(query);
+            ps.setString(1, kdRek);
+            ps.setString(2, nmRek);
+            ps.setString(3, akses.getkode());
+            ps.setString(4, akses.getalamatip());
+            
+            ps.executeUpdate();
+            
+            SimpanTrack(track);
+            
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi: " + e);
+            
+            JOptionPane.showMessageDialog(null, "Gagal menyimpan data! Kemungkinan ada rekening yang sama dimasukkan sebelumnya!");
+        }
+    }
+    
+    public void insertOrUpdateTampJurnal(String kdRek, String nmRek, String[] insertDK, String[] updateDK)
+    {
+        String track;
+        String insertQuery = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
+        String updateQuery = "update tampjurnal_smc set debet = " + updateDK[0] + ", kredit = " + updateDK[1] + " where kd_rek = ? and user_id = ? and ip = ?";
+        
+        try {
+            ps = connect.prepareStatement(insertQuery);
+            ps.setString(1, kdRek);
+            ps.setString(2, nmRek);
+            ps.setString(3, insertDK[0]);
+            ps.setString(4, insertDK[1]);
+            ps.setString(5, akses.getkode());
+            ps.setString(6, akses.getalamatip());
+            
+            ps.executeUpdate();
+            
+            track = insertQuery;
+            track = track.replaceFirst("\\?", "'"+kdRek+"'");
+            track = track.replaceFirst("\\?", "'"+nmRek+"'");
+            track = track.replaceFirst("\\?", insertDK[0]);
+            track = track.replaceFirst("\\?", insertDK[1]);
+            track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
+            track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
+            
+            if (ps != null) {
+                ps.close();
+            }
+            
+            SimpanTrack(track);
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+            System.out.println("Melakukan update...");
+            try {
+                ps = connect.prepareStatement(updateQuery);
+                ps.setString(1, kdRek);
+                ps.setString(2, akses.getkode());
+                ps.setString(3, akses.getalamatip());
+                
+                ps.executeUpdate();
+                
+                track = updateQuery;
+                track = track.replaceFirst("\\?", "'"+kdRek+"'");
+                track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
+                track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
+                
+                if (ps != null) {
+                    ps.close();
+                }
+                
+                SimpanTrack(track);
+            } catch (SQLException ex) {
+                System.out.println("Notifikasi : " + ex);
+            
+                JOptionPane.showMessageDialog(null, "Gagal menyimpan data!");
+            }
+        }
+    }
+    
     public void deleteTampJurnal()
     {
         String query = "delete from tampjurnal_smc where user_id = ? and ip = ?";
@@ -114,33 +204,6 @@ public final class sekuel {
             System.out.println("Notifikasi : " + e);
             
             JOptionPane.showMessageDialog(null, "Gagal memproses data!");
-        }
-    }
-    
-    public void updateTampJurnal(double d, double k, String kdrek)
-    {
-        String query = "update tampjurnal_smc set debet = ?, kredit = ? where kd_rek = ? and user_id = ? and ip = ?";
-        String bindings = "(" + String.join("|", String.valueOf(d), String.valueOf(k), kdrek, akses.getkode(), akses.getalamatip()) + ")";
-        
-        try {
-            ps = connect.prepareStatement(query);
-            ps.setString(1, String.valueOf(d));
-            ps.setString(2, String.valueOf(k));
-            ps.setString(3, kdrek);
-            ps.setString(4, akses.getkode());
-            ps.setString(5, akses.getalamatip());
-            
-            ps.executeUpdate();
-
-            SimpanTrack(query + " " + bindings);
-            
-            if (ps != null) {
-                ps.close();
-            }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
-            
-            JOptionPane.showMessageDialog(null, "Gagal mengupdate data!");
         }
     }
 

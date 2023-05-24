@@ -2877,81 +2877,46 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
 
                 Sequel.deleteTampJurnal();
                 if((-1*ttlPotongan)>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'" + Potongan_Ralan + "', 'Potongan_Ralan', '0', '" + (-1 * ttlPotongan) + "','" + akses.getkode() + "','" + akses.getalamatip() + "'",
-                        "kredit = kredit + '" + (-1*ttlPotongan) + "'",
-                        "kd_rek = '"+Potongan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip()
-                    ); 
+                    Sequel.menyimpan("tampjurnal_smc", "'" + Potongan_Ralan + "', 'Potongan_Ralan', '0', '" + (-1 * ttlPotongan) + "','" + akses.getkode() + "','" + akses.getalamatip() + "'", "kredit = kredit + '" + (-1*ttlPotongan) + "'", "kd_rek = '"+Potongan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"); 
                 }
 
                 if((ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'" + Tindakan_Ralan + "', 'Tindakan Ralan', '" + (ttlRalan_Dokter + ttlRalan_Dokter_Param + ttlRalan_Paramedis) + "', '0', '" + akses.getkode() + "','" + akses.getalamatip() + "'",
-                        "debet = debet + '" + (ttlRalan_Dokter + ttlRalan_Dokter_Param + ttlRalan_Paramedis) + "'",
-                        "kd_rek = '" + Tindakan_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
+                    Sequel.menyimpan("tampjurnal_smc", "'" + Tindakan_Ralan + "', 'Tindakan Ralan', '" + (ttlRalan_Dokter + ttlRalan_Dokter_Param + ttlRalan_Paramedis) + "', '0', '" + akses.getkode() + "','" + akses.getalamatip() + "'", "debet = debet + '" + (ttlRalan_Dokter + ttlRalan_Dokter_Param + ttlRalan_Paramedis) + "'", "kd_rek = '" + Tindakan_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");
                 }
 
                 if(ttlLaborat>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'" + Laborat_Ralan + "', 'Laborat Ralan', '" + ttlLaborat + "', '0', '" + akses.getkode() + "','" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlLaborat)+"'",
-                        "kd_rek='"+Laborat_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );  
+                    Sequel.menyimpan("tampjurnal_smc", "'" + Laborat_Ralan + "', 'Laborat Ralan', '" + ttlLaborat + "', '0', '" + akses.getkode() + "','" + akses.getalamatip() + "'", "debet=debet+'"+(ttlLaborat)+"'", "kd_rek='"+Laborat_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");  
                 }
 
                 if(ttlRadiologi>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Radiologi_Ralan+"','Radiologi Ralan','"+ttlRadiologi+"','0', '" + akses.getkode() + "','" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlRadiologi)+"'",
-                        "kd_rek='"+Radiologi_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
+                    Sequel.menyimpan("tampjurnal_smc","'"+Radiologi_Ralan+"','Radiologi Ralan','"+ttlRadiologi+"','0', '" + akses.getkode() + "','" + akses.getalamatip() + "'","debet=debet+'"+(ttlRadiologi)+"'","kd_rek='"+Radiologi_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");
                 }
 
                 obatlangsung=Sequel.cariIsiAngka("select billing.totalbiaya from billing where billing.nm_perawatan='Obat & BHP ' and billing.status='Obat' and billing.no_rawat=?",TNoRw.getText());
                 ppnobat=Sequel.cariIsiAngka("select billing.totalbiaya from billing where billing.nm_perawatan='PPN Obat' and billing.status='Obat' and billing.no_rawat=?",TNoRw.getText());
 
                 if((ttlObat-obatlangsung-ppnobat)>0){
-                    Sequel.menyimpan("tampjurnal","'"+Obat_Ralan+"','Obat Ralan','"+(ttlObat-obatlangsung-ppnobat)+"','0'","debet=debet+'"+(ttlObat-obatlangsung-ppnobat)+"'","kd_rek='"+Obat_Ralan+"'");   
+                    Sequel.menyimpan("tampjurnal_smc","'"+Obat_Ralan+"','Obat Ralan','"+(ttlObat-obatlangsung-ppnobat)+"','0', '"+akses.getkode()+"', '"+akses.getalamatip()+"'","debet=debet+'"+(ttlObat-obatlangsung-ppnobat)+"'","kd_rek='"+Obat_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");   
                 }
 
                 if(obatlangsung>0){
-                    Sequel.menyimpan("tampjurnal","'"+Obat_Langsung_Ralan+"','Obat Ralan','"+obatlangsung+"','0'","debet=debet+'"+obatlangsung+"'","kd_rek='"+Obat_Langsung_Ralan+"'");   
+                    Sequel.menyimpan("tampjurnal_smc","'"+Obat_Langsung_Ralan+"','Obat Ralan','"+obatlangsung+"','0', '"+akses.getkode()+"', '"+akses.getalamatip()+"'","debet=debet+'"+obatlangsung+"'","kd_rek='"+Obat_Langsung_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");   
                 }
                 
                 if(ppnobat>0){
-                    Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN Keluaran','"+ppnobat+"','0'","debet=debet+'"+ppnobat+"'","kd_rek='"+PPN_Keluaran+"'");   
+                    Sequel.menyimpan("tampjurnal_smc","'"+PPN_Keluaran+"','PPN Keluaran','"+ppnobat+"','0', '"+akses.getkode()+"', '"+akses.getalamatip()+"'","debet=debet+'"+ppnobat+"'","kd_rek='"+PPN_Keluaran+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");   
                 }
 
                 if(ttlRegistrasi>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Registrasi_Ralan+"','Registrasi Ralan','"+ttlRegistrasi+"','0', '" + akses.getkode() + "','" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlRegistrasi)+"'",
-                        "kd_rek='"+Registrasi_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );  
+                    Sequel.menyimpan("tampjurnal_smc", "'"+Registrasi_Ralan+"','Registrasi Ralan','"+ttlRegistrasi+"','0', '" + akses.getkode() + "','" + akses.getalamatip() + "'", "debet=debet+'"+(ttlRegistrasi)+"'", "kd_rek='"+Registrasi_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");  
                 }
 
                 if(ttlTambahan>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Tambahan_Ralan+"','Tambahan Ralan','"+ttlTambahan+"','0', '" + akses.getkode() + "','" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlTambahan)+"'",
-                        "kd_rek='"+Tambahan_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );   
+                    Sequel.menyimpan("tampjurnal_smc", "'"+Tambahan_Ralan+"','Tambahan Ralan','"+ttlTambahan+"','0', '" + akses.getkode() + "','" + akses.getalamatip() + "'", "debet=debet+'"+(ttlTambahan)+"'", "kd_rek='"+Tambahan_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");   
                 }
 
                 if(ttlOperasi>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Operasi_Ralan+"','Operasi Ralan','"+ttlOperasi+"','0', '" + akses.getkode() + "','" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlOperasi)+"'",
-                        "kd_rek='"+Operasi_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );    
+                    Sequel.menyimpan("tampjurnal_smc", "'"+Operasi_Ralan+"','Operasi Ralan','"+ttlOperasi+"','0', '" + akses.getkode() + "','" + akses.getalamatip() + "'", "debet=debet+'"+(ttlOperasi)+"'", "kd_rek='"+Operasi_Ralan+ "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                 }
 
                 psakunbayar=koneksi.prepareStatement(
@@ -5964,78 +5929,43 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     
                     if(sukses==true){
                         if((-1*ttlPotongan)>0){
-                            Sequel.menyimpan(
-                                "tampjurnal_smc",
-                                "'"+Potongan_Ralan+"', 'Potongan_Ralan', '"+(-1*ttlPotongan)+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                                "debet=debet+'"+(-1*ttlPotongan)+"'",
-                                "kd_rek='"+Potongan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                            );
+                            Sequel.menyimpan("tampjurnal_smc", "'"+Potongan_Ralan+"', 'Potongan_Ralan', '"+(-1*ttlPotongan)+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'", "debet=debet+'"+(-1*ttlPotongan)+"'", "kd_rek='"+Potongan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");
                         }
 
                         if((ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)>0){
-                            Sequel.menyimpan(
-                                "tampjurnal_smc",
-                                "'"+Tindakan_Ralan+"','Tindakan Ralan','0','"+(ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                                "kredit=kredit+'"+(ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)+"'",
-                                "kd_rek='"+Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                            );    
+                            Sequel.menyimpan("tampjurnal_smc", "'"+Tindakan_Ralan+"','Tindakan Ralan','0','"+(ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'", "kredit=kredit+'"+(ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)+"'", "kd_rek='"+Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                         }
 
                         if(ttlLaborat>0){
-                            Sequel.menyimpan(
-                                "tampjurnal_smc",
-                                "'"+Laborat_Ralan+"','Laborat Ralan','0','"+ttlLaborat+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                                "kredit=kredit+'"+(ttlLaborat)+"'",
-                                "kd_rek='"+Laborat_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                            );    
+                            Sequel.menyimpan("tampjurnal_smc", "'"+Laborat_Ralan+"','Laborat Ralan','0','"+ttlLaborat+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'", "kredit=kredit+'"+(ttlLaborat)+"'", "kd_rek='"+Laborat_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                         }
 
                         if(ttlRadiologi>0){
-                            Sequel.menyimpan(
-                                "tampjurnal_smc",
-                                "'"+Radiologi_Ralan+"','Radiologi Ralan','0','"+ttlRadiologi+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                                "kredit=kredit+'"+(ttlRadiologi)+"'",
-                                "kd_rek='"+Radiologi_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                            );    
+                            Sequel.menyimpan("tampjurnal_smc", "'"+Radiologi_Ralan+"','Radiologi Ralan','0','"+ttlRadiologi+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'", "kredit=kredit+'"+(ttlRadiologi)+"'", "kd_rek='"+Radiologi_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                         }
 
                         if((ttlObat-obatlangsung-ppnobat)>0){
-                            Sequel.menyimpan("tampjurnal","'"+Obat_Ralan+"','Obat Ralan','0','"+(ttlObat-obatlangsung-ppnobat)+"'","kredit=kredit+'"+(ttlObat-obatlangsung-ppnobat)+"'","kd_rek='"+Obat_Ralan+"'");    
+                            Sequel.menyimpan("tampjurnal_smc","'"+Obat_Ralan+"','Obat Ralan','0','"+(ttlObat-obatlangsung-ppnobat)+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'","kredit=kredit+'"+(ttlObat-obatlangsung-ppnobat)+"'","kd_rek='"+Obat_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                         }
                         
                         if(obatlangsung>0){
-                            Sequel.menyimpan("tampjurnal","'"+Obat_Langsung_Ralan+"','Obat Ralan','0','"+obatlangsung+"'","kredit=kredit+'"+(obatlangsung)+"'","kd_rek='"+Obat_Langsung_Ralan+"'");    
+                            Sequel.menyimpan("tampjurnal_smc","'"+Obat_Langsung_Ralan+"','Obat Ralan','0','"+obatlangsung+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'","kredit=kredit+'"+(obatlangsung)+"'","kd_rek='"+Obat_Langsung_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                         }
                         
                         if(ppnobat>0){
-                            Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN Keluaran','0','"+ppnobat+"'","kredit=kredit+'"+(ppnobat)+"'","kd_rek='"+PPN_Keluaran+"'");    
+                            Sequel.menyimpan("tampjurnal_smc","'"+PPN_Keluaran+"','PPN Keluaran','0','"+ppnobat+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'","kredit=kredit+'"+(ppnobat)+"'","kd_rek='"+PPN_Keluaran+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                         }
                         
                         if(ttlRegistrasi>0){
-                            Sequel.menyimpan(
-                                "tampjurnal_smc",
-                                "'"+Registrasi_Ralan+"','Registrasi Ralan','0','"+ttlRegistrasi+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                                "kredit=kredit+'"+(ttlRegistrasi)+"'",
-                                "kd_rek='"+Registrasi_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                            );    
+                            Sequel.menyimpan("tampjurnal_smc", "'"+Registrasi_Ralan+"','Registrasi Ralan','0','"+ttlRegistrasi+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'", "kredit=kredit+'"+(ttlRegistrasi)+"'", "kd_rek='"+Registrasi_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                         }
 
                         if(ttlTambahan>0){
-                            Sequel.menyimpan(
-                                "tampjurnal_smc",
-                                "'"+Tambahan_Ralan+"','Tambahan Ralan','0','"+ttlTambahan+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                                "kredit=kredit+'"+(ttlTambahan)+"'",
-                                "kd_rek='"+Tambahan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                            );    
+                            Sequel.menyimpan("tampjurnal_smc", "'"+Tambahan_Ralan+"','Tambahan Ralan','0','"+ttlTambahan+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'", "kredit=kredit+'"+(ttlTambahan)+"'", "kd_rek='"+Tambahan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                         }
 
                         if(ttlOperasi>0){
-                            Sequel.menyimpan(
-                                "tampjurnal_smc",
-                                "'"+Operasi_Ralan+"','Operasi Ralan','0','"+ttlOperasi+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                                "kredit=kredit+'"+(ttlOperasi)+"'",
-                                "kd_rek='"+Operasi_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                            );    
+                            Sequel.menyimpan("tampjurnal_smc", "'"+Operasi_Ralan+"','Operasi Ralan','0','"+ttlOperasi+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'", "kredit=kredit+'"+(ttlOperasi)+"'", "kd_rek='"+Operasi_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");    
                         }
 
                         alamat=Sequel.cariIsi("select reg_periksa.almt_pj from reg_periksa where reg_periksa.no_rawat=? ",TNoRw.getText());
