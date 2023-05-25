@@ -8,6 +8,7 @@ import fungsi.akses;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -235,7 +236,11 @@ public class Jurnal {
                             }
                         }
                     }else{
+                        BigDecimal totalDebit = new BigDecimal(rscek.getFloat("debet"));
+                        BigDecimal totalKredit = new BigDecimal(rscek.getFloat("kredit"));
                         System.out.println("Notif : Debet dan Kredit tidak sama");
+                        System.out.println("Notif : Total Debit = " + totalDebit.toString());
+                        System.out.println("Notif : Total Kredit = " + totalKredit.toString());
                         sukses=false;
                     }
                 }
