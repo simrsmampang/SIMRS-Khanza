@@ -1134,8 +1134,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         }
                         //PPN
                         if(Valid.SetAngka(tabMode.getValueAt(i,85).toString())>0){
-                            Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','0','"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kredit=kredit+'"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
-                            Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"','0'","debet=debet+'"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+PPN_Keluaran+"'");   
+                            Sequel.menyimpan("tampjurnal_rvpbpjs","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','0','"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kredit=kredit+'"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
+                            Sequel.menyimpan("tampjurnal_rvpbpjs","'"+PPN_Keluaran+"','PPN KELUARAN','"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"','0'","debet=debet+'"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+PPN_Keluaran+"'");   
                         }
                         //jurnal pembatalan RVP beban, utang, piutang, pendapatan
                         sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","PEMBATALAN RVP PIUTANG BPJS, OLEH "+akses.getkode());     
@@ -1407,8 +1407,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             }
                             //PPN Obat
                             if(Valid.SetAngka(tabMode.getValueAt(i,85).toString())>0){
-                                Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"','0'","debet=debet+'"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
-                                Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','0','"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kredit=kredit+'"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+PPN_Keluaran+"'");   
+                                Sequel.menyimpan("tampjurnal_rvpbpjs","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"','0'","debet=debet+'"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
+                                Sequel.menyimpan("tampjurnal_rvpbpjs","'"+PPN_Keluaran+"','PPN KELUARAN','0','"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kredit=kredit+'"+(Valid.SetAngka(tabMode.getValueAt(i,85).toString()))+"'","kd_rek='"+PPN_Keluaran+"'");   
                             }
                             //jurnal pembatalan RVU beban, utang, piutang, pendapatan
                             sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","PEMBATALAN RVP PIUTANG BPJS, OLEH "+akses.getkode());     

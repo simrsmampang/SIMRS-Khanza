@@ -67,21 +67,28 @@ public final class sekuel {
     
     public void insertTampJurnal(String kdRek, String nmRek, double d, double k)
     {
-        String query = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
-        String bindings = "(" + String.join("|", kdRek, nmRek, String.valueOf(d), String.valueOf(k), akses.getkode(), akses.getalamatip()) + ")";
+        String track;
+        String query = track = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
+        
+        track = track.replaceFirst("\\?", kdRek);
+        track = track.replaceFirst("\\?", nmRek);
+        track = track.replaceFirst("\\?", String.valueOf(d));
+        track = track.replaceFirst("\\?", String.valueOf(k));
+        track = track.replaceFirst("\\?", akses.getkode());
+        track = track.replaceFirst("\\?", akses.getalamatip());
         
         try {
             ps = connect.prepareStatement(query);
             ps.setString(1, kdRek);
             ps.setString(2, nmRek);
-            ps.setString(3, String.valueOf(d));
-            ps.setString(4, String.valueOf(k));
+            ps.setDouble(3, d);
+            ps.setDouble(4, k);
             ps.setString(5, akses.getkode());
             ps.setString(6, akses.getalamatip());
             
             ps.executeUpdate();
             
-            SimpanTrack(query + " " + bindings);
+            SimpanTrack(track);
             
             if (ps != null) {
                 ps.close();
@@ -96,10 +103,12 @@ public final class sekuel {
     public void insertTampJurnal(String kdRek, String nmRek, String d, String k)
     {
         String track;
-        String query = track = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, "+d+", "+k+", ?, ?)";
+        String query = track = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
         
         track = track.replaceFirst("\\?", kdRek);
         track = track.replaceFirst("\\?", nmRek);
+        track = track.replaceFirst("\\?", d);
+        track = track.replaceFirst("\\?", k);
         track = track.replaceFirst("\\?", akses.getkode());
         track = track.replaceFirst("\\?", akses.getalamatip());
         
@@ -107,8 +116,10 @@ public final class sekuel {
             ps = connect.prepareStatement(query);
             ps.setString(1, kdRek);
             ps.setString(2, nmRek);
-            ps.setString(3, akses.getkode());
-            ps.setString(4, akses.getalamatip());
+            ps.setString(3, d);
+            ps.setString(4, k);
+            ps.setString(5, akses.getkode());
+            ps.setString(6, akses.getalamatip());
             
             ps.executeUpdate();
             
@@ -142,12 +153,12 @@ public final class sekuel {
             ps.executeUpdate();
             
             track = insertQuery;
-            track = track.replaceFirst("\\?", "'"+kdRek+"'");
-            track = track.replaceFirst("\\?", "'"+nmRek+"'");
+            track = track.replaceFirst("\\?", kdRek);
+            track = track.replaceFirst("\\?", nmRek);
             track = track.replaceFirst("\\?", insertDK[0]);
             track = track.replaceFirst("\\?", insertDK[1]);
-            track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
-            track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
+            track = track.replaceFirst("\\?", akses.getkode());
+            track = track.replaceFirst("\\?", akses.getalamatip());
             
             if (ps != null) {
                 ps.close();
@@ -185,8 +196,11 @@ public final class sekuel {
     
     public void deleteTampJurnal()
     {
-        String query = "delete from tampjurnal_smc where user_id = ? and ip = ?";
-        String bindings = "(" + String.join("|", akses.getkode(), akses.getalamatip()) + ")";
+        String track;
+        String query = track = "delete from tampjurnal_smc where user_id = ? and ip = ?";
+        
+        track = track.replaceFirst("\\?", akses.getkode());
+        track = track.replaceFirst("\\?", akses.getalamatip());
         
         try {
             ps = connect.prepareStatement(query);
@@ -195,7 +209,7 @@ public final class sekuel {
             
             ps.executeUpdate();
 
-            SimpanTrack(query + " " + bindings);
+            SimpanTrack(track);
             
             if (ps != null) {
                 ps.close();
