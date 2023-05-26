@@ -120,6 +120,11 @@ public class Jurnal {
                             }
                         }
                     } else {
+                        BigDecimal totalDebit = new BigDecimal(rscek.getFloat("debet"));
+                        BigDecimal totalKredit = new BigDecimal(rscek.getFloat("kredit"));
+                        System.out.println("Notif : Debet dan Kredit tidak sama");
+                        System.out.println("Notif : Total Debit = " + totalDebit.toString());
+                        System.out.println("Notif : Total Kredit = " + totalKredit.toString());
                         sukses = false;
                     }
                 }
