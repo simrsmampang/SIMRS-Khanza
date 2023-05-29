@@ -177,9 +177,9 @@ public final class sekuel {
                 ps.executeUpdate();
                 
                 track = updateQuery;
-                track = track.replaceFirst("\\?", "'"+kdRek+"'");
-                track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
-                track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
+                track = track.replaceFirst("\\?", kdRek);
+                track = track.replaceFirst("\\?", akses.getkode());
+                track = track.replaceFirst("\\?", akses.getalamatip());
                 
                 if (ps != null) {
                     ps.close();

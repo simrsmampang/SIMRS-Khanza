@@ -6,7 +6,7 @@
     $db_hostname    = "localhost";
     $db_username    = "root";
     $db_password    = "";
-    $db_name        = "khanza2";
+    $db_name        = "khanza";
     define('USERHYBRIDWEB', 'yanghack');
     define('PASHYBRIDWEB', 'sialselamanya');
 
