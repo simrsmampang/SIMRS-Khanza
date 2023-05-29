@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.ByteBuffer;
@@ -70,12 +71,12 @@ public final class sekuel {
         String track;
         String query = track = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
         
-        track = track.replaceFirst("\\?", kdRek);
-        track = track.replaceFirst("\\?", nmRek);
-        track = track.replaceFirst("\\?", String.valueOf(d));
-        track = track.replaceFirst("\\?", String.valueOf(k));
-        track = track.replaceFirst("\\?", akses.getkode());
-        track = track.replaceFirst("\\?", akses.getalamatip());
+        track = track.replaceFirst("\\?", "'"+kdRek+"'");
+        track = track.replaceFirst("\\?", "'"+nmRek+"'");
+        track = track.replaceFirst("\\?", (new BigDecimal(d)).toString());
+        track = track.replaceFirst("\\?", (new BigDecimal(k)).toString());
+        track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
+        track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
         
         try {
             ps = connect.prepareStatement(query);
@@ -105,12 +106,12 @@ public final class sekuel {
         String track;
         String query = track = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
         
-        track = track.replaceFirst("\\?", kdRek);
-        track = track.replaceFirst("\\?", nmRek);
+        track = track.replaceFirst("\\?", "'"+kdRek+"'");
+        track = track.replaceFirst("\\?", "'"+nmRek+"'");
         track = track.replaceFirst("\\?", d);
         track = track.replaceFirst("\\?", k);
-        track = track.replaceFirst("\\?", akses.getkode());
-        track = track.replaceFirst("\\?", akses.getalamatip());
+        track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
+        track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
         
         try {
             ps = connect.prepareStatement(query);
@@ -153,12 +154,12 @@ public final class sekuel {
             ps.executeUpdate();
             
             track = insertQuery;
-            track = track.replaceFirst("\\?", kdRek);
-            track = track.replaceFirst("\\?", nmRek);
+            track = track.replaceFirst("\\?", "'"+kdRek+"'");
+            track = track.replaceFirst("\\?", "'"+nmRek+"'");
             track = track.replaceFirst("\\?", insertDK[0]);
             track = track.replaceFirst("\\?", insertDK[1]);
-            track = track.replaceFirst("\\?", akses.getkode());
-            track = track.replaceFirst("\\?", akses.getalamatip());
+            track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
+            track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
             
             if (ps != null) {
                 ps.close();
@@ -177,9 +178,9 @@ public final class sekuel {
                 ps.executeUpdate();
                 
                 track = updateQuery;
-                track = track.replaceFirst("\\?", kdRek);
-                track = track.replaceFirst("\\?", akses.getkode());
-                track = track.replaceFirst("\\?", akses.getalamatip());
+                track = track.replaceFirst("\\?", "'"+kdRek+"'");
+                track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
+                track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
                 
                 if (ps != null) {
                     ps.close();
@@ -199,8 +200,8 @@ public final class sekuel {
         String track;
         String query = track = "delete from tampjurnal_smc where user_id = ? and ip = ?";
         
-        track = track.replaceFirst("\\?", akses.getkode());
-        track = track.replaceFirst("\\?", akses.getalamatip());
+        track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
+        track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
         
         try {
             ps = connect.prepareStatement(query);
