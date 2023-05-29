@@ -1555,11 +1555,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
         }
         if(sukses==true){
-            Sequel.queryu("delete from tampjurnal");                    
-            Sequel.menyimpan2("tampjurnal","'"+Penjualan_Toko+"','PENJUALAN TOKO','0','"+tagihanppn+"'","Rekening");    
-            Sequel.menyimpan2("tampjurnal","'"+kode_akun_bayar+"','"+AkunBayar.getSelectedItem().toString()+"','"+tagihanppn+"','0'","Rekening"); 
-            Sequel.menyimpan2("tampjurnal","'"+HPP_Barang_Toko+"','HPP Barang Toko','"+ttlhpp+"','0'","Rekening");    
-            Sequel.menyimpan2("tampjurnal","'"+Persediaan_Barang_Toko+"','Persediaan Barang Toko','0','"+ttlhpp+"'","Rekening");                              
+            Sequel.deleteTampJurnal();
+            Sequel.insertTampJurnal(Penjualan_Toko, "PENJUALAN TOKO", 0, tagihanppn);
+            Sequel.insertTampJurnal(kode_akun_bayar, AkunBayar.getSelectedItem().toString(), tagihanppn, 0);
+            Sequel.insertTampJurnal(HPP_Barang_Toko, "HPP Barang Toko", ttlhpp, 0);
+            Sequel.insertTampJurnal(Persediaan_Barang_Toko, "Persediaan Barang Toko", 0, ttlhpp);
             sukses=jur.simpanJurnal(NoNota.getText(),"U","PENJUALAN TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());   
         }
     }

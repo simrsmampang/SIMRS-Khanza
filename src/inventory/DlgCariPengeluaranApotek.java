@@ -1379,9 +1379,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       }
                   }
                   if(sukses==true){
-                     Sequel.queryu("delete from tampjurnal");
-                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Medis from set_akun"),"PERSEDIAAN BARANG",Sequel.cariIsi("select sum(total) from detail_pengeluaran_obat_bhp where no_keluar='"+rs.getString("no_keluar")+"'"),"0"});
-                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Medis from set_akun"),"KONTRA PERSEDIAAN BARANG","0",Sequel.cariIsi("select sum(total) from detail_pengeluaran_obat_bhp where no_keluar='"+rs.getString("no_keluar")+"'")}); 
+                      String stokKeluarMedis = Sequel.cariIsi("select Stok_Keluar_Medis from set_akun");
+                      String kontraStokKeluarMedis = Sequel.cariIsi("select Kontra_Stok_Keluar_Medis from set_akun");
+                      double totalPengeluaranObat = Sequel.cariIsiDouble("select sum(total) from detail_pengeluaran_obat_bhp where no_keluar = ?", rs.getString("no_keluar"));
+
+                    Sequel.deleteTampJurnal();
+                    Sequel.insertTampJurnal(stokKeluarMedis, "PERSEDIAAN BARANG", totalPengeluaranObat, 0);
+                    Sequel.insertTampJurnal(kontraStokKeluarMedis, "KONTRA PERSEDIAAN BARANG", 0, totalPengeluaranObat);
+                    
                      sukses=jur.simpanJurnal(rs.getString("no_keluar"),"U","PEMBATALAN STOK KELUAR BARANG MEDIS/OBAT/ALKES/BHP"+", OLEH "+akses.getkode());  
                   } 
               }    

@@ -677,7 +677,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                 KdKategori.getText(),Pengeluaran.getText(),KdPtg.getText(),Keterangan.getText()
             })==true){
                 try {
-                    Sequel.queryu("delete from tampjurnal");
+                    Sequel.deleteTampJurnal();
                     psakun=koneksi.prepareStatement(
                         "select kd_rek,'Akun',"+
                         "kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kode_kategori=?");
@@ -685,8 +685,8 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                         psakun.setString(1,KdKategori.getText());
                         rs=psakun.executeQuery();
                         if(rs.next()){
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),Pengeluaran.getText(),"0"});
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",Pengeluaran.getText()}); 
+                            Sequel.insertTampJurnal(rs.getString(1), rs.getString(2), Double.parseDouble(Pengeluaran.getText()), 0);
+                            Sequel.insertTampJurnal(rs.getString(3), rs.getString(4), 0, Double.parseDouble(Pengeluaran.getText()));
                             sukses=jur.simpanJurnal(Nomor.getText(),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
                         } 
                     } catch (Exception e) {
@@ -759,15 +759,15 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                     tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()
                 })==true){
                     try {
-                        Sequel.queryu("delete from tampjurnal");
+                        Sequel.deleteTampJurnal();
                         psakun=koneksi.prepareStatement(
                             "select kategori_pengeluaran_harian.kd_rek,'Akun',kategori_pengeluaran_harian.kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?");
                         try {
                             psakun.setString(1,KdKategori.getText());
                             rs=psakun.executeQuery();
                             if(rs.next()){
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",Pengeluaran.getText()});
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),Pengeluaran.getText(),"0"}); 
+                                Sequel.insertTampJurnal(rs.getString(1), rs.getString(2), 0, Double.parseDouble(Pengeluaran.getText()));
+                                Sequel.insertTampJurnal(rs.getString(3), rs.getString(4), Double.parseDouble(Pengeluaran.getText()), 0);
                                 sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMBATALAN PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
                             } 
                         } catch (Exception e) {

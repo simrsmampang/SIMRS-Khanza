@@ -1033,13 +1033,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       }     
 
                       if(sukses==true){
-                          Sequel.queryu("delete from tampjurnal");
-                          Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                              Sequel.cariIsi("select Hibah_Obat from set_akun"),"PERSEDIAAN HIBAH OBAT & BHP","0",rs.getString("totalnilai")
-                          });    
-                          Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                              Sequel.cariIsi("select Kontra_Hibah_Obat from set_akun"),"PENDAPATAN HIBAH",rs.getString("totalnilai"),"0"
-                          }); 
+                        Sequel.deleteTampJurnal();
+                        Sequel.insertTampJurnal(Sequel.cariIsi("select Hibah_Obat from set_akun"), "PERSEDIAAN HIBAH OBAT & BHP", 0, rs.getDouble("totalnilai"));
+                        Sequel.insertTampJurnal(Sequel.cariIsi("select Kontra_Hibah_Obat from set_akun"), "PENDAPATAN HIBAH", rs.getDouble("totalnilai"), 0);
                           sukses=jur.simpanJurnal(rs.getString("no_hibah"),"U","BATAL HIBAH OBAT & BHP DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase()+", OLEH "+akses.getkode());
                       }
 

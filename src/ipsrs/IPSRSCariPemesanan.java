@@ -1053,19 +1053,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         psipsrsdetailpesan.close();
                     }
                 }
-                
-                Sequel.queryu("delete from tampjurnal");
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Sequel.cariIsi("select set_akun.Penerimaan_NonMedis from set_akun"),"PERSEDIAAN BARANG NON MEDIS","0",rs.getString("total")
-                });    
-                if(rs.getDouble("ppn")>0){
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Barang Non Medis","0",rs.getString("ppn")
-                    }); 
+
+                Sequel.deleteTampJurnal();
+                Sequel.insertTampJurnal(Sequel.cariIsi("select Penerimaan_NonMedis from set_akun"), "PERSEDIAAN BARANG NON MEDIS", 0, rs.getDouble("total"));
+                if (rs.getDouble("ppn") > 0) {
+                    Sequel.insertTampJurnal(Sequel.cariIsi("select PPN_Masukan from set_akun"), "PPN Masukan Barang Non Medis", 0, rs.getDouble("ppn"));
                 }
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Sequel.cariIsi("select set_akun.Kontra_Penerimaan_NonMedis from set_akun"),"HUTANG BARANG NON MEDIS",rs.getString("tagihan"),"0"
-                }); 
+                Sequel.insertTampJurnal(Sequel.cariIsi("select Kontra_Penerimaan_NonMedis from set_akun"), "HUTANG BARANG NON MEDIS", rs.getDouble("tagihan"), 0);
                 sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
 
                 if(sukses==true){

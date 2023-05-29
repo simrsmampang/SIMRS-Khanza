@@ -775,13 +775,9 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                         sukses=false;
                     } 
                     
-                    Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Kontra_Penerimaan_AsetInventaris,"HUTANG USAHA",besar_bayar.getText(),"0"
-                    });                     
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        koderekening,AkunBayar.getSelectedItem().toString(),"0",besar_bayar.getText()
-                    });    
+                    Sequel.deleteTampJurnal();
+                    Sequel.insertTampJurnal(Kontra_Penerimaan_AsetInventaris,"HUTANG USAHA",Double.parseDouble(besar_bayar.getText()),0);                     
+                    Sequel.insertTampJurnal(koderekening,AkunBayar.getSelectedItem().toString(),0,Double.parseDouble(besar_bayar.getText()));
                     sukses=jur.simpanJurnal(no_bukti.getText(),"U","BAYAR PELUNASAN BARANG ASET/INVENTARIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());
                     
                     if(sukses==true){
@@ -866,13 +862,9 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                     sukses=false;
                 } 
                 
-                Sequel.queryu("delete from tampjurnal");
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    koderekening,AkunBayar.getSelectedItem().toString(),besar_bayar.getText(),"0"
-                });    
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Kontra_Penerimaan_AsetInventaris,"HUTANG USAHA","0",besar_bayar.getText()
-                }); 
+                Sequel.deleteTampJurnal();
+                Sequel.insertTampJurnal(koderekening, AkunBayar.getSelectedItem().toString(), Double.parseDouble(besar_bayar.getText()), 0);
+                Sequel.insertTampJurnal(Kontra_Penerimaan_AsetInventaris, "HUTANG USAHA", 0, Double.parseDouble(besar_bayar.getText()));
                 sukses=jur.simpanJurnal(no_bukti.getText(),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode()); 
             }else{
                 sukses=false;

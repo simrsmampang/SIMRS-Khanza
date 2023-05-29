@@ -15,6 +15,7 @@ package fungsi;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -50,7 +51,7 @@ import uz.ncipro.calendar.JDateTimePicker;
  */
 public final class sekuel {
     private javax.swing.ImageIcon icon = null;
-    private String folder,AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
+    private String folder, AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
     private final Connection connect=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
@@ -63,8 +64,210 @@ public final class sekuel {
     public sekuel(){
         super();
     }
+    
+    public void insertTampJurnal(String kdRek, String nmRek, double d, double k)
+    {
+        String track;
+        String query = track = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
+        
+        track = track.replaceFirst("\\?", kdRek);
+        track = track.replaceFirst("\\?", nmRek);
+        track = track.replaceFirst("\\?", String.valueOf(d));
+        track = track.replaceFirst("\\?", String.valueOf(k));
+        track = track.replaceFirst("\\?", akses.getkode());
+        track = track.replaceFirst("\\?", akses.getalamatip());
+        
+        try {
+            ps = connect.prepareStatement(query);
+            ps.setString(1, kdRek);
+            ps.setString(2, nmRek);
+            ps.setDouble(3, d);
+            ps.setDouble(4, k);
+            ps.setString(5, akses.getkode());
+            ps.setString(6, akses.getalamatip());
+            
+            ps.executeUpdate();
+            
+            SimpanTrack(track);
+            
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi: " + e);
+            
+            JOptionPane.showMessageDialog(null, "Gagal menyimpan data! Kemungkinan ada rekening yang sama dimasukkan sebelumnya!");
+        }
+    }
+    
+    public void insertTampJurnal(String kdRek, String nmRek, String d, String k)
+    {
+        String track;
+        String query = track = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
+        
+        track = track.replaceFirst("\\?", kdRek);
+        track = track.replaceFirst("\\?", nmRek);
+        track = track.replaceFirst("\\?", d);
+        track = track.replaceFirst("\\?", k);
+        track = track.replaceFirst("\\?", akses.getkode());
+        track = track.replaceFirst("\\?", akses.getalamatip());
+        
+        try {
+            ps = connect.prepareStatement(query);
+            ps.setString(1, kdRek);
+            ps.setString(2, nmRek);
+            ps.setString(3, d);
+            ps.setString(4, k);
+            ps.setString(5, akses.getkode());
+            ps.setString(6, akses.getalamatip());
+            
+            ps.executeUpdate();
+            
+            SimpanTrack(track);
+            
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi: " + e);
+            
+            JOptionPane.showMessageDialog(null, "Gagal menyimpan data! Kemungkinan ada rekening yang sama dimasukkan sebelumnya!");
+        }
+    }
+    
+    public void insertOrUpdateTampJurnal(String kdRek, String nmRek, String[] insertDK, String[] updateDK)
+    {
+        String track;
+        String insertQuery = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
+        String updateQuery = "update tampjurnal_smc set debet = " + updateDK[0] + ", kredit = " + updateDK[1] + " where kd_rek = ? and user_id = ? and ip = ?";
+        
+        try {
+            ps = connect.prepareStatement(insertQuery);
+            ps.setString(1, kdRek);
+            ps.setString(2, nmRek);
+            ps.setString(3, insertDK[0]);
+            ps.setString(4, insertDK[1]);
+            ps.setString(5, akses.getkode());
+            ps.setString(6, akses.getalamatip());
+            
+            ps.executeUpdate();
+            
+            track = insertQuery;
+            track = track.replaceFirst("\\?", kdRek);
+            track = track.replaceFirst("\\?", nmRek);
+            track = track.replaceFirst("\\?", insertDK[0]);
+            track = track.replaceFirst("\\?", insertDK[1]);
+            track = track.replaceFirst("\\?", akses.getkode());
+            track = track.replaceFirst("\\?", akses.getalamatip());
+            
+            if (ps != null) {
+                ps.close();
+            }
+            
+            SimpanTrack(track);
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+            System.out.println("Melakukan update...");
+            try {
+                ps = connect.prepareStatement(updateQuery);
+                ps.setString(1, kdRek);
+                ps.setString(2, akses.getkode());
+                ps.setString(3, akses.getalamatip());
+                
+                ps.executeUpdate();
+                
+                track = updateQuery;
+                track = track.replaceFirst("\\?", kdRek);
+                track = track.replaceFirst("\\?", akses.getkode());
+                track = track.replaceFirst("\\?", akses.getalamatip());
+                
+                if (ps != null) {
+                    ps.close();
+                }
+                
+                SimpanTrack(track);
+            } catch (SQLException ex) {
+                System.out.println("Notifikasi : " + ex);
+            
+                JOptionPane.showMessageDialog(null, "Gagal menyimpan data!");
+            }
+        }
+    }
+    
+    public void deleteTampJurnal()
+    {
+        String track;
+        String query = track = "delete from tampjurnal_smc where user_id = ? and ip = ?";
+        
+        track = track.replaceFirst("\\?", akses.getkode());
+        track = track.replaceFirst("\\?", akses.getalamatip());
+        
+        try {
+            ps = connect.prepareStatement(query);
+            ps.setString(1, akses.getkode());
+            ps.setString(2, akses.getalamatip());
+            
+            ps.executeUpdate();
 
+            SimpanTrack(track);
+            
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("Notifikasi : " + e);
+            
+            JOptionPane.showMessageDialog(null, "Gagal memproses data!");
+        }
+    }
 
+    public double cariIsiDouble(String sql, String bindings)
+    {
+        try {
+            ps = connect.prepareStatement(sql);
+            ps.setString(1, bindings);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double output = rs.getDouble(1);
+
+                ps.close();
+
+                return output;
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+
+        return 0;
+    }
+
+    public double cariIsiDouble(String sql, String[] bindings)
+    {
+        try {
+            ps = connect.prepareStatement(sql);
+
+            for (int i = 0; i < bindings.length; i++) {
+                ps.setString(i + 1, bindings[i]);
+            }
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                double output = rs.getDouble(1);
+
+                ps.close();
+
+                return output;
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+
+        return 0;
+    }
+    
     public void menyimpan(String table,String value,String sama){
         try {
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");
