@@ -233,7 +233,7 @@ public class Jurnal {
                                             rs.close();
                                         }
                                     }
-                                    Sequel.queryu2("delete from tampjurnal_smc where user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'");
+                                    Sequel.deleteTampJurnal();
                                 }
                             } catch (Exception ex) {
                                 sukses = false;
