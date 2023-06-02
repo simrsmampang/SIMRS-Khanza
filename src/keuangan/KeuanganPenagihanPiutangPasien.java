@@ -1470,51 +1470,79 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 
     private void ppPilihSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihSemuaActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(kdpenjab.getText().equals("")||nmpenjab.getText().equals("")){
-            if(tbBelumLunas.getSelectedRow()!= -1){
-                tbBelumLunas.setValueAt(false,tbBelumLunas.getSelectedRow(),0);
+        
+        if (kdpenjab.getText().isBlank() || nmpenjab.getText().isBlank()) {
+            if (tbBelumLunas.getSelectedRow() != -1) {
+                tbBelumLunas.setValueAt(false, tbBelumLunas.getSelectedRow(), 0);
             }
-            JOptionPane.showMessageDialog(null,"Silahkan pilih cara bayar/penjamin terlebih dahulu");
-        }else{
-            total=0;
-            jml=0;
-            for(i=0;i<tbBelumLunas.getRowCount();i++){
-                tbBelumLunas.setValueAt(true,i,0);
+            
+            if (tbBelumDitagihkan.getSelectedRow() != -1) {
+                tbBelumDitagihkan.setValueAt(false, tbBelumDitagihkan.getSelectedRow(), 0);
             }
-            for(i=0;i<tbBelumLunas.getRowCount();i++){  
-                if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
-                     total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
-                     jml++;
-                }
-            }
-            LCountDipilih1.setText(jml+"");
-            LCountDipilih2.setText(Valid.SetAngka(total));
+            
+            JOptionPane.showMessageDialog(null, "Silahkan pilih cara bayar/penjamin terlebih dahulu!");
+            
+            return;
         }
+        
+        total = 0;
+        jml = 0;
+        
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                for (i = 0; i < tbBelumLunas.getRowCount(); i++) {
+                    tbBelumLunas.setValueAt(true, i, 0);
+                    total += Double.parseDouble(tbBelumLunas.getValueAt(i, 6).toString());
+                    jml++;
+                }
+            break;
+            
+            case 1:
+                for (i = 0; i < tbBelumDitagihkan.getRowCount(); i++) {
+                    tbBelumDitagihkan.setValueAt(true, i, 0);
+                    total += Double.parseDouble(tbBelumDitagihkan.getValueAt(i, 6).toString());
+                    jml++;
+                }
+            break;
+        }
+        
+        LCountDipilih1.setText(Integer.toString(jml));
+        LCountDipilih2.setText(Valid.SetAngka(total));
+        
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppPilihSemuaActionPerformed
 
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(kdpenjab.getText().equals("")||nmpenjab.getText().equals("")){
-            if(tbBelumLunas.getSelectedRow()!= -1){
-                tbBelumLunas.setValueAt(false,tbBelumLunas.getSelectedRow(),0);
+        
+        if (kdpenjab.getText().isBlank() || nmpenjab.getText().isBlank()) {
+            if (tbBelumLunas.getSelectedRow() != -1) {
+                tbBelumLunas.setValueAt(false, tbBelumLunas.getSelectedRow(), 0);
             }
-            JOptionPane.showMessageDialog(null,"Silahkan pilih cara bayar/penjamin terlebih dahulu");
-        }else{
-            total=0;
-            jml=0;
-            for(i=0;i<tbBelumLunas.getRowCount();i++){
-                tbBelumLunas.setValueAt(false,i,0);
+            
+            if (tbBelumDitagihkan.getSelectedRow() != -1) {
+                tbBelumDitagihkan.setValueAt(false, tbBelumDitagihkan.getSelectedRow(), 0);
             }
-            for(i=0;i<tbBelumLunas.getRowCount();i++){  
-                if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
-                     total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
-                     jml++;
-                }
-            }
-            LCountDipilih1.setText(jml+"");
-            LCountDipilih2.setText(Valid.SetAngka(total));
+            
+            JOptionPane.showMessageDialog(null, "Silahkan pilih cara bayar/penjamin terlebih dahulu!");
+            
+            return;
         }
+        
+        total=0;
+        jml=0;
+        for(i=0;i<tbBelumLunas.getRowCount();i++){
+            tbBelumLunas.setValueAt(false,i,0);
+        }
+        for(i=0;i<tbBelumLunas.getRowCount();i++){  
+            if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
+                 total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
+                 jml++;
+            }
+        }
+        LCountDipilih1.setText(jml+"");
+        LCountDipilih2.setText(Valid.SetAngka(total));
+        
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppBersihkanActionPerformed
 

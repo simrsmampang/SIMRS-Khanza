@@ -26,8 +26,8 @@ public class EnkripsiAES {
 
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
             cipher.init(Cipher.DECRYPT_MODE, skeySpec, iv);
-
-            byte[] original = cipher.doFinal(Base64.decodeBase64(encrypted));
+            
+            byte[] original = cipher.doFinal(Base64.decodeBase64(encrypted.getBytes()));
 
             return new String(original);
         } catch (Exception ex) {
