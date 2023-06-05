@@ -6045,89 +6045,37 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
                 if(sukses==true){
                     if((ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis-Suspen_Tindakan_Ralan)>0){
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Tindakan_Ralan + "', 'Tindakan Ralan', '0', '" + Double.toString(ttlRalan_Dokter + ttlRalan_Dokter_Param + ttlRalan_Paramedis - Suspen_Tindakan_Ralan) + "', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "kredit = kredit + " + Double.toString(ttlRalan_Dokter + ttlRalan_Dokter_Param + ttlRalan_Paramedis - Suspen_Tindakan_Ralan),
-                            "kd_rek = '" + Tindakan_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
+                        Sequel.insertOrUpdateTampJurnal(Tindakan_Ralan, "Tindakan Ralan", 0, ttlRalan_Dokter + ttlRalan_Dokter_Param + ttlRalan_Paramedis - Suspen_Tindakan_Ralan);
                     }
 
                     if((ttlLaborat)>0){
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Laborat_Ralan + "', 'Laborat Ralan', '0', '" + Double.toString(ttlLaborat) + "', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "kredit = kredit + " + Double.toString(ttlLaborat),
-                            "kd_rek = '" + Laborat_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
+                        Sequel.insertOrUpdateTampJurnal(Laborat_Ralan, "Laborat Ralan", 0, ttlLaborat);
                     }
 
                     if((ttlRadiologi)>0){
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Laborat_Ralan + "', 'Laborat Ralan', '0', '" + Double.toString(ttlRadiologi) + "', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "kredit = kredit + " + Double.toString(ttlRadiologi),
-                            "kd_rek = '" + Laborat_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
+                        Sequel.insertOrUpdateTampJurnal(Radiologi_Ralan, "Radiologi Ralan", 0, ttlRadiologi);
                     }
 
                     if(ttlObat>0){
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Suspen_Piutang_Obat_Ralan + "', 'Obat Ralan', '0', '" + Double.toString(ttlObat) + "', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "kredit = kredit + " + Double.toString(ttlObat),
-                            "kd_rek = '" + Suspen_Piutang_Obat_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
+                        Sequel.insertOrUpdateTampJurnal(Suspen_Piutang_Obat_Ralan, "Suspen Piutang Obat Ralan", 0, ttlObat);
                     }
 
                     if(Suspen_Tindakan_Ralan>0){
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Suspen_Piutang_Tindakan_Ralan + "', 'Tindakan Ralan', '0', '" + Double.toString(Suspen_Tindakan_Ralan) + "', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "kredit = kredit + " + Double.toString(Suspen_Tindakan_Ralan),
-                            "kd_rek = '" + Suspen_Piutang_Tindakan_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
+                        Sequel.insertOrUpdateTampJurnal(Suspen_Piutang_Tindakan_Ralan, "Suspen Piutang Tindakan Ralan", 0, Suspen_Tindakan_Ralan);
                     }
 
                     if(ttlRegistrasi>0){
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Registrasi_Ralan + "', 'Registrasi Ralan', '0', '" + Double.toString(ttlRegistrasi) + "', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "kredit = kredit + " + Double.toString(ttlRegistrasi),
-                            "kd_rek = '" + Registrasi_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
+                        Sequel.insertOrUpdateTampJurnal(Registrasi_Ralan, "Registrasi Ralan", 0, ttlRegistrasi);
                     }
 
                     if(Jasa_Medik_Dokter_Tindakan_Ralan>0){
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Beban_Jasa_Medik_Dokter_Tindakan_Ralan + "', 'Operasi Ralan', '" + Double.toString(Jasa_Medik_Dokter_Tindakan_Ralan) + "', '0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "debet = debet + " + Double.toString(Jasa_Medik_Dokter_Tindakan_Ralan),
-                            "kd_rek = '" + Beban_Jasa_Medik_Dokter_Tindakan_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
-
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Utang_Jasa_Medik_Dokter_Tindakan_Ralan + "', 'Operasi Ralan', '0', '" + Double.toString(Jasa_Medik_Dokter_Tindakan_Ralan) + "', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "debet = debet + " + Double.toString(Jasa_Medik_Dokter_Tindakan_Ralan),
-                            "kd_rek = '" + Utang_Jasa_Medik_Dokter_Tindakan_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
+                        Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Medik_Dokter_Tindakan_Ralan, "Beban Operasi Ralan", Jasa_Medik_Dokter_Tindakan_Ralan, 0);
+                        Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Medik_Dokter_Tindakan_Ralan, "Utang Operasi Ralan", 0, Jasa_Medik_Dokter_Tindakan_Ralan);
                     }
 
                     if(Jasa_Medik_Paramedis_Tindakan_Ralan>0){
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Beban_Jasa_Medik_Paramedis_Tindakan_Ralan + "', 'Operasi Ralan', '" + Double.toString(Jasa_Medik_Paramedis_Tindakan_Ralan) + "', '0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "debet = debet + " + Double.toString(Jasa_Medik_Paramedis_Tindakan_Ralan),
-                            "kd_rek = '" + Beban_Jasa_Medik_Paramedis_Tindakan_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
-
-                        Sequel.menyimpan(
-                            "tampjurnal_smc",
-                            "'" + Utang_Jasa_Medik_Paramedis_Tindakan_Ralan + "', 'Operasi Ralan', '0', '" + Double.toString(Jasa_Medik_Paramedis_Tindakan_Ralan) + "', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                            "debet = debet + " + Double.toString(Jasa_Medik_Paramedis_Tindakan_Ralan),
-                            "kd_rek = '" + Utang_Jasa_Medik_Paramedis_Tindakan_Ralan + "' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                        );
+                        Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Medik_Paramedis_Tindakan_Ralan, "Beban Operasi Ralan", Jasa_Medik_Paramedis_Tindakan_Ralan, 0);
+                        Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Medik_Paramedis_Tindakan_Ralan, "Utang Operasi Ralan", 0, Jasa_Medik_Paramedis_Tindakan_Ralan);
                     }
 
                     if(KSO_Tindakan_Ralan>0){
