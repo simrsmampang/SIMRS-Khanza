@@ -658,102 +658,32 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
                 Sequel.deleteTampJurnal();
                 if(ttlpendapatan>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Suspen_Piutang_Tindakan_Ralan+"','Suspen Piutang Tindakan Ralan','0','"+ttlpendapatan+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttlpendapatan)+"'",
-                        "kd_rek='"+Suspen_Piutang_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Tindakan_Ralan+"','Pendapatan Tindakan Rawat Jalan','"+ttlpendapatan+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlpendapatan)+"'",
-                        "kd_rek='"+Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );                             
+                    Sequel.insertOrUpdateTampJurnal(Suspen_Piutang_Tindakan_Ralan, "Suspen Piutang Tindakan Ralan", 0, ttlpendapatan);
+                    Sequel.insertOrUpdateTampJurnal(Tindakan_Ralan, "Pendapatan Tindakan Rawat Jalan", ttlpendapatan, 0);
                 }
                 if(ttljmdokter>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"','Beban Jasa Medik Dokter Tindakan Ralan','0','"+ttljmdokter+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttljmdokter)+"'",
-                        "kd_rek='"+Beban_Jasa_Medik_Dokter_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );    
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"','Utang Jasa Medik Dokter Tindakan Ralan','"+ttljmdokter+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttljmdokter)+"'",
-                        "kd_rek='"+Utang_Jasa_Medik_Dokter_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );                              
+                    Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Medik_Dokter_Tindakan_Ralan, "Beban Jasa Medik Dokter Tindakan Ralan", 0, ttljmdokter);
+                    Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Medik_Dokter_Tindakan_Ralan, "Utang Jasa Medik Dokter Tindakan Ralan", ttljmdokter, 0);
                 }
                 if(ttljmperawat>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Beban Jasa Medik Paramedis Tindakan Ralan','0','"+ttljmperawat+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttljmperawat)+"'",
-                        "kd_rek='"+Beban_Jasa_Medik_Paramedis_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );     
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"','Utang Jasa Medik Paramedis Tindakan Ralan','"+ttljmperawat+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttljmperawat)+"'",
-                        "kd_rek='"+Utang_Jasa_Medik_Paramedis_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );                              
+                    Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Medik_Paramedis_Tindakan_Ralan, "Beban Jasa Medik Paramedis Tindakan Ralan", 0, ttljmperawat);
+                    Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Medik_Paramedis_Tindakan_Ralan, "Utang Jasa Medik Paramedis Tindakan Ralan", ttljmperawat, 0);
                 }
                 if(ttlkso>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_KSO_Tindakan_Ralan+"','Beban KSO Tindakan Ralan','0','"+ttlkso+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttlkso)+"'",
-                        "kd_rek='"+Beban_KSO_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );    
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_KSO_Tindakan_Ralan+"','Utang KSO Tindakan Ralan','"+ttlkso+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlkso)+"'",
-                        "kd_rek='"+Utang_KSO_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );                               
+                    Sequel.insertOrUpdateTampJurnal(Beban_KSO_Tindakan_Ralan, "Beban KSO Tindakan Ralan", 0, ttlkso);
+                    Sequel.insertOrUpdateTampJurnal(Utang_KSO_Tindakan_Ralan, "Utang KSO Tindakan Ralan", ttlkso, 0);
                 }
                 if(ttlmenejemen>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Beban Jasa Menejemen Tindakan Ralan','0','"+ttlmenejemen+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttlmenejemen)+"'",
-                        "kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );    
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Utang Jasa Menejemen Tindakan Ralan','"+ttlmenejemen+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlmenejemen)+"'",
-                        "kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );                                
+                    Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Menejemen_Tindakan_Ralan, "Beban Jasa Manajemen Tindakan Ralan", 0, ttlmenejemen);
+                    Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Menejemen_Tindakan_Ralan, "Utang Jasa Manajemen Tindakan Ralan", ttlmenejemen, 0);
                 }
                 if(ttljasasarana>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_Jasa_Sarana_Tindakan_Ralan+"','Beban Jasa Sarana Tindakan Ralan','0','"+ttljasasarana+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttljasasarana)+"'",
-                        "kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_Jasa_Sarana_Tindakan_Ralan+"','Utang Jasa Sarana Tindakan Ralan','"+ttljasasarana+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttljasasarana)+"'",
-                        "kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );                              
+                    Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Sarana_Tindakan_Ralan, "Beban Jasa Sarana Tindakan Ralan", 0, ttljasasarana);
+                    Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Sarana_Tindakan_Ralan, "Utang Jasa Sarana Tindakan Ralan", ttljasasarana, 0);
                 }
                 if(ttlbhp>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+HPP_BHP_Tindakan_Ralan+"','HPP BHP Tindakan Ralan','0','"+ttlbhp+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttlbhp)+"'",
-                        "kd_rek='"+HPP_BHP_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );    
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Persediaan_BHP_Tindakan_Ralan+"','Persediaan BHP Tindakan Ralan','"+ttlbhp+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlbhp)+"'",
-                        "kd_rek='"+Persediaan_BHP_Tindakan_Ralan+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );                            
+                    Sequel.insertOrUpdateTampJurnal(HPP_BHP_Tindakan_Ralan, "HPP BHP Tindakan Ralan", 0, ttlbhp);
+                    Sequel.insertOrUpdateTampJurnal(Persediaan_BHP_Tindakan_Ralan, "Persediaan BHP Tindakan Ralan", ttlbhp, 0);
                 }
                 sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(),"U","PEMBATALAN PEMBERIAN TINDAKAN RAWAT INAP PASIEN, OLEH "+akses.getkode());
                 
@@ -780,7 +710,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         "and jam_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()+"'");
                     
                     try {
-                        URL = link+"/tindakan/"+tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString()+"/kunjungan/"+tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString();;
+                        URL = link+"/tindakan/"+tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString()+"/kunjungan/"+tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString();
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
@@ -851,102 +781,32 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
                 Sequel.deleteTampJurnal();
                 if(ttlpendapatan>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Suspen_Piutang_Tindakan_Ranap+"','Suspen Piutang Tindakan Ranap','0','"+ttlpendapatan+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttlpendapatan)+"'",
-                        "kd_rek='"+Suspen_Piutang_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Tindakan_Ranap+"','Pendapatan Tindakan Rawat Inap','"+ttlpendapatan+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlpendapatan)+"'",
-                        "kd_rek='"+Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
+                    Sequel.insertOrUpdateTampJurnal(Suspen_Piutang_Tindakan_Ranap, "Suspen Piutang Tindakan Ranap", 0, ttlpendapatan);
+                    Sequel.insertOrUpdateTampJurnal(Tindakan_Ranap, "Pendapatan Tindakan Rawat Inap", ttlpendapatan, 0);
                 }
                 if(ttljmdokter>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"','Beban Jasa Medik Dokter Tindakan Ranap','0','"+ttljmdokter+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttljmdokter)+"'",
-                        "kd_rek='"+Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_Jasa_Medik_Dokter_Tindakan_Ranap+"','Utang Jasa Medik Dokter Tindakan Ranap','"+ttljmdokter+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttljmdokter)+"'",
-                        "kd_rek='"+Utang_Jasa_Medik_Dokter_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
+                    Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Medik_Dokter_Tindakan_Ranap, "Beban Jasa Medik Dokter Tindakan Ranap", 0, ttljmdokter);
+                    Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Medik_Dokter_Tindakan_Ranap, "Utang Jasa Medik Dokter Tindakan Ranap", ttljmdokter, 0);
                 }
                 if(ttljmperawat>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_Jasa_Medik_Paramedis_Tindakan_Ranap+"','Beban Jasa Medik Paramedis Tindakan Ranap','0','"+ttljmperawat+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttljmperawat)+"'",
-                        "kd_rek='"+Beban_Jasa_Medik_Paramedis_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_Jasa_Medik_Paramedis_Tindakan_Ranap+"','Utang Jasa Medik Paramedis Tindakan Ranap','"+ttljmperawat+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttljmperawat)+"'",
-                        "kd_rek='"+Utang_Jasa_Medik_Paramedis_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
+                    Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Medik_Paramedis_Tindakan_Ranap, "Beban Jasa Medik Paramedis Tindakan Ranap", 0, ttljmperawat);
+                    Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Medik_Paramedis_Tindakan_Ranap, "Utang Jasa Medik Paramedis Tindakan Ranap", ttljmperawat, 0);
                 }
                 if(ttlkso>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','0','"+ttlkso+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttlkso)+"'",
-                        "kd_rek='"+Beban_KSO_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','"+ttlkso+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlkso)+"'",
-                        "kd_rek='"+Utang_KSO_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
+                    Sequel.insertOrUpdateTampJurnal(Beban_KSO_Tindakan_Ranap, "Beban KSO Tindakan Ranap", 0, ttlkso);
+                    Sequel.insertOrUpdateTampJurnal(Utang_KSO_Tindakan_Ranap, "Utang KSO Tindakan Ranap", ttlkso, 0);
                 }
                 if(ttlmenejemen>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_Jasa_Menejemen_Tindakan_Ranap+"','Beban Jasa Menejemen Tindakan Ranap','0','"+ttlmenejemen+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttlmenejemen)+"'",
-                        "kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_Jasa_Menejemen_Tindakan_Ranap+"','Utang Jasa Menejemen Tindakan Ranap','"+ttlmenejemen+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlmenejemen)+"'",
-                        "kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
+                    Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Menejemen_Tindakan_Ranap, "Beban Jasa Manajemen Tindakan Ranap", 0, ttlmenejemen);
+                    Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Menejemen_Tindakan_Ranap, "Utang Jasa Manajemen Tindakan Ranap", ttlmenejemen, 0);
                 }
                 if(ttljasasarana>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Beban_Jasa_Sarana_Tindakan_Ranap+"','Beban Jasa Sarana Tindakan Ranap','0','"+ttljasasarana+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttljasasarana)+"'",
-                        "kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Utang_Jasa_Sarana_Tindakan_Ranap+"','Utang Jasa Sarana Tindakan Ranap','"+ttljasasarana+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttljasasarana)+"'",
-                        "kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
+                    Sequel.insertOrUpdateTampJurnal(Beban_Jasa_Sarana_Tindakan_Ranap, "Beban Jasa Sarana Tindakan Ranap", ttljasasarana, 0);
+                    Sequel.insertOrUpdateTampJurnal(Utang_Jasa_Sarana_Tindakan_Ranap, "Utang Jasa Sarana Tindakan Ranap", 0, ttljasasarana);
                 }
                 if(ttlbhp>0){
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+HPP_BHP_Tindakan_Ranap+"','HPP BHP Tindakan Ranap','0','"+ttlbhp+"', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "kredit=kredit+'"+(ttlbhp)+"'",
-                        "kd_rek='"+HPP_BHP_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
-                    Sequel.menyimpan(
-                        "tampjurnal_smc",
-                        "'"+Persediaan_BHP_Tindakan_Ranap+"','Persediaan BHP Tindakan Ranap','"+ttlbhp+"','0', '" + akses.getkode() + "', '" + akses.getalamatip() + "'",
-                        "debet=debet+'"+(ttlbhp)+"'",
-                        "kd_rek='"+Persediaan_BHP_Tindakan_Ranap+"' and user_id = '" + akses.getkode() + "' and ip = '" + akses.getalamatip() + "'"
-                    );
+                    Sequel.insertOrUpdateTampJurnal(HPP_BHP_Tindakan_Ranap, "HPP BHP Tindakan Ranap", 0, ttlbhp);
+                    Sequel.insertOrUpdateTampJurnal(Persediaan_BHP_Tindakan_Ranap, "Persediaan BHP Tindakan Ranap", ttlbhp, 0);
                 }
                 sukses=jur.simpanJurnal(tbDokter2.getValueAt(tbDokter2.getSelectedRow(),3).toString(),"U","PEMBATALAN PEMBERIAN TINDAKAN RAWAT INAP PASIEN, OLEH "+akses.getkode());
                 

@@ -1860,7 +1860,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/03/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/05/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7286,12 +7286,12 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel11.setName("jLabel11"); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(430, 30));
         panelJudul.add(jLabel11);
-        jLabel11.setBounds(210, 90, 680, 30);
+        jLabel11.setBounds(160, 90, 680, 30);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(50, 50, 50));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/yaski_icon.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Projects\\php\\smc-sisro\\public\\img\\icon-114x114.png")); // NOI18N
         jLabel8.setText("Khanza HMS+, Hospital Management System");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel8.setName("jLabel8"); // NOI18N

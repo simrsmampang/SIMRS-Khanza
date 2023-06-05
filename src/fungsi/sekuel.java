@@ -25,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.ByteBuffer;
@@ -73,8 +74,8 @@ public final class sekuel {
         
         track = track.replaceFirst("\\?", "'"+kdRek+"'");
         track = track.replaceFirst("\\?", "'"+nmRek+"'");
-        track = track.replaceFirst("\\?", (new BigDecimal(d)).toString());
-        track = track.replaceFirst("\\?", (new BigDecimal(k)).toString());
+        track = track.replaceFirst("\\?", (new BigDecimal(d)).setScale(2, RoundingMode.HALF_EVEN).toString());
+        track = track.replaceFirst("\\?", (new BigDecimal(k)).setScale(2, RoundingMode.HALF_EVEN).toString());
         track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
         track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
         
@@ -133,6 +134,73 @@ public final class sekuel {
             System.out.println("Notifikasi: " + e);
             
             JOptionPane.showMessageDialog(null, "Gagal menyimpan data! Kemungkinan ada rekening yang sama dimasukkan sebelumnya!");
+        }
+    }
+    
+    public void insertOrUpdateTampJurnal(String kdRek, String nmRek, double d, double k)
+    {
+        String track;
+        String insertQuery = "insert into tampjurnal_smc (kd_rek, nm_rek, debet, kredit, user_id, ip) values (?, ?, ?, ?, ?, ?)";
+        String updateQuery = "update tampjurnal_smc set ?? where kd_rek = ? and user_id = ? and ip = ?";
+        
+        if (d > 0) {
+            updateQuery = updateQuery.replaceFirst("\\?\\?", "debet = debet + " + d);
+        } else if (k > 0) {
+            updateQuery = updateQuery.replaceFirst("\\?\\?", "kredit = kredit + " + k);
+        } else if (d > 0 && k > 0) {
+            updateQuery = updateQuery.replaceFirst("\\?\\?", "debet = debet + " + d + ", kredit = kredit + " + k);
+        }
+        
+        try {
+            ps = connect.prepareStatement(insertQuery);
+            ps.setString(1, kdRek);
+            ps.setString(2, nmRek);
+            ps.setDouble(3, d);
+            ps.setDouble(4, k);
+            ps.setString(5, akses.getkode());
+            ps.setString(6, akses.getalamatip());
+            
+            ps.executeUpdate();
+            
+            track = insertQuery;
+            track = track.replaceFirst("\\?", "'"+kdRek+"'");
+            track = track.replaceFirst("\\?", "'"+nmRek+"'");
+            track = track.replaceFirst("\\?", (new BigDecimal(d)).setScale(2, RoundingMode.HALF_EVEN).toString());
+            track = track.replaceFirst("\\?", (new BigDecimal(k)).setScale(2, RoundingMode.HALF_EVEN).toString());
+            track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
+            track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
+            
+            if (ps != null) {
+                ps.close();
+            }
+            
+            SimpanTrack(track);
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+            System.out.println("Melakukan update...");
+            try {
+                ps = connect.prepareStatement(updateQuery);
+                ps.setString(1, kdRek);
+                ps.setString(2, akses.getkode());
+                ps.setString(3, akses.getalamatip());
+                
+                ps.executeUpdate();
+                
+                track = updateQuery;
+                track = track.replaceFirst("\\?", "'"+kdRek+"'");
+                track = track.replaceFirst("\\?", "'"+akses.getkode()+"'");
+                track = track.replaceFirst("\\?", "'"+akses.getalamatip()+"'");
+                
+                if (ps != null) {
+                    ps.close();
+                }
+                
+                SimpanTrack(track);
+            } catch (SQLException ex) {
+                System.out.println("Notifikasi : " + ex);
+            
+                JOptionPane.showMessageDialog(null, "Gagal menyimpan data!");
+            }
         }
     }
     
