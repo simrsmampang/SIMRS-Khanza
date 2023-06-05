@@ -789,6 +789,7 @@ import rekammedis.MasterTriaseSkala3;
 import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMCariRekonsiliasiObat;
+import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
@@ -807,6 +808,7 @@ import rekammedis.RMEdukasiPasienKeluargaRawatJalan;
 import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMMCU;
+import rekammedis.RMPemantauanMEOWS;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPemantauanPEWSD;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
@@ -20165,6 +20167,32 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPemantauanMEOWSActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPemantauanMEOWS aplikasi=new RMPemantauanMEOWS(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnCatatanADIMEGiziActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMCatatanADIMEGizi form=new RMCatatanADIMEGizi(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.tampil();
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20837,7 +20865,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
-            btnPenilaianPasienKeracunan;
+            btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi;
     
     public void isWall(){
         try{            
@@ -24027,6 +24055,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getcatatan_adime_gizi()==true){
+                Panelmenu.add(btnCatatanADIMEGizi);
+                jmlmenu++;
+            }
+            
             if(akses.getskrining_nutrisi_dewasa()==true){
                 Panelmenu.add(btnSkriningNutrisiDewasa);
                 jmlmenu++;
@@ -24314,6 +24347,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpemantauan_pews_dewasa()==true){
                 Panelmenu.add(btnPemantauanPEWSDewasa);
+                jmlmenu++;
+            }
+            
+            if(akses.getpemantauan_meows_obstetri()==true){
+                Panelmenu.add(btnPemantauanMEOWS);
                 jmlmenu++;
             }
             
@@ -28701,6 +28739,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         } 
         
+        if(akses.getcatatan_adime_gizi()==true){
+            Panelmenu.add(btnCatatanADIMEGizi);
+            jmlmenu++;
+        }
+        
         if(akses.getskrining_nutrisi_dewasa()==true){
             Panelmenu.add(btnSkriningNutrisiDewasa);
             jmlmenu++;
@@ -28988,6 +29031,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpemantauan_pews_dewasa()==true){
             Panelmenu.add(btnPemantauanPEWSDewasa);
+            jmlmenu++;
+        }
+        
+        if(akses.getpemantauan_meows_obstetri()==true){
+            Panelmenu.add(btnPemantauanMEOWS);
             jmlmenu++;
         }
             
@@ -34592,6 +34640,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getcatatan_adime_gizi()==true){
+            if(btnCatatanADIMEGizi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCatatanADIMEGizi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getskrining_nutrisi_dewasa()==true){
             if(btnSkriningNutrisiDewasa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSkriningNutrisiDewasa);
@@ -34994,6 +35049,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpemantauan_pews_dewasa()==true){
             if(btnPemantauanPEWSDewasa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPemantauanPEWSDewasa);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpemantauan_meows_obstetri()==true){
+            if(btnPemantauanMEOWS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemantauanMEOWS);
                 jmlmenu++;
             }                
         }
@@ -40591,7 +40653,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPemantauanPEWSDewasa = new widget.ButtonBig();
         btnPemantauanPEWSDewasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5928521_disease_fever_high_symptom_temperature_icon.png"))); 
-        btnPemantauanPEWSDewasa.setText("Pemantauan PEWS Pasien Dewasa");
+        btnPemantauanPEWSDewasa.setText("Pemantauan EWS Pasien Dewasa");
         btnPemantauanPEWSDewasa.setIconTextGap(0);
         btnPemantauanPEWSDewasa.setName("btnPemantauanPEWSDewasa"); 
         btnPemantauanPEWSDewasa.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -40660,5 +40722,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianPasienKeracunan.setName("btnPenilaianPasienKeracunan"); 
         btnPenilaianPasienKeracunan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianPasienKeracunan.addActionListener(this::btnPenilaianPasienKeracunanActionPerformed);
+        
+        btnPemantauanMEOWS = new widget.ButtonBig();
+        btnPemantauanMEOWS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7744777_pregnant_mothers day_mother_mom_love_icon.png"))); 
+        btnPemantauanMEOWS.setText("Pemantauan MEOWS Pasien Obstetri");
+        btnPemantauanMEOWS.setIconTextGap(0);
+        btnPemantauanMEOWS.setName("btnPemantauanMEOWS"); 
+        btnPemantauanMEOWS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemantauanMEOWS.addActionListener(this::btnPemantauanMEOWSActionPerformed);
+        
+        btnCatatanADIMEGizi = new widget.ButtonBig();
+        btnCatatanADIMEGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6771580_book_education_learning_school_science_icon.png"))); 
+        btnCatatanADIMEGizi.setText("Catatan ADIME Gizi");
+        btnCatatanADIMEGizi.setIconTextGap(0);
+        btnCatatanADIMEGizi.setName("btnCatatanADIMEGizi"); 
+        btnCatatanADIMEGizi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCatatanADIMEGizi.addActionListener(this::btnCatatanADIMEGiziActionPerformed);
     }
 }
