@@ -768,12 +768,14 @@ import rekammedis.RMHemodialisa;
 import rekammedis.MasterImunisasi;
 import rekammedis.MasterMasalahKeperawatan;
 import rekammedis.MasterMasalahKeperawatanAnak;
+import rekammedis.MasterMasalahKeperawatanGeriatri;
 import rekammedis.MasterMasalahKeperawatanGigi;
 import rekammedis.MasterMasalahKeperawatanIGD;
 import rekammedis.MasterMasalahKeperawatanMata;
 import rekammedis.MasterMasalahKeperawatanPsikiatri;
 import rekammedis.MasterRencanaKeperawatan;
 import rekammedis.MasterRencanaKeperawatanAnak;
+import rekammedis.MasterRencanaKeperawatanGeriatri;
 import rekammedis.MasterRencanaKeperawatanGigi;
 import rekammedis.MasterRencanaKeperawatanIGD;
 import rekammedis.MasterRencanaKeperawatanMata;
@@ -1805,7 +1807,7 @@ public class frmUtama extends javax.swing.JFrame {
         label35.setPreferredSize(new java.awt.Dimension(105, 23));
         panelisi2.add(label35);
 
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis, Penunjang ( Lab & RO )", "[F] Transaksi Inventory Barang Dapur Kering & Basah", "[G] Aset, Inventaris Barang & Instalasi Kesehatan Lingkungan", "[H] Menejemen Parkir Kendaraan Pasien & Karyawan", "[I] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[J] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal", "[K] Tarif Pelayanan, Menejemen Keuangan & Akuntansi", "[L] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[M] Olah Data Pasien", "[N] Unit Pelayanan Tranfusi Darah", "[O] Analisa, Dashboard & Info Grafik", "[P] Manajemen Surat Masuk & Keluar, Pengumuman E-Pasien", "[Q] Manajemen Perpustakaan & Koleksi Pustaka Digital", "[R] Toko / Minimarket / Koperasi", "[S] Pengelolaan Data Filantropi, CSR, Zakat, Infaq & Shodaqoh", "[T] Pengaturan Program Aplikasi HMS" }));
+        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis, Penunjang ( Lab & RO )", "[F] Transaksi Inventory Barang Dapur Kering & Basah", "[G] Aset, Inventaris Barang & Instalasi Kesehatan Lingkungan", "[H] Menejemen Parkir Kendaraan Pasien & Karyawan", "[I] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[J] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal", "[K] Tarif Pelayanan, Menejemen Keuangan & Akuntansi", "[L] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[M] Olah Data & Rekam Medis Pasien", "[N] Unit Pelayanan Tranfusi Darah", "[O] Analisa, Dashboard & Info Grafik", "[P] Manajemen Surat Masuk & Keluar, Pengumuman E-Pasien", "[Q] Manajemen Perpustakaan & Koleksi Pustaka Digital", "[R] Toko / Minimarket / Koperasi", "[S] Pengelolaan Data Filantropi, CSR, Zakat, Infaq & Shodaqoh", "[T] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
         cmbMenu.setPreferredSize(new java.awt.Dimension(470, 23));
         cmbMenu.addItemListener(new java.awt.event.ItemListener() {
@@ -1862,7 +1864,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/05/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/06/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -20193,6 +20195,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterMasalahKeperawatanGeriatriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterMasalahKeperawatanGeriatri form=new MasterMasalahKeperawatanGeriatri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnMasterRencanaKeperawatanGeriatriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterRencanaKeperawatanGeriatri form=new MasterRencanaKeperawatanGeriatri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20865,7 +20891,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningManagerPelayananPasien,btnPenilaianPasienPenyakitMenular,btnSkriningMPPFormA,btnSkriningMPPFormB,btnEdukasiPasienKeluargaRJ,
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
-            btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi;
+            btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri;
     
     public void isWall(){
         try{            
@@ -24142,6 +24168,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmaster_rencana_keperawatan_psikiatri()==true){
                 Panelmenu.add(btnMasterRencanaKeperawatanPsikiatri);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_masalah_keperawatan_geriatri()==true){
+                Panelmenu.add(btnMasterMasalahKeperawatanGeriatri);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_rencana_keperawatan_geriatri()==true){
+                Panelmenu.add(btnMasterRencanaKeperawatanGeriatri);
                 jmlmenu++;
             }
             
@@ -28826,6 +28862,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmaster_rencana_keperawatan_psikiatri()==true){
             Panelmenu.add(btnMasterRencanaKeperawatanPsikiatri);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_masalah_keperawatan_geriatri()==true){
+            Panelmenu.add(btnMasterMasalahKeperawatanGeriatri);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_rencana_keperawatan_geriatri()==true){
+            Panelmenu.add(btnMasterRencanaKeperawatanGeriatri);
             jmlmenu++;
         }
 
@@ -34762,6 +34808,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getmaster_rencana_keperawatan_psikiatri()==true){
             if(btnMasterRencanaKeperawatanPsikiatri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterRencanaKeperawatanPsikiatri);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmaster_masalah_keperawatan_geriatri()==true){
+            if(btnMasterMasalahKeperawatanGeriatri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterMasalahKeperawatanGeriatri);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmaster_rencana_keperawatan_geriatri()==true){
+            if(btnMasterRencanaKeperawatanGeriatri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterRencanaKeperawatanGeriatri);
                 jmlmenu++;
             }                
         }
@@ -40738,5 +40798,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCatatanADIMEGizi.setName("btnCatatanADIMEGizi"); 
         btnCatatanADIMEGizi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnCatatanADIMEGizi.addActionListener(this::btnCatatanADIMEGiziActionPerformed);
+        
+        btnMasterMasalahKeperawatanGeriatri = new widget.ButtonBig();
+        btnMasterMasalahKeperawatanGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3099440_old_man_icon.png"))); 
+        btnMasterMasalahKeperawatanGeriatri.setText("Master Masalah Keperawatan Geriatri");
+        btnMasterMasalahKeperawatanGeriatri.setIconTextGap(0);
+        btnMasterMasalahKeperawatanGeriatri.setName("btnMasterMasalahKeperawatanGeriatri"); 
+        btnMasterMasalahKeperawatanGeriatri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterMasalahKeperawatanGeriatri.addActionListener(this::btnMasterMasalahKeperawatanGeriatriActionPerformed);
+        
+        btnMasterRencanaKeperawatanGeriatri = new widget.ButtonBig();
+        btnMasterRencanaKeperawatanGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3099440_old_man_icon.png"))); 
+        btnMasterRencanaKeperawatanGeriatri.setText("Master Rencana Keperawatan Geriatri");
+        btnMasterRencanaKeperawatanGeriatri.setIconTextGap(0);
+        btnMasterRencanaKeperawatanGeriatri.setName("btnMasterRencanaKeperawatanGeriatri"); 
+        btnMasterRencanaKeperawatanGeriatri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterRencanaKeperawatanGeriatri.addActionListener(this::btnMasterRencanaKeperawatanGeriatriActionPerformed);
     }
 }
