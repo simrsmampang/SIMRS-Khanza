@@ -1529,19 +1529,22 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             return;
         }
         
-        total=0;
-        jml=0;
-        for(i=0;i<tbBelumLunas.getRowCount();i++){
-            tbBelumLunas.setValueAt(false,i,0);
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                for (i = 0; i < tbBelumLunas.getRowCount(); i++) {
+                    tbBelumLunas.setValueAt(false, i, 0);
+                }
+            break;
+            
+            case 1:
+                for (i = 0; i < tbBelumDitagihkan.getRowCount(); i++) {
+                    tbBelumDitagihkan.setValueAt(true, i, 0);
+                }
+            break;
         }
-        for(i=0;i<tbBelumLunas.getRowCount();i++){  
-            if(tbBelumLunas.getValueAt(i,0).toString().equals("true")){
-                 total=total+(Double.parseDouble(tbBelumLunas.getValueAt(i,6).toString()));   
-                 jml++;
-            }
-        }
-        LCountDipilih1.setText(jml+"");
-        LCountDipilih2.setText(Valid.SetAngka(total));
+        
+        LCountDipilih1.setText("0");
+        LCountDipilih2.setText(Valid.SetAngka(0));
         
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppBersihkanActionPerformed
