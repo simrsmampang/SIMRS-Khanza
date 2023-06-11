@@ -283,6 +283,7 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSkriningNutrisi = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
+        JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -397,6 +398,14 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
+
+        JK.setHighlighter(null);
+        JK.setName("JK"); // NOI18N
+        JK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JKKeyPressed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -568,7 +577,7 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -582,7 +591,7 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -765,7 +774,7 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-01-2023 18:58:14" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023 19:27:35" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1231,9 +1240,8 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
-            isPsien();
         }else{            
-            //Valid.pindah(evt,TCari,Tanggal);
+            Valid.pindah(evt,TCari,Tanggal);
         }
 }//GEN-LAST:event_TNoRwKeyPressed
 
@@ -1262,7 +1270,15 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
                 MRI.getSelectedItem().toString(),KeteranganMRI.getText(),PersiapanDarah.getSelectedItem().toString(),KeteranganPersiapanDarah.getText(), 
                 PerlengkapanKhusus.getSelectedItem().toString(),KdPetugasRuangan.getText(),KdPetugasOK.getText()
             })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+                    SNCN.getText(),Tindakan.getText(),KodeDokterBedah.getText(),NamaDokterBedah.getText(),KodeDokterAnestesi.getText(),NamaDokterAnestesi.getText(),Identitas.getSelectedItem().toString(),
+                    KeadaanUmum.getSelectedItem().toString(),AreaOperasi.getSelectedItem().toString(),IjinBedah.getSelectedItem().toString(),IjinAnestesi.getSelectedItem().toString(),IjinTransfusi.getSelectedItem().toString(),
+                    PersiapanDarah.getSelectedItem().toString(),KeteranganPersiapanDarah.getText(),PerlengkapanKhusus.getSelectedItem().toString(),Radiologi.getSelectedItem().toString(),KeteranganRadiologi.getText(),
+                    EKG.getSelectedItem().toString(),KeteranganEKG.getText(),USG.getSelectedItem().toString(),KeteranganUSG.getText(),CTScan.getSelectedItem().toString(),KeteranganCTScan.getText(),
+                    MRI.getSelectedItem().toString(),KeteranganMRI.getText(),KdPetugasRuangan.getText(),NmPetugasRuangan.getText(),KdPetugasOK.getText(),NmPetugasOK.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             } 
         }
@@ -1366,198 +1382,128 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             try{
-                if(TCari.getText().trim().equals("")){
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_pre_operasi.tanggal,"+
-                        "checklist_pre_operasi.sncn,checklist_pre_operasi.tindakan,checklist_pre_operasi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "checklist_pre_operasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,checklist_pre_operasi.identitas,"+
-                        "checklist_pre_operasi.surat_ijin_bedah,checklist_pre_operasi.surat_ijin_anestesi,checklist_pre_operasi.surat_ijin_transfusi,"+
-                        "checklist_pre_operasi.penandaan_area_operasi,checklist_pre_operasi.keadaan_umum,checklist_pre_operasi.pemeriksaan_penunjang_rontgen,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_rontgen,checklist_pre_operasi.pemeriksaan_penunjang_ekg,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_ekg,checklist_pre_operasi.pemeriksaan_penunjang_usg,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_usg,checklist_pre_operasi.pemeriksaan_penunjang_ctscan,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_ctscan,checklist_pre_operasi.pemeriksaan_penunjang_mri,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_mri,checklist_pre_operasi.persiapan_darah,checklist_pre_operasi.keterangan_persiapan_darah,"+
-                        "checklist_pre_operasi.perlengkapan_khusus,checklist_pre_operasi.nip_petugas_ruangan,petugasruangan.nama as petugasruangan,"+
-                        "checklist_pre_operasi.nip_perawat_ok,petugasok.nama as petugasok "+
-                        "from checklist_pre_operasi inner join reg_periksa on checklist_pre_operasi.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join dokter as dokterbedah on dokterbedah.kd_dokter=checklist_pre_operasi.kd_dokter_bedah "+
-                        "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=checklist_pre_operasi.kd_dokter_anestesi "+
-                        "inner join petugas as petugasruangan on petugasruangan.nip=checklist_pre_operasi.nip_petugas_ruangan "+
-                        "inner join petugas as petugasok on petugasok.nip=checklist_pre_operasi.nip_perawat_ok "+
-                        "where checklist_pre_operasi.tanggal between ? and ? order by checklist_pre_operasi.tanggal ");
-                }else{
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_pre_operasi.tanggal,"+
-                        "checklist_pre_operasi.sncn,checklist_pre_operasi.tindakan,checklist_pre_operasi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "checklist_pre_operasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,checklist_pre_operasi.identitas,"+
-                        "checklist_pre_operasi.surat_ijin_bedah,checklist_pre_operasi.surat_ijin_anestesi,checklist_pre_operasi.surat_ijin_transfusi,"+
-                        "checklist_pre_operasi.penandaan_area_operasi,checklist_pre_operasi.keadaan_umum,checklist_pre_operasi.pemeriksaan_penunjang_rontgen,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_rontgen,checklist_pre_operasi.pemeriksaan_penunjang_ekg,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_ekg,checklist_pre_operasi.pemeriksaan_penunjang_usg,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_usg,checklist_pre_operasi.pemeriksaan_penunjang_ctscan,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_ctscan,checklist_pre_operasi.pemeriksaan_penunjang_mri,"+
-                        "checklist_pre_operasi.keterangan_pemeriksaan_penunjang_mri,checklist_pre_operasi.persiapan_darah,checklist_pre_operasi.keterangan_persiapan_darah,"+
-                        "checklist_pre_operasi.perlengkapan_khusus,checklist_pre_operasi.nip_petugas_ruangan,petugasruangan.nama as petugasruangan,"+
-                        "checklist_pre_operasi.nip_perawat_ok,petugasok.nama as petugasok "+
-                        "from checklist_pre_operasi inner join reg_periksa on checklist_pre_operasi.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join dokter as dokterbedah on dokterbedah.kd_dokter=checklist_pre_operasi.kd_dokter_bedah "+
-                        "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=checklist_pre_operasi.kd_dokter_anestesi "+
-                        "inner join petugas as petugasruangan on petugasruangan.nip=checklist_pre_operasi.nip_petugas_ruangan "+
-                        "inner join petugas as petugasok on petugasok.nip=checklist_pre_operasi.nip_perawat_ok "+
-                        "where checklist_pre_operasi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                        "pasien.nm_pasien like ? or dokterbedah.nm_dokter like ? or dokteranestesi.nm_dokter like ? or petugasruangan.nama like ?) "+
-                        "order by checklist_pre_operasi.tanggal ");
-                }
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SN/CN</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindakan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Bedah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Bedah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Anest</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Anestesi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Identitas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keadaan Umum</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penandaan Area Operasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Surat Ijin Bedah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Surat Ijin Anestesi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Surat Ijin Transfusi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Persiapan Darah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Persiapan Darah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perlengkapan Khusus</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Radiologi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>EKG</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan EKG</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>USG</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan USG</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CT Scan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan CT Scan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MRI</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan MRI</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Ruangan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Ruangan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP OK</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Ruang OK</b></td>"+
+                    "</tr>"
+                );
 
-                try {
-                    if(TCari.getText().trim().equals("")){
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    }else{
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        ps.setString(3,"%"+TCari.getText()+"%");
-                        ps.setString(4,"%"+TCari.getText()+"%");
-                        ps.setString(5,"%"+TCari.getText()+"%");
-                        ps.setString(6,"%"+TCari.getText()+"%");
-                        ps.setString(7,"%"+TCari.getText()+"%");
-                        ps.setString(8,"%"+TCari.getText()+"%");
-                    }
-                    rs=ps.executeQuery();
-                    htmlContent = new StringBuilder();
-                    htmlContent.append(                             
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SN/CN</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindakan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Anest</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Identitas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keadaan Umum</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penandaan Area Operasi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Surat Ijin Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Surat Ijin Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Surat Ijin Transfusi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Persiapan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Persiapan Darah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perlengkapan Khusus</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Radiologi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>EKG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan EKG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>USG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan USG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>CT Scan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan CT Scan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MRI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan MRI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Ruangan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Ruangan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP OK</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Ruang OK</b></td>"+
-                        "</tr>"
-                    );
-                    while(rs.next()){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                               "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
-                               "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("sncn")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tindakan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kd_dokter_bedah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dokterbedah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kd_dokter_anestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dokteranestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("identitas")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keadaan_umum")+"</td>"+
-                               "<td valign='top'>"+rs.getString("penandaan_area_operasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("surat_ijin_bedah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("surat_ijin_anestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("surat_ijin_transfusi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("persiapan_darah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keterangan_persiapan_darah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("perlengkapan_khusus")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan_penunjang_rontgen")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keterangan_pemeriksaan_penunjang_rontgen")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan_penunjang_ekg")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keterangan_pemeriksaan_penunjang_ekg")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan_penunjang_usg")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keterangan_pemeriksaan_penunjang_usg")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan_penunjang_ctscan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keterangan_pemeriksaan_penunjang_ctscan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pemeriksaan_penunjang_mri")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keterangan_pemeriksaan_penunjang_mri")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nip_petugas_ruangan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("petugasruangan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nip_perawat_ok")+"</td>"+
-                               "<td valign='top'>"+rs.getString("petugasok")+"</td>"+
-                            "</tr>");
-                    }
-                    LoadHTML.setText(
-                        "<html>"+
-                          "<table width='3500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>"
-                    );
-
-                    File g = new File("file2.css");            
-                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                    bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
-                    );
-                    bg.close();
-
-                    File f = new File("DataChecklistPreOperasi.html");            
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                                "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='3500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                        "<td valign='top' align='center'>"+
-                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA CHECK LIST PRE OPERASI<br><br></font>"+        
-                                        "</td>"+
-                                   "</tr>"+
-                                "</table>")
-                    );
-                    bw.close();                         
-                    Desktop.getDesktop().browse(f.toURI());
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
+                        "</tr>");
                 }
+                
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='3500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
 
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("DataChecklistPreOperasi.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='3500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA CHECK LIST PRE OPERASI<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }
@@ -1814,6 +1760,10 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
         Valid.pindah(evt,MRI,btnPetugasRuangan);
     }//GEN-LAST:event_KeteranganMRIKeyPressed
 
+    private void JKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JKKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1850,6 +1800,7 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
     private widget.ComboBox IjinAnestesi;
     private widget.ComboBox IjinBedah;
     private widget.ComboBox IjinTransfusi;
+    private widget.TextBox JK;
     private widget.TextBox KdPetugasOK;
     private widget.TextBox KdPetugasRuangan;
     private widget.ComboBox KeadaanUmum;
@@ -2092,22 +2043,43 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
+    
     private void isRawat() {
-         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
-    }
-
-    private void isPsien() {
-        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
-        Sequel.cariIsi("select DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",TglLahir,TNoRM.getText());
+        try {
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi "+
+                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "where reg_periksa.no_rawat=?");
+            try {
+                ps.setString(1,TNoRw.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    DTPCari1.setDate(rs.getDate("tgl_registrasi"));
+                    TPasien.setText(rs.getString("nm_pasien"));
+                    JK.setText(rs.getString("jk"));
+                    TglLahir.setText(rs.getString("tgl_lahir"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
     
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
-        isPsien();
         ChkInput.setSelected(true);
         isForm();
     }
@@ -2115,10 +2087,8 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
     public void setNoRm(String norwt, Date tgl2,String KodeDokter,String NamaDokter,String Operasi) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
-        isPsien();
         ChkInput.setSelected(true);
         isForm();
         KodeDokterBedah.setText(KodeDokter);
@@ -2155,7 +2125,7 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        Sequel.mengedit("checklist_pre_operasi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,sncn=?,tindakan=?,kd_dokter_bedah=?,kd_dokter_anestesi=?,identitas=?,"+
+        if(Sequel.mengedittf("checklist_pre_operasi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,sncn=?,tindakan=?,kd_dokter_bedah=?,kd_dokter_anestesi=?,identitas=?,"+
             "surat_ijin_bedah=?,surat_ijin_anestesi=?,surat_ijin_transfusi=?,penandaan_area_operasi=?,keadaan_umum=?,pemeriksaan_penunjang_rontgen=?,keterangan_pemeriksaan_penunjang_rontgen=?,"+
             "pemeriksaan_penunjang_ekg=?,keterangan_pemeriksaan_penunjang_ekg=?,pemeriksaan_penunjang_usg=?,keterangan_pemeriksaan_penunjang_usg=?,pemeriksaan_penunjang_ctscan=?,"+
             "keterangan_pemeriksaan_penunjang_ctscan=?,pemeriksaan_penunjang_mri=?,keterangan_pemeriksaan_penunjang_mri=?,persiapan_darah=?,keterangan_persiapan_darah=?,perlengkapan_khusus=?,"+
@@ -2168,10 +2138,44 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
                 MRI.getSelectedItem().toString(),KeteranganMRI.getText(),PersiapanDarah.getSelectedItem().toString(),KeteranganPersiapanDarah.getText(), 
                 PerlengkapanKhusus.getSelectedItem().toString(),KdPetugasRuangan.getText(),KdPetugasOK.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
-        });
-            
-        if(tabMode.getRowCount()!=0){tampil();}
-        emptTeks();
+        })==true){
+            tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+            tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+            tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+            tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
+            tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
+            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),5);
+            tbObat.setValueAt(SNCN.getText(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(Tindakan.getText(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(KodeDokterBedah.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(NamaDokterBedah.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(KodeDokterAnestesi.getText(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(NamaDokterAnestesi.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(Identitas.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(KeadaanUmum.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(AreaOperasi.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(IjinBedah.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(IjinAnestesi.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(IjinTransfusi.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(PersiapanDarah.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+            tbObat.setValueAt(KeteranganPersiapanDarah.getText(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(PerlengkapanKhusus.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(Radiologi.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(KeteranganRadiologi.getText(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(EKG.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
+            tbObat.setValueAt(KeteranganEKG.getText(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(USG.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
+            tbObat.setValueAt(KeteranganUSG.getText(),tbObat.getSelectedRow(),26);
+            tbObat.setValueAt(CTScan.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
+            tbObat.setValueAt(KeteranganCTScan.getText(),tbObat.getSelectedRow(),28);
+            tbObat.setValueAt(MRI.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
+            tbObat.setValueAt(KeteranganMRI.getText(),tbObat.getSelectedRow(),30);
+            tbObat.setValueAt(KdPetugasRuangan.getText(),tbObat.getSelectedRow(),31);
+            tbObat.setValueAt(NmPetugasRuangan.getText(),tbObat.getSelectedRow(),32);
+            tbObat.setValueAt(KdPetugasOK.getText(),tbObat.getSelectedRow(),33);
+            tbObat.setValueAt(NmPetugasOK.getText(),tbObat.getSelectedRow(),34);
+            emptTeks();
+        }
     }
 
     private void hapus() {

@@ -1674,8 +1674,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setRequestFocusEnabled(false);
-        internalFrame3.setWarnaAtas(new java.awt.Color(250, 190, 200));
-        internalFrame3.setWarnaBawah(new java.awt.Color(255, 240, 250));
+        internalFrame3.setWarnaAtas(new java.awt.Color(250, 200, 210));
+        internalFrame3.setWarnaBawah(new java.awt.Color(255, 245, 255));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);
