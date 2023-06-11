@@ -6252,8 +6252,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td valign='top' align='right' width='5%'>"+rs2.getString("fraily_phenotype_waktu_berjalan_nilai")+"&nbsp;&nbsp;</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td valign='top' align='right' colspan='2'>Status Skor Frailty Phenotype : "+rs2.getString("fraily_phenotype_status")+"</td>"+
-                                              "<td valign='top' align='right' colspan='2'>"+rs2.getString("fraily_phenotype_nilai_total")+"&nbsp;&nbsp;</td>"+
+                                              "<td valign='top' align='left' colspan='2'>Status Skor Frailty Phenotype</td>"+
+                                              "<td valign='top' align='center' width='40%'>"+rs2.getString("fraily_phenotype_status")+"</td>"+
+                                              "<td valign='top' align='right' width='5%'>"+rs2.getString("fraily_phenotype_nilai_total")+"&nbsp;&nbsp;</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
