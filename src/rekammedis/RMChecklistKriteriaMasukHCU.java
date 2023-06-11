@@ -154,7 +154,6 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        KeteranganPersiapanDarah.setDocument(new batasInput((byte)20).getKata(KeteranganPersiapanDarah));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -273,20 +272,22 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         Tanggal = new widget.Tanggal();
-        KeteranganPersiapanDarah = new widget.TextBox();
         jLabel23 = new widget.Label();
         KodePetugas = new widget.TextBox();
         NamaPetugas = new widget.TextBox();
         btnDokterBedah = new widget.Button();
-        jLabel56 = new widget.Label();
-        PersiapanDarah = new widget.ComboBox();
-        PerlengkapanKhusus = new widget.ComboBox();
+        Kardiologi1 = new widget.ComboBox();
         jLabel58 = new widget.Label();
         jLabel5 = new widget.Label();
         jLabel65 = new widget.Label();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel53 = new widget.Label();
+        jLabel59 = new widget.Label();
+        jLabel60 = new widget.Label();
+        Kardiologi2 = new widget.ComboBox();
+        jLabel61 = new widget.Label();
+        Kardiologi3 = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -477,7 +478,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -491,7 +492,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -640,7 +641,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023 16:56:26" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2023 03:19:11" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -651,16 +652,6 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         });
         FormInput.add(Tanggal);
         Tanggal.setBounds(79, 40, 130, 23);
-
-        KeteranganPersiapanDarah.setHighlighter(null);
-        KeteranganPersiapanDarah.setName("KeteranganPersiapanDarah"); // NOI18N
-        KeteranganPersiapanDarah.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganPersiapanDarahKeyPressed(evt);
-            }
-        });
-        FormInput.add(KeteranganPersiapanDarah);
-        KeteranganPersiapanDarah.setBounds(283, 180, 150, 23);
 
         jLabel23.setText("DPJP/Dokter Jaga/IGD :");
         jLabel23.setName("jLabel23"); // NOI18N
@@ -695,36 +686,21 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         FormInput.add(btnDokterBedah);
         btnDokterBedah.setBounds(761, 40, 28, 23);
 
-        jLabel56.setText("Perlengkapan Khusus, Alat/Implan :");
-        jLabel56.setName("jLabel56"); // NOI18N
-        FormInput.add(jLabel56);
-        jLabel56.setBounds(460, 180, 190, 23);
-
-        PersiapanDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Tidak Ada", "Tidak Diperlukan" }));
-        PersiapanDarah.setName("PersiapanDarah"); // NOI18N
-        PersiapanDarah.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kardiologi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kardiologi1.setName("Kardiologi1"); // NOI18N
+        Kardiologi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PersiapanDarahKeyPressed(evt);
+                Kardiologi1KeyPressed(evt);
             }
         });
-        FormInput.add(PersiapanDarah);
-        PersiapanDarah.setBounds(144, 180, 135, 23);
-
-        PerlengkapanKhusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Tidak Ada", "Tidak Diperlukan" }));
-        PerlengkapanKhusus.setName("PerlengkapanKhusus"); // NOI18N
-        PerlengkapanKhusus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PerlengkapanKhususKeyPressed(evt);
-            }
-        });
-        FormInput.add(PerlengkapanKhusus);
-        PerlengkapanKhusus.setBounds(654, 180, 135, 23);
+        FormInput.add(Kardiologi1);
+        Kardiologi1.setBounds(247, 90, 80, 23);
 
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel58.setText("Persiapan Darah");
+        jLabel58.setText("Menggunakan Inotropik / Vasoaktif Gent");
         jLabel58.setName("jLabel58"); // NOI18N
         FormInput.add(jLabel58);
-        jLabel58.setBounds(53, 180, 90, 23);
+        jLabel58.setBounds(40, 90, 210, 23);
 
         jLabel5.setText(":");
         jLabel5.setName("jLabel5"); // NOI18N
@@ -755,6 +731,41 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         jLabel53.setName("jLabel53"); // NOI18N
         FormInput.add(jLabel53);
         jLabel53.setBounds(10, 70, 180, 23);
+
+        jLabel59.setText(":");
+        jLabel59.setName("jLabel59"); // NOI18N
+        FormInput.add(jLabel59);
+        jLabel59.setBounds(0, 90, 243, 23);
+
+        jLabel60.setText("MAP < 60 mmHg :");
+        jLabel60.setName("jLabel60"); // NOI18N
+        FormInput.add(jLabel60);
+        jLabel60.setBounds(351, 90, 110, 23);
+
+        Kardiologi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kardiologi2.setName("Kardiologi2"); // NOI18N
+        Kardiologi2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Kardiologi2KeyPressed(evt);
+            }
+        });
+        FormInput.add(Kardiologi2);
+        Kardiologi2.setBounds(465, 90, 80, 23);
+
+        jLabel61.setText("Hypertensi Emergency :");
+        jLabel61.setName("jLabel61"); // NOI18N
+        FormInput.add(jLabel61);
+        jLabel61.setBounds(555, 90, 150, 23);
+
+        Kardiologi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kardiologi3.setName("Kardiologi3"); // NOI18N
+        Kardiologi3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Kardiologi3KeyPressed(evt);
+            }
+        });
+        FormInput.add(Kardiologi3);
+        Kardiologi3.setBounds(709, 90, 80, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1223,17 +1234,17 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
        // Valid.pindah(evt,Tindakan,btnDokterAnestesi);
     }//GEN-LAST:event_btnDokterBedahKeyPressed
 
-    private void PersiapanDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PersiapanDarahKeyPressed
+    private void Kardiologi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi1KeyPressed
        //Valid.pindah(evt,IjinTransfusi,KeteranganPersiapanDarah);
-    }//GEN-LAST:event_PersiapanDarahKeyPressed
+    }//GEN-LAST:event_Kardiologi1KeyPressed
 
-    private void PerlengkapanKhususKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerlengkapanKhususKeyPressed
-        //Valid.pindah(evt,KeteranganPersiapanDarah,Radiologi);
-    }//GEN-LAST:event_PerlengkapanKhususKeyPressed
+    private void Kardiologi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kardiologi2KeyPressed
 
-    private void KeteranganPersiapanDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPersiapanDarahKeyPressed
-        //Valid.pindah(evt,PersiapanDarah,PerlengkapanKhusus);
-    }//GEN-LAST:event_KeteranganPersiapanDarahKeyPressed
+    private void Kardiologi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kardiologi3KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1264,15 +1275,15 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox KeteranganPersiapanDarah;
+    private widget.ComboBox Kardiologi1;
+    private widget.ComboBox Kardiologi2;
+    private widget.ComboBox Kardiologi3;
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private javax.swing.JMenuItem MnSkriningNutrisi;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox PerlengkapanKhusus;
-    private widget.ComboBox PersiapanDarah;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1289,9 +1300,11 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel53;
-    private widget.Label jLabel56;
     private widget.Label jLabel58;
+    private widget.Label jLabel59;
     private widget.Label jLabel6;
+    private widget.Label jLabel60;
+    private widget.Label jLabel61;
     private widget.Label jLabel65;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -1402,9 +1415,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     public void emptTeks() {
         KodePetugas.setText("");
         NamaPetugas.setText("");
-        PersiapanDarah.setSelectedIndex(0);
-        KeteranganPersiapanDarah.setText("");
-        PerlengkapanKhusus.setSelectedIndex(0);
+        Kardiologi1.setSelectedIndex(0);
     } 
 
     private void getData() {
