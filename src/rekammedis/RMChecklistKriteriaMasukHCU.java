@@ -322,16 +322,39 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jLabel56 = new widget.Label();
-        SistemSyaraf5 = new widget.ComboBox();
+        SistemPencernaan1 = new widget.ComboBox();
         jLabel78 = new widget.Label();
         jLabel79 = new widget.Label();
         jLabel80 = new widget.Label();
-        SistemSyaraf6 = new widget.ComboBox();
+        SistemPencernaan2 = new widget.ComboBox();
         jLabel81 = new widget.Label();
         jLabel82 = new widget.Label();
-        SistemSyaraf7 = new widget.ComboBox();
+        SistemPencernaan3 = new widget.ComboBox();
         jLabel83 = new widget.Label();
-        SistemSyaraf8 = new widget.ComboBox();
+        SistemPencernaan4 = new widget.ComboBox();
+        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator10 = new javax.swing.JSeparator();
+        jLabel57 = new widget.Label();
+        jLabel84 = new widget.Label();
+        jLabel85 = new widget.Label();
+        Pembedahan1 = new widget.ComboBox();
+        jLabel86 = new widget.Label();
+        jLabel87 = new widget.Label();
+        Pembedahan2 = new widget.ComboBox();
+        jSeparator11 = new javax.swing.JSeparator();
+        jSeparator12 = new javax.swing.JSeparator();
+        jLabel88 = new widget.Label();
+        jLabel89 = new widget.Label();
+        Hematologi1 = new widget.ComboBox();
+        jLabel90 = new widget.Label();
+        jLabel91 = new widget.Label();
+        Hematologi2 = new widget.ComboBox();
+        jSeparator13 = new javax.swing.JSeparator();
+        jSeparator14 = new javax.swing.JSeparator();
+        jLabel92 = new widget.Label();
+        jLabel93 = new widget.Label();
+        jLabel94 = new widget.Label();
+        Infeksi = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -627,7 +650,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 463));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 603));
         FormInput.setLayout(null);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1065,16 +1088,16 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         FormInput.add(jLabel56);
         jLabel56.setBounds(10, 340, 240, 23);
 
-        SistemSyaraf5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        SistemSyaraf5.setSelectedIndex(1);
-        SistemSyaraf5.setName("SistemSyaraf5"); // NOI18N
-        SistemSyaraf5.addKeyListener(new java.awt.event.KeyAdapter() {
+        SistemPencernaan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SistemPencernaan1.setSelectedIndex(1);
+        SistemPencernaan1.setName("SistemPencernaan1"); // NOI18N
+        SistemPencernaan1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SistemSyaraf5KeyPressed(evt);
+                SistemPencernaan1KeyPressed(evt);
             }
         });
-        FormInput.add(SistemSyaraf5);
-        SistemSyaraf5.setBounds(313, 360, 90, 23);
+        FormInput.add(SistemPencernaan1);
+        SistemPencernaan1.setBounds(313, 360, 90, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel78.setText("Gangguan Elektrolit (Na, Ca,CI, Mg, Cal) & Asam Basa");
@@ -1092,16 +1115,16 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         FormInput.add(jLabel80);
         jLabel80.setBounds(405, 360, 290, 23);
 
-        SistemSyaraf6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        SistemSyaraf6.setSelectedIndex(1);
-        SistemSyaraf6.setName("SistemSyaraf6"); // NOI18N
-        SistemSyaraf6.addKeyListener(new java.awt.event.KeyAdapter() {
+        SistemPencernaan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SistemPencernaan2.setSelectedIndex(1);
+        SistemPencernaan2.setName("SistemPencernaan2"); // NOI18N
+        SistemPencernaan2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SistemSyaraf6KeyPressed(evt);
+                SistemPencernaan2KeyPressed(evt);
             }
         });
-        FormInput.add(SistemSyaraf6);
-        SistemSyaraf6.setBounds(699, 360, 90, 23);
+        FormInput.add(SistemPencernaan2);
+        SistemPencernaan2.setBounds(699, 360, 90, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel81.setText("Pendarahan Saluran Pencernaan Tanpa Hypotensi & Repon Dengan Cairan");
@@ -1114,32 +1137,196 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         FormInput.add(jLabel82);
         jLabel82.setBounds(0, 390, 409, 23);
 
-        SistemSyaraf7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        SistemSyaraf7.setSelectedIndex(1);
-        SistemSyaraf7.setName("SistemSyaraf7"); // NOI18N
-        SistemSyaraf7.addKeyListener(new java.awt.event.KeyAdapter() {
+        SistemPencernaan3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SistemPencernaan3.setSelectedIndex(1);
+        SistemPencernaan3.setName("SistemPencernaan3"); // NOI18N
+        SistemPencernaan3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SistemSyaraf7KeyPressed(evt);
+                SistemPencernaan3KeyPressed(evt);
             }
         });
-        FormInput.add(SistemSyaraf7);
-        SistemSyaraf7.setBounds(413, 390, 90, 23);
+        FormInput.add(SistemPencernaan3);
+        SistemPencernaan3.setBounds(413, 390, 90, 23);
 
         jLabel83.setText("Pengobatan Keracunan :");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
         jLabel83.setBounds(565, 390, 130, 23);
 
-        SistemSyaraf8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        SistemSyaraf8.setSelectedIndex(1);
-        SistemSyaraf8.setName("SistemSyaraf8"); // NOI18N
-        SistemSyaraf8.addKeyListener(new java.awt.event.KeyAdapter() {
+        SistemPencernaan4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        SistemPencernaan4.setSelectedIndex(1);
+        SistemPencernaan4.setName("SistemPencernaan4"); // NOI18N
+        SistemPencernaan4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SistemSyaraf8KeyPressed(evt);
+                SistemPencernaan4KeyPressed(evt);
             }
         });
-        FormInput.add(SistemSyaraf8);
-        SistemSyaraf8.setBounds(699, 390, 90, 23);
+        FormInput.add(SistemPencernaan4);
+        SistemPencernaan4.setBounds(699, 390, 90, 23);
+
+        jSeparator9.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator9.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator9.setName("jSeparator9"); // NOI18N
+        FormInput.add(jSeparator9);
+        jSeparator9.setBounds(0, 420, 810, 1);
+
+        jSeparator10.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator10.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator10.setName("jSeparator10"); // NOI18N
+        FormInput.add(jSeparator10);
+        jSeparator10.setBounds(0, 420, 810, 1);
+
+        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel57.setText("V. PEMBEDAHAN");
+        jLabel57.setName("jLabel57"); // NOI18N
+        FormInput.add(jLabel57);
+        jLabel57.setBounds(10, 420, 240, 23);
+
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel84.setText("Penyulit Pasca Pembedahan : Digestif / Orthopedi / Urologi / Vasculer / Plastik / Kebidanan (Eklamsia Pre Operasi & Pasca Bedah) Dll");
+        jLabel84.setName("jLabel84"); // NOI18N
+        FormInput.add(jLabel84);
+        jLabel84.setBounds(40, 440, 660, 23);
+
+        jLabel85.setText(":");
+        jLabel85.setName("jLabel85"); // NOI18N
+        FormInput.add(jLabel85);
+        jLabel85.setBounds(0, 440, 695, 23);
+
+        Pembedahan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Pembedahan1.setSelectedIndex(1);
+        Pembedahan1.setName("Pembedahan1"); // NOI18N
+        Pembedahan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Pembedahan1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Pembedahan1);
+        Pembedahan1.setBounds(699, 440, 90, 23);
+
+        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel86.setText("Pasca Pembedahan Hemodinamik Stabil Tetapi Masih Perlu Resusitasi Cairan");
+        jLabel86.setName("jLabel86"); // NOI18N
+        FormInput.add(jLabel86);
+        jLabel86.setBounds(40, 470, 390, 23);
+
+        jLabel87.setText(":");
+        jLabel87.setName("jLabel87"); // NOI18N
+        FormInput.add(jLabel87);
+        jLabel87.setBounds(0, 470, 422, 23);
+
+        Pembedahan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Pembedahan2.setSelectedIndex(1);
+        Pembedahan2.setName("Pembedahan2"); // NOI18N
+        Pembedahan2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Pembedahan2KeyPressed(evt);
+            }
+        });
+        FormInput.add(Pembedahan2);
+        Pembedahan2.setBounds(426, 470, 90, 23);
+
+        jSeparator11.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator11.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator11.setName("jSeparator11"); // NOI18N
+        FormInput.add(jSeparator11);
+        jSeparator11.setBounds(0, 500, 810, 1);
+
+        jSeparator12.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator12.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator12.setName("jSeparator12"); // NOI18N
+        FormInput.add(jSeparator12);
+        jSeparator12.setBounds(0, 500, 810, 1);
+
+        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel88.setText("VI. GANGGUAN HEMATOLOGI");
+        jLabel88.setName("jLabel88"); // NOI18N
+        FormInput.add(jLabel88);
+        jLabel88.setBounds(10, 500, 240, 23);
+
+        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel89.setText("Gangguan Imunologi (Reaksi Alergi, Steven Jhonson) dll");
+        jLabel89.setName("jLabel89"); // NOI18N
+        FormInput.add(jLabel89);
+        jLabel89.setBounds(40, 520, 290, 23);
+
+        Hematologi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Hematologi1.setSelectedIndex(1);
+        Hematologi1.setName("Hematologi1"); // NOI18N
+        Hematologi1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Hematologi1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Hematologi1);
+        Hematologi1.setBounds(324, 520, 90, 23);
+
+        jLabel90.setText(":");
+        jLabel90.setName("jLabel90"); // NOI18N
+        FormInput.add(jLabel90);
+        jLabel90.setBounds(0, 520, 320, 23);
+
+        jLabel91.setText("DIC, Anemia Berat, Reaksi Penolakan Transfusi Darah :");
+        jLabel91.setName("jLabel91"); // NOI18N
+        FormInput.add(jLabel91);
+        jLabel91.setBounds(415, 520, 280, 23);
+
+        Hematologi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Hematologi2.setSelectedIndex(1);
+        Hematologi2.setName("Hematologi2"); // NOI18N
+        Hematologi2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Hematologi2KeyPressed(evt);
+            }
+        });
+        FormInput.add(Hematologi2);
+        Hematologi2.setBounds(699, 520, 90, 23);
+
+        jSeparator13.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator13.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator13.setName("jSeparator13"); // NOI18N
+        FormInput.add(jSeparator13);
+        jSeparator13.setBounds(0, 550, 810, 1);
+
+        jSeparator14.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator14.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator14.setName("jSeparator14"); // NOI18N
+        FormInput.add(jSeparator14);
+        jSeparator14.setBounds(0, 550, 810, 1);
+
+        jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel92.setText("VII. PENYAKIT INFEKSI");
+        jLabel92.setName("jLabel92"); // NOI18N
+        FormInput.add(jLabel92);
+        jLabel92.setBounds(10, 550, 240, 23);
+
+        jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel93.setText("Semua Infeksi Yang Menyebabkan Penurunan Kesadaran, Tidak Perlu Ventilator : DBD Dengan Thrombositopenia, Sepsis, Tetanus, Dll");
+        jLabel93.setName("jLabel93"); // NOI18N
+        FormInput.add(jLabel93);
+        jLabel93.setBounds(40, 570, 660, 23);
+
+        jLabel94.setText(":");
+        jLabel94.setName("jLabel94"); // NOI18N
+        FormInput.add(jLabel94);
+        jLabel94.setBounds(0, 570, 695, 23);
+
+        Infeksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Infeksi.setSelectedIndex(1);
+        Infeksi.setName("Infeksi"); // NOI18N
+        Infeksi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                InfeksiKeyPressed(evt);
+            }
+        });
+        FormInput.add(Infeksi);
+        Infeksi.setBounds(699, 570, 90, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1660,21 +1847,41 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_SistemSyaraf4KeyPressed
 
-    private void SistemSyaraf5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemSyaraf5KeyPressed
+    private void SistemPencernaan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemPencernaan1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SistemSyaraf5KeyPressed
+    }//GEN-LAST:event_SistemPencernaan1KeyPressed
 
-    private void SistemSyaraf6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemSyaraf6KeyPressed
+    private void SistemPencernaan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemPencernaan2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SistemSyaraf6KeyPressed
+    }//GEN-LAST:event_SistemPencernaan2KeyPressed
 
-    private void SistemSyaraf7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemSyaraf7KeyPressed
+    private void SistemPencernaan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemPencernaan3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SistemSyaraf7KeyPressed
+    }//GEN-LAST:event_SistemPencernaan3KeyPressed
 
-    private void SistemSyaraf8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemSyaraf8KeyPressed
+    private void SistemPencernaan4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemPencernaan4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SistemSyaraf8KeyPressed
+    }//GEN-LAST:event_SistemPencernaan4KeyPressed
+
+    private void Pembedahan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pembedahan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Pembedahan1KeyPressed
+
+    private void Pembedahan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pembedahan2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Pembedahan2KeyPressed
+
+    private void Hematologi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hematologi1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hematologi1KeyPressed
+
+    private void Hematologi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hematologi2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hematologi2KeyPressed
+
+    private void InfeksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InfeksiKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InfeksiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1705,12 +1912,17 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormInput;
+    private widget.ComboBox Hematologi1;
+    private widget.ComboBox Hematologi2;
+    private widget.ComboBox Infeksi;
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private javax.swing.JMenuItem MnSkriningNutrisi;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
+    private widget.ComboBox Pembedahan1;
+    private widget.ComboBox Pembedahan2;
     private widget.ScrollPane Scroll;
     private widget.ComboBox SistemKariologi1;
     private widget.ComboBox SistemKariologi2;
@@ -1718,6 +1930,10 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.ComboBox SistemKariologi4;
     private widget.ComboBox SistemKariologi5;
     private widget.ComboBox SistemKariologi6;
+    private widget.ComboBox SistemPencernaan1;
+    private widget.ComboBox SistemPencernaan2;
+    private widget.ComboBox SistemPencernaan3;
+    private widget.ComboBox SistemPencernaan4;
     private widget.ComboBox SistemPernapasan1;
     private widget.ComboBox SistemPernapasan2;
     private widget.ComboBox SistemPernapasan3;
@@ -1725,10 +1941,6 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.ComboBox SistemSyaraf2;
     private widget.ComboBox SistemSyaraf3;
     private widget.ComboBox SistemSyaraf4;
-    private widget.ComboBox SistemSyaraf5;
-    private widget.ComboBox SistemSyaraf6;
-    private widget.ComboBox SistemSyaraf7;
-    private widget.ComboBox SistemSyaraf8;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1747,6 +1959,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.Label jLabel54;
     private widget.Label jLabel55;
     private widget.Label jLabel56;
+    private widget.Label jLabel57;
     private widget.Label jLabel58;
     private widget.Label jLabel59;
     private widget.Label jLabel6;
@@ -1776,9 +1989,25 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.Label jLabel81;
     private widget.Label jLabel82;
     private widget.Label jLabel83;
+    private widget.Label jLabel84;
+    private widget.Label jLabel85;
+    private widget.Label jLabel86;
+    private widget.Label jLabel87;
+    private widget.Label jLabel88;
+    private widget.Label jLabel89;
+    private widget.Label jLabel90;
+    private widget.Label jLabel91;
+    private widget.Label jLabel92;
+    private widget.Label jLabel93;
+    private widget.Label jLabel94;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1786,6 +2015,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
