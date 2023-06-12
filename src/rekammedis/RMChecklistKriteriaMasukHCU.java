@@ -49,9 +49,9 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0,pilihan=0;    
+    private int i=0;    
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
-    private String finger="",finger2="";
+    private String finger="";
     private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
      * @param parent
@@ -186,7 +186,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningNutrisi = new javax.swing.JMenuItem();
+        MnKriteriaMasukHCU = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -309,19 +309,19 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningNutrisi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningNutrisi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningNutrisi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningNutrisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningNutrisi.setText("Formulir Checklist Pre Operasi");
-        MnSkriningNutrisi.setName("MnSkriningNutrisi"); // NOI18N
-        MnSkriningNutrisi.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnSkriningNutrisi.addActionListener(new java.awt.event.ActionListener() {
+        MnKriteriaMasukHCU.setBackground(new java.awt.Color(255, 255, 254));
+        MnKriteriaMasukHCU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKriteriaMasukHCU.setForeground(new java.awt.Color(50, 50, 50));
+        MnKriteriaMasukHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKriteriaMasukHCU.setText("Formulir Checklist Kriteria Masuk HCU");
+        MnKriteriaMasukHCU.setName("MnKriteriaMasukHCU"); // NOI18N
+        MnKriteriaMasukHCU.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnKriteriaMasukHCU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningNutrisiActionPerformed(evt);
+                MnKriteriaMasukHCUActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningNutrisi);
+        jPopupMenu1.add(MnKriteriaMasukHCU);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1615,7 +1615,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnSkriningNutrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningNutrisiActionPerformed
+    private void MnKriteriaMasukHCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaMasukHCUActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1625,32 +1625,24 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),32).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),31).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),34).toString()+"\nID "+(finger2.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),33).toString():finger2)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistPreOperasi.jasper","report","::[ Formulir Check List Pre Operasi ]::",
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),28).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukHCU.jasper","report","::[ Formulir Check List Kriteria Masuk HCU ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_hcu.tanggal,"+
-                    "checklist_kriteria_masuk_hcu.sncn,checklist_kriteria_masuk_hcu.tindakan,checklist_kriteria_masuk_hcu.kd_pegawai_bedah,pegawaibedah.nm_pegawaibedah,"+
-                    "checklist_kriteria_masuk_hcu.kd_pegawai_anestesi,pegawaianestesi.nm_pegawaianestesi,checklist_kriteria_masuk_hcu.identitas,"+
-                    "checklist_kriteria_masuk_hcu.surat_ijin_bedah,checklist_kriteria_masuk_hcu.surat_ijin_anestesi,checklist_kriteria_masuk_hcu.surat_ijin_transfusi,"+
-                    "checklist_kriteria_masuk_hcu.penandaan_area_operasi,checklist_kriteria_masuk_hcu.keadaan_umum,checklist_kriteria_masuk_hcu.pemeriksaan_penunjang_rontgen,"+
-                    "checklist_kriteria_masuk_hcu.keterangan_pemeriksaan_penunjang_rontgen,checklist_kriteria_masuk_hcu.pemeriksaan_penunjang_ekg,"+
-                    "checklist_kriteria_masuk_hcu.keterangan_pemeriksaan_penunjang_ekg,checklist_kriteria_masuk_hcu.pemeriksaan_penunjang_usg,"+
-                    "checklist_kriteria_masuk_hcu.keterangan_pemeriksaan_penunjang_usg,checklist_kriteria_masuk_hcu.pemeriksaan_penunjang_ctscan,"+
-                    "checklist_kriteria_masuk_hcu.keterangan_pemeriksaan_penunjang_ctscan,checklist_kriteria_masuk_hcu.pemeriksaan_penunjang_mri,"+
-                    "checklist_kriteria_masuk_hcu.keterangan_pemeriksaan_penunjang_mri,checklist_kriteria_masuk_hcu.persiapan_darah,checklist_kriteria_masuk_hcu.keterangan_persiapan_darah,"+
-                    "checklist_kriteria_masuk_hcu.perlengkapan_khusus,checklist_kriteria_masuk_hcu.nip_petugas_ruangan,petugasruangan.nama as petugasruangan,"+
+                    "checklist_kriteria_masuk_hcu.kardiologi1,checklist_kriteria_masuk_hcu.kardiologi2,checklist_kriteria_masuk_hcu.kardiologi3,"+
+                    "checklist_kriteria_masuk_hcu.kardiologi4,checklist_kriteria_masuk_hcu.kardiologi5,checklist_kriteria_masuk_hcu.kardiologi6,"+
+                    "checklist_kriteria_masuk_hcu.pernapasan1,checklist_kriteria_masuk_hcu.pernapasan2,checklist_kriteria_masuk_hcu.pernapasan3,"+
+                    "checklist_kriteria_masuk_hcu.syaraf1,checklist_kriteria_masuk_hcu.syaraf2,checklist_kriteria_masuk_hcu.syaraf3,checklist_kriteria_masuk_hcu.syaraf4,"+
+                    "checklist_kriteria_masuk_hcu.pencernaan1,checklist_kriteria_masuk_hcu.pencernaan2,checklist_kriteria_masuk_hcu.pencernaan3,"+
+                    "checklist_kriteria_masuk_hcu.pencernaan4,checklist_kriteria_masuk_hcu.pembedahan1,checklist_kriteria_masuk_hcu.pembedahan2,"+
+                    "checklist_kriteria_masuk_hcu.hematologi1,checklist_kriteria_masuk_hcu.hematologi2,checklist_kriteria_masuk_hcu.infeksi,"+
                     "checklist_kriteria_masuk_hcu.nik,pegawai.nama "+
                     "from checklist_kriteria_masuk_hcu inner join reg_periksa on checklist_kriteria_masuk_hcu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawaibedah on pegawaibedah.kd_pegawai=checklist_kriteria_masuk_hcu.kd_pegawai_bedah "+
-                    "inner join pegawaianestesi on pegawaianestesi.kd_pegawai=checklist_kriteria_masuk_hcu.kd_pegawai_anestesi "+
-                    "inner join petugas as petugasruangan on petugasruangan.nip=checklist_kriteria_masuk_hcu.nip_petugas_ruangan "+
-                    "inner join petugas on pegawai.nip=checklist_kriteria_masuk_hcu.nik "+
+                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_hcu.nik "+
                     "where checklist_kriteria_masuk_hcu.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_masuk_hcu.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
+    }//GEN-LAST:event_MnKriteriaMasukHCUActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1661,7 +1653,6 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void btnDokterBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterBedahActionPerformed
-        pilihan=1;
         pegawai.emptTeks();
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
@@ -1802,7 +1793,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnSkriningNutrisi;
+    private javax.swing.JMenuItem MnKriteriaMasukHCU;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox Pembedahan1;
