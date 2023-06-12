@@ -2143,6 +2143,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             SNCN.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             KodeDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
