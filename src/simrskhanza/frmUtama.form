@@ -53,10 +53,10 @@
                 <Property name="name" type="java.lang.String" value="internalFrame3" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e1" green="d7" red="fa" type="rgb"/>
+                  <Color blue="d2" green="c8" red="fa" type="rgb"/>
                 </Property>
                 <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fa" green="f0" red="ff" type="rgb"/>
+                  <Color blue="ff" green="f5" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -488,7 +488,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="06/06/2023"/>
+            <StringItem index="0" value="12/06/2023"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -9325,7 +9325,7 @@
           <Color blue="fa" green="f0" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="b9" green="af" red="f0" type="rgb"/>
+          <Color blue="b4" green="aa" red="fa" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -9682,7 +9682,7 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="c3" green="b9" red="f0" type="rgb"/>
+          <Color blue="be" green="b4" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fa" green="f0" red="ff" type="rgb"/>
