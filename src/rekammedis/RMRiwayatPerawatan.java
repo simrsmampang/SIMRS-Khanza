@@ -2661,6 +2661,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAsuhanPreOperasi(rs.getString("no_rawat"));
                     //menampilkan asuhan awal pre anestesi
                     menampilkanAsuhanPreAnestesi(rs.getString("no_rawat"));
+                    //menampilkan checklist kriteria masuk HCU
+                    menampilkanChecklistKriteriaMasukHCU(rs.getString("no_rawat"));
                     //menampilkan hasil pemeriksaan USG
                     menampilkanHasilPemeriksaanUSG(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
@@ -17992,89 +17994,154 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top'>"+
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'></td>"+
-                                              "<td width='76%' border='0' valign='top' align='center'>KRITERIA FISIOLOGI PASIEN MASUK HCU</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>YA/TIDAK</td>"+
+                                              "<td width='4%' valign='top' align='center' bgcolor='#FFFAF8'></td>"+
+                                              "<td width='76%' valign='top' align='center' bgcolor='#FFFAF8'>KRITERIA FISIOLOGI PASIEN MASUK HCU</td>"+
+                                              "<td width='20%' valign='top' align='center' bgcolor='#FFFAF8'>YA/TIDAK</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>I.</td>"+
-                                              "<td width='76%' border='0' valign='top'>SISTEM KARDIOLOGI</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'></td>"+
+                                              "<td width='4%' valign='top' align='center'>I.</td>"+
+                                              "<td width='76%' valign='top'>SISTEM KARDIOLOGI</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>1</td>"+
-                                              "<td width='76%' border='0' valign='top'>Gangguan Sirkulasi Atau Pre Dan Pasca Operasi (Syok Hypovolemic)</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("kardiologi1")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Gangguan Sirkulasi Atau Pre Dan Pasca Operasi (Syok Hypovolemic)</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kardiologi1")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>2</td>"+
-                                              "<td width='76%' border='0' valign='top'>Hypertensi Emergency</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("kardiologi2")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Hypertensi Emergency</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kardiologi2")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>3</td>"+
-                                              "<td width='76%' border='0' valign='top'>HR 60x/menit (Tiidak Stabil Hasil EKG Gambaran Mengancam Nyawa)</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("kardiologi3")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>HR 60x/menit (Tiidak Stabil Hasil EKG Gambaran Mengancam Nyawa)</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kardiologi3")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>4</td>"+
-                                              "<td width='76%' border='0' valign='top'>Gagal Jantung Acute</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("kardiologi4")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>Gagal Jantung Acute</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kardiologi4")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>5</td>"+
-                                              "<td width='76%' border='0' valign='top'>Menggunakan Inotropik / Vasoaktif Gent</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("kardiologi5")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>5</td>"+
+                                              "<td width='76%' valign='top'>Menggunakan Inotropik / Vasoaktif Gent</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kardiologi5")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>6</td>"+
-                                              "<td width='76%' border='0' valign='top'>MAP < 60 mmHg</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("kardiologi6")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>6</td>"+
+                                              "<td width='76%' valign='top'>MAP < 60 mmHg</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kardiologi6")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>II.</td>"+
-                                              "<td width='76%' border='0' valign='top'>SISTEM PERNAFASAN</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'></td>"+
+                                              "<td width='4%' valign='top' align='center'>II.</td>"+
+                                              "<td width='76%' valign='top'>SISTEM PERNAFASAN</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>1</td>"+
-                                              "<td width='76%' border='0' valign='top'>R <8 x/ menit > 25 x/menit (Adanya Gangguan Pada Ventilasi : Hypoxia / Hypercapnia / Sumbatan Jalan Nafas / Oedema Paru Acute)</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("pernapasan1")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>R <8 x/ menit > 25 x/menit (Adanya Gangguan Pada Ventilasi : Hypoxia / Hypercapnia / Sumbatan Jalan Nafas / Oedema Paru Acute)</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("pernapasan1")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>2</td>"+
-                                              "<td width='76%' border='0' valign='top'>Trauma Thorax / Peumothorax</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("pernapasan2")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Trauma Thorax / Peumothorax</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("pernapasan2")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>3</td>"+
-                                              "<td width='76%' border='0' valign='top'>Oxigenisasi Tidak Cukup Dari Hasil AGD</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("pernapasan3")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>Oxigenisasi Tidak Cukup Dari Hasil AGD</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("pernapasan3")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>III.</td>"+
-                                              "<td width='76%' border='0' valign='top'>SISTEM SYARAF/td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'></td>"+
+                                              "<td width='4%' valign='top' align='center'>III.</td>"+
+                                              "<td width='76%' valign='top'>SISTEM SYARAF</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>1</td>"+
-                                              "<td width='76%' border='0' valign='top'>Kesadaran Dengan GCS >= 7</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("syaraf1")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Kesadaran Dengan GCS >= 7</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("syaraf1")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>2</td>"+
-                                              "<td width='76%' border='0' valign='top'>Temperatur <35 C / >38 C</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("syaraf2")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Temperatur <35 C / >38 C</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("syaraf2")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>3</td>"+
-                                              "<td width='76%' border='0' valign='top'>Trauma Kepala Sedang - Berat</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("syaraf3")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>Trauma Kepala Sedang - Berat</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("syaraf3")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%' border='0' valign='top'>4</td>"+
-                                              "<td width='76%' border='0' valign='top'>Kejang Yang Tidak Memerlukan Ventilator / Cerebro Vasculer / Neoromusculer / Infeksi Syaraf</td>"+
-                                              "<td width='20%' border='0' valign='top' align='center'>"+rs2.getString("syaraf4")+"</td>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>Kejang Yang Tidak Memerlukan Ventilator / Cerebro Vasculer / Neoromusculer / Infeksi Syaraf</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("syaraf4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>IV.</td>"+
+                                              "<td width='76%' valign='top'>SISTEM PENCERNAAN DAN ENDOKRIN</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Gangguan Elektrolit (Na, Ca,CI, Mg, Cal) & Asam Basa</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("pencernaan1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Hypeglikemia & Hypoglikemia, Ketoasidosis Metabolic</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("pencernaan2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>Pendarahan Saluran Pencernaan Tanpa Hypotensi & Repon Dengan Cairan</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("pencernaan3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>Pengobatan Keracunan</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("pencernaan4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>V.</td>"+
+                                              "<td width='76%' valign='top'>PEMBEDAHAN</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Penyulit Pasca Pembedahan : Digestif / Orthopedi / Urologi / Vasculer / Plastik / Kebidanan (Eklamsia Pre Operasi & Pasca Bedah) Dll</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("pembedahan1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Pasca Pembedahan Hemodinamik Stabil Tetapi Masih Perlu Resusitasi Cairan</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("pembedahan2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>VI.</td>"+
+                                              "<td width='76%' valign='top'>GANGGUAN HEMATOLOGI</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Gangguan Imunologi (Reaksi Alergi, Steven Jhonson) dll</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("hematologi1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>DIC, Anemia Berat, Reaksi Penolakan Transfusi Darah</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("hematologi2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>VII.</td>"+
+                                              "<td width='76%' valign='top'>PENYAKIT INFEKSI</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'></td>"+
+                                              "<td width='76%' valign='top'>Semua Infeksi Yang Menyebabkan Penurunan Kesadaran & Tidak Memerlukan Ventilator : DBD Thrombositopenia, Sepsis, Tetanus, Dll</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("infeksi")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
