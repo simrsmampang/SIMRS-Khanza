@@ -674,7 +674,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         FormInput.add(Tanggal);
         Tanggal.setBounds(79, 40, 130, 23);
 
-        jLabel23.setText("DPJP/Dokter Jaga/IGD :");
+        jLabel23.setText("DPJP / Dokter Jaga / IGD :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
         jLabel23.setBounds(221, 40, 160, 23);

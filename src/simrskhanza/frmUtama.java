@@ -792,6 +792,7 @@ import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMCariRekonsiliasiObat;
 import rekammedis.RMCatatanADIMEGizi;
+import rekammedis.RMChecklistKriteriaKeluarHCU;
 import rekammedis.RMChecklistKriteriaMasukHCU;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
@@ -1675,7 +1676,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setRequestFocusEnabled(false);
-        internalFrame3.setWarnaAtas(new java.awt.Color(250, 200, 210));
+        internalFrame3.setWarnaAtas(new java.awt.Color(250, 200, 215));
         internalFrame3.setWarnaBawah(new java.awt.Color(255, 245, 255));
         internalFrame3.setLayout(null);
 
@@ -1866,7 +1867,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/06/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/06/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6947,8 +6948,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 42));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(255, 240, 250));
-        internalFrame1.setWarnaBawah(new java.awt.Color(250, 170, 180));
+        internalFrame1.setWarnaAtas(new java.awt.Color(255, 240, 255));
+        internalFrame1.setWarnaBawah(new java.awt.Color(250, 170, 185));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -7168,8 +7169,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(255, 180, 190));
-        internalFrame4.setWarnaBawah(new java.awt.Color(255, 240, 250));
+        internalFrame4.setWarnaAtas(new java.awt.Color(255, 180, 195));
+        internalFrame4.setWarnaBawah(new java.awt.Color(255, 240, 255));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -20247,6 +20248,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnChecklistKriteriaKeluarHCUActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMChecklistKriteriaKeluarHCU aplikasi=new RMChecklistKriteriaKeluarHCU(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20920,7 +20933,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
-            btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU;
+            btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU;
     
     public void isWall(){
         try{            
@@ -24477,6 +24490,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getchecklist_kriteria_masuk_hcu()==true){
                 Panelmenu.add(btnChecklistKriteriaMasukHCU);
+                jmlmenu++;
+            }
+            
+            if(akses.getchecklist_kriteria_keluar_hcu()==true){
+                Panelmenu.add(btnChecklistKriteriaKeluarHCU);
                 jmlmenu++;
             }
             
@@ -29181,6 +29199,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getchecklist_kriteria_masuk_hcu()==true){
             Panelmenu.add(btnChecklistKriteriaMasukHCU);
+            jmlmenu++;
+        }
+        
+        if(akses.getchecklist_kriteria_keluar_hcu()==true){
+            Panelmenu.add(btnChecklistKriteriaKeluarHCU);
             jmlmenu++;
         }
         
@@ -35253,6 +35276,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getchecklist_kriteria_keluar_hcu()==true){
+            if(btnChecklistKriteriaKeluarHCU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnChecklistKriteriaKeluarHCU);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getperencanaan_pemulangan()==true){
             if(btnPerencanaanPemulangan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPerencanaanPemulangan);
@@ -40893,5 +40923,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnChecklistKriteriaMasukHCU.setName("btnChecklistKriteriaMasukHCU"); 
         btnChecklistKriteriaMasukHCU.setPreferredSize(new java.awt.Dimension(200, 90));
         btnChecklistKriteriaMasukHCU.addActionListener(this::btnChecklistKriteriaMasukHCUActionPerformed);
+        
+        btnChecklistKriteriaKeluarHCU = new widget.ButtonBig();
+        btnChecklistKriteriaKeluarHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088703_beat_care_heart_pulse_time_icon.png"))); 
+        btnChecklistKriteriaKeluarHCU.setText("Check List Kriteria Keluar HCU");
+        btnChecklistKriteriaKeluarHCU.setIconTextGap(0);
+        btnChecklistKriteriaKeluarHCU.setName("btnChecklistKriteriaKeluarHCU"); 
+        btnChecklistKriteriaKeluarHCU.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnChecklistKriteriaKeluarHCU.addActionListener(this::btnChecklistKriteriaKeluarHCUActionPerformed);
     }
 }

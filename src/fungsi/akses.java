@@ -207,7 +207,7 @@ public final class akses {
             penilaian_tambahan_bunuh_diri=false,bpjs_antrean_pertanggal=false,penilaian_tambahan_perilaku_kekerasan=false,penilaian_tambahan_beresiko_melarikan_diri=false,
             persetujuan_penundaan_pelayanan=false,sisa_diet_pasien=false,penilaian_awal_medis_ralan_bedah_mulut=false,penilaian_pasien_keracunan=false,
             pemantauan_meows_obstetri=false,catatan_adime_gizi=false,pengajuan_biaya=false,penilaian_awal_keperawatan_ralan_geriatri=false,master_masalah_keperawatan_geriatri=false,
-            master_rencana_keperawatan_geriatri=false,checklist_kriteria_masuk_hcu=false;
+            master_rencana_keperawatan_geriatri=false,checklist_kriteria_masuk_hcu=false,checklist_kriteria_keluar_hcu=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1179,6 +1179,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_geriatri=true;
                         akses.master_rencana_keperawatan_geriatri=true;
                         akses.checklist_kriteria_masuk_hcu=true;
+                        akses.checklist_kriteria_keluar_hcu=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2134,6 +2135,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_geriatri=rs2.getBoolean("master_masalah_keperawatan_geriatri");
                         akses.master_rencana_keperawatan_geriatri=rs2.getBoolean("master_rencana_keperawatan_geriatri");
                         akses.checklist_kriteria_masuk_hcu=rs2.getBoolean("checklist_kriteria_masuk_hcu");
+                        akses.checklist_kriteria_keluar_hcu=rs2.getBoolean("checklist_kriteria_keluar_hcu");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3087,6 +3089,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_geriatri=false;
                         akses.master_rencana_keperawatan_geriatri=false;
                         akses.checklist_kriteria_masuk_hcu=false;
+                        akses.checklist_kriteria_keluar_hcu=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4100,4 +4103,5 @@ public final class akses {
     public static boolean getmaster_masalah_keperawatan_geriatri(){return akses.master_masalah_keperawatan_geriatri;}
     public static boolean getmaster_rencana_keperawatan_geriatri(){return akses.master_rencana_keperawatan_geriatri;}
     public static boolean getchecklist_kriteria_masuk_hcu(){return akses.checklist_kriteria_masuk_hcu;}
+    public static boolean getchecklist_kriteria_keluar_hcu(){return akses.checklist_kriteria_keluar_hcu;}
 }   
