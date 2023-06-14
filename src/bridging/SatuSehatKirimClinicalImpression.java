@@ -92,14 +92,14 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                 return types [columnIndex];
              }
         };
-        tbKamar.setModel(tabMode);
+        tbObat.setModel(tabMode);
 
         //tbKamar.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamar.getBackground()));
-        tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 17; i++) {
-            TableColumn column = tbKamar.getColumnModel().getColumn(i);
+            TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
@@ -136,7 +136,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                 column.setPreferredWidth(215);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
@@ -205,7 +205,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
-        tbKamar = new widget.Table();
+        tbObat = new widget.Table();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
         jLabel7 = new widget.Label();
@@ -276,9 +276,9 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setComponentPopupMenu(jPopupMenu1);
-        tbKamar.setName("tbKamar"); // NOI18N
-        Scroll.setViewportView(tbKamar);
+        tbObat.setComponentPopupMenu(jPopupMenu1);
+        tbObat.setName("tbObat"); // NOI18N
+        Scroll.setViewportView(tbObat);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
@@ -388,7 +388,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         jLabel15.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -401,7 +401,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -482,128 +482,27 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Clincial Impression</b></td>"+
                 "</tr>"
             );
-            ps=koneksi.prepareStatement(
-                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
-                   "pasien.nm_pasien,pasien.no_ktp,reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') "+
-                   "as pulang,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,"+
-                   "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.penilaian,"+
-                   "pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan, "+
-                   "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
-                   "inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
-                   "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik "+
-                   "left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ralan.no_rawat "+
-                   "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan "+
-                   "and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_clinicalimpression.status='Ralan' where pemeriksaan_ralan.penilaian<>'' "+
-                   "and reg_periksa.tgl_registrasi between ? and ? "+
-                   (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
-                   "reg_periksa.stts like ?)")+" order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
-                   "reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
-            try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                if(!TCari.getText().equals("")){
-                     ps.setString(3,"%"+TCari.getText()+"%");
-                     ps.setString(4,"%"+TCari.getText()+"%");
-                     ps.setString(5,"%"+TCari.getText()+"%");
-                     ps.setString(6,"%"+TCari.getText()+"%");
-                     ps.setString(7,"%"+TCari.getText()+"%");
-                     ps.setString(8,"%"+TCari.getText()+"%");
-                     ps.setString(9,"%"+TCari.getText()+"%");
-                }
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='top'>"+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"</td>"+
-                           "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                           "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                           "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                           "<td valign='top'>"+rs.getString("no_ktp")+"</td>"+
-                           "<td valign='top'>"+rs.getString("stts")+"</td>"+
-                           "<td valign='top'>"+"Ralan"+"</td>"+
-                           "<td valign='top'>"+rs.getString("pulang")+"</td>"+
-                           "<td valign='top'>"+rs.getString("id_encounter")+"</td>"+
-                           "<td valign='top'>"+rs.getString("keluhan")+", "+rs.getString("pemeriksaan")+"</td>"+
-                           "<td valign='top'>"+rs.getString("penilaian")+"</td>"+
-                           "<td valign='top'>"+rs.getString("nama")+"</td>"+
-                           "<td valign='top'>"+rs.getString("ktppraktisi")+"</td>"+
-                           "<td valign='top'>"+rs.getString("tgl_perawatan")+"</td>"+
-                           "<td valign='top'>"+rs.getString("jam_rawat")+"</td>"+
-                           "<td valign='top'>"+rs.getString("satu_sehat_clinicalimpression")+"</td>"+
-                        "</tr>");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-            ps=koneksi.prepareStatement(
-                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
-                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.penilaian,"+
-                   "pemeriksaan_ranap.keluhan,pemeriksaan_ranap.pemeriksaan, "+
-                   "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
-                   "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ranap.no_rawat "+
-                   "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_clinicalimpression.status='Ranap' where pemeriksaan_ranap.penilaian<>'' and reg_periksa.tgl_registrasi between ? and ? "+
-                   (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
-                   "reg_periksa.stts like ?)")+" order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
-            try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                if(!TCari.getText().equals("")){
-                     ps.setString(3,"%"+TCari.getText()+"%");
-                     ps.setString(4,"%"+TCari.getText()+"%");
-                     ps.setString(5,"%"+TCari.getText()+"%");
-                     ps.setString(6,"%"+TCari.getText()+"%");
-                     ps.setString(7,"%"+TCari.getText()+"%");
-                     ps.setString(8,"%"+TCari.getText()+"%");
-                     ps.setString(9,"%"+TCari.getText()+"%");
-                }
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='top'>"+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+"</td>"+
-                           "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                           "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                           "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                           "<td valign='top'>"+rs.getString("no_ktp")+"</td>"+
-                           "<td valign='top'>"+rs.getString("stts")+"</td>"+
-                           "<td valign='top'>"+"Ranap"+"</td>"+
-                           "<td valign='top'>"+rs.getString("pulang")+"</td>"+
-                           "<td valign='top'>"+rs.getString("id_encounter")+"</td>"+
-                           "<td valign='top'>"+rs.getString("keluhan")+", "+rs.getString("pemeriksaan")+"</td>"+
-                           "<td valign='top'>"+rs.getString("penilaian")+"</td>"+
-                           "<td valign='top'>"+rs.getString("nama")+"</td>"+
-                           "<td valign='top'>"+rs.getString("ktppraktisi")+"</td>"+
-                           "<td valign='top'>"+rs.getString("tgl_perawatan")+"</td>"+
-                           "<td valign='top'>"+rs.getString("jam_rawat")+"</td>"+
-                           "<td valign='top'>"+rs.getString("satu_sehat_clinicalimpression")+"</td>"+
-                        "</tr>");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
+            for (i = 0; i < tabMode.getRowCount(); i++) {
+                htmlContent.append(
+                    "<tr class='isi'>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                        "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                    "</tr>");
             }
             LoadHTML.setText(
                 "<html>"+
@@ -659,7 +558,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            tbKamar.requestFocus();
+            tbObat.requestFocus();
         }
     }//GEN-LAST:event_TCariKeyPressed
 
@@ -678,11 +577,11 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimActionPerformed
-        for(i=0;i<tbKamar.getRowCount();i++){
-            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,11).toString().equals(""))&&(!tbKamar.getValueAt(i,13).toString().equals(""))&&tbKamar.getValueAt(i,16).toString().equals("")){
+        for(i=0;i<tbObat.getRowCount();i++){
+            if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,5).toString().equals(""))&&(!tbObat.getValueAt(i,11).toString().equals(""))&&(!tbObat.getValueAt(i,13).toString().equals(""))&&tbObat.getValueAt(i,16).toString().equals("")){
                 try {
-                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbKamar.getValueAt(i,13).toString());
-                    idpasien=cekViaSatuSehat.tampilIDPasien(tbKamar.getValueAt(i,5).toString());
+                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbObat.getValueAt(i,13).toString());
+                    idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,5).toString());
                     try{
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -690,19 +589,19 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                         json = "{" +
                                     "\"resourceType\": \"ClinicalImpression\"," +
                                     "\"status\": \"completed\"," +
-                                    "\"description\" : \""+tbKamar.getValueAt(i,10).toString()+"\"," +
+                                    "\"description\" : \""+tbObat.getValueAt(i,10).toString()+"\"," +
                                     "\"subject\" : {"+
                                        "\"reference\" : \"Patient/"+idpasien+"\""+
                                     "},"+
                                     "\"encounter\" : { " +
-                                      "\"reference\" : \"Encounter/"+tbKamar.getValueAt(i,9).toString()+"\""+
+                                      "\"reference\" : \"Encounter/"+tbObat.getValueAt(i,9).toString()+"\""+
                                     "},"+
-                                    "\"effectiveDateTime\": \""+tbKamar.getValueAt(i,14).toString()+"T"+tbKamar.getValueAt(i,15).toString()+"+07:00\"," +
-                                    "\"date\": \""+tbKamar.getValueAt(i,14).toString()+"T"+tbKamar.getValueAt(i,15).toString()+"+07:00\"," +
+                                    "\"effectiveDateTime\": \""+tbObat.getValueAt(i,14).toString()+"T"+tbObat.getValueAt(i,15).toString()+"+07:00\"," +
+                                    "\"date\": \""+tbObat.getValueAt(i,14).toString()+"T"+tbObat.getValueAt(i,15).toString()+"+07:00\"," +
                                     "\"assessor\" : {"+
                                       "\"reference\" : \"Practitioner/"+iddokter+"\""+
                                     "},"+
-                                    "\"summary\" : \""+tbKamar.getValueAt(i,11).toString()+"\""+
+                                    "\"summary\" : \""+tbObat.getValueAt(i,11).toString()+"\""+
                                "}";
                         System.out.println("URL : "+link+"/ClinicalImpression");
                         System.out.println("Request JSON : "+json);
@@ -713,7 +612,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                         response = root.path("id");
                         if(!response.asText().equals("")){
                             Sequel.menyimpan("satu_sehat_clinicalimpression","?,?,?,?,?","Clinical Impression",5,new String[]{
-                                tbKamar.getValueAt(i,2).toString(),tbKamar.getValueAt(i,14).toString(),tbKamar.getValueAt(i,15).toString(),tbKamar.getValueAt(i,7).toString(),response.asText()
+                                tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,14).toString(),tbObat.getValueAt(i,15).toString(),tbObat.getValueAt(i,7).toString(),response.asText()
                             });
                         }
                     }catch(Exception e){
@@ -728,49 +627,49 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
     }//GEN-LAST:event_BtnKirimActionPerformed
 
     private void ppPilihSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihSemuaActionPerformed
-        for(i=0;i<tbKamar.getRowCount();i++){
-            tbKamar.setValueAt(true,i,0);
+        for(i=0;i<tbObat.getRowCount();i++){
+            tbObat.setValueAt(true,i,0);
         }
     }//GEN-LAST:event_ppPilihSemuaActionPerformed
 
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
-        for(i=0;i<tbKamar.getRowCount();i++){
-            tbKamar.setValueAt(false,i,0);
+        for(i=0;i<tbObat.getRowCount();i++){
+            tbObat.setValueAt(false,i,0);
         }
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
     private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
-        for(i=0;i<tbKamar.getRowCount();i++){
-            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,11).toString().equals(""))&&(!tbKamar.getValueAt(i,13).toString().equals(""))&&(!tbKamar.getValueAt(i,16).toString().equals(""))){
+        for(i=0;i<tbObat.getRowCount();i++){
+            if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,5).toString().equals(""))&&(!tbObat.getValueAt(i,11).toString().equals(""))&&(!tbObat.getValueAt(i,13).toString().equals(""))&&(!tbObat.getValueAt(i,16).toString().equals(""))){
                 try {
-                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbKamar.getValueAt(i,13).toString());
-                    idpasien=cekViaSatuSehat.tampilIDPasien(tbKamar.getValueAt(i,5).toString());
+                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbObat.getValueAt(i,13).toString());
+                    idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,5).toString());
                     try{
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                         json = "{" +
                                     "\"resourceType\": \"ClinicalImpression\"," +
-                                    "\"id\": \""+tbKamar.getValueAt(i,16).toString()+"\"," +
+                                    "\"id\": \""+tbObat.getValueAt(i,16).toString()+"\"," +
                                     "\"status\": \"completed\","+
-                                    "\"description\" : \""+tbKamar.getValueAt(i,10).toString()+"\"," +
+                                    "\"description\" : \""+tbObat.getValueAt(i,10).toString()+"\"," +
                                     "\"subject\" : {"+
                                        "\"reference\" : \"Patient/"+idpasien+"\""+
                                     "},"+
                                     "\"encounter\" : { " +
-                                      "\"reference\" : \"Encounter/"+tbKamar.getValueAt(i,9).toString()+"\""+
+                                      "\"reference\" : \"Encounter/"+tbObat.getValueAt(i,9).toString()+"\""+
                                     "},"+
-                                    "\"effectiveDateTime\": \""+tbKamar.getValueAt(i,14).toString()+"T"+tbKamar.getValueAt(i,15).toString()+"+07:00\"," +
-                                    "\"date\": \""+tbKamar.getValueAt(i,14).toString()+"T"+tbKamar.getValueAt(i,15).toString()+"+07:00\"," +
+                                    "\"effectiveDateTime\": \""+tbObat.getValueAt(i,14).toString()+"T"+tbObat.getValueAt(i,15).toString()+"+07:00\"," +
+                                    "\"date\": \""+tbObat.getValueAt(i,14).toString()+"T"+tbObat.getValueAt(i,15).toString()+"+07:00\"," +
                                     "\"assessor\" : {"+
                                       "\"reference\" : \"Practitioner/"+iddokter+"\""+
                                     "},"+
-                                    "\"summary\" : \""+tbKamar.getValueAt(i,11).toString()+"\""+
+                                    "\"summary\" : \""+tbObat.getValueAt(i,11).toString()+"\""+
                                 "}";
-                        System.out.println("URL : "+link+"/ClinicalImpression/"+tbKamar.getValueAt(i,16).toString());
+                        System.out.println("URL : "+link+"/ClinicalImpression/"+tbObat.getValueAt(i,16).toString());
                         System.out.println("Request JSON : "+json);
                         requestEntity = new HttpEntity(json,headers);
-                        json=api.getRest().exchange(link+"/ClinicalImpression/"+tbKamar.getValueAt(i,16).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                        json=api.getRest().exchange(link+"/ClinicalImpression/"+tbObat.getValueAt(i,16).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
                     }catch(Exception e){
                         System.out.println("Notifikasi Bridging : "+e);
@@ -837,7 +736,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppBersihkan;
     private javax.swing.JMenuItem ppPilihSemua;
-    private widget.Table tbKamar;
+    private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     
     private void tampil() {
@@ -845,13 +744,13 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
         try{
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
-                   "pasien.nm_pasien,pasien.no_ktp,reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') "+
+                   "pasien.nm_pasien,pasien.no_ktp,reg_periksa.stts,concat(nota_jalan.tanggal,' ',nota_jalan.jam) "+
                    "as pulang,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,"+
                    "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.penilaian,"+
                    "pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan, "+
                    "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression "+
                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
                    "inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik "+
@@ -859,7 +758,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
                    "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan "+
                    "and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ralan.jam_rawat "+
                    "and satu_sehat_clinicalimpression.status='Ralan' where pemeriksaan_ralan.penilaian<>'' "+
-                   "and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and nota_jalan.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
                    "reg_periksa.stts like ?)")+" order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -897,15 +796,15 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
             
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
+                   "reg_periksa.stts,concat(nota_inap.tanggal,' ',nota_inap.jam) as pulang,satu_sehat_encounter.id_encounter,"+
                    "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.penilaian,"+
                    "pemeriksaan_ranap.keluhan,pemeriksaan_ranap.pemeriksaan, "+
                    "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_clinicalimpression.status='Ranap' where pemeriksaan_ranap.penilaian<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_clinicalimpression.status='Ranap' where pemeriksaan_ranap.penilaian<>'' and nota_inap.tanggal between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.no_ktp like ? or pegawai.nama like ? or "+
                    "reg_periksa.stts like ?)")+" order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
@@ -946,11 +845,11 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
     }
 
     public void isCek(){
-        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_procedure());
-        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_procedure());
+        BtnKirim.setEnabled(akses.getsatu_sehat_kirim_clinicalimpression());
+        BtnPrint.setEnabled(akses.getsatu_sehat_kirim_clinicalimpression());
     }
     
     public JTable getTable(){
-        return tbKamar;
+        return tbObat;
     }
 }

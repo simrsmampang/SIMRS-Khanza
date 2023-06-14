@@ -323,6 +323,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanPreOperasi = new widget.CekBox();
         chkAsuhanPreAnestesi = new widget.CekBox();
         chkChecklistKriteriaMasukHCU = new widget.CekBox();
+        chkChecklistKriteriaKeluarHCU = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhDewasa = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhAnak = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhLansia = new widget.CekBox();
@@ -1067,6 +1068,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkChecklistKriteriaMasukHCU.setOpaque(false);
         chkChecklistKriteriaMasukHCU.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkChecklistKriteriaMasukHCU);
+
+        chkChecklistKriteriaKeluarHCU.setSelected(true);
+        chkChecklistKriteriaKeluarHCU.setText("Check List Kriteria Keluar HCU");
+        chkChecklistKriteriaKeluarHCU.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkChecklistKriteriaKeluarHCU.setName("chkChecklistKriteriaKeluarHCU"); // NOI18N
+        chkChecklistKriteriaKeluarHCU.setOpaque(false);
+        chkChecklistKriteriaKeluarHCU.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkChecklistKriteriaKeluarHCU);
 
         chkAsuhanLanjutanRisikoJatuhDewasa.setSelected(true);
         chkAsuhanLanjutanRisikoJatuhDewasa.setText("Lanjutan Risiko Jatuh Dewasa");
@@ -1897,6 +1906,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkPemantauanMOEWSObstetri.setSelected(true);
             chkCatatanADIMEGizi.setSelected(true);
             chkAsuhanKeperawatanRalanGeriatri.setSelected(true);
+            chkChecklistKriteriaMasukHCU.setSelected(true);
+            chkChecklistKriteriaKeluarHCU.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -1994,7 +2005,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanMedisRalanBedahMulut.setSelected(false);
             chkPemantauanMOEWSObstetri.setSelected(false);
             chkCatatanADIMEGizi.setSelected(false);
-            chkAsuhanKeperawatanRalanGeriatri.setSelected(true);
+            chkAsuhanKeperawatanRalanGeriatri.setSelected(false);
+            chkChecklistKriteriaMasukHCU.setSelected(false);
+            chkChecklistKriteriaKeluarHCU.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2115,6 +2128,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkCatatanObservasiRanap;
     private widget.CekBox chkCatatanObservasiRanapKebidanan;
     private widget.CekBox chkCatatanObservasiRanapPostPartum;
+    private widget.CekBox chkChecklistKriteriaKeluarHCU;
     private widget.CekBox chkChecklistKriteriaMasukHCU;
     private widget.CekBox chkChecklistPostOperasi;
     private widget.CekBox chkChecklistPreOperasi;
@@ -2663,6 +2677,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAsuhanPreAnestesi(rs.getString("no_rawat"));
                     //menampilkan checklist kriteria masuk HCU
                     menampilkanChecklistKriteriaMasukHCU(rs.getString("no_rawat"));
+                    //menampilkan checklist kriteria keluar HCU
+                    menampilkanChecklistKriteriaKeluarHCU(rs.getString("no_rawat"));
                     //menampilkan hasil pemeriksaan USG
                     menampilkanHasilPemeriksaanUSG(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
@@ -18162,7 +18178,133 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notif Penilaian Pasien Penyakit Menular : "+e);
+            System.out.println("Notif Checklist Masuk HCU : "+e);
+        }
+    }
+    
+    private void menampilkanChecklistKriteriaKeluarHCU(String norawat) {
+        try {
+            if(chkChecklistKriteriaKeluarHCU.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select checklist_kriteria_keluar_hcu.tanggal,checklist_kriteria_keluar_hcu.kriteria1,checklist_kriteria_keluar_hcu.kriteria2,checklist_kriteria_keluar_hcu.kriteria3,"+
+                        "checklist_kriteria_keluar_hcu.kriteria4,checklist_kriteria_keluar_hcu.kriteria5,checklist_kriteria_keluar_hcu.kriteria6,"+
+                        "checklist_kriteria_keluar_hcu.kriteria7,checklist_kriteria_keluar_hcu.kriteria8,checklist_kriteria_keluar_hcu.kriteria9,"+
+                        "checklist_kriteria_keluar_hcu.kriteria10,checklist_kriteria_keluar_hcu.kriteria11,checklist_kriteria_keluar_hcu.kriteria12,"+
+                        "checklist_kriteria_keluar_hcu.nik,pegawai.nama "+
+                        "from checklist_kriteria_keluar_hcu inner join pegawai on pegawai.nik=checklist_kriteria_keluar_hcu.nik "+
+                        "where checklist_kriteria_keluar_hcu.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Check List Kriteria Keluar HCU</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='66%' border='0'>Petugas : "+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center' bgcolor='#FFFAF8'></td>"+
+                                              "<td width='76%' valign='top' align='center' bgcolor='#FFFAF8'>KRITERIA FISIOLOGI PASIEN KELUAR HCU</td>"+
+                                              "<td width='20%' valign='top' align='center' bgcolor='#FFFAF8'>YA/TIDAK</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Pasien Yang Sudah Tidak Memerlukan Perawatan Di Ruang HCU</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Hypertensi Emergency Teratasi / Normal</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>HR 60 - 100 x/menit (Hasil EKG Menunjukkan Perbaikan / Sinus Rithme)</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>Kesadaran Dengan GCS >= 7</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>5</td>"+
+                                              "<td width='76%' valign='top'>Gangguan Inotropic / Vasoaktif Gent Teratasi / Normal</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>6</td>"+
+                                              "<td width='76%' valign='top'>MAP >= 60 mmHg</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>7</td>"+
+                                              "<td width='76%' valign='top'>RR 12 - 20x/menit</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria7")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>8</td>"+
+                                              "<td width='76%' valign='top'>Gangguan Elektrolit (Na, Ca, CI, Mg, Cal) & Asam Basa Normal</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria8")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>9</td>"+
+                                              "<td width='76%' valign='top'>Perdarahan Saluran Pencernaan Teratasi</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria9")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>10</td>"+
+                                              "<td width='76%' valign='top'>Temperature 35 - 38°C</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria10")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>11</td>"+
+                                              "<td width='76%' valign='top'>Gagal Jantung Akut Teratasi</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria11")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>12</td>"+
+                                              "<td width='76%' valign='top'>Gangguan Sirkulasi Teratasi</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria12")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Checklist Keluar HCU : "+e);
         }
     }
 }

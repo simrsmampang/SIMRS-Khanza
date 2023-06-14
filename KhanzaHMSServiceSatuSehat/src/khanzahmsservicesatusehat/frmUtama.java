@@ -238,11 +238,124 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,"+
                    "pegawai.nama,pegawai.no_ktp as ktpdokter,poliklinik.nm_poli,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,"+
-                   "reg_periksa.status_lanjut,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%dT%H:%i:%s+07:00') as pulang,ifnull(satu_sehat_encounter.id_encounter,'') as id_encounter "+
+                   "reg_periksa.status_lanjut,concat(nota_jalan.tanggal,'T',nota_jalan.jam,'+07:00') as pulang,ifnull(satu_sehat_encounter.id_encounter,'') as id_encounter "+
                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter "+
                    "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=poliklinik.kd_poli "+
-                   "inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat left join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
-                   "where reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat left join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "where nota_jalan.tanggal between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktpdokter").equals(""))&&rs.getString("id_encounter").equals("")){
+                        try {
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktpdokter"));
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"Encounter\"," +
+                                            "\"status\": \"finished\"," +
+                                            "\"class\": {" +
+                                                "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ActCode\"," +
+                                                "\"code\": \""+(rs.getString("status_lanjut").equals("Ralan")?"AMB":"IMP")+"\"," +
+                                                "\"display\": \""+(rs.getString("status_lanjut").equals("Ralan")?"ambulatory":"inpatient encounter")+"\"" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
+                                            "\"participant\": [" +
+                                                "{" +
+                                                    "\"type\": [" +
+                                                        "{" +
+                                                            "\"coding\": [" +
+                                                                "{" +
+                                                                    "\"system\": \"http://terminology.hl7.org/CodeSystem/v3-ParticipationType\"," +
+                                                                    "\"code\": \"ATND\"," +
+                                                                    "\"display\": \"attender\"" +
+                                                                "}" +
+                                                            "]" +
+                                                        "}" +
+                                                    "]," +
+                                                    "\"individual\": {" +
+                                                        "\"reference\": \"Practitioner/"+iddokter+"\"," +
+                                                        "\"display\": \""+rs.getString("nama")+"\"" +
+                                                    "}" +
+                                                "}" +
+                                            "]," +
+                                            "\"period\": {" +
+                                                "\"start\": \""+rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00"+"\"" +
+                                            "}," +
+                                            "\"location\": [" +
+                                                "{" +
+                                                    "\"location\": {" +
+                                                        "\"reference\": \"Location/"+rs.getString("id_lokasi_satusehat")+"\"," +
+                                                        "\"display\": \""+rs.getString("nm_poli")+"\"" +
+                                                    "}" +
+                                                "}" +
+                                            "]," +
+                                            "\"statusHistory\": [" +
+                                                "{" +
+                                                    "\"status\": \"finished\"," +
+                                                    "\"period\": {" +
+                                                        "\"start\": \""+rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00"+"\"," +
+                                                        "\"end\": \""+rs.getString("pulang")+"\"" +
+                                                    "}" +
+                                                "}" +
+                                            "]," +
+                                            "\"serviceProvider\": {" +
+                                                "\"reference\": \"Organization/"+koneksiDB.IDSATUSEHAT()+"\"" +
+                                            "}," +
+                                            "\"identifier\": [" +
+                                                "{" +
+                                                    "\"system\": \"http://sys-ids.kemkes.go.id/encounter/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                                    "\"value\": \""+rs.getString("no_rawat")+"\"" +
+                                                "}" +
+                                            "]" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/Encounter\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/Encounter", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json+"\n");
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_encounter","?,?","No.Rawat",2,new String[]{
+                                        rs.getString("no_rawat"),response.asText()
+                                    });
+                                }
+                            }catch(Exception ea){
+                                System.out.println("Notifikasi Bridging : "+ea);
+                            }
+                        } catch (Exception ef) {
+                            System.out.println("Notifikasi : "+ef);
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                System.out.println("Notif : "+ex);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,"+
+                   "pegawai.nama,pegawai.no_ktp as ktpdokter,poliklinik.nm_poli,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,"+
+                   "reg_periksa.status_lanjut,concat(nota_inap.tanggal,'T',nota_inap.jam,'+07:00') as pulang,ifnull(satu_sehat_encounter.id_encounter,'') as id_encounter "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on pegawai.nik=reg_periksa.kd_dokter "+
+                   "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=poliklinik.kd_poli "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat left join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "where nota_inap.tanggal between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg");
             try {
                 ps.setString(1,Tanggal1.getText());
                 ps.setString(2,Tanggal2.getText());
@@ -358,11 +471,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
                    "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,ifnull(satu_sehat_observationttvsuhu.id_observation,'') as satu_sehat_observationttvsuhu "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvsuhu on satu_sehat_observationttvsuhu.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvsuhu.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvsuhu.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvsuhu.status='Ralan' where pemeriksaan_ralan.suhu_tubuh<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvsuhu.status='Ralan' where pemeriksaan_ralan.suhu_tubuh<>'' and nota_jalan.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -454,11 +567,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,"+
                    "pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.suhu_tubuh,ifnull(satu_sehat_observationttvsuhu.id_observation,'') as satu_sehat_observationttvsuhu "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvsuhu on satu_sehat_observationttvsuhu.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_observationttvsuhu.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvsuhu.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvsuhu.status='Ranap' where pemeriksaan_ranap.suhu_tubuh<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvsuhu.status='Ranap' where pemeriksaan_ranap.suhu_tubuh<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -555,11 +668,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
                    "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.respirasi,ifnull(satu_sehat_observationttvrespirasi.id_observation,'') as satu_sehat_observationttvrespirasi "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvrespirasi on satu_sehat_observationttvrespirasi.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvrespirasi.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvrespirasi.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvrespirasi.status='Ralan' where pemeriksaan_ralan.respirasi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvrespirasi.status='Ralan' where pemeriksaan_ralan.respirasi<>'' and nota_jalan.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -651,11 +764,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,"+
                    "pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.respirasi,ifnull(satu_sehat_observationttvrespirasi.id_observation,'') as satu_sehat_observationttvrespirasi "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvrespirasi on satu_sehat_observationttvrespirasi.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_observationttvrespirasi.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvrespirasi.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvrespirasi.status='Ranap' where pemeriksaan_ranap.respirasi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvrespirasi.status='Ranap' where pemeriksaan_ranap.respirasi<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -752,11 +865,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
                    "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.nadi,ifnull(satu_sehat_observationttvnadi.id_observation,'') as satu_sehat_observationttvnadi "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvnadi on satu_sehat_observationttvnadi.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvnadi.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvnadi.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvnadi.status='Ralan' where pemeriksaan_ralan.nadi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvnadi.status='Ralan' where pemeriksaan_ralan.nadi<>'' and nota_jalan.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -848,11 +961,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,"+
                    "pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.nadi,ifnull(satu_sehat_observationttvnadi.id_observation,'') as satu_sehat_observationttvnadi "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvnadi on satu_sehat_observationttvnadi.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_observationttvnadi.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvnadi.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvnadi.status='Ranap' where pemeriksaan_ranap.nadi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvnadi.status='Ranap' where pemeriksaan_ranap.nadi<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -949,11 +1062,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
                    "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.spo2,ifnull(satu_sehat_observationttvspo2.id_observation,'') as satu_sehat_observationttvspo2 "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvspo2 on satu_sehat_observationttvspo2.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvspo2.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvspo2.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvspo2.status='Ralan' where pemeriksaan_ralan.spo2<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvspo2.status='Ralan' where pemeriksaan_ralan.spo2<>'' and nota_jalan.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -1045,11 +1158,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,"+
                    "pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.spo2,ifnull(satu_sehat_observationttvspo2.id_observation,'') as satu_sehat_observationttvspo2 "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvspo2 on satu_sehat_observationttvspo2.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_observationttvspo2.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvspo2.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvspo2.status='Ranap' where pemeriksaan_ranap.spo2<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvspo2.status='Ranap' where pemeriksaan_ranap.spo2<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -1146,11 +1259,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
                    "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.gcs,ifnull(satu_sehat_observationttvgcs.id_observation,'') as satu_sehat_observationttvgcs "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvgcs on satu_sehat_observationttvgcs.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvgcs.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvgcs.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvgcs.status='Ralan' where pemeriksaan_ralan.gcs<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvgcs.status='Ralan' where pemeriksaan_ralan.gcs<>'' and nota_jalan.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -1241,11 +1354,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,"+
                    "pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.gcs,ifnull(satu_sehat_observationttvgcs.id_observation,'') as satu_sehat_observationttvgcs "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvgcs on satu_sehat_observationttvgcs.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_observationttvgcs.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvgcs.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvgcs.status='Ranap' where pemeriksaan_ranap.gcs<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvgcs.status='Ranap' where pemeriksaan_ranap.gcs<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -1341,11 +1454,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
                    "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.kesadaran,ifnull(satu_sehat_observationttvkesadaran.id_observation,'') as satu_sehat_observationttvkesadaran "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvkesadaran on satu_sehat_observationttvkesadaran.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvkesadaran.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvkesadaran.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvkesadaran.status='Ralan' where pemeriksaan_ralan.kesadaran<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvkesadaran.status='Ralan' where pemeriksaan_ralan.kesadaran<>'' and nota_jalan.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -1432,15 +1545,13 @@ public class frmUtama extends javax.swing.JFrame {
             }
 
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
-                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.kesadaran, "+
-                   "ifnull(satu_sehat_observationttvkesadaran.id_observation,'') as satu_sehat_observationttvkesadaran from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,"+
+                   "pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.kesadaran,ifnull(satu_sehat_observationttvkesadaran.id_observation,'') as satu_sehat_observationttvkesadaran "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvkesadaran on satu_sehat_observationttvkesadaran.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_observationttvkesadaran.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvkesadaran.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvkesadaran.status='Ranap' where pemeriksaan_ranap.kesadaran<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvkesadaran.status='Ranap' where pemeriksaan_ranap.kesadaran<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -1534,11 +1645,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
                    "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.tensi,ifnull(satu_sehat_observationttvtensi.id_observation,'') as satu_sehat_observationttvtensi "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvtensi on satu_sehat_observationttvtensi.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvtensi.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvtensi.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvtensi.status='Ralan' where pemeriksaan_ralan.tensi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvtensi.status='Ralan' where pemeriksaan_ralan.tensi<>'' and nota_jalan.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -1676,15 +1787,13 @@ public class frmUtama extends javax.swing.JFrame {
             }
 
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
-                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.tensi, "+
-                   "ifnull(satu_sehat_observationttvtensi.id_observation,'') as satu_sehat_observationttvtensi from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,"+
+                   "pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.tensi,ifnull(satu_sehat_observationttvtensi.id_observation,'') as satu_sehat_observationttvtensi "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvtensi on satu_sehat_observationttvtensi.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_observationttvtensi.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvtensi.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvtensi.status='Ranap' where pemeriksaan_ranap.tensi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvtensi.status='Ranap' where pemeriksaan_ranap.tensi<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -1827,15 +1936,13 @@ public class frmUtama extends javax.swing.JFrame {
         //kirim TTV Tinggi Badan
         try{
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
-                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.tinggi, "+
-                   "ifnull(satu_sehat_observationttvtb.id_observation,'') as satu_sehat_observationttvtb from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
+                   "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.tinggi,ifnull(satu_sehat_observationttvtb.id_observation,'') as satu_sehat_observationttvtb "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvtb on satu_sehat_observationttvtb.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvtb.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvtb.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvtb.status='Ralan' where pemeriksaan_ralan.tinggi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvtb.status='Ralan' where pemeriksaan_ralan.tinggi<>'' and nota_jalan.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -1925,15 +2032,13 @@ public class frmUtama extends javax.swing.JFrame {
             }
 
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,satu_sehat_encounter.id_encounter,"+
-                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.tinggi, "+
-                   "ifnull(satu_sehat_observationttvtb.id_observation,'') as satu_sehat_observationttvtb from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.nama,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,"+
+                   "pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.tinggi,ifnull(satu_sehat_observationttvtb.id_observation,'') as satu_sehat_observationttvtb "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvtb on satu_sehat_observationttvtb.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_observationttvtb.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvtb.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvtb.status='Ranap' where pemeriksaan_ranap.tinggi<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvtb.status='Ranap' where pemeriksaan_ranap.tinggi<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -2030,11 +2135,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
                    "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.berat,ifnull(satu_sehat_observationttvbb.id_observation,'') as satu_sehat_observationttvbb "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvbb on satu_sehat_observationttvbb.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvbb.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvbb.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvbb.status='Ralan' where pemeriksaan_ralan.berat<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvbb.status='Ralan' where pemeriksaan_ralan.berat<>'' and nota_jalan.tanggal between ? and ? "+
                     "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -2126,11 +2231,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ranap.tgl_perawatan,"+
                    "pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.berat,ifnull(satu_sehat_observationttvbb.id_observation,'') as satu_sehat_observationttvbb "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_observationttvbb on satu_sehat_observationttvbb.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_observationttvbb.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_observationttvbb.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_observationttvbb.status='Ranap' where pemeriksaan_ranap.berat<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvbb.status='Ranap' where pemeriksaan_ranap.berat<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -2227,11 +2332,11 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,pemeriksaan_ralan.tgl_perawatan,"+
                    "pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.lingkar_perut,ifnull(satu_sehat_observationttvlp.id_observation,'') as satu_sehat_observationttvlp "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik left join satu_sehat_observationttvlp on satu_sehat_observationttvlp.no_rawat=pemeriksaan_ralan.no_rawat "+
                    "and satu_sehat_observationttvlp.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan and satu_sehat_observationttvlp.jam_rawat=pemeriksaan_ralan.jam_rawat "+
-                   "and satu_sehat_observationttvlp.status='Ralan' where pemeriksaan_ralan.lingkar_perut<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_observationttvlp.status='Ralan' where pemeriksaan_ralan.lingkar_perut<>'' and nota_jalan.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -2332,7 +2437,7 @@ public class frmUtama extends javax.swing.JFrame {
                    "pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan, "+
                    "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression "+
                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
                    "inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik "+
@@ -2340,7 +2445,7 @@ public class frmUtama extends javax.swing.JFrame {
                    "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ralan.tgl_perawatan "+
                    "and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ralan.jam_rawat "+
                    "and satu_sehat_clinicalimpression.status='Ralan' where pemeriksaan_ralan.penilaian<>'' "+
-                   "and reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                   "and nota_jalan.tanggal between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                    "reg_periksa.no_rawat,pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -2408,11 +2513,11 @@ public class frmUtama extends javax.swing.JFrame {
                    "pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.penilaian,"+
                    "pemeriksaan_ranap.keluhan,pemeriksaan_ranap.pemeriksaan, "+
                    "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ranap.jam_rawat "+
-                   "and satu_sehat_clinicalimpression.status='Ranap' where pemeriksaan_ranap.penilaian<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_clinicalimpression.status='Ranap' where pemeriksaan_ranap.penilaian<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -2496,10 +2601,124 @@ public class frmUtama extends javax.swing.JFrame {
                    "inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=reg_periksa.kd_poli "+
                    "inner join poliklinik on poliklinik.kd_poli=satu_sehat_mapping_lokasi_ralan.kd_poli "+
                    "inner join pegawai on reg_periksa.kd_dokter=pegawai.nik "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "left join satu_sehat_immunization on satu_sehat_immunization.no_rawat=detail_pemberian_obat.no_rawat and satu_sehat_immunization.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "+
                    "satu_sehat_immunization.jam=detail_pemberian_obat.jam and satu_sehat_immunization.kode_brng=detail_pemberian_obat.kode_brng and "+
                    "satu_sehat_immunization.no_batch=detail_pemberian_obat.no_batch and satu_sehat_immunization.no_faktur=detail_pemberian_obat.no_faktur "+
-                   "where detail_pemberian_obat.no_batch<>'' and reg_periksa.tgl_registrasi between ? and ? order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
+                   "where detail_pemberian_obat.no_batch<>'' and nota_jalan.tanggal between ? and ? order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&(!rs.getString("ktppraktisi").equals(""))&&rs.getString("id_immunization").equals("")){
+                        try {
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"Immunization\"," +
+                                            "\"status\": \"completed\"," +
+                                            "\"vaccineCode\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \""+rs.getString("vaksin_system")+"\"," +
+                                                        "\"code\": \""+rs.getString("vaksin_code")+"\"," +
+                                                        "\"display\": \""+rs.getString("vaksin_display")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"patient\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
+                                            "}," +
+                                            "\"occurrenceDateTime\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00"+"\"," +
+                                            "\"recorded\": \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00"+"\"," +
+                                            "\"primarySource\": true," +
+                                            "\"location\": {" +
+                                                "\"reference\": \"Location/"+rs.getString("id_lokasi_satusehat")+"\"" +
+                                            "}," +
+                                            "\"lotNumber\": \""+rs.getString("no_batch")+"\"," +
+                                            "\"route\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \""+rs.getString("route_system")+"\"," +
+                                                        "\"code\": \""+rs.getString("route_code")+"\"," +
+                                                        "\"display\": \""+rs.getString("route_display")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"doseQuantity\": {" +
+                                                "\"value\": "+rs.getString("jml")+"," +
+                                                "\"unit\": \""+rs.getString("dose_quantity_unit")+"\"," +
+                                                "\"system\": \""+rs.getString("dose_quantity_system")+"\"," +
+                                                "\"code\": \""+rs.getString("dose_quantity_code")+"\"" +
+                                            "}," +
+                                            "\"performer\": [" +
+                                                "{" +
+                                                    "\"actor\": {" +
+                                                        "\"reference\": \"Practitioner/"+iddokter+"\"" +
+                                                    "}" +
+                                                "}" +
+                                            "]" +
+                                            (rs.getString("aturan").equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+rs.getString("aturan").toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
+                                        "}";
+                                TeksArea.append("URL : "+link+"/Immunization"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/Immunization", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json+"\n");
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_immunization","?,?,?,?,?,?,?","Imunisasi/Vaksin",7,new String[]{
+                                        rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("kode_brng"),rs.getString("no_batch"),rs.getString("no_faktur"),response.asText()
+                                    });
+                                }
+                            }catch(Exception e){
+                                System.out.println("Notifikasi Bridging : "+e);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.no_rawat,pasien.no_ktp,satu_sehat_encounter.id_encounter,satu_sehat_mapping_vaksin.vaksin_code,satu_sehat_mapping_vaksin.vaksin_system,"+
+                   "satu_sehat_mapping_vaksin.kode_brng,satu_sehat_mapping_vaksin.vaksin_display,satu_sehat_mapping_vaksin.route_code,satu_sehat_mapping_vaksin.route_system,"+
+                   "satu_sehat_mapping_vaksin.route_display,satu_sehat_mapping_vaksin.dose_quantity_code,satu_sehat_mapping_vaksin.dose_quantity_system,"+
+                   "satu_sehat_mapping_vaksin.dose_quantity_unit,detail_pemberian_obat.no_batch,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
+                   "detail_pemberian_obat.jml,aturan_pakai.aturan,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,pegawai.no_ktp as ktppraktisi,"+
+                   "ifnull(satu_sehat_immunization.id_immunization,'') as id_immunization,detail_pemberian_obat.no_faktur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join detail_pemberian_obat on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_mapping_vaksin on satu_sehat_mapping_vaksin.kode_brng=detail_pemberian_obat.kode_brng "+
+                   "inner join aturan_pakai on aturan_pakai.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and aturan_pakai.jam=detail_pemberian_obat.jam and "+
+                   "aturan_pakai.no_rawat=detail_pemberian_obat.no_rawat and aturan_pakai.kode_brng=detail_pemberian_obat.kode_brng "+
+                   "inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=reg_periksa.kd_poli "+
+                   "inner join poliklinik on poliklinik.kd_poli=satu_sehat_mapping_lokasi_ralan.kd_poli "+
+                   "inner join pegawai on reg_periksa.kd_dokter=pegawai.nik "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "left join satu_sehat_immunization on satu_sehat_immunization.no_rawat=detail_pemberian_obat.no_rawat and satu_sehat_immunization.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "+
+                   "satu_sehat_immunization.jam=detail_pemberian_obat.jam and satu_sehat_immunization.kode_brng=detail_pemberian_obat.kode_brng and "+
+                   "satu_sehat_immunization.no_batch=detail_pemberian_obat.no_batch and satu_sehat_immunization.no_faktur=detail_pemberian_obat.no_faktur "+
+                   "where detail_pemberian_obat.no_batch<>'' and nota_inap.tanggal between ? and ? order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
             try {
                 ps.setString(1,Tanggal1.getText());
                 ps.setString(2,Tanggal2.getText());
@@ -2601,12 +2820,99 @@ public class frmUtama extends javax.swing.JFrame {
         try{
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,reg_periksa.status_lanjut,"+
-                   "DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%dT%H:%i:%s+07:00') as pulang,satu_sehat_encounter.id_encounter,prosedur_pasien.kode,icd9.deskripsi_panjang,"+
+                   "concat(nota_jalan.tanggal,'T',nota_jalan.jam,'+07:00') as pulang,satu_sehat_encounter.id_encounter,prosedur_pasien.kode,icd9.deskripsi_panjang,"+
                    "ifnull(satu_sehat_procedure.id_procedure,'') as id_procedure from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
                    "inner join prosedur_pasien on prosedur_pasien.no_rawat=reg_periksa.no_rawat inner join icd9 on prosedur_pasien.kode=icd9.kode "+
                    "left join satu_sehat_procedure on satu_sehat_procedure.no_rawat=prosedur_pasien.no_rawat and satu_sehat_procedure.kode=prosedur_pasien.kode "+
-                   "and satu_sehat_procedure.status=prosedur_pasien.status where reg_periksa.tgl_registrasi between ? and ? "+
+                   "and satu_sehat_procedure.status=prosedur_pasien.status where nota_jalan.tanggal between ? and ? "+
+                   "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,prosedur_pasien.prioritas");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&rs.getString("id_procedure").equals("")){
+                        try {
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"Procedure\"," +
+                                            "\"status\": \"completed\","+
+                                            "\"category\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://snomed.info/sct\"," +
+                                                        "\"code\": \"103693007\"," +
+                                                        "\"display\": \"Diagnostic procedure\"" +
+                                                    "}" +
+                                                "]," +
+                                                "\"text\":\"Diagnostic procedure\""+
+                                            "}," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://hl7.org/fhir/sid/icd-9-cm\"," +
+                                                        "\"code\": \""+rs.getString("kode")+"\"," +
+                                                        "\"display\": \""+rs.getString("deskripsi_panjang")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                "\"display\": \"Prosedur kepada "+rs.getString("nm_pasien")+" selama kunjungan/dirawat dari tanggal "+rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00"+" sampai "+rs.getString("pulang")+"\"" +
+                                            "}," +
+                                            "\"performedPeriod\": {" +
+                                                "\"start\": \""+rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00"+"\","+
+                                                "\"end\": \""+rs.getString("pulang")+"\""+
+                                            "}"+
+                                        "}";
+                                TeksArea.append("URL : "+link+"/Procedure"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/Procedure", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json+"\n");
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_procedure","?,?,?,?","Prosedur",4,new String[]{
+                                        rs.getString("no_rawat"),rs.getString("kode"),rs.getString("status_lanjut"),response.asText()
+                                    });
+                                }
+                            }catch(Exception e){
+                                System.out.println("Notifikasi Bridging : "+e);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,reg_periksa.status_lanjut,"+
+                   "concat(nota_inap.tanggal,'T',nota_inap.jam,'+07:00') as pulang,satu_sehat_encounter.id_encounter,prosedur_pasien.kode,icd9.deskripsi_panjang,"+
+                   "ifnull(satu_sehat_procedure.id_procedure,'') as id_procedure from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join prosedur_pasien on prosedur_pasien.no_rawat=reg_periksa.no_rawat inner join icd9 on prosedur_pasien.kode=icd9.kode "+
+                   "left join satu_sehat_procedure on satu_sehat_procedure.no_rawat=prosedur_pasien.no_rawat and satu_sehat_procedure.kode=prosedur_pasien.kode "+
+                   "and satu_sehat_procedure.status=prosedur_pasien.status where nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,prosedur_pasien.prioritas");
             try {
                 ps.setString(1,Tanggal1.getText());
@@ -2693,13 +2999,104 @@ public class frmUtama extends javax.swing.JFrame {
     private void condition(){
         try{
             ps=koneksi.prepareStatement(
-                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,reg_periksa.status_lanjut,DATE_FORMAT(tagihan_sadewa.tgl_bayar,'%Y-%m-%d %H:%i:%s') as pulang,"+
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,reg_periksa.status_lanjut,concat(nota_jalan.tanggal,' ',nota_jalan.jam) as pulang,"+
                    "satu_sehat_encounter.id_encounter,diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit,ifnull(satu_sehat_condition.id_condition,'') as id_condition "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join tagihan_sadewa on tagihan_sadewa.no_nota=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join diagnosa_pasien on diagnosa_pasien.no_rawat=reg_periksa.no_rawat "+
                    "inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit left join satu_sehat_condition on satu_sehat_condition.no_rawat=diagnosa_pasien.no_rawat "+
                    "and satu_sehat_condition.kd_penyakit=diagnosa_pasien.kd_penyakit and satu_sehat_condition.status=diagnosa_pasien.status "+
-                   "where reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,diagnosa_pasien.prioritas");
+                   "where nota_jalan.tanggal between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,diagnosa_pasien.prioritas");
+            try {
+                ps.setString(1,Tanggal1.getText());
+                ps.setString(2,Tanggal2.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if((!rs.getString("no_ktp").equals(""))&&rs.getString("id_condition").equals("")){
+                        try {
+                            idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
+                            try{
+                                headers = new HttpHeaders();
+                                headers.setContentType(MediaType.APPLICATION_JSON);
+                                headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
+                                json = "{" +
+                                            "\"resourceType\": \"Condition\"," +
+                                            "\"clinicalStatus\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/condition-clinical\"," +
+                                                        "\"code\": \"active\"," +
+                                                        "\"display\": \"Active\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"category\": [" +
+                                                "{" +
+                                                    "\"coding\": [" +
+                                                        "{" +
+                                                            "\"system\": \"http://terminology.hl7.org/CodeSystem/condition-category\"," +
+                                                            "\"code\": \"encounter-diagnosis\"," +
+                                                            "\"display\": \"Encounter Diagnosis\"" +
+                                                        "}" +
+                                                    "]" +
+                                                "}" +
+                                            "]," +
+                                            "\"code\": {" +
+                                                "\"coding\": [" +
+                                                    "{" +
+                                                        "\"system\": \"http://hl7.org/fhir/sid/icd-10\"," +
+                                                        "\"code\": \""+rs.getString("kd_penyakit")+"\"," +
+                                                        "\"display\": \""+rs.getString("nm_penyakit")+"\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}," +
+                                            "\"subject\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
+                                            "\"encounter\": {" +
+                                                "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"," +
+                                                "\"display\": \"Diagnosa pasien "+rs.getString("nm_pasien")+" selama kunjungan/dirawat dari tanggal "+rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg")+" sampai "+rs.getString("pulang")+"\"" +
+                                            "}" +
+                                        "}";
+                                TeksArea.append("URL : "+link+"/Condition"+"\n");
+                                TeksArea.append("Request JSON : "+json+"\n");
+                                requestEntity = new HttpEntity(json,headers);
+                                json=api.getRest().exchange(link+"/Condition", HttpMethod.POST, requestEntity, String.class).getBody();
+                                TeksArea.append("Result JSON : "+json+"\n");
+                                root = mapper.readTree(json);
+                                response = root.path("id");
+                                if(!response.asText().equals("")){
+                                    Sequel.menyimpan2("satu_sehat_condition","?,?,?,?","Diagnosa",4,new String[]{
+                                        rs.getString("no_rawat"),rs.getString("kd_penyakit"),rs.getString("status_lanjut"),response.asText()
+                                    });
+                                }
+                            }catch(Exception e){
+                                System.out.println("Notifikasi Bridging : "+e);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pasien.nm_pasien,pasien.no_ktp,reg_periksa.status_lanjut,concat(nota_inap.tanggal,' ',nota_inap.jam) as pulang,"+
+                   "satu_sehat_encounter.id_encounter,diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit,ifnull(satu_sehat_condition.id_condition,'') as id_condition "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join diagnosa_pasien on diagnosa_pasien.no_rawat=reg_periksa.no_rawat "+
+                   "inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit left join satu_sehat_condition on satu_sehat_condition.no_rawat=diagnosa_pasien.no_rawat "+
+                   "and satu_sehat_condition.kd_penyakit=diagnosa_pasien.kd_penyakit and satu_sehat_condition.status=diagnosa_pasien.status "+
+                   "where nota_inap.tanggal between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,diagnosa_pasien.prioritas");
             try {
                 ps.setString(1,Tanggal1.getText());
                 ps.setString(2,Tanggal2.getText());
