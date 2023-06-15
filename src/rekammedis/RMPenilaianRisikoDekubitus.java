@@ -1473,6 +1473,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         SkalaResiko5.setSelectedIndex(0);
         NilaiResiko5.setText("4");
         NilaiResikoTotal.setText("20");
+        Status.setText("Risiko Rendah");
         SkalaResiko1.requestFocus();
     } 
 
@@ -1547,6 +1548,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
+            ChkInput.setVisible(false);
             PanelInput.setPreferredSize(new Dimension(WIDTH,206));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
