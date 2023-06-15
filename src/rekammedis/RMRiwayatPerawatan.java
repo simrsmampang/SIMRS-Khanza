@@ -16533,8 +16533,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("inkontinensia_nilai")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' align='justify' valign='middle'>Status : "+rs2.getString("kategorinilai")+"</td>"+
-                                    "<td valign='top' align='center' valign='middle'>Total Skor</td>"+
+                                    "<td valign='top' align='justify' valign='middle'>Status/Kategori</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("kategorinilai")+"</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("totalnilai")+"</td>"+
                                  "</tr>"
                             );                                     
