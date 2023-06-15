@@ -614,7 +614,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2250));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2328));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -16533,8 +16533,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("inkontinensia_nilai")+"</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' align='center' valign='middle'>Status : "+rs2.getString("kategorinilai")+"</td>"+
-                                    "<td valign='top' align='right' valign='middle'>Total Skor</td>"+
+                                    "<td valign='top' align='justify' valign='middle'>Status : "+rs2.getString("kategorinilai")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>Total Skor</td>"+
                                     "<td valign='top' align='center' valign='middle'>"+rs2.getString("totalnilai")+"</td>"+
                                  "</tr>"
                             );                                     
