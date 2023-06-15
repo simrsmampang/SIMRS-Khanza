@@ -718,7 +718,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         FormInput.add(jLabel219);
         jLabel219.setBounds(250, 90, 80, 23);
 
-        SkalaResiko1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaResiko1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Sedang", "Buruk", "Sangat Buruk" }));
         SkalaResiko1.setName("SkalaResiko1"); // NOI18N
         SkalaResiko1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -731,7 +731,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
             }
         });
         FormInput.add(SkalaResiko1);
-        SkalaResiko1.setBounds(334, 90, 310, 23);
+        SkalaResiko1.setBounds(334, 90, 220, 23);
 
         jLabel218.setText("Nilai :");
         jLabel218.setName("jLabel218"); // NOI18N
@@ -755,7 +755,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         FormInput.add(jLabel221);
         jLabel221.setBounds(250, 120, 80, 23);
 
-        SkalaResiko2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaResiko2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sadar", "Apatis", "Bingung", "Stupor" }));
         SkalaResiko2.setName("SkalaResiko2"); // NOI18N
         SkalaResiko2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -768,7 +768,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
             }
         });
         FormInput.add(SkalaResiko2);
-        SkalaResiko2.setBounds(334, 120, 310, 23);
+        SkalaResiko2.setBounds(334, 120, 220, 23);
 
         jLabel222.setText("Nilai :");
         jLabel222.setName("jLabel222"); // NOI18N
@@ -792,7 +792,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         FormInput.add(jLabel224);
         jLabel224.setBounds(250, 150, 80, 23);
 
-        SkalaResiko3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada/Kursi Roda/Perawat/Tirah Baring", "Tongkat/Alat Penopang", "Berpegangan Pada Perabot" }));
+        SkalaResiko3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jalan Sendiri", "Jalan Dengan Bantuan", "Kursi Roda", "Di Tempat Tidur" }));
         SkalaResiko3.setName("SkalaResiko3"); // NOI18N
         SkalaResiko3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -805,7 +805,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
             }
         });
         FormInput.add(SkalaResiko3);
-        SkalaResiko3.setBounds(334, 150, 310, 23);
+        SkalaResiko3.setBounds(334, 150, 220, 23);
 
         jLabel225.setText("Nilai :");
         jLabel225.setName("jLabel225"); // NOI18N
@@ -829,7 +829,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         FormInput.add(jLabel227);
         jLabel227.setBounds(250, 180, 80, 23);
 
-        SkalaResiko4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaResiko4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bebas Bergerak", "Agar Terbatas", "Sangat Terbatas", "Tidak Mampu Bergerak" }));
         SkalaResiko4.setName("SkalaResiko4"); // NOI18N
         SkalaResiko4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -842,7 +842,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
             }
         });
         FormInput.add(SkalaResiko4);
-        SkalaResiko4.setBounds(334, 180, 310, 23);
+        SkalaResiko4.setBounds(334, 180, 220, 23);
 
         jLabel228.setText("Nilai :");
         jLabel228.setName("jLabel228"); // NOI18N
@@ -866,7 +866,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         FormInput.add(jLabel230);
         jLabel230.setBounds(250, 210, 80, 23);
 
-        SkalaResiko5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal/Tirah Baring/Imobilisasi", "Lemah", "Terganggu" }));
+        SkalaResiko5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kontinen", "Kadang-kadang Inkontinensia Urine", "Selalu Inkontenesia Urine", "Inkontinensia Alvi Dan Urine", " " }));
         SkalaResiko5.setName("SkalaResiko5"); // NOI18N
         SkalaResiko5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -879,7 +879,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
             }
         });
         FormInput.add(SkalaResiko5);
-        SkalaResiko5.setBounds(334, 210, 310, 23);
+        SkalaResiko5.setBounds(334, 210, 220, 23);
 
         jLabel231.setText("Nilai :");
         jLabel231.setName("jLabel231"); // NOI18N

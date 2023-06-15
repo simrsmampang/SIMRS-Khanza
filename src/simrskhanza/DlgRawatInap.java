@@ -84,6 +84,7 @@ import rekammedis.RMPenilaianPasienTerminal;
 import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
+import rekammedis.RMPenilaianRisikoDekubitus;
 import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
@@ -1302,6 +1303,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnPenilaianLanjutanResikoJatuhDewasa = new widget.Button();
         BtnPenilaianLanjutanResikoJatuhAnak = new widget.Button();
         BtnPenilaianLanjutanResikoJatuhLansia = new widget.Button();
+        BtnPenilaianResikoDekubitus = new widget.Button();
         BtnHasilPemeriksaanUSG = new widget.Button();
         BtnCatatan = new widget.Button();
         BtnCatatanObservasiRanap = new widget.Button();
@@ -3847,6 +3849,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnPenilaianLanjutanResikoJatuhLansia);
+
+        BtnPenilaianResikoDekubitus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPenilaianResikoDekubitus.setText("Risiko Dekubitus");
+        BtnPenilaianResikoDekubitus.setFocusPainted(false);
+        BtnPenilaianResikoDekubitus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPenilaianResikoDekubitus.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPenilaianResikoDekubitus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPenilaianResikoDekubitus.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPenilaianResikoDekubitus.setName("BtnPenilaianResikoDekubitus"); // NOI18N
+        BtnPenilaianResikoDekubitus.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPenilaianResikoDekubitus.setRoundRect(false);
+        BtnPenilaianResikoDekubitus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPenilaianResikoDekubitusActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnPenilaianResikoDekubitus);
 
         BtnHasilPemeriksaanUSG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnHasilPemeriksaanUSG.setText("Hasil Pemeriksaan USG");
@@ -6805,7 +6824,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
             form.setLocationRelativeTo(internalFrame1);
             form.emptTeks();
-            kode_poli=Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText());
+            kode_poli=Sequel.cariIsi("select reg_periksa.kd_poli from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText());
             form.setNoRm(TNoRM.getText(),TPasien.getText(), kode_poli,Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?",kode_poli),KdDok.getText(),TDokter.getText());
             form.setVisible(true);
         }
@@ -7845,6 +7864,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnChecklistKriteriaKeluarHCUActionPerformed
 
+    private void BtnPenilaianResikoDekubitusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenilaianResikoDekubitusActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianRisikoDekubitus form=new RMPenilaianRisikoDekubitus(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPenilaianResikoDekubitusActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7911,6 +7948,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPenilaianPreAnestesi;
     private widget.Button BtnPenilaianPreOperasi;
     private widget.Button BtnPenilaianPsikolog;
+    private widget.Button BtnPenilaianResikoDekubitus;
     private widget.Button BtnPenilaianTambahanBunuhDiri;
     private widget.Button BtnPenilaianTambahanGeriatri;
     private widget.Button BtnPenilaianTambahanMelarikanDiri;
@@ -8769,6 +8807,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnChecklistKriteriaKeluarHCU.setVisible(akses.getchecklist_kriteria_keluar_hcu()); 
         if(akses.getchecklist_kriteria_keluar_hcu()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPenilaianResikoDekubitus.setVisible(akses.getpenilaian_risiko_dekubitus()); 
+        if(akses.getpenilaian_risiko_dekubitus()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));

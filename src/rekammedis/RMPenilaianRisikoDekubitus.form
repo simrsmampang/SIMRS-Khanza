@@ -944,9 +944,11 @@
                     <Component class="widget.ComboBox" name="SkalaResiko1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Tidak"/>
-                            <StringItem index="1" value="Ya"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="Baik"/>
+                            <StringItem index="1" value="Sedang"/>
+                            <StringItem index="2" value="Buruk"/>
+                            <StringItem index="3" value="Sangat Buruk"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko1" noResource="true"/>
@@ -957,7 +959,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="334" y="90" width="310" height="23"/>
+                          <AbsoluteConstraints x="334" y="90" width="220" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1010,9 +1012,11 @@
                     <Component class="widget.ComboBox" name="SkalaResiko2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Tidak"/>
-                            <StringItem index="1" value="Ya"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="Sadar"/>
+                            <StringItem index="1" value="Apatis"/>
+                            <StringItem index="2" value="Bingung"/>
+                            <StringItem index="3" value="Stupor"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko2" noResource="true"/>
@@ -1023,7 +1027,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="334" y="120" width="310" height="23"/>
+                          <AbsoluteConstraints x="334" y="120" width="220" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1076,10 +1080,11 @@
                     <Component class="widget.ComboBox" name="SkalaResiko3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="3">
-                            <StringItem index="0" value="Tidak Ada/Kursi Roda/Perawat/Tirah Baring"/>
-                            <StringItem index="1" value="Tongkat/Alat Penopang"/>
-                            <StringItem index="2" value="Berpegangan Pada Perabot"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="Jalan Sendiri"/>
+                            <StringItem index="1" value="Jalan Dengan Bantuan"/>
+                            <StringItem index="2" value="Kursi Roda"/>
+                            <StringItem index="3" value="Di Tempat Tidur"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko3" noResource="true"/>
@@ -1090,7 +1095,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="334" y="150" width="310" height="23"/>
+                          <AbsoluteConstraints x="334" y="150" width="220" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1143,9 +1148,11 @@
                     <Component class="widget.ComboBox" name="SkalaResiko4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Tidak"/>
-                            <StringItem index="1" value="Ya"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="Bebas Bergerak"/>
+                            <StringItem index="1" value="Agar Terbatas"/>
+                            <StringItem index="2" value="Sangat Terbatas"/>
+                            <StringItem index="3" value="Tidak Mampu Bergerak"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko4" noResource="true"/>
@@ -1156,7 +1163,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="334" y="180" width="310" height="23"/>
+                          <AbsoluteConstraints x="334" y="180" width="220" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1209,10 +1216,12 @@
                     <Component class="widget.ComboBox" name="SkalaResiko5">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="3">
-                            <StringItem index="0" value="Normal/Tirah Baring/Imobilisasi"/>
-                            <StringItem index="1" value="Lemah"/>
-                            <StringItem index="2" value="Terganggu"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="Kontinen"/>
+                            <StringItem index="1" value="Kadang-kadang Inkontinensia Urine"/>
+                            <StringItem index="2" value="Selalu Inkontenesia Urine"/>
+                            <StringItem index="3" value="Inkontinensia Alvi Dan Urine"/>
+                            <StringItem index="4" value=" "/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SkalaResiko5" noResource="true"/>
@@ -1223,7 +1232,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="334" y="210" width="310" height="23"/>
+                          <AbsoluteConstraints x="334" y="210" width="220" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
