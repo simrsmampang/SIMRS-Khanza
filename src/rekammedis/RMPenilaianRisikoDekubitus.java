@@ -126,8 +126,6 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
-        HasilSkrining.setDocument(new batasInput((int)200).getKata(HasilSkrining));
-        Saran.setDocument(new batasInput((int)200).getKata(Saran));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -262,23 +260,11 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         SkalaResiko5 = new widget.ComboBox();
         jLabel231 = new widget.Label();
         NilaiResiko5 = new widget.TextBox();
-        jLabel232 = new widget.Label();
-        jLabel233 = new widget.Label();
-        SkalaResiko6 = new widget.ComboBox();
-        jLabel234 = new widget.Label();
-        NilaiResiko6 = new widget.TextBox();
-        TingkatResiko = new widget.Label();
+        KategoriSkala = new widget.Label();
         jLabel235 = new widget.Label();
         NilaiResikoTotal = new widget.TextBox();
-        jLabel30 = new widget.Label();
-        scrollPane1 = new widget.ScrollPane();
-        HasilSkrining = new widget.TextArea();
-        jLabel31 = new widget.Label();
-        scrollPane2 = new widget.ScrollPane();
-        Saran = new widget.TextArea();
         jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
+        TingkatResiko1 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -544,7 +530,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 466));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 306));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -574,7 +560,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 443));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 243));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -716,13 +702,13 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel57.setText("Skala Morse :");
+        jLabel57.setText("Skala Norton :");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
         jLabel57.setBounds(14, 70, 80, 23);
 
         jLabel217.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel217.setText("1. Riwayat Jatuh (1 Tahun Terakhir)");
+        jLabel217.setText("1. Kondisi Fisik");
         jLabel217.setName("jLabel217"); // NOI18N
         FormInput.add(jLabel217);
         jLabel217.setBounds(34, 90, 260, 23);
@@ -759,7 +745,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         NilaiResiko1.setBounds(729, 90, 60, 23);
 
         jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel220.setText("2. Diagnosis Sekunder (≥ 2 Diagnosis Medis)");
+        jLabel220.setText("2. Status Mental");
         jLabel220.setName("jLabel220"); // NOI18N
         FormInput.add(jLabel220);
         jLabel220.setBounds(34, 120, 260, 23);
@@ -796,7 +782,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         NilaiResiko2.setBounds(729, 120, 60, 23);
 
         jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel223.setText("3. Alat Bantu");
+        jLabel223.setText("3. Aktifitas");
         jLabel223.setName("jLabel223"); // NOI18N
         FormInput.add(jLabel223);
         jLabel223.setBounds(34, 150, 260, 23);
@@ -833,7 +819,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         NilaiResiko3.setBounds(729, 150, 60, 23);
 
         jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel226.setText("4. Terpasang Infuse");
+        jLabel226.setText("4. Mobilitas");
         jLabel226.setName("jLabel226"); // NOI18N
         FormInput.add(jLabel226);
         jLabel226.setBounds(34, 180, 260, 23);
@@ -870,7 +856,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         NilaiResiko4.setBounds(729, 180, 60, 23);
 
         jLabel229.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel229.setText("5. Gaya Berjalan");
+        jLabel229.setText("5. Inkontinensia");
         jLabel229.setName("jLabel229"); // NOI18N
         FormInput.add(jLabel229);
         jLabel229.setBounds(34, 210, 260, 23);
@@ -906,106 +892,23 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         FormInput.add(NilaiResiko5);
         NilaiResiko5.setBounds(729, 210, 60, 23);
 
-        jLabel232.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel232.setText("6. Status Mental");
-        jLabel232.setName("jLabel232"); // NOI18N
-        FormInput.add(jLabel232);
-        jLabel232.setBounds(34, 240, 260, 23);
-
-        jLabel233.setText("Skala :");
-        jLabel233.setName("jLabel233"); // NOI18N
-        FormInput.add(jLabel233);
-        jLabel233.setBounds(250, 240, 80, 23);
-
-        SkalaResiko6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sadar Akan Kemampuan Diri Sendiri", "Sering Lupa Akan Keterbatasan Yang Dimiliki" }));
-        SkalaResiko6.setName("SkalaResiko6"); // NOI18N
-        SkalaResiko6.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SkalaResiko6ItemStateChanged(evt);
-            }
-        });
-        SkalaResiko6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaResiko6KeyPressed(evt);
-            }
-        });
-        FormInput.add(SkalaResiko6);
-        SkalaResiko6.setBounds(334, 240, 310, 23);
-
-        jLabel234.setText("Nilai :");
-        jLabel234.setName("jLabel234"); // NOI18N
-        FormInput.add(jLabel234);
-        jLabel234.setBounds(655, 240, 70, 23);
-
-        NilaiResiko6.setEditable(false);
-        NilaiResiko6.setFocusTraversalPolicyProvider(true);
-        NilaiResiko6.setName("NilaiResiko6"); // NOI18N
-        FormInput.add(NilaiResiko6);
-        NilaiResiko6.setBounds(729, 240, 60, 23);
-
-        TingkatResiko.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
-        TingkatResiko.setToolTipText("");
-        TingkatResiko.setName("TingkatResiko"); // NOI18N
-        FormInput.add(TingkatResiko);
-        TingkatResiko.setBounds(34, 270, 640, 23);
+        KategoriSkala.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        KategoriSkala.setText("Risiko Rendah");
+        KategoriSkala.setToolTipText("");
+        KategoriSkala.setName("KategoriSkala"); // NOI18N
+        FormInput.add(KategoriSkala);
+        KategoriSkala.setBounds(90, 240, 400, 23);
 
         jLabel235.setText("Total :");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
-        jLabel235.setBounds(655, 270, 70, 23);
+        jLabel235.setBounds(655, 240, 70, 23);
 
         NilaiResikoTotal.setEditable(false);
         NilaiResikoTotal.setFocusTraversalPolicyProvider(true);
         NilaiResikoTotal.setName("NilaiResikoTotal"); // NOI18N
         FormInput.add(NilaiResikoTotal);
-        NilaiResikoTotal.setBounds(729, 270, 60, 23);
-
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel30.setText("Hasil Skrining :");
-        jLabel30.setName("jLabel30"); // NOI18N
-        FormInput.add(jLabel30);
-        jLabel30.setBounds(14, 300, 80, 23);
-
-        scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane1.setName("scrollPane1"); // NOI18N
-
-        HasilSkrining.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        HasilSkrining.setColumns(20);
-        HasilSkrining.setRows(5);
-        HasilSkrining.setName("HasilSkrining"); // NOI18N
-        HasilSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                HasilSkriningKeyPressed(evt);
-            }
-        });
-        scrollPane1.setViewportView(HasilSkrining);
-
-        FormInput.add(scrollPane1);
-        scrollPane1.setBounds(34, 320, 755, 43);
-
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel31.setText("Saran :");
-        jLabel31.setName("jLabel31"); // NOI18N
-        FormInput.add(jLabel31);
-        jLabel31.setBounds(14, 370, 80, 23);
-
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane2.setName("scrollPane2"); // NOI18N
-
-        Saran.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Saran.setColumns(20);
-        Saran.setRows(5);
-        Saran.setName("Saran"); // NOI18N
-        Saran.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SaranKeyPressed(evt);
-            }
-        });
-        scrollPane2.setViewportView(Saran);
-
-        FormInput.add(scrollPane2);
-        scrollPane2.setBounds(34, 390, 755, 43);
+        NilaiResikoTotal.setBounds(729, 240, 60, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -1014,19 +917,12 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         FormInput.add(jSeparator2);
         jSeparator2.setBounds(0, 70, 810, 1);
 
-        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator3.setName("jSeparator3"); // NOI18N
-        FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 300, 810, 1);
-
-        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator4.setName("jSeparator4"); // NOI18N
-        FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 370, 810, 1);
+        TingkatResiko1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TingkatResiko1.setText("Kategori :");
+        TingkatResiko1.setToolTipText("");
+        TingkatResiko1.setName("TingkatResiko1"); // NOI18N
+        FormInput.add(TingkatResiko1);
+        TingkatResiko1.setBounds(34, 240, 60, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1053,7 +949,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
 }//GEN-LAST:event_TPasienKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
@@ -1078,14 +974,14 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
             }  
-        }
+        }*/
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Saran,BtnBatal);
+            //Valid.pindah(evt,Saran,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1126,7 +1022,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
@@ -1148,7 +1044,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             }
-        }
+        }*/
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1417,29 +1313,8 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
     }//GEN-LAST:event_SkalaResiko5ItemStateChanged
 
     private void SkalaResiko5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko5KeyPressed
-        Valid.pindah(evt,SkalaResiko4,SkalaResiko6);
+        //Valid.pindah(evt,SkalaResiko4,SkalaResiko6);
     }//GEN-LAST:event_SkalaResiko5KeyPressed
-
-    private void SkalaResiko6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko6ItemStateChanged
-        if(SkalaResiko6.getSelectedIndex()==0){
-            NilaiResiko6.setText("0");
-        }else{
-            NilaiResiko6.setText("15");
-        }
-        isTotalResikoJatuh();
-    }//GEN-LAST:event_SkalaResiko6ItemStateChanged
-
-    private void SkalaResiko6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko6KeyPressed
-        Valid.pindah(evt,SkalaResiko5,HasilSkrining);
-    }//GEN-LAST:event_SkalaResiko6KeyPressed
-
-    private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
-        Valid.pindah2(evt,SkalaResiko6,Saran);
-    }//GEN-LAST:event_HasilSkriningKeyPressed
-
-    private void SaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaranKeyPressed
-        Valid.pindah2(evt,HasilSkrining,BtnSimpan);
-    }//GEN-LAST:event_SaranKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1472,9 +1347,9 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
-    private widget.TextArea HasilSkrining;
     private widget.TextBox JK;
     private widget.ComboBox Jam;
+    private widget.Label KategoriSkala;
     private widget.Label LCount;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnPenilaianLanjutanRisikoJatuh;
@@ -1485,24 +1360,21 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
     private widget.TextBox NilaiResiko3;
     private widget.TextBox NilaiResiko4;
     private widget.TextBox NilaiResiko5;
-    private widget.TextBox NilaiResiko6;
     private widget.TextBox NilaiResikoTotal;
     private javax.swing.JPanel PanelInput;
-    private widget.TextArea Saran;
     private widget.ScrollPane Scroll;
     private widget.ComboBox SkalaResiko1;
     private widget.ComboBox SkalaResiko2;
     private widget.ComboBox SkalaResiko3;
     private widget.ComboBox SkalaResiko4;
     private widget.ComboBox SkalaResiko5;
-    private widget.ComboBox SkalaResiko6;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
-    private widget.Label TingkatResiko;
+    private widget.Label TingkatResiko1;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
@@ -1524,12 +1396,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
     private widget.Label jLabel229;
     private widget.Label jLabel230;
     private widget.Label jLabel231;
-    private widget.Label jLabel232;
-    private widget.Label jLabel233;
-    private widget.Label jLabel234;
     private widget.Label jLabel235;
-    private widget.Label jLabel30;
-    private widget.Label jLabel31;
     private widget.Label jLabel4;
     private widget.Label jLabel57;
     private widget.Label jLabel6;
@@ -1538,13 +1405,9 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
-    private widget.ScrollPane scrollPane1;
-    private widget.ScrollPane scrollPane2;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     
@@ -1636,11 +1499,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
         NilaiResiko4.setText("0");
         SkalaResiko5.setSelectedIndex(0);
         NilaiResiko5.setText("0");
-        SkalaResiko6.setSelectedIndex(0);
-        NilaiResiko6.setText("0");
         NilaiResikoTotal.setText("0");
-        Saran.setText("");
-        HasilSkrining.setText("");
         SkalaResiko1.requestFocus();
     } 
 
@@ -1661,7 +1520,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
             NilaiResiko4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             SkalaResiko5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             NilaiResiko5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            SkalaResiko6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            /*SkalaResiko6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             NilaiResiko6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             NilaiResikoTotal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
@@ -1669,7 +1528,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());*/
         }
     }
     private void isRawat() {
@@ -1805,7 +1664,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_lanjutan_resiko_jatuh_dewasa","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,penilaian_jatuhmorse_skala1=?,penilaian_jatuhmorse_nilai1=?,"+
+        /*if(Sequel.mengedittf("penilaian_lanjutan_resiko_jatuh_dewasa","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,penilaian_jatuhmorse_skala1=?,penilaian_jatuhmorse_nilai1=?,"+
                 "penilaian_jatuhmorse_skala2=?,penilaian_jatuhmorse_nilai2=?,penilaian_jatuhmorse_skala3=?,penilaian_jatuhmorse_nilai3=?,penilaian_jatuhmorse_skala4=?,"+
                 "penilaian_jatuhmorse_nilai4=?,penilaian_jatuhmorse_skala5=?,penilaian_jatuhmorse_nilai5=?,penilaian_jatuhmorse_skala6=?,penilaian_jatuhmorse_nilai6=?,"+
                 "penilaian_jatuhmorse_totalnilai=?,hasil_skrining=?,saran=?,nip=?",20,new String[]{
@@ -1840,7 +1699,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
             tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),21);
             tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),22);
             emptTeks();
-        }
+        }*/
     }
 
     private void hapus() {
@@ -1856,18 +1715,18 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
     }
     
     private void isTotalResikoJatuh(){
-        try {
+        /*try {
             NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+Integer.parseInt(NilaiResiko5.getText())+Integer.parseInt(NilaiResiko6.getText()))+"");
             if(Integer.parseInt(NilaiResikoTotal.getText())<25){
-                TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
+                KategoriSkala.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
             }else if(Integer.parseInt(NilaiResikoTotal.getText())<45){
-                TingkatResiko.setText("Tingkat Resiko : Risiko Sedang (25-44), Tindakan : Intervensi pencegahan risiko jatuh standar");
+                KategoriSkala.setText("Tingkat Resiko : Risiko Sedang (25-44), Tindakan : Intervensi pencegahan risiko jatuh standar");
             }else if(Integer.parseInt(NilaiResikoTotal.getText())>=45){
-                TingkatResiko.setText("Tingkat Resiko : Risiko Tinggi (> 45), Tindakan : Intervensi pencegahan risiko jatuh standar dan Intervensi risiko jatuh tinggi");
+                KategoriSkala.setText("Tingkat Resiko : Risiko Tinggi (> 45), Tindakan : Intervensi pencegahan risiko jatuh standar dan Intervensi risiko jatuh tinggi");
             }
         } catch (Exception e) {
             NilaiResikoTotal.setText("0");
-            TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
-        }
+            KategoriSkala.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
+        }*/
     }
 }
