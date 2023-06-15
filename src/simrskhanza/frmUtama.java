@@ -850,6 +850,7 @@ import rekammedis.RMPenilaianPasienTerminal;
 import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
+import rekammedis.RMPenilaianRisikoDekubitus;
 import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
@@ -20260,6 +20261,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianRisikoDekubitusActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianRisikoDekubitus aplikasi=new RMPenilaianRisikoDekubitus(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20933,7 +20946,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
-            btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU;
+            btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus;
     
     public void isWall(){
         try{            
@@ -24515,6 +24528,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_lanjutan_resiko_jatuh_lansia()==true){
                 Panelmenu.add(btnPenilaianRisikoJatuhLansia);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_risiko_dekubitus()==true){
+                Panelmenu.add(btnPenilaianRisikoDekubitus);
                 jmlmenu++;
             }
             
@@ -29224,6 +29242,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_lanjutan_resiko_jatuh_lansia()==true){
             Panelmenu.add(btnPenilaianRisikoJatuhLansia);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_risiko_dekubitus()==true){
+            Panelmenu.add(btnPenilaianRisikoDekubitus);
             jmlmenu++;
         }
         
@@ -35311,6 +35334,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_risiko_dekubitus()==true){
+            if(btnPenilaianRisikoDekubitus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianRisikoDekubitus);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getuji_fungsi_kfr()==true){
             if(btnUjiFungsiKFR.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUjiFungsiKFR);
@@ -40931,5 +40961,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnChecklistKriteriaKeluarHCU.setName("btnChecklistKriteriaKeluarHCU"); 
         btnChecklistKriteriaKeluarHCU.setPreferredSize(new java.awt.Dimension(200, 90));
         btnChecklistKriteriaKeluarHCU.addActionListener(this::btnChecklistKriteriaKeluarHCUActionPerformed);
+        
+        btnPenilaianRisikoDekubitus = new widget.ButtonBig();
+        btnPenilaianRisikoDekubitus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6090058_bed_rent_room_icon.png"))); 
+        btnPenilaianRisikoDekubitus.setText("Penilaian Risiko Dekubitus");
+        btnPenilaianRisikoDekubitus.setIconTextGap(0);
+        btnPenilaianRisikoDekubitus.setName("btnPenilaianRisikoDekubitus"); 
+        btnPenilaianRisikoDekubitus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianRisikoDekubitus.addActionListener(this::btnPenilaianRisikoDekubitusActionPerformed);
     }
 }
