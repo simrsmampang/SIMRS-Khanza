@@ -327,6 +327,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanLanjutanRisikoJatuhDewasa = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhAnak = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhLansia = new widget.CekBox();
+        chkAsuhanRisikoDekubitus = new widget.CekBox();
         chkAsuhanGizi = new widget.CekBox();
         chkHasilPemeriksaanUSG = new widget.CekBox();
         chkPerencanaanPemulangan = new widget.CekBox();
@@ -613,7 +614,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2236));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2328));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1100,6 +1101,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanLanjutanRisikoJatuhLansia.setOpaque(false);
         chkAsuhanLanjutanRisikoJatuhLansia.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanLanjutanRisikoJatuhLansia);
+
+        chkAsuhanRisikoDekubitus.setSelected(true);
+        chkAsuhanRisikoDekubitus.setText("Risiko Dekubitus");
+        chkAsuhanRisikoDekubitus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanRisikoDekubitus.setName("chkAsuhanRisikoDekubitus"); // NOI18N
+        chkAsuhanRisikoDekubitus.setOpaque(false);
+        chkAsuhanRisikoDekubitus.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanRisikoDekubitus);
 
         chkAsuhanGizi.setSelected(true);
         chkAsuhanGizi.setText("Asuhan Gizi");
@@ -1908,6 +1917,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanKeperawatanRalanGeriatri.setSelected(true);
             chkChecklistKriteriaMasukHCU.setSelected(true);
             chkChecklistKriteriaKeluarHCU.setSelected(true);
+            chkAsuhanRisikoDekubitus.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2008,6 +2018,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanKeperawatanRalanGeriatri.setSelected(false);
             chkChecklistKriteriaMasukHCU.setSelected(false);
             chkChecklistKriteriaKeluarHCU.setSelected(false);
+            chkAsuhanRisikoDekubitus.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2115,6 +2126,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanPreAnestesi;
     private widget.CekBox chkAsuhanPreOperasi;
     private widget.CekBox chkAsuhanPsikolog;
+    private widget.CekBox chkAsuhanRisikoDekubitus;
     private widget.CekBox chkAsuhanTambahanBunuhDiri;
     private widget.CekBox chkAsuhanTambahanGeriatri;
     private widget.CekBox chkAsuhanTambahanMelarikanDiri;
@@ -2651,6 +2663,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanLanjutanResikoJatuhAnak(rs.getString("no_rawat"));
                     //menampilkan penilaian lanjutan risiko jatuh lansia
                     menampilkanLanjutanResikoJatuhLansia(rs.getString("no_rawat"));
+                    //menampilkan penilaian risiko dekubitus
+                    menampilkanAsuhanResikoDekubitus(rs.getString("no_rawat"));
                     //menampilkan penilaian tambahan geriatri
                     menampilkanTambahanGeriatri(rs.getString("no_rawat"));
                     //menampilkan penilaian tambahan bunuh diri
@@ -16456,6 +16470,91 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Resiko Jatuh Anak : "+e);
+        }
+    }
+    
+    private void menampilkanAsuhanResikoDekubitus(String norawat) {
+        try {
+            if(chkAsuhanRisikoDekubitus.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select penilaian_risiko_dekubitus.tanggal,penilaian_risiko_dekubitus.kondisi_fisik,penilaian_risiko_dekubitus.kondisi_fisik_nilai,"+
+                            "penilaian_risiko_dekubitus.status_mental,penilaian_risiko_dekubitus.status_mental_nilai,penilaian_risiko_dekubitus.aktifitas,"+
+                            "penilaian_risiko_dekubitus.aktifitas_nilai,penilaian_risiko_dekubitus.mobilitas,penilaian_risiko_dekubitus.mobilitas_nilai,"+
+                            "penilaian_risiko_dekubitus.inkontinensia,penilaian_risiko_dekubitus.inkontinensia_nilai,penilaian_risiko_dekubitus.totalnilai,"+
+                            "penilaian_risiko_dekubitus.kategorinilai,penilaian_risiko_dekubitus.nip,petugas.nama "+
+                            "from penilaian_risiko_dekubitus inner join petugas on penilaian_risiko_dekubitus.nip=petugas.nip where "+
+                            "penilaian_risiko_dekubitus.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Risiko Dekubitus</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                    "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal & Petugas</td>"+
+                                    "<td valign='top' width='36%' bgcolor='#FFFAF8'>Parameter Norton</td>"+
+                                    "<td valign='top' width='40%' bgcolor='#FFFAF8'>Kriteria</td>"+
+                                    "<td valign='top' width='5%' bgcolor='#FFFAF8'>Skor</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='6'>"+w+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='6'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                    "<td valign='top' align='justify' valign='middle'>1. Kondisi Fisik</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("kondisi_fisik")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("kondisi_fisik_nilai")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>2. Status Mental</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("status_mental")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("status_mental_nilai")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>3. Aktifitas</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("aktifitas")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("aktifitas_nilai")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>4. Mobilitas</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("mobilitas")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("mobilitas_nilai")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>5. Inkontinensia</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("inkontinensia")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("inkontinensia_nilai")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>Status/Kategori</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("kategorinilai")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("totalnilai")+"</td>"+
+                                 "</tr>"
+                            );                                     
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Resiko Dekubitus : "+e);
         }
     }
     
