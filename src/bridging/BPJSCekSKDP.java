@@ -5564,7 +5564,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                     TDokter.setText(rs.getString("nm_dokter_bpjs"));
                     NoRujukan.setText(rs.getString("no_sep"));
                     norawat=rs.getString("no_rawat");
-                    kdpoli.setText(Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",norawat));
+                    kdpoli.setText(Sequel.cariIsi("select reg_periksa.kd_poli from reg_periksa where reg_periksa.no_rawat=?",norawat));
                     KdPoli.setText(rs.getString("kd_poli_bpjs"));
                     NmPoli.setText(rs.getString("nm_poli_bpjs"));
                     KdDPJP.setText(rs.getString("kddpjp"));

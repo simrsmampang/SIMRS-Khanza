@@ -172,7 +172,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel17.setText("Update 2022-05-31");
+        jLabel17.setText("Update 2022-06-15");
         jLabel17.setName("jLabel17"); // NOI18N
         panelGlass1.add(jLabel17);
         jLabel17.setBounds(107, 8, 120, 14);
@@ -223,7 +223,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel19.setText("RS Permata Medika Kebumen, RS Juanda Kuningan, ");
+        jLabel19.setText("RS Permata Medika Kebumen, RS Handayani Lampung Utara, ");
         jLabel19.setName("jLabel19"); // NOI18N
         panelGlass4.add(jLabel19);
         jLabel19.setBounds(126, 160, 320, 14);

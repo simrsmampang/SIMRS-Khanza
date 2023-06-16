@@ -94,14 +94,14 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                 return types [columnIndex];
              }
         };
-        tbKamar.setModel(tabMode);
+        tbObat.setModel(tabMode);
 
         //tbKamar.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamar.getBackground()));
-        tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 29; i++) {
-            TableColumn column = tbKamar.getColumnModel().getColumn(i);
+            TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
@@ -163,7 +163,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                 column.setMaxWidth(0);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
@@ -232,7 +232,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
-        tbKamar = new widget.Table();
+        tbObat = new widget.Table();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
         jLabel7 = new widget.Label();
@@ -303,9 +303,9 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setComponentPopupMenu(jPopupMenu1);
-        tbKamar.setName("tbKamar"); // NOI18N
-        Scroll.setViewportView(tbKamar);
+        tbObat.setComponentPopupMenu(jPopupMenu1);
+        tbObat.setName("tbObat"); // NOI18N
+        Scroll.setViewportView(tbObat);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
@@ -415,7 +415,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -428,7 +428,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -524,84 +524,38 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Imunisasi Satu Sehat</b></td>"+
                     "</tr>"
                 );
-                ps=koneksi.prepareStatement(
-                       "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                       "reg_periksa.stts,reg_periksa.status_lanjut,satu_sehat_encounter.id_encounter,satu_sehat_mapping_vaksin.vaksin_code,satu_sehat_mapping_vaksin.vaksin_system,"+
-                       "satu_sehat_mapping_vaksin.kode_brng,satu_sehat_mapping_vaksin.vaksin_display,satu_sehat_mapping_vaksin.route_code,satu_sehat_mapping_vaksin.route_system,"+
-                       "satu_sehat_mapping_vaksin.route_display,satu_sehat_mapping_vaksin.dose_quantity_code,satu_sehat_mapping_vaksin.dose_quantity_system,"+
-                       "satu_sehat_mapping_vaksin.dose_quantity_unit,detail_pemberian_obat.no_batch,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
-                       "detail_pemberian_obat.jml,aturan_pakai.aturan,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,poliklinik.nm_poli,pegawai.nama,pegawai.no_ktp as ktppraktisi,"+
-                       "ifnull(satu_sehat_immunization.id_immunization,'') as id_immunization,detail_pemberian_obat.no_faktur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                       "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
-                       "inner join detail_pemberian_obat on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                       "inner join satu_sehat_mapping_vaksin on satu_sehat_mapping_vaksin.kode_brng=detail_pemberian_obat.kode_brng "+
-                       "inner join aturan_pakai on aturan_pakai.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and aturan_pakai.jam=detail_pemberian_obat.jam and "+
-                       "aturan_pakai.no_rawat=detail_pemberian_obat.no_rawat and aturan_pakai.kode_brng=detail_pemberian_obat.kode_brng "+
-                       "inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=reg_periksa.kd_poli "+
-                       "inner join poliklinik on poliklinik.kd_poli=satu_sehat_mapping_lokasi_ralan.kd_poli "+
-                       "inner join pegawai on reg_periksa.kd_dokter=pegawai.nik "+
-                       "left join satu_sehat_immunization on satu_sehat_immunization.no_rawat=detail_pemberian_obat.no_rawat and satu_sehat_immunization.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "+
-                       "satu_sehat_immunization.jam=detail_pemberian_obat.jam and satu_sehat_immunization.kode_brng=detail_pemberian_obat.kode_brng and "+
-                       "satu_sehat_immunization.no_batch=detail_pemberian_obat.no_batch and satu_sehat_immunization.no_faktur=detail_pemberian_obat.no_faktur "+
-                       "where detail_pemberian_obat.no_batch<>'' and reg_periksa.tgl_registrasi between ? and ? "+
-                       (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
-                       "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_vaksin.kode_brng like ? or satu_sehat_mapping_vaksin.vaksin_display like ? or "+
-                       "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)")+" order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
-                try {
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                    if(!TCari.getText().equals("")){
-                        ps.setString(3,"%"+TCari.getText()+"%");
-                        ps.setString(4,"%"+TCari.getText()+"%");
-                        ps.setString(5,"%"+TCari.getText()+"%");
-                        ps.setString(6,"%"+TCari.getText()+"%");
-                        ps.setString(7,"%"+TCari.getText()+"%");
-                        ps.setString(8,"%"+TCari.getText()+"%");
-                        ps.setString(9,"%"+TCari.getText()+"%");
-                        ps.setString(10,"%"+TCari.getText()+"%");
-                    }
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                               "<td valign='top'>"+rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00"+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_ktp")+"</td>"+
-                               "<td valign='top'>"+rs.getString("stts")+"</td>"+
-                               "<td valign='top'>"+rs.getString("status_lanjut")+"</td>"+
-                               "<td valign='top'>"+rs.getString("id_encounter")+"</td>"+
-                               "<td valign='top'>"+rs.getString("vaksin_code")+"</td>"+
-                               "<td valign='top'>"+rs.getString("vaksin_system")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kode_brng")+"</td>"+
-                               "<td valign='top'>"+rs.getString("vaksin_display")+"</td>"+
-                               "<td valign='top'>"+rs.getString("route_code")+"</td>"+
-                               "<td valign='top'>"+rs.getString("route_system")+"</td>"+
-                               "<td valign='top'>"+rs.getString("route_display")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dose_quantity_code")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dose_quantity_system")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dose_quantity_unit")+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_batch")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00"+"</td>"+
-                               "<td valign='top'>"+rs.getString("jml")+"</td>"+
-                               "<td valign='top'>"+rs.getString("aturan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("id_lokasi_satusehat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_poli")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nama")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ktppraktisi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("id_immunization")+"</td>"+
-                            "</tr>");
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                        "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
@@ -658,7 +612,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            tbKamar.requestFocus();
+            tbObat.requestFocus();
         }
     }//GEN-LAST:event_TCariKeyPressed
 
@@ -677,11 +631,11 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimActionPerformed
-        for(i=0;i<tbKamar.getRowCount();i++){
-            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,8).toString().equals(""))&&tbKamar.getValueAt(i,27).toString().equals("")){
+        for(i=0;i<tbObat.getRowCount();i++){
+            if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,5).toString().equals(""))&&(!tbObat.getValueAt(i,8).toString().equals(""))&&tbObat.getValueAt(i,27).toString().equals("")){
                 try {
-                    idpasien=cekViaSatuSehat.tampilIDPasien(tbKamar.getValueAt(i,5).toString());
-                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbKamar.getValueAt(i,26).toString());
+                    idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,5).toString());
+                    iddokter=cekViaSatuSehat.tampilIDParktisi(tbObat.getValueAt(i,26).toString());
                     try{
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -692,9 +646,9 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                     "\"vaccineCode\": {" +
                                         "\"coding\": [" +
                                             "{" +
-                                                "\"system\": \""+tbKamar.getValueAt(i,10).toString()+"\"," +
-                                                "\"code\": \""+tbKamar.getValueAt(i,9).toString()+"\"," +
-                                                "\"display\": \""+tbKamar.getValueAt(i,12).toString()+"\"" +
+                                                "\"system\": \""+tbObat.getValueAt(i,10).toString()+"\"," +
+                                                "\"code\": \""+tbObat.getValueAt(i,9).toString()+"\"," +
+                                                "\"display\": \""+tbObat.getValueAt(i,12).toString()+"\"" +
                                             "}" +
                                         "]" +
                                     "}," +
@@ -702,29 +656,29 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                         "\"reference\": \"Patient/"+idpasien+"\"" +
                                     "}," +
                                     "\"encounter\": {" +
-                                        "\"reference\": \"Encounter/"+tbKamar.getValueAt(i,8).toString()+"\"" +
+                                        "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
                                     "}," +
-                                    "\"occurrenceDateTime\": \""+tbKamar.getValueAt(i,20).toString()+"\"," +
-                                    "\"recorded\": \""+tbKamar.getValueAt(i,20).toString()+"\"," +
+                                    "\"occurrenceDateTime\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
+                                    "\"recorded\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                     "\"primarySource\": true," +
                                     "\"location\": {" +
-                                        "\"reference\": \"Location/"+tbKamar.getValueAt(i,23).toString()+"\"" +
+                                        "\"reference\": \"Location/"+tbObat.getValueAt(i,23).toString()+"\"" +
                                     "}," +
-                                    "\"lotNumber\": \""+tbKamar.getValueAt(i,19).toString()+"\"," +
+                                    "\"lotNumber\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
                                     "\"route\": {" +
                                         "\"coding\": [" +
                                             "{" +
-                                                "\"system\": \""+tbKamar.getValueAt(i,14).toString()+"\"," +
-                                                "\"code\": \""+tbKamar.getValueAt(i,13).toString()+"\"," +
-                                                "\"display\": \""+tbKamar.getValueAt(i,15).toString()+"\"" +
+                                                "\"system\": \""+tbObat.getValueAt(i,14).toString()+"\"," +
+                                                "\"code\": \""+tbObat.getValueAt(i,13).toString()+"\"," +
+                                                "\"display\": \""+tbObat.getValueAt(i,15).toString()+"\"" +
                                             "}" +
                                         "]" +
                                     "}," +
                                     "\"doseQuantity\": {" +
-                                        "\"value\": "+tbKamar.getValueAt(i,21).toString()+"," +
-                                        "\"unit\": \""+tbKamar.getValueAt(i,18).toString()+"\"," +
-                                        "\"system\": \""+tbKamar.getValueAt(i,17).toString()+"\"," +
-                                        "\"code\": \""+tbKamar.getValueAt(i,16).toString()+"\"" +
+                                        "\"value\": "+tbObat.getValueAt(i,21).toString()+"," +
+                                        "\"unit\": \""+tbObat.getValueAt(i,18).toString()+"\"," +
+                                        "\"system\": \""+tbObat.getValueAt(i,17).toString()+"\"," +
+                                        "\"code\": \""+tbObat.getValueAt(i,16).toString()+"\"" +
                                     "}," +
                                     "\"performer\": [" +
                                         "{" +
@@ -733,7 +687,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                             "}" +
                                         "}" +
                                     "]" +
-                                    (tbKamar.getValueAt(i,22).toString().equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+tbKamar.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
+                                    (tbObat.getValueAt(i,22).toString().equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
                                 "}";
                         System.out.println("URL : "+link+"/Immunization");
                         System.out.println("Request JSON : "+json);
@@ -744,8 +698,8 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                         response = root.path("id");
                         if(!response.asText().equals("")){
                             Sequel.menyimpan("satu_sehat_immunization","?,?,?,?,?,?,?","Imunisasi/Vaksin",7,new String[]{
-                                tbKamar.getValueAt(i,2).toString(),tbKamar.getValueAt(i,20).toString().substring(0,10),tbKamar.getValueAt(i,20).toString().substring(11,19), 
-                                tbKamar.getValueAt(i,11).toString(),tbKamar.getValueAt(i,19).toString(),tbKamar.getValueAt(i,28).toString(),response.asText()
+                                tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,20).toString().substring(0,10),tbObat.getValueAt(i,20).toString().substring(11,19), 
+                                tbObat.getValueAt(i,11).toString(),tbObat.getValueAt(i,19).toString(),tbObat.getValueAt(i,28).toString(),response.asText()
                             });
                         }
                     }catch(Exception e){
@@ -760,36 +714,36 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKirimActionPerformed
 
     private void ppPilihSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihSemuaActionPerformed
-        for(i=0;i<tbKamar.getRowCount();i++){
-            tbKamar.setValueAt(true,i,0);
+        for(i=0;i<tbObat.getRowCount();i++){
+            tbObat.setValueAt(true,i,0);
         }
     }//GEN-LAST:event_ppPilihSemuaActionPerformed
 
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
-        for(i=0;i<tbKamar.getRowCount();i++){
-            tbKamar.setValueAt(false,i,0);
+        for(i=0;i<tbObat.getRowCount();i++){
+            tbObat.setValueAt(false,i,0);
         }
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
     private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
-        for(i=0;i<tbKamar.getRowCount();i++){
-            if(tbKamar.getValueAt(i,0).toString().equals("true")&&(!tbKamar.getValueAt(i,5).toString().equals(""))&&(!tbKamar.getValueAt(i,8).toString().equals(""))&&(!tbKamar.getValueAt(i,27).toString().equals(""))){
+        for(i=0;i<tbObat.getRowCount();i++){
+            if(tbObat.getValueAt(i,0).toString().equals("true")&&(!tbObat.getValueAt(i,5).toString().equals(""))&&(!tbObat.getValueAt(i,8).toString().equals(""))&&(!tbObat.getValueAt(i,27).toString().equals(""))){
                 try {
-                    idpasien=cekViaSatuSehat.tampilIDPasien(tbKamar.getValueAt(i,5).toString());
+                    idpasien=cekViaSatuSehat.tampilIDPasien(tbObat.getValueAt(i,5).toString());
                     try{
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
                         json = "{" +
                                     "\"resourceType\": \"Immunization\"," +
-                                    "\"id\": \""+tbKamar.getValueAt(i,27).toString()+"\"," +
+                                    "\"id\": \""+tbObat.getValueAt(i,27).toString()+"\"," +
                                     "\"status\": \"completed\"," +
                                     "\"vaccineCode\": {" +
                                         "\"coding\": [" +
                                             "{" +
-                                                "\"system\": \""+tbKamar.getValueAt(i,10).toString()+"\"," +
-                                                "\"code\": \""+tbKamar.getValueAt(i,9).toString()+"\"," +
-                                                "\"display\": \""+tbKamar.getValueAt(i,12).toString()+"\"" +
+                                                "\"system\": \""+tbObat.getValueAt(i,10).toString()+"\"," +
+                                                "\"code\": \""+tbObat.getValueAt(i,9).toString()+"\"," +
+                                                "\"display\": \""+tbObat.getValueAt(i,12).toString()+"\"" +
                                             "}" +
                                         "]" +
                                     "}," +
@@ -797,29 +751,29 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                         "\"reference\": \"Patient/"+idpasien+"\"" +
                                     "}," +
                                     "\"encounter\": {" +
-                                        "\"reference\": \"Encounter/"+tbKamar.getValueAt(i,8).toString()+"\"" +
+                                        "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
                                     "}," +
-                                    "\"occurrenceDateTime\": \""+tbKamar.getValueAt(i,20).toString()+"\"," +
-                                    "\"recorded\": \""+tbKamar.getValueAt(i,20).toString()+"\"," +
+                                    "\"occurrenceDateTime\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
+                                    "\"recorded\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                     "\"primarySource\": true," +
                                     "\"location\": {" +
-                                        "\"reference\": \"Location/"+tbKamar.getValueAt(i,23).toString()+"\"" +
+                                        "\"reference\": \"Location/"+tbObat.getValueAt(i,23).toString()+"\"" +
                                     "}," +
-                                    "\"lotNumber\": \""+tbKamar.getValueAt(i,19).toString()+"\"," +
+                                    "\"lotNumber\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
                                     "\"route\": {" +
                                         "\"coding\": [" +
                                             "{" +
-                                                "\"system\": \""+tbKamar.getValueAt(i,14).toString()+"\"," +
-                                                "\"code\": \""+tbKamar.getValueAt(i,13).toString()+"\"," +
-                                                "\"display\": \""+tbKamar.getValueAt(i,15).toString()+"\"" +
+                                                "\"system\": \""+tbObat.getValueAt(i,14).toString()+"\"," +
+                                                "\"code\": \""+tbObat.getValueAt(i,13).toString()+"\"," +
+                                                "\"display\": \""+tbObat.getValueAt(i,15).toString()+"\"" +
                                             "}" +
                                         "]" +
                                     "}," +
                                     "\"doseQuantity\": {" +
-                                        "\"value\": "+tbKamar.getValueAt(i,21).toString()+"," +
-                                        "\"unit\": \""+tbKamar.getValueAt(i,18).toString()+"\"," +
-                                        "\"system\": \""+tbKamar.getValueAt(i,17).toString()+"\"," +
-                                        "\"code\": \""+tbKamar.getValueAt(i,16).toString()+"\"" +
+                                        "\"value\": "+tbObat.getValueAt(i,21).toString()+"," +
+                                        "\"unit\": \""+tbObat.getValueAt(i,18).toString()+"\"," +
+                                        "\"system\": \""+tbObat.getValueAt(i,17).toString()+"\"," +
+                                        "\"code\": \""+tbObat.getValueAt(i,16).toString()+"\"" +
                                     "}," +
                                     "\"performer\": [" +
                                         "{" +
@@ -828,12 +782,12 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                                             "}" +
                                         "}" +
                                     "]" +
-                                    (tbKamar.getValueAt(i,22).toString().equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+tbKamar.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
+                                    (tbObat.getValueAt(i,22).toString().equals("")?"":",\"protocolApplied\" : [{\"doseNumberPositiveInt\" : "+tbObat.getValueAt(i,22).toString().toLowerCase().replaceAll("dosis","").replaceAll(" ","")+"}]")+
                                 "}";
-                        System.out.println("URL : "+link+"/Immunization/"+tbKamar.getValueAt(i,27).toString());
+                        System.out.println("URL : "+link+"/Immunization/"+tbObat.getValueAt(i,27).toString());
                         System.out.println("Request JSON : "+json);
                         requestEntity = new HttpEntity(json,headers);
-                        json=api.getRest().exchange(link+"/Immunization/"+tbKamar.getValueAt(i,27).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
+                        json=api.getRest().exchange(link+"/Immunization/"+tbObat.getValueAt(i,27).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
                     }catch(Exception e){
                         System.out.println("Notifikasi Bridging : "+e);
@@ -900,7 +854,7 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppBersihkan;
     private javax.swing.JMenuItem ppPilihSemua;
-    private widget.Table tbKamar;
+    private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     
     private void tampil() {
@@ -922,10 +876,70 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
                    "inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=reg_periksa.kd_poli "+
                    "inner join poliklinik on poliklinik.kd_poli=satu_sehat_mapping_lokasi_ralan.kd_poli "+
                    "inner join pegawai on reg_periksa.kd_dokter=pegawai.nik "+
+                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "left join satu_sehat_immunization on satu_sehat_immunization.no_rawat=detail_pemberian_obat.no_rawat and satu_sehat_immunization.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "+
                    "satu_sehat_immunization.jam=detail_pemberian_obat.jam and satu_sehat_immunization.kode_brng=detail_pemberian_obat.kode_brng and "+
                    "satu_sehat_immunization.no_batch=detail_pemberian_obat.no_batch and satu_sehat_immunization.no_faktur=detail_pemberian_obat.no_faktur "+
-                   "where detail_pemberian_obat.no_batch<>'' and reg_periksa.tgl_registrasi between ? and ? "+
+                   "where detail_pemberian_obat.no_batch<>'' and nota_jalan.tanggal ? and ? "+
+                   (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
+                   "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_vaksin.kode_brng like ? or satu_sehat_mapping_vaksin.vaksin_display like ? or "+
+                   "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)")+" order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                if(!TCari.getText().equals("")){
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                    ps.setString(10,"%"+TCari.getText()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString("tgl_registrasi")+"T"+rs.getString("jam_reg")+"+07:00",rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
+                        rs.getString("no_ktp"),rs.getString("stts"),rs.getString("status_lanjut"),rs.getString("id_encounter"),rs.getString("vaksin_code"),rs.getString("vaksin_system"),
+                        rs.getString("kode_brng"),rs.getString("vaksin_display"),rs.getString("route_code"),rs.getString("route_system"),rs.getString("route_display"),rs.getString("dose_quantity_code"),
+                        rs.getString("dose_quantity_system"),rs.getString("dose_quantity_unit"),rs.getString("no_batch"),rs.getString("tgl_perawatan")+"T"+rs.getString("jam")+"+07:00",
+                        rs.getString("jml"),rs.getString("aturan"),rs.getString("id_lokasi_satusehat"),rs.getString("nm_poli"),rs.getString("nama"),rs.getString("ktppraktisi"),
+                        rs.getString("id_immunization"),rs.getString("no_faktur")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                   "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
+                   "reg_periksa.stts,reg_periksa.status_lanjut,satu_sehat_encounter.id_encounter,satu_sehat_mapping_vaksin.vaksin_code,satu_sehat_mapping_vaksin.vaksin_system,"+
+                   "satu_sehat_mapping_vaksin.kode_brng,satu_sehat_mapping_vaksin.vaksin_display,satu_sehat_mapping_vaksin.route_code,satu_sehat_mapping_vaksin.route_system,"+
+                   "satu_sehat_mapping_vaksin.route_display,satu_sehat_mapping_vaksin.dose_quantity_code,satu_sehat_mapping_vaksin.dose_quantity_system,"+
+                   "satu_sehat_mapping_vaksin.dose_quantity_unit,detail_pemberian_obat.no_batch,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
+                   "detail_pemberian_obat.jml,aturan_pakai.aturan,satu_sehat_mapping_lokasi_ralan.id_lokasi_satusehat,poliklinik.nm_poli,pegawai.nama,pegawai.no_ktp as ktppraktisi,"+
+                   "ifnull(satu_sehat_immunization.id_immunization,'') as id_immunization,detail_pemberian_obat.no_faktur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join detail_pemberian_obat on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_mapping_vaksin on satu_sehat_mapping_vaksin.kode_brng=detail_pemberian_obat.kode_brng "+
+                   "inner join aturan_pakai on aturan_pakai.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and aturan_pakai.jam=detail_pemberian_obat.jam and "+
+                   "aturan_pakai.no_rawat=detail_pemberian_obat.no_rawat and aturan_pakai.kode_brng=detail_pemberian_obat.kode_brng "+
+                   "inner join satu_sehat_mapping_lokasi_ralan on satu_sehat_mapping_lokasi_ralan.kd_poli=reg_periksa.kd_poli "+
+                   "inner join poliklinik on poliklinik.kd_poli=satu_sehat_mapping_lokasi_ralan.kd_poli "+
+                   "inner join pegawai on reg_periksa.kd_dokter=pegawai.nik "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "left join satu_sehat_immunization on satu_sehat_immunization.no_rawat=detail_pemberian_obat.no_rawat and satu_sehat_immunization.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "+
+                   "satu_sehat_immunization.jam=detail_pemberian_obat.jam and satu_sehat_immunization.kode_brng=detail_pemberian_obat.kode_brng and "+
+                   "satu_sehat_immunization.no_batch=detail_pemberian_obat.no_batch and satu_sehat_immunization.no_faktur=detail_pemberian_obat.no_faktur "+
+                   "where detail_pemberian_obat.no_batch<>'' and nota_inap.tanggal ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_vaksin.kode_brng like ? or satu_sehat_mapping_vaksin.vaksin_display like ? or "+
                    "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)")+" order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
@@ -975,6 +989,6 @@ public final class SatuSehatKirimVaksin extends javax.swing.JDialog {
     }
     
     public JTable getTable(){
-        return tbKamar;
+        return tbObat;
     }
 }
