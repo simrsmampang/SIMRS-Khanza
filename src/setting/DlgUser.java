@@ -229,7 +229,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Penilaian Tambahan Bunuh Diri","[L]Antrean Per Tanggal Mobile JKN","[M]Penilaian Tambahan Perilaku Kekerasan","[M]Penilaian Tambahan Melarikan Diri",
                 "[P]Persetujuan Penundaan Pelayanan","[J]Sisa Diet Pasien","[M]Penilaian Awal Medis Ralan Bedah Mulut","[M]Penilaian Pasien Keracunan","[M]Pemantauan MEOWS Pasien Obstetri",
                 "[M]Catatan ADIME Gizi","[K]Pengajuan Biaya","[M]Penilaian Awal Keperawatan Ralan Geriatri","[M]Master Masalah Keperawatan Geriatri","[M]Master Rencana Keperawatan Geriatri",
-                "[M]Check List Kriteria Masuk HCU","[M]Check List Kriteria Keluar HCU","[M]Penilaian Risiko Dekubitus"
+                "[M]Check List Kriteria Masuk HCU","[M]Check List Kriteria Keluar HCU","[M]Penilaian Risiko Dekubitus","[J]Master Menolak Anjuran Medis"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -508,7 +508,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 954;i++) {
+        for (i = 0; i < 955;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2824,6 +2824,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 953:
                     column.setPreferredWidth(152);
                     break;
+                case 954:
+                    column.setPreferredWidth(169);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3321,7 +3324,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3345,7 +3348,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -4346,7 +4349,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "master_rencana_keperawatan_geriatri='"+tbUser.getValueAt(i,950).toString()+"',"+
                     "checklist_kriteria_masuk_hcu='"+tbUser.getValueAt(i,951).toString()+"',"+
                     "checklist_kriteria_keluar_hcu='"+tbUser.getValueAt(i,952).toString()+"',"+
-                    "penilaian_risiko_dekubitus='"+tbUser.getValueAt(i,953).toString()+"'")==true){
+                    "penilaian_risiko_dekubitus='"+tbUser.getValueAt(i,953).toString()+"',"+
+                    "master_menolak_anjuran_medis='"+tbUser.getValueAt(i,954).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5498,7 +5502,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "master_rencana_keperawatan_geriatri='"+tbUser.getValueAt(barisdicopy,950).toString()+"',"+
                                         "checklist_kriteria_masuk_hcu='"+tbUser.getValueAt(barisdicopy,951).toString()+"',"+
                                         "checklist_kriteria_keluar_hcu='"+tbUser.getValueAt(barisdicopy,952).toString()+"',"+
-                                        "penilaian_risiko_dekubitus='"+tbUser.getValueAt(barisdicopy,953).toString()+"'");
+                                        "penilaian_risiko_dekubitus='"+tbUser.getValueAt(barisdicopy,953).toString()+"',"+
+                                        "master_menolak_anjuran_medis='"+tbUser.getValueAt(barisdicopy,954).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -5777,7 +5782,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.bpjs_antrean_pertanggal,user.penilaian_tambahan_perilaku_kekerasan,user.penilaian_tambahan_beresiko_melarikan_diri,user.persetujuan_penundaan_pelayanan,"+
                 "user.sisa_diet_pasien,user.penilaian_awal_medis_ralan_bedah_mulut,user.penilaian_pasien_keracunan,user.pemantauan_meows_obstetri,user.catatan_adime_gizi,"+
                 "user.pengajuan_biaya,user.penilaian_awal_keperawatan_ralan_geriatri,user.master_masalah_keperawatan_geriatri,user.master_rencana_keperawatan_geriatri,"+
-                "user.checklist_kriteria_masuk_hcu,user.checklist_kriteria_keluar_hcu,user.penilaian_risiko_dekubitus from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.checklist_kriteria_masuk_hcu,user.checklist_kriteria_keluar_hcu,user.penilaian_risiko_dekubitus,user.master_menolak_anjuran_medis from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6743,7 +6748,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("master_rencana_keperawatan_geriatri"),
                                rs.getBoolean("checklist_kriteria_masuk_hcu"),
                                rs.getBoolean("checklist_kriteria_keluar_hcu"),
-                               rs.getBoolean("penilaian_risiko_dekubitus")
+                               rs.getBoolean("penilaian_risiko_dekubitus"),
+                               rs.getBoolean("master_menolak_anjuran_medis")
                             });
                         }   
                     } catch (Exception e) {
@@ -7698,7 +7704,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("master_rencana_keperawatan_geriatri"),
                            rs.getBoolean("checklist_kriteria_masuk_hcu"),
                            rs.getBoolean("checklist_kriteria_keluar_hcu"),
-                           rs.getBoolean("penilaian_risiko_dekubitus")
+                           rs.getBoolean("penilaian_risiko_dekubitus"),
+                           rs.getBoolean("master_menolak_anjuran_medis")
                         });
                     }                                             
                  }

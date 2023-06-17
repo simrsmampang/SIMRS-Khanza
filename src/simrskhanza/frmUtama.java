@@ -739,6 +739,7 @@ import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
 import laporan.LaporanSisaDietPasien;
 import laporan.LaporanTahunanIGD;
 import laporan.LaporanTahunanIRJ;
+import laporan.MasterMenolakAnjuranMedis;
 import permintaan.DlgBookingPeriksa;
 import permintaan.DlgCariPermintaanLabMB;
 import permintaan.DlgCariPermintaanLabPA;
@@ -20273,6 +20274,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterMenolakAnjuranMedisActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterMenolakAnjuranMedis form=new MasterMenolakAnjuranMedis(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20946,7 +20959,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
-            btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus;
+            btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis;
     
     public void isWall(){
         try{            
@@ -22948,6 +22961,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getoperasi_per_bulan()==true){  
                 Panelmenu.add(btnOperasiPerBulan);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_menolak_anjuran_medis()==true){  
+                Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==10){   
@@ -27665,6 +27683,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getoperasi_per_bulan()==true){  
             Panelmenu.add(btnOperasiPerBulan);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_menolak_anjuran_medis()==true){  
+            Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
             jmlmenu++;
         }
 
@@ -33126,6 +33149,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getoperasi_per_bulan()==true){  
             if(btnOperasiPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnOperasiPerBulan);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmaster_menolak_anjuran_medis()==true){  
+            if(btnMasterMenolakAnjuranMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
                 jmlmenu++;
             }                
         }
@@ -40969,5 +40999,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianRisikoDekubitus.setName("btnPenilaianRisikoDekubitus"); 
         btnPenilaianRisikoDekubitus.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianRisikoDekubitus.addActionListener(this::btnPenilaianRisikoDekubitusActionPerformed);
+        
+        btnMasterMenolakAnjuranMedis = new widget.ButtonBig();
+        btnMasterMenolakAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9191520_nonviolence_violence_hit_thrash_conflict_icon.png"))); 
+        btnMasterMenolakAnjuranMedis.setText("Master Menolak Anjuran Medis");
+        btnMasterMenolakAnjuranMedis.setIconTextGap(0);
+        btnMasterMenolakAnjuranMedis.setName("btnMasterMenolakAnjuranMedis"); 
+        btnMasterMenolakAnjuranMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterMenolakAnjuranMedis.addActionListener(this::btnMasterMenolakAnjuranMedisActionPerformed);
     }
 }
