@@ -2068,17 +2068,6 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         isForm();
     }
     
-    public void setNoRm(String norwt, Date tgl2,String KodeDokter,String NamaDokter,String Operasi) {
-        TNoRw.setText(norwt);
-        TCari.setText(norwt);
-        DTPCari2.setDate(tgl2);
-        isRawat();
-        ChkInput.setSelected(true);
-        isForm();
-        KodePetugas.setText(KodeDokter);
-        NamaPetugas.setText(NamaDokter);
-    }
-    
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);

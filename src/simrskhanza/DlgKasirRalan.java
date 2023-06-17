@@ -63,6 +63,7 @@ import keuangan.DlgRHJmParamedis;
 import keuangan.Jurnal;
 import laporan.DlgBerkasRawat;
 import laporan.DlgDataInsidenKeselamatan;
+import laporan.DlgDataMenolakAnjuranMedis;
 import rekammedis.RMDataResumePasien;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
@@ -757,6 +758,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         ppCatatanPasien = new javax.swing.JMenuItem();
         ppBerkasDigital = new javax.swing.JMenuItem();
         ppIKP = new javax.swing.JMenuItem();
+        ppDataMenolakAnjuranMedis = new javax.swing.JMenuItem();
         MnStatus = new javax.swing.JMenu();
         ppBerkasRanap = new javax.swing.JMenuItem();
         ppBerkasDIterima = new javax.swing.JMenuItem();
@@ -3707,6 +3709,22 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         });
         MenuInputData.add(ppIKP);
 
+        ppDataMenolakAnjuranMedis.setBackground(new java.awt.Color(255, 255, 254));
+        ppDataMenolakAnjuranMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDataMenolakAnjuranMedis.setForeground(new java.awt.Color(50, 50, 50));
+        ppDataMenolakAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDataMenolakAnjuranMedis.setText("Menolak Anjuran Medis");
+        ppDataMenolakAnjuranMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDataMenolakAnjuranMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDataMenolakAnjuranMedis.setName("ppDataMenolakAnjuranMedis"); // NOI18N
+        ppDataMenolakAnjuranMedis.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppDataMenolakAnjuranMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDataMenolakAnjuranMedisBtnPrintActionPerformed(evt);
+            }
+        });
+        MenuInputData.add(ppDataMenolakAnjuranMedis);
+
         jPopupMenu1.add(MenuInputData);
 
         MnStatus.setBackground(new java.awt.Color(255, 255, 254));
@@ -5900,7 +5918,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -5947,7 +5965,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel32.setBounds(176, 10, 20, 23);
 
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -6219,7 +6237,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass8.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -6232,7 +6250,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass8.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -13044,6 +13062,26 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_MnCheckListKriteriaMasukHCUActionPerformed
 
+    private void ppDataMenolakAnjuranMedisBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDataMenolakAnjuranMedisBtnPrintActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TNoRw.requestFocus();
+        }else if(TPasienCari.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgDataMenolakAnjuranMedis aplikasi=new DlgDataMenolakAnjuranMedis(null,false);
+            aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            aplikasi.setLocationRelativeTo(internalFrame1);
+            aplikasi.isCek();
+            aplikasi.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            aplikasi.tampil();
+            aplikasi.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_ppDataMenolakAnjuranMedisBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13438,6 +13476,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem ppCatatanADIMEGizi;
     private javax.swing.JMenuItem ppCatatanPasien;
     private javax.swing.JMenuItem ppDataIndukKecelakaan;
+    private javax.swing.JMenuItem ppDataMenolakAnjuranMedis;
     private javax.swing.JMenuItem ppDeteksiDIniCorona;
     private javax.swing.JMenuItem ppIKP;
     private javax.swing.JMenuItem ppIKP1;
@@ -13768,6 +13807,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         ppCatatanADIMEGizi.setEnabled(akses.getcatatan_adime_gizi());
         MnPenilaianAwalKeperawatanRalanGeriatri.setEnabled(akses.getpenilaian_awal_keperawatan_ralan_geriatri());
         MnCheckListKriteriaMasukHCU.setEnabled(akses.getchecklist_kriteria_masuk_hcu());
+        ppDataMenolakAnjuranMedis.setEnabled(akses.getdata_menolak_anjuran_medis());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusData.setEnabled(true);

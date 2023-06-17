@@ -80,6 +80,7 @@ import bridging.DlgDataTB;
 import bridging.INACBGPerawatanCorona;
 import bridging.PilihanBridgingAsuransi;
 import inventory.DlgCopyResep;
+import laporan.DlgDataMenolakAnjuranMedis;
 import rekammedis.RMDataResumePasien;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -1108,6 +1109,7 @@ public final class DlgReg extends javax.swing.JDialog {
         ppCatatanPasien = new javax.swing.JMenuItem();
         ppBerkasDigital = new javax.swing.JMenuItem();
         ppIKP = new javax.swing.JMenuItem();
+        ppDataMenolakAnjuranMedis = new javax.swing.JMenuItem();
         MnUrut = new javax.swing.JMenu();
         MnUrutNoRawatDesc = new javax.swing.JMenuItem();
         MnUrutNoRawatAsc = new javax.swing.JMenuItem();
@@ -4571,6 +4573,22 @@ public final class DlgReg extends javax.swing.JDialog {
         });
         MenuInputData.add(ppIKP);
 
+        ppDataMenolakAnjuranMedis.setBackground(new java.awt.Color(255, 255, 254));
+        ppDataMenolakAnjuranMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDataMenolakAnjuranMedis.setForeground(new java.awt.Color(50, 50, 50));
+        ppDataMenolakAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDataMenolakAnjuranMedis.setText("Menolak Anjuran Medis");
+        ppDataMenolakAnjuranMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDataMenolakAnjuranMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDataMenolakAnjuranMedis.setName("ppDataMenolakAnjuranMedis"); // NOI18N
+        ppDataMenolakAnjuranMedis.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppDataMenolakAnjuranMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDataMenolakAnjuranMedisBtnPrintActionPerformed(evt);
+            }
+        });
+        MenuInputData.add(ppDataMenolakAnjuranMedis);
+
         jPopupMenu1.add(MenuInputData);
 
         MnUrut.setBackground(new java.awt.Color(255, 255, 254));
@@ -6132,7 +6150,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -6145,7 +6163,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -6285,7 +6303,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2023" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -13604,6 +13622,26 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnCheckListKriteriaMasukHCUActionPerformed
 
+    private void ppDataMenolakAnjuranMedisBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDataMenolakAnjuranMedisBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TNoRw.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgDataMenolakAnjuranMedis aplikasi=new DlgDataMenolakAnjuranMedis(null,false);
+            aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            aplikasi.setLocationRelativeTo(internalFrame1);
+            aplikasi.isCek();
+            aplikasi.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            aplikasi.tampil();
+            aplikasi.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_ppDataMenolakAnjuranMedisBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13985,6 +14023,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem ppCatatanAdimeGizi;
     private javax.swing.JMenuItem ppCatatanPasien;
     private javax.swing.JMenuItem ppDataIndukKecelakaan;
+    private javax.swing.JMenuItem ppDataMenolakAnjuranMedis;
     private javax.swing.JMenuItem ppDeteksiDIniCorona;
     private javax.swing.JMenuItem ppGrafikDemografi;
     private javax.swing.JMenuItem ppGrafikPerAgama;
@@ -14537,6 +14576,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         ppCatatanAdimeGizi.setEnabled(akses.getcatatan_adime_gizi());
         MnPenilaianAwalKeperawatanRalanGeriatri.setEnabled(akses.getpenilaian_awal_keperawatan_ralan_geriatri());
         MnCheckListKriteriaMasukHCU.setEnabled(akses.getchecklist_kriteria_masuk_hcu());
+        ppDataMenolakAnjuranMedis.setEnabled(akses.getdata_menolak_anjuran_medis());
     }
     
     private void isNumber(){         

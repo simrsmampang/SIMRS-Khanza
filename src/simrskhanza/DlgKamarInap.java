@@ -72,6 +72,7 @@ import keuangan.DlgPerkiraanBiayaRanap;
 import laporan.DlgBerkasRawat;
 import laporan.DlgDataInsidenKeselamatan;
 import laporan.DlgDataKlasifikasiPasienRanap;
+import laporan.DlgDataMenolakAnjuranMedis;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
@@ -928,6 +929,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         ppIKP = new javax.swing.JMenuItem();
         ppKlasifikasiPasien = new javax.swing.JMenuItem();
         ppSkriningManagerPelayananPasien = new javax.swing.JMenuItem();
+        ppDataMenolakAnjuranMedis = new javax.swing.JMenuItem();
         SetStatus = new javax.swing.JMenu();
         MnSehat = new javax.swing.JMenuItem();
         MnStatusRujuk = new javax.swing.JMenuItem();
@@ -3987,6 +3989,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MenuInputData.add(ppSkriningManagerPelayananPasien);
+
+        ppDataMenolakAnjuranMedis.setBackground(new java.awt.Color(255, 255, 254));
+        ppDataMenolakAnjuranMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDataMenolakAnjuranMedis.setForeground(new java.awt.Color(50, 50, 50));
+        ppDataMenolakAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDataMenolakAnjuranMedis.setText("Menolak Anjuran Medis");
+        ppDataMenolakAnjuranMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDataMenolakAnjuranMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDataMenolakAnjuranMedis.setName("ppDataMenolakAnjuranMedis"); // NOI18N
+        ppDataMenolakAnjuranMedis.setPreferredSize(new java.awt.Dimension(225, 26));
+        ppDataMenolakAnjuranMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDataMenolakAnjuranMedisBtnPrintActionPerformed(evt);
+            }
+        });
+        MenuInputData.add(ppDataMenolakAnjuranMedis);
 
         jPopupMenu1.add(MenuInputData);
 
@@ -14938,6 +14956,73 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     }//GEN-LAST:event_MnPenilaianRisikoDikubitusActionPerformed
 
+    private void ppDataMenolakAnjuranMedisBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDataMenolakAnjuranMedisBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()>-1){
+                if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
+                    try {
+                        psanak=koneksi.prepareStatement(
+                            "select ranap_gabung.no_rawat2 from ranap_gabung where ranap_gabung.no_rawat=?");            
+                        try {
+                            psanak.setString(1,tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString());
+                            rs2=psanak.executeQuery();
+                            if(rs2.next()){
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                DlgDataMenolakAnjuranMedis aplikasi=new DlgDataMenolakAnjuranMedis(null,false);
+                                aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                aplikasi.setLocationRelativeTo(internalFrame1);
+                                aplikasi.isCek();
+                                if(R1.isSelected()==true){
+                                    aplikasi.setNoRm(rs2.getString("no_rawat2"),new Date());
+                                }else if(R2.isSelected()==true){
+                                    aplikasi.setNoRm(rs2.getString("no_rawat2"),DTPCari2.getDate());
+                                }else if(R3.isSelected()==true){
+                                    aplikasi.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
+                                }
+                                aplikasi.tampil();
+                                aplikasi.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor());
+                            }else{
+                                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                tbKamIn.requestFocus();
+                            }
+                        } catch(Exception ex){
+                            System.out.println("Notifikasi : "+ex);
+                        }finally{
+                              if(rs2 != null){
+                                  rs2.close();
+                              }
+                              if(psanak != null){
+                                  psanak.close();
+                              }
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }else{
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    DlgDataMenolakAnjuranMedis aplikasi=new DlgDataMenolakAnjuranMedis(null,false);
+                    aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    aplikasi.setLocationRelativeTo(internalFrame1);
+                    aplikasi.isCek();
+                    if(R1.isSelected()==true){
+                        aplikasi.setNoRm(norawat.getText(),new Date());
+                    }else if(R2.isSelected()==true){
+                        aplikasi.setNoRm(norawat.getText(),DTPCari2.getDate());
+                    }else if(R3.isSelected()==true){
+                        aplikasi.setNoRm(norawat.getText(),DTPCari4.getDate());
+                    }
+                    aplikasi.tampil();
+                    aplikasi.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+            }
+        } 
+    }//GEN-LAST:event_ppDataMenolakAnjuranMedisBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -15295,6 +15380,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem ppCatatanPasien;
     private javax.swing.JMenuItem ppDataHAIs;
     private javax.swing.JMenuItem ppDataIndukKecelakaan;
+    private javax.swing.JMenuItem ppDataMenolakAnjuranMedis;
     private javax.swing.JMenuItem ppIKP;
     private javax.swing.JMenuItem ppKlasifikasiPasien;
     private javax.swing.JMenuItem ppMonitoringAsuhanGizi;
@@ -15811,6 +15897,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         MnCheckListKriteriaMasukHCU.setEnabled(akses.getchecklist_kriteria_masuk_hcu());
         MnCheckListKriteriaKeluarHCU.setEnabled(akses.getchecklist_kriteria_keluar_hcu());
         MnPenilaianRisikoDikubitus.setEnabled(akses.getpenilaian_risiko_dekubitus());
+        ppDataMenolakAnjuranMedis.setEnabled(akses.getdata_menolak_anjuran_medis());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusDataSalah.setEnabled(true);
