@@ -739,7 +739,7 @@ import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
 import laporan.LaporanSisaDietPasien;
 import laporan.LaporanTahunanIGD;
 import laporan.LaporanTahunanIRJ;
-import laporan.MasterMenolakAnjuranMedis;
+import surat.MasterMenolakAnjuranMedis;
 import permintaan.DlgBookingPeriksa;
 import permintaan.DlgCariPermintaanLabMB;
 import permintaan.DlgCariPermintaanLabPA;
@@ -22963,11 +22963,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnOperasiPerBulan);                 
                 jmlmenu++;
             }
-            
-            if(akses.getmaster_menolak_anjuran_medis()==true){  
-                Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
-                jmlmenu++;
-            }
         }else if(cmbMenu.getSelectedIndex()==10){   
             jmlmenu=0;
             if(akses.getkamar()==true){
@@ -25380,6 +25375,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPersetujuanPenundaanPelayanan);
                 jmlmenu++;
             }
+            
+            if(akses.getmaster_menolak_anjuran_medis()==true){  
+                Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==16){ 
             jmlmenu=0;
             if(akses.getruang_perpustakaan()==true){
@@ -27683,11 +27683,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getoperasi_per_bulan()==true){  
             Panelmenu.add(btnOperasiPerBulan);                 
-            jmlmenu++;
-        }
-        
-        if(akses.getmaster_menolak_anjuran_medis()==true){  
-            Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
             jmlmenu++;
         }
 
@@ -30094,6 +30089,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpersetujuan_penundaan_pelayanan()==true){
             Panelmenu.add(btnPersetujuanPenundaanPelayanan);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_menolak_anjuran_medis()==true){  
+            Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
             jmlmenu++;
         }
 
@@ -33149,13 +33149,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getoperasi_per_bulan()==true){  
             if(btnOperasiPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnOperasiPerBulan);                 
-                jmlmenu++;
-            }                
-        }
-        
-        if(akses.getmaster_menolak_anjuran_medis()==true){  
-            if(btnMasterMenolakAnjuranMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
                 jmlmenu++;
             }                
         }
@@ -36523,6 +36516,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpersetujuan_penundaan_pelayanan()==true){
             if(btnPersetujuanPenundaanPelayanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPersetujuanPenundaanPelayanan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmaster_menolak_anjuran_medis()==true){  
+            if(btnMasterMenolakAnjuranMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
                 jmlmenu++;
             }                
         }

@@ -229,7 +229,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Penilaian Tambahan Bunuh Diri","[L]Antrean Per Tanggal Mobile JKN","[M]Penilaian Tambahan Perilaku Kekerasan","[M]Penilaian Tambahan Melarikan Diri",
                 "[P]Persetujuan Penundaan Pelayanan","[J]Sisa Diet Pasien","[M]Penilaian Awal Medis Ralan Bedah Mulut","[M]Penilaian Pasien Keracunan","[M]Pemantauan MEOWS Pasien Obstetri",
                 "[M]Catatan ADIME Gizi","[K]Pengajuan Biaya","[M]Penilaian Awal Keperawatan Ralan Geriatri","[M]Master Masalah Keperawatan Geriatri","[M]Master Rencana Keperawatan Geriatri",
-                "[M]Check List Kriteria Masuk HCU","[M]Check List Kriteria Keluar HCU","[M]Penilaian Risiko Dekubitus","[J]Master Menolak Anjuran Medis","[J]Data Menolak Anjuran Medis"
+                "[M]Check List Kriteria Masuk HCU","[M]Check List Kriteria Keluar HCU","[M]Penilaian Risiko Dekubitus","[P]Master Menolak Anjuran Medis","[P]Penolakan Anjuran Medis"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -2828,7 +2828,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(169);
                     break;
                 case 955:
-                    column.setPreferredWidth(159);
+                    column.setPreferredWidth(144);
                     break;
                 default:
                     column.setPreferredWidth(135);
@@ -4354,7 +4354,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "checklist_kriteria_keluar_hcu='"+tbUser.getValueAt(i,952).toString()+"',"+
                     "penilaian_risiko_dekubitus='"+tbUser.getValueAt(i,953).toString()+"',"+
                     "master_menolak_anjuran_medis='"+tbUser.getValueAt(i,954).toString()+"',"+
-                    "data_menolak_anjuran_medis='"+tbUser.getValueAt(i,955).toString()+"'")==true){
+                    "penolakan_anjuran_medis='"+tbUser.getValueAt(i,955).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5508,7 +5508,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "checklist_kriteria_keluar_hcu='"+tbUser.getValueAt(barisdicopy,952).toString()+"',"+
                                         "penilaian_risiko_dekubitus='"+tbUser.getValueAt(barisdicopy,953).toString()+"',"+
                                         "master_menolak_anjuran_medis='"+tbUser.getValueAt(barisdicopy,954).toString()+"',"+
-                                        "data_menolak_anjuran_medis='"+tbUser.getValueAt(barisdicopy,955).toString()+"'");
+                                        "penolakan_anjuran_medis='"+tbUser.getValueAt(barisdicopy,955).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -5788,7 +5788,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.sisa_diet_pasien,user.penilaian_awal_medis_ralan_bedah_mulut,user.penilaian_pasien_keracunan,user.pemantauan_meows_obstetri,user.catatan_adime_gizi,"+
                 "user.pengajuan_biaya,user.penilaian_awal_keperawatan_ralan_geriatri,user.master_masalah_keperawatan_geriatri,user.master_rencana_keperawatan_geriatri,"+
                 "user.checklist_kriteria_masuk_hcu,user.checklist_kriteria_keluar_hcu,user.penilaian_risiko_dekubitus,user.master_menolak_anjuran_medis,"+
-                "user.data_menolak_anjuran_medis from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.penolakan_anjuran_medis from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6756,7 +6756,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("checklist_kriteria_keluar_hcu"),
                                rs.getBoolean("penilaian_risiko_dekubitus"),
                                rs.getBoolean("master_menolak_anjuran_medis"),
-                               rs.getBoolean("data_menolak_anjuran_medis")
+                               rs.getBoolean("penolakan_anjuran_medis")
                             });
                         }   
                     } catch (Exception e) {
@@ -7713,7 +7713,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("checklist_kriteria_keluar_hcu"),
                            rs.getBoolean("penilaian_risiko_dekubitus"),
                            rs.getBoolean("master_menolak_anjuran_medis"),
-                           rs.getBoolean("data_menolak_anjuran_medis")
+                           rs.getBoolean("penolakan_anjuran_medis")
                         });
                     }                                             
                  }
