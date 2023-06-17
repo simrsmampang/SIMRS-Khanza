@@ -70,7 +70,7 @@ public class MasterMenolakAnjuranMedis extends javax.swing.JDialog {
         tbSpesialis.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)3).getKata(TKd));
-        TNm.setDocument(new batasInput((int)100).getKata(TNm));
+        TNm.setDocument(new batasInput((int)40).getKata(TNm));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -421,7 +421,7 @@ public class MasterMenolakAnjuranMedis extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Valid.hapusTabletf(tabMode,TKd,"master_menolak_anjuran_medis","kode_masalah")==true){
+        if(Valid.hapusTabletf(tabMode,TKd,"master_menolak_anjuran_medis","kode_penolakan")==true){
             if(tbSpesialis.getSelectedRow()!= -1){
                 tabMode.removeRow(tbSpesialis.getSelectedRow());
                 emptTeks();
@@ -445,7 +445,7 @@ public class MasterMenolakAnjuranMedis extends javax.swing.JDialog {
             Valid.textKosong(TNm,"Masalah");
         }else{
             if(tbSpesialis.getSelectedRow()> -1){
-                if(Sequel.mengedittf("master_menolak_anjuran_medis","kode_masalah=?","kode_masalah=?,nama_masalah=?",3,new String[]{
+                if(Sequel.mengedittf("master_menolak_anjuran_medis","kode_penolakan=?","kode_penolakan=?,nama_penolakan=?",3,new String[]{
                     TKd.getText(),TNm.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()
                 })==true){
                     tbSpesialis.setValueAt(TKd.getText(),tbSpesialis.getSelectedRow(),0);
@@ -597,7 +597,7 @@ public class MasterMenolakAnjuranMedis extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select * from master_menolak_anjuran_medis where master_menolak_anjuran_medis.kode_masalah like ? or master_menolak_anjuran_medis.nama_masalah like ? order by master_menolak_anjuran_medis.kode_masalah");
+            ps=koneksi.prepareStatement("select * from master_menolak_anjuran_medis where master_menolak_anjuran_medis.kode_penolakan like ? or master_menolak_anjuran_medis.nama_penolakan like ? order by master_menolak_anjuran_medis.kode_penolakan");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
