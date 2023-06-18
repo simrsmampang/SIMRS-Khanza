@@ -16,16 +16,18 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -51,6 +53,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     private int i=0;
     private DlgCariPegawai petugas=new DlgCariPegawai(null,false);
     private DlgCariMasterMenolakAnjuranMedis penolakan=new DlgCariMasterMenolakAnjuranMedis(null,false);
+    private StringBuilder htmlContent;
     
     public SuratPenolakanAnjuranMedis(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -87,7 +90,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(65);
             }else if(i==7){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(115);
             }else if(i==8){
                 column.setPreferredWidth(40);
             }else if(i==9){
@@ -202,8 +205,8 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         isPhoto();
         
         HTMLEditorKit kit = new HTMLEditorKit();
-        LoadHTML2.setEditable(true);
-        LoadHTML2.setEditorKit(kit);
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -217,6 +220,9 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
                 ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
         Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
+        LoadHTML2.setEditable(true);
+        LoadHTML2.setEditorKit(kit);
         LoadHTML2.setDocument(doc);
     }
     
@@ -235,6 +241,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
 
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -313,6 +320,9 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
 
         Umur.setHighlighter(null);
         Umur.setName("Umur"); // NOI18N
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -585,22 +595,12 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
-        TPasien.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TPasienKeyPressed(evt);
-            }
-        });
         FormInput.add(TPasien);
         TPasien.setBounds(325, 10, 255, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
-        TNoRM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRMKeyPressed(evt);
-            }
-        });
         FormInput.add(TNoRM);
         TNoRM.setBounds(212, 10, 111, 23);
 
@@ -993,15 +993,15 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
             Valid.textKosong(RisikoPenolakan,"Risiko Penolakan");
         }else{
             if(Sequel.menyimpantf("surat_penolakan_anjuran_medis","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
-                    NoPernyataan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Hubungan.getSelectedItem().toString(),
-                    NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),JKPJ.getSelectedItem().toString().substring(0,1),NoTelp.getText(),
-                    KodePenolakan.getText(),AlasanPenolakan.getText(),RisikoPenolakan.getText(),KodePetugas.getText()
+                    NoPernyataan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+                    Hubungan.getSelectedItem().toString(),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),JKPJ.getSelectedItem().toString().substring(0,1),
+                    NoTelp.getText(),KodePenolakan.getText(),AlasanPenolakan.getText(),RisikoPenolakan.getText(),KodePetugas.getText()
                 })==true){
                 tabMode.addRow(new String[]{
                     NoPernyataan.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
-                    Valid.SetTgl(Tanggal.getSelectedItem()+""),KodePenolakan.getText(),NamaPenolakan.getText(),AlasanPenolakan.getText(),
-                    RisikoPenolakan.getText(),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),JKPJ.getSelectedItem().toString().substring(0,1),
-                    NoTelp.getText(),Hubungan.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
+                    Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KodePenolakan.getText(),
+                    NamaPenolakan.getText(),AlasanPenolakan.getText(),RisikoPenolakan.getText(),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),
+                    JKPJ.getSelectedItem().toString().substring(0,1),NoTelp.getText(),Hubungan.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -1117,40 +1117,103 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataPersetujuanUmum.jasper","report","::[ Data Persetujuan Umum ]::",
-                    "select surat_penolakan_anjuran_medis.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_penolakan_anjuran_medis.tanggal,surat_penolakan_anjuran_medis.pengobatan_kepada,"+
-                    "surat_penolakan_anjuran_medis.nilai_kepercayaan,surat_penolakan_anjuran_medis.nama_pj,surat_penolakan_anjuran_medis.umur_pj,surat_penolakan_anjuran_medis.no_ktppj,"+
-                    "surat_penolakan_anjuran_medis.jkpj,surat_penolakan_anjuran_medis.bertindak_atas,surat_penolakan_anjuran_medis.no_telp,surat_penolakan_anjuran_medis.nip,"+
-                    "petugas.nama from surat_penolakan_anjuran_medis inner join reg_periksa on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_penolakan_anjuran_medis.nip=petugas.nip where "+
-                    "surat_penolakan_anjuran_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by surat_penolakan_anjuran_medis.tanggal",param);
-            }else{
-                Valid.MyReportqry("rptDataPersetujuanUmum.jasper","report","::[ Data Persetujuan Umum ]::",
-                    "select surat_penolakan_anjuran_medis.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_penolakan_anjuran_medis.tanggal,surat_penolakan_anjuran_medis.pengobatan_kepada,"+
-                    "surat_penolakan_anjuran_medis.nilai_kepercayaan,surat_penolakan_anjuran_medis.nama_pj,surat_penolakan_anjuran_medis.umur_pj,surat_penolakan_anjuran_medis.no_ktppj,"+
-                    "surat_penolakan_anjuran_medis.jkpj,surat_penolakan_anjuran_medis.bertindak_atas,surat_penolakan_anjuran_medis.no_telp,surat_penolakan_anjuran_medis.nip,"+
-                    "petugas.nama from surat_penolakan_anjuran_medis inner join reg_periksa on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_penolakan_anjuran_medis.nip=petugas.nip where "+
-                    "surat_penolakan_anjuran_medis.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    "surat_penolakan_anjuran_medis.no_telp like '%"+TCari.getText().trim()+"%' or surat_penolakan_anjuran_medis.nama_pj like '%"+TCari.getText().trim()+"%' or "+
-                    "surat_penolakan_anjuran_medis.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by surat_penolakan_anjuran_medis.tanggal",param);
-            }  
+            try{
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Persetujuan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.R.M.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penolakan Anjuran</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alasan Penolakan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko Penolakan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Penanggung Jawab</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur P.J.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nomor KTP P.J.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K. P.J.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nomor Telp/HP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hubungan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
+                    "</tr>"
+                );
+                
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                        "</tr>");
+                }
+                
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
+
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("DataPenolakanAnjuranMedis.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA PENOLAKAN ANJURAN MEDIS<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
+
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1238,16 +1301,8 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     }//GEN-LAST:event_JKPJKeyPressed
 
     private void NamaPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaPJKeyPressed
-        Valid.pindah(evt,NoPernyataan,UmurPJ);
+        Valid.pindah(evt,RisikoPenolakan,UmurPJ);
     }//GEN-LAST:event_NamaPJKeyPressed
-
-    private void TNoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRMKeyPressed
-    // Valid.pindah(evt, TNm, BtnSimpan);
-    }//GEN-LAST:event_TNoRMKeyPressed
-
-    private void TPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPasienKeyPressed
-        Valid.pindah(evt,TCari,BtnSimpan);
-    }//GEN-LAST:event_TPasienKeyPressed
 
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -1258,7 +1313,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     }//GEN-LAST:event_TNoRwKeyPressed
 
     private void NoPernyataanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPernyataanKeyPressed
-        Valid.pindah(evt,btnPetugas,NamaPJ);
+        Valid.pindah(evt,btnPetugas,btnPenolakan);
     }//GEN-LAST:event_NoPernyataanKeyPressed
 
     private void NoKTPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKTPKeyPressed
@@ -1287,7 +1342,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
             if(tbObat.getSelectedRow()>-1){
                 Sequel.queryu("delete from antripersetujuanumum");
                 Sequel.queryu("insert into antripersetujuanumum values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
-                Sequel.queryu("delete from surat_persetujuan_umum_pembuat_pernyataan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("delete from surat_penolakan_anjuran_medis_pembuat_pernyataan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
             }
@@ -1329,15 +1384,15 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPenolakanActionPerformed
 
     private void btnPenolakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPenolakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NoPernyataan,AlasanPenolakan);
     }//GEN-LAST:event_btnPenolakanKeyPressed
 
     private void AlasanPenolakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlasanPenolakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,btnPenolakan,RisikoPenolakan);
     }//GEN-LAST:event_AlasanPenolakanKeyPressed
 
     private void RisikoPenolakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoPenolakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AlasanPenolakan,NamaPJ);
     }//GEN-LAST:event_RisikoPenolakanKeyPressed
 
     /**
@@ -1381,6 +1436,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
     private widget.TextBox LahirPasien;
+    private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
     private widget.TextBox NamaPJ;
     private widget.TextBox NamaPenolakan;
@@ -1436,19 +1492,17 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            //"No.Persetujuan","No.Rawat","No.R.M.","Nama Pasien","Umur","J.K.","Tgl.Lahir","Tanggal","Kode","Penolakan Anjuran","Alasan Penolakan",
-            //"Risiko Penolakan","Nama Penanggung Jawab","Umur P.J.","Nomor KTP P.J.","J.K. P.J.","Nomor Telp/HP","Hubungan","NIP","Nama Petugas"
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select surat_penolakan_anjuran_medis.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
                     "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_penolakan_anjuran_medis.tanggal,surat_penolakan_anjuran_medis.kode_penolakan,"+
                     "master_menolak_anjuran_medis.nama_penolakan,surat_penolakan_anjuran_medis.alasan_penolakan,surat_penolakan_anjuran_medis.informasi_risiko_penolakan,"+
                     "surat_penolakan_anjuran_medis.nama_pj,surat_penolakan_anjuran_medis.umur_pj,surat_penolakan_anjuran_medis.no_ktppj,"+
-                    "surat_penolakan_anjuran_medis.jkpj,surat_penolakan_anjuran_medis.hubungan,surat_penolakan_anjuran_medis.no_telp,surat_penolakan_anjuran_medis.nip,"+
-                    "petugas.nama from surat_penolakan_anjuran_medis inner join reg_periksa on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
+                    "surat_penolakan_anjuran_medis.jkpj,surat_penolakan_anjuran_medis.hubungan,surat_penolakan_anjuran_medis.no_telp,surat_penolakan_anjuran_medis.nik,"+
+                    "pegawai.nama from surat_penolakan_anjuran_medis inner join reg_periksa on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join master_menolak_anjuran_medis on master_menolak_anjuran_medis.kode_penolakan=surat_penolakan_anjuran_medis.kode_penolakan "+
-                    "inner join pegawai on surat_penolakan_anjuran_medis.nik=petugas.nik where "+
+                    "inner join pegawai on surat_penolakan_anjuran_medis.nik=pegawai.nik where "+
                     "surat_penolakan_anjuran_medis.tanggal between ? and ? order by surat_penolakan_anjuran_medis.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
@@ -1456,25 +1510,25 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
                     "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_penolakan_anjuran_medis.tanggal,surat_penolakan_anjuran_medis.kode_penolakan,"+
                     "master_menolak_anjuran_medis.nama_penolakan,surat_penolakan_anjuran_medis.alasan_penolakan,surat_penolakan_anjuran_medis.informasi_risiko_penolakan,"+
                     "surat_penolakan_anjuran_medis.nama_pj,surat_penolakan_anjuran_medis.umur_pj,surat_penolakan_anjuran_medis.no_ktppj,"+
-                    "surat_penolakan_anjuran_medis.jkpj,surat_penolakan_anjuran_medis.hubungan,surat_penolakan_anjuran_medis.no_telp,surat_penolakan_anjuran_medis.nip,"+
-                    "petugas.nama from surat_penolakan_anjuran_medis inner join reg_periksa on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
+                    "surat_penolakan_anjuran_medis.jkpj,surat_penolakan_anjuran_medis.hubungan,surat_penolakan_anjuran_medis.no_telp,surat_penolakan_anjuran_medis.nik,"+
+                    "pegawai.nama from surat_penolakan_anjuran_medis inner join reg_periksa on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join master_menolak_anjuran_medis on master_menolak_anjuran_medis.kode_penolakan=surat_penolakan_anjuran_medis.kode_penolakan "+
-                    "inner join pegawai on surat_penolakan_anjuran_medis.nik=petugas.nik where "+
+                    "inner join pegawai on surat_penolakan_anjuran_medis.nik=pegawai.nik where "+
                     "surat_penolakan_anjuran_medis.tanggal between ? and ? and "+
                     "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                     "surat_penolakan_anjuran_medis.no_telp like ? or surat_penolakan_anjuran_medis.nama_pj like ? or "+
-                    "surat_penolakan_anjuran_medis.nip like ? or petugas.nama like ? or master_menolak_anjuran_medis.nama_penolakan like ?) "+
+                    "surat_penolakan_anjuran_medis.nik like ? or pegawai.nama like ? or master_menolak_anjuran_medis.nama_penolakan like ?) "+
                     "order by surat_penolakan_anjuran_medis.tanggal");
             }
                 
             try {
                 if(TCari.getText().toString().trim().equals("")){
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                     ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
                     ps.setString(5,"%"+TCari.getText()+"%");
@@ -1492,7 +1546,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("kode_penolakan"),rs.getString("nama_penolakan"),rs.getString("alasan_penolakan"),
                         rs.getString("informasi_risiko_penolakan"),rs.getString("nama_pj"),rs.getString("umur_pj"),rs.getString("no_ktppj"),
-                        rs.getString("jkpj"),rs.getString("no_telp"),rs.getString("hubungan"),rs.getString("nip"),rs.getString("nama") 
+                        rs.getString("jkpj"),rs.getString("no_telp"),rs.getString("hubungan"),rs.getString("nik"),rs.getString("nama") 
                     });
                 }
             } catch (Exception e) {
@@ -1514,6 +1568,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     public void emptTeks() {
         NamaPJ.setText("");
         UmurPJ.setText("");
+        Tanggal.setDate(new Date());
         KodePenolakan.setText("");
         NamaPenolakan.setText("");
         AlasanPenolakan.setText("");
@@ -1524,7 +1579,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         NoKTP.setText("");
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_penolakan_anjuran_medis.no_surat,3),signed)),0) from surat_penolakan_anjuran_medis where surat_penolakan_anjuran_medis.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
                 "PAM"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPernyataan);
-        NamaPJ.requestFocus();
+        AlasanPenolakan.requestFocus();
     }
 
  
@@ -1547,7 +1602,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
             JKPJ.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString().replaceAll("L","Laki-laki").replaceAll("P","Perempuan")); 
             NoTelp.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()); 
             Hubungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());  
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
 
@@ -1607,10 +1662,10 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
        
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsurat_persetujuan_umum());
-        BtnHapus.setEnabled(akses.getsurat_persetujuan_umum());
-        BtnEdit.setEnabled(akses.getsurat_persetujuan_umum());
-        BtnPrint.setEnabled(akses.getsurat_persetujuan_umum()); 
+        BtnSimpan.setEnabled(akses.getpenolakan_anjuran_medis());
+        BtnHapus.setEnabled(akses.getpenolakan_anjuran_medis());
+        BtnEdit.setEnabled(akses.getpenolakan_anjuran_medis());
+        BtnPrint.setEnabled(akses.getpenolakan_anjuran_medis()); 
         if(akses.getjml2()>=1){
             KodePetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1622,8 +1677,8 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     private void ganti() {
         if(Sequel.mengedittf("surat_penolakan_anjuran_medis","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,hubungan=?,nama_pj=?,umur_pj=?,no_ktppj=?,jkpj=?,no_telp=?,kode_penolakan=?,"+
             "alasan_penolakan=?,informasi_risiko_penolakan=?,nik=?",14,new String[]{
-            NoPernyataan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Hubungan.getSelectedItem().toString(),
-            NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),JKPJ.getSelectedItem().toString().substring(0,1),NoTelp.getText(),
+            NoPernyataan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+            Hubungan.getSelectedItem().toString(),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),JKPJ.getSelectedItem().toString().substring(0,1),NoTelp.getText(),
             KodePenolakan.getText(),AlasanPenolakan.getText(),RisikoPenolakan.getText(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(NoPernyataan.getText(),tbObat.getSelectedRow(),0);
@@ -1633,7 +1688,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
             tbObat.setValueAt(Umur.getText(),tbObat.getSelectedRow(),4);
             tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),5);
             tbObat.setValueAt(LahirPasien.getText(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+""),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),7);
             tbObat.setValueAt(KodePenolakan.getText(),tbObat.getSelectedRow(),8);
             tbObat.setValueAt(NamaPenolakan.getText(),tbObat.getSelectedRow(),9);
             tbObat.setValueAt(AlasanPenolakan.getText(),tbObat.getSelectedRow(),10);
@@ -1678,7 +1733,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select surat_persetujuan_umum_pembuat_pernyataan.photo from surat_persetujuan_umum_pembuat_pernyataan where surat_persetujuan_umum_pembuat_pernyataan.no_surat=?");
+                ps=koneksi.prepareStatement("select surat_penolakan_anjuran_medis_pembuat_pernyataan.photo from surat_penolakan_anjuran_medis_pembuat_pernyataan where surat_penolakan_anjuran_medis_pembuat_pernyataan.no_surat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();

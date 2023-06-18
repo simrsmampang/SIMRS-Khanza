@@ -380,7 +380,7 @@ public final class DlgCariMasterMenolakAnjuranMedis extends javax.swing.JDialog 
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
-            ps=koneksi.prepareStatement("select * from master_menolak_anjuran_medis where order by master_menolak_anjuran_medis.kode_penolakan");
+            ps=koneksi.prepareStatement("select * from master_menolak_anjuran_medis order by master_menolak_anjuran_medis.kode_penolakan");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
