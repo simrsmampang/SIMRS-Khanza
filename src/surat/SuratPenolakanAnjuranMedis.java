@@ -2,11 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-/*
- * kontribusi dari dokter Salim Mulyana
- */
-
 package surat;
 
 import fungsi.WarnaTable;
@@ -41,7 +36,7 @@ import kepegawaian.DlgCariPegawai;
 
 /**
  * 
- * @author salimmulyana
+ * @author windiartohugroho
  */
 public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;

@@ -3,10 +3,6 @@
  * and open the template in the editor.
  */
 
-/*
- * kontribusi dari dokter Salim Mulyana
- */
-
 package surat;
 
 import fungsi.WarnaTable;
@@ -39,7 +35,7 @@ import kepegawaian.DlgCariPetugas;
 
 /**
  * 
- * @author salimmulyana
+ * @author windiartohugroho
  */
 public final class SuratPersetujuanUmum extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;

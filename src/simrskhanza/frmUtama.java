@@ -728,6 +728,7 @@ import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.DlgRekapPermintaanDiet;
+import laporan.LaporanTahunanPAM;
 import rekammedis.DlgSOAPRalanAggotaPolri;
 import laporan.DlgStatusDataRM;
 import laporan.LaporanBulananIRJ;
@@ -20299,6 +20300,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLaporanTahunanPenolakanAnjuranMedisActionPerformed(java.awt.event.ActionEvent evt) {   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LaporanTahunanPAM aplikasi=new LaporanTahunanPAM(this,true);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20973,7 +20986,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
-            btnPenolakanAnjuranMedis;
+            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis;
     
     public void isWall(){
         try{            
@@ -22975,6 +22988,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getoperasi_per_bulan()==true){  
                 Panelmenu.add(btnOperasiPerBulan);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlaporan_tahunan_penolakan_anjuran_medis()==true){  
+                Panelmenu.add(btnLaporanTahunanPenolakanAnjuranMedis);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==10){   
@@ -27702,6 +27720,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getoperasi_per_bulan()==true){  
             Panelmenu.add(btnOperasiPerBulan);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getlaporan_tahunan_penolakan_anjuran_medis()==true){  
+            Panelmenu.add(btnLaporanTahunanPenolakanAnjuranMedis);                 
             jmlmenu++;
         }
 
@@ -33173,6 +33196,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getoperasi_per_bulan()==true){  
             if(btnOperasiPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnOperasiPerBulan);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlaporan_tahunan_penolakan_anjuran_medis()==true){  
+            if(btnLaporanTahunanPenolakanAnjuranMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLaporanTahunanPenolakanAnjuranMedis);                 
                 jmlmenu++;
             }                
         }
@@ -41046,5 +41076,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenolakanAnjuranMedis.setName("btnPenolakanAnjuranMedis"); 
         btnPenolakanAnjuranMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenolakanAnjuranMedis.addActionListener(this::btnPenolakanAnjuranMedisActionPerformed);
+        
+        btnLaporanTahunanPenolakanAnjuranMedis = new widget.ButtonBig();
+        btnLaporanTahunanPenolakanAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9929050_analysis_graph_growth_report_statistics_icon.png")));
+        btnLaporanTahunanPenolakanAnjuranMedis.setText("Laporan Tahunan Penolakan Anjuran Medis");
+        btnLaporanTahunanPenolakanAnjuranMedis.setIconTextGap(0);
+        btnLaporanTahunanPenolakanAnjuranMedis.setName("btnLaporanTahunanPenolakanAnjuranMedis"); 
+        btnLaporanTahunanPenolakanAnjuranMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaporanTahunanPenolakanAnjuranMedis.addActionListener(this::btnLaporanTahunanPenolakanAnjuranMedisActionPerformed);
     }
 }

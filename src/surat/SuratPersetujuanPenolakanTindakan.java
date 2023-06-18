@@ -38,7 +38,7 @@ import kepegawaian.DlgCariPetugas;
 
 /**
  *
- * @author perpustakaan
+ * @author windiartohugroho
  */
 public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;

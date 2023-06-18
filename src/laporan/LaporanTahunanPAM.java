@@ -42,6 +42,8 @@ public class LaporanTahunanPAM extends javax.swing.JDialog {
         LoadHTML.setEditorKit(kit);
         LoadHTML1.setEditable(true);
         LoadHTML1.setEditorKit(kit);
+        LoadHTML2.setEditable(true);
+        LoadHTML2.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -53,6 +55,7 @@ public class LaporanTahunanPAM extends javax.swing.JDialog {
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML1.setDocument(doc);
+        LoadHTML2.setDocument(doc);
         
         Valid.LoadTahun(ThnCari);
     }
@@ -82,6 +85,10 @@ public class LaporanTahunanPAM extends javax.swing.JDialog {
         LoadHTML = new widget.editorpane();
         Scroll1 = new widget.ScrollPane();
         LoadHTML1 = new widget.editorpane();
+        Scroll2 = new widget.ScrollPane();
+        LoadHTML2 = new widget.editorpane();
+        Scroll3 = new widget.ScrollPane();
+        LoadHTML3 = new widget.editorpane();
 
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -191,7 +198,7 @@ public class LaporanTahunanPAM extends javax.swing.JDialog {
         LoadHTML.setName("LoadHTML"); // NOI18N
         Scroll.setViewportView(LoadHTML);
 
-        TabRawat.addTab("Penolakan Anjuran Medis Per Unit", Scroll);
+        TabRawat.addTab("Per Unit", Scroll);
 
         Scroll1.setBorder(null);
         Scroll1.setName("Scroll1"); // NOI18N
@@ -201,7 +208,27 @@ public class LaporanTahunanPAM extends javax.swing.JDialog {
         LoadHTML1.setName("LoadHTML1"); // NOI18N
         Scroll1.setViewportView(LoadHTML1);
 
-        TabRawat.addTab("Penolakan Anjuran Medis Per Dokter", Scroll1);
+        TabRawat.addTab("Per Staf/Dokter/Petugas", Scroll1);
+
+        Scroll2.setBorder(null);
+        Scroll2.setName("Scroll2"); // NOI18N
+        Scroll2.setOpaque(true);
+
+        LoadHTML2.setBorder(null);
+        LoadHTML2.setName("LoadHTML2"); // NOI18N
+        Scroll2.setViewportView(LoadHTML2);
+
+        TabRawat.addTab("Per Anjuran Medis", Scroll2);
+
+        Scroll3.setBorder(null);
+        Scroll3.setName("Scroll3"); // NOI18N
+        Scroll3.setOpaque(true);
+
+        LoadHTML3.setBorder(null);
+        LoadHTML3.setName("LoadHTML3"); // NOI18N
+        Scroll3.setViewportView(LoadHTML3);
+
+        TabRawat.addTab("Per Unit & Anjuran Medis", Scroll3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -230,7 +257,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             );
             bg.close();
             
-            File f = new File("LaporanTahunanIRJ.html");            
+            File f = new File("LaporanTahunanPAM.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));
             if(TabRawat.getSelectedIndex()==0){
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -240,7 +267,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>LAPORAN TAHUNAN INSTALASI RAWAT JALAN PERIODE "+ThnCari.getSelectedItem()+"<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>LAPORAN TAHUNAN PENOLAKAN ANJURAN MEDIS PERIODE "+ThnCari.getSelectedItem()+"<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -254,13 +281,27 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>LAPORAN TAHUNAN INSTALASI RAWAT JALAN PERIODE "+ThnCari.getSelectedItem()+"<br><br></font>"+      
+                                        "<font size='2' face='Tahoma'>LAPORAN TAHUNAN PENOLAKAN ANJURAN MEDIS PERIODE "+ThnCari.getSelectedItem()+"<br><br></font>"+      
                                     "</td>"+
                                "</tr>"+
                             "</table>")
                 );
                 bw.close();
-            }                      
+            }else if(TabRawat.getSelectedIndex()==2){
+                bw.write(LoadHTML2.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi5'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>LAPORAN TAHUNAN PENOLAKAN ANJURAN MEDIS PERIODE "+ThnCari.getSelectedItem()+"<br><br></font>"+      
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();
+            }                       
             Desktop.getDesktop().browse(f.toURI());
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
@@ -304,6 +345,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             prosesCari();
         }else if(TabRawat.getSelectedIndex()==1){
             prosesCari2();
+        }else if(TabRawat.getSelectedIndex()==2){
+            prosesCari3();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -372,8 +415,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.TextBox Kd2;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML1;
+    private widget.editorpane LoadHTML2;
+    private widget.editorpane LoadHTML3;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
+    private widget.ScrollPane Scroll2;
+    private widget.ScrollPane Scroll3;
     private javax.swing.JTabbedPane TabRawat;
     private widget.ComboBox ThnCari;
     private widget.Button btnCari;
@@ -414,37 +461,35 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "</tr>"
             );            
             i=1;
-            ps=koneksi.prepareStatement("select reg_periksa.kd_poli,poliklinik.nm_poli from reg_periksa inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    "where reg_periksa.kd_poli<>'IGDK' and year(reg_periksa.tgl_registrasi)=? group by reg_periksa.kd_poli order by reg_periksa.kd_poli");
+            ps=koneksi.prepareStatement("select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik order by poliklinik.kd_poli");
             try {
-                ps.setString(1,ThnCari.getSelectedItem().toString());
                 rs=ps.executeQuery();
                 ttljan=0;ttlfeb=0;ttlmar=0;ttlapr=0;ttlmei=0;ttljun=0;ttljul=0;ttlagu=0;ttlsep=0;ttlokt=0;ttlnov=0;ttldes=0;
                 while(rs.next()){
                     jan=0;
-                    jan=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    jan=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     feb=0;
-                    feb=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    feb=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     mar=0;
-                    mar=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    mar=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     apr=0;
-                    apr=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    apr=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     mei=0;
-                    mei=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    mei=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     jun=0;
-                    jun=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    jun=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     jul=0;
-                    jul=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    jul=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     agu=0;
-                    agu=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    agu=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     sep=0;
-                    sep=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    sep=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     okt=0;
-                    okt=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    okt=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     nov=0;
-                    nov=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    nov=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     des=0;
-                    des=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    des=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
                     
                     ttljan=ttljan+jan;
                     ttlfeb=ttlfeb+feb;
@@ -463,6 +508,216 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='left'>"+rs.getString("nm_poli")+"</td>"+
+                            "<td valign='middle' align='center'>"+jan+"</td>"+
+                            "<td valign='middle' align='center'>"+feb+"</td>"+
+                            "<td valign='middle' align='center'>"+mar+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                            "<td valign='middle' align='center'>"+apr+"</td>"+
+                            "<td valign='middle' align='center'>"+mei+"</td>"+
+                            "<td valign='middle' align='center'>"+jun+"</td>"+
+                            "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                            "<td valign='middle' align='center'>"+jul+"</td>"+
+                            "<td valign='middle' align='center'>"+agu+"</td>"+
+                            "<td valign='middle' align='center'>"+sep+"</td>"+
+                            "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                            "<td valign='middle' align='center'>"+okt+"</td>"+
+                            "<td valign='middle' align='center'>"+nov+"</td>"+
+                            "<td valign='middle' align='center'>"+des+"</td>"+
+                            "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                        "</tr>"
+                    );
+                    i++;
+                }
+                
+                jan=0;
+                jan=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01'");
+                feb=0;
+                feb=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02'");
+                mar=0;
+                mar=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03'");
+                apr=0;
+                apr=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04'");
+                mei=0;
+                mei=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05'");
+                jun=0;
+                jun=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06'");
+                jul=0;
+                jul=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07'");
+                agu=0;
+                agu=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08'");
+                sep=0;
+                sep=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09'");
+                okt=0;
+                okt=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10'");
+                nov=0;
+                nov=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11'");
+                des=0;
+                des=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12'");
+
+                ttljan=ttljan+jan;
+                ttlfeb=ttlfeb+feb;
+                ttlmar=ttlmar+mar;
+                ttlapr=ttlapr+apr;
+                ttlmei=ttlmei+mei;
+                ttljun=ttljun+jun;
+                ttljul=ttljul+jul;
+                ttlagu=ttlagu+agu;
+                ttlsep=ttlsep+sep;
+                ttlokt=ttlokt+okt;
+                ttlnov=ttlnov+nov;
+                ttldes=ttldes+des;
+
+                htmlContent.append(
+                    "<tr class='isi'>"+
+                        "<td valign='middle' align='center'>"+i+"</td>"+
+                        "<td valign='middle' align='left'>Rawat Inap</td>"+
+                        "<td valign='middle' align='center'>"+jan+"</td>"+
+                        "<td valign='middle' align='center'>"+feb+"</td>"+
+                        "<td valign='middle' align='center'>"+mar+"</td>"+
+                        "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                        "<td valign='middle' align='center'>"+apr+"</td>"+
+                        "<td valign='middle' align='center'>"+mei+"</td>"+
+                        "<td valign='middle' align='center'>"+jun+"</td>"+
+                        "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                        "<td valign='middle' align='center'>"+jul+"</td>"+
+                        "<td valign='middle' align='center'>"+agu+"</td>"+
+                        "<td valign='middle' align='center'>"+sep+"</td>"+
+                        "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                        "<td valign='middle' align='center'>"+okt+"</td>"+
+                        "<td valign='middle' align='center'>"+nov+"</td>"+
+                        "<td valign='middle' align='center'>"+des+"</td>"+
+                        "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                        "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                    "</tr>"
+                );
+                i++;
+                
+                if(i>1){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='right' colspan='2'>JUMLAH : </td>"+
+                            "<td valign='middle' align='center'>"+ttljan+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlfeb+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlmar+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljan+ttlfeb+ttlmar)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlapr+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlmei+"</td>"+
+                            "<td valign='middle' align='center'>"+ttljun+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttlapr+ttlmei+ttljun)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttljul+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlagu+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlsep+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljul+ttlagu+ttlsep)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlokt+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlnov+"</td>"+
+                            "<td valign='middle' align='center'>"+ttldes+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttlokt+ttlnov+ttldes)+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+"</td>"+
+                        "</tr>"
+                    );
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        } 
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void prosesCari2() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%' rowspan='2'>Staf/Dokter/Petugas</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='78%' colspan='17'>Jumlah Pasien</td>"+
+                "</tr>"+                            
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jan "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Feb "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mar "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TW I "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Apr "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mei "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jun "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TW II "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jul "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Agus "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sep "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TW III "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Okt "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nov "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Des "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TW IV "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
+                "</tr>"
+            );            
+            i=1;
+            ps=koneksi.prepareStatement("select surat_penolakan_anjuran_medis.nik,pegawai.nama from surat_penolakan_anjuran_medis inner join pegawai on surat_penolakan_anjuran_medis.nik=pegawai.nik where year(surat_penolakan_anjuran_medis.tanggal)=? group by surat_penolakan_anjuran_medis.nik order by surat_penolakan_anjuran_medis.nik");
+            try {
+                ps.setString(1,ThnCari.getSelectedItem().toString());
+                rs=ps.executeQuery();
+                ttljan=0;ttlfeb=0;ttlmar=0;ttlapr=0;ttlmei=0;ttljun=0;ttljul=0;ttlagu=0;ttlsep=0;ttlokt=0;ttlnov=0;ttldes=0;
+                while(rs.next()){
+                    jan=0;
+                    jan=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    feb=0;
+                    feb=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    mar=0;
+                    mar=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    apr=0;
+                    apr=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    mei=0;
+                    mei=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    jun=0;
+                    jun=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    jul=0;
+                    jul=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    agu=0;
+                    agu=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    sep=0;
+                    sep=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    okt=0;
+                    okt=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    nov=0;
+                    nov=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    des=0;
+                    des=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and surat_penolakan_anjuran_medis.nik='"+rs.getString("nik")+"'");
+                    
+                    ttljan=ttljan+jan;
+                    ttlfeb=ttlfeb+feb;
+                    ttlmar=ttlmar+mar;
+                    ttlapr=ttlapr+apr;
+                    ttlmei=ttlmei+mei;
+                    ttljun=ttljun+jun;
+                    ttljul=ttljul+jul;
+                    ttlagu=ttlagu+agu;
+                    ttlsep=ttlsep+sep;
+                    ttlokt=ttlokt+okt;
+                    ttlnov=ttlnov+nov;
+                    ttldes=ttldes+des;
+                    
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+i+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nama")+"("+rs.getString("nik")+")</td>"+
                             "<td valign='middle' align='center'>"+jan+"</td>"+
                             "<td valign='middle' align='center'>"+feb+"</td>"+
                             "<td valign='middle' align='center'>"+mar+"</td>"+
@@ -531,14 +786,14 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         this.setCursor(Cursor.getDefaultCursor());
     }
     
-    private void prosesCari2() {
-       this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    private void prosesCari3() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%' rowspan='2'>Anjuran Medis Ditolak</td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='78%' colspan='17'>Jumlah Pasien</td>"+
                 "</tr>"+                            
                 "<tr class='isi'>"+
@@ -562,37 +817,36 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "</tr>"
             );            
             i=1;
-            ps=koneksi.prepareStatement("select reg_periksa.kd_poli,poliklinik.nm_poli from reg_periksa inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    "where reg_periksa.kd_poli<>'IGDK' and year(reg_periksa.tgl_registrasi)=? group by reg_periksa.kd_poli order by reg_periksa.kd_poli");
+            ps=koneksi.prepareStatement("select surat_penolakan_anjuran_medis.kode_penolakan,master_menolak_anjuran_medis.nama_penolakan from surat_penolakan_anjuran_medis inner join master_menolak_anjuran_medis on surat_penolakan_anjuran_medis.kode_penolakan=master_menolak_anjuran_medis.kode_penolakan where year(surat_penolakan_anjuran_medis.tanggal)=? group by surat_penolakan_anjuran_medis.kode_penolakan order by surat_penolakan_anjuran_medis.kode_penolakan");
             try {
                 ps.setString(1,ThnCari.getSelectedItem().toString());
                 rs=ps.executeQuery();
                 ttljan=0;ttlfeb=0;ttlmar=0;ttlapr=0;ttlmei=0;ttljun=0;ttljul=0;ttlagu=0;ttlsep=0;ttlokt=0;ttlnov=0;ttldes=0;
                 while(rs.next()){
                     jan=0;
-                    jan=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    jan=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     feb=0;
-                    feb=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    feb=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     mar=0;
-                    mar=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    mar=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     apr=0;
-                    apr=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    apr=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     mei=0;
-                    mei=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    mei=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     jun=0;
-                    jun=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    jun=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     jul=0;
-                    jul=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    jul=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     agu=0;
-                    agu=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    agu=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     sep=0;
-                    sep=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    sep=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     okt=0;
-                    okt=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    okt=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     nov=0;
-                    nov=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    nov=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     des=0;
-                    des=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    des=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from surat_penolakan_anjuran_medis where DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs.getString("kode_penolakan")+"'");
                     
                     ttljan=ttljan+jan;
                     ttlfeb=ttlfeb+feb;
@@ -609,120 +863,54 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+i+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='left'>"+rs.getString("nm_poli")+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+jan+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+feb+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+mar+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(jan+feb+mar)+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+apr+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+mei+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+jun+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(apr+mei+jun)+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+jul+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+agu+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+sep+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(jul+agu+sep)+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+okt+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+nov+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+des+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(okt+nov+des)+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                            "<td valign='middle' align='center'>"+i+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nama_penolakan")+"</td>"+
+                            "<td valign='middle' align='center'>"+jan+"</td>"+
+                            "<td valign='middle' align='center'>"+feb+"</td>"+
+                            "<td valign='middle' align='center'>"+mar+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                            "<td valign='middle' align='center'>"+apr+"</td>"+
+                            "<td valign='middle' align='center'>"+mei+"</td>"+
+                            "<td valign='middle' align='center'>"+jun+"</td>"+
+                            "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                            "<td valign='middle' align='center'>"+jul+"</td>"+
+                            "<td valign='middle' align='center'>"+agu+"</td>"+
+                            "<td valign='middle' align='center'>"+sep+"</td>"+
+                            "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                            "<td valign='middle' align='center'>"+okt+"</td>"+
+                            "<td valign='middle' align='center'>"+nov+"</td>"+
+                            "<td valign='middle' align='center'>"+des+"</td>"+
+                            "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
                         "</tr>"
                     );
-                    
-                    ps2=koneksi.prepareStatement("select reg_periksa.kd_dokter,dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                        "where reg_periksa.kd_poli=? and year(reg_periksa.tgl_registrasi)=? group by reg_periksa.kd_dokter order by reg_periksa.kd_dokter");
-                    try {
-                        ps2.setString(1,rs.getString("kd_poli"));
-                        ps2.setString(2,ThnCari.getSelectedItem().toString());
-                        rs2=ps2.executeQuery();
-                        while(rs2.next()){
-                            jan=0;
-                            jan=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            feb=0;
-                            feb=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            mar=0;
-                            mar=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            apr=0;
-                            apr=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            mei=0;
-                            mei=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            jun=0;
-                            jun=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            jul=0;
-                            jul=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            agu=0;
-                            agu=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            sep=0;
-                            sep=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            okt=0;
-                            okt=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            nov=0;
-                            nov=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            des=0;
-                            des=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where DATE_FORMAT(reg_periksa.tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and reg_periksa.kd_dokter='"+rs2.getString("kd_dokter")+"'");
-                            htmlContent.append(
-                                "<tr class='isi'>"+
-                                    "<td valign='middle' align='center'></td>"+
-                                    "<td valign='middle' align='left'>"+rs2.getString("nm_dokter")+"</td>"+
-                                    "<td valign='middle' align='center'>"+jan+"</td>"+
-                                    "<td valign='middle' align='center'>"+feb+"</td>"+
-                                    "<td valign='middle' align='center'>"+mar+"</td>"+
-                                    "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
-                                    "<td valign='middle' align='center'>"+apr+"</td>"+
-                                    "<td valign='middle' align='center'>"+mei+"</td>"+
-                                    "<td valign='middle' align='center'>"+jun+"</td>"+
-                                    "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
-                                    "<td valign='middle' align='center'>"+jul+"</td>"+
-                                    "<td valign='middle' align='center'>"+agu+"</td>"+
-                                    "<td valign='middle' align='center'>"+sep+"</td>"+
-                                    "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
-                                    "<td valign='middle' align='center'>"+okt+"</td>"+
-                                    "<td valign='middle' align='center'>"+nov+"</td>"+
-                                    "<td valign='middle' align='center'>"+des+"</td>"+
-                                    "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
-                                    "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
-                                "</tr>"
-                            );
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs2!=null){
-                            rs2.close();
-                        }
-                        if(ps2!=null){
-                            ps2.close();
-                        }
-                    }
                     i++;
                 }
+                
                 if(i>1){
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='right' colspan='2'>JUMLAH : </td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttljan+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttlfeb+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttlmar+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(ttljan+ttlfeb+ttlmar)+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttlapr+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttlmei+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttljun+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(ttlapr+ttlmei+ttljun)+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttljul+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttlagu+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttlsep+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(ttljul+ttlagu+ttlsep)+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttlokt+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttlnov+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+ttldes+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(ttlokt+ttlnov+ttldes)+"</td>"+
-                            "<td valign='middle' bgcolor='#FFFFF8' align='center'>"+(ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+"</td>"+
+                            "<td valign='middle' align='right' colspan='2'>JUMLAH : </td>"+
+                            "<td valign='middle' align='center'>"+ttljan+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlfeb+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlmar+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljan+ttlfeb+ttlmar)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlapr+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlmei+"</td>"+
+                            "<td valign='middle' align='center'>"+ttljun+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttlapr+ttlmei+ttljun)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttljul+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlagu+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlsep+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljul+ttlagu+ttlsep)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlokt+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlnov+"</td>"+
+                            "<td valign='middle' align='center'>"+ttldes+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttlokt+ttlnov+ttldes)+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+"</td>"+
                         "</tr>"
                     );
                 }
-                    
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -733,7 +921,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     ps.close();
                 }
             }
-            LoadHTML1.setText(
+            LoadHTML.setText(
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
@@ -742,13 +930,11 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         } 
-        this.setCursor(Cursor.getDefaultCursor());   
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
-    
-    
     public void isCek(){
-        BtnPrint.setEnabled(akses.getlaporan_tahunan_irj());
+        BtnPrint.setEnabled(akses.getlaporan_tahunan_penolakan_anjuran_medis());
     }
 
     

@@ -36,7 +36,7 @@ import kepegawaian.DlgCariPetugas;
 
 /**
  * 
- * @author salimmulyana
+ * @author windiartohugroho
  */
 public final class SuratPernyataanPasienUmum extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
