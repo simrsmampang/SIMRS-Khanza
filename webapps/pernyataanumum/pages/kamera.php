@@ -48,7 +48,7 @@
     $jkpj           = "";    
     $alamatpj       = "";    
     $hubungan       = "";    
-    $no_telp        = ""; 
+    $no_tlppj       = ""; 
     $_sql2  = "select DATE_FORMAT(surat_pernyataan_pasien_umum.tanggal,'%d-%m-%Y') as tanggal,surat_pernyataan_pasien_umum.nama_pj,
                surat_pernyataan_pasien_umum.no_ktppj,surat_pernyataan_pasien_umum.tempat_lahirpj,DATE_FORMAT(surat_pernyataan_pasien_umum.lahirpj,'%d-%m-%Y') as lahirpj,
                surat_pernyataan_pasien_umum.alamatpj,surat_pernyataan_pasien_umum.hubungan,surat_pernyataan_pasien_umum.no_telp,
@@ -64,7 +64,7 @@
         $jkpj           = $data2['jkpj'];   
         $alamatpj       = $data2['alamatpj'];    
         $hubungan       = $data2['hubungan'];    
-        $no_telp        = $data2['no_telp'];
+        $no_telppj      = $data2['no_telp'];
     }
 ?>
 
@@ -103,14 +103,14 @@
                 </tr>
                 <tr class="text-dark">
                     <td width="25%">Nomor Telp/Nomor HP</td>
-                    <td width="75%">: <?=$no_telp;?></td>
+                    <td width="75%">: <?=$no_telppj;?></td>
                 </tr>
                 <tr class="text-dark">
-                    <td width="25%">Nomor KTP :</td>
+                    <td width="25%">Nomor KTP</td>
                     <td width="75%">: <?=$no_ktppj;?></td>
                 </tr>
                 <tr class="text-dark">
-                    <td width="25%">Alamat :</td>
+                    <td width="25%">Alamat</td>
                     <td width="75%">: <?=$alamatpj;?></td>
                 </tr>
             </table>
@@ -146,7 +146,7 @@
                 <br><br>
                 Saya sudah diedukasi oleh pihak ADMINISTRASI dan sudah mengerti, memahami, serta menyetujui bahwa pasien dirawat dengan pembayaran <b>UMUM/CASH</b> atas permintaan sendiri dan tanpa paksaan dari pihak manapun dan tidak akan menuntut/menggugat pernyataaan ini dikemudian hari untuk alasan apapun.
                 <br><br>
-                Demikian surat perryataan in saya but dengan sebenar-benarnya agar dapat dipergunakan untuk tujuan diatas. Atas perhatiannya say ucapkan terima kasih.
+                Demikian surat ini saya buat dengan sebenar-benarnya agar dapat dipergunakan untuk tujuan diatas. Atas perhatiannya saya ucapkan terima kasih.
             </h7>
             <br/>
             <br/>

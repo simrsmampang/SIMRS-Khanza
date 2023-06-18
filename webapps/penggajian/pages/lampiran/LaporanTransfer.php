@@ -402,7 +402,7 @@
                                     }else {
                                         $tnjjbtn=$baris["tnj"];
                                     }
-                                    $ttltnjjbtn=$ttltnjjbtn+$tnjjbtn;
+                                    @$ttltnjjbtn=$ttltnjjbtn+$tnjjbtn;
 
                                     $_sql17  ="SELECT tnj from set_jgmlm ";
                                     $hasil17 =bukaquery($_sql17);
