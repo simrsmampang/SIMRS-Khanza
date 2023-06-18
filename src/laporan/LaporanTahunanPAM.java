@@ -5,8 +5,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,8 +24,7 @@ public class LaporanTahunanPAM extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private StringBuilder htmlContent;
     private int jan=0,feb=0,mar=0,apr=0,mei=0,jun=0,jul=0,agu=0,sep=0,okt=0,nov=0,des=0,
-                ttljan=0,ttlfeb=0,ttlmar=0,ttlapr=0,ttlmei=0,ttljun=0,ttljul=0,ttlagu=0,ttlsep=0,ttlokt=0,ttlnov=0,ttldes=0,
-                ttljanbaru=0,ttlfebbaru=0,ttlmarbaru=0,ttlaprbaru=0,ttlmeibaru=0,ttljunbaru=0,ttljulbaru=0,ttlagubaru=0,ttlsepbaru=0,ttloktbaru=0,ttlnovbaru=0,ttldesbaru=0;
+                ttljan=0,ttlfeb=0,ttlmar=0,ttlapr=0,ttlmei=0,ttljun=0,ttljul=0,ttlagu=0,ttlsep=0,ttlokt=0,ttlnov=0,ttldes=0;
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -44,6 +41,8 @@ public class LaporanTahunanPAM extends javax.swing.JDialog {
         LoadHTML1.setEditorKit(kit);
         LoadHTML2.setEditable(true);
         LoadHTML2.setEditorKit(kit);
+        LoadHTML3.setEditable(true);
+        LoadHTML3.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -56,10 +55,10 @@ public class LaporanTahunanPAM extends javax.swing.JDialog {
         LoadHTML.setDocument(doc);
         LoadHTML1.setDocument(doc);
         LoadHTML2.setDocument(doc);
+        LoadHTML3.setDocument(doc);
         
         Valid.LoadTahun(ThnCari);
     }
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int i=0;
 
     /** This method is called from within the constructor to
@@ -347,6 +346,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             prosesCari2();
         }else if(TabRawat.getSelectedIndex()==2){
             prosesCari3();
+        }else if(TabRawat.getSelectedIndex()==3){
+            prosesCari4();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -886,6 +887,355 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     );
                     i++;
                 }
+                
+                if(i>1){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='right' colspan='2'>JUMLAH : </td>"+
+                            "<td valign='middle' align='center'>"+ttljan+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlfeb+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlmar+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljan+ttlfeb+ttlmar)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlapr+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlmei+"</td>"+
+                            "<td valign='middle' align='center'>"+ttljun+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttlapr+ttlmei+ttljun)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttljul+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlagu+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlsep+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljul+ttlagu+ttlsep)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlokt+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlnov+"</td>"+
+                            "<td valign='middle' align='center'>"+ttldes+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttlokt+ttlnov+ttldes)+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+"</td>"+
+                        "</tr>"
+                    );
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        } 
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void prosesCari4() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='78%' colspan='17'>Jumlah Pasien</td>"+
+                "</tr>"+                            
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jan "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Feb "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mar "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TW I "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Apr "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Mei "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jun "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TW II "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jul "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Agus "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Sep "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TW III "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Okt "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nov "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Des "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>TW IV "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Total</td>"+
+                "</tr>"
+            );            
+            i=1;
+            ps=koneksi.prepareStatement("select poliklinik.kd_poli,poliklinik.nm_poli from poliklinik order by poliklinik.kd_poli");
+            try {
+                rs=ps.executeQuery();
+                ttljan=0;ttlfeb=0;ttlmar=0;ttlapr=0;ttlmei=0;ttljun=0;ttljul=0;ttlagu=0;ttlsep=0;ttlokt=0;ttlnov=0;ttldes=0;
+                while(rs.next()){
+                    jan=0;
+                    jan=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    feb=0;
+                    feb=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    mar=0;
+                    mar=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    apr=0;
+                    apr=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    mei=0;
+                    mei=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    jun=0;
+                    jun=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    jul=0;
+                    jul=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    agu=0;
+                    agu=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    sep=0;
+                    sep=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    okt=0;
+                    okt=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    nov=0;
+                    nov=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    des=0;
+                    des=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"'");
+                    
+                    ttljan=ttljan+jan;
+                    ttlfeb=ttlfeb+feb;
+                    ttlmar=ttlmar+mar;
+                    ttlapr=ttlapr+apr;
+                    ttlmei=ttlmei+mei;
+                    ttljun=ttljun+jun;
+                    ttljul=ttljul+jul;
+                    ttlagu=ttlagu+agu;
+                    ttlsep=ttlsep+sep;
+                    ttlokt=ttlokt+okt;
+                    ttlnov=ttlnov+nov;
+                    ttldes=ttldes+des;
+                    
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+i+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_poli")+"</td>"+
+                            "<td valign='middle' align='center'>"+jan+"</td>"+
+                            "<td valign='middle' align='center'>"+feb+"</td>"+
+                            "<td valign='middle' align='center'>"+mar+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                            "<td valign='middle' align='center'>"+apr+"</td>"+
+                            "<td valign='middle' align='center'>"+mei+"</td>"+
+                            "<td valign='middle' align='center'>"+jun+"</td>"+
+                            "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                            "<td valign='middle' align='center'>"+jul+"</td>"+
+                            "<td valign='middle' align='center'>"+agu+"</td>"+
+                            "<td valign='middle' align='center'>"+sep+"</td>"+
+                            "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                            "<td valign='middle' align='center'>"+okt+"</td>"+
+                            "<td valign='middle' align='center'>"+nov+"</td>"+
+                            "<td valign='middle' align='center'>"+des+"</td>"+
+                            "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                        "</tr>"
+                    );
+                    ps2=koneksi.prepareStatement(
+                            "select surat_penolakan_anjuran_medis.kode_penolakan,master_menolak_anjuran_medis.nama_penolakan "+
+                            "from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
+                            "inner join master_menolak_anjuran_medis on surat_penolakan_anjuran_medis.kode_penolakan=master_menolak_anjuran_medis.kode_penolakan "+
+                            "where reg_periksa.status_lanjut='Ralan' and reg_periksa.kd_poli=? and year(surat_penolakan_anjuran_medis.tanggal)=? group by surat_penolakan_anjuran_medis.kode_penolakan "+
+                            "order by surat_penolakan_anjuran_medis.kode_penolakan");
+                    try {
+                        ps2.setString(1,rs.getString("kd_poli"));
+                        ps2.setString(2,ThnCari.getSelectedItem().toString());
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            jan=0;
+                            jan=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            feb=0;
+                            feb=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            mar=0;
+                            mar=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            apr=0;
+                            apr=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            mei=0;
+                            mei=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            jun=0;
+                            jun=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            jul=0;
+                            jul=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            agu=0;
+                            agu=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            sep=0;
+                            sep=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            okt=0;
+                            okt=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            nov=0;
+                            nov=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            des=0;
+                            des=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ralan' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' align='center'></td>"+
+                                    "<td valign='middle' align='left'>"+rs2.getString("nama_penolakan")+"</td>"+
+                                    "<td valign='middle' align='center'>"+jan+"</td>"+
+                                    "<td valign='middle' align='center'>"+feb+"</td>"+
+                                    "<td valign='middle' align='center'>"+mar+"</td>"+
+                                    "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                                    "<td valign='middle' align='center'>"+apr+"</td>"+
+                                    "<td valign='middle' align='center'>"+mei+"</td>"+
+                                    "<td valign='middle' align='center'>"+jun+"</td>"+
+                                    "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                                    "<td valign='middle' align='center'>"+jul+"</td>"+
+                                    "<td valign='middle' align='center'>"+agu+"</td>"+
+                                    "<td valign='middle' align='center'>"+sep+"</td>"+
+                                    "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                                    "<td valign='middle' align='center'>"+okt+"</td>"+
+                                    "<td valign='middle' align='center'>"+nov+"</td>"+
+                                    "<td valign='middle' align='center'>"+des+"</td>"+
+                                    "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                                    "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                                "</tr>"
+                            );
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    i++;
+                }
+                
+                jan=0;
+                jan=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01'");
+                feb=0;
+                feb=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02'");
+                mar=0;
+                mar=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03'");
+                apr=0;
+                apr=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04'");
+                mei=0;
+                mei=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05'");
+                jun=0;
+                jun=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06'");
+                jul=0;
+                jul=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07'");
+                agu=0;
+                agu=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08'");
+                sep=0;
+                sep=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09'");
+                okt=0;
+                okt=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10'");
+                nov=0;
+                nov=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11'");
+                des=0;
+                des=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12'");
+
+                ttljan=ttljan+jan;
+                ttlfeb=ttlfeb+feb;
+                ttlmar=ttlmar+mar;
+                ttlapr=ttlapr+apr;
+                ttlmei=ttlmei+mei;
+                ttljun=ttljun+jun;
+                ttljul=ttljul+jul;
+                ttlagu=ttlagu+agu;
+                ttlsep=ttlsep+sep;
+                ttlokt=ttlokt+okt;
+                ttlnov=ttlnov+nov;
+                ttldes=ttldes+des;
+
+                htmlContent.append(
+                    "<tr class='isi'>"+
+                        "<td valign='middle' align='center'>"+i+"</td>"+
+                        "<td valign='middle' align='left'>Rawat Inap</td>"+
+                        "<td valign='middle' align='center'>"+jan+"</td>"+
+                        "<td valign='middle' align='center'>"+feb+"</td>"+
+                        "<td valign='middle' align='center'>"+mar+"</td>"+
+                        "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                        "<td valign='middle' align='center'>"+apr+"</td>"+
+                        "<td valign='middle' align='center'>"+mei+"</td>"+
+                        "<td valign='middle' align='center'>"+jun+"</td>"+
+                        "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                        "<td valign='middle' align='center'>"+jul+"</td>"+
+                        "<td valign='middle' align='center'>"+agu+"</td>"+
+                        "<td valign='middle' align='center'>"+sep+"</td>"+
+                        "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                        "<td valign='middle' align='center'>"+okt+"</td>"+
+                        "<td valign='middle' align='center'>"+nov+"</td>"+
+                        "<td valign='middle' align='center'>"+des+"</td>"+
+                        "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                        "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                    "</tr>"
+                );
+                
+                ps2=koneksi.prepareStatement(
+                        "select surat_penolakan_anjuran_medis.kode_penolakan,master_menolak_anjuran_medis.nama_penolakan "+
+                        "from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat "+
+                        "inner join master_menolak_anjuran_medis on surat_penolakan_anjuran_medis.kode_penolakan=master_menolak_anjuran_medis.kode_penolakan "+
+                        "where reg_periksa.status_lanjut='Ranap' and year(surat_penolakan_anjuran_medis.tanggal)=? group by surat_penolakan_anjuran_medis.kode_penolakan "+
+                        "order by surat_penolakan_anjuran_medis.kode_penolakan");
+                try {
+                    ps2.setString(1,ThnCari.getSelectedItem().toString());
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                        jan=0;
+                        jan=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        feb=0;
+                        feb=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        mar=0;
+                        mar=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        apr=0;
+                        apr=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        mei=0;
+                        mei=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        jun=0;
+                        jun=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        jul=0;
+                        jul=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        agu=0;
+                        agu=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        sep=0;
+                        sep=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        okt=0;
+                        okt=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        nov=0;
+                        nov=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        des=0;
+                        des=Sequel.cariInteger("select count(surat_penolakan_anjuran_medis.no_rawat) from reg_periksa inner join surat_penolakan_anjuran_medis on surat_penolakan_anjuran_medis.no_rawat=reg_periksa.no_rawat where reg_periksa.status_lanjut='Ranap' and DATE_FORMAT(surat_penolakan_anjuran_medis.tanggal, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and surat_penolakan_anjuran_medis.kode_penolakan='"+rs2.getString("kode_penolakan")+"'");
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                "<td valign='middle' align='center'></td>"+
+                                "<td valign='middle' align='left'>"+rs2.getString("nama_penolakan")+"</td>"+
+                                "<td valign='middle' align='center'>"+jan+"</td>"+
+                                "<td valign='middle' align='center'>"+feb+"</td>"+
+                                "<td valign='middle' align='center'>"+mar+"</td>"+
+                                "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                                "<td valign='middle' align='center'>"+apr+"</td>"+
+                                "<td valign='middle' align='center'>"+mei+"</td>"+
+                                "<td valign='middle' align='center'>"+jun+"</td>"+
+                                "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                                "<td valign='middle' align='center'>"+jul+"</td>"+
+                                "<td valign='middle' align='center'>"+agu+"</td>"+
+                                "<td valign='middle' align='center'>"+sep+"</td>"+
+                                "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                                "<td valign='middle' align='center'>"+okt+"</td>"+
+                                "<td valign='middle' align='center'>"+nov+"</td>"+
+                                "<td valign='middle' align='center'>"+des+"</td>"+
+                                "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                                "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                            "</tr>"
+                        );
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                    if(ps2!=null){
+                        ps2.close();
+                    }
+                }
+                
+                i++;
                 
                 if(i>1){
                     htmlContent.append(

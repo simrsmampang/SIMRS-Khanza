@@ -1572,7 +1572,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         JKPJ.setSelectedIndex(0);
         NoTelp.setText("");
         NoKTP.setText("");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_penolakan_anjuran_medis.no_surat,3),signed)),0) from surat_penolakan_anjuran_medis where surat_penolakan_anjuran_medis.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_penolakan_anjuran_medis.no_surat,3),signed)),0) from surat_penolakan_anjuran_medis where surat_penolakan_anjuran_medis.tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
                 "PAM"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPernyataan);
         AlasanPenolakan.requestFocus();
     }
