@@ -450,7 +450,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -464,7 +464,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -613,7 +613,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023 09:59:20" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2023 18:41:23" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);

@@ -117,7 +117,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         NamaPJ.setDocument(new batasInput((byte)50).getKata(NamaPJ));
         NoKTP.setDocument(new batasInput((byte)20).getKata(NoKTP)); 
-        Umur.setDocument(new batasInput((byte)3).getKata(Umur));  
+        UmurPJ.setDocument(new batasInput((byte)3).getKata(UmurPJ));  
         NoTelp.setDocument(new batasInput((byte)30).getKata(NoTelp));    
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -204,6 +204,8 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JK = new widget.TextBox();
+        Umur = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -235,7 +237,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         jLabel8 = new widget.Label();
         NamaPJ = new widget.TextBox();
         jLabel9 = new widget.Label();
-        cmbJk = new widget.ComboBox();
+        JKPJ = new widget.ComboBox();
         jLabel10 = new widget.Label();
         BertindakAtas = new widget.ComboBox();
         jLabel17 = new widget.Label();
@@ -246,7 +248,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         jLabel16 = new widget.Label();
         jLabel44 = new widget.Label();
-        Umur = new widget.TextBox();
+        UmurPJ = new widget.TextBox();
         Tanggal = new widget.Tanggal();
         jLabel14 = new widget.Label();
         jLabel3 = new widget.Label();
@@ -264,6 +266,12 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         BtnRefreshPhoto1 = new widget.Button();
         Scroll5 = new widget.ScrollPane();
         LoadHTML2 = new widget.editorpane();
+
+        JK.setHighlighter(null);
+        JK.setName("JK"); // NOI18N
+
+        Umur.setHighlighter(null);
+        Umur.setName("Umur"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -442,7 +450,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-12-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -456,7 +464,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-12-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -574,15 +582,15 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(0, 120, 85, 23);
 
-        cmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan" }));
-        cmbJk.setName("cmbJk"); // NOI18N
-        cmbJk.addKeyListener(new java.awt.event.KeyAdapter() {
+        JKPJ.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan" }));
+        JKPJ.setName("JKPJ"); // NOI18N
+        JKPJ.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                cmbJkKeyPressed(evt);
+                JKPJKeyPressed(evt);
             }
         });
-        FormInput.add(cmbJk);
-        cmbJk.setBounds(89, 120, 110, 23);
+        FormInput.add(JKPJ);
+        JKPJ.setBounds(89, 120, 110, 23);
 
         jLabel10.setText("Nama :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -653,17 +661,17 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         FormInput.add(jLabel44);
         jLabel44.setBounds(353, 90, 90, 23);
 
-        Umur.setName("Umur"); // NOI18N
-        Umur.addKeyListener(new java.awt.event.KeyAdapter() {
+        UmurPJ.setName("UmurPJ"); // NOI18N
+        UmurPJ.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                UmurKeyPressed(evt);
+                UmurPJKeyPressed(evt);
             }
         });
-        FormInput.add(Umur);
-        Umur.setBounds(447, 90, 47, 23);
+        FormInput.add(UmurPJ);
+        UmurPJ.setBounds(447, 90, 47, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-12-2022" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-06-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -753,7 +761,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(430, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255,250,250));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -836,8 +844,8 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Pasien");
         }else if(NamaPJ.getText().trim().equals("")){
             Valid.textKosong(NamaPJ,"Nama Penanggung Jawab");
-        }else if(Umur.getText().trim().equals("")){
-            Valid.textKosong(Umur,"Umur");
+        }else if(UmurPJ.getText().trim().equals("")){
+            Valid.textKosong(UmurPJ,"Umur");
         }else if(NoTelp.getText().trim().equals("")){
             Valid.textKosong(NoTelp,"Nomor Telp");
         }else if(NoKTP.getText().trim().equals("")){
@@ -848,10 +856,15 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
             Valid.textKosong(NoSurat,"No.Pernyataan");
         }else{
             if(Sequel.menyimpantf("surat_persetujuan_umum","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
-                    NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"-","",NamaPJ.getText(),Umur.getText(),NoKTP.getText(),
-                    cmbJk.getSelectedItem().toString().substring(0,1),BertindakAtas.getSelectedItem().toString(),NoTelp.getText(),NIP.getText()
+                    NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"-","",NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),
+                    JKPJ.getSelectedItem().toString().substring(0,1),BertindakAtas.getSelectedItem().toString(),NoTelp.getText(),NIP.getText()
                 })==true){
-                tampil();
+                tabMode.addRow(new String[]{
+                    NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
+                    Valid.SetTgl(Tanggal.getSelectedItem()+""),"-","",NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),JKPJ.getSelectedItem().toString().substring(0,1),
+                    NoTelp.getText(),BertindakAtas.getSelectedItem().toString(),NIP.getText(),NamaPetugas.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }
         }
@@ -861,7 +874,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,cmbJk,BtnBatal);
+            Valid.pindah(evt,JKPJ,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -907,8 +920,8 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Pasien");
         }else if(NamaPJ.getText().trim().equals("")){
             Valid.textKosong(NamaPJ,"Nama Penanggung Jawab");
-        }else if(Umur.getText().trim().equals("")){
-            Valid.textKosong(Umur,"Umur");
+        }else if(UmurPJ.getText().trim().equals("")){
+            Valid.textKosong(UmurPJ,"Umur");
         }else if(NoTelp.getText().trim().equals("")){
             Valid.textKosong(NoTelp,"Nomor Telp");
         }else if(NoKTP.getText().trim().equals("")){
@@ -1087,12 +1100,12 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         Valid.pindah(evt,NoTelp,BtnSimpan);
     }//GEN-LAST:event_BertindakAtasKeyPressed
 
-    private void cmbJkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbJkKeyPressed
+    private void JKPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKPJKeyPressed
         Valid.pindah(evt,NoKTP,NoTelp);
-    }//GEN-LAST:event_cmbJkKeyPressed
+    }//GEN-LAST:event_JKPJKeyPressed
 
     private void NamaPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaPJKeyPressed
-        Valid.pindah(evt,NoSurat,Umur);
+        Valid.pindah(evt,NoSurat,UmurPJ);
     }//GEN-LAST:event_NamaPJKeyPressed
 
     private void TNoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRMKeyPressed
@@ -1106,7 +1119,6 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
-            isPsien();
         }else{
             Valid.pindah(evt,TCari,Tanggal);
         }
@@ -1121,11 +1133,11 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
     }//GEN-LAST:event_NoSuratKeyPressed
 
     private void NoKTPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKTPKeyPressed
-        Valid.pindah(evt,Umur,cmbJk);
+        Valid.pindah(evt,UmurPJ,JKPJ);
     }//GEN-LAST:event_NoKTPKeyPressed
 
     private void NoTelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoTelpKeyPressed
-        Valid.pindah(evt,cmbJk,BertindakAtas);
+        Valid.pindah(evt,JKPJ,BertindakAtas);
     }//GEN-LAST:event_NoTelpKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
@@ -1161,9 +1173,9 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
-    private void UmurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UmurKeyPressed
+    private void UmurPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UmurPJKeyPressed
         Valid.pindah(evt,NamaPJ,NoKTP);
-    }//GEN-LAST:event_UmurKeyPressed
+    }//GEN-LAST:event_UmurPJKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1199,6 +1211,8 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
+    private widget.TextBox JK;
+    private widget.ComboBox JKPJ;
     private widget.Label LCount;
     private widget.TextBox LahirPasien;
     private widget.editorpane LoadHTML2;
@@ -1218,9 +1232,9 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
     private widget.TextBox Umur;
+    private widget.TextBox UmurPJ;
     private widget.Button btnAmbil;
     private widget.Button btnPetugas;
-    private widget.ComboBox cmbJk;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel14;
@@ -1317,9 +1331,9 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
 
     public void emptTeks() {
         NamaPJ.setText("");
-        Umur.setText("");
+        UmurPJ.setText("");
         BertindakAtas.setSelectedIndex(0);
-        cmbJk.setSelectedIndex(0);
+        JKPJ.setSelectedIndex(0);
         NoTelp.setText("");
         NoKTP.setText("");
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_persetujuan_umum.no_surat,3),signed)),0) from surat_persetujuan_umum where surat_persetujuan_umum.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
@@ -1334,11 +1348,13 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             LahirPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             NamaPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()); 
-            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());  
+            UmurPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());  
             NoKTP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()); 
-            cmbJk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString().replaceAll("L","Laki-laki").replaceAll("P","Perempuan")); 
+            JKPJ.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString().replaceAll("L","Laki-laki").replaceAll("P","Perempuan")); 
             NoTelp.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()); 
             BertindakAtas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());  
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
@@ -1346,21 +1362,42 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
     }
 
     private void isRawat() {
-         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
-    }
-
-    private void isPsien() {
-       Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
-       Sequel.cariIsi("select date_format(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",LahirPasien,TNoRM.getText());
+        try {
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,"+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "where reg_periksa.no_rawat=?");
+            try {
+                ps.setString(1,TNoRw.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    DTPCari1.setDate(rs.getDate("tgl_registrasi"));
+                    TPasien.setText(rs.getString("nm_pasien"));
+                    JK.setText(rs.getString("jk"));
+                    LahirPasien.setText(rs.getString("tgl_lahir"));
+                    UmurPJ.setText(rs.getString("umurdaftar")+" "+rs.getString("sttsumur"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
     
     public void setNoRm(String norwt,Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
-        isPsien(); 
         ChkInput.setSelected(true);
         isForm();
     }
@@ -1397,13 +1434,29 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
     }
   
     private void ganti() {
-        Sequel.mengedit("surat_persetujuan_umum","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,nama_pj=?,umur_pj=?,no_ktppj=?,jkpj=?,bertindak_atas=?,no_telp=?,nip=?",11,new String[]{
-            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),Umur.getText(),NoKTP.getText(),
-            cmbJk.getSelectedItem().toString().substring(0,1),BertindakAtas.getSelectedItem().toString(),NoTelp.getText(),NIP.getText(),
+        if(Sequel.mengedittf("surat_persetujuan_umum","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,nama_pj=?,umur_pj=?,no_ktppj=?,jkpj=?,bertindak_atas=?,no_telp=?,nip=?",11,new String[]{
+            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),
+            JKPJ.getSelectedItem().toString().substring(0,1),BertindakAtas.getSelectedItem().toString(),NoTelp.getText(),NIP.getText(),
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-        });
-        if(tabMode.getRowCount()!=0){tampil();}
-        emptTeks();
+        })==true){
+            tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
+            tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
+            tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),2);
+            tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),3);
+            tbObat.setValueAt(Umur.getText(),tbObat.getSelectedRow(),4);
+            tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),5);
+            tbObat.setValueAt(LahirPasien.getText(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+""),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(NamaPJ.getText(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(UmurPJ.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(NoKTP.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(JKPJ.getSelectedItem().toString().substring(0,1),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(NoTelp.getText(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(BertindakAtas.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),17);
+            emptTeks();
+        }
     }
 
     private void hapus() {
