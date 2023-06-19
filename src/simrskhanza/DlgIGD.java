@@ -88,7 +88,6 @@ import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
 import permintaan.DlgPermintaanRanap;
 import rekammedis.RMCatatanADIMEGizi;
-import rekammedis.RMChecklistKriteriaKeluarHCU;
 import rekammedis.RMChecklistKriteriaMasukHCU;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
@@ -138,6 +137,7 @@ import surat.SuratCutiHamil;
 import surat.SuratKeteranganBebasTBC;
 import surat.SuratKeteranganCovid;
 import surat.SuratKewaspadaanKesehatan;
+import surat.SuratPenolakanAnjuranMedis;
 import surat.SuratPernyataanPasienUmum;
 import surat.SuratPersetujuanPenolakanTindakan;
 import surat.SuratPersetujuanPenundaanPelayanan;
@@ -744,6 +744,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPernyataanPasienUmum = new javax.swing.JMenuItem();
         MnPersetujuanRawatInap = new javax.swing.JMenuItem();
         MnPersetujuanPenundaanPelayanan = new javax.swing.JMenuItem();
+        MnPenolakanAnjuranMedis = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         MnCetakRegister = new javax.swing.JMenuItem();
         MnCetakRegister2 = new javax.swing.JMenuItem();
@@ -2672,6 +2673,22 @@ public final class DlgIGD extends javax.swing.JDialog {
         });
         MnSuratSurat.add(MnPersetujuanPenundaanPelayanan);
 
+        MnPenolakanAnjuranMedis.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenolakanAnjuranMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenolakanAnjuranMedis.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenolakanAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenolakanAnjuranMedis.setText("Penolakan Anjuran Medis");
+        MnPenolakanAnjuranMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenolakanAnjuranMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenolakanAnjuranMedis.setName("MnPenolakanAnjuranMedis"); // NOI18N
+        MnPenolakanAnjuranMedis.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnPenolakanAnjuranMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPenolakanAnjuranMedisActionPerformed(evt);
+            }
+        });
+        MnSuratSurat.add(MnPenolakanAnjuranMedis);
+
         jMenu8.setBackground(new java.awt.Color(255, 255, 254));
         jMenu8.setForeground(new java.awt.Color(50, 50, 50));
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -4352,7 +4369,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel15);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4366,7 +4383,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel17);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4458,7 +4475,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel9.setBounds(165, 72, 36, 23);
 
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-06-2023" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2023" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -9151,6 +9168,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnCheckListKriteriaMasukHCUActionPerformed
 
+    private void MnPenolakanAnjuranMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenolakanAnjuranMedisActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                SuratPenolakanAnjuranMedis form=new SuratPenolakanAnjuranMedis(null,false);
+                form.isCek();
+                form.emptTeks();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnPenolakanAnjuranMedisActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -9310,6 +9350,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnPenilaianTambahanMelarikanDiri;
     private javax.swing.JMenuItem MnPenilaianTambahanPerilakuKekerasan;
     private javax.swing.JMenuItem MnPeniliaianAwalMedisIGD;
+    private javax.swing.JMenuItem MnPenolakanAnjuranMedis;
     private javax.swing.JMenuItem MnPeriksaLab;
     private javax.swing.JMenuItem MnPeriksaLabMB;
     private javax.swing.JMenuItem MnPeriksaLabPA;
@@ -9829,6 +9870,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPemantauanMEOWS.setEnabled(akses.getpemantauan_meows_obstetri());
         ppCatatanADIMEGizi.setEnabled(akses.getcatatan_adime_gizi());
         MnCheckListKriteriaMasukHCU.setEnabled(akses.getchecklist_kriteria_masuk_hcu());
+        MnPenolakanAnjuranMedis.setEnabled(akses.getpenolakan_anjuran_medis());
     }
     
     private void isNumber(){

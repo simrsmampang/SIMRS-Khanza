@@ -728,6 +728,7 @@ import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.DlgRekapPermintaanDiet;
+import laporan.LaporanTahunanPAM;
 import rekammedis.DlgSOAPRalanAggotaPolri;
 import laporan.DlgStatusDataRM;
 import laporan.LaporanBulananIRJ;
@@ -739,6 +740,7 @@ import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
 import laporan.LaporanSisaDietPasien;
 import laporan.LaporanTahunanIGD;
 import laporan.LaporanTahunanIRJ;
+import surat.MasterMenolakAnjuranMedis;
 import permintaan.DlgBookingPeriksa;
 import permintaan.DlgCariPermintaanLabMB;
 import permintaan.DlgCariPermintaanLabPA;
@@ -891,6 +893,7 @@ import surat.SuratKewaspadaanKesehatan;
 import surat.SuratKlasifikasi;
 import surat.SuratMap;
 import surat.SuratMasuk;
+import surat.SuratPenolakanAnjuranMedis;
 import surat.SuratPernyataanPasienUmum;
 import surat.SuratPersetujuanPenolakanTindakan;
 import surat.SuratPersetujuanPenundaanPelayanan;
@@ -20273,6 +20276,42 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterMenolakAnjuranMedisActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterMenolakAnjuranMedis form=new MasterMenolakAnjuranMedis(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenolakanAnjuranMedisActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratPenolakanAnjuranMedis aplikasi=new SuratPenolakanAnjuranMedis(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnLaporanTahunanPenolakanAnjuranMedisActionPerformed(java.awt.event.ActionEvent evt) {   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LaporanTahunanPAM aplikasi=new LaporanTahunanPAM(this,true);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -20946,7 +20985,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPemantauanPEWSDewasa,btnBPJSAntreanPerTanggalMobileJKN,btnPenilaianTambahanBunuhDiri,btnPenilaianTambahanPerilakuKekerasan,
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
-            btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus;
+            btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
+            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis;
     
     public void isWall(){
         try{            
@@ -22948,6 +22988,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getoperasi_per_bulan()==true){  
                 Panelmenu.add(btnOperasiPerBulan);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlaporan_tahunan_penolakan_anjuran_medis()==true){  
+                Panelmenu.add(btnLaporanTahunanPenolakanAnjuranMedis);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==10){   
@@ -25362,6 +25407,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPersetujuanPenundaanPelayanan);
                 jmlmenu++;
             }
+            
+            if(akses.getmaster_menolak_anjuran_medis()==true){  
+                Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getpenolakan_anjuran_medis()==true){
+                Panelmenu.add(btnPenolakanAnjuranMedis);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==16){ 
             jmlmenu=0;
             if(akses.getruang_perpustakaan()==true){
@@ -27665,6 +27720,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getoperasi_per_bulan()==true){  
             Panelmenu.add(btnOperasiPerBulan);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getlaporan_tahunan_penolakan_anjuran_medis()==true){  
+            Panelmenu.add(btnLaporanTahunanPenolakanAnjuranMedis);                 
             jmlmenu++;
         }
 
@@ -30071,6 +30131,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpersetujuan_penundaan_pelayanan()==true){
             Panelmenu.add(btnPersetujuanPenundaanPelayanan);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_menolak_anjuran_medis()==true){  
+            Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getpenolakan_anjuran_medis()==true){
+            Panelmenu.add(btnPenolakanAnjuranMedis);
             jmlmenu++;
         }
 
@@ -33126,6 +33196,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getoperasi_per_bulan()==true){  
             if(btnOperasiPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnOperasiPerBulan);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlaporan_tahunan_penolakan_anjuran_medis()==true){  
+            if(btnLaporanTahunanPenolakanAnjuranMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLaporanTahunanPenolakanAnjuranMedis);                 
                 jmlmenu++;
             }                
         }
@@ -36493,6 +36570,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpersetujuan_penundaan_pelayanan()==true){
             if(btnPersetujuanPenundaanPelayanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPersetujuanPenundaanPelayanan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmaster_menolak_anjuran_medis()==true){  
+            if(btnMasterMenolakAnjuranMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterMenolakAnjuranMedis);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenolakan_anjuran_medis()==true){  
+            if(btnPenolakanAnjuranMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenolakanAnjuranMedis);                 
                 jmlmenu++;
             }                
         }
@@ -40969,5 +41060,29 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianRisikoDekubitus.setName("btnPenilaianRisikoDekubitus"); 
         btnPenilaianRisikoDekubitus.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianRisikoDekubitus.addActionListener(this::btnPenilaianRisikoDekubitusActionPerformed);
+        
+        btnMasterMenolakAnjuranMedis = new widget.ButtonBig();
+        btnMasterMenolakAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9191520_nonviolence_violence_hit_thrash_conflict_icon.png"))); 
+        btnMasterMenolakAnjuranMedis.setText("Master Menolak Anjuran Medis");
+        btnMasterMenolakAnjuranMedis.setIconTextGap(0);
+        btnMasterMenolakAnjuranMedis.setName("btnMasterMenolakAnjuranMedis"); 
+        btnMasterMenolakAnjuranMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterMenolakAnjuranMedis.addActionListener(this::btnMasterMenolakAnjuranMedisActionPerformed);
+        
+        btnPenolakanAnjuranMedis = new widget.ButtonBig();
+        btnPenolakanAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960611_hospitals_hospital_building_medic_health_icon.png")));
+        btnPenolakanAnjuranMedis.setText("Penolakan Anjuran Medis");
+        btnPenolakanAnjuranMedis.setIconTextGap(0);
+        btnPenolakanAnjuranMedis.setName("btnPenolakanAnjuranMedis"); 
+        btnPenolakanAnjuranMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenolakanAnjuranMedis.addActionListener(this::btnPenolakanAnjuranMedisActionPerformed);
+        
+        btnLaporanTahunanPenolakanAnjuranMedis = new widget.ButtonBig();
+        btnLaporanTahunanPenolakanAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9929050_analysis_graph_growth_report_statistics_icon.png")));
+        btnLaporanTahunanPenolakanAnjuranMedis.setText("Laporan Tahunan Penolakan Anjuran Medis");
+        btnLaporanTahunanPenolakanAnjuranMedis.setIconTextGap(0);
+        btnLaporanTahunanPenolakanAnjuranMedis.setName("btnLaporanTahunanPenolakanAnjuranMedis"); 
+        btnLaporanTahunanPenolakanAnjuranMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaporanTahunanPenolakanAnjuranMedis.addActionListener(this::btnLaporanTahunanPenolakanAnjuranMedisActionPerformed);
     }
 }

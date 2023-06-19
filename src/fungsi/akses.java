@@ -207,7 +207,8 @@ public final class akses {
             penilaian_tambahan_bunuh_diri=false,bpjs_antrean_pertanggal=false,penilaian_tambahan_perilaku_kekerasan=false,penilaian_tambahan_beresiko_melarikan_diri=false,
             persetujuan_penundaan_pelayanan=false,sisa_diet_pasien=false,penilaian_awal_medis_ralan_bedah_mulut=false,penilaian_pasien_keracunan=false,
             pemantauan_meows_obstetri=false,catatan_adime_gizi=false,pengajuan_biaya=false,penilaian_awal_keperawatan_ralan_geriatri=false,master_masalah_keperawatan_geriatri=false,
-            master_rencana_keperawatan_geriatri=false,checklist_kriteria_masuk_hcu=false,checklist_kriteria_keluar_hcu=false,penilaian_risiko_dekubitus=false;
+            master_rencana_keperawatan_geriatri=false,checklist_kriteria_masuk_hcu=false,checklist_kriteria_keluar_hcu=false,penilaian_risiko_dekubitus=false,
+            master_menolak_anjuran_medis=false,penolakan_anjuran_medis=false,laporan_tahunan_penolakan_anjuran_medis=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1181,6 +1182,9 @@ public final class akses {
                         akses.checklist_kriteria_masuk_hcu=true;
                         akses.checklist_kriteria_keluar_hcu=true;
                         akses.penilaian_risiko_dekubitus=true;
+                        akses.master_menolak_anjuran_medis=true;
+                        akses.penolakan_anjuran_medis=true;
+                        akses.laporan_tahunan_penolakan_anjuran_medis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2138,6 +2142,9 @@ public final class akses {
                         akses.checklist_kriteria_masuk_hcu=rs2.getBoolean("checklist_kriteria_masuk_hcu");
                         akses.checklist_kriteria_keluar_hcu=rs2.getBoolean("checklist_kriteria_keluar_hcu");
                         akses.penilaian_risiko_dekubitus=rs2.getBoolean("penilaian_risiko_dekubitus");
+                        akses.master_menolak_anjuran_medis=rs2.getBoolean("master_menolak_anjuran_medis");
+                        akses.penolakan_anjuran_medis=rs2.getBoolean("penolakan_anjuran_medis");
+                        akses.laporan_tahunan_penolakan_anjuran_medis=rs2.getBoolean("laporan_tahunan_penolakan_anjuran_medis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3093,6 +3100,9 @@ public final class akses {
                         akses.checklist_kriteria_masuk_hcu=false;
                         akses.checklist_kriteria_keluar_hcu=false;
                         akses.penilaian_risiko_dekubitus=false;
+                        akses.master_menolak_anjuran_medis=false;
+                        akses.penolakan_anjuran_medis=false;
+                        akses.laporan_tahunan_penolakan_anjuran_medis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4108,4 +4118,7 @@ public final class akses {
     public static boolean getchecklist_kriteria_masuk_hcu(){return akses.checklist_kriteria_masuk_hcu;}
     public static boolean getchecklist_kriteria_keluar_hcu(){return akses.checklist_kriteria_keluar_hcu;}
     public static boolean getpenilaian_risiko_dekubitus(){return akses.penilaian_risiko_dekubitus;}
+    public static boolean getmaster_menolak_anjuran_medis(){return akses.master_menolak_anjuran_medis;}
+    public static boolean getpenolakan_anjuran_medis(){return akses.penolakan_anjuran_medis;}
+    public static boolean getlaporan_tahunan_penolakan_anjuran_medis(){return akses.laporan_tahunan_penolakan_anjuran_medis;}
 }   

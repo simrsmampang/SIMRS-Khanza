@@ -38,7 +38,7 @@ import kepegawaian.DlgCariPetugas;
 
 /**
  *
- * @author perpustakaan
+ * @author windiartohugroho
  */
 public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -726,7 +726,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         HubunganDenganPasien.setBounds(179, 490, 140, 23);
 
         TglPernyataan.setForeground(new java.awt.Color(50, 70, 50));
-        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2022" }));
+        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
         TglPernyataan.setDisplayFormat("dd-MM-yyyy");
         TglPernyataan.setName("TglPernyataan"); // NOI18N
         TglPernyataan.setOpaque(false);
@@ -1058,7 +1058,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         jLabel39.setBounds(460, 490, 90, 23);
 
         TglLahirPenerima.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2022" }));
+        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
         TglLahirPenerima.setDisplayFormat("dd-MM-yyyy");
         TglLahirPenerima.setName("TglLahirPenerima"); // NOI18N
         TglLahirPenerima.setOpaque(false);
@@ -1219,7 +1219,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2022" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1233,7 +1233,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2022" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1289,7 +1289,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         PanelAccor.setPreferredSize(new java.awt.Dimension(430, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255,250,250));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);

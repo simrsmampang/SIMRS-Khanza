@@ -39,7 +39,7 @@ import kepegawaian.DlgCariPetugas;
 
 /**
  * 
- * @author salimmulyana
+ * @author windiartohugroho
  */
 public final class SuratPersetujuanPenundaanPelayanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;

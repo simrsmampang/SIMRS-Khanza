@@ -5,8 +5,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -25,7 +23,7 @@ public class LaporanTahunanIRJ extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private StringBuilder htmlContent;
-    private int jan=0,feb=0,mar=0,apr=0,mei=0,jun=0,jul=0,agu=0,sep=0,okt=0,nov=0,des=0,
+    private int i=0,jan=0,feb=0,mar=0,apr=0,mei=0,jun=0,jul=0,agu=0,sep=0,okt=0,nov=0,des=0,
                 ttljan=0,ttlfeb=0,ttlmar=0,ttlapr=0,ttlmei=0,ttljun=0,ttljul=0,ttlagu=0,ttlsep=0,ttlokt=0,ttlnov=0,ttldes=0,
                 ttljanbaru=0,ttlfebbaru=0,ttlmarbaru=0,ttlaprbaru=0,ttlmeibaru=0,ttljunbaru=0,ttljulbaru=0,ttlagubaru=0,ttlsepbaru=0,ttloktbaru=0,ttlnovbaru=0,ttldesbaru=0;
     
@@ -71,8 +69,6 @@ public class LaporanTahunanIRJ extends javax.swing.JDialog {
         
         Valid.LoadTahun(ThnCari);
     }
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    private int i=0;
 
     /** This method is called from within the constructor to
      * initialize the form.
