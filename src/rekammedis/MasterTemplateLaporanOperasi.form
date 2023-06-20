@@ -285,6 +285,7 @@
                                 <StringItem index="1" value="Tidak"/>
                               </StringArray>
                             </Property>
+                            <Property name="selectedIndex" type="int" value="1"/>
                             <Property name="name" type="java.lang.String" value="DikirimPA" noResource="true"/>
                           </Properties>
                           <Events>

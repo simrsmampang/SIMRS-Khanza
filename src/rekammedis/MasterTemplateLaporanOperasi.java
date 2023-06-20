@@ -44,17 +44,17 @@ public class MasterTemplateLaporanOperasi extends javax.swing.JDialog {
         for (i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(70);
             }else if(i==1){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             }else if(i==2){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(160);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(160);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(160);
             }else if(i==5){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(60);
             }else if(i==6){
                 column.setPreferredWidth(500);
             }
@@ -245,6 +245,7 @@ public class MasterTemplateLaporanOperasi extends javax.swing.JDialog {
         jLabel9.setBounds(482, 70, 110, 23);
 
         DikirimPA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        DikirimPA.setSelectedIndex(1);
         DikirimPA.setName("DikirimPA"); // NOI18N
         DikirimPA.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -792,12 +793,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "select template_laporan_operasi.no_template,template_laporan_operasi.nama_operasi,"+
                     "template_laporan_operasi.diagnosa_preop,template_laporan_operasi.diagnosa_postop,template_laporan_operasi.jaringan_dieksisi,"+
                     "template_laporan_operasi.permintaan_pa,template_laporan_operasi.laporan_operasi from template_laporan_operasi "+
-                    "where template_laporan_operasi.no_template like ? or template_laporan_operasi.nama_pemeriksaan like ? or "+
-                    "template_laporan_operasi.template_laporan_operasi like ? order by template_laporan_operasi.no_template");
+                    (TCari.getText().equals("")?"":"where template_laporan_operasi.no_template like ? or template_laporan_operasi.nama_operasi like ? or "+
+                    "template_laporan_operasi.laporan_operasi like ? ")+
+                    "order by template_laporan_operasi.no_template");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -824,7 +828,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     public void emptTeks() {
         Kd.setText("");
+        NamaOperasi.setText("");
         DiagnosisPreOp.setText("");
+        DiagnosisPostOp.setText("");
+        JaringanDieksisi.setText("");
+        DikirimPA.setSelectedIndex(1);
         Template.setText("");
         Valid.autoNomer("template_laporan_operasi","O",4,Kd);
         TabRawat.setSelectedIndex(0);

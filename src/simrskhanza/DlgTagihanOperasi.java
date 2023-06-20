@@ -23,6 +23,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
+import rekammedis.MasterCariTemplateLaporanOperasi;
 
 public class DlgTagihanOperasi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2;
@@ -34,6 +35,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
     private ResultSet rs,rsset_tarif,rsrekening;
     private DlgCariPetugas petugas=new DlgCariPetugas( null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private MasterCariTemplateLaporanOperasi template=new MasterCariTemplateLaporanOperasi(null,false);
     private String kelas_operasi="Yes",kelas="",cara_bayar_operasi="Yes",kd_pj="",status="";
     private double ttljmdokter=0,ttljmpetugas=0,ttlpendapatan=0,ttlbhp=0;
     private String Suspen_Piutang_Operasi_Ranap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",Utang_Jasa_Medik_Dokter_Operasi_Ranap="",
@@ -368,6 +370,32 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        template.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(template.getTable().getSelectedRow()!= -1){  
+                    PreOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),2).toString());
+                    PostOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),3).toString());
+                    Jaringan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),4).toString());
+                    DikirimPA.setSelectedItem(template.getTable().getValueAt(template.getTable().getSelectedRow(),5).toString());
+                    Laporan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),6).toString());
+                    Laporan.requestFocus();
+                }            
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
         TCari.requestFocus();
         ChkInput.setSelected(false);
         isForm();
@@ -629,6 +657,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         scrollPane2 = new widget.ScrollPane();
         Laporan = new widget.TextArea();
         jLabel10 = new widget.Label();
+        btnTemplate = new widget.Button();
 
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -1960,6 +1989,19 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         FormInput.add(jLabel10);
         jLabel10.setBounds(406, 430, 101, 23);
 
+        btnTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnTemplate.setMnemonic('2');
+        btnTemplate.setToolTipText("Alt+2");
+        btnTemplate.setName("btnTemplate"); // NOI18N
+        btnTemplate.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnTemplate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTemplateActionPerformed(evt);
+            }
+        });
+        FormInput.add(btnTemplate);
+        btnTemplate.setBounds(479, 460, 28, 23);
+
         scrollPane1.setViewportView(FormInput);
 
         PanelInput.add(scrollPane1, java.awt.BorderLayout.CENTER);
@@ -2955,6 +2997,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.pindah(evt,BtnOperator2,BtnAnastesi);
     }//GEN-LAST:event_btnOperator3KeyPressed
 
+    private void btnTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplateActionPerformed
+        template.emptTeks();
+        template.isCek();
+        template.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        template.setLocationRelativeTo(internalFrame1);
+        template.setVisible(true);
+    }//GEN-LAST:event_btnTemplateActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3020,6 +3070,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button btnOperator3;
     private widget.Button btnPrwLuar;
     private widget.Button btnPrwRes;
+    private widget.Button btnTemplate;
     private widget.Button btndrpjanak;
     private widget.Button btndrumum;
     private widget.InternalFrame internalFrame1;
