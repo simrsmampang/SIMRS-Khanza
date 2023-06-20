@@ -783,6 +783,7 @@ import rekammedis.MasterRencanaKeperawatanIGD;
 import rekammedis.MasterRencanaKeperawatanMata;
 import rekammedis.MasterRencanaKeperawatanPsikiatri;
 import rekammedis.MasterTemplateHasilRadiologi;
+import rekammedis.MasterTemplateLaporanOperasi;
 import rekammedis.MasterTemplatePemeriksaanDokter;
 import rekammedis.RMTriaseIGD;
 import rekammedis.MasterTriaseMacamKasus;
@@ -20312,6 +20313,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterTemplateLaporanOperasiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterTemplateLaporanOperasi form=new MasterTemplateLaporanOperasi(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -20986,7 +21000,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
-            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis;
+            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi;
     
     public void isWall(){
         try{            
@@ -24203,6 +24217,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettemplate_hasil_radiologi()==true){
                 Panelmenu.add(btnMasterTemplateHasilRadiologi);
+                jmlmenu++;
+            }
+            
+            if(akses.gettemplate_laporan_operasi()==true){
+                Panelmenu.add(btnMasterTemplateLaporanOperasi);
                 jmlmenu++;
             }
             
@@ -28932,6 +28951,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettemplate_hasil_radiologi()==true){
             Panelmenu.add(btnMasterTemplateHasilRadiologi);
+            jmlmenu++;
+        }
+        
+        if(akses.gettemplate_laporan_operasi()==true){
+            Panelmenu.add(btnMasterTemplateLaporanOperasi);
             jmlmenu++;
         }
         
@@ -34889,6 +34913,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gettemplate_hasil_radiologi()==true){
             if(btnMasterTemplateHasilRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterTemplateHasilRadiologi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettemplate_laporan_operasi()==true){
+            if(btnMasterTemplateLaporanOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterTemplateLaporanOperasi);
                 jmlmenu++;
             }                
         }
@@ -41084,5 +41115,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLaporanTahunanPenolakanAnjuranMedis.setName("btnLaporanTahunanPenolakanAnjuranMedis"); 
         btnLaporanTahunanPenolakanAnjuranMedis.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLaporanTahunanPenolakanAnjuranMedis.addActionListener(this::btnLaporanTahunanPenolakanAnjuranMedisActionPerformed);
+        
+        btnMasterTemplateLaporanOperasi = new widget.ButtonBig();
+        btnMasterTemplateLaporanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5983459_avatar_coronavirus_covid19_doctor_health_icon.png")));
+        btnMasterTemplateLaporanOperasi.setText("Master Template Laporan Operasi");
+        btnMasterTemplateLaporanOperasi.setIconTextGap(0);
+        btnMasterTemplateLaporanOperasi.setName("btnMasterTemplateLaporanOperasi"); 
+        btnMasterTemplateLaporanOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterTemplateLaporanOperasi.addActionListener(this::btnMasterTemplateLaporanOperasiActionPerformed);
     }
 }

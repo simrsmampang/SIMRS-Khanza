@@ -208,7 +208,7 @@ public final class akses {
             persetujuan_penundaan_pelayanan=false,sisa_diet_pasien=false,penilaian_awal_medis_ralan_bedah_mulut=false,penilaian_pasien_keracunan=false,
             pemantauan_meows_obstetri=false,catatan_adime_gizi=false,pengajuan_biaya=false,penilaian_awal_keperawatan_ralan_geriatri=false,master_masalah_keperawatan_geriatri=false,
             master_rencana_keperawatan_geriatri=false,checklist_kriteria_masuk_hcu=false,checklist_kriteria_keluar_hcu=false,penilaian_risiko_dekubitus=false,
-            master_menolak_anjuran_medis=false,penolakan_anjuran_medis=false,laporan_tahunan_penolakan_anjuran_medis=false;
+            master_menolak_anjuran_medis=false,penolakan_anjuran_medis=false,laporan_tahunan_penolakan_anjuran_medis=false,template_laporan_operasi=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1185,6 +1185,7 @@ public final class akses {
                         akses.master_menolak_anjuran_medis=true;
                         akses.penolakan_anjuran_medis=true;
                         akses.laporan_tahunan_penolakan_anjuran_medis=true;
+                        akses.template_laporan_operasi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2145,6 +2146,7 @@ public final class akses {
                         akses.master_menolak_anjuran_medis=rs2.getBoolean("master_menolak_anjuran_medis");
                         akses.penolakan_anjuran_medis=rs2.getBoolean("penolakan_anjuran_medis");
                         akses.laporan_tahunan_penolakan_anjuran_medis=rs2.getBoolean("laporan_tahunan_penolakan_anjuran_medis");
+                        akses.template_laporan_operasi=rs2.getBoolean("template_laporan_operasi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3103,6 +3105,7 @@ public final class akses {
                         akses.master_menolak_anjuran_medis=false;
                         akses.penolakan_anjuran_medis=false;
                         akses.laporan_tahunan_penolakan_anjuran_medis=false;
+                        akses.template_laporan_operasi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4121,4 +4124,5 @@ public final class akses {
     public static boolean getmaster_menolak_anjuran_medis(){return akses.master_menolak_anjuran_medis;}
     public static boolean getpenolakan_anjuran_medis(){return akses.penolakan_anjuran_medis;}
     public static boolean getlaporan_tahunan_penolakan_anjuran_medis(){return akses.laporan_tahunan_penolakan_anjuran_medis;}
+    public static boolean gettemplate_laporan_operasi(){return akses.template_laporan_operasi;}
 }   
