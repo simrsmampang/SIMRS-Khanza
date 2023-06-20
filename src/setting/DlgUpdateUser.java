@@ -3998,8 +3998,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[M]Master Template Laporan Operasi",template_laporan_operasi});
         }
         
-        if("[M]Hasil Tindakan ESWL".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[M]Hasil Tindakan ESWL",hasil_tindakan_eswl});
+        if("[M]Dokumentasi Tindakan ESWL".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Dokumentasi Tindakan ESWL",hasil_tindakan_eswl});
         }
         
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7833,7 +7833,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","template_laporan_operasi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[M]Hasil Tindakan ESWL".equals(tbUser.getValueAt(i,1).toString())){
+            if("[M]Dokumentasi Tindakan ESWL".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","hasil_tindakan_eswl='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
