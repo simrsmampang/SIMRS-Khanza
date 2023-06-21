@@ -93,6 +93,7 @@ import permintaan.DlgPermintaanRadiologi;
 import permintaan.DlgPermintaanRanap;
 import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMChecklistKriteriaMasukHCU;
+import rekammedis.RMChecklistKriteriaMasukICU;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
@@ -940,6 +941,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnPenilaianPreAnastesi = new javax.swing.JMenuItem();
         MnRMHCU = new javax.swing.JMenu();
         MnCheckListKriteriaMasukHCU = new javax.swing.JMenuItem();
+        MnCheckListKriteriaMasukICU = new javax.swing.JMenuItem();
         MnUjiFungsiKFR = new javax.swing.JMenuItem();
         MnRMRisikoJatuh = new javax.swing.JMenu();
         MnPenilaianRisikoJatuhDewasa = new javax.swing.JMenuItem();
@@ -1930,7 +1932,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnRMHCU.setBackground(new java.awt.Color(255, 255, 254));
         MnRMHCU.setForeground(new java.awt.Color(50, 50, 50));
         MnRMHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnRMHCU.setText("RM HCU");
+        MnRMHCU.setText("RM HCU & ICU");
         MnRMHCU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRMHCU.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRMHCU.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -1952,6 +1954,22 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         MnRMHCU.add(MnCheckListKriteriaMasukHCU);
+
+        MnCheckListKriteriaMasukICU.setBackground(new java.awt.Color(255, 255, 254));
+        MnCheckListKriteriaMasukICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCheckListKriteriaMasukICU.setForeground(new java.awt.Color(50, 50, 50));
+        MnCheckListKriteriaMasukICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCheckListKriteriaMasukICU.setText("Check List Kriteria Masuk ICU");
+        MnCheckListKriteriaMasukICU.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCheckListKriteriaMasukICU.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCheckListKriteriaMasukICU.setName("MnCheckListKriteriaMasukICU"); // NOI18N
+        MnCheckListKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnCheckListKriteriaMasukICU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCheckListKriteriaMasukICUActionPerformed(evt);
+            }
+        });
+        MnRMHCU.add(MnCheckListKriteriaMasukICU);
 
         MnDataRM.add(MnRMHCU);
 
@@ -13685,6 +13703,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnDokumentasiTindakanESWLActionPerformed
 
+    private void MnCheckListKriteriaMasukICUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCheckListKriteriaMasukICUActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMChecklistKriteriaMasukICU form=new RMChecklistKriteriaMasukICU(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnCheckListKriteriaMasukICUActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13788,6 +13828,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnCheckList6;
     private javax.swing.JMenuItem MnCheckList7;
     private javax.swing.JMenuItem MnCheckListKriteriaMasukHCU;
+    private javax.swing.JMenuItem MnCheckListKriteriaMasukICU;
     private javax.swing.JMenuItem MnChecklistPostOperasi;
     private javax.swing.JMenuItem MnChecklistPreOperasi;
     private javax.swing.JMenuItem MnCopyResep;
@@ -14622,6 +14663,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnCheckListKriteriaMasukHCU.setEnabled(akses.getchecklist_kriteria_masuk_hcu());
         MnPenolakanAnjuranMedis.setEnabled(akses.getpenolakan_anjuran_medis());
         MnDokumentasiTindakanESWL.setEnabled(akses.gethasil_tindakan_eswl());
+        MnCheckListKriteriaMasukICU.setEnabled(akses.getchecklist_kriteria_masuk_icu());
     }
     
     private void isNumber(){         
