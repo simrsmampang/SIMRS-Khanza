@@ -813,6 +813,7 @@ import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMEdukasiPasienKeluargaRawatJalan;
 import rekammedis.RMHasilPemeriksaanUSG;
+import rekammedis.RMHasilTindakanESWL;
 import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMMCU;
 import rekammedis.RMPemantauanMEOWS;
@@ -20326,6 +20327,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnDokumentasiTindakanESWLActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMHasilTindakanESWL form=new RMHasilTindakanESWL(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -21000,7 +21015,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
-            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi;
+            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL;
     
     public void isWall(){
         try{            
@@ -24602,6 +24617,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getuji_fungsi_kfr()==true){
                 Panelmenu.add(btnUjiFungsiKFR);
+                jmlmenu++;
+            }
+            
+            if(akses.gethasil_tindakan_eswl()==true){
+                Panelmenu.add(btnDokumentasiTindakanESWL);
                 jmlmenu++;
             }
             
@@ -29336,6 +29356,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getuji_fungsi_kfr()==true){
             Panelmenu.add(btnUjiFungsiKFR);
+            jmlmenu++;
+        }
+        
+        if(akses.gethasil_tindakan_eswl()==true){
+            Panelmenu.add(btnDokumentasiTindakanESWL);
             jmlmenu++;
         }
         
@@ -35456,6 +35481,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gethasil_tindakan_eswl()==true){
+            if(btnDokumentasiTindakanESWL.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDokumentasiTindakanESWL);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_mcu()==true){
             if(btnPenilaianMCU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianMCU);
@@ -41123,5 +41155,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterTemplateLaporanOperasi.setName("btnMasterTemplateLaporanOperasi"); 
         btnMasterTemplateLaporanOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnMasterTemplateLaporanOperasi.addActionListener(this::btnMasterTemplateLaporanOperasiActionPerformed);
+        
+        btnDokumentasiTindakanESWL = new widget.ButtonBig();
+        btnDokumentasiTindakanESWL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6087984_disease_infected_infection_kidney_icon.png")));
+        btnDokumentasiTindakanESWL.setText("Dokumentasi Tindakan ESWL");
+        btnDokumentasiTindakanESWL.setIconTextGap(0);
+        btnDokumentasiTindakanESWL.setName("btnDokumentasiTindakanESWL"); 
+        btnDokumentasiTindakanESWL.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDokumentasiTindakanESWL.addActionListener(this::btnDokumentasiTindakanESWLActionPerformed);
     }
 }
