@@ -797,6 +797,7 @@ import rekammedis.RMCariRekonsiliasiObat;
 import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMChecklistKriteriaKeluarHCU;
 import rekammedis.RMChecklistKriteriaMasukHCU;
+import rekammedis.RMChecklistKriteriaMasukICU;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
 import rekammedis.RMDataAsuhanGizi;
@@ -1675,8 +1676,8 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(245, 39, 140));
-        internalFrame2.setWarnaBawah(new java.awt.Color(232, 1, 122));
+        internalFrame2.setWarnaAtas(new java.awt.Color(235, 71, 152));
+        internalFrame2.setWarnaBawah(new java.awt.Color(225, 61, 142));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -1873,7 +1874,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/06/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/06/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6976,8 +6977,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnMenu);
 
-        jSeparator4.setBackground(new java.awt.Color(255, 81, 102));
-        jSeparator4.setForeground(new java.awt.Color(255, 81, 102));
+        jSeparator4.setBackground(new java.awt.Color(255, 101, 172));
+        jSeparator4.setForeground(new java.awt.Color(255, 101, 172));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator4.setName("jSeparator4"); // NOI18N
@@ -7021,8 +7022,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolIGD);
 
-        jSeparator5.setBackground(new java.awt.Color(255, 81, 102));
-        jSeparator5.setForeground(new java.awt.Color(255, 81, 102));
+        jSeparator5.setBackground(new java.awt.Color(255, 101, 172));
+        jSeparator5.setForeground(new java.awt.Color(255, 101, 172));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator5.setName("jSeparator5"); // NOI18N
@@ -7081,8 +7082,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolJualObat);
 
-        jSeparator9.setBackground(new java.awt.Color(255, 81, 102));
-        jSeparator9.setForeground(new java.awt.Color(255, 81, 102));
+        jSeparator9.setBackground(new java.awt.Color(255, 101, 172));
+        jSeparator9.setForeground(new java.awt.Color(255, 101, 172));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator9.setName("jSeparator9"); // NOI18N
@@ -7126,8 +7127,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolKasir);
 
-        jSeparator7.setBackground(new java.awt.Color(255, 81, 102));
-        jSeparator7.setForeground(new java.awt.Color(255, 81, 102));
+        jSeparator7.setBackground(new java.awt.Color(255, 101, 172));
+        jSeparator7.setForeground(new java.awt.Color(255, 101, 172));
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator7.setName("jSeparator7"); // NOI18N
@@ -7188,8 +7189,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblStts.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblStts);
 
-        jSeparator1.setBackground(new java.awt.Color(255, 81, 102));
-        jSeparator1.setForeground(new java.awt.Color(255, 81, 102));
+        jSeparator1.setBackground(new java.awt.Color(255, 101, 172));
+        jSeparator1.setForeground(new java.awt.Color(255, 101, 172));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator1.setName("jSeparator1"); // NOI18N
@@ -7206,8 +7207,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblUser.setPreferredSize(new java.awt.Dimension(170, 23));
         internalFrame4.add(lblUser);
 
-        jSeparator2.setBackground(new java.awt.Color(255, 81, 102));
-        jSeparator2.setForeground(new java.awt.Color(255, 81, 102));
+        jSeparator2.setBackground(new java.awt.Color(255, 101, 172));
+        jSeparator2.setForeground(new java.awt.Color(255, 101, 172));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator2.setName("jSeparator2"); // NOI18N
@@ -7224,8 +7225,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblTgl.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblTgl);
 
-        jSeparator3.setBackground(new java.awt.Color(255, 81, 102));
-        jSeparator3.setForeground(new java.awt.Color(255, 81, 102));
+        jSeparator3.setBackground(new java.awt.Color(255, 101, 172));
+        jSeparator3.setForeground(new java.awt.Color(255, 101, 172));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator3.setName("jSeparator3"); // NOI18N
@@ -7242,8 +7243,8 @@ public class frmUtama extends javax.swing.JFrame {
         LblIP.setPreferredSize(new java.awt.Dimension(120, 23));
         internalFrame4.add(LblIP);
 
-        jSeparator6.setBackground(new java.awt.Color(255, 81, 102));
-        jSeparator6.setForeground(new java.awt.Color(255, 81, 102));
+        jSeparator6.setBackground(new java.awt.Color(255, 101, 172));
+        jSeparator6.setForeground(new java.awt.Color(255, 101, 172));
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 1, 122)));
         jSeparator6.setName("jSeparator6"); // NOI18N
@@ -7328,13 +7329,14 @@ public class frmUtama extends javax.swing.JFrame {
 
         MenuBar.setBackground(new java.awt.Color(124, 42, 90));
         MenuBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        MenuBar.setForeground(new java.awt.Color(255, 255, 255));
+        MenuBar.setForeground(new java.awt.Color(255, 255, 253));
+        MenuBar.setToolTipText("");
         MenuBar.setName("MenuBar"); // NOI18N
         MenuBar.setPreferredSize(new java.awt.Dimension(227, 25));
 
         jMenu1.setBackground(new java.awt.Color(204, 0, 51));
         jMenu1.setBorder(null);
-        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 253));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/85.png"))); // NOI18N
         jMenu1.setMnemonic('A');
         jMenu1.setText("Program");
@@ -7398,7 +7400,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         jMenu5.setBackground(new java.awt.Color(20, 0, 20));
         jMenu5.setBorder(null);
-        jMenu5.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu5.setForeground(new java.awt.Color(255, 255, 253));
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientMale.png"))); // NOI18N
         jMenu5.setMnemonic('P');
         jMenu5.setText("Presensi Pegawai");
@@ -7498,7 +7500,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         jMenu6.setBackground(new java.awt.Color(20, 0, 20));
         jMenu6.setBorder(null);
-        jMenu6.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu6.setForeground(new java.awt.Color(255, 255, 253));
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Bar Chart.png"))); // NOI18N
         jMenu6.setMnemonic('I');
         jMenu6.setText("Informasi");
@@ -7830,7 +7832,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         jMenu7.setBackground(new java.awt.Color(20, 0, 20));
         jMenu7.setBorder(null);
-        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu7.setForeground(new java.awt.Color(255, 255, 253));
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/My-Tickets24.png"))); // NOI18N
         jMenu7.setMnemonic('N');
         jMenu7.setText("Anjungan & Antrian");
@@ -8092,7 +8094,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         jMenu4.setBackground(new java.awt.Color(20, 0, 20));
         jMenu4.setBorder(null);
-        jMenu4.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu4.setForeground(new java.awt.Color(255, 255, 253));
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/63.png"))); // NOI18N
         jMenu4.setMnemonic('G');
         jMenu4.setText("Tentang Program");
@@ -20341,6 +20343,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnChecklistKriteriaMasukICUActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMChecklistKriteriaMasukICU aplikasi=new RMChecklistKriteriaMasukICU(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    
     /**
     * @param args the command line arguments
     */
@@ -21015,7 +21031,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
-            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL;
+            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU;
     
     public void isWall(){
         try{            
@@ -24587,6 +24603,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getchecklist_kriteria_keluar_hcu()==true){
                 Panelmenu.add(btnChecklistKriteriaKeluarHCU);
+                jmlmenu++;
+            }
+            
+            if(akses.getchecklist_kriteria_masuk_icu()==true){
+                Panelmenu.add(btnChecklistKriteriaMasukICU);
                 jmlmenu++;
             }
             
@@ -29326,6 +29347,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getchecklist_kriteria_keluar_hcu()==true){
             Panelmenu.add(btnChecklistKriteriaKeluarHCU);
+            jmlmenu++;
+        }
+        
+        if(akses.getchecklist_kriteria_masuk_icu()==true){
+            Panelmenu.add(btnChecklistKriteriaMasukICU);
             jmlmenu++;
         }
         
@@ -35439,6 +35465,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getchecklist_kriteria_masuk_icu()==true){
+            if(btnChecklistKriteriaMasukICU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnChecklistKriteriaMasukICU);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getperencanaan_pemulangan()==true){
             if(btnPerencanaanPemulangan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPerencanaanPemulangan);
@@ -41163,5 +41196,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDokumentasiTindakanESWL.setName("btnDokumentasiTindakanESWL"); 
         btnDokumentasiTindakanESWL.setPreferredSize(new java.awt.Dimension(200, 90));
         btnDokumentasiTindakanESWL.addActionListener(this::btnDokumentasiTindakanESWLActionPerformed);
+        
+        btnChecklistKriteriaMasukICU = new widget.ButtonBig();
+        btnChecklistKriteriaMasukICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088168_care_drip_health_recovery_treatment_icon.png"))); 
+        btnChecklistKriteriaMasukICU.setText("Check List Kriteria Masuk ICU");
+        btnChecklistKriteriaMasukICU.setIconTextGap(0);
+        btnChecklistKriteriaMasukICU.setName("btnChecklistKriteriaMasukICU"); 
+        btnChecklistKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnChecklistKriteriaMasukICU.addActionListener(this::btnChecklistKriteriaMasukICUActionPerformed);
     }
 }
