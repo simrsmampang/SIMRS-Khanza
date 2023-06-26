@@ -324,6 +324,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanPreAnestesi = new widget.CekBox();
         chkChecklistKriteriaMasukHCU = new widget.CekBox();
         chkChecklistKriteriaKeluarHCU = new widget.CekBox();
+        chkChecklistKriteriaMasukICU = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhDewasa = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhAnak = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhLansia = new widget.CekBox();
@@ -615,7 +616,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2350));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2374));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1078,6 +1079,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkChecklistKriteriaKeluarHCU.setOpaque(false);
         chkChecklistKriteriaKeluarHCU.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkChecklistKriteriaKeluarHCU);
+
+        chkChecklistKriteriaMasukICU.setSelected(true);
+        chkChecklistKriteriaMasukICU.setText("Check List Kriteria Masuk ICU");
+        chkChecklistKriteriaMasukICU.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkChecklistKriteriaMasukICU.setName("chkChecklistKriteriaMasukICU"); // NOI18N
+        chkChecklistKriteriaMasukICU.setOpaque(false);
+        chkChecklistKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkChecklistKriteriaMasukICU);
 
         chkAsuhanLanjutanRisikoJatuhDewasa.setSelected(true);
         chkAsuhanLanjutanRisikoJatuhDewasa.setText("Lanjutan Risiko Jatuh Dewasa");
@@ -1928,6 +1937,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkChecklistKriteriaKeluarHCU.setSelected(true);
             chkAsuhanRisikoDekubitus.setSelected(true);
             chkDokumentasiTindakanESWL.setSelected(true);
+            chkChecklistKriteriaMasukICU.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2029,7 +2039,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkChecklistKriteriaMasukHCU.setSelected(false);
             chkChecklistKriteriaKeluarHCU.setSelected(false);
             chkAsuhanRisikoDekubitus.setSelected(false);
-            chkDokumentasiTindakanESWL.setSelected(true);
+            chkDokumentasiTindakanESWL.setSelected(false);
+            chkChecklistKriteriaMasukICU.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2153,6 +2164,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkCatatanObservasiRanapPostPartum;
     private widget.CekBox chkChecklistKriteriaKeluarHCU;
     private widget.CekBox chkChecklistKriteriaMasukHCU;
+    private widget.CekBox chkChecklistKriteriaMasukICU;
     private widget.CekBox chkChecklistPostOperasi;
     private widget.CekBox chkChecklistPreOperasi;
     private widget.CekBox chkDiagnosaPenyakit;
@@ -2705,6 +2717,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanChecklistKriteriaMasukHCU(rs.getString("no_rawat"));
                     //menampilkan checklist kriteria keluar HCU
                     menampilkanChecklistKriteriaKeluarHCU(rs.getString("no_rawat"));
+                    //menampilkan checklist kriteria masuk ICU
+                    menampilkanChecklistKriteriaMasukICU(rs.getString("no_rawat"));
                     //menampilkan hasil pemeriksaan USG
                     menampilkanHasilPemeriksaanUSG(rs.getString("no_rawat"));
                     //menampilkan dokumentasi tindakan ESWL
@@ -18522,6 +18536,314 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Dokumentasi Tindakan ESWL : "+e);
+        }
+    }
+    
+    private void menampilkanChecklistKriteriaMasukICU(String norawat) {
+        try {
+            if(chkChecklistKriteriaMasukICU.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select checklist_kriteria_masuk_icu.tanggal,checklist_kriteria_masuk_icu.prioritas1_1,checklist_kriteria_masuk_icu.prioritas1_2,checklist_kriteria_masuk_icu.prioritas1_3,"+
+                        "checklist_kriteria_masuk_icu.prioritas1_4,checklist_kriteria_masuk_icu.prioritas1_5,checklist_kriteria_masuk_icu.prioritas1_6,"+
+                        "checklist_kriteria_masuk_icu.prioritas2_1,checklist_kriteria_masuk_icu.prioritas2_2,checklist_kriteria_masuk_icu.prioritas2_3,"+
+                        "checklist_kriteria_masuk_icu.prioritas2_4,checklist_kriteria_masuk_icu.prioritas2_5,checklist_kriteria_masuk_icu.prioritas2_6,"+
+                        "checklist_kriteria_masuk_icu.prioritas2_7,checklist_kriteria_masuk_icu.prioritas2_8,checklist_kriteria_masuk_icu.prioritas3_1,"+
+                        "checklist_kriteria_masuk_icu.prioritas3_2,checklist_kriteria_masuk_icu.prioritas3_3,checklist_kriteria_masuk_icu.prioritas3_4,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_1,checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_2,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_3,checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_4,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_5,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_1,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_3,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_4,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_5,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_6,checklist_kriteria_masuk_icu.kriteria_fisiologis_radiologi_1,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_radiologi_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_1,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_3,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_4,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_5,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_6,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_7,"+
+                        "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_8,checklist_kriteria_masuk_icu.nik,pegawai.nama "+
+                        "from checklist_kriteria_masuk_icu inner join pegawai on pegawai.nik=checklist_kriteria_masuk_icu.nik "+
+                        "where checklist_kriteria_masuk_icu.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Check List Kriteria Masuk ICU</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='66%' border='0'>Petugas : "+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center' bgcolor='#FFFAF8'></td>"+
+                                              "<td width='76%' valign='top' align='center' bgcolor='#FFFAF8'>KRITERIA MASUK ICU</td>"+
+                                              "<td width='20%' valign='top' align='center' bgcolor='#FFFAF8'>YA/TIDAK</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>I.</td>"+
+                                              "<td width='76%' valign='top'>PRIORITAS 1</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Pasca Operasi Dengan Gangguan Nafas Atau Hipotensi</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas1_1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Gagal Nafas</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas1_2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>Gagal Jantung Dengan Tanda Bendungan Paru</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas1_3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>Gangguan Asam Basa / Elektrolit</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas1_4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>5</td>"+
+                                              "<td width='76%' valign='top'>Gagal Ginjal Dengan Tanda Bendungan Paru</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas1_5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>6</td>"+
+                                              "<td width='76%' valign='top'>Syok Karena Perdarahan Anafilaksis</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas1_6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>II.</td>"+
+                                              "<td width='76%' valign='top'>PRIORITAS 2</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Pasca Operasi Besar</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas2_1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Kejang Berulang</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas2_2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>Gangguan Kesadaran</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas2_3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>Dehidrasi Berat</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas2_4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>5</td>"+
+                                              "<td width='76%' valign='top'>Gangguan Jalan Nafas</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas2_5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>6</td>"+
+                                              "<td width='76%' valign='top'>Arimia Jantung</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas2_6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>7</td>"+
+                                              "<td width='76%' valign='top'>Asma Akut Berat</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas2_7")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>8</td>"+
+                                              "<td width='76%' valign='top'>Diabetes Yang Memerlukan Terapi Insulin Kontinyu</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas2_8")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>III.</td>"+
+                                              "<td width='76%' valign='top'>PRIORITAS 3</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Penyakit Keganasan Dengan Metastasis</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas3_1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Pasien Geriatrik Dengan Fungsi Hidup Sebelumnya Minimal</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas3_2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>Pasien Dengan GCS 3</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas3_3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>Pasien Jantung, Penyakit Paru Terminal Disertai Komplikasi Penyakit Akut Berat</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("prioritas3_4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>IV.</td>"+
+                                              "<td width='76%' valign='top'>KRITERIA FISIOLOGIS TANDA-TANDA VITAL</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Nadi < 40 atau >150 (x/menit)</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_tanda_vital_1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>SBP < 80 mmHg Atau 20 mmHg Di Bawah SBP Pasien</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_tanda_vital_2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>MAP < 60 mmHg</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_tanda_vital_3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>DBP > 120 mmHg</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_tanda_vital_4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>5</td>"+
+                                              "<td width='76%' valign='top'>R > 35 x/menit</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_tanda_vital_5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>V.</td>"+
+                                              "<td width='76%' valign='top'>KRITERIA FISIOLOGIS LABORATORIUM</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Na < 110 meq/L Atau > 170 meq/L</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_laborat_1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Ca > 15 mg/dl</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_laborat_2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>GDS > 800 mg/dl</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_laborat_3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>K < 2 meq/L Atau 7meq/L</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_laborat_4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>5</td>"+
+                                              "<td width='76%' valign='top'>PaO2 < 50 mmHg</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_laborat_5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>6</td>"+
+                                              "<td width='76%' valign='top'>PH < 7,1 Atau 7,7</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_laborat_6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>VI.</td>"+
+                                              "<td width='76%' valign='top'>KRITERIA FISIOLOGIS RADIOLOGI</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Perbedaan Cerebrovaskuler, SAH, Atau Contusion Dengan Gangguan Kesadaran Atau Neorologi</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_radiologi_1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Ruptor Organ Dalam, Kandung Kemih, Hati, Varices Esophagus Atau Uterus Dengan Gangguan Hemodinamik</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_radiologi_2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>VII.</td>"+
+                                              "<td width='76%' valign='top'>KRITERIA FISILOGIS KLINIS</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Pupil Anisokor</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_klinis_1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Obstruksi Jalan Nafas</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_klinis_2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>Anuria</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_klinis_3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>Kejang Berulang</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_klinis_4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>5</td>"+
+                                              "<td width='76%' valign='top'>Tamponade Jantung</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_klinis_5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>6</td>"+
+                                              "<td width='76%' valign='top'>Coma</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_klinis_6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>7</td>"+
+                                              "<td width='76%' valign='top'>Sianosis</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_klinis_7")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>8</td>"+
+                                              "<td width='76%' valign='top'>Luka Bakar > 10 % BSA</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria_fisiologis_klinis_8")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Checklist Masuk ICU : "+e);
         }
     }
 }
