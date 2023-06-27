@@ -183,7 +183,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaKeluarHCU = new javax.swing.JMenuItem();
+        MnKriteriaKeluarICU = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -257,19 +257,19 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnKriteriaKeluarHCU.setBackground(new java.awt.Color(255, 255, 254));
-        MnKriteriaKeluarHCU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKriteriaKeluarHCU.setForeground(new java.awt.Color(50, 50, 50));
-        MnKriteriaKeluarHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaKeluarHCU.setText("Formulir Checklist Kriteria Keluar HCU");
-        MnKriteriaKeluarHCU.setName("MnKriteriaKeluarHCU"); // NOI18N
-        MnKriteriaKeluarHCU.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnKriteriaKeluarHCU.addActionListener(new java.awt.event.ActionListener() {
+        MnKriteriaKeluarICU.setBackground(new java.awt.Color(255, 255, 254));
+        MnKriteriaKeluarICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKriteriaKeluarICU.setForeground(new java.awt.Color(50, 50, 50));
+        MnKriteriaKeluarICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKriteriaKeluarICU.setText("Formulir Checklist Kriteria Keluar ICU");
+        MnKriteriaKeluarICU.setName("MnKriteriaKeluarICU"); // NOI18N
+        MnKriteriaKeluarICU.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnKriteriaKeluarICU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnKriteriaKeluarHCUActionPerformed(evt);
+                MnKriteriaKeluarICUActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnKriteriaKeluarHCU);
+        jPopupMenu1.add(MnKriteriaKeluarICU);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -896,7 +896,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/ICU");
         }else{
             if(Sequel.menyimpantf("checklist_kriteria_keluar_icu","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kriteria1.getSelectedItem().toString(),
@@ -908,7 +908,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                     Kriteria1.getSelectedItem().toString(),Kriteria2.getSelectedItem().toString(),Kriteria3.getSelectedItem().toString(),Kriteria4.getSelectedItem().toString(),Kriteria5.getSelectedItem().toString(),
                     Kriteria6.getSelectedItem().toString(),Kriteria7.getSelectedItem().toString(),Kriteria8.getSelectedItem().toString(),Kriteria9.getSelectedItem().toString(),Kriteria10.getSelectedItem().toString(),
-                    Kriteria11.getSelectedItem().toString(),NamaPetugas.getText()
+                    Kriteria11.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -964,7 +964,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/ICU");
         }else{  
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1081,7 +1081,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataChecklistKriteriaKeluarHCU.html");            
+                File f = new File("DataChecklistKriteriaKeluarICU.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1091,7 +1091,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA KELUAR HCU<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA KELUAR ICU<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1174,7 +1174,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnKriteriaKeluarHCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaKeluarHCUActionPerformed
+    private void MnKriteriaKeluarICUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaKeluarICUActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1198,7 +1198,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                     "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_icu.nik "+
                     "where checklist_kriteria_keluar_icu.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_keluar_icu.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnKriteriaKeluarHCUActionPerformed
+    }//GEN-LAST:event_MnKriteriaKeluarICUActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1307,7 +1307,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     private widget.ComboBox Kriteria9;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnKriteriaKeluarHCU;
+    private javax.swing.JMenuItem MnKriteriaKeluarICU;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;

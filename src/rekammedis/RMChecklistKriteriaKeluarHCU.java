@@ -914,7 +914,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/HCU");
         }else{
             if(Sequel.menyimpantf("checklist_kriteria_keluar_hcu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kriteria1.getSelectedItem().toString(),
@@ -982,7 +982,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/HCU");
         }else{  
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
