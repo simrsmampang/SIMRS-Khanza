@@ -179,7 +179,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             persetujuan_penundaan_pelayanan=false,sisa_diet_pasien=false,penilaian_awal_medis_ralan_bedah_mulut=false,penilaian_pasien_keracunan=false,pemantauan_meows_obstetri=false,catatan_adime_gizi=false,pengajuan_biaya=false,
             penilaian_awal_keperawatan_ralan_geriatri=false,master_masalah_keperawatan_geriatri=false,master_rencana_keperawatan_geriatri=false,checklist_kriteria_masuk_hcu=false,checklist_kriteria_keluar_hcu=false,
             penilaian_risiko_dekubitus=false,master_menolak_anjuran_medis=false,penolakan_anjuran_medis=false,laporan_tahunan_penolakan_anjuran_medis=false,template_laporan_operasi=false,hasil_tindakan_eswl=false,
-            checklist_kriteria_masuk_icu=false;
+            checklist_kriteria_masuk_icu=false,checklist_kriteria_keluar_icu=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -781,7 +781,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         persetujuan_penundaan_pelayanan=false;sisa_diet_pasien=false;penilaian_awal_medis_ralan_bedah_mulut=false;penilaian_pasien_keracunan=false;pemantauan_meows_obstetri=false;catatan_adime_gizi=false;pengajuan_biaya=false;
         penilaian_awal_keperawatan_ralan_geriatri=false;master_masalah_keperawatan_geriatri=false;master_rencana_keperawatan_geriatri=false;checklist_kriteria_masuk_hcu=false;checklist_kriteria_keluar_hcu=false;
         penilaian_risiko_dekubitus=false;master_menolak_anjuran_medis=false;penolakan_anjuran_medis=false;laporan_tahunan_penolakan_anjuran_medis=false;template_laporan_operasi=false;hasil_tindakan_eswl=false;
-        checklist_kriteria_masuk_icu=false;
+        checklist_kriteria_masuk_icu=false;checklist_kriteria_keluar_icu=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -995,7 +995,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.sisa_diet_pasien,user.penilaian_awal_medis_ralan_bedah_mulut,user.penilaian_pasien_keracunan,user.pemantauan_meows_obstetri,user.catatan_adime_gizi,"+
                 "user.pengajuan_biaya,user.penilaian_awal_keperawatan_ralan_geriatri,user.master_masalah_keperawatan_geriatri,user.master_rencana_keperawatan_geriatri,"+
                 "user.checklist_kriteria_masuk_hcu,user.checklist_kriteria_keluar_hcu,user.penilaian_risiko_dekubitus,user.master_menolak_anjuran_medis,user.penolakan_anjuran_medis,"+
-                "user.laporan_tahunan_penolakan_anjuran_medis,user.template_laporan_operasi,user.hasil_tindakan_eswl,user.checklist_kriteria_masuk_icu from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.laporan_tahunan_penolakan_anjuran_medis,user.template_laporan_operasi,user.hasil_tindakan_eswl,user.checklist_kriteria_masuk_icu,"+
+                "user.checklist_kriteria_keluar_icu from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1104,6 +1105,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     pemantauan_pews_dewasa=rs.getBoolean("pemantauan_pews_dewasa");penilaian_tambahan_bunuh_diri=rs.getBoolean("penilaian_tambahan_bunuh_diri");bpjs_antrean_pertanggal=rs.getBoolean("bpjs_antrean_pertanggal");penilaian_tambahan_perilaku_kekerasan=rs.getBoolean("penilaian_tambahan_perilaku_kekerasan");penilaian_tambahan_beresiko_melarikan_diri=rs.getBoolean("penilaian_tambahan_beresiko_melarikan_diri");persetujuan_penundaan_pelayanan=rs.getBoolean("persetujuan_penundaan_pelayanan");sisa_diet_pasien=rs.getBoolean("sisa_diet_pasien");penilaian_awal_medis_ralan_bedah_mulut=rs.getBoolean("penilaian_awal_medis_ralan_bedah_mulut");
                     penilaian_pasien_keracunan=rs.getBoolean("penilaian_pasien_keracunan");pemantauan_meows_obstetri=rs.getBoolean("pemantauan_meows_obstetri");catatan_adime_gizi=rs.getBoolean("catatan_adime_gizi");pengajuan_biaya=rs.getBoolean("pengajuan_biaya");penilaian_awal_keperawatan_ralan_geriatri=rs.getBoolean("penilaian_awal_keperawatan_ralan_geriatri");master_masalah_keperawatan_geriatri=rs.getBoolean("master_masalah_keperawatan_geriatri");master_rencana_keperawatan_geriatri=rs.getBoolean("master_rencana_keperawatan_geriatri");checklist_kriteria_masuk_hcu=rs.getBoolean("checklist_kriteria_masuk_hcu");
                     checklist_kriteria_keluar_hcu=rs.getBoolean("checklist_kriteria_keluar_hcu");penilaian_risiko_dekubitus=rs.getBoolean("penilaian_risiko_dekubitus");master_menolak_anjuran_medis=rs.getBoolean("master_menolak_anjuran_medis");penolakan_anjuran_medis=rs.getBoolean("penolakan_anjuran_medis");laporan_tahunan_penolakan_anjuran_medis=rs.getBoolean("laporan_tahunan_penolakan_anjuran_medis");template_laporan_operasi=rs.getBoolean("template_laporan_operasi");hasil_tindakan_eswl=rs.getBoolean("hasil_tindakan_eswl");checklist_kriteria_masuk_icu=rs.getBoolean("checklist_kriteria_masuk_icu");
+                    checklist_kriteria_keluar_icu=rs.getBoolean("checklist_kriteria_keluar_icu");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -4006,6 +4008,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[M]Check List Kriteria Masuk ICU".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[M]Check List Kriteria Masuk ICU",checklist_kriteria_masuk_icu});
+        }
+        
+        if("[M]Check List Kriteria Keluar ICU".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Check List Kriteria Keluar ICU",checklist_kriteria_keluar_icu});
         }
         
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7845,6 +7851,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[M]Check List Kriteria Masuk ICU".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","checklist_kriteria_masuk_icu='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[M]Check List Kriteria Keluar ICU".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","checklist_kriteria_keluar_icu='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[N]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
