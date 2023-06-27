@@ -63,11 +63,10 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Pasien Yang Sudah Tidak Memerlukan Perawatan Di Ruang HCU",
-            "Hypertensi Emergency Teratasi / Normal","HR 60 - 100 x/menit (Hasil EKG Menunjukkan Perbaikan / Sinus Rithme)",
-            "Kesadaran Dengan GCS >= 7","Gangguan Inotropic / Vasoaktif Gent Teratasi / Normal","MAP >= 60 mmHg","RR 12 - 20x/menit",
-            "Gangguan Elektrolit (Na, Ca, CI, Mg, Cal) & Asam Basa Normal","Perdarahan Saluran Pencernaan Teratasi","Temperature 35 - 38°C",
-            "Gagal Jantung Akut Teratasi","Gangguan Sirkulasi Teratasi","NIP/Kode Dokter","DPJP/Dokter Jaga/HCU"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Tidak Lagi Memerlukan Perawatan ICU","Kondisi Pasien Yang Menyebabkan Pasien Dirawat Di ICU Telah Teratasi",
+            "Pasien Dalam Keadaan Terminal Yang Dengan Terapi Tidak Memberikan Hasil Yang Bermakna","Pasien Meninggal","Pasien Membutuhkan Alat / Prosedur Yang Tidak Tersedia",
+            "Keluarga Menghendaki Pasien Dipindahkan","Nadi > 60 Atau < 100 x/menit","SBP > 08 mmHg Atau 20 mmHg Di Atas SBP Pasien","MAP > 60 mmHg","DBP < 120 mmHg",
+            "RR > 12 Sampai < 25 x/menit","NIP/Kode Dokter","DPJP/Dokter Jaga/ICU"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -77,7 +76,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 20; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -91,9 +90,9 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                 column.setPreferredWidth(25);
             }else if(i==5){
                 column.setPreferredWidth(115);
-            }else if(i==18){
+            }else if(i==17){
                 column.setPreferredWidth(90);
-            }else if(i==19){
+            }else if(i==18){
                 column.setPreferredWidth(150);
             }else{
                 column.setPreferredWidth(100);
@@ -899,21 +898,21 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
         }else{
-            /*if(Sequel.menyimpantf("checklist_kriteria_keluar_icu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
+            if(Sequel.menyimpantf("checklist_kriteria_keluar_icu","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kriteria1.getSelectedItem().toString(),
                 Kriteria2.getSelectedItem().toString(),Kriteria3.getSelectedItem().toString(),Kriteria4.getSelectedItem().toString(),Kriteria5.getSelectedItem().toString(),
                 Kriteria6.getSelectedItem().toString(),Kriteria7.getSelectedItem().toString(),Kriteria8.getSelectedItem().toString(),Kriteria9.getSelectedItem().toString(),
-                Kriteria10.getSelectedItem().toString(),Kriteria11.getSelectedItem().toString(),Kriteria12.getSelectedItem().toString(),KodePetugas.getText()
+                Kriteria10.getSelectedItem().toString(),Kriteria11.getSelectedItem().toString(),KodePetugas.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                     Kriteria1.getSelectedItem().toString(),Kriteria2.getSelectedItem().toString(),Kriteria3.getSelectedItem().toString(),Kriteria4.getSelectedItem().toString(),Kriteria5.getSelectedItem().toString(),
                     Kriteria6.getSelectedItem().toString(),Kriteria7.getSelectedItem().toString(),Kriteria8.getSelectedItem().toString(),Kriteria9.getSelectedItem().toString(),Kriteria10.getSelectedItem().toString(),
-                    Kriteria11.getSelectedItem().toString(),Kriteria12.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
+                    Kriteria11.getSelectedItem().toString(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
-            } */
+            } 
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -942,7 +941,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else {
-                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString())){
+                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
@@ -971,7 +970,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString())){
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
@@ -1057,7 +1056,6 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
                         "</tr>");
                 }
                 
@@ -1227,11 +1225,11 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     }//GEN-LAST:event_Kriteria1KeyPressed
 
     private void Kriteria3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria2,Kriteria4);
     }//GEN-LAST:event_Kriteria3KeyPressed
 
     private void Kriteria11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria11KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria9,BtnSimpan);
     }//GEN-LAST:event_Kriteria11KeyPressed
 
     private void Kriteria2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria2KeyPressed
@@ -1239,31 +1237,31 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     }//GEN-LAST:event_Kriteria2KeyPressed
 
     private void Kriteria4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria3,Kriteria5);
     }//GEN-LAST:event_Kriteria4KeyPressed
 
     private void Kriteria5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria4,Kriteria6);
     }//GEN-LAST:event_Kriteria5KeyPressed
 
     private void Kriteria8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria8KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria7,Kriteria9);
     }//GEN-LAST:event_Kriteria8KeyPressed
 
     private void Kriteria9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria9KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria8,Kriteria10);
     }//GEN-LAST:event_Kriteria9KeyPressed
 
     private void Kriteria6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria6KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria5,Kriteria7);
     }//GEN-LAST:event_Kriteria6KeyPressed
 
     private void Kriteria10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria10KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria9,Kriteria10);
     }//GEN-LAST:event_Kriteria10KeyPressed
 
     private void Kriteria7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria7KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria6,Kriteria8);
     }//GEN-LAST:event_Kriteria7KeyPressed
 
     /**
@@ -1366,8 +1364,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                     "checklist_kriteria_keluar_icu.kriteria1,checklist_kriteria_keluar_icu.kriteria2,checklist_kriteria_keluar_icu.kriteria3,"+
                     "checklist_kriteria_keluar_icu.kriteria4,checklist_kriteria_keluar_icu.kriteria5,checklist_kriteria_keluar_icu.kriteria6,"+
                     "checklist_kriteria_keluar_icu.kriteria7,checklist_kriteria_keluar_icu.kriteria8,checklist_kriteria_keluar_icu.kriteria9,"+
-                    "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.kriteria12,"+
-                    "checklist_kriteria_keluar_icu.nik,pegawai.nama "+
+                    "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.nik,pegawai.nama "+
                     "from checklist_kriteria_keluar_icu inner join reg_periksa on checklist_kriteria_keluar_icu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_icu.nik "+
@@ -1378,8 +1375,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                     "checklist_kriteria_keluar_icu.kriteria1,checklist_kriteria_keluar_icu.kriteria2,checklist_kriteria_keluar_icu.kriteria3,"+
                     "checklist_kriteria_keluar_icu.kriteria4,checklist_kriteria_keluar_icu.kriteria5,checklist_kriteria_keluar_icu.kriteria6,"+
                     "checklist_kriteria_keluar_icu.kriteria7,checklist_kriteria_keluar_icu.kriteria8,checklist_kriteria_keluar_icu.kriteria9,"+
-                    "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.kriteria12,"+
-                    "checklist_kriteria_keluar_icu.nik,pegawai.nama "+
+                    "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.nik,pegawai.nama "+
                     "from checklist_kriteria_keluar_icu inner join reg_periksa on checklist_kriteria_keluar_icu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_icu.nik "+
@@ -1407,7 +1403,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("kriteria1"),rs.getString("kriteria2"),rs.getString("kriteria3"),rs.getString("kriteria4"),
                         rs.getString("kriteria5"),rs.getString("kriteria6"),rs.getString("kriteria7"),rs.getString("kriteria8"),rs.getString("kriteria9"),
-                        rs.getString("kriteria10"),rs.getString("kriteria11"),rs.getString("kriteria12"),rs.getString("nik"),rs.getString("nama")
+                        rs.getString("kriteria10"),rs.getString("kriteria11"),rs.getString("nik"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1432,7 +1428,6 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         Kriteria3.setSelectedItem("Ya");
         Kriteria4.setSelectedItem("Ya");
         Kriteria5.setSelectedItem("Ya");
-        //Kriteria6.setSelectedItem("Ya");
         Kriteria6.setSelectedItem("Ya");
         Kriteria7.setSelectedItem("Ya");
         Kriteria8.setSelectedItem("Ya");
@@ -1455,13 +1450,12 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             Kriteria3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             Kriteria4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             Kriteria5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            //Kriteria6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Kriteria6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Kriteria7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Kriteria8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Kriteria9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Kriteria10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Kriteria11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Kriteria6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Kriteria7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Kriteria8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Kriteria9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Kriteria10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Kriteria11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
@@ -1528,13 +1522,13 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("checklist_kriteria_keluar_icu","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,kriteria1=?,kriteria2=?,kriteria3=?,kriteria4=?,kriteria5=?,"+
-                "kriteria6=?,kriteria7=?,kriteria8=?,kriteria9=?,kriteria10=?,kriteria11=?,kriteria12=?,nik=?",17,new String[]{
+        if(Sequel.mengedittf("checklist_kriteria_keluar_icu","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,kriteria1=?,kriteria2=?,kriteria3=?,kriteria4=?,kriteria5=?,"+
+                "kriteria6=?,kriteria7=?,kriteria8=?,kriteria9=?,kriteria10=?,kriteria11=?,nik=?",16,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kriteria1.getSelectedItem().toString(),
                 Kriteria2.getSelectedItem().toString(),Kriteria3.getSelectedItem().toString(),Kriteria4.getSelectedItem().toString(),Kriteria5.getSelectedItem().toString(),
                 Kriteria6.getSelectedItem().toString(),Kriteria7.getSelectedItem().toString(),Kriteria8.getSelectedItem().toString(),Kriteria9.getSelectedItem().toString(),
-                Kriteria10.getSelectedItem().toString(),Kriteria11.getSelectedItem().toString(),Kriteria12.getSelectedItem().toString(),KodePetugas.getText(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
+                Kriteria10.getSelectedItem().toString(),Kriteria11.getSelectedItem().toString(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1553,11 +1547,10 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             tbObat.setValueAt(Kriteria9.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
             tbObat.setValueAt(Kriteria10.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
             tbObat.setValueAt(Kriteria11.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(Kriteria12.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),18);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),18);
             emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
