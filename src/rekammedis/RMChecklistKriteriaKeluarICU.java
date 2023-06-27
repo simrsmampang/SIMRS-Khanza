@@ -1017,20 +1017,19 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Yang Sudah Tidak Memerlukan Perawatan Di Ruang HCU</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hypertensi Emergency Teratasi / Normal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>HR 60 - 100 x/menit (Hasil EKG Menunjukkan Perbaikan / Sinus Rithme)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesadaran Dengan GCS >= 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Inotropic / Vasoaktif Gent Teratasi / Normal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MAP >= 60 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>RR 12 - 20x/menit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Elektrolit (Na, Ca, CI, Mg, Cal) & Asam Basa Normal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perdarahan Saluran Pencernaan Teratasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Temperature 35 - 38°C</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Jantung Akut Teratasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Sirkulasi Teratasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Lagi Memerlukan Perawatan ICU</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kondisi Pasien Yang Menyebabkan Pasien Dirawat Di ICU Telah Teratasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Dalam Keadaan Terminal Yang Dengan Terapi Tidak Memberikan Hasil Yang Bermakna</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Meninggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Membutuhkan Alat / Prosedur Yang Tidak Tersedia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Menghendaki Pasien Dipindahkan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi > 60 Atau < 100 x/menit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SBP > 08 mmHg Atau 20 mmHg Di Atas SBP Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MAP > 60 mmHg</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DBP < 120 mmHg</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>RR > 12 Sampai < 25 x/menit</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP/Kode Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/HCU</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/ICU</b></td>"+
                     "</tr>"
                 );
                 
