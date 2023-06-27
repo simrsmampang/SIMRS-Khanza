@@ -233,7 +233,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         jLabel66 = new widget.Label();
         Kriteria3 = new widget.ComboBox();
         jLabel62 = new widget.Label();
-        Kriteria12 = new widget.ComboBox();
+        Kriteria11 = new widget.ComboBox();
         jLabel67 = new widget.Label();
         Kriteria2 = new widget.ComboBox();
         jLabel63 = new widget.Label();
@@ -241,15 +241,15 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         jLabel68 = new widget.Label();
         Kriteria5 = new widget.ComboBox();
         jLabel64 = new widget.Label();
+        Kriteria8 = new widget.ComboBox();
         Kriteria9 = new widget.ComboBox();
-        Kriteria10 = new widget.ComboBox();
-        Kriteria7 = new widget.ComboBox();
+        Kriteria6 = new widget.ComboBox();
         jLabel70 = new widget.Label();
         jLabel69 = new widget.Label();
         jLabel71 = new widget.Label();
-        Kriteria11 = new widget.ComboBox();
+        Kriteria10 = new widget.ComboBox();
         jLabel72 = new widget.Label();
-        Kriteria8 = new widget.ComboBox();
+        Kriteria7 = new widget.ComboBox();
         jLabel73 = new widget.Label();
         jLabel74 = new widget.Label();
         jLabel75 = new widget.Label();
@@ -679,7 +679,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         jLabel65.setText("Tidak Lagi Memerlukan Perawatan ICU");
         jLabel65.setName("jLabel65"); // NOI18N
         FormInput.add(jLabel65);
-        jLabel65.setBounds(15, 80, 240, 23);
+        jLabel65.setBounds(15, 80, 200, 23);
 
         Kriteria1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria1.setName("Kriteria1"); // NOI18N
@@ -689,7 +689,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kriteria1);
-        Kriteria1.setBounds(220, 80, 80, 23);
+        Kriteria1.setBounds(214, 80, 80, 23);
 
         jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel66.setText("Pasien Dalam Keadaan Terminal Yang Dengan Terapi Tidak Memberikan Hasil Yang Bermakna");
@@ -705,27 +705,27 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kriteria3);
-        Kriteria3.setBounds(490, 110, 80, 23);
+        Kriteria3.setBounds(481, 110, 80, 23);
 
         jLabel62.setText("RR > 12 Sampai < 25 x/menit :");
         jLabel62.setName("jLabel62"); // NOI18N
         FormInput.add(jLabel62);
         jLabel62.setBounds(546, 200, 160, 23);
 
-        Kriteria12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kriteria12.setName("Kriteria12"); // NOI18N
-        Kriteria12.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kriteria11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kriteria11.setName("Kriteria11"); // NOI18N
+        Kriteria11.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kriteria12KeyPressed(evt);
+                Kriteria11KeyPressed(evt);
             }
         });
-        FormInput.add(Kriteria12);
-        Kriteria12.setBounds(710, 200, 80, 23);
+        FormInput.add(Kriteria11);
+        Kriteria11.setBounds(710, 200, 80, 23);
 
         jLabel67.setText("Kondisi Pasien Yang Menyebabkan Pasien Dirawat Di ICU Telah Teratasi :");
         jLabel67.setName("jLabel67"); // NOI18N
         FormInput.add(jLabel67);
-        jLabel67.setBounds(336, 80, 370, 23);
+        jLabel67.setBounds(316, 80, 390, 23);
 
         Kriteria2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria2.setName("Kriteria2"); // NOI18N
@@ -740,7 +740,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         jLabel63.setText("DBP < 120 mmHg :");
         jLabel63.setName("jLabel63"); // NOI18N
         FormInput.add(jLabel63);
-        jLabel63.setBounds(256, 200, 160, 23);
+        jLabel63.setBounds(210, 200, 160, 23);
 
         Kriteria4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria4.setName("Kriteria4"); // NOI18N
@@ -766,12 +766,22 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kriteria5);
-        Kriteria5.setBounds(310, 140, 90, 23);
+        Kriteria5.setBounds(307, 140, 90, 23);
 
-        jLabel64.setText("Pasien meninggal :");
+        jLabel64.setText("Pasien Meninggal :");
         jLabel64.setName("jLabel64"); // NOI18N
         FormInput.add(jLabel64);
-        jLabel64.setBounds(546, 110, 160, 23);
+        jLabel64.setBounds(576, 110, 130, 23);
+
+        Kriteria8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kriteria8.setName("Kriteria8"); // NOI18N
+        Kriteria8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Kriteria8KeyPressed(evt);
+            }
+        });
+        FormInput.add(Kriteria8);
+        Kriteria8.setBounds(710, 170, 80, 23);
 
         Kriteria9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria9.setName("Kriteria9"); // NOI18N
@@ -781,27 +791,17 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kriteria9);
-        Kriteria9.setBounds(710, 170, 80, 23);
+        Kriteria9.setBounds(108, 200, 80, 23);
 
-        Kriteria10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kriteria10.setName("Kriteria10"); // NOI18N
-        Kriteria10.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kriteria6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kriteria6.setName("Kriteria6"); // NOI18N
+        Kriteria6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kriteria10KeyPressed(evt);
+                Kriteria6KeyPressed(evt);
             }
         });
-        FormInput.add(Kriteria10);
-        Kriteria10.setBounds(139, 200, 80, 23);
-
-        Kriteria7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kriteria7.setName("Kriteria7"); // NOI18N
-        Kriteria7.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kriteria7KeyPressed(evt);
-            }
-        });
-        FormInput.add(Kriteria7);
-        Kriteria7.setBounds(710, 140, 80, 23);
+        FormInput.add(Kriteria6);
+        Kriteria6.setBounds(710, 140, 80, 23);
 
         jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel70.setText("MAP > 60 mmHg");
@@ -819,15 +819,15 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         FormInput.add(jLabel71);
         jLabel71.setBounds(386, 170, 320, 23);
 
-        Kriteria11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kriteria11.setName("Kriteria11"); // NOI18N
-        Kriteria11.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kriteria10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kriteria10.setName("Kriteria10"); // NOI18N
+        Kriteria10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kriteria11KeyPressed(evt);
+                Kriteria10KeyPressed(evt);
             }
         });
-        FormInput.add(Kriteria11);
-        Kriteria11.setBounds(420, 200, 80, 23);
+        FormInput.add(Kriteria10);
+        Kriteria10.setBounds(374, 200, 80, 23);
 
         jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel72.setText("Nadi > 60 Atau < 100 x/menit");
@@ -835,15 +835,15 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         FormInput.add(jLabel72);
         jLabel72.setBounds(15, 170, 160, 23);
 
-        Kriteria8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kriteria8.setName("Kriteria8"); // NOI18N
-        Kriteria8.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kriteria7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kriteria7.setName("Kriteria7"); // NOI18N
+        Kriteria7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kriteria8KeyPressed(evt);
+                Kriteria7KeyPressed(evt);
             }
         });
-        FormInput.add(Kriteria8);
-        Kriteria8.setBounds(180, 170, 80, 23);
+        FormInput.add(Kriteria7);
+        Kriteria7.setBounds(173, 170, 80, 23);
 
         jLabel73.setText(":");
         jLabel73.setName("jLabel73"); // NOI18N
@@ -853,22 +853,22 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         jLabel74.setText(":");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(0, 110, 480, 23);
+        jLabel74.setBounds(0, 110, 477, 23);
 
         jLabel75.setText(":");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(0, 140, 300, 23);
+        jLabel75.setBounds(0, 140, 303, 23);
 
         jLabel76.setText(":");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(0, 200, 135, 23);
+        jLabel76.setBounds(0, 200, 104, 23);
 
         jLabel77.setText(":");
         jLabel77.setName("jLabel77"); // NOI18N
         FormInput.add(jLabel77);
-        jLabel77.setBounds(0, 170, 170, 23);
+        jLabel77.setBounds(0, 170, 169, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -921,7 +921,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Kriteria12,BtnBatal);
+            Valid.pindah(evt,Kriteria11,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1223,19 +1223,19 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDokterBedahKeyPressed
 
     private void Kriteria1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria1KeyPressed
-        //Valid.pindah(evt,btnDokterBedah,Kriteria6);
+        Valid.pindah(evt,btnDokterBedah,Kriteria2);
     }//GEN-LAST:event_Kriteria1KeyPressed
 
     private void Kriteria3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria3KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_Kriteria3KeyPressed
 
-    private void Kriteria12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria12KeyPressed
+    private void Kriteria11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria11KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kriteria12KeyPressed
+    }//GEN-LAST:event_Kriteria11KeyPressed
 
     private void Kriteria2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria1,Kriteria3);
     }//GEN-LAST:event_Kriteria2KeyPressed
 
     private void Kriteria4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria4KeyPressed
@@ -1246,9 +1246,17 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_Kriteria5KeyPressed
 
+    private void Kriteria8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kriteria8KeyPressed
+
     private void Kriteria9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria9KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_Kriteria9KeyPressed
+
+    private void Kriteria6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kriteria6KeyPressed
 
     private void Kriteria10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria10KeyPressed
         // TODO add your handling code here:
@@ -1257,14 +1265,6 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     private void Kriteria7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria7KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_Kriteria7KeyPressed
-
-    private void Kriteria11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria11KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Kriteria11KeyPressed
-
-    private void Kriteria8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria8KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Kriteria8KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1300,11 +1300,11 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     private widget.ComboBox Kriteria1;
     private widget.ComboBox Kriteria10;
     private widget.ComboBox Kriteria11;
-    private widget.ComboBox Kriteria12;
     private widget.ComboBox Kriteria2;
     private widget.ComboBox Kriteria3;
     private widget.ComboBox Kriteria4;
     private widget.ComboBox Kriteria5;
+    private widget.ComboBox Kriteria6;
     private widget.ComboBox Kriteria7;
     private widget.ComboBox Kriteria8;
     private widget.ComboBox Kriteria9;
@@ -1433,12 +1433,12 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         Kriteria4.setSelectedItem("Ya");
         Kriteria5.setSelectedItem("Ya");
         //Kriteria6.setSelectedItem("Ya");
+        Kriteria6.setSelectedItem("Ya");
         Kriteria7.setSelectedItem("Ya");
         Kriteria8.setSelectedItem("Ya");
         Kriteria9.setSelectedItem("Ya");
         Kriteria10.setSelectedItem("Ya");
         Kriteria11.setSelectedItem("Ya");
-        Kriteria12.setSelectedItem("Ya");
         Tanggal.setDate(new Date());
         Kriteria1.requestFocus();
     } 
@@ -1456,12 +1456,12 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             Kriteria4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             Kriteria5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             //Kriteria6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Kriteria7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Kriteria8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Kriteria9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Kriteria10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Kriteria11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Kriteria12.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Kriteria6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Kriteria7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Kriteria8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Kriteria9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Kriteria10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Kriteria11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
