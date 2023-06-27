@@ -796,6 +796,7 @@ import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMCariRekonsiliasiObat;
 import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMChecklistKriteriaKeluarHCU;
+import rekammedis.RMChecklistKriteriaKeluarICU;
 import rekammedis.RMChecklistKriteriaMasukHCU;
 import rekammedis.RMChecklistKriteriaMasukICU;
 import rekammedis.RMChecklistPostOperasi;
@@ -20354,6 +20355,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnChecklistKriteriaKeluarICUActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMChecklistKriteriaKeluarICU aplikasi=new RMChecklistKriteriaKeluarICU(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     
     /**
     * @param args the command line arguments
@@ -21029,7 +21042,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianTambahanMelarikanDiri,btnPersetujuanPenundaanPelayanan,btnSisaDietPasien,btnPenilaianAwalMedisRalanBedahMulut,
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
-            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU;
+            btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
+            btnChecklistKriteriaKeluarICU;
     
     public void isWall(){
         try{            
@@ -24606,6 +24620,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getchecklist_kriteria_masuk_icu()==true){
                 Panelmenu.add(btnChecklistKriteriaMasukICU);
+                jmlmenu++;
+            }
+            
+            if(akses.getchecklist_kriteria_keluar_icu()==true){
+                Panelmenu.add(btnChecklistKriteriaKeluarICU);
                 jmlmenu++;
             }
             
@@ -29350,6 +29369,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getchecklist_kriteria_masuk_icu()==true){
             Panelmenu.add(btnChecklistKriteriaMasukICU);
+            jmlmenu++;
+        }
+        
+        if(akses.getchecklist_kriteria_keluar_icu()==true){
+            Panelmenu.add(btnChecklistKriteriaKeluarICU);
             jmlmenu++;
         }
         
@@ -35470,6 +35494,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getchecklist_kriteria_keluar_icu()==true){
+            if(btnChecklistKriteriaKeluarICU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnChecklistKriteriaKeluarICU);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getperencanaan_pemulangan()==true){
             if(btnPerencanaanPemulangan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPerencanaanPemulangan);
@@ -41202,5 +41233,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnChecklistKriteriaMasukICU.setName("btnChecklistKriteriaMasukICU"); 
         btnChecklistKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(200, 90));
         btnChecklistKriteriaMasukICU.addActionListener(this::btnChecklistKriteriaMasukICUActionPerformed);
+        
+        btnChecklistKriteriaKeluarICU = new widget.ButtonBig();
+        btnChecklistKriteriaKeluarICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088168_care_drip_health_recovery_treatment_icon.png"))); 
+        btnChecklistKriteriaKeluarICU.setText("Check List Kriteria Keluar ICU");
+        btnChecklistKriteriaKeluarICU.setIconTextGap(0);
+        btnChecklistKriteriaKeluarICU.setName("btnChecklistKriteriaKeluarICU"); 
+        btnChecklistKriteriaKeluarICU.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnChecklistKriteriaKeluarICU.addActionListener(this::btnChecklistKriteriaKeluarICUActionPerformed);
     }
 }
