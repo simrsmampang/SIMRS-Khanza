@@ -1240,51 +1240,51 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDokterBedahKeyPressed
 
     private void Kriteria6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria6KeyPressed
-        //Valid.pindah(evt,Kriteria1,Kriteria3);
+        Valid.pindah(evt,Kriteria5,Kriteria7);
     }//GEN-LAST:event_Kriteria6KeyPressed
 
     private void Kriteria1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria1KeyPressed
-        Valid.pindah(evt,btnDokterBedah,Kriteria6);
+        Valid.pindah(evt,btnDokterBedah,Kriteria2);
     }//GEN-LAST:event_Kriteria1KeyPressed
 
     private void Kriteria3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria2,Kriteria4);
     }//GEN-LAST:event_Kriteria3KeyPressed
 
     private void Kriteria12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria12KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria11,BtnSimpan);
     }//GEN-LAST:event_Kriteria12KeyPressed
 
     private void Kriteria2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria1,Kriteria3);
     }//GEN-LAST:event_Kriteria2KeyPressed
 
     private void Kriteria4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria3,Kriteria5);
     }//GEN-LAST:event_Kriteria4KeyPressed
 
     private void Kriteria5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria4,Kriteria6);
     }//GEN-LAST:event_Kriteria5KeyPressed
 
     private void Kriteria9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria9KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria8,Kriteria10);
     }//GEN-LAST:event_Kriteria9KeyPressed
 
     private void Kriteria10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria10KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria9,Kriteria11);
     }//GEN-LAST:event_Kriteria10KeyPressed
 
     private void Kriteria7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria7KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria4,Kriteria6);
     }//GEN-LAST:event_Kriteria7KeyPressed
 
     private void Kriteria11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria11KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria10,Kriteria12);
     }//GEN-LAST:event_Kriteria11KeyPressed
 
     private void Kriteria8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria8KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kriteria7,Kriteria9);
     }//GEN-LAST:event_Kriteria8KeyPressed
 
     /**

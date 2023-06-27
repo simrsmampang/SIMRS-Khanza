@@ -228,8 +228,6 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         jLabel5 = new widget.Label();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel61 = new widget.Label();
-        Kriteria6 = new widget.ComboBox();
         jLabel65 = new widget.Label();
         Kriteria1 = new widget.ComboBox();
         jLabel66 = new widget.Label();
@@ -613,7 +611,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2023 20:36:52" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2023 22:05:53" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -625,7 +623,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         FormInput.add(Tanggal);
         Tanggal.setBounds(79, 40, 130, 23);
 
-        jLabel23.setText("DPJP / Dokter Jaga / HCU :");
+        jLabel23.setText("DPJP / Dokter Jaga / ICU :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
         jLabel23.setBounds(221, 40, 160, 23);
@@ -677,26 +675,11 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         FormInput.add(jSeparator2);
         jSeparator2.setBounds(0, 70, 810, 1);
 
-        jLabel61.setText("MAP >= 60 mmHg :");
-        jLabel61.setName("jLabel61"); // NOI18N
-        FormInput.add(jLabel61);
-        jLabel61.setBounds(394, 140, 110, 23);
-
-        Kriteria6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kriteria6.setName("Kriteria6"); // NOI18N
-        Kriteria6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kriteria6KeyPressed(evt);
-            }
-        });
-        FormInput.add(Kriteria6);
-        Kriteria6.setBounds(508, 140, 80, 23);
-
         jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel65.setText("Pasien Yang Sudah Tidak Memerlukan Perawatan Di Ruang HCU");
+        jLabel65.setText("Tidak Lagi Memerlukan Perawatan ICU");
         jLabel65.setName("jLabel65"); // NOI18N
         FormInput.add(jLabel65);
-        jLabel65.setBounds(15, 80, 330, 23);
+        jLabel65.setBounds(15, 80, 240, 23);
 
         Kriteria1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria1.setName("Kriteria1"); // NOI18N
@@ -706,13 +689,13 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kriteria1);
-        Kriteria1.setBounds(336, 80, 80, 23);
+        Kriteria1.setBounds(220, 80, 80, 23);
 
         jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel66.setText("HR 60 - 100 x/menit (Hasil EKG Menunjukkan Perbaikan / Sinus Rithme)");
+        jLabel66.setText("Pasien Dalam Keadaan Terminal Yang Dengan Terapi Tidak Memberikan Hasil Yang Bermakna");
         jLabel66.setName("jLabel66"); // NOI18N
         FormInput.add(jLabel66);
-        jLabel66.setBounds(15, 110, 370, 23);
+        jLabel66.setBounds(15, 110, 460, 23);
 
         Kriteria3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria3.setName("Kriteria3"); // NOI18N
@@ -722,9 +705,9 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kriteria3);
-        Kriteria3.setBounds(372, 110, 80, 23);
+        Kriteria3.setBounds(490, 110, 80, 23);
 
-        jLabel62.setText("Gangguan Sirkulasi Teratasi :");
+        jLabel62.setText("RR > 12 Sampai < 25 x/menit :");
         jLabel62.setName("jLabel62"); // NOI18N
         FormInput.add(jLabel62);
         jLabel62.setBounds(546, 200, 160, 23);
@@ -739,10 +722,10 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         FormInput.add(Kriteria12);
         Kriteria12.setBounds(710, 200, 80, 23);
 
-        jLabel67.setText("Hypertensi Emergency Teratasi / Normal :");
+        jLabel67.setText("Kondisi Pasien Yang Menyebabkan Pasien Dirawat Di ICU Telah Teratasi :");
         jLabel67.setName("jLabel67"); // NOI18N
         FormInput.add(jLabel67);
-        jLabel67.setBounds(460, 80, 246, 23);
+        jLabel67.setBounds(336, 80, 370, 23);
 
         Kriteria2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria2.setName("Kriteria2"); // NOI18N
@@ -754,7 +737,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         FormInput.add(Kriteria2);
         Kriteria2.setBounds(710, 80, 80, 23);
 
-        jLabel63.setText("Gagal Jantung Akut Teratasi :");
+        jLabel63.setText("DBP < 120 mmHg :");
         jLabel63.setName("jLabel63"); // NOI18N
         FormInput.add(jLabel63);
         jLabel63.setBounds(256, 200, 160, 23);
@@ -770,10 +753,10 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         Kriteria4.setBounds(710, 110, 80, 23);
 
         jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel68.setText("Gangguan Inotropic / Vasoaktif Gent Teratasi / Normal");
+        jLabel68.setText("Pasien Membutuhkan Alat / Prosedur Yang Tidak Tersedia");
         jLabel68.setName("jLabel68"); // NOI18N
         FormInput.add(jLabel68);
-        jLabel68.setBounds(15, 140, 280, 23);
+        jLabel68.setBounds(15, 140, 300, 23);
 
         Kriteria5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria5.setName("Kriteria5"); // NOI18N
@@ -783,9 +766,9 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kriteria5);
-        Kriteria5.setBounds(292, 140, 90, 23);
+        Kriteria5.setBounds(310, 140, 90, 23);
 
-        jLabel64.setText("Kesadaran Dengan GCS >= 7 :");
+        jLabel64.setText("Pasien meninggal :");
         jLabel64.setName("jLabel64"); // NOI18N
         FormInput.add(jLabel64);
         jLabel64.setBounds(546, 110, 160, 23);
@@ -821,20 +804,20 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         Kriteria7.setBounds(710, 140, 80, 23);
 
         jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel70.setText("Temperature 35 - 38°C");
+        jLabel70.setText("MAP > 60 mmHg");
         jLabel70.setName("jLabel70"); // NOI18N
         FormInput.add(jLabel70);
-        jLabel70.setBounds(15, 200, 140, 23);
+        jLabel70.setBounds(15, 200, 100, 23);
 
-        jLabel69.setText("RR 12 - 20x/menit :");
+        jLabel69.setText("Keluarga Menghendaki Pasien Dipindahkan :");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(596, 140, 110, 23);
+        jLabel69.setBounds(446, 140, 260, 23);
 
-        jLabel71.setText("Perdarahan Saluran Pencernaan Teratasi :");
+        jLabel71.setText("SBP > 08 mmHg Atau 20 mmHg Di Atas SBP Pasien :");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
-        jLabel71.setBounds(486, 170, 220, 23);
+        jLabel71.setBounds(386, 170, 320, 23);
 
         Kriteria11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria11.setName("Kriteria11"); // NOI18N
@@ -847,10 +830,10 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         Kriteria11.setBounds(420, 200, 80, 23);
 
         jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel72.setText("Gangguan Elektrolit (Na, Ca, CI, Mg, Cal) & Asam Basa Normal");
+        jLabel72.setText("Nadi > 60 Atau < 100 x/menit");
         jLabel72.setName("jLabel72"); // NOI18N
         FormInput.add(jLabel72);
-        jLabel72.setBounds(15, 170, 320, 23);
+        jLabel72.setBounds(15, 170, 160, 23);
 
         Kriteria8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Kriteria8.setName("Kriteria8"); // NOI18N
@@ -860,22 +843,22 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kriteria8);
-        Kriteria8.setBounds(328, 170, 80, 23);
+        Kriteria8.setBounds(180, 170, 80, 23);
 
         jLabel73.setText(":");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(0, 80, 332, 23);
+        jLabel73.setBounds(0, 80, 210, 23);
 
         jLabel74.setText(":");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(0, 110, 368, 23);
+        jLabel74.setBounds(0, 110, 480, 23);
 
         jLabel75.setText(":");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(0, 140, 288, 23);
+        jLabel75.setBounds(0, 140, 300, 23);
 
         jLabel76.setText(":");
         jLabel76.setName("jLabel76"); // NOI18N
@@ -885,7 +868,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         jLabel77.setText(":");
         jLabel77.setName("jLabel77"); // NOI18N
         FormInput.add(jLabel77);
-        jLabel77.setBounds(0, 170, 324, 23);
+        jLabel77.setBounds(0, 170, 170, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -916,7 +899,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
         }else{
-            if(Sequel.menyimpantf("checklist_kriteria_keluar_hcu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
+            /*if(Sequel.menyimpantf("checklist_kriteria_keluar_icu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kriteria1.getSelectedItem().toString(),
                 Kriteria2.getSelectedItem().toString(),Kriteria3.getSelectedItem().toString(),Kriteria4.getSelectedItem().toString(),Kriteria5.getSelectedItem().toString(),
                 Kriteria6.getSelectedItem().toString(),Kriteria7.getSelectedItem().toString(),Kriteria8.getSelectedItem().toString(),Kriteria9.getSelectedItem().toString(),
@@ -930,7 +913,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
-            } 
+            } */
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1207,16 +1190,16 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),19).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),18).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirChecklistKriteriaKeluarHCU.jasper","report","::[ Formulir Check List Kriteria Keluar HCU ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_hcu.tanggal,"+
-                    "checklist_kriteria_keluar_hcu.kriteria1,checklist_kriteria_keluar_hcu.kriteria2,checklist_kriteria_keluar_hcu.kriteria3,"+
-                    "checklist_kriteria_keluar_hcu.kriteria4,checklist_kriteria_keluar_hcu.kriteria5,checklist_kriteria_keluar_hcu.kriteria6,"+
-                    "checklist_kriteria_keluar_hcu.kriteria7,checklist_kriteria_keluar_hcu.kriteria8,checklist_kriteria_keluar_hcu.kriteria9,"+
-                    "checklist_kriteria_keluar_hcu.kriteria10,checklist_kriteria_keluar_hcu.kriteria11,checklist_kriteria_keluar_hcu.kriteria12,"+
-                    "checklist_kriteria_keluar_hcu.nik,pegawai.nama "+
-                    "from checklist_kriteria_keluar_hcu inner join reg_periksa on checklist_kriteria_keluar_hcu.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_icu.tanggal,"+
+                    "checklist_kriteria_keluar_icu.kriteria1,checklist_kriteria_keluar_icu.kriteria2,checklist_kriteria_keluar_icu.kriteria3,"+
+                    "checklist_kriteria_keluar_icu.kriteria4,checklist_kriteria_keluar_icu.kriteria5,checklist_kriteria_keluar_icu.kriteria6,"+
+                    "checklist_kriteria_keluar_icu.kriteria7,checklist_kriteria_keluar_icu.kriteria8,checklist_kriteria_keluar_icu.kriteria9,"+
+                    "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.kriteria12,"+
+                    "checklist_kriteria_keluar_icu.nik,pegawai.nama "+
+                    "from checklist_kriteria_keluar_icu inner join reg_periksa on checklist_kriteria_keluar_icu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_hcu.nik "+
-                    "where checklist_kriteria_keluar_hcu.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_keluar_hcu.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
+                    "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_icu.nik "+
+                    "where checklist_kriteria_keluar_icu.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_keluar_icu.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
     }//GEN-LAST:event_MnKriteriaKeluarHCUActionPerformed
 
@@ -1239,12 +1222,8 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
        Valid.pindah(evt,Tanggal,Kriteria1);
     }//GEN-LAST:event_btnDokterBedahKeyPressed
 
-    private void Kriteria6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria6KeyPressed
-        //Valid.pindah(evt,Kriteria1,Kriteria3);
-    }//GEN-LAST:event_Kriteria6KeyPressed
-
     private void Kriteria1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria1KeyPressed
-        Valid.pindah(evt,btnDokterBedah,Kriteria6);
+        //Valid.pindah(evt,btnDokterBedah,Kriteria6);
     }//GEN-LAST:event_Kriteria1KeyPressed
 
     private void Kriteria3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kriteria3KeyPressed
@@ -1326,7 +1305,6 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     private widget.ComboBox Kriteria3;
     private widget.ComboBox Kriteria4;
     private widget.ComboBox Kriteria5;
-    private widget.ComboBox Kriteria6;
     private widget.ComboBox Kriteria7;
     private widget.ComboBox Kriteria8;
     private widget.ComboBox Kriteria9;
@@ -1351,7 +1329,6 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
-    private widget.Label jLabel61;
     private widget.Label jLabel62;
     private widget.Label jLabel63;
     private widget.Label jLabel64;
@@ -1385,29 +1362,29 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_hcu.tanggal,"+
-                    "checklist_kriteria_keluar_hcu.kriteria1,checklist_kriteria_keluar_hcu.kriteria2,checklist_kriteria_keluar_hcu.kriteria3,"+
-                    "checklist_kriteria_keluar_hcu.kriteria4,checklist_kriteria_keluar_hcu.kriteria5,checklist_kriteria_keluar_hcu.kriteria6,"+
-                    "checklist_kriteria_keluar_hcu.kriteria7,checklist_kriteria_keluar_hcu.kriteria8,checklist_kriteria_keluar_hcu.kriteria9,"+
-                    "checklist_kriteria_keluar_hcu.kriteria10,checklist_kriteria_keluar_hcu.kriteria11,checklist_kriteria_keluar_hcu.kriteria12,"+
-                    "checklist_kriteria_keluar_hcu.nik,pegawai.nama "+
-                    "from checklist_kriteria_keluar_hcu inner join reg_periksa on checklist_kriteria_keluar_hcu.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_icu.tanggal,"+
+                    "checklist_kriteria_keluar_icu.kriteria1,checklist_kriteria_keluar_icu.kriteria2,checklist_kriteria_keluar_icu.kriteria3,"+
+                    "checklist_kriteria_keluar_icu.kriteria4,checklist_kriteria_keluar_icu.kriteria5,checklist_kriteria_keluar_icu.kriteria6,"+
+                    "checklist_kriteria_keluar_icu.kriteria7,checklist_kriteria_keluar_icu.kriteria8,checklist_kriteria_keluar_icu.kriteria9,"+
+                    "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.kriteria12,"+
+                    "checklist_kriteria_keluar_icu.nik,pegawai.nama "+
+                    "from checklist_kriteria_keluar_icu inner join reg_periksa on checklist_kriteria_keluar_icu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_hcu.nik "+
-                    "where checklist_kriteria_keluar_hcu.tanggal between ? and ? order by checklist_kriteria_keluar_hcu.tanggal ");
+                    "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_icu.nik "+
+                    "where checklist_kriteria_keluar_icu.tanggal between ? and ? order by checklist_kriteria_keluar_icu.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_hcu.tanggal,"+
-                    "checklist_kriteria_keluar_hcu.kriteria1,checklist_kriteria_keluar_hcu.kriteria2,checklist_kriteria_keluar_hcu.kriteria3,"+
-                    "checklist_kriteria_keluar_hcu.kriteria4,checklist_kriteria_keluar_hcu.kriteria5,checklist_kriteria_keluar_hcu.kriteria6,"+
-                    "checklist_kriteria_keluar_hcu.kriteria7,checklist_kriteria_keluar_hcu.kriteria8,checklist_kriteria_keluar_hcu.kriteria9,"+
-                    "checklist_kriteria_keluar_hcu.kriteria10,checklist_kriteria_keluar_hcu.kriteria11,checklist_kriteria_keluar_hcu.kriteria12,"+
-                    "checklist_kriteria_keluar_hcu.nik,pegawai.nama "+
-                    "from checklist_kriteria_keluar_hcu inner join reg_periksa on checklist_kriteria_keluar_hcu.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_icu.tanggal,"+
+                    "checklist_kriteria_keluar_icu.kriteria1,checklist_kriteria_keluar_icu.kriteria2,checklist_kriteria_keluar_icu.kriteria3,"+
+                    "checklist_kriteria_keluar_icu.kriteria4,checklist_kriteria_keluar_icu.kriteria5,checklist_kriteria_keluar_icu.kriteria6,"+
+                    "checklist_kriteria_keluar_icu.kriteria7,checklist_kriteria_keluar_icu.kriteria8,checklist_kriteria_keluar_icu.kriteria9,"+
+                    "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.kriteria12,"+
+                    "checklist_kriteria_keluar_icu.nik,pegawai.nama "+
+                    "from checklist_kriteria_keluar_icu inner join reg_periksa on checklist_kriteria_keluar_icu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_hcu.nik "+
-                    "where checklist_kriteria_keluar_hcu.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or pegawai.nama like ? or checklist_kriteria_keluar_hcu.nik like ?) order by checklist_kriteria_keluar_hcu.tanggal ");
+                    "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_icu.nik "+
+                    "where checklist_kriteria_keluar_icu.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or pegawai.nama like ? or checklist_kriteria_keluar_icu.nik like ?) order by checklist_kriteria_keluar_icu.tanggal ");
             }
                 
             try {
@@ -1455,7 +1432,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         Kriteria3.setSelectedItem("Ya");
         Kriteria4.setSelectedItem("Ya");
         Kriteria5.setSelectedItem("Ya");
-        Kriteria6.setSelectedItem("Ya");
+        //Kriteria6.setSelectedItem("Ya");
         Kriteria7.setSelectedItem("Ya");
         Kriteria8.setSelectedItem("Ya");
         Kriteria9.setSelectedItem("Ya");
@@ -1478,7 +1455,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             Kriteria3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             Kriteria4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             Kriteria5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Kriteria6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            //Kriteria6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             Kriteria7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             Kriteria8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Kriteria9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
@@ -1544,14 +1521,14 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getchecklist_kriteria_keluar_hcu());
-        BtnHapus.setEnabled(akses.getchecklist_kriteria_keluar_hcu());
-        BtnEdit.setEnabled(akses.getchecklist_kriteria_keluar_hcu());
-        BtnPrint.setEnabled(akses.getchecklist_kriteria_keluar_hcu()); 
+        BtnSimpan.setEnabled(akses.getchecklist_kriteria_keluar_icu());
+        BtnHapus.setEnabled(akses.getchecklist_kriteria_keluar_icu());
+        BtnEdit.setEnabled(akses.getchecklist_kriteria_keluar_icu());
+        BtnPrint.setEnabled(akses.getchecklist_kriteria_keluar_icu()); 
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("checklist_kriteria_keluar_hcu","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,kriteria1=?,kriteria2=?,kriteria3=?,kriteria4=?,kriteria5=?,"+
+        /*if(Sequel.mengedittf("checklist_kriteria_keluar_icu","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,kriteria1=?,kriteria2=?,kriteria3=?,kriteria4=?,kriteria5=?,"+
                 "kriteria6=?,kriteria7=?,kriteria8=?,kriteria9=?,kriteria10=?,kriteria11=?,kriteria12=?,nik=?",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kriteria1.getSelectedItem().toString(),
                 Kriteria2.getSelectedItem().toString(),Kriteria3.getSelectedItem().toString(),Kriteria4.getSelectedItem().toString(),Kriteria5.getSelectedItem().toString(),
@@ -1580,11 +1557,11 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),18);
             tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),19);
             emptTeks();
-        }
+        }*/
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from checklist_kriteria_keluar_hcu where no_rawat=? and tanggal=?",2,new String[]{
+        if(Sequel.queryu2tf("delete from checklist_kriteria_keluar_icu where no_rawat=? and tanggal=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
