@@ -1184,15 +1184,14 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),19).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),18).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistKriteriaKeluarHCU.jasper","report","::[ Formulir Check List Kriteria Keluar HCU ]::",
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),17).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            Valid.MyReportqry("rptFormulirChecklistKriteriaKeluarICU.jasper","report","::[ Formulir Check List Kriteria Keluar ICU ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_icu.tanggal,"+
                     "checklist_kriteria_keluar_icu.kriteria1,checklist_kriteria_keluar_icu.kriteria2,checklist_kriteria_keluar_icu.kriteria3,"+
                     "checklist_kriteria_keluar_icu.kriteria4,checklist_kriteria_keluar_icu.kriteria5,checklist_kriteria_keluar_icu.kriteria6,"+
                     "checklist_kriteria_keluar_icu.kriteria7,checklist_kriteria_keluar_icu.kriteria8,checklist_kriteria_keluar_icu.kriteria9,"+
-                    "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.kriteria12,"+
-                    "checklist_kriteria_keluar_icu.nik,pegawai.nama "+
+                    "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.nik,pegawai.nama "+
                     "from checklist_kriteria_keluar_icu inner join reg_periksa on checklist_kriteria_keluar_icu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_icu.nik "+

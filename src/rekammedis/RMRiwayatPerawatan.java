@@ -325,6 +325,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkChecklistKriteriaMasukHCU = new widget.CekBox();
         chkChecklistKriteriaKeluarHCU = new widget.CekBox();
         chkChecklistKriteriaMasukICU = new widget.CekBox();
+        chkChecklistKriteriaKeluarICU = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhDewasa = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhAnak = new widget.CekBox();
         chkAsuhanLanjutanRisikoJatuhLansia = new widget.CekBox();
@@ -616,7 +617,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2374));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2398));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1087,6 +1088,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkChecklistKriteriaMasukICU.setOpaque(false);
         chkChecklistKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkChecklistKriteriaMasukICU);
+
+        chkChecklistKriteriaKeluarICU.setSelected(true);
+        chkChecklistKriteriaKeluarICU.setText("Check List Kriteria Keluar ICU");
+        chkChecklistKriteriaKeluarICU.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkChecklistKriteriaKeluarICU.setName("chkChecklistKriteriaKeluarICU"); // NOI18N
+        chkChecklistKriteriaKeluarICU.setOpaque(false);
+        chkChecklistKriteriaKeluarICU.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkChecklistKriteriaKeluarICU);
 
         chkAsuhanLanjutanRisikoJatuhDewasa.setSelected(true);
         chkAsuhanLanjutanRisikoJatuhDewasa.setText("Lanjutan Risiko Jatuh Dewasa");
@@ -1938,6 +1947,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanRisikoDekubitus.setSelected(true);
             chkDokumentasiTindakanESWL.setSelected(true);
             chkChecklistKriteriaMasukICU.setSelected(true);
+            chkChecklistKriteriaKeluarICU.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2041,6 +2051,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanRisikoDekubitus.setSelected(false);
             chkDokumentasiTindakanESWL.setSelected(false);
             chkChecklistKriteriaMasukICU.setSelected(false);
+            chkChecklistKriteriaKeluarICU.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2163,6 +2174,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkCatatanObservasiRanapKebidanan;
     private widget.CekBox chkCatatanObservasiRanapPostPartum;
     private widget.CekBox chkChecklistKriteriaKeluarHCU;
+    private widget.CekBox chkChecklistKriteriaKeluarICU;
     private widget.CekBox chkChecklistKriteriaMasukHCU;
     private widget.CekBox chkChecklistKriteriaMasukICU;
     private widget.CekBox chkChecklistPostOperasi;
@@ -2719,6 +2731,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanChecklistKriteriaKeluarHCU(rs.getString("no_rawat"));
                     //menampilkan checklist kriteria masuk ICU
                     menampilkanChecklistKriteriaMasukICU(rs.getString("no_rawat"));
+                    //menampilkan checklist kriteria keluar ICU
+                    menampilkanChecklistKriteriaKeluarICU(rs.getString("no_rawat"));
                     //menampilkan hasil pemeriksaan USG
                     menampilkanHasilPemeriksaanUSG(rs.getString("no_rawat"));
                     //menampilkan dokumentasi tindakan ESWL
@@ -18128,7 +18142,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                               "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
-                                              "<td width='66%' border='0'>Petugas : "+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
+                                              "<td width='66%' border='0'>DPJP/Dokter Jaga/HCU : "+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -18339,7 +18353,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                               "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
-                                              "<td width='66%' border='0'>Petugas : "+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
+                                              "<td width='66%' border='0'>DPJP/Dokter Jaga/HCU : "+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -18581,7 +18595,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                               "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
-                                              "<td width='66%' border='0'>Petugas : "+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
+                                              "<td width='66%' border='0'>DPJP/Dokter Jaga/ICU : "+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -18844,6 +18858,131 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Checklist Masuk ICU : "+e);
+        }
+    }
+    
+    private void menampilkanChecklistKriteriaKeluarICU(String norawat) {
+        try {
+            if(chkChecklistKriteriaKeluarICU.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select checklist_kriteria_keluar_icu.tanggal,checklist_kriteria_keluar_icu.kriteria1,checklist_kriteria_keluar_icu.kriteria2,checklist_kriteria_keluar_icu.kriteria3,"+
+                        "checklist_kriteria_keluar_icu.kriteria4,checklist_kriteria_keluar_icu.kriteria5,checklist_kriteria_keluar_icu.kriteria6,"+
+                        "checklist_kriteria_keluar_icu.kriteria7,checklist_kriteria_keluar_icu.kriteria8,checklist_kriteria_keluar_icu.kriteria9,"+
+                        "checklist_kriteria_keluar_icu.kriteria10,checklist_kriteria_keluar_icu.kriteria11,checklist_kriteria_keluar_icu.nik,pegawai.nama "+
+                        "from checklist_kriteria_keluar_icu inner join pegawai on pegawai.nik=checklist_kriteria_keluar_icu.nik "+
+                        "where checklist_kriteria_keluar_icu.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Check List Kriteria Keluar ICU</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='33%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='66%' border='0'>DPJP/Dokter Jaga/ICU : "+rs2.getString("nik")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center' bgcolor='#FFFAF8'></td>"+
+                                              "<td width='76%' valign='top' align='center' bgcolor='#FFFAF8'>KRITERIA KELUAR HCU</td>"+
+                                              "<td width='20%' valign='top' align='center' bgcolor='#FFFAF8'>YA/TIDAK</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>1</td>"+
+                                              "<td width='76%' valign='top'>Pasien Tidak Lagi Memerlukan Perawatan ICU</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>2</td>"+
+                                              "<td width='76%' valign='top'>Kondisi Pasien Yang Menyebabkan Pasien Dirawat Di ICU Telah Teratasi</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>3</td>"+
+                                              "<td width='76%' valign='top'>Pasien Dalam Keadaan Terminal Yang Dengan Terapi Tidak Memberikan Hasil Yang Bermakna</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>4</td>"+
+                                              "<td width='76%' valign='top'>Pasien Meninggal</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>5</td>"+
+                                              "<td width='76%' valign='top'>Pasien Membutuhkan Alat / Prosedur Yang Tidak Tersedia</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>6</td>"+
+                                              "<td width='76%' valign='top'>Keluarga Menghendaki Pasien Dipindahkan</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'>7</td>"+
+                                              "<td width='76%' valign='top'>KRITERIA FISIOLOGIS TANDA-TANDA VITAL</td>"+
+                                              "<td width='20%' valign='top' align='center'></td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'></td>"+
+                                              "<td width='76%' valign='top'>Nadi > 60 Atau < 100 x/menit</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria7")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'></td>"+
+                                              "<td width='76%' valign='top'>SBP > 08 mmHg Atau 20 mmHg Di Atas SBP Pasien</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria8")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'></td>"+
+                                              "<td width='76%' valign='top'>MAP > 60 mmHg</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria9")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'></td>"+
+                                              "<td width='76%' valign='top'>DBP < 120 mmHg</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria10")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' valign='top' align='center'></td>"+
+                                              "<td width='76%' valign='top'>RR > 12 Sampai < 25 x/menit</td>"+
+                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kriteria11")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Checklist Keluar HCU : "+e);
         }
     }
 }
