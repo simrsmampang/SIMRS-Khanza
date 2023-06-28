@@ -4829,6 +4829,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void ppJadikanKunjunganBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppJadikanKunjunganBtnPrintActionPerformed
         for(i=0;i<tbPendaftaran.getRowCount();i++){
             if(tbPendaftaran.getValueAt(i,20).toString().equals("Terkirim")){
+                emptTeks();
                 NoKartu.setText(tbPendaftaran.getValueAt(i,5).toString());
                 TPasien.setText(tbPendaftaran.getValueAt(i,3).toString());
                 setNoRm2(tbPendaftaran.getValueAt(i,0).toString());  
