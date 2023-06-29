@@ -100,7 +100,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     private LocalDate birthday;
     private Period p;
     private long p2;
-    private boolean empt=false;
+    private boolean empt=false,statusantrean=true;
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -7020,8 +7020,11 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                             Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
                         }
                     }
-                    SimpanAntrianOnSite();
-                    insertSEP();
+                    if(SimpanAntrianOnSite()==true){
+                        insertSEP();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter / Nomor Referensi..!!");
+                    }
             }
         }else if(JenisPelayanan.getSelectedIndex()==0){
             isNumber();
@@ -7306,7 +7309,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         this.nosisrute=norujuk;
     }
     
-    public void SimpanAntrianOnSite(){
+    public boolean SimpanAntrianOnSite(){
+        statusantrean=true;
         if((!NoRujukan.getText().equals(""))||(!NoSKDP.getText().equals(""))){
             if(TujuanKunjungan.getSelectedItem().toString().equals("0. Normal")&&FlagProsedur.getSelectedItem().toString().equals("")&&Penunjang.getSelectedItem().toString().equals("")&&AsesmenPoli.getSelectedItem().toString().equals("")){
                 if(AsalRujukan.getSelectedIndex()==0){
@@ -7367,9 +7371,11 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                         datajam=Sequel.cariIsi("select DATE_ADD(concat('"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"',' ','"+jammulai+"'),INTERVAL "+(Integer.parseInt(TNoReg.getText())*10)+" MINUTE) ");
                         parsedDate = dateFormat.parse(datajam);
                     }else{
+                        statusantrean=false;
                         System.out.println("Jadwal tidak ditemukan...!");
                     }
                 } catch (Exception e) {
+                    statusantrean=false;
                     System.out.println("Notif : "+e);
                 } finally{
                     if(rs!=null){
@@ -7378,8 +7384,9 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     if(ps!=null){
                         ps.close();
                     }
-                }   
+                }  
                 
+                respon="200";
                 if(!NoRujukan.getText().equals("")){
                     try {
                         headers = new HttpHeaders();
@@ -7420,10 +7427,11 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                         URL = koneksiDB.URLAPIMOBILEJKN()+"/antrean/add";	
                         System.out.println("URL : "+URL);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                        nameNode = root.path("metadata");  
+                        nameNode = root.path("metadata"); 
                         respon=nameNode.path("code").asText();
                         System.out.println("respon WS BPJS Kirim Pakai NoRujukan : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                     } catch (Exception e) {
+                        statusantrean=false;
                         System.out.println("Notif No.Rujuk : "+e);
                     }
                 }
@@ -7471,14 +7479,20 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                             nameNode = root.path("metadata");  
                             System.out.println("respon WS BPJS Kirim Pakai SKDP : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
+                            if(nameNode.path("code").asText().equals("201")){
+                                statusantrean=false;
+                            }
                         } catch (Exception e) {
+                            statusantrean=false;
                             System.out.println("Notif SKDP : "+e);
                         }
-                    }   
+                    }
                 }
             } catch (Exception e) {
+                statusantrean=false;
                 System.out.println("Notif : "+e);
             }
         }
+        return statusantrean;
     }
 }
