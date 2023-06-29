@@ -216,7 +216,7 @@ public class frmUtama extends javax.swing.JFrame {
                     Tanggal2.setText(tanggalFormat.format(date)); 
                 }
                 
-                if((detik.equals("01")&&menit.equals("01"))||(detik.equals("30")&&menit.equals("01"))){
+                if((detik.equals("01")&&menit.equals("01"))||(detik.equals("01")&&menit.equals("30"))){
                     encounter();
                     observationTTV();
                     vaksin();
