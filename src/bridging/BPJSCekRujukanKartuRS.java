@@ -7023,6 +7023,12 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     if(SimpanAntrianOnSite()==true){
                         insertSEP();
                     }else{
+                        Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+                        Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+                        Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+                        if(statuspasien.equals("Baru")){
+                            Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
+                        }
                         JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter / Nomor Referensi..!!");
                     }
             }

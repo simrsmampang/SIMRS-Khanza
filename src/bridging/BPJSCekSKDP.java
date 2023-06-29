@@ -6473,6 +6473,9 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                     if(SimpanAntrianOnSite()==true){
                         insertSEP();
                     }else{
+                        Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+                        Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+                        Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
                         JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter / Nomor Referensi..!!");
                     }
             }
