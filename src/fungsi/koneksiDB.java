@@ -1234,4 +1234,14 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String ADDANTRIANAPIMOBILEJKN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ADDANTRIANAPIMOBILEJKN");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }

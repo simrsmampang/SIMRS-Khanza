@@ -85,7 +85,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
             p_alamatpj=0,p_kelurahanpj=0,p_kecamatanpj=0,p_kabupatenpj=0,jmlhari=0,
             p_propinsi=0,p_propinsipj=0,kuota=0;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-    private String kdkel="",kdkec="",kdkab="",kdprop="",nosisrute="",BASENOREG="",URUTNOREG="",link="",statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
+    private String kdkel="",kdkec="",kdkab="",kdprop="",nosisrute="",BASENOREG="",ADDANTRIANAPIMOBILEJKN="no",URUTNOREG="",link="",statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",jammulai="",
             umur="",umurdaftar="0",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",datajam="",jamselesai="",
@@ -1637,12 +1637,6 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            
-            try {
-                DIAGNOSARUJUKANMASUKAPIBPJS=koneksiDB.DIAGNOSARUJUKANMASUKAPIBPJS();
-            } catch (Exception e) {
-                DIAGNOSARUJUKANMASUKAPIBPJS="no";
-            }
         }catch(Exception e){
             System.out.println(e);
         }
@@ -1650,19 +1644,42 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         hariawal=Sequel.cariIsi("select set_jam_minimal.hariawal from set_jam_minimal");
         
         try {
+            DIAGNOSARUJUKANMASUKAPIBPJS=koneksiDB.DIAGNOSARUJUKANMASUKAPIBPJS();
+        } catch (Exception e) {
+            DIAGNOSARUJUKANMASUKAPIBPJS="no";
+        }
+
+        try {
             user=akses.getkode().replace(" ","").substring(0,9);
         } catch (Exception e) {
             user=akses.getkode();
         }
+        
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
-            URUTNOREG=prop.getProperty("URUTNOREG");
-            BASENOREG=prop.getProperty("BASENOREG");
+            link=koneksiDB.URLAPIBPJS(); 
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        
+        try {          
+            URUTNOREG=koneksiDB.URUTNOREG();
         } catch (Exception e) {
             URUTNOREG="";
+            System.out.println("Notif : "+e);
+        }
+        
+        try {
+            BASENOREG=koneksiDB.BASENOREG();
+        } catch (Exception e) {
             BASENOREG="";
-            System.out.println("E : "+e);
+            System.out.println("Notif : "+e);
+        }
+        
+        try {
+            ADDANTRIANAPIMOBILEJKN=koneksiDB.ADDANTRIANAPIMOBILEJKN();
+        } catch (Exception e) {
+            ADDANTRIANAPIMOBILEJKN="";
+            System.out.println("Notif : "+e);
         }
         
         if(tampilkantni.equals("Yes")){
@@ -7022,16 +7039,21 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                             Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
                         }
                     }
-                    if(SimpanAntrianOnSite()==true){
-                        insertSEP();
-                    }else{
-                        Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
-                        Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
-                        Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
-                        if(statuspasien.equals("Baru")){
-                            Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
+                    
+                    if(ADDANTRIANAPIMOBILEJKN.equals("yes")){
+                        if(SimpanAntrianOnSite()==true){
+                            insertSEP();
+                        }else{
+                            Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+                            Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+                            Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+                            if(statuspasien.equals("Baru")){
+                                Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
+                            }
+                            JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter / Nomor Referensi..!!");
                         }
-                        JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter / Nomor Referensi..!!");
+                    }else{
+                        insertSEP();
                     }
             }
         }else if(JenisPelayanan.getSelectedIndex()==0){

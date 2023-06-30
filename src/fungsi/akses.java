@@ -209,7 +209,7 @@ public final class akses {
             pemantauan_meows_obstetri=false,catatan_adime_gizi=false,pengajuan_biaya=false,penilaian_awal_keperawatan_ralan_geriatri=false,master_masalah_keperawatan_geriatri=false,
             master_rencana_keperawatan_geriatri=false,checklist_kriteria_masuk_hcu=false,checklist_kriteria_keluar_hcu=false,penilaian_risiko_dekubitus=false,
             master_menolak_anjuran_medis=false,penolakan_anjuran_medis=false,laporan_tahunan_penolakan_anjuran_medis=false,template_laporan_operasi=false,hasil_tindakan_eswl=false,
-            checklist_kriteria_masuk_icu=false,checklist_kriteria_keluar_icu=false;
+            checklist_kriteria_masuk_icu=false,checklist_kriteria_keluar_icu=false,akses_dokter_lain_rawat_jalan=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1190,6 +1190,7 @@ public final class akses {
                         akses.hasil_tindakan_eswl=true;
                         akses.checklist_kriteria_masuk_icu=true;
                         akses.checklist_kriteria_keluar_icu=true;
+                        akses.akses_dokter_lain_rawat_jalan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2154,6 +2155,7 @@ public final class akses {
                         akses.hasil_tindakan_eswl=rs2.getBoolean("hasil_tindakan_eswl");
                         akses.checklist_kriteria_masuk_icu=rs2.getBoolean("checklist_kriteria_masuk_icu");
                         akses.checklist_kriteria_keluar_icu=rs2.getBoolean("checklist_kriteria_keluar_icu");
+                        akses.akses_dokter_lain_rawat_jalan=rs2.getBoolean("akses_dokter_lain_rawat_jalan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3116,6 +3118,7 @@ public final class akses {
                         akses.hasil_tindakan_eswl=false;
                         akses.checklist_kriteria_masuk_icu=false;
                         akses.checklist_kriteria_keluar_icu=false;
+                        akses.akses_dokter_lain_rawat_jalan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4138,4 +4141,5 @@ public final class akses {
     public static boolean gethasil_tindakan_eswl(){return akses.hasil_tindakan_eswl;}
     public static boolean getchecklist_kriteria_masuk_icu(){return akses.checklist_kriteria_masuk_icu;}
     public static boolean getchecklist_kriteria_keluar_icu(){return akses.checklist_kriteria_keluar_icu;}
+    public static boolean getakses_dokter_lain_rawat_jalan(){return akses.akses_dokter_lain_rawat_jalan;}
 }   

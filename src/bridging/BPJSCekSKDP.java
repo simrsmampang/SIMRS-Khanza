@@ -110,7 +110,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             p_alamatpj=0,p_kelurahanpj=0,p_kecamatanpj=0,p_kabupatenpj=0,jmlhari=0,
             p_propinsi=0,p_propinsipj=0,kuota=0;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-    private String kdkel="",kdkec="",kdkab="",kdprop="",nosisrute="",BASENOREG="",URUTNOREG="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
+    private String kdkel="",kdkec="",kdkab="",kdprop="",nosisrute="",ADDANTRIANAPIMOBILEJKN="no",BASENOREG="",URUTNOREG="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",jammulai="",
             umur="",umurdaftar="0",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",norawat="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",prb="",peserta="",jamselesai="",
@@ -1298,20 +1298,22 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                     pskelengkapan.close();
                 }
             }
-            
-            try {
-                DIAGNOSARUJUKANMASUKAPIBPJS=koneksiDB.DIAGNOSARUJUKANMASUKAPIBPJS();
-            } catch (Exception e) {
-                DIAGNOSARUJUKANMASUKAPIBPJS="no";
-            }
         }catch(Exception e){
             System.out.println(e);
         }
+        
         hariawal=Sequel.cariIsi("select set_jam_minimal.hariawal from set_jam_minimal");
-        pengurutan=Sequel.cariIsi("select urutan from set_urut_no_rkm_medis");
-        tahun=Sequel.cariIsi("select tahun from set_urut_no_rkm_medis");
-        bulan=Sequel.cariIsi("select bulan from set_urut_no_rkm_medis");
-        posisitahun=Sequel.cariIsi("select posisi_tahun_bulan from set_urut_no_rkm_medis");
+        pengurutan=Sequel.cariIsi("select set_urut_no_rkm_medis.urutan from set_urut_no_rkm_medis");
+        tahun=Sequel.cariIsi("select set_urut_no_rkm_medis.tahun from set_urut_no_rkm_medis");
+        bulan=Sequel.cariIsi("select set_urut_no_rkm_medis.bulan from set_urut_no_rkm_medis");
+        posisitahun=Sequel.cariIsi("select set_urut_no_rkm_medis.posisi_tahun_bulan from set_urut_no_rkm_medis");
+        
+        try {
+            DIAGNOSARUJUKANMASUKAPIBPJS=koneksiDB.DIAGNOSARUJUKANMASUKAPIBPJS();
+        } catch (Exception e) {
+            DIAGNOSARUJUKANMASUKAPIBPJS="no";
+        }
+
         try {
             user=akses.getkode().replace(" ","").substring(0,9);
         } catch (Exception e) {
@@ -1319,14 +1321,30 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
         }
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            link=prop.getProperty("URLAPIBPJS");
-            URUTNOREG=prop.getProperty("URUTNOREG");
-            BASENOREG=prop.getProperty("BASENOREG");
+            link=koneksiDB.URLAPIBPJS(); 
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        
+        try {          
+            URUTNOREG=koneksiDB.URUTNOREG();
         } catch (Exception e) {
             URUTNOREG="";
+            System.out.println("Notif : "+e);
+        }
+        
+        try {
+            BASENOREG=koneksiDB.BASENOREG();
+        } catch (Exception e) {
             BASENOREG="";
-            System.out.println("E : "+e);
+            System.out.println("Notif : "+e);
+        }
+        
+        try {
+            ADDANTRIANAPIMOBILEJKN=koneksiDB.ADDANTRIANAPIMOBILEJKN();
+        } catch (Exception e) {
+            ADDANTRIANAPIMOBILEJKN="";
+            System.out.println("Notif : "+e);
         }
         
         if(tampilkantni.equals("Yes")){
@@ -6470,13 +6488,18 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
                             Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
                         }
                     }
-                    if(SimpanAntrianOnSite()==true){
-                        insertSEP();
+                    
+                    if(ADDANTRIANAPIMOBILEJKN.equals("yes")){
+                        if(SimpanAntrianOnSite()==true){
+                            insertSEP();
+                        }else{
+                            Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+                            Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+                            Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+                            JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter / Nomor Referensi..!!");
+                        }
                     }else{
-                        Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
-                        Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
-                        Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
-                        JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter / Nomor Referensi..!!");
+                        insertSEP();
                     }
             }
         }else if(JenisPelayanan.getSelectedIndex()==0){
