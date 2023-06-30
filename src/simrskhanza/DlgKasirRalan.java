@@ -13789,19 +13789,21 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 CrPtg.setEditable(akses.getakses_dokter_lain_rawat_jalan());
             }                
         }else{
-            namadokter=billing.dokter.tampil3(akses.getkode());
-            if(!namadokter.equals("")){
-                if(akses.getakses_dokter_lain_rawat_jalan()==true){
-                    CrPtg.setText("");
-                }else{
-                    CrPtg.setText(namadokter);
-                }
-                BtnSeek3.setEnabled(akses.getakses_dokter_lain_rawat_jalan());
-                CrPtg.setEditable(akses.getakses_dokter_lain_rawat_jalan());
-            }else{
+            if(akses.getakses_dokter_lain_rawat_jalan()==true){
                 CrPtg.setText("");
                 BtnSeek3.setEnabled(true);
                 CrPtg.setEditable(true);
+            }else{
+                namadokter=billing.dokter.tampil3(akses.getkode());
+                if(!namadokter.equals("")){
+                    CrPtg.setText(namadokter);
+                    BtnSeek3.setEnabled(false);
+                    CrPtg.setEditable(false);
+                }else{
+                    CrPtg.setText("");
+                    BtnSeek3.setEnabled(true);
+                    CrPtg.setEditable(true);
+                }
             }
         }
         
