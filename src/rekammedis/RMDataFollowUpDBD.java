@@ -21,7 +21,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -61,75 +60,74 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
             "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","Hemoglobin",
             "Hematokrit","Leokosit","Trombosit","Terapi Cairan","NIP","Nama Petugas"
         }){
-              @Ovetrombositide public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbObat.setModel(tabMode);
 
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
-        tbObat.setPrefetrombositedScrollableViewportSize(new Dimension(500,500));
+        tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 15; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPrefetrombositedWidth(105);
+                column.setPreferredWidth(105);
             }else if(i==1){
-                column.setPrefetrombositedWidth(65);
+                column.setPreferredWidth(65);
             }else if(i==2){
-                column.setPrefetrombositedWidth(160);
+                column.setPreferredWidth(160);
             }else if(i==3){
-                column.setPrefetrombositedWidth(35);
+                column.setPreferredWidth(35);
             }else if(i==4){
-                column.setPrefetrombositedWidth(20);
+                column.setPreferredWidth(20);
             }else if(i==5){
-                column.setPrefetrombositedWidth(65);
+                column.setPreferredWidth(65);
             }else if(i==6){
-                column.setPrefetrombositedWidth(65);
+                column.setPreferredWidth(65);
             }else if(i==7){
-                column.setPrefetrombositedWidth(60);
+                column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPrefetrombositedWidth(65);
+                column.setPreferredWidth(65);
             }else if(i==9){
-                column.setPrefetrombositedWidth(65);
+                column.setPreferredWidth(65);
             }else if(i==10){
-                column.setPrefetrombositedWidth(65);
+                column.setPreferredWidth(65);
             }else if(i==11){
-                column.setPrefetrombositedWidth(65);
+                column.setPreferredWidth(65);
             }else if(i==12){
-                column.setPrefetrombositedWidth(150);
+                column.setPreferredWidth(150);
             }else if(i==13){
-                column.setPrefetrombositedWidth(90);
+                column.setPreferredWidth(90);
             }else if(i==14){
-                column.setPrefetrombositedWidth(160);
+                column.setPreferredWidth(160);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
-        Hemo.setDocument(new batasInput((byte)10).getKata(Hemo));
-        Hema.setDocument(new batasInput((byte)8).getKata(Hema));
-        Leo.setDocument(new batasInput((byte)5).getKata(Leo));
-        Trombo.setDocument(new batasInput((byte)5).getKata(Trombo));
-        TerapiCairan.setDocument(new batasInput((byte)5).getKata(TerapiCairan));
-        SPO.setDocument(new batasInput((byte)3).getKata(SPO));
+        Hemo.setDocument(new batasInput((byte)3).getKata(Hemo));
+        Hema.setDocument(new batasInput((byte)3).getKata(Hema));
+        Leo.setDocument(new batasInput((byte)7).getKata(Leo));
+        Trombo.setDocument(new batasInput((byte)10).getKata(Trombo));
+        TerapiCairan.setDocument(new batasInput((int)100).getKata(TerapiCairan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Ovetrombositide
+                @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
                         tampil();
                     }
                 }
-                @Ovetrombositide
+                @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
                         tampil();
                     }
                 }
-                @Ovetrombositide
+                @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
                         tampil();
@@ -139,11 +137,11 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         }
         
         petugas.addWindowListener(new WindowListener() {
-            @Ovetrombositide
+            @Override
             public void windowOpened(WindowEvent e) {}
-            @Ovetrombositide
+            @Override
             public void windowClosing(WindowEvent e) {}
-            @Ovetrombositide
+            @Override
             public void windowClosed(WindowEvent e) {
                 if(petugas.getTable().getSelectedRow()!= -1){                   
                     NIP.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
@@ -151,13 +149,13 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                 }  
                 NIP.requestFocus();
             }
-            @Ovetrombositide
+            @Override
             public void windowIconified(WindowEvent e) {}
-            @Ovetrombositide
+            @Override
             public void windowDeiconified(WindowEvent e) {}
-            @Ovetrombositide
+            @Override
             public void windowActivated(WindowEvent e) {}
-            @Ovetrombositide
+            @Override
             public void windowDeactivated(WindowEvent e) {}
         }); 
         
@@ -177,7 +175,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiIGD = new javax.swing.JMenuItem();
+        MnFollowUpDBD = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -234,19 +232,19 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanObservasiIGD.setBackground(new java.awt.Color(255, 255, 254));
-        MnCatatanObservasiIGD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCatatanObservasiIGD.setForeground(new java.awt.Color(50, 50, 50));
-        MnCatatanObservasiIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanObservasiIGD.setText("Formulir Catatan Observasi IGD");
-        MnCatatanObservasiIGD.setName("MnCatatanObservasiIGD"); // NOI18N
-        MnCatatanObservasiIGD.setPreferredSize(new java.awt.Dimension(230, 26));
-        MnCatatanObservasiIGD.addActionListener(new java.awt.event.ActionListener() {
+        MnFollowUpDBD.setBackground(new java.awt.Color(255, 255, 254));
+        MnFollowUpDBD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnFollowUpDBD.setForeground(new java.awt.Color(50, 50, 50));
+        MnFollowUpDBD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnFollowUpDBD.setText("Formulir Follow Up DBD");
+        MnFollowUpDBD.setName("MnFollowUpDBD"); // NOI18N
+        MnFollowUpDBD.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnFollowUpDBD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanObservasiIGDActionPerformed(evt);
+                MnFollowUpDBDActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanObservasiIGD);
+        jPopupMenu1.add(MnFollowUpDBD);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -773,14 +771,14 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
         }else{
-            if(Sequel.menyimpantf("follow_up_dbd","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
+            if(Sequel.menyimpantf("follow_up_dbd","?,?,?,?,?,?,?,?,?","Data",9,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Hemo.getText(),Hema.getText(),Leo.getText(),Trombo.getText(),TerapiCairan.getText(),SPO.getText(),NIP.getText()
+                Hemo.getText(),Hema.getText(),Leo.getText(),Trombo.getText(),TerapiCairan.getText(),NIP.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                     Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                    Hemo.getText(),Hema.getText(),Leo.getText(),Trombo.getText(),TerapiCairan.getText(),SPO.getText(),NIP.getText(),NamaPetugas.getText()
+                    Hemo.getText(),Hema.getText(),Leo.getText(),Trombo.getText(),TerapiCairan.getText(),NIP.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -792,7 +790,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,SPO,BtnBatal);
+            Valid.pindah(evt,TerapiCairan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -813,7 +811,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -842,7 +840,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -889,19 +887,19 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataCatatanObservasiIGD.jasper","report","::[ Data Catatan Observasi IGD ]::",
+                Valid.MyReportqry("rptDataFollowUpDBD.jasper","report","::[ Data Follow Up DBD ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat,follow_up_dbd.hemoglobin,"+
-                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,follow_up_dbd.spo2,"+
+                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,"+
                     "follow_up_dbd.nip,petugas.nama from follow_up_dbd inner join reg_periksa on follow_up_dbd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on follow_up_dbd.nip=petugas.nip where "+
                     "follow_up_dbd.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by follow_up_dbd.tgl_perawatan",param);
             }else{
-                Valid.MyReportqry("rptDataCatatanObservasiIGD.jasper","report","::[ Data Catatan Observasi IGD ]::",
+                Valid.MyReportqry("rptDataFollowUpDBD.jasper","report","::[ Data Follow Up DBD ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat,follow_up_dbd.hemoglobin,"+
-                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,follow_up_dbd.spo2,"+
+                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,"+
                     "follow_up_dbd.nip,petugas.nama from follow_up_dbd inner join reg_periksa on follow_up_dbd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on follow_up_dbd.nip=petugas.nip where "+
@@ -1026,7 +1024,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,Hemo);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanObservasiIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiIGDActionPerformed
+    private void MnFollowUpDBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnFollowUpDBDActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1036,15 +1034,15 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirCatatanObservasiIGD.jasper","report","::[ Formulir Catatan Observasi IGD ]::",
+            Valid.MyReportqry("rptFormulirFollowUpDBD.jasper","report","::[ Formulir Follow Up Pasien DBD ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                     "pasien.jk,pasien.tgl_lahir,follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat,follow_up_dbd.hemoglobin,dokter.nm_dokter,"+
-                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,follow_up_dbd.spo2,"+
+                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,"+
                     "petugas.nama from follow_up_dbd inner join reg_periksa on follow_up_dbd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
                     "inner join petugas on follow_up_dbd.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnCatatanObservasiIGDActionPerformed
+    }//GEN-LAST:event_MnFollowUpDBDActionPerformed
 
     private void HemoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HemoKeyPressed
         Valid.pindah(evt,btnPetugas,Hema);
@@ -1055,7 +1053,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     }//GEN-LAST:event_LeoKeyPressed
 
     private void TerapiCairanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerapiCairanKeyPressed
-        Valid.pindah(evt,Trombo,SPO);
+        Valid.pindah(evt,Trombo,BtnSimpan);
     }//GEN-LAST:event_TerapiCairanKeyPressed
 
     private void HemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HemaKeyPressed
@@ -1073,7 +1071,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(() -> {
             RMDataFollowUpDBD dialog = new RMDataFollowUpDBD(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Ovetrombositide
+                @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
                     System.exit(0);
                 }
@@ -1104,7 +1102,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.TextBox Leo;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiIGD;
+    private javax.swing.JMenuItem MnFollowUpDBD;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
@@ -1147,7 +1145,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat,follow_up_dbd.hemoglobin,"+
-                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,follow_up_dbd.spo2,"+
+                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,"+
                     "follow_up_dbd.nip,petugas.nama from follow_up_dbd inner join reg_periksa on follow_up_dbd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on follow_up_dbd.nip=petugas.nip where "+
@@ -1156,7 +1154,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat,follow_up_dbd.hemoglobin,"+
-                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,follow_up_dbd.spo2,"+
+                    "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,"+
                     "follow_up_dbd.nip,petugas.nama from follow_up_dbd inner join reg_periksa on follow_up_dbd.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on follow_up_dbd.nip=petugas.nip where "+
@@ -1181,11 +1179,9 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
-                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("hemoglobin"),rs.getString("hematokrit"),
-                        rs.getString("leokosit"),rs.getString("trombosit"),rs.getString("terapi_cairan"),rs.getString("spo2"),rs.getString("nip"),
-                        rs.getString("nama")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                        rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("hemoglobin"),rs.getString("hematokrit"),
+                        rs.getString("leokosit"),rs.getString("trombosit"),rs.getString("terapi_cairan"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1198,7 +1194,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
@@ -1210,7 +1206,6 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         Leo.setText("");
         Trombo.setText("");
         TerapiCairan.setText("");
-        SPO.setText("");
         Tanggal.setDate(new Date());
         Hemo.requestFocus();
     } 
@@ -1231,7 +1226,6 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
             Leo.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             Trombo.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             TerapiCairan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            SPO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
     }
@@ -1279,12 +1273,12 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPrefetrombositedSize(new Dimension(WIDTH,124));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,124));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
             ChkInput.setVisible(false);            
-            PanelInput.setPrefetrombositedSize(new Dimension(WIDTH,20));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,20));
             FormInput.setVisible(false);      
             ChkInput.setVisible(true);
         }
@@ -1361,9 +1355,9 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("follow_up_dbd","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,hemoglobin=?,hematokrit=?,leokosit=?,trombosit=?,terapi_cairan=?,spo2=?,nip=?",13,new String[]{
+        if(Sequel.mengedittf("follow_up_dbd","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,hemoglobin=?,hematokrit=?,leokosit=?,trombosit=?,terapi_cairan=?,nip=?",12,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            Hemo.getText(),Hema.getText(),Leo.getText(),Trombo.getText(),TerapiCairan.getText(),SPO.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
+            Hemo.getText(),Hema.getText(),Leo.getText(),Trombo.getText(),TerapiCairan.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
             tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -1379,9 +1373,8 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
             tbObat.setValueAt(Leo.getText(),tbObat.getSelectedRow(),10);
             tbObat.setValueAt(Trombo.getText(),tbObat.getSelectedRow(),11);
             tbObat.setValueAt(TerapiCairan.getText(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(SPO.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),14);
             emptTeks();
         }
     }
