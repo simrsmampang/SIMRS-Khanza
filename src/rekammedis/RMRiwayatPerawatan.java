@@ -309,6 +309,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiRanap = new widget.CekBox();
         chkCatatanObservasiRanapKebidanan = new widget.CekBox();
         chkCatatanObservasiRanapPostPartum = new widget.CekBox();
+        chkFollowUpDBD = new widget.CekBox();
         chkCatatanCekGDS = new widget.CekBox();
         chkCatatanKeperawatanRanap = new widget.CekBox();
         chkPemantauanPEWSAnak = new widget.CekBox();
@@ -617,7 +618,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2398));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 2422));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -960,6 +961,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiRanapPostPartum.setOpaque(false);
         chkCatatanObservasiRanapPostPartum.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanObservasiRanapPostPartum);
+
+        chkFollowUpDBD.setSelected(true);
+        chkFollowUpDBD.setText("Follow Up DBD");
+        chkFollowUpDBD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkFollowUpDBD.setName("chkFollowUpDBD"); // NOI18N
+        chkFollowUpDBD.setOpaque(false);
+        chkFollowUpDBD.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkFollowUpDBD);
 
         chkCatatanCekGDS.setSelected(true);
         chkCatatanCekGDS.setText("Catatan Cek GDS");
@@ -1948,6 +1957,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkDokumentasiTindakanESWL.setSelected(true);
             chkChecklistKriteriaMasukICU.setSelected(true);
             chkChecklistKriteriaKeluarICU.setSelected(true);
+            chkFollowUpDBD.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2052,6 +2062,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkDokumentasiTindakanESWL.setSelected(false);
             chkChecklistKriteriaMasukICU.setSelected(false);
             chkChecklistKriteriaKeluarICU.setSelected(false);
+            chkFollowUpDBD.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2182,6 +2193,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkDiagnosaPenyakit;
     private widget.CekBox chkDokumentasiTindakanESWL;
     private widget.CekBox chkEdukasiPasienTerintegrasiRawatJalan;
+    private widget.CekBox chkFollowUpDBD;
     private widget.CekBox chkHasilPemeriksaanUSG;
     private widget.CekBox chkHemodialisa;
     private widget.CekBox chkKonselingFarmasi;
@@ -2687,11 +2699,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanEdukasiPasienTerintegrasiRawatJalan(rs.getString("no_rawat"));
                     //menampilkan asuhan awal pre operasi
                     menampilkanPerencanaanPemulangan(rs.getString("no_rawat"));
-                    //menampilkan pemeriksaan rawat inap
-                    menampilkanPemeriksaanRanap(rs.getString("no_rawat"));
                     //menampilkan observasi
                     menampilkanCatatanObservasi(rs.getString("no_rawat"));
-                    //menampilkan observasi
+                    //menampilkan pemeriksaan rawat inap
+                    menampilkanPemeriksaanRanap(rs.getString("no_rawat"));
+                    //menampilkan follow up DBD
+                    menampilkanFollowUpDBD(rs.getString("no_rawat"));
+                    //menampilkan reaksi tranfusi
                     menampilkanMonitoringReaksiTranfusi(rs.getString("no_rawat"));
                     //menampilkan penilaian lanjutan risiko jatuh dewasa
                     menampilkanLanjutanResikoJatuhDewasa(rs.getString("no_rawat"));
@@ -18983,6 +18997,71 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Checklist Keluar HCU : "+e);
+        }
+    }
+    
+    private void menampilkanFollowUpDBD(String norawat) {
+        try {
+            if(chkFollowUpDBD.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select follow_up_dbd.tgl_perawatan,follow_up_dbd.jam_rawat,follow_up_dbd.hemoglobin,"+
+                            "follow_up_dbd.hematokrit,follow_up_dbd.leokosit,follow_up_dbd.trombosit,follow_up_dbd.terapi_cairan,"+
+                            "follow_up_dbd.nip,petugas.nama from follow_up_dbd inner join petugas on follow_up_dbd.nip=petugas.nip "+
+                            "where follow_up_dbd.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Follow Up DBD</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='middle' width='4%' bgcolor='#FFFAF8' rowspan='2'>No.</td>"+
+                                    "<td valign='middle' width='15%' bgcolor='#FFFAF8' rowspan='2'>Tanggal</td>"+
+                                    "<td valign='top' width='58%' bgcolor='#FFFAF8' colspan='5'>Follow Up</td>"+
+                                    "<td valign='middle' width='23%' bgcolor='#FFFAF8' rowspan='2'>Perawat/Paramedis</td>"+
+                                 "</tr>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='top' width='9%' bgcolor='#FFFAF8'>Hemoglobin</td>"+
+                                    "<td valign='top' width='9%' bgcolor='#FFFAF8'>Hematokrit</td>"+
+                                    "<td valign='top' width='9%' bgcolor='#FFFAF8'>Leokosit</td>"+
+                                    "<td valign='top' width='9%' bgcolor='#FFFAF8'>Trombosit</td>"+
+                                    "<td valign='top' width='22%' bgcolor='#FFFAF8'>Terapi Cairan</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top' align='center'>"+w+"</td>"+
+                                    "<td valign='top'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("hemoglobin")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("hematokrit")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("leokosit")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("trombosit")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("terapi_cairan")+"</td>"+
+                                    "<td valign='top'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                 "</tr>");                                        
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Follow Up DBD : "+e);
         }
     }
 }

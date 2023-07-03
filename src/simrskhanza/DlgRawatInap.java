@@ -1314,12 +1314,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnCatatanObservasiRanap = new widget.Button();
         BtnCatatanObservasiRanapKebidanan = new widget.Button();
         BtnCatatanObservasiRanapPostPartum = new widget.Button();
+        BtnFollowUpDBD = new widget.Button();
         BtnCatatanKeperawatan = new widget.Button();
         BtnCatatanCekGDS = new widget.Button();
         BtnPemantauanPEWSAnak = new widget.Button();
         BtnPemantauanPEWSDewasa = new widget.Button();
         BtnPemantauanMEOWS = new widget.Button();
-        BtnFollowUpDBD = new widget.Button();
         BtnChecklistKriteriaMasukHCU = new widget.Button();
         BtnChecklistKriteriaKeluarHCU = new widget.Button();
         BtnChecklistKriteriaMasukICU = new widget.Button();
@@ -1546,7 +1546,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1560,7 +1560,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3213,7 +3213,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TPasien.setBounds(283, 10, 260, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2023" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2023" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3977,6 +3977,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
         FormMenu.add(BtnCatatanObservasiRanapPostPartum);
 
+        BtnFollowUpDBD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnFollowUpDBD.setText("Follow Up DBD");
+        BtnFollowUpDBD.setFocusPainted(false);
+        BtnFollowUpDBD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnFollowUpDBD.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnFollowUpDBD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnFollowUpDBD.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnFollowUpDBD.setName("BtnFollowUpDBD"); // NOI18N
+        BtnFollowUpDBD.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnFollowUpDBD.setRoundRect(false);
+        BtnFollowUpDBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnFollowUpDBDActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnFollowUpDBD);
+
         BtnCatatanKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnCatatanKeperawatan.setText("Catatan Keperawatan");
         BtnCatatanKeperawatan.setFocusPainted(false);
@@ -4061,23 +4078,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnPemantauanMEOWS);
-
-        BtnFollowUpDBD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnFollowUpDBD.setText("Follow Up DBD");
-        BtnFollowUpDBD.setFocusPainted(false);
-        BtnFollowUpDBD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnFollowUpDBD.setGlassColor(new java.awt.Color(255, 255, 255));
-        BtnFollowUpDBD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnFollowUpDBD.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnFollowUpDBD.setName("BtnFollowUpDBD"); // NOI18N
-        BtnFollowUpDBD.setPreferredSize(new java.awt.Dimension(190, 23));
-        BtnFollowUpDBD.setRoundRect(false);
-        BtnFollowUpDBD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnFollowUpDBDActionPerformed(evt);
-            }
-        });
-        FormMenu.add(BtnFollowUpDBD);
 
         BtnChecklistKriteriaMasukHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnChecklistKriteriaMasukHCU.setText("Check List Masuk HCU");
