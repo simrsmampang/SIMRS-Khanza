@@ -109,11 +109,11 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
-        GCS.setDocument(new batasInput((byte)10).getKata(GCS));
-        TD.setDocument(new batasInput((byte)8).getKata(TD));
-        HR.setDocument(new batasInput((byte)5).getKata(HR));
-        RR.setDocument(new batasInput((byte)5).getKata(RR));
-        Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
+        Hemo.setDocument(new batasInput((byte)10).getKata(Hemo));
+        Hema.setDocument(new batasInput((byte)8).getKata(Hema));
+        Leo.setDocument(new batasInput((byte)5).getKata(Leo));
+        Trombo.setDocument(new batasInput((byte)5).getKata(Trombo));
+        TerapiCairan.setDocument(new batasInput((byte)5).getKata(TerapiCairan));
         SPO.setDocument(new batasInput((byte)3).getKata(SPO));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
@@ -223,17 +223,15 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         jLabel12 = new widget.Label();
-        GCS = new widget.TextBox();
-        HR = new widget.TextBox();
+        Hemo = new widget.TextBox();
+        Leo = new widget.TextBox();
         jLabel20 = new widget.Label();
         jLabel22 = new widget.Label();
-        Suhu = new widget.TextBox();
+        TerapiCairan = new widget.TextBox();
         jLabel23 = new widget.Label();
-        TD = new widget.TextBox();
-        RR = new widget.TextBox();
+        Hema = new widget.TextBox();
+        Trombo = new widget.TextBox();
         jLabel28 = new widget.Label();
-        jLabel29 = new widget.Label();
-        SPO = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -654,95 +652,80 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        jLabel12.setText("Hb :");
+        jLabel12.setText("Hemoglobin :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
         jLabel12.setBounds(0, 70, 80, 23);
 
-        GCS.setFocusTraversalPolicyProvider(true);
-        GCS.setName("GCS"); // NOI18N
-        GCS.addKeyListener(new java.awt.event.KeyAdapter() {
+        Hemo.setFocusTraversalPolicyProvider(true);
+        Hemo.setName("Hemo"); // NOI18N
+        Hemo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                GCSKeyPressed(evt);
+                HemoKeyPressed(evt);
             }
         });
-        FormInput.add(GCS);
-        GCS.setBounds(84, 70, 50, 23);
+        FormInput.add(Hemo);
+        Hemo.setBounds(84, 70, 50, 23);
 
-        HR.setFocusTraversalPolicyProvider(true);
-        HR.setName("HR"); // NOI18N
-        HR.addKeyListener(new java.awt.event.KeyAdapter() {
+        Leo.setFocusTraversalPolicyProvider(true);
+        Leo.setName("Leo"); // NOI18N
+        Leo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                HRKeyPressed(evt);
+                LeoKeyPressed(evt);
             }
         });
-        FormInput.add(HR);
-        HR.setBounds(339, 70, 40, 23);
+        FormInput.add(Leo);
+        Leo.setBounds(336, 70, 50, 23);
 
         jLabel20.setText("Leokosit :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(295, 70, 40, 23);
+        jLabel20.setBounds(272, 70, 60, 23);
 
         jLabel22.setText("Terapi Cairan :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(520, 70, 90, 23);
+        jLabel22.setBounds(508, 70, 90, 23);
 
-        Suhu.setFocusTraversalPolicyProvider(true);
-        Suhu.setName("Suhu"); // NOI18N
-        Suhu.addKeyListener(new java.awt.event.KeyAdapter() {
+        TerapiCairan.setFocusTraversalPolicyProvider(true);
+        TerapiCairan.setName("TerapiCairan"); // NOI18N
+        TerapiCairan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SuhuKeyPressed(evt);
+                TerapiCairanKeyPressed(evt);
             }
         });
-        FormInput.add(Suhu);
-        Suhu.setBounds(614, 70, 40, 23);
+        FormInput.add(TerapiCairan);
+        TerapiCairan.setBounds(602, 70, 187, 23);
 
-        jLabel23.setText("Ht :");
+        jLabel23.setText("Hematokrit :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(138, 70, 40, 23);
+        jLabel23.setBounds(136, 70, 77, 23);
 
-        TD.setFocusTraversalPolicyProvider(true);
-        TD.setName("TD"); // NOI18N
-        TD.addKeyListener(new java.awt.event.KeyAdapter() {
+        Hema.setFocusTraversalPolicyProvider(true);
+        Hema.setName("Hema"); // NOI18N
+        Hema.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TDKeyPressed(evt);
+                HemaKeyPressed(evt);
             }
         });
-        FormInput.add(TD);
-        TD.setBounds(182, 70, 70, 23);
+        FormInput.add(Hema);
+        Hema.setBounds(217, 70, 50, 23);
 
-        RR.setFocusTraversalPolicyProvider(true);
-        RR.setName("RR"); // NOI18N
-        RR.addKeyListener(new java.awt.event.KeyAdapter() {
+        Trombo.setFocusTraversalPolicyProvider(true);
+        Trombo.setName("Trombo"); // NOI18N
+        Trombo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RRKeyPressed(evt);
+                TromboKeyPressed(evt);
             }
         });
-        FormInput.add(RR);
-        RR.setBounds(474, 70, 40, 23);
+        FormInput.add(Trombo);
+        Trombo.setBounds(461, 70, 50, 23);
 
         jLabel28.setText("Trombosit :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(430, 70, 40, 23);
-
-        jLabel29.setText("SpO2 :");
-        jLabel29.setName("jLabel29"); // NOI18N
-        FormInput.add(jLabel29);
-        jLabel29.setBounds(686, 70, 40, 23);
-
-        SPO.setFocusTraversalPolicyProvider(true);
-        SPO.setName("SPO"); // NOI18N
-        SPO.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SPOKeyPressed(evt);
-            }
-        });
-        FormInput.add(SPO);
-        SPO.setBounds(730, 70, 40, 23);
+        jLabel28.setBounds(387, 70, 70, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -794,12 +777,12 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         }else{
             if(Sequel.menyimpantf("catatan_observasi_igd","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText()
+                Hemo.getText(),Hema.getText(),Leo.getText(),Trombo.getText(),TerapiCairan.getText(),SPO.getText(),NIP.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                     Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                    GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText(),NamaPetugas.getText()
+                    Hemo.getText(),Hema.getText(),Leo.getText(),Trombo.getText(),TerapiCairan.getText(),SPO.getText(),NIP.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -1027,7 +1010,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            GCS.requestFocus();
+            Hemo.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
@@ -1042,7 +1025,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,GCS);
+        Valid.pindah(evt,Detik,Hemo);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnCatatanObservasiIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiIGDActionPerformed
@@ -1065,29 +1048,25 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnCatatanObservasiIGDActionPerformed
 
-    private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
-        Valid.pindah(evt,btnPetugas,TD);
-    }//GEN-LAST:event_GCSKeyPressed
+    private void HemoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HemoKeyPressed
+        Valid.pindah(evt,btnPetugas,Hema);
+    }//GEN-LAST:event_HemoKeyPressed
 
-    private void HRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HRKeyPressed
-        Valid.pindah(evt,TD,RR);
-    }//GEN-LAST:event_HRKeyPressed
+    private void LeoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LeoKeyPressed
+        Valid.pindah(evt,Hema,Trombo);
+    }//GEN-LAST:event_LeoKeyPressed
 
-    private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
-        Valid.pindah(evt,RR,SPO);
-    }//GEN-LAST:event_SuhuKeyPressed
+    private void TerapiCairanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerapiCairanKeyPressed
+        Valid.pindah(evt,Trombo,SPO);
+    }//GEN-LAST:event_TerapiCairanKeyPressed
 
-    private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,GCS,HR);
-    }//GEN-LAST:event_TDKeyPressed
+    private void HemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HemaKeyPressed
+        Valid.pindah(evt,Hemo,Leo);
+    }//GEN-LAST:event_HemaKeyPressed
 
-    private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
-        Valid.pindah(evt,HR,Suhu);
-    }//GEN-LAST:event_RRKeyPressed
-
-    private void SPOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SPOKeyPressed
-        Valid.pindah(evt,Suhu,BtnSimpan);
-    }//GEN-LAST:event_SPOKeyPressed
+    private void TromboKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TromboKeyPressed
+        Valid.pindah(evt,Leo,TerapiCairan);
+    }//GEN-LAST:event_TromboKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1120,27 +1099,26 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox GCS;
-    private widget.TextBox HR;
+    private widget.TextBox Hema;
+    private widget.TextBox Hemo;
     private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.Label LCount;
+    private widget.TextBox Leo;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnCatatanObservasiIGD;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
-    private widget.TextBox RR;
-    private widget.TextBox SPO;
     private widget.ScrollPane Scroll;
-    private widget.TextBox Suhu;
     private widget.TextBox TCari;
-    private widget.TextBox TD;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
+    private widget.TextBox TerapiCairan;
     private widget.TextBox TglLahir;
+    private widget.TextBox Trombo;
     private widget.TextBox Umur;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
@@ -1153,7 +1131,6 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     private widget.Label jLabel22;
     private widget.Label jLabel23;
     private widget.Label jLabel28;
-    private widget.Label jLabel29;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -1230,14 +1207,14 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        GCS.setText("");
-        TD.setText("");
-        HR.setText("");
-        RR.setText("");
-        Suhu.setText("");
+        Hemo.setText("");
+        Hema.setText("");
+        Leo.setText("");
+        Trombo.setText("");
+        TerapiCairan.setText("");
         SPO.setText("");
         Tanggal.setDate(new Date());
-        GCS.requestFocus();
+        Hemo.requestFocus();
     } 
 
     private void getData() {
@@ -1251,11 +1228,11 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,2));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(3,5));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(6,8));
-            GCS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            HR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Hemo.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Hema.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Leo.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Trombo.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            TerapiCairan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             SPO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
@@ -1388,7 +1365,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     private void ganti() {
         if(Sequel.mengedittf("catatan_observasi_igd","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,gcs=?,td=?,hr=?,rr=?,suhu=?,spo2=?,nip=?",13,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
+            Hemo.getText(),Hema.getText(),Leo.getText(),Trombo.getText(),TerapiCairan.getText(),SPO.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
             tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -1399,11 +1376,11 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),5);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+""),tbObat.getSelectedRow(),6);
             tbObat.setValueAt(Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(GCS.getText(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(TD.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(HR.getText(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(RR.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(Suhu.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(Hemo.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(Hema.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(Leo.getText(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(Trombo.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(TerapiCairan.getText(),tbObat.getSelectedRow(),12);
             tbObat.setValueAt(SPO.getText(),tbObat.getSelectedRow(),13);
             tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),14);
             tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),15);
