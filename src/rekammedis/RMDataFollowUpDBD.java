@@ -224,21 +224,16 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         TglLahir = new widget.TextBox();
         jLabel12 = new widget.Label();
         GCS = new widget.TextBox();
-        jLabel17 = new widget.Label();
         HR = new widget.TextBox();
         jLabel20 = new widget.Label();
         jLabel22 = new widget.Label();
         Suhu = new widget.TextBox();
         jLabel23 = new widget.Label();
         TD = new widget.TextBox();
-        jLabel26 = new widget.Label();
-        jLabel27 = new widget.Label();
-        jLabel25 = new widget.Label();
         RR = new widget.TextBox();
         jLabel28 = new widget.Label();
         jLabel29 = new widget.Label();
         SPO = new widget.TextBox();
-        jLabel35 = new widget.Label();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -659,7 +654,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        jLabel12.setText("GCS (E,V,M) :");
+        jLabel12.setText("Hb :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
         jLabel12.setBounds(0, 70, 80, 23);
@@ -674,12 +669,6 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         FormInput.add(GCS);
         GCS.setBounds(84, 70, 50, 23);
 
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel17.setText("x/menit");
-        jLabel17.setName("jLabel17"); // NOI18N
-        FormInput.add(jLabel17);
-        jLabel17.setBounds(382, 70, 50, 23);
-
         HR.setFocusTraversalPolicyProvider(true);
         HR.setName("HR"); // NOI18N
         HR.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -690,15 +679,15 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         FormInput.add(HR);
         HR.setBounds(339, 70, 40, 23);
 
-        jLabel20.setText("HR :");
+        jLabel20.setText("Leokosit :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
         jLabel20.setBounds(295, 70, 40, 23);
 
-        jLabel22.setText("Suhu :");
+        jLabel22.setText("Terapi Cairan :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(570, 70, 40, 23);
+        jLabel22.setBounds(520, 70, 90, 23);
 
         Suhu.setFocusTraversalPolicyProvider(true);
         Suhu.setName("Suhu"); // NOI18N
@@ -710,7 +699,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         FormInput.add(Suhu);
         Suhu.setBounds(614, 70, 40, 23);
 
-        jLabel23.setText("TD :");
+        jLabel23.setText("Ht :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
         jLabel23.setBounds(138, 70, 40, 23);
@@ -725,24 +714,6 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         FormInput.add(TD);
         TD.setBounds(182, 70, 70, 23);
 
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel26.setText("°C");
-        jLabel26.setName("jLabel26"); // NOI18N
-        FormInput.add(jLabel26);
-        jLabel26.setBounds(657, 70, 30, 23);
-
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel27.setText("mmHg");
-        jLabel27.setName("jLabel27"); // NOI18N
-        FormInput.add(jLabel27);
-        jLabel27.setBounds(255, 70, 40, 23);
-
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel25.setText("x/menit");
-        jLabel25.setName("jLabel25"); // NOI18N
-        FormInput.add(jLabel25);
-        jLabel25.setBounds(517, 70, 50, 23);
-
         RR.setFocusTraversalPolicyProvider(true);
         RR.setName("RR"); // NOI18N
         RR.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -753,7 +724,7 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         FormInput.add(RR);
         RR.setBounds(474, 70, 40, 23);
 
-        jLabel28.setText("RR :");
+        jLabel28.setText("Trombosit :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
         jLabel28.setBounds(430, 70, 40, 23);
@@ -772,12 +743,6 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
         });
         FormInput.add(SPO);
         SPO.setBounds(730, 70, 40, 23);
-
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel35.setText("%");
-        jLabel35.setName("jLabel35"); // NOI18N
-        FormInput.add(jLabel35);
-        jLabel35.setBounds(773, 70, 30, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1181,19 +1146,14 @@ public final class RMDataFollowUpDBD extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel12;
     private widget.Label jLabel16;
-    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.Label jLabel23;
-    private widget.Label jLabel25;
-    private widget.Label jLabel26;
-    private widget.Label jLabel27;
     private widget.Label jLabel28;
     private widget.Label jLabel29;
-    private widget.Label jLabel35;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;

@@ -63,6 +63,7 @@ import rekammedis.RMDataCatatanKeperawatanRanap;
 import rekammedis.RMDataCatatanObservasiRanap;
 import rekammedis.RMDataCatatanObservasiRanapKebidanan;
 import rekammedis.RMDataCatatanObservasiRanapPostPartum;
+import rekammedis.RMDataFollowUpDBD;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
 import rekammedis.RMDataResumePasienRanap;
@@ -1318,6 +1319,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnPemantauanPEWSAnak = new widget.Button();
         BtnPemantauanPEWSDewasa = new widget.Button();
         BtnPemantauanMEOWS = new widget.Button();
+        BtnFollowUpDBD = new widget.Button();
         BtnChecklistKriteriaMasukHCU = new widget.Button();
         BtnChecklistKriteriaKeluarHCU = new widget.Button();
         BtnChecklistKriteriaMasukICU = new widget.Button();
@@ -4059,6 +4061,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnPemantauanMEOWS);
+
+        BtnFollowUpDBD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnFollowUpDBD.setText("Follow Up DBD");
+        BtnFollowUpDBD.setFocusPainted(false);
+        BtnFollowUpDBD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnFollowUpDBD.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnFollowUpDBD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnFollowUpDBD.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnFollowUpDBD.setName("BtnFollowUpDBD"); // NOI18N
+        BtnFollowUpDBD.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnFollowUpDBD.setRoundRect(false);
+        BtnFollowUpDBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnFollowUpDBDActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnFollowUpDBD);
 
         BtnChecklistKriteriaMasukHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnChecklistKriteriaMasukHCU.setText("Check List Masuk HCU");
@@ -7991,6 +8010,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnChecklistKriteriaKeluarICUActionPerformed
 
+    private void BtnFollowUpDBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFollowUpDBDActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDataFollowUpDBD form=new RMDataFollowUpDBD(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnFollowUpDBDActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8038,6 +8075,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnDiagnosa;
     private widget.Button BtnDokumentasiESWL;
     private widget.Button BtnEdit;
+    private widget.Button BtnFollowUpDBD;
     private widget.Button BtnHapus;
     private widget.Button BtnHasilPemeriksaanUSG;
     private widget.Button BtnInformasiObat;
@@ -8935,6 +8973,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnChecklistKriteriaKeluarICU.setVisible(akses.getchecklist_kriteria_keluar_icu()); 
         if(akses.getchecklist_kriteria_keluar_icu()==true){
+            tinggi=tinggi+24;
+        }
+        BtnFollowUpDBD.setVisible(akses.getfollow_up_dbd()); 
+        if(akses.getfollow_up_dbd()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
