@@ -973,7 +973,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
                 if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
                     hapus();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Harus oleh yang mengajukan/P.J.Terkait  sesuai user login..!!");
+                    JOptionPane.showMessageDialog(null,"Harus oleh yang mengajukan/P.J.Terkait sesuai user login..!!");
                 }
             }
         }
@@ -1010,14 +1010,14 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
             Valid.textKosong(Keterangan,"Keterangan");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","no_pengajuan=?,tanggal=?,nik=?,urgensi=?,latar_belakang=?,nama_barang=?,spesifikasi=?,jumlah=?,harga=?,total=?,keterangan=?,nik_pj=?",13,new String[]{
-                        NoPengajuan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPetugas.getText(),Urgensi.getSelectedItem().toString(),
-                        LatarBelakang.getText(),NamaBarang.getText(),Spesifikasi.getText(),Jumlah.getText(),Harga.getText(),
-                        Double.toString(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),Keterangan.getText(),
-                        KdPetugasPJ.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                    })==true){
-                        tampil();
-                        emptTeks();
+                if(akses.getkode().equals("Admin Utama")){
+                    ganti();
+                }else {
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                        ganti();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Harus oleh yang mengajukan/P.J.Terkait sesuai user login..!!");
+                    }
                 }
             }
         }
@@ -1214,11 +1214,11 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_HargaKeyPressed
 
     private void LatarBelakangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LatarBelakangKeyPressed
-        Valid.pindah(evt,Harga,Spesifikasi);
+        Valid.pindah2(evt,Harga,Spesifikasi);
     }//GEN-LAST:event_LatarBelakangKeyPressed
 
     private void SpesifikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpesifikasiKeyPressed
-        Valid.pindah(evt,LatarBelakang,btnPetugasPJ);
+        Valid.pindah2(evt,LatarBelakang,btnPetugasPJ);
     }//GEN-LAST:event_SpesifikasiKeyPressed
 
     private void btnPetugasPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasPJKeyPressed
@@ -1510,6 +1510,18 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             emptTeks();
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
+    }
+
+    private void ganti() {
+        if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","no_pengajuan=?,tanggal=?,nik=?,urgensi=?,latar_belakang=?,nama_barang=?,spesifikasi=?,jumlah=?,harga=?,total=?,keterangan=?,nik_pj=?",13,new String[]{
+                NoPengajuan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPetugas.getText(),Urgensi.getSelectedItem().toString(),
+                LatarBelakang.getText(),NamaBarang.getText(),Spesifikasi.getText(),Jumlah.getText(),Harga.getText(),
+                Double.toString(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),Keterangan.getText(),
+                KdPetugasPJ.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            })==true){
+                tampil();
+                emptTeks();
         }
     }
 }
