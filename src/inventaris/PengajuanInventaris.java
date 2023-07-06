@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * DlgRujuk.java
  *
  * Created on 31 Mei 10, 20:19:56
@@ -972,9 +967,15 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()> -1){
-            Sequel.meghapus("pengajuan_inventaris","no_pengajuan",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            tampil();
-            emptTeks();
+            if(akses.getkode().equals("Admin Utama")){
+                hapus();
+            }else {
+                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                    hapus();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Harus oleh yang mengajukan/P.J.Terkait  sesuai user login..!!");
+                }
+            }
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1061,19 +1062,12 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
                    "pengajuan_inventaris.keterangan,pengajuan_inventaris.nik_pj,peg2.nama as namapj,pengajuan_inventaris.status "+
                    "from pengajuan_inventaris inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_inventaris.nik=peg1.nik "+
                    "and pengajuan_inventaris.nik_pj=peg2.nik where "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.no_pengajuan like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.nik like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.nama like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.bidang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.departemen like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.urgensi like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.latar_belakang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.nama_barang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.spesifikasi like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.keterangan like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.nik_pj like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg2.nama like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.status like '%"+TCari.getText().trim()+"%' order by pengajuan_inventaris.tanggal",param);
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
+                   "(pengajuan_inventaris.no_pengajuan like '%"+TCari.getText().trim()+"%' or pengajuan_inventaris.nik like '%"+TCari.getText().trim()+"%' or peg1.nama like '%"+TCari.getText().trim()+"%' or "+
+                   "peg1.bidang like '%"+TCari.getText().trim()+"%' or peg1.departemen like '%"+TCari.getText().trim()+"%' or pengajuan_inventaris.urgensi like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.latar_belakang like '%"+TCari.getText().trim()+"%' or pengajuan_inventaris.nama_barang like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.spesifikasi like '%"+TCari.getText().trim()+"%' or pengajuan_inventaris.keterangan like '%"+TCari.getText().trim()+"%' or pengajuan_inventaris.nik_pj like '%"+TCari.getText().trim()+"%' or "+
+                   "peg2.nama like '%"+TCari.getText().trim()+"%' or pengajuan_inventaris.status like '%"+TCari.getText().trim()+"%') order by pengajuan_inventaris.tanggal",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1379,60 +1373,30 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                    "pengajuan_inventaris.spesifikasi,pengajuan_inventaris.jumlah,pengajuan_inventaris.harga,pengajuan_inventaris.total,"+
                    "pengajuan_inventaris.keterangan,pengajuan_inventaris.nik_pj,peg2.nama as namapj,pengajuan_inventaris.status "+
                    "from pengajuan_inventaris inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_inventaris.nik=peg1.nik "+
-                   "and pengajuan_inventaris.nik_pj=peg2.nik where "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.no_pengajuan like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.nik like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and peg1.nama like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and peg1.bidang like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and peg1.departemen like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.urgensi like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.latar_belakang like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.nama_barang like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.spesifikasi like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.keterangan like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.nik_pj like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and peg2.nama like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.status like ? order by pengajuan_inventaris.tanggal");
+                   "and pengajuan_inventaris.nik_pj=peg2.nik where pengajuan_inventaris.tanggal between ? and ? "+
+                   (TCari.getText().trim().equals("")?"":"and (pengajuan_inventaris.no_pengajuan like ? or pengajuan_inventaris.nik like ? or "+
+                   "peg1.nama like ? or peg1.bidang like ? or peg1.departemen like ? or pengajuan_inventaris.urgensi like ? or "+
+                   "pengajuan_inventaris.latar_belakang like ? or pengajuan_inventaris.nama_barang like ? or pengajuan_inventaris.spesifikasi like ? or "+
+                   "pengajuan_inventaris.keterangan like ? or pengajuan_inventaris.nik_pj like ? or peg2.nama like ? or "+
+                   "pengajuan_inventaris.status like ?)")+" order by pengajuan_inventaris.tanggal");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
-                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(27,"%"+TCari.getText().trim()+"%");
-                ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(30,"%"+TCari.getText().trim()+"%");
-                ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(33,"%"+TCari.getText().trim()+"%");
-                ps.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(36,"%"+TCari.getText().trim()+"%");
-                ps.setString(37,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(38,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(39,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,"%"+TCari.getText().trim()+"%");
+                    ps.setString(14,"%"+TCari.getText().trim()+"%");
+                    ps.setString(15,"%"+TCari.getText().trim()+"%");
+                }   
                 rs=ps.executeQuery();
                 i=1;
                 total=0;
@@ -1536,6 +1500,16 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void isHitung(){
         if((!Harga.getText().equals(""))&&(!Jumlah.getText().equals(""))){
             Total.setText(Valid.SetAngka(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())));
+        }
+    }
+
+    private void hapus() {
+        if(Sequel.meghapustf("pengajuan_inventaris","no_pengajuan",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString())==true){
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
+            emptTeks();
+        }else{
+            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
     }
 }

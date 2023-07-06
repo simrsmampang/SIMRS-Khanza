@@ -11,7 +11,6 @@
 
 package keuangan;
 
-import inventaris.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -286,6 +285,10 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         KdPetugasPJ = new widget.TextBox();
         NmPetugasPJ = new widget.TextBox();
         btnPetugasPJ = new widget.Button();
+        jLabel22 = new widget.Label();
+        Keterangan1 = new widget.TextBox();
+        jLabel23 = new widget.Label();
+        Keterangan2 = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setForeground(new java.awt.Color(50, 50, 50));
@@ -515,7 +518,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -529,7 +532,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -601,7 +604,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(72, 205));
+        PanelInput.setPreferredSize(new java.awt.Dimension(72, 235));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
@@ -614,7 +617,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         jLabel8.setBounds(238, 10, 55, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -626,7 +629,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         FormInput.add(Tanggal);
         Tanggal.setBounds(297, 10, 90, 23);
 
-        jLabel5.setText("Latar Belakang :");
+        jLabel5.setText("Uraian :");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
         jLabel5.setBounds(0, 100, 95, 23);
@@ -685,7 +688,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         scrollPane1.setViewportView(LatarBelakang);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(99, 100, 286, 42);
+        scrollPane1.setBounds(99, 100, 306, 42);
 
         jLabel9.setText("Diajukan Oleh :");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -707,12 +710,12 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         scrollPane2.setViewportView(Spesifikasi);
 
         FormInput.add(scrollPane2);
-        scrollPane2.setBounds(484, 100, 286, 42);
+        scrollPane2.setBounds(464, 100, 306, 42);
 
-        jLabel10.setText("Spesifikasi :");
+        jLabel10.setText("Tujuan :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(390, 100, 90, 23);
+        jLabel10.setBounds(410, 100, 50, 23);
 
         jLabel3.setText("No.Pengajuan :");
         jLabel3.setName("jLabel3"); // NOI18N
@@ -799,7 +802,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         jLabel14.setText("Keterangan :");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(428, 150, 75, 23);
+        jLabel14.setBounds(428, 180, 75, 23);
 
         Keterangan.setHighlighter(null);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -809,7 +812,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(507, 150, 263, 23);
+        Keterangan.setBounds(507, 180, 263, 23);
 
         jLabel15.setText("Bidang :");
         jLabel15.setName("jLabel15"); // NOI18N
@@ -846,7 +849,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         jLabel17.setText("P.J.Terkait :");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(0, 150, 95, 23);
+        jLabel17.setBounds(0, 180, 95, 23);
 
         KdPetugasPJ.setEditable(false);
         KdPetugasPJ.setHighlighter(null);
@@ -857,7 +860,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
             }
         });
         FormInput.add(KdPetugasPJ);
-        KdPetugasPJ.setBounds(99, 150, 110, 23);
+        KdPetugasPJ.setBounds(99, 180, 110, 23);
 
         NmPetugasPJ.setEditable(false);
         NmPetugasPJ.setHighlighter(null);
@@ -868,7 +871,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
             }
         });
         FormInput.add(NmPetugasPJ);
-        NmPetugasPJ.setBounds(212, 150, 185, 23);
+        NmPetugasPJ.setBounds(212, 180, 185, 23);
 
         btnPetugasPJ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugasPJ.setMnemonic('2');
@@ -885,7 +888,37 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnPetugasPJ);
-        btnPetugasPJ.setBounds(400, 150, 28, 23);
+        btnPetugasPJ.setBounds(400, 180, 28, 23);
+
+        jLabel22.setText("Lokasi :");
+        jLabel22.setName("jLabel22"); // NOI18N
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(410, 150, 50, 23);
+
+        Keterangan1.setHighlighter(null);
+        Keterangan1.setName("Keterangan1"); // NOI18N
+        Keterangan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Keterangan1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan1);
+        Keterangan1.setBounds(464, 150, 306, 23);
+
+        jLabel23.setText("Target Sasaran :");
+        jLabel23.setName("jLabel23"); // NOI18N
+        FormInput.add(jLabel23);
+        jLabel23.setBounds(0, 150, 95, 23);
+
+        Keterangan2.setHighlighter(null);
+        Keterangan2.setName("Keterangan2"); // NOI18N
+        Keterangan2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Keterangan2KeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan2);
+        Keterangan2.setBounds(99, 150, 306, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -939,7 +972,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Keterangan");
         }else{
-            if(Sequel.menyimpantf("pengajuan_inventaris","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
+            if(Sequel.menyimpantf("pengajuan_biaya","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
                     NoPengajuan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPetugas.getText(),Urgensi.getSelectedItem().toString(),
                     LatarBelakang.getText(),NamaBarang.getText(),Spesifikasi.getText(),Jumlah.getText(),Harga.getText(),
                     Double.toString(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),Keterangan.getText(),
@@ -973,7 +1006,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()> -1){
-            Sequel.meghapus("pengajuan_inventaris","no_pengajuan",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Sequel.meghapus("pengajuan_biaya","no_pengajuan",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             tampil();
             emptTeks();
         }
@@ -1010,7 +1043,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
             Valid.textKosong(Keterangan,"Keterangan");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","no_pengajuan=?,tanggal=?,nik=?,urgensi=?,latar_belakang=?,nama_barang=?,spesifikasi=?,jumlah=?,harga=?,total=?,keterangan=?,nik_pj=?",13,new String[]{
+                if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","no_pengajuan=?,tanggal=?,nik=?,urgensi=?,latar_belakang=?,nama_barang=?,spesifikasi=?,jumlah=?,harga=?,total=?,keterangan=?,nik_pj=?",13,new String[]{
                         NoPengajuan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPetugas.getText(),Urgensi.getSelectedItem().toString(),
                         LatarBelakang.getText(),NamaBarang.getText(),Spesifikasi.getText(),Jumlah.getText(),Harga.getText(),
                         Double.toString(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),Keterangan.getText(),
@@ -1056,25 +1089,25 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptPengajuanInventaris.jasper","report","::[ Data Pengajuan Inventaris ]::",
-                   "select pengajuan_inventaris.no_pengajuan,pengajuan_inventaris.tanggal,pengajuan_inventaris.nik,peg1.nama as namapengaju,"+
-                   "peg1.bidang,peg1.departemen,pengajuan_inventaris.urgensi,pengajuan_inventaris.latar_belakang,pengajuan_inventaris.nama_barang,"+
-                   "pengajuan_inventaris.spesifikasi,pengajuan_inventaris.jumlah,pengajuan_inventaris.harga,pengajuan_inventaris.total,"+
-                   "pengajuan_inventaris.keterangan,pengajuan_inventaris.nik_pj,peg2.nama as namapj,pengajuan_inventaris.status "+
-                   "from pengajuan_inventaris inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_inventaris.nik=peg1.nik "+
-                   "and pengajuan_inventaris.nik_pj=peg2.nik where "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.no_pengajuan like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.nik like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.nama like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.bidang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.departemen like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.urgensi like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.latar_belakang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.nama_barang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.spesifikasi like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.keterangan like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.nik_pj like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg2.nama like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_inventaris.status like '%"+TCari.getText().trim()+"%' order by pengajuan_inventaris.tanggal",param);
+                   "select pengajuan_biaya.no_pengajuan,pengajuan_biaya.tanggal,pengajuan_biaya.nik,peg1.nama as namapengaju,"+
+                   "peg1.bidang,peg1.departemen,pengajuan_biaya.urgensi,pengajuan_biaya.latar_belakang,pengajuan_biaya.nama_barang,"+
+                   "pengajuan_biaya.spesifikasi,pengajuan_biaya.jumlah,pengajuan_biaya.harga,pengajuan_biaya.total,"+
+                   "pengajuan_biaya.keterangan,pengajuan_biaya.nik_pj,peg2.nama as namapj,pengajuan_biaya.status "+
+                   "from pengajuan_biaya inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_biaya.nik=peg1.nik "+
+                   "and pengajuan_biaya.nik_pj=peg2.nik where "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.no_pengajuan like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.nik like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.nama like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.bidang like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.departemen like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.urgensi like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.latar_belakang like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.nama_barang like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.spesifikasi like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.keterangan like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.nik_pj like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg2.nama like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.status like '%"+TCari.getText().trim()+"%' order by pengajuan_biaya.tanggal",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1241,7 +1274,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Proses Pengajuan'",1,new String[]{
+                if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Proses Pengajuan'",1,new String[]{
                         tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                     })==true){
                         tampil();
@@ -1258,7 +1291,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Disetujui'",1,new String[]{
+                if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Disetujui'",1,new String[]{
                         tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                     })==true){
                         tampil();
@@ -1275,7 +1308,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Ditolak'",1,new String[]{
+                if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Ditolak'",1,new String[]{
                         tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                     })==true){
                         tampil();
@@ -1286,6 +1319,14 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         }
     }//GEN-LAST:event_ppDitolakBtnPrintActionPerformed
+
+    private void Keterangan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Keterangan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Keterangan1KeyPressed
+
+    private void Keterangan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Keterangan2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Keterangan2KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1323,6 +1364,8 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.TextBox KdPetugas;
     private widget.TextBox KdPetugasPJ;
     private widget.TextBox Keterangan;
+    private widget.TextBox Keterangan1;
+    private widget.TextBox Keterangan2;
     private widget.Label LCount;
     private widget.Label LCount1;
     private widget.TextArea LatarBelakang;
@@ -1352,6 +1395,8 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel22;
+    private widget.Label jLabel23;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
@@ -1375,25 +1420,25 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                   "select pengajuan_inventaris.no_pengajuan,pengajuan_inventaris.tanggal,pengajuan_inventaris.nik,peg1.nama as namapengaju,"+
-                   "peg1.bidang,peg1.departemen,pengajuan_inventaris.urgensi,pengajuan_inventaris.latar_belakang,pengajuan_inventaris.nama_barang,"+
-                   "pengajuan_inventaris.spesifikasi,pengajuan_inventaris.jumlah,pengajuan_inventaris.harga,pengajuan_inventaris.total,"+
-                   "pengajuan_inventaris.keterangan,pengajuan_inventaris.nik_pj,peg2.nama as namapj,pengajuan_inventaris.status "+
-                   "from pengajuan_inventaris inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_inventaris.nik=peg1.nik "+
-                   "and pengajuan_inventaris.nik_pj=peg2.nik where "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.no_pengajuan like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.nik like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and peg1.nama like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and peg1.bidang like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and peg1.departemen like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.urgensi like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.latar_belakang like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.nama_barang like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.spesifikasi like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.keterangan like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.nik_pj like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and peg2.nama like ? or "+
-                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.status like ? order by pengajuan_inventaris.tanggal");
+                   "select pengajuan_biaya.no_pengajuan,pengajuan_biaya.tanggal,pengajuan_biaya.nik,peg1.nama as namapengaju,"+
+                   "peg1.bidang,peg1.departemen,pengajuan_biaya.urgensi,pengajuan_biaya.latar_belakang,pengajuan_biaya.nama_barang,"+
+                   "pengajuan_biaya.spesifikasi,pengajuan_biaya.jumlah,pengajuan_biaya.harga,pengajuan_biaya.total,"+
+                   "pengajuan_biaya.keterangan,pengajuan_biaya.nik_pj,peg2.nama as namapj,pengajuan_biaya.status "+
+                   "from pengajuan_biaya inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_biaya.nik=peg1.nik "+
+                   "and pengajuan_biaya.nik_pj=peg2.nik where "+
+                   "pengajuan_biaya.tanggal between ? and ? and pengajuan_biaya.no_pengajuan like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and pengajuan_biaya.nik like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and peg1.nama like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and peg1.bidang like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and peg1.departemen like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and pengajuan_biaya.urgensi like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and pengajuan_biaya.latar_belakang like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and pengajuan_biaya.nama_barang like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and pengajuan_biaya.spesifikasi like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and pengajuan_biaya.keterangan like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and pengajuan_biaya.nik_pj like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and peg2.nama like ? or "+
+                   "pengajuan_biaya.tanggal between ? and ? and pengajuan_biaya.status like ? order by pengajuan_biaya.tanggal");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -1503,7 +1548,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,205));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,235));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1530,8 +1575,8 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pengajuan_inventaris.no_pengajuan,3),signed)),0) from pengajuan_inventaris where pengajuan_inventaris.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "PI"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPengajuan); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pengajuan_biaya.no_pengajuan,3),signed)),0) from pengajuan_biaya where pengajuan_biaya.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+                "PK"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPengajuan); 
     }
     
     private void isHitung(){

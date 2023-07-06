@@ -700,6 +700,7 @@ import kepegawaian.DlgAuditSterilisasiAlat;
 import keuangan.DlgLhtBankJabar;
 import keuangan.DlgLhtBankPapua;
 import keuangan.DlgRekapBiayaRegistrasi;
+import keuangan.KeuanganPengajuanBiaya;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -20379,6 +20380,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPengajuanBiayaKuanganActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganPengajuanBiaya form=new KeuanganPengajuanBiaya(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     
     /**
     * @param args the command line arguments
@@ -21055,7 +21067,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
-            btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD;
+            btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan;
     
     public void isWall(){
         try{            
@@ -23353,6 +23365,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbayar_jm_dokter()==true){
                 Panelmenu.add(btnBayarJMDokter);
+                jmlmenu++;
+            }
+            
+            if(akses.getpengajuan_biaya()==true){
+                Panelmenu.add(btnPengajuanBiayaKuangan);
                 jmlmenu++;
             }
 
@@ -28109,6 +28126,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbayar_jm_dokter()==true){
             Panelmenu.add(btnBayarJMDokter);
+            jmlmenu++;
+        }
+        
+        if(akses.getpengajuan_biaya()==true){
+            Panelmenu.add(btnPengajuanBiayaKuangan);
             jmlmenu++;
         }
 
@@ -33728,6 +33750,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbayar_jm_dokter()==true){
             if(btnBayarJMDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarJMDokter);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpengajuan_biaya()==true){
+            if(btnPengajuanBiayaKuangan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengajuanBiayaKuangan);
                 jmlmenu++;
             }                
         }
@@ -41278,5 +41307,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDataFollowUpDBD.setName("btnDataFollowUpDBD"); 
         btnDataFollowUpDBD.setPreferredSize(new java.awt.Dimension(200, 90));
         btnDataFollowUpDBD.addActionListener(this::btnDataFollowUpDBDActionPerformed);
+        
+        btnPengajuanBiayaKuangan = new widget.ButtonBig();
+        btnPengajuanBiayaKuangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7013431_file_document_finance_business_laptop_icon.png"))); 
+        btnPengajuanBiayaKuangan.setText("Pengajuan Biaya");
+        btnPengajuanBiayaKuangan.setIconTextGap(0);
+        btnPengajuanBiayaKuangan.setName("btnPengajuanBiayaKuangan"); 
+        btnPengajuanBiayaKuangan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengajuanBiayaKuangan.addActionListener(this::btnPengajuanBiayaKuanganActionPerformed);
     }
 }
