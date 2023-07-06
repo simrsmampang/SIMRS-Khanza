@@ -231,7 +231,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Catatan ADIME Gizi","[K]Pengajuan Biaya","[M]Penilaian Awal Keperawatan Ralan Geriatri","[M]Master Masalah Keperawatan Geriatri","[M]Master Rencana Keperawatan Geriatri",
                 "[M]Check List Kriteria Masuk HCU","[M]Check List Kriteria Keluar HCU","[M]Penilaian Risiko Dekubitus","[P]Master Menolak Anjuran Medis","[P]Penolakan Anjuran Medis",
                 "[J]Laporan Tahunan Penolakan Anjuran Medis","[M]Master Template Laporan Operasi","[M]Dokumentasi Tindakan ESWL","[M]Check List Kriteria Masuk ICU",
-                "[M]Check List Kriteria Keluar ICU","[A]Akses Ke Dokter Lain Rawat Jalan","[M]Follow Up DBD","[M]Penilaian Risiko Jatuh Neonatus"
+                "[M]Check List Kriteria Keluar ICU","[A]Akses Ke Dokter Lain Rawat Jalan","[M]Follow Up DBD","[M]Penilaian Lanjutan Risiko Jatuh Neonatus"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -2857,7 +2857,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(94);
                     break;
                 case 963:
-                    column.setPreferredWidth(179);
+                    column.setPreferredWidth(225);
                     break;
                 default:
                     column.setPreferredWidth(135);
@@ -3088,7 +3088,7 @@ public class DlgUser extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(TPass);
-        TPass.setBounds(511, 12, 180, 23);
+        TPass.setBounds(512, 12, 180, 23);
 
         BtnSeek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek.setMnemonic('1');

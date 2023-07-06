@@ -4022,8 +4022,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[M]Follow Up DBD",follow_up_dbd});
         }
         
-        if("[M]Penilaian Risiko Jatuh Neonatus".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[M]Penilaian Risiko Jatuh Neonatus",penilaian_risiko_jatuh_neonatus});
+        if("[M]Penilaian Lanjutan Risiko Jatuh Neonatus".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Penilaian Lanjutan Risiko Jatuh Neonatus",penilaian_risiko_jatuh_neonatus});
         }
         
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7877,7 +7877,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","follow_up_dbd='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[M]Penilaian Risiko Jatuh Neonatus".equals(tbUser.getValueAt(i,1).toString())){
+            if("[M]Penilaian Lanjutan Risiko Jatuh Neonatus".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_risiko_jatuh_neonatus='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
