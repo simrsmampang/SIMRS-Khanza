@@ -1234,11 +1234,24 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Proses Pengajuan'",1,new String[]{
-                        tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                    })==true){
-                        tampil();
-                        emptTeks();
+                if(akses.getkode().equals("Admin Utama")){
+                    if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Proses Pengajuan'",1,new String[]{
+                            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                        })==true){
+                            tampil();
+                            emptTeks();
+                    }
+                }else {
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                        if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Proses Pengajuan'",1,new String[]{
+                                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                            })==true){
+                                tampil();
+                                emptTeks();
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Harus oleh P.J.Terkait sesuai user login..!!");
+                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
@@ -1251,11 +1264,24 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Disetujui'",1,new String[]{
-                        tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                    })==true){
-                        tampil();
-                        emptTeks();
+                if(akses.getkode().equals("Admin Utama")){
+                    if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Disetujui'",1,new String[]{
+                            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                        })==true){
+                            tampil();
+                            emptTeks();
+                    }
+                }else {
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                        if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Disetujui'",1,new String[]{
+                                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                            })==true){
+                                tampil();
+                                emptTeks();
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Harus oleh P.J.Terkait sesuai user login..!!");
+                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
@@ -1268,11 +1294,24 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Ditolak'",1,new String[]{
-                        tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                    })==true){
-                        tampil();
-                        emptTeks();
+                if(akses.getkode().equals("Admin Utama")){
+                    if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Ditolak'",1,new String[]{
+                            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                        })==true){
+                            tampil();
+                            emptTeks();
+                    }
+                }else {
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                        if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Ditolak'",1,new String[]{
+                                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                            })==true){
+                                tampil();
+                                emptTeks();
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Harus oleh P.J.Terkait sesuai user login..!!");
+                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
