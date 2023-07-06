@@ -88,13 +88,13 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(70);
             }else if(i==7){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(180);
             }else if(i==8){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(180);
             }else if(i==9){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(150);
             }else if(i==10){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(150);
             }else if(i==11){
                 column.setPreferredWidth(35);
             }else if(i==12){
@@ -1085,26 +1085,17 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptPengajuanInventaris.jasper","report","::[ Data Pengajuan Inventaris ]::",
+            Valid.MyReportqry("rptPengajuanBiaya.jasper","report","::[ Data Pengajuan Biaya ]::",
                    "select pengajuan_biaya.no_pengajuan,pengajuan_biaya.tanggal,pengajuan_biaya.nik,peg1.nama as namapengaju,"+
-                   "peg1.bidang,peg1.departemen,pengajuan_biaya.urgensi,pengajuan_biaya.latar_belakang,pengajuan_biaya.nama_barang,"+
-                   "pengajuan_biaya.spesifikasi,pengajuan_biaya.jumlah,pengajuan_biaya.harga,pengajuan_biaya.total,"+
-                   "pengajuan_biaya.keterangan,pengajuan_biaya.nik_pj,peg2.nama as namapj,pengajuan_biaya.status "+
+                   "peg1.bidang,peg1.departemen,pengajuan_biaya.urgensi,pengajuan_biaya.uraian_latar_belakang,pengajuan_biaya.tujuan_pengajuan,"+
+                   "pengajuan_biaya.target_sasaran,pengajuan_biaya.lokasi_kegiatan,pengajuan_biaya.jumlah,pengajuan_biaya.harga,"+
+                   "pengajuan_biaya.total,pengajuan_biaya.keterangan,pengajuan_biaya.nik_pj,peg2.nama as namapj,pengajuan_biaya.status "+
                    "from pengajuan_biaya inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_biaya.nik=peg1.nik "+
-                   "and pengajuan_biaya.nik_pj=peg2.nik where "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.no_pengajuan like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.nik like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.nama like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.bidang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg1.departemen like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.urgensi like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.latar_belakang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.nama_barang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.spesifikasi like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.keterangan like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.nik_pj like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and peg2.nama like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pengajuan_biaya.status like '%"+TCari.getText().trim()+"%' order by pengajuan_biaya.tanggal",param);
+                   "and pengajuan_biaya.nik_pj=peg2.nik where pengajuan_biaya.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
+                   (TCari.getText().trim().equals("")?"":"and (pengajuan_biaya.no_pengajuan like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.nik like '%"+TCari.getText().trim()+"%' or peg1.nama like '%"+TCari.getText().trim()+"%' or "+
+                   "peg1.bidang like '%"+TCari.getText().trim()+"%' or peg1.departemen like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.urgensi like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.uraian_latar_belakang like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tujuan_pengajuan like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.lokasi_kegiatan like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.keterangan like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.nik_pj like '%"+TCari.getText().trim()+"%' or peg2.nama like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.status like '%"+TCari.getText().trim()+"%')")+" order by pengajuan_biaya.tanggal",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1420,7 +1411,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                    (TCari.getText().trim().equals("")?"":"and (pengajuan_biaya.no_pengajuan like ? or pengajuan_biaya.nik like ? or peg1.nama like ? or "+
                    "peg1.bidang like ? or peg1.departemen like ? or pengajuan_biaya.urgensi like ? or pengajuan_biaya.uraian_latar_belakang like ? or "+
                    "pengajuan_biaya.tujuan_pengajuan like ? or pengajuan_biaya.lokasi_kegiatan like ? or pengajuan_biaya.keterangan like ? or "+
-                   "pengajuan_biaya.nik_pj like ? or peg2.nama like ? or and pengajuan_biaya.status like ?)")+" order by pengajuan_biaya.tanggal");
+                   "pengajuan_biaya.nik_pj like ? or peg2.nama like ? or pengajuan_biaya.status like ?)")+" order by pengajuan_biaya.tanggal");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -1495,13 +1486,15 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             Departemen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             Urgensi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             Uraian.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Tujuan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Jumlah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Harga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Total.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            KdPetugasPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            NmPetugasPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Tujuan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            TargetSasaran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Lokasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Jumlah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Harga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Total.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            KdPetugasPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            NmPetugasPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
         }
     }
 
