@@ -859,6 +859,7 @@ import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMPenilaianRisikoDekubitus;
+import rekammedis.RMPenilaianRisikoJatuhNeonatus;
 import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
@@ -20392,6 +20393,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianRisikoJatuhNeonatusActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianRisikoJatuhNeonatus aplikasi=new RMPenilaianRisikoJatuhNeonatus(this,false);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21067,7 +21081,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
-            btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan;
+            btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan,btnPenilaianRisikoJatuhNeonatus;
     
     public void isWall(){
         try{            
@@ -24679,6 +24693,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_lanjutan_resiko_jatuh_lansia()==true){
                 Panelmenu.add(btnPenilaianRisikoJatuhLansia);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
+                Panelmenu.add(btnPenilaianRisikoJatuhNeonatus);
                 jmlmenu++;
             }
             
@@ -29438,6 +29457,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_lanjutan_resiko_jatuh_lansia()==true){
             Panelmenu.add(btnPenilaianRisikoJatuhLansia);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
+            Panelmenu.add(btnPenilaianRisikoJatuhNeonatus);
             jmlmenu++;
         }
         
@@ -35587,6 +35611,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
+            if(btnPenilaianRisikoJatuhNeonatus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianRisikoJatuhNeonatus);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_risiko_dekubitus()==true){
             if(btnPenilaianRisikoDekubitus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianRisikoDekubitus);
@@ -41315,5 +41346,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPengajuanBiayaKuangan.setName("btnPengajuanBiayaKuangan"); 
         btnPengajuanBiayaKuangan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPengajuanBiayaKuangan.addActionListener(this::btnPengajuanBiayaKuanganActionPerformed);
+        
+        btnPenilaianRisikoJatuhNeonatus = new widget.ButtonBig();
+        btnPenilaianRisikoJatuhNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7717236_hand_baby_kid_motherhood_mothers_icon.png"))); 
+        btnPenilaianRisikoJatuhNeonatus.setText("Penilaian Lanjutan Risiko Jatuh Neonatus");
+        btnPenilaianRisikoJatuhNeonatus.setIconTextGap(0);
+        btnPenilaianRisikoJatuhNeonatus.setName("btnPenilaianRisikoJatuhNeonatus"); 
+        btnPenilaianRisikoJatuhNeonatus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianRisikoJatuhNeonatus.addActionListener(this::btnPenilaianRisikoJatuhNeonatusActionPerformed);
     }
 }

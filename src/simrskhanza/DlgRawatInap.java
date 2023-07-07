@@ -89,6 +89,7 @@ import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMPenilaianRisikoDekubitus;
+import rekammedis.RMPenilaianRisikoJatuhNeonatus;
 import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
@@ -1307,6 +1308,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnPenilaianLanjutanResikoJatuhDewasa = new widget.Button();
         BtnPenilaianLanjutanResikoJatuhAnak = new widget.Button();
         BtnPenilaianLanjutanResikoJatuhLansia = new widget.Button();
+        BtnPenilaianLanjutanResikoJatuhNeonatus = new widget.Button();
         BtnPenilaianResikoDekubitus = new widget.Button();
         BtnHasilPemeriksaanUSG = new widget.Button();
         BtnDokumentasiESWL = new widget.Button();
@@ -1546,7 +1548,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1560,7 +1562,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3213,7 +3215,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TPasien.setBounds(283, 10, 260, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2023" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2023" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3857,6 +3859,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnPenilaianLanjutanResikoJatuhLansia);
+
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setText("Lanjutan Risiko Jatuh Neonatus");
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setFocusPainted(false);
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setName("BtnPenilaianLanjutanResikoJatuhNeonatus"); // NOI18N
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setRoundRect(false);
+        BtnPenilaianLanjutanResikoJatuhNeonatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPenilaianLanjutanResikoJatuhNeonatusActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnPenilaianLanjutanResikoJatuhNeonatus);
 
         BtnPenilaianResikoDekubitus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnPenilaianResikoDekubitus.setText("Risiko Dekubitus");
@@ -8028,6 +8047,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnFollowUpDBDActionPerformed
 
+    private void BtnPenilaianLanjutanResikoJatuhNeonatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenilaianLanjutanResikoJatuhNeonatusActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianRisikoJatuhNeonatus form=new RMPenilaianRisikoJatuhNeonatus(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPenilaianLanjutanResikoJatuhNeonatusActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8093,6 +8130,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPenilaianLanjutanResikoJatuhAnak;
     private widget.Button BtnPenilaianLanjutanResikoJatuhDewasa;
     private widget.Button BtnPenilaianLanjutanResikoJatuhLansia;
+    private widget.Button BtnPenilaianLanjutanResikoJatuhNeonatus;
     private widget.Button BtnPenilaianPasienPenyakitMenular;
     private widget.Button BtnPenilaianPasienTerminal;
     private widget.Button BtnPenilaianPreAnestesi;
@@ -8977,6 +9015,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnFollowUpDBD.setVisible(akses.getfollow_up_dbd()); 
         if(akses.getfollow_up_dbd()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setVisible(akses.getpenilaian_risiko_jatuh_neonatus()); 
+        if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));
