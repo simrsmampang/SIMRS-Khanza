@@ -140,7 +140,7 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
                 if(pegawai.getTable().getSelectedRow()!= -1){  
                     KodePetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
                     NamaPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
-                    btnDokterBedah.requestFocus();
+                    btnPetugas.requestFocus();
                 }  
                     
             }
@@ -227,7 +227,7 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
         jLabel23 = new widget.Label();
         KodePetugas = new widget.TextBox();
         NamaPetugas = new widget.TextBox();
-        btnDokterBedah = new widget.Button();
+        btnPetugas = new widget.Button();
         Prioritas1_5 = new widget.ComboBox();
         jLabel58 = new widget.Label();
         jLabel5 = new widget.Label();
@@ -729,22 +729,22 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
         FormInput.add(NamaPetugas);
         NamaPetugas.setBounds(514, 40, 245, 23);
 
-        btnDokterBedah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnDokterBedah.setMnemonic('2');
-        btnDokterBedah.setToolTipText("ALt+2");
-        btnDokterBedah.setName("btnDokterBedah"); // NOI18N
-        btnDokterBedah.addActionListener(new java.awt.event.ActionListener() {
+        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPetugas.setMnemonic('2');
+        btnPetugas.setToolTipText("ALt+2");
+        btnPetugas.setName("btnPetugas"); // NOI18N
+        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDokterBedahActionPerformed(evt);
+                btnPetugasActionPerformed(evt);
             }
         });
-        btnDokterBedah.addKeyListener(new java.awt.event.KeyAdapter() {
+        btnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnDokterBedahKeyPressed(evt);
+                btnPetugasKeyPressed(evt);
             }
         });
-        FormInput.add(btnDokterBedah);
-        btnDokterBedah.setBounds(761, 40, 28, 23);
+        FormInput.add(btnPetugas);
+        btnPetugas.setBounds(761, 40, 28, 23);
 
         Prioritas1_5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Prioritas1_5.setSelectedIndex(1);
@@ -1644,7 +1644,7 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnPetugas,"DPJP/Dokter Jaga/IGD");
         }else{
             if(Sequel.menyimpantf("checklist_kriteria_masuk_icu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",42,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Prioritas1_1.getSelectedItem().toString(),
@@ -1724,7 +1724,7 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnPetugas,"DPJP/Dokter Jaga/IGD");
         }else{  
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -2033,19 +2033,19 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-       Valid.pindah(evt,TCari,btnDokterBedah);
+       Valid.pindah(evt,TCari,btnPetugas);
     }//GEN-LAST:event_TanggalKeyPressed
 
-    private void btnDokterBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterBedahActionPerformed
+    private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         pegawai.emptTeks();
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setVisible(true);
-    }//GEN-LAST:event_btnDokterBedahActionPerformed
+    }//GEN-LAST:event_btnPetugasActionPerformed
 
-    private void btnDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDokterBedahKeyPressed
+    private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
        Valid.pindah(evt,Tanggal,Prioritas1_1);
-    }//GEN-LAST:event_btnDokterBedahKeyPressed
+    }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void Prioritas1_5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_5KeyPressed
        Valid.pindah(evt,Prioritas1_4,Prioritas1_6);
@@ -2064,7 +2064,7 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
     }//GEN-LAST:event_Prioritas1_3KeyPressed
 
     private void Prioritas1_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_1KeyPressed
-        Valid.pindah(evt,btnDokterBedah,Prioritas1_2);
+        Valid.pindah(evt,btnPetugas,Prioritas1_2);
     }//GEN-LAST:event_Prioritas1_1KeyPressed
 
     private void Prioritas1_4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_4KeyPressed
@@ -2285,7 +2285,7 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
     private widget.ComboBox TandaVital5;
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
-    private widget.Button btnDokterBedah;
+    private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel100;
     private widget.Label jLabel101;
@@ -2635,6 +2635,11 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getchecklist_kriteria_masuk_icu());
         BtnEdit.setEnabled(akses.getchecklist_kriteria_masuk_icu());
         BtnPrint.setEnabled(akses.getchecklist_kriteria_masuk_icu()); 
+        if(akses.getjml2()>=1){
+            btnPetugas.setEnabled(false);
+            KodePetugas.setText(akses.getkode());
+            NamaPetugas.setText(pegawai.tampil3(akses.getkode()));
+        }
     }
 
     private void ganti() {

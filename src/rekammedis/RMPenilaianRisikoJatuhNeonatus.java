@@ -15,6 +15,8 @@ import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -24,11 +26,13 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -140,7 +144,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                 if(pegawai.getTable().getSelectedRow()!= -1){  
                     KodePetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
                     NamaPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
-                    btnDokterBedah.requestFocus();
+                    btnPetugas.requestFocus();
                 }  
                     
             }
@@ -156,6 +160,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         
         ChkInput.setSelected(false);
         isForm();
+        jam();
         
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
@@ -226,7 +231,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jLabel23 = new widget.Label();
         KodePetugas = new widget.TextBox();
         NamaPetugas = new widget.TextBox();
-        btnDokterBedah = new widget.Button();
+        btnPetugas = new widget.Button();
         Intervensi6 = new widget.ComboBox();
         jLabel58 = new widget.Label();
         jLabel5 = new widget.Label();
@@ -670,22 +675,22 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(NamaPetugas);
         NamaPetugas.setBounds(570, 40, 187, 23);
 
-        btnDokterBedah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnDokterBedah.setMnemonic('2');
-        btnDokterBedah.setToolTipText("ALt+2");
-        btnDokterBedah.setName("btnDokterBedah"); // NOI18N
-        btnDokterBedah.addActionListener(new java.awt.event.ActionListener() {
+        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPetugas.setMnemonic('2');
+        btnPetugas.setToolTipText("ALt+2");
+        btnPetugas.setName("btnPetugas"); // NOI18N
+        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDokterBedahActionPerformed(evt);
+                btnPetugasActionPerformed(evt);
             }
         });
-        btnDokterBedah.addKeyListener(new java.awt.event.KeyAdapter() {
+        btnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnDokterBedahKeyPressed(evt);
+                btnPetugasKeyPressed(evt);
             }
         });
-        FormInput.add(btnDokterBedah);
-        btnDokterBedah.setBounds(761, 40, 28, 23);
+        FormInput.add(btnPetugas);
+        btnPetugas.setBounds(761, 40, 28, 23);
 
         Intervensi6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Intervensi6.setName("Intervensi6"); // NOI18N
@@ -1009,6 +1014,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jLabel78.setBounds(0, 340, 77, 23);
 
         Sasaran1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Sasaran1.setSelectedIndex(1);
         Sasaran1.setName("Sasaran1"); // NOI18N
         Sasaran1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1019,6 +1025,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         Sasaran1.setBounds(81, 340, 80, 23);
 
         Sasaran3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Sasaran3.setSelectedIndex(1);
         Sasaran3.setName("Sasaran3"); // NOI18N
         Sasaran3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1039,6 +1046,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jLabel80.setBounds(615, 340, 90, 23);
 
         Sasaran4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Sasaran4.setSelectedIndex(1);
         Sasaran4.setName("Sasaran4"); // NOI18N
         Sasaran4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1125,6 +1133,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jLabel85.setBounds(0, 420, 151, 23);
 
         Evaluasi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Evaluasi4.setSelectedIndex(1);
         Evaluasi4.setName("Evaluasi4"); // NOI18N
         Evaluasi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1315,7 +1324,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnPetugas,"DPJP/Dokter Jaga/IGD");
         }else{  
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1580,107 +1589,107 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void btnDokterBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterBedahActionPerformed
+    private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         pegawai.emptTeks();
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setVisible(true);
-    }//GEN-LAST:event_btnDokterBedahActionPerformed
+    }//GEN-LAST:event_btnPetugasActionPerformed
 
-    private void btnDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDokterBedahKeyPressed
+    private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
        Valid.pindah(evt,Tanggal,Intervensi1);
-    }//GEN-LAST:event_btnDokterBedahKeyPressed
+    }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void Intervensi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi6KeyPressed
-       Valid.pindah(evt,Intervensi3,Intervensi5);
+       Valid.pindah(evt,Intervensi5,Intervensi7);
     }//GEN-LAST:event_Intervensi6KeyPressed
 
     private void Intervensi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi5KeyPressed
-       // Valid.pindah(evt,Kardiologi5,Pernapasan1);
+       Valid.pindah(evt,Intervensi4,Intervensi6);
     }//GEN-LAST:event_Intervensi5KeyPressed
 
     private void Intervensi9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi9KeyPressed
-        Valid.pindah(evt,Intervensi1,Intervensi4);
+        Valid.pindah(evt,Intervensi8,Edukasi1);
     }//GEN-LAST:event_Intervensi9KeyPressed
 
     private void Intervensi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi4KeyPressed
-        Valid.pindah(evt,Intervensi9,Intervensi3);
+        Valid.pindah(evt,Intervensi3,Intervensi5);
     }//GEN-LAST:event_Intervensi4KeyPressed
 
     private void Intervensi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi1KeyPressed
-        Valid.pindah(evt,btnDokterBedah,Intervensi9);
+        Valid.pindah(evt,btnPetugas,Intervensi2);
     }//GEN-LAST:event_Intervensi1KeyPressed
 
     private void Intervensi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi3KeyPressed
-        Valid.pindah(evt,Intervensi4,Intervensi6);
+        Valid.pindah(evt,Intervensi2,Intervensi4);
     }//GEN-LAST:event_Intervensi3KeyPressed
 
     private void Intervensi8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi8KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Intervensi7,Intervensi9);
     }//GEN-LAST:event_Intervensi8KeyPressed
 
     private void Intervensi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi7KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Intervensi6,Intervensi8);
     }//GEN-LAST:event_Intervensi7KeyPressed
 
     private void Intervensi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Intervensi1,Intervensi3);
     }//GEN-LAST:event_Intervensi2KeyPressed
 
     private void Edukasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Intervensi9,Edukasi2);
     }//GEN-LAST:event_Edukasi1KeyPressed
 
     private void Edukasi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Edukasi4,Sasaran1);
     }//GEN-LAST:event_Edukasi5KeyPressed
 
     private void Edukasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Edukasi2,Edukasi4);
     }//GEN-LAST:event_Edukasi3KeyPressed
 
     private void Edukasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Edukasi1,Edukasi3);
     }//GEN-LAST:event_Edukasi2KeyPressed
 
     private void Edukasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Edukasi3,Edukasi5);
     }//GEN-LAST:event_Edukasi4KeyPressed
 
     private void Sasaran2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Sasaran2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sasaran1,Sasaran3);
     }//GEN-LAST:event_Sasaran2KeyPressed
 
     private void Sasaran1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Sasaran1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Edukasi5,Sasaran2);
     }//GEN-LAST:event_Sasaran1KeyPressed
 
     private void Sasaran3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Sasaran3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sasaran2,Sasaran4);
     }//GEN-LAST:event_Sasaran3KeyPressed
 
     private void Sasaran4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Sasaran4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sasaran3,Evaluasi1);
     }//GEN-LAST:event_Sasaran4KeyPressed
 
     private void Evaluasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sasaran4,Evaluasi2);
     }//GEN-LAST:event_Evaluasi1KeyPressed
 
     private void Evaluasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Evaluasi2,Evaluasi4);
     }//GEN-LAST:event_Evaluasi3KeyPressed
 
     private void Evaluasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Evaluasi1,Evaluasi3);
     }//GEN-LAST:event_Evaluasi2KeyPressed
 
     private void Evaluasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Evaluasi3,BtnSimpan);
     }//GEN-LAST:event_Evaluasi4KeyPressed
 
     private void DetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikKeyPressed
-        //Valid.pindah(evt,Menit,btnPetugas);
+        Valid.pindah(evt,Menit,btnPetugas);
     }//GEN-LAST:event_DetikKeyPressed
 
     private void MenitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenitKeyPressed
@@ -1764,7 +1773,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
     private widget.TextBox TglLahir;
-    private widget.Button btnDokterBedah;
+    private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel19;
@@ -1905,30 +1914,30 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        /*Kardiologi1.setSelectedItem("Tidak");
-        Kardiologi2.setSelectedItem("Tidak");
-        Kardiologi3.setSelectedItem("Tidak");
-        Kardiologi4.setSelectedItem("Tidak");
-        Kardiologi5.setSelectedItem("Tidak");
-        Kardiologi6.setSelectedItem("Tidak");
-        Pernapasan1.setSelectedItem("Tidak");
-        Pernapasan2.setSelectedItem("Tidak");
-        Pernapasan3.setSelectedItem("Tidak");
-        Syaraf1.setSelectedItem("Tidak");
-        Syaraf2.setSelectedItem("Tidak");
-        Syaraf3.setSelectedItem("Tidak");
-        Syaraf4.setSelectedItem("Tidak");
-        Pencernaan1.setSelectedItem("Tidak");
-        Pencernaan2.setSelectedItem("Tidak");
-        Pencernaan3.setSelectedItem("Tidak");
-        Pencernaan4.setSelectedItem("Tidak");
-        Pembedahan1.setSelectedItem("Tidak");
-        Pembedahan2.setSelectedItem("Tidak");
-        Hematologi1.setSelectedItem("Tidak");
-        Hematologi2.setSelectedItem("Tidak");
-        Infeksi.setSelectedItem("Tidak");
+        Intervensi1.setSelectedItem("Ya");
+        Intervensi2.setSelectedItem("Ya");
+        Intervensi3.setSelectedItem("Ya");
+        Intervensi4.setSelectedItem("Ya");
+        Intervensi5.setSelectedItem("Ya");
+        Intervensi6.setSelectedItem("Ya");
+        Intervensi7.setSelectedItem("Ya");
+        Intervensi8.setSelectedItem("Ya");
+        Intervensi9.setSelectedItem("Ya");
+        Edukasi1.setSelectedItem("Ya");
+        Edukasi2.setSelectedItem("Ya");
+        Edukasi3.setSelectedItem("Ya");
+        Edukasi4.setSelectedItem("Ya");
+        Edukasi5.setSelectedItem("Ya");
+        Sasaran1.setSelectedItem("Tidak");
+        Sasaran2.setSelectedItem("Ya");
+        Sasaran3.setSelectedItem("Tidak");
+        Sasaran4.setSelectedItem("Tidak");
+        Evaluasi1.setSelectedItem("Ya");
+        Evaluasi2.setSelectedItem("Ya");
+        Evaluasi3.setSelectedItem("Ya");
+        Evaluasi4.setSelectedItem("Tidak");
         Tanggal.setDate(new Date());
-        Kardiologi1.requestFocus();*/
+        Intervensi1.requestFocus();
     } 
 
     private void getData() {
@@ -2030,6 +2039,16 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getpenilaian_risiko_jatuh_neonatus());
         BtnEdit.setEnabled(akses.getpenilaian_risiko_jatuh_neonatus());
         BtnPrint.setEnabled(akses.getpenilaian_risiko_jatuh_neonatus()); 
+        if(akses.getjml2()>=1){
+            KodePetugas.setEditable(false);
+            btnPetugas.setEnabled(false);
+            KodePetugas.setText(akses.getkode());
+            NamaPetugas.setText(pegawai.tampil3(KodePetugas.getText()));
+            if(NamaPetugas.getText().equals("")){
+                KodePetugas.setText("");
+                JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
+            }
+        } 
     }
 
     private void ganti() {
@@ -2087,5 +2106,58 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
+    }
+    
+    private void jam(){
+        ActionListener taskPerformer = new ActionListener(){
+            private int nilai_jam;
+            private int nilai_menit;
+            private int nilai_detik;
+            public void actionPerformed(ActionEvent e) {
+                String nol_jam = "";
+                String nol_menit = "";
+                String nol_detik = "";
+                
+                Date now = Calendar.getInstance().getTime();
+
+                // Mengambil nilaj JAM, MENIT, dan DETIK Sekarang
+                if(ChkKejadian.isSelected()==true){
+                    nilai_jam = now.getHours();
+                    nilai_menit = now.getMinutes();
+                    nilai_detik = now.getSeconds();
+                }else if(ChkKejadian.isSelected()==false){
+                    nilai_jam =Jam.getSelectedIndex();
+                    nilai_menit =Menit.getSelectedIndex();
+                    nilai_detik =Detik.getSelectedIndex();
+                }
+
+                // Jika nilai JAM lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_jam <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_jam = "0";
+                }
+                // Jika nilai MENIT lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_menit <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_menit = "0";
+                }
+                // Jika nilai DETIK lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_detik <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_detik = "0";
+                }
+                // Membuat String JAM, MENIT, DETIK
+                String jam = nol_jam + Integer.toString(nilai_jam);
+                String menit = nol_menit + Integer.toString(nilai_menit);
+                String detik = nol_detik + Integer.toString(nilai_detik);
+                // Menampilkan pada Layar
+                //tampil_jam.setText("  " + jam + " : " + menit + " : " + detik + "  ");
+                Jam.setSelectedItem(jam);
+                Menit.setSelectedItem(menit);
+                Detik.setSelectedItem(detik);
+            }
+        };
+        // Timer
+        new Timer(1240, taskPerformer).start();
     }
 }

@@ -659,18 +659,18 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.Button" name="btnDokterBedah">
+                    <Component class="widget.Button" name="btnPetugas">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/picture/190.png"/>
                         </Property>
                         <Property name="mnemonic" type="int" value="50"/>
                         <Property name="toolTipText" type="java.lang.String" value="ALt+2"/>
-                        <Property name="name" type="java.lang.String" value="btnDokterBedah" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="btnPetugas" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDokterBedahActionPerformed"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnDokterBedahKeyPressed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPetugasActionPerformed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnPetugasKeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1382,6 +1382,7 @@
                             <StringItem index="1" value="Tidak"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Sasaran1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1401,6 +1402,7 @@
                             <StringItem index="1" value="Tidak"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Sasaran3" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1442,6 +1444,7 @@
                             <StringItem index="1" value="Tidak"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Sasaran4" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1632,6 +1635,7 @@
                             <StringItem index="1" value="Tidak"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Evaluasi4" noResource="true"/>
                       </Properties>
                       <Events>

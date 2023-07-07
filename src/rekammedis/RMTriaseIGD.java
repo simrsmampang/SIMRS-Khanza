@@ -5135,7 +5135,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             btnSekunderPetugas.setEnabled(false);
             PrimerKodePetugas.setText(akses.getkode());
             SekunderKodePetugas.setText(akses.getkode());
-            Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", PrimerNamaPetugas,PrimerKodePetugas.getText());
+            PrimerNamaPetugas.setText(pegawai.tampil3(akses.getkode()));
             SekunderNamaPetugas.setText(PrimerNamaPetugas.getText());
         } 
     }
@@ -5645,7 +5645,6 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             FormMenu.setVisible(false);  
             ScrollHTML.setVisible(false);
             ChkAccor.setVisible(true);
-            
         }
     }
 
