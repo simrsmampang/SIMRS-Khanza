@@ -188,7 +188,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaMasukHCU = new javax.swing.JMenuItem();
+        MnPenilaianRisikoJatuh = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -303,19 +303,19 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnKriteriaMasukHCU.setBackground(new java.awt.Color(255, 255, 254));
-        MnKriteriaMasukHCU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKriteriaMasukHCU.setForeground(new java.awt.Color(50, 50, 50));
-        MnKriteriaMasukHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaMasukHCU.setText("Formulir Checklist Kriteria Masuk HCU");
-        MnKriteriaMasukHCU.setName("MnKriteriaMasukHCU"); // NOI18N
-        MnKriteriaMasukHCU.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnKriteriaMasukHCU.addActionListener(new java.awt.event.ActionListener() {
+        MnPenilaianRisikoJatuh.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianRisikoJatuh.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianRisikoJatuh.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianRisikoJatuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianRisikoJatuh.setText("Formulir Penilaian Risiko Jatuh Neonatus");
+        MnPenilaianRisikoJatuh.setName("MnPenilaianRisikoJatuh"); // NOI18N
+        MnPenilaianRisikoJatuh.setPreferredSize(new java.awt.Dimension(270, 26));
+        MnPenilaianRisikoJatuh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnKriteriaMasukHCUActionPerformed(evt);
+                MnPenilaianRisikoJatuhActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnKriteriaMasukHCU);
+        jPopupMenu1.add(MnPenilaianRisikoJatuh);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1318,8 +1318,8 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnPetugas,"DPJP/Dokter Jaga/IGD");
-        }else{  
+            Valid.textKosong(btnPetugas,"Petugas");
+        }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
@@ -1550,7 +1550,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnKriteriaMasukHCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaMasukHCUActionPerformed
+    private void MnPenilaianRisikoJatuhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianRisikoJatuhActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1577,7 +1577,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                     "inner join petugas on petugas.nip=penilaian_risiko_jatuh_neonatus.nip "+
                     "where penilaian_risiko_jatuh_neonatus.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and penilaian_risiko_jatuh_neonatus.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnKriteriaMasukHCUActionPerformed
+    }//GEN-LAST:event_MnPenilaianRisikoJatuhActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1753,7 +1753,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnKriteriaMasukHCU;
+    private javax.swing.JMenuItem MnPenilaianRisikoJatuh;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox Sasaran1;
