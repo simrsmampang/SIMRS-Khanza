@@ -39,7 +39,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import kepegawaian.DlgCariPegawai;
 import kepegawaian.DlgCariPetugas;
 
 
@@ -55,7 +54,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;    
-    private DlgCariPetugas pegawai=new DlgCariPetugas(null,false);
+    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
     private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
@@ -68,13 +67,10 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Gangguan Sirkulasi Atau Pre Dan Pasca Operasi (Syok Hypovolemic)",
-            "Hypertensi Emergency","HR 60x/menit (Tiidak Stabil Hasil EKG Gambaran Mengancam Nyawa)","Gagal Jantung Acute","Menggunakan Inotropik / Vasoaktif Gent",
-            "MAP < 60 mmHg","R <8 x/ menit > 25 x/menit","Trauma Thorax / Peumothorax","Oxigenisasi Tidak Cukup Dari Hasil AGD","Kesadaran Dengan GCS >= 7",
-            "Temperatur <35 C / >38 C","Trauma Kepala Sedang - Berat","Kejang Yang Tidak Memerlukan Ventilator / Cerebro Vasculer / Neoromusculer / Infeksi Syaraf",
-            "Gangguan Elektrolit (Na, Ca,CI, Mg, Cal) & Asam Basa","Hypeglikemia & Hypoglikemia, Ketoasidosis Metabolic","Pendarahan Saluran Pencernaan Tanpa Hypotensi & Repon Dengan Cairan",
-            "Pengobatan Keracunan","Penyulit Pasca Pembedahan","Pasca Pembedahan Hemodinamik Stabil Tetapi Masih Perlu Resusitasi Cairan","Gangguan Imunologi (Reaksi Alergi, Steven Jhonson) dll",
-            "DIC, Anemia Berat, Reaksi Penolakan Transfusi Darah","Semua Infeksi Yang Menyebabkan Penurunan Kesadaran & Tidak Memerlukan Ventilator","NIP/Kode Dokter","DPJP/Dokter Jaga/IGD"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Pasang Gelang Risiko Jatuh","Edukasi Orang Tua/Keluarga","Dekatkan Box Bayi Dengan Ibu","Orentasi Ruangan Pada Orang Tua/Keluarga",
+            "Pastikan Lantai & Alas Kaki Tidak Licin","Pastikan Selalu Ada Pendamping","Bila Dirawat Dalam Inkubator, Pastikan Semua Jendela Terkunci","Kontrol Rutin Oleh Perawat/Bidan","Pasang Tanda Risiko Jatuh Pada Box/Inkubator",
+            "Tempatkan Bayi Pada Tempat Yang Aman","Segera Istirahat Apabila Merasa Lelah & Tempatkan Bayi Pada Boxnya","Cara Membedong Bayi","Libatkan Keluarga Untuk Mendampingi/Segera Panggil Perawat/Bidan Jika Diperlukan",
+            "Teknip Menggendong Bayi","Bapak","Ibu","Keluarga","Wali Lainnya","Memahami & Mampu Menjelaskan Kembali","Perlu Edukasi Ulang","Mampu Mendemonstrasikan","Terjadi Insiden Jatuh","Kode Petugas","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -134,16 +130,16 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             });
         }
         
-        pegawai.addWindowListener(new WindowListener() {
+        petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){  
-                    KodePetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
-                    NamaPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
+                if(petugas.getTable().getSelectedRow()!= -1){  
+                    KodePetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
                     btnPetugas.requestFocus();
                 }  
                     
@@ -262,8 +258,8 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jSeparator4 = new javax.swing.JSeparator();
         jLabel54 = new widget.Label();
         jLabel71 = new widget.Label();
-        jLabel72 = new widget.Label();
         Edukasi1 = new widget.ComboBox();
+        jLabel72 = new widget.Label();
         Edukasi5 = new widget.ComboBox();
         Edukasi3 = new widget.ComboBox();
         jLabel74 = new widget.Label();
@@ -286,8 +282,8 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jSeparator8 = new javax.swing.JSeparator();
         jLabel56 = new widget.Label();
         jLabel81 = new widget.Label();
-        jLabel82 = new widget.Label();
         Evaluasi1 = new widget.ComboBox();
+        jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
         Evaluasi3 = new widget.ComboBox();
         jLabel84 = new widget.Label();
@@ -901,12 +897,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel71);
         jLabel71.setBounds(0, 230, 250, 23);
 
-        jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel72.setText("Tempatkan Bayi Pada Tempat Yang Aman");
-        jLabel72.setName("jLabel72"); // NOI18N
-        FormInput.add(jLabel72);
-        jLabel72.setBounds(40, 230, 210, 23);
-
         Edukasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Edukasi1.setName("Edukasi1"); // NOI18N
         Edukasi1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -916,6 +906,12 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         });
         FormInput.add(Edukasi1);
         Edukasi1.setBounds(254, 230, 80, 23);
+
+        jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel72.setText("Tempatkan Bayi Pada Tempat Yang Aman");
+        jLabel72.setName("jLabel72"); // NOI18N
+        FormInput.add(jLabel72);
+        jLabel72.setBounds(40, 230, 220, 23);
 
         Edukasi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Edukasi5.setName("Edukasi5"); // NOI18N
@@ -946,7 +942,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jLabel75.setText("Segera Istirahat Apabila Merasa Lelah & Tempatkan Bayi Pada Boxnya :");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(245, 230, 460, 23);
+        jLabel75.setBounds(345, 230, 360, 23);
 
         Edukasi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Edukasi2.setName("Edukasi2"); // NOI18N
@@ -961,7 +957,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jLabel76.setText("Libatkan Keluarga Untuk Mendampingi/Segera Panggil Perawat/Bidan Jika Diperlukan :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(245, 260, 460, 23);
+        jLabel76.setBounds(255, 260, 450, 23);
 
         Edukasi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Edukasi4.setName("Edukasi4"); // NOI18N
@@ -1081,12 +1077,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel81);
         jLabel81.setBounds(0, 390, 253, 23);
 
-        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel82.setText("Memahami & Mampu Menjelaskan Kembali");
-        jLabel82.setName("jLabel82"); // NOI18N
-        FormInput.add(jLabel82);
-        jLabel82.setBounds(40, 390, 230, 23);
-
         Evaluasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         Evaluasi1.setName("Evaluasi1"); // NOI18N
         Evaluasi1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1096,6 +1086,12 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         });
         FormInput.add(Evaluasi1);
         Evaluasi1.setBounds(257, 390, 80, 23);
+
+        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel82.setText("Memahami & Mampu Menjelaskan Kembali");
+        jLabel82.setName("jLabel82"); // NOI18N
+        FormInput.add(jLabel82);
+        jLabel82.setBounds(40, 390, 230, 23);
 
         jLabel83.setText("Mampu Mendemonstrasikan :");
         jLabel83.setName("jLabel83"); // NOI18N
@@ -1247,33 +1243,31 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
 }//GEN-LAST:event_TPasienKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnPetugas,"Petugas");
         }else{
             if(Sequel.menyimpantf("penilaian_risiko_jatuh_neonatus","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",25,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kardiologi1.getSelectedItem().toString(),
-                Kardiologi2.getSelectedItem().toString(),Kardiologi3.getSelectedItem().toString(),Kardiologi4.getSelectedItem().toString(),Kardiologi5.getSelectedItem().toString(),
-                Kardiologi6.getSelectedItem().toString(),Pernapasan1.getSelectedItem().toString(),Pernapasan2.getSelectedItem().toString(),Pernapasan3.getSelectedItem().toString(),
-                Syaraf1.getSelectedItem().toString(),Syaraf2.getSelectedItem().toString(),Syaraf3.getSelectedItem().toString(),Syaraf4.getSelectedItem().toString(),
-                Pencernaan1.getSelectedItem().toString(),Pencernaan2.getSelectedItem().toString(),Pencernaan3.getSelectedItem().toString(),Pencernaan4.getSelectedItem().toString(),
-                Pembedahan1.getSelectedItem().toString(),Pembedahan2.getSelectedItem().toString(),Hematologi1.getSelectedItem().toString(),Hematologi2.getSelectedItem().toString(),
-                Infeksi.getSelectedItem().toString(),KodePetugas.getText()
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Intervensi1.getSelectedItem().toString(),
+                Intervensi2.getSelectedItem().toString(),Intervensi3.getSelectedItem().toString(),Intervensi4.getSelectedItem().toString(),Intervensi5.getSelectedItem().toString(),
+                Intervensi6.getSelectedItem().toString(),Intervensi7.getSelectedItem().toString(),Intervensi8.getSelectedItem().toString(),Intervensi9.getSelectedItem().toString(),
+                Edukasi1.getSelectedItem().toString(),Edukasi2.getSelectedItem().toString(),Edukasi3.getSelectedItem().toString(),Edukasi4.getSelectedItem().toString(),Edukasi5.getSelectedItem().toString(),
+                Sasaran1.getSelectedItem().toString(),Sasaran2.getSelectedItem().toString(),Sasaran3.getSelectedItem().toString(),Sasaran4.getSelectedItem().toString(),Evaluasi1.getSelectedItem().toString(),
+                Evaluasi2.getSelectedItem().toString(),Evaluasi3.getSelectedItem().toString(),Evaluasi4.getSelectedItem().toString(),KodePetugas.getText()
             })==true){
                 tabMode.addRow(new String[]{
-                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    Kardiologi1.getSelectedItem().toString(),Kardiologi2.getSelectedItem().toString(),Kardiologi3.getSelectedItem().toString(),Kardiologi4.getSelectedItem().toString(),
-                    Kardiologi5.getSelectedItem().toString(),Kardiologi6.getSelectedItem().toString(),Pernapasan1.getSelectedItem().toString(),Pernapasan2.getSelectedItem().toString(),
-                    Pernapasan3.getSelectedItem().toString(),Syaraf1.getSelectedItem().toString(),Syaraf2.getSelectedItem().toString(),Syaraf3.getSelectedItem().toString(),Syaraf4.getSelectedItem().toString(),
-                    Pencernaan1.getSelectedItem().toString(),Pencernaan2.getSelectedItem().toString(),Pencernaan3.getSelectedItem().toString(),Pencernaan4.getSelectedItem().toString(),
-                    Pembedahan1.getSelectedItem().toString(),Pembedahan2.getSelectedItem().toString(),Hematologi1.getSelectedItem().toString(),Hematologi2.getSelectedItem().toString(),
-                    Infeksi.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    Intervensi1.getSelectedItem().toString(),Intervensi2.getSelectedItem().toString(),Intervensi3.getSelectedItem().toString(),Intervensi4.getSelectedItem().toString(),Intervensi5.getSelectedItem().toString(),
+                    Intervensi6.getSelectedItem().toString(),Intervensi7.getSelectedItem().toString(),Intervensi8.getSelectedItem().toString(),Intervensi9.getSelectedItem().toString(),
+                    Edukasi1.getSelectedItem().toString(),Edukasi2.getSelectedItem().toString(),Edukasi3.getSelectedItem().toString(),Edukasi4.getSelectedItem().toString(),Edukasi5.getSelectedItem().toString(),
+                    Sasaran1.getSelectedItem().toString(),Sasaran2.getSelectedItem().toString(),Sasaran3.getSelectedItem().toString(),Sasaran4.getSelectedItem().toString(),Evaluasi1.getSelectedItem().toString(),
+                    Evaluasi2.getSelectedItem().toString(),Evaluasi3.getSelectedItem().toString(),Evaluasi4.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             } 
-        }*/
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -1351,7 +1345,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        pegawai.dispose();
+        petugas.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1566,8 +1560,8 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),28).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join petugas on petugas.id=sidikjari.id where petugas.nip=?",tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),28).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirChecklistKriteriaMasukHCU.jasper","report","::[ Formulir Check List Kriteria Masuk HCU ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_risiko_jatuh_neonatus.tanggal,"+
                     "penilaian_risiko_jatuh_neonatus.kardiologi1,penilaian_risiko_jatuh_neonatus.kardiologi2,penilaian_risiko_jatuh_neonatus.kardiologi3,"+
@@ -1577,10 +1571,10 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                     "penilaian_risiko_jatuh_neonatus.pencernaan1,penilaian_risiko_jatuh_neonatus.pencernaan2,penilaian_risiko_jatuh_neonatus.pencernaan3,"+
                     "penilaian_risiko_jatuh_neonatus.pencernaan4,penilaian_risiko_jatuh_neonatus.pembedahan1,penilaian_risiko_jatuh_neonatus.pembedahan2,"+
                     "penilaian_risiko_jatuh_neonatus.hematologi1,penilaian_risiko_jatuh_neonatus.hematologi2,penilaian_risiko_jatuh_neonatus.infeksi,"+
-                    "penilaian_risiko_jatuh_neonatus.nik,pegawai.nama "+
+                    "penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
                     "from penilaian_risiko_jatuh_neonatus inner join reg_periksa on penilaian_risiko_jatuh_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=penilaian_risiko_jatuh_neonatus.nik "+
+                    "inner join petugas on petugas.nip=penilaian_risiko_jatuh_neonatus.nip "+
                     "where penilaian_risiko_jatuh_neonatus.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and penilaian_risiko_jatuh_neonatus.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
     }//GEN-LAST:event_MnKriteriaMasukHCUActionPerformed
@@ -1590,10 +1584,10 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        pegawai.emptTeks();
-        pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        pegawai.setLocationRelativeTo(internalFrame1);
-        pegawai.setVisible(true);
+        petugas.emptTeks();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
@@ -1842,34 +1836,34 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_risiko_jatuh_neonatus.tanggal,"+
-                    "penilaian_risiko_jatuh_neonatus.kardiologi1,penilaian_risiko_jatuh_neonatus.kardiologi2,penilaian_risiko_jatuh_neonatus.kardiologi3,"+
-                    "penilaian_risiko_jatuh_neonatus.kardiologi4,penilaian_risiko_jatuh_neonatus.kardiologi5,penilaian_risiko_jatuh_neonatus.kardiologi6,"+
-                    "penilaian_risiko_jatuh_neonatus.pernapasan1,penilaian_risiko_jatuh_neonatus.pernapasan2,penilaian_risiko_jatuh_neonatus.pernapasan3,"+
-                    "penilaian_risiko_jatuh_neonatus.syaraf1,penilaian_risiko_jatuh_neonatus.syaraf2,penilaian_risiko_jatuh_neonatus.syaraf3,penilaian_risiko_jatuh_neonatus.syaraf4,"+
-                    "penilaian_risiko_jatuh_neonatus.pencernaan1,penilaian_risiko_jatuh_neonatus.pencernaan2,penilaian_risiko_jatuh_neonatus.pencernaan3,"+
-                    "penilaian_risiko_jatuh_neonatus.pencernaan4,penilaian_risiko_jatuh_neonatus.pembedahan1,penilaian_risiko_jatuh_neonatus.pembedahan2,"+
-                    "penilaian_risiko_jatuh_neonatus.hematologi1,penilaian_risiko_jatuh_neonatus.hematologi2,penilaian_risiko_jatuh_neonatus.infeksi,"+
-                    "penilaian_risiko_jatuh_neonatus.nik,pegawai.nama "+
+                    "penilaian_risiko_jatuh_neonatus.intervensi1,penilaian_risiko_jatuh_neonatus.intervensi2,penilaian_risiko_jatuh_neonatus.intervensi3,"+
+                    "penilaian_risiko_jatuh_neonatus.intervensi4,penilaian_risiko_jatuh_neonatus.intervensi5,penilaian_risiko_jatuh_neonatus.intervensi6,"+
+                    "penilaian_risiko_jatuh_neonatus.intervensi7,penilaian_risiko_jatuh_neonatus.intervensi8,penilaian_risiko_jatuh_neonatus.intervensi9,"+
+                    "penilaian_risiko_jatuh_neonatus.edukasi1,penilaian_risiko_jatuh_neonatus.edukasi2,penilaian_risiko_jatuh_neonatus.edukasi3,"+
+                    "penilaian_risiko_jatuh_neonatus.edukasi4,penilaian_risiko_jatuh_neonatus.edukasi5,penilaian_risiko_jatuh_neonatus.sasaran1,"+
+                    "penilaian_risiko_jatuh_neonatus.sasaran2,penilaian_risiko_jatuh_neonatus.sasaran3,penilaian_risiko_jatuh_neonatus.sasaran4,"+
+                    "penilaian_risiko_jatuh_neonatus.evaluasi1,penilaian_risiko_jatuh_neonatus.evaluasi2,penilaian_risiko_jatuh_neonatus.evaluasi3,"+
+                    "penilaian_risiko_jatuh_neonatus.evaluasi4,penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
                     "from penilaian_risiko_jatuh_neonatus inner join reg_periksa on penilaian_risiko_jatuh_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=penilaian_risiko_jatuh_neonatus.nik "+
+                    "inner join petugas on petugas.nip=penilaian_risiko_jatuh_neonatus.nip "+
                     "where penilaian_risiko_jatuh_neonatus.tanggal between ? and ? order by penilaian_risiko_jatuh_neonatus.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_risiko_jatuh_neonatus.tanggal,"+
-                    "penilaian_risiko_jatuh_neonatus.kardiologi1,penilaian_risiko_jatuh_neonatus.kardiologi2,penilaian_risiko_jatuh_neonatus.kardiologi3,"+
-                    "penilaian_risiko_jatuh_neonatus.kardiologi4,penilaian_risiko_jatuh_neonatus.kardiologi5,penilaian_risiko_jatuh_neonatus.kardiologi6,"+
-                    "penilaian_risiko_jatuh_neonatus.pernapasan1,penilaian_risiko_jatuh_neonatus.pernapasan2,penilaian_risiko_jatuh_neonatus.pernapasan3,"+
-                    "penilaian_risiko_jatuh_neonatus.syaraf1,penilaian_risiko_jatuh_neonatus.syaraf2,penilaian_risiko_jatuh_neonatus.syaraf3,penilaian_risiko_jatuh_neonatus.syaraf4,"+
-                    "penilaian_risiko_jatuh_neonatus.pencernaan1,penilaian_risiko_jatuh_neonatus.pencernaan2,penilaian_risiko_jatuh_neonatus.pencernaan3,"+
-                    "penilaian_risiko_jatuh_neonatus.pencernaan4,penilaian_risiko_jatuh_neonatus.pembedahan1,penilaian_risiko_jatuh_neonatus.pembedahan2,"+
-                    "penilaian_risiko_jatuh_neonatus.hematologi1,penilaian_risiko_jatuh_neonatus.hematologi2,penilaian_risiko_jatuh_neonatus.infeksi,"+
-                    "penilaian_risiko_jatuh_neonatus.nik,pegawai.nama "+
+                    "penilaian_risiko_jatuh_neonatus.intervensi1,penilaian_risiko_jatuh_neonatus.intervensi2,penilaian_risiko_jatuh_neonatus.intervensi3,"+
+                    "penilaian_risiko_jatuh_neonatus.intervensi4,penilaian_risiko_jatuh_neonatus.intervensi5,penilaian_risiko_jatuh_neonatus.intervensi6,"+
+                    "penilaian_risiko_jatuh_neonatus.intervensi7,penilaian_risiko_jatuh_neonatus.intervensi8,penilaian_risiko_jatuh_neonatus.intervensi9,"+
+                    "penilaian_risiko_jatuh_neonatus.edukasi1,penilaian_risiko_jatuh_neonatus.edukasi2,penilaian_risiko_jatuh_neonatus.edukasi3,"+
+                    "penilaian_risiko_jatuh_neonatus.edukasi4,penilaian_risiko_jatuh_neonatus.edukasi5,penilaian_risiko_jatuh_neonatus.sasaran1,"+
+                    "penilaian_risiko_jatuh_neonatus.sasaran2,penilaian_risiko_jatuh_neonatus.sasaran3,penilaian_risiko_jatuh_neonatus.sasaran4,"+
+                    "penilaian_risiko_jatuh_neonatus.evaluasi1,penilaian_risiko_jatuh_neonatus.evaluasi2,penilaian_risiko_jatuh_neonatus.evaluasi3,"+
+                    "penilaian_risiko_jatuh_neonatus.evaluasi4,penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
                     "from penilaian_risiko_jatuh_neonatus inner join reg_periksa on penilaian_risiko_jatuh_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=penilaian_risiko_jatuh_neonatus.nik "+
+                    "inner join petugas on petugas.nip=penilaian_risiko_jatuh_neonatus.nip "+
                     "where penilaian_risiko_jatuh_neonatus.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or pegawai.nama like ? or penilaian_risiko_jatuh_neonatus.nik like ?) order by penilaian_risiko_jatuh_neonatus.tanggal ");
+                    "pasien.nm_pasien like ? or petugas.nama like ? or penilaian_risiko_jatuh_neonatus.nip like ?) order by penilaian_risiko_jatuh_neonatus.tanggal ");
             }
                 
             try {
@@ -1889,12 +1883,11 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
-                        rs.getString("tanggal"),rs.getString("kardiologi1"),rs.getString("kardiologi2"),rs.getString("kardiologi3"),rs.getString("kardiologi4"),
-                        rs.getString("kardiologi5"),rs.getString("kardiologi6"),rs.getString("pernapasan1"),rs.getString("pernapasan2"),rs.getString("pernapasan3"),
-                        rs.getString("syaraf1"),rs.getString("syaraf2"),rs.getString("syaraf3"),rs.getString("syaraf4"),rs.getString("pencernaan1"),
-                        rs.getString("pencernaan2"),rs.getString("pencernaan3"),rs.getString("pencernaan4"),rs.getString("pembedahan1"),rs.getString("pembedahan2"),
-                        rs.getString("hematologi1"),rs.getString("hematologi2"),rs.getString("infeksi"),rs.getString("nik"),rs.getString("nama")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("intervensi1"),rs.getString("intervensi2"),rs.getString("intervensi3"),rs.getString("intervensi4"),rs.getString("intervensi5"),rs.getString("intervensi6"),
+                        rs.getString("intervensi7"),rs.getString("intervensi8"),rs.getString("intervensi9"),rs.getString("edukasi1"),rs.getString("edukasi2"),rs.getString("edukasi3"),
+                        rs.getString("edukasi4"),rs.getString("edukasi5"),rs.getString("sasaran1"),rs.getString("sasaran2"),rs.getString("sasaran3"),rs.getString("sasaran4"),
+                        rs.getString("evaluasi1"),rs.getString("evaluasi2"),rs.getString("evaluasi3"),rs.getString("evaluasi4"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -2017,7 +2010,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         if(ChkInput.isSelected()==true){
             if(internalFrame1.getHeight()>643){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,473));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,476));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -2043,7 +2036,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             KodePetugas.setEditable(false);
             btnPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
-            NamaPetugas.setText(pegawai.tampil3(KodePetugas.getText()));
+            NamaPetugas.setText(petugas.tampil3(KodePetugas.getText()));
             if(NamaPetugas.getText().equals("")){
                 KodePetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
@@ -2053,7 +2046,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
 
     private void ganti() {
         /*if(Sequel.mengedittf("penilaian_risiko_jatuh_neonatus","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,kardiologi1=?,kardiologi2=?,kardiologi3=?,kardiologi4=?,kardiologi5=?,kardiologi6=?,pernapasan1=?,pernapasan2=?,"+
-                "pernapasan3=?,syaraf1=?,syaraf2=?,syaraf3=?,syaraf4=?,pencernaan1=?,pencernaan2=?,pencernaan3=?,pencernaan4=?,pembedahan1=?,pembedahan2=?,hematologi1=?,hematologi2=?,infeksi=?,nik=?",27,new String[]{
+                "pernapasan3=?,syaraf1=?,syaraf2=?,syaraf3=?,syaraf4=?,pencernaan1=?,pencernaan2=?,pencernaan3=?,pencernaan4=?,pembedahan1=?,pembedahan2=?,hematologi1=?,hematologi2=?,infeksi=?,nip=?",27,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kardiologi1.getSelectedItem().toString(),
                 Kardiologi2.getSelectedItem().toString(),Kardiologi3.getSelectedItem().toString(),Kardiologi4.getSelectedItem().toString(),Kardiologi5.getSelectedItem().toString(),
                 Kardiologi6.getSelectedItem().toString(),Pernapasan1.getSelectedItem().toString(),Pernapasan2.getSelectedItem().toString(),Pernapasan3.getSelectedItem().toString(),
