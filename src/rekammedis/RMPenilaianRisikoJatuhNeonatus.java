@@ -227,7 +227,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         KodePetugas = new widget.TextBox();
         NamaPetugas = new widget.TextBox();
         btnDokterBedah = new widget.Button();
-        Kardiologi5 = new widget.ComboBox();
+        Intervensi6 = new widget.ComboBox();
         jLabel58 = new widget.Label();
         jLabel5 = new widget.Label();
         jSeparator1 = new javax.swing.JSeparator();
@@ -235,60 +235,60 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jLabel53 = new widget.Label();
         jLabel59 = new widget.Label();
         jLabel60 = new widget.Label();
-        Kardiologi6 = new widget.ComboBox();
+        Intervensi5 = new widget.ComboBox();
         jLabel61 = new widget.Label();
-        Kardiologi2 = new widget.ComboBox();
+        Intervensi9 = new widget.ComboBox();
         jLabel62 = new widget.Label();
-        Kardiologi3 = new widget.ComboBox();
+        Intervensi4 = new widget.ComboBox();
         jLabel63 = new widget.Label();
         jLabel64 = new widget.Label();
         jLabel65 = new widget.Label();
-        Kardiologi1 = new widget.ComboBox();
+        Intervensi1 = new widget.ComboBox();
         jLabel66 = new widget.Label();
-        Kardiologi4 = new widget.ComboBox();
+        Intervensi3 = new widget.ComboBox();
         jLabel68 = new widget.Label();
-        Kardiologi7 = new widget.ComboBox();
+        Intervensi8 = new widget.ComboBox();
         jLabel67 = new widget.Label();
         jLabel69 = new widget.Label();
-        Kardiologi8 = new widget.ComboBox();
+        Intervensi7 = new widget.ComboBox();
         jLabel70 = new widget.Label();
-        Kardiologi9 = new widget.ComboBox();
+        Intervensi2 = new widget.ComboBox();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel54 = new widget.Label();
         jLabel71 = new widget.Label();
         jLabel72 = new widget.Label();
-        Kardiologi10 = new widget.ComboBox();
-        Kardiologi11 = new widget.ComboBox();
-        Kardiologi12 = new widget.ComboBox();
+        Edukasi1 = new widget.ComboBox();
+        Edukasi5 = new widget.ComboBox();
+        Edukasi3 = new widget.ComboBox();
         jLabel74 = new widget.Label();
         jLabel75 = new widget.Label();
-        Kardiologi13 = new widget.ComboBox();
+        Edukasi2 = new widget.ComboBox();
         jLabel76 = new widget.Label();
-        Kardiologi14 = new widget.ComboBox();
+        Edukasi4 = new widget.ComboBox();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel55 = new widget.Label();
         jLabel77 = new widget.Label();
-        Kardiologi15 = new widget.ComboBox();
+        Sasaran2 = new widget.ComboBox();
         jLabel78 = new widget.Label();
-        Kardiologi16 = new widget.ComboBox();
-        Kardiologi17 = new widget.ComboBox();
+        Sasaran1 = new widget.ComboBox();
+        Sasaran3 = new widget.ComboBox();
         jLabel79 = new widget.Label();
         jLabel80 = new widget.Label();
-        Kardiologi18 = new widget.ComboBox();
+        Sasaran4 = new widget.ComboBox();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jLabel56 = new widget.Label();
         jLabel81 = new widget.Label();
         jLabel82 = new widget.Label();
-        Kardiologi19 = new widget.ComboBox();
+        Evaluasi1 = new widget.ComboBox();
         jLabel83 = new widget.Label();
-        Kardiologi20 = new widget.ComboBox();
+        Evaluasi3 = new widget.ComboBox();
         jLabel84 = new widget.Label();
-        Kardiologi21 = new widget.ComboBox();
+        Evaluasi2 = new widget.ComboBox();
         jLabel85 = new widget.Label();
-        Kardiologi22 = new widget.ComboBox();
+        Evaluasi4 = new widget.ComboBox();
         ChkKejadian = new widget.CekBox();
         Detik = new widget.ComboBox();
         Menit = new widget.ComboBox();
@@ -687,15 +687,15 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(btnDokterBedah);
         btnDokterBedah.setBounds(761, 40, 28, 23);
 
-        Kardiologi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi5.setName("Kardiologi5"); // NOI18N
-        Kardiologi5.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Intervensi6.setName("Intervensi6"); // NOI18N
+        Intervensi6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi5KeyPressed(evt);
+                Intervensi6KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi5);
-        Kardiologi5.setBounds(210, 150, 80, 23);
+        FormInput.add(Intervensi6);
+        Intervensi6.setBounds(210, 150, 80, 23);
 
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel58.setText("Pastikan Selalu Ada Pendamping");
@@ -738,45 +738,45 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel60);
         jLabel60.setBounds(445, 120, 260, 23);
 
-        Kardiologi6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi6.setName("Kardiologi6"); // NOI18N
-        Kardiologi6.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Intervensi5.setName("Intervensi5"); // NOI18N
+        Intervensi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi6KeyPressed(evt);
+                Intervensi5KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi6);
-        Kardiologi6.setBounds(709, 120, 80, 23);
+        FormInput.add(Intervensi5);
+        Intervensi5.setBounds(709, 120, 80, 23);
 
         jLabel61.setText("Pasang Tanda Risiko Jatuh Pada Box/Inkubator :");
         jLabel61.setName("jLabel61"); // NOI18N
         FormInput.add(jLabel61);
         jLabel61.setBounds(345, 180, 360, 23);
 
-        Kardiologi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi2.setName("Kardiologi2"); // NOI18N
-        Kardiologi2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Intervensi9.setName("Intervensi9"); // NOI18N
+        Intervensi9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi2KeyPressed(evt);
+                Intervensi9KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi2);
-        Kardiologi2.setBounds(709, 180, 80, 23);
+        FormInput.add(Intervensi9);
+        Intervensi9.setBounds(709, 180, 80, 23);
 
         jLabel62.setText(":");
         jLabel62.setName("jLabel62"); // NOI18N
         FormInput.add(jLabel62);
         jLabel62.setBounds(0, 120, 263, 23);
 
-        Kardiologi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi3.setName("Kardiologi3"); // NOI18N
-        Kardiologi3.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Intervensi4.setName("Intervensi4"); // NOI18N
+        Intervensi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi3KeyPressed(evt);
+                Intervensi4KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi3);
-        Kardiologi3.setBounds(267, 120, 80, 23);
+        FormInput.add(Intervensi4);
+        Intervensi4.setBounds(267, 120, 80, 23);
 
         jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel63.setText("Orentasi Ruangan Pada Orang Tua/Keluarga");
@@ -795,45 +795,45 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel65);
         jLabel65.setBounds(40, 90, 160, 23);
 
-        Kardiologi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi1.setName("Kardiologi1"); // NOI18N
-        Kardiologi1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Intervensi1.setName("Intervensi1"); // NOI18N
+        Intervensi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi1KeyPressed(evt);
+                Intervensi1KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi1);
-        Kardiologi1.setBounds(185, 90, 80, 23);
+        FormInput.add(Intervensi1);
+        Intervensi1.setBounds(185, 90, 80, 23);
 
         jLabel66.setText("Dekatkan Box Bayi Dengan Ibu :");
         jLabel66.setName("jLabel66"); // NOI18N
         FormInput.add(jLabel66);
         jLabel66.setBounds(535, 90, 170, 23);
 
-        Kardiologi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi4.setName("Kardiologi4"); // NOI18N
-        Kardiologi4.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Intervensi3.setName("Intervensi3"); // NOI18N
+        Intervensi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi4KeyPressed(evt);
+                Intervensi3KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi4);
-        Kardiologi4.setBounds(709, 90, 80, 23);
+        FormInput.add(Intervensi3);
+        Intervensi3.setBounds(709, 90, 80, 23);
 
         jLabel68.setText(":");
         jLabel68.setName("jLabel68"); // NOI18N
         FormInput.add(jLabel68);
         jLabel68.setBounds(0, 180, 211, 23);
 
-        Kardiologi7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi7.setName("Kardiologi7"); // NOI18N
-        Kardiologi7.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Intervensi8.setName("Intervensi8"); // NOI18N
+        Intervensi8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi7KeyPressed(evt);
+                Intervensi8KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi7);
-        Kardiologi7.setBounds(215, 180, 80, 23);
+        FormInput.add(Intervensi8);
+        Intervensi8.setBounds(215, 180, 80, 23);
 
         jLabel67.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel67.setText("Kontrol Rutin Oleh Perawat/Bidan");
@@ -846,30 +846,30 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel69);
         jLabel69.setBounds(365, 150, 340, 23);
 
-        Kardiologi8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi8.setName("Kardiologi8"); // NOI18N
-        Kardiologi8.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Intervensi7.setName("Intervensi7"); // NOI18N
+        Intervensi7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi8KeyPressed(evt);
+                Intervensi7KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi8);
-        Kardiologi8.setBounds(709, 150, 80, 23);
+        FormInput.add(Intervensi7);
+        Intervensi7.setBounds(709, 150, 80, 23);
 
         jLabel70.setText("Edukasi Orang Tua/Keluarga :");
         jLabel70.setName("jLabel70"); // NOI18N
         FormInput.add(jLabel70);
         jLabel70.setBounds(270, 90, 170, 23);
 
-        Kardiologi9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi9.setName("Kardiologi9"); // NOI18N
-        Kardiologi9.addKeyListener(new java.awt.event.KeyAdapter() {
+        Intervensi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Intervensi2.setName("Intervensi2"); // NOI18N
+        Intervensi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi9KeyPressed(evt);
+                Intervensi2KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi9);
-        Kardiologi9.setBounds(444, 90, 80, 23);
+        FormInput.add(Intervensi2);
+        Intervensi2.setBounds(444, 90, 80, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
@@ -902,35 +902,35 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel72);
         jLabel72.setBounds(40, 230, 210, 23);
 
-        Kardiologi10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi10.setName("Kardiologi10"); // NOI18N
-        Kardiologi10.addKeyListener(new java.awt.event.KeyAdapter() {
+        Edukasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Edukasi1.setName("Edukasi1"); // NOI18N
+        Edukasi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi10KeyPressed(evt);
+                Edukasi1KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi10);
-        Kardiologi10.setBounds(254, 230, 80, 23);
+        FormInput.add(Edukasi1);
+        Edukasi1.setBounds(254, 230, 80, 23);
 
-        Kardiologi11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi11.setName("Kardiologi11"); // NOI18N
-        Kardiologi11.addKeyListener(new java.awt.event.KeyAdapter() {
+        Edukasi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Edukasi5.setName("Edukasi5"); // NOI18N
+        Edukasi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi11KeyPressed(evt);
+                Edukasi5KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi11);
-        Kardiologi11.setBounds(176, 290, 80, 23);
+        FormInput.add(Edukasi5);
+        Edukasi5.setBounds(176, 290, 80, 23);
 
-        Kardiologi12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi12.setName("Kardiologi12"); // NOI18N
-        Kardiologi12.addKeyListener(new java.awt.event.KeyAdapter() {
+        Edukasi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Edukasi3.setName("Edukasi3"); // NOI18N
+        Edukasi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi12KeyPressed(evt);
+                Edukasi3KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi12);
-        Kardiologi12.setBounds(159, 260, 80, 23);
+        FormInput.add(Edukasi3);
+        Edukasi3.setBounds(159, 260, 80, 23);
 
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel74.setText("Cara Membedong Bayi");
@@ -943,30 +943,30 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel75);
         jLabel75.setBounds(245, 230, 460, 23);
 
-        Kardiologi13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi13.setName("Kardiologi13"); // NOI18N
-        Kardiologi13.addKeyListener(new java.awt.event.KeyAdapter() {
+        Edukasi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Edukasi2.setName("Edukasi2"); // NOI18N
+        Edukasi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi13KeyPressed(evt);
+                Edukasi2KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi13);
-        Kardiologi13.setBounds(709, 230, 80, 23);
+        FormInput.add(Edukasi2);
+        Edukasi2.setBounds(709, 230, 80, 23);
 
         jLabel76.setText("Libatkan Keluarga Untuk Mendampingi/Segera Panggil Perawat/Bidan Jika Diperlukan :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
         jLabel76.setBounds(245, 260, 460, 23);
 
-        Kardiologi14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi14.setName("Kardiologi14"); // NOI18N
-        Kardiologi14.addKeyListener(new java.awt.event.KeyAdapter() {
+        Edukasi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Edukasi4.setName("Edukasi4"); // NOI18N
+        Edukasi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi14KeyPressed(evt);
+                Edukasi4KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi14);
-        Kardiologi14.setBounds(709, 260, 80, 23);
+        FormInput.add(Edukasi4);
+        Edukasi4.setBounds(709, 260, 80, 23);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
@@ -993,40 +993,40 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel77);
         jLabel77.setBounds(227, 340, 40, 23);
 
-        Kardiologi15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi15.setName("Kardiologi15"); // NOI18N
-        Kardiologi15.addKeyListener(new java.awt.event.KeyAdapter() {
+        Sasaran2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Sasaran2.setName("Sasaran2"); // NOI18N
+        Sasaran2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi15KeyPressed(evt);
+                Sasaran2KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi15);
-        Kardiologi15.setBounds(271, 340, 80, 23);
+        FormInput.add(Sasaran2);
+        Sasaran2.setBounds(271, 340, 80, 23);
 
         jLabel78.setText(":");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
         jLabel78.setBounds(0, 340, 77, 23);
 
-        Kardiologi16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi16.setName("Kardiologi16"); // NOI18N
-        Kardiologi16.addKeyListener(new java.awt.event.KeyAdapter() {
+        Sasaran1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Sasaran1.setName("Sasaran1"); // NOI18N
+        Sasaran1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi16KeyPressed(evt);
+                Sasaran1KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi16);
-        Kardiologi16.setBounds(81, 340, 80, 23);
+        FormInput.add(Sasaran1);
+        Sasaran1.setBounds(81, 340, 80, 23);
 
-        Kardiologi17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi17.setName("Kardiologi17"); // NOI18N
-        Kardiologi17.addKeyListener(new java.awt.event.KeyAdapter() {
+        Sasaran3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Sasaran3.setName("Sasaran3"); // NOI18N
+        Sasaran3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi17KeyPressed(evt);
+                Sasaran3KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi17);
-        Kardiologi17.setBounds(480, 340, 80, 23);
+        FormInput.add(Sasaran3);
+        Sasaran3.setBounds(480, 340, 80, 23);
 
         jLabel79.setText("Keluarga :");
         jLabel79.setName("jLabel79"); // NOI18N
@@ -1038,15 +1038,15 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel80);
         jLabel80.setBounds(615, 340, 90, 23);
 
-        Kardiologi18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi18.setName("Kardiologi18"); // NOI18N
-        Kardiologi18.addKeyListener(new java.awt.event.KeyAdapter() {
+        Sasaran4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Sasaran4.setName("Sasaran4"); // NOI18N
+        Sasaran4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi18KeyPressed(evt);
+                Sasaran4KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi18);
-        Kardiologi18.setBounds(709, 340, 80, 23);
+        FormInput.add(Sasaran4);
+        Sasaran4.setBounds(709, 340, 80, 23);
 
         jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
@@ -1079,60 +1079,60 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel82);
         jLabel82.setBounds(40, 390, 230, 23);
 
-        Kardiologi19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi19.setName("Kardiologi19"); // NOI18N
-        Kardiologi19.addKeyListener(new java.awt.event.KeyAdapter() {
+        Evaluasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Evaluasi1.setName("Evaluasi1"); // NOI18N
+        Evaluasi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi19KeyPressed(evt);
+                Evaluasi1KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi19);
-        Kardiologi19.setBounds(257, 390, 80, 23);
+        FormInput.add(Evaluasi1);
+        Evaluasi1.setBounds(257, 390, 80, 23);
 
         jLabel83.setText("Mampu Mendemonstrasikan :");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
         jLabel83.setBounds(545, 390, 160, 23);
 
-        Kardiologi20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi20.setName("Kardiologi20"); // NOI18N
-        Kardiologi20.addKeyListener(new java.awt.event.KeyAdapter() {
+        Evaluasi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Evaluasi3.setName("Evaluasi3"); // NOI18N
+        Evaluasi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi20KeyPressed(evt);
+                Evaluasi3KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi20);
-        Kardiologi20.setBounds(709, 390, 80, 23);
+        FormInput.add(Evaluasi3);
+        Evaluasi3.setBounds(709, 390, 80, 23);
 
         jLabel84.setText("Perlu Edukasi Ulang :");
         jLabel84.setName("jLabel84"); // NOI18N
         FormInput.add(jLabel84);
         jLabel84.setBounds(340, 390, 120, 23);
 
-        Kardiologi21.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi21.setName("Kardiologi21"); // NOI18N
-        Kardiologi21.addKeyListener(new java.awt.event.KeyAdapter() {
+        Evaluasi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Evaluasi2.setName("Evaluasi2"); // NOI18N
+        Evaluasi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi21KeyPressed(evt);
+                Evaluasi2KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi21);
-        Kardiologi21.setBounds(464, 390, 80, 23);
+        FormInput.add(Evaluasi2);
+        Evaluasi2.setBounds(464, 390, 80, 23);
 
         jLabel85.setText(":");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
         jLabel85.setBounds(0, 420, 151, 23);
 
-        Kardiologi22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi22.setName("Kardiologi22"); // NOI18N
-        Kardiologi22.addKeyListener(new java.awt.event.KeyAdapter() {
+        Evaluasi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Evaluasi4.setName("Evaluasi4"); // NOI18N
+        Evaluasi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi22KeyPressed(evt);
+                Evaluasi4KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi22);
-        Kardiologi22.setBounds(155, 420, 80, 23);
+        FormInput.add(Evaluasi4);
+        Evaluasi4.setBounds(155, 420, 80, 23);
 
         ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
@@ -1588,96 +1588,96 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDokterBedahActionPerformed
 
     private void btnDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDokterBedahKeyPressed
-       Valid.pindah(evt,Tanggal,Kardiologi1);
+       Valid.pindah(evt,Tanggal,Intervensi1);
     }//GEN-LAST:event_btnDokterBedahKeyPressed
 
-    private void Kardiologi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi5KeyPressed
-       Valid.pindah(evt,Kardiologi4,Kardiologi6);
-    }//GEN-LAST:event_Kardiologi5KeyPressed
+    private void Intervensi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi6KeyPressed
+       Valid.pindah(evt,Intervensi3,Intervensi5);
+    }//GEN-LAST:event_Intervensi6KeyPressed
 
-    private void Kardiologi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi6KeyPressed
+    private void Intervensi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi5KeyPressed
        // Valid.pindah(evt,Kardiologi5,Pernapasan1);
-    }//GEN-LAST:event_Kardiologi6KeyPressed
+    }//GEN-LAST:event_Intervensi5KeyPressed
 
-    private void Kardiologi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi2KeyPressed
-        Valid.pindah(evt,Kardiologi1,Kardiologi3);
-    }//GEN-LAST:event_Kardiologi2KeyPressed
+    private void Intervensi9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi9KeyPressed
+        Valid.pindah(evt,Intervensi1,Intervensi4);
+    }//GEN-LAST:event_Intervensi9KeyPressed
 
-    private void Kardiologi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi3KeyPressed
-        Valid.pindah(evt,Kardiologi2,Kardiologi4);
-    }//GEN-LAST:event_Kardiologi3KeyPressed
+    private void Intervensi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi4KeyPressed
+        Valid.pindah(evt,Intervensi9,Intervensi3);
+    }//GEN-LAST:event_Intervensi4KeyPressed
 
-    private void Kardiologi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi1KeyPressed
-        Valid.pindah(evt,btnDokterBedah,Kardiologi2);
-    }//GEN-LAST:event_Kardiologi1KeyPressed
+    private void Intervensi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi1KeyPressed
+        Valid.pindah(evt,btnDokterBedah,Intervensi9);
+    }//GEN-LAST:event_Intervensi1KeyPressed
 
-    private void Kardiologi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi4KeyPressed
-        Valid.pindah(evt,Kardiologi3,Kardiologi5);
-    }//GEN-LAST:event_Kardiologi4KeyPressed
+    private void Intervensi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi3KeyPressed
+        Valid.pindah(evt,Intervensi4,Intervensi6);
+    }//GEN-LAST:event_Intervensi3KeyPressed
 
-    private void Kardiologi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi7KeyPressed
+    private void Intervensi8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi8KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi7KeyPressed
+    }//GEN-LAST:event_Intervensi8KeyPressed
 
-    private void Kardiologi8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi8KeyPressed
+    private void Intervensi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi7KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi8KeyPressed
+    }//GEN-LAST:event_Intervensi7KeyPressed
 
-    private void Kardiologi9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi9KeyPressed
+    private void Intervensi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Intervensi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi9KeyPressed
+    }//GEN-LAST:event_Intervensi2KeyPressed
 
-    private void Kardiologi10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi10KeyPressed
+    private void Edukasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi10KeyPressed
+    }//GEN-LAST:event_Edukasi1KeyPressed
 
-    private void Kardiologi11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi11KeyPressed
+    private void Edukasi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi11KeyPressed
+    }//GEN-LAST:event_Edukasi5KeyPressed
 
-    private void Kardiologi12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi12KeyPressed
+    private void Edukasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi12KeyPressed
+    }//GEN-LAST:event_Edukasi3KeyPressed
 
-    private void Kardiologi13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi13KeyPressed
+    private void Edukasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi13KeyPressed
+    }//GEN-LAST:event_Edukasi2KeyPressed
 
-    private void Kardiologi14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi14KeyPressed
+    private void Edukasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Edukasi4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi14KeyPressed
+    }//GEN-LAST:event_Edukasi4KeyPressed
 
-    private void Kardiologi15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi15KeyPressed
+    private void Sasaran2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Sasaran2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi15KeyPressed
+    }//GEN-LAST:event_Sasaran2KeyPressed
 
-    private void Kardiologi16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi16KeyPressed
+    private void Sasaran1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Sasaran1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi16KeyPressed
+    }//GEN-LAST:event_Sasaran1KeyPressed
 
-    private void Kardiologi17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi17KeyPressed
+    private void Sasaran3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Sasaran3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi17KeyPressed
+    }//GEN-LAST:event_Sasaran3KeyPressed
 
-    private void Kardiologi18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi18KeyPressed
+    private void Sasaran4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Sasaran4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi18KeyPressed
+    }//GEN-LAST:event_Sasaran4KeyPressed
 
-    private void Kardiologi19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi19KeyPressed
+    private void Evaluasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi19KeyPressed
+    }//GEN-LAST:event_Evaluasi1KeyPressed
 
-    private void Kardiologi20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi20KeyPressed
+    private void Evaluasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi20KeyPressed
+    }//GEN-LAST:event_Evaluasi3KeyPressed
 
-    private void Kardiologi21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi21KeyPressed
+    private void Evaluasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi21KeyPressed
+    }//GEN-LAST:event_Evaluasi2KeyPressed
 
-    private void Kardiologi22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi22KeyPressed
+    private void Evaluasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Kardiologi22KeyPressed
+    }//GEN-LAST:event_Evaluasi4KeyPressed
 
     private void DetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikKeyPressed
         //Valid.pindah(evt,Menit,btnPetugas);
@@ -1725,31 +1725,27 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
+    private widget.ComboBox Edukasi1;
+    private widget.ComboBox Edukasi2;
+    private widget.ComboBox Edukasi3;
+    private widget.ComboBox Edukasi4;
+    private widget.ComboBox Edukasi5;
+    private widget.ComboBox Evaluasi1;
+    private widget.ComboBox Evaluasi2;
+    private widget.ComboBox Evaluasi3;
+    private widget.ComboBox Evaluasi4;
     private widget.PanelBiasa FormInput;
+    private widget.ComboBox Intervensi1;
+    private widget.ComboBox Intervensi2;
+    private widget.ComboBox Intervensi3;
+    private widget.ComboBox Intervensi4;
+    private widget.ComboBox Intervensi5;
+    private widget.ComboBox Intervensi6;
+    private widget.ComboBox Intervensi7;
+    private widget.ComboBox Intervensi8;
+    private widget.ComboBox Intervensi9;
     private widget.TextBox JK;
     private widget.ComboBox Jam;
-    private widget.ComboBox Kardiologi1;
-    private widget.ComboBox Kardiologi10;
-    private widget.ComboBox Kardiologi11;
-    private widget.ComboBox Kardiologi12;
-    private widget.ComboBox Kardiologi13;
-    private widget.ComboBox Kardiologi14;
-    private widget.ComboBox Kardiologi15;
-    private widget.ComboBox Kardiologi16;
-    private widget.ComboBox Kardiologi17;
-    private widget.ComboBox Kardiologi18;
-    private widget.ComboBox Kardiologi19;
-    private widget.ComboBox Kardiologi2;
-    private widget.ComboBox Kardiologi20;
-    private widget.ComboBox Kardiologi21;
-    private widget.ComboBox Kardiologi22;
-    private widget.ComboBox Kardiologi3;
-    private widget.ComboBox Kardiologi4;
-    private widget.ComboBox Kardiologi5;
-    private widget.ComboBox Kardiologi6;
-    private widget.ComboBox Kardiologi7;
-    private widget.ComboBox Kardiologi8;
-    private widget.ComboBox Kardiologi9;
     private widget.TextBox KodePetugas;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
@@ -1757,6 +1753,10 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnKriteriaMasukHCU;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
+    private widget.ComboBox Sasaran1;
+    private widget.ComboBox Sasaran2;
+    private widget.ComboBox Sasaran3;
+    private widget.ComboBox Sasaran4;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
