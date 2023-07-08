@@ -493,7 +493,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -507,7 +507,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1067,7 +1067,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jSeparator8.setBounds(0, 370, 810, 1);
 
         jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel56.setText("IV. Evaluasi");
+        jLabel56.setText("IV. EVALUASI");
         jLabel56.setName("jLabel56"); // NOI18N
         FormInput.add(jLabel56);
         jLabel56.setBounds(10, 370, 180, 23);
@@ -1179,7 +1179,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         Jam.setBounds(173, 40, 62, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1211,7 +1211,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jLabel89.setText("Bapak");
         jLabel89.setName("jLabel89"); // NOI18N
         FormInput.add(jLabel89);
-        jLabel89.setBounds(40, 340, 130, 23);
+        jLabel89.setBounds(40, 340, 70, 23);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel90.setText("Terjadi Insiden Jatuh");
@@ -1562,16 +1562,16 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join petugas on petugas.id=sidikjari.id where petugas.nip=?",tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),28).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukHCU.jasper","report","::[ Formulir Check List Kriteria Masuk HCU ]::",
+            Valid.MyReportqry("rptFormulirRisikoJatuhNeonatus.jasper","report","::[ Formulir Risiko Jatuh Neonatus ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_risiko_jatuh_neonatus.tanggal,"+
-                    "penilaian_risiko_jatuh_neonatus.kardiologi1,penilaian_risiko_jatuh_neonatus.kardiologi2,penilaian_risiko_jatuh_neonatus.kardiologi3,"+
-                    "penilaian_risiko_jatuh_neonatus.kardiologi4,penilaian_risiko_jatuh_neonatus.kardiologi5,penilaian_risiko_jatuh_neonatus.kardiologi6,"+
-                    "penilaian_risiko_jatuh_neonatus.pernapasan1,penilaian_risiko_jatuh_neonatus.pernapasan2,penilaian_risiko_jatuh_neonatus.pernapasan3,"+
-                    "penilaian_risiko_jatuh_neonatus.syaraf1,penilaian_risiko_jatuh_neonatus.syaraf2,penilaian_risiko_jatuh_neonatus.syaraf3,penilaian_risiko_jatuh_neonatus.syaraf4,"+
-                    "penilaian_risiko_jatuh_neonatus.pencernaan1,penilaian_risiko_jatuh_neonatus.pencernaan2,penilaian_risiko_jatuh_neonatus.pencernaan3,"+
-                    "penilaian_risiko_jatuh_neonatus.pencernaan4,penilaian_risiko_jatuh_neonatus.pembedahan1,penilaian_risiko_jatuh_neonatus.pembedahan2,"+
-                    "penilaian_risiko_jatuh_neonatus.hematologi1,penilaian_risiko_jatuh_neonatus.hematologi2,penilaian_risiko_jatuh_neonatus.infeksi,"+
-                    "penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
+                    "penilaian_risiko_jatuh_neonatus.intervensi1,penilaian_risiko_jatuh_neonatus.intervensi2,penilaian_risiko_jatuh_neonatus.intervensi3,"+
+                    "penilaian_risiko_jatuh_neonatus.intervensi4,penilaian_risiko_jatuh_neonatus.intervensi5,penilaian_risiko_jatuh_neonatus.intervensi6,"+
+                    "penilaian_risiko_jatuh_neonatus.intervensi7,penilaian_risiko_jatuh_neonatus.intervensi8,penilaian_risiko_jatuh_neonatus.intervensi9,"+
+                    "penilaian_risiko_jatuh_neonatus.edukasi1,penilaian_risiko_jatuh_neonatus.edukasi2,penilaian_risiko_jatuh_neonatus.edukasi3,"+
+                    "penilaian_risiko_jatuh_neonatus.edukasi4,penilaian_risiko_jatuh_neonatus.edukasi5,penilaian_risiko_jatuh_neonatus.sasaran1,"+
+                    "penilaian_risiko_jatuh_neonatus.sasaran2,penilaian_risiko_jatuh_neonatus.sasaran3,penilaian_risiko_jatuh_neonatus.sasaran4,"+
+                    "penilaian_risiko_jatuh_neonatus.evaluasi1,penilaian_risiko_jatuh_neonatus.evaluasi2,penilaian_risiko_jatuh_neonatus.evaluasi3,"+
+                    "penilaian_risiko_jatuh_neonatus.evaluasi4,penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
                     "from penilaian_risiko_jatuh_neonatus inner join reg_periksa on penilaian_risiko_jatuh_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on petugas.nip=penilaian_risiko_jatuh_neonatus.nip "+
