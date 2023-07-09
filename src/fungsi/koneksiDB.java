@@ -1244,4 +1244,14 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String JADIKANBOOKINGSURATKONTROLAPIBPJS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("JADIKANBOOKINGSURATKONTROLAPIBPJS");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }
