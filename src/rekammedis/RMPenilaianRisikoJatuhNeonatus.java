@@ -70,7 +70,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Pasang Gelang Risiko Jatuh","Edukasi Orang Tua/Keluarga","Dekatkan Box Bayi Dengan Ibu","Orentasi Ruangan Pada Orang Tua/Keluarga",
             "Pastikan Lantai & Alas Kaki Tidak Licin","Pastikan Selalu Ada Pendamping","Bila Dirawat Dalam Inkubator, Pastikan Semua Jendela Terkunci","Kontrol Rutin Oleh Perawat/Bidan","Pasang Tanda Risiko Jatuh Pada Box/Inkubator",
             "Tempatkan Bayi Pada Tempat Yang Aman","Segera Istirahat Apabila Merasa Lelah & Tempatkan Bayi Pada Boxnya","Cara Membedong Bayi","Libatkan Keluarga Untuk Mendampingi/Segera Panggil Perawat/Bidan Jika Diperlukan",
-            "Teknip Menggendong Bayi","Bapak","Ibu","Keluarga","Wali Lainnya","Memahami & Mampu Menjelaskan Kembali","Perlu Edukasi Ulang","Mampu Mendemonstrasikan","Terjadi Insiden Jatuh","Kode Petugas","Nama Petugas"
+            "Teknip Menggendong Bayi","Bapak","Ibu","Keluarga","Wali Lainnya","Memahami & Mampu Menjelaskan Kembali","Perlu Edukasi Ulang","Mampu Mendemonstrasikan","Kode Petugas","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -80,7 +80,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 30; i++) {
+        for (i = 0; i < 29; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -94,9 +94,9 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                 column.setPreferredWidth(25);
             }else if(i==5){
                 column.setPreferredWidth(115);
-            }else if(i==28){
+            }else if(i==27){
                 column.setPreferredWidth(90);
-            }else if(i==29){
+            }else if(i==28){
                 column.setPreferredWidth(150);
             }else{
                 column.setPreferredWidth(100);
@@ -288,8 +288,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         Evaluasi3 = new widget.ComboBox();
         jLabel84 = new widget.Label();
         Evaluasi2 = new widget.ComboBox();
-        jLabel85 = new widget.Label();
-        Evaluasi4 = new widget.ComboBox();
         ChkKejadian = new widget.CekBox();
         Detik = new widget.ComboBox();
         Menit = new widget.ComboBox();
@@ -299,7 +297,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         jLabel87 = new widget.Label();
         jLabel88 = new widget.Label();
         jLabel89 = new widget.Label();
-        jLabel90 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -493,7 +490,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -507,7 +504,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -598,7 +595,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 453));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 423));
         FormInput.setLayout(null);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1123,22 +1120,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(Evaluasi2);
         Evaluasi2.setBounds(464, 390, 80, 23);
 
-        jLabel85.setText(":");
-        jLabel85.setName("jLabel85"); // NOI18N
-        FormInput.add(jLabel85);
-        jLabel85.setBounds(0, 420, 151, 23);
-
-        Evaluasi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Evaluasi4.setSelectedIndex(1);
-        Evaluasi4.setName("Evaluasi4"); // NOI18N
-        Evaluasi4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Evaluasi4KeyPressed(evt);
-            }
-        });
-        FormInput.add(Evaluasi4);
-        Evaluasi4.setBounds(155, 420, 80, 23);
-
         ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
         ChkKejadian.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -1179,7 +1160,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         Jam.setBounds(173, 40, 62, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1213,12 +1194,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel89);
         jLabel89.setBounds(40, 340, 70, 23);
 
-        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel90.setText("Terjadi Insiden Jatuh");
-        jLabel90.setName("jLabel90"); // NOI18N
-        FormInput.add(jLabel90);
-        jLabel90.setBounds(40, 420, 130, 23);
-
         scrollInput.setViewportView(FormInput);
 
         PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1248,13 +1223,13 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(btnPetugas,"Petugas");
         }else{
-            if(Sequel.menyimpantf("penilaian_risiko_jatuh_neonatus","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",25,new String[]{
+            if(Sequel.menyimpantf("penilaian_risiko_jatuh_neonatus","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",24,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Intervensi1.getSelectedItem().toString(),
                 Intervensi2.getSelectedItem().toString(),Intervensi3.getSelectedItem().toString(),Intervensi4.getSelectedItem().toString(),Intervensi5.getSelectedItem().toString(),
                 Intervensi6.getSelectedItem().toString(),Intervensi7.getSelectedItem().toString(),Intervensi8.getSelectedItem().toString(),Intervensi9.getSelectedItem().toString(),
                 Edukasi1.getSelectedItem().toString(),Edukasi2.getSelectedItem().toString(),Edukasi3.getSelectedItem().toString(),Edukasi4.getSelectedItem().toString(),Edukasi5.getSelectedItem().toString(),
                 Sasaran1.getSelectedItem().toString(),Sasaran2.getSelectedItem().toString(),Sasaran3.getSelectedItem().toString(),Sasaran4.getSelectedItem().toString(),Evaluasi1.getSelectedItem().toString(),
-                Evaluasi2.getSelectedItem().toString(),Evaluasi3.getSelectedItem().toString(),Evaluasi4.getSelectedItem().toString(),KodePetugas.getText()
+                Evaluasi2.getSelectedItem().toString(),Evaluasi3.getSelectedItem().toString(),KodePetugas.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
@@ -1262,7 +1237,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                     Intervensi6.getSelectedItem().toString(),Intervensi7.getSelectedItem().toString(),Intervensi8.getSelectedItem().toString(),Intervensi9.getSelectedItem().toString(),
                     Edukasi1.getSelectedItem().toString(),Edukasi2.getSelectedItem().toString(),Edukasi3.getSelectedItem().toString(),Edukasi4.getSelectedItem().toString(),Edukasi5.getSelectedItem().toString(),
                     Sasaran1.getSelectedItem().toString(),Sasaran2.getSelectedItem().toString(),Sasaran3.getSelectedItem().toString(),Sasaran4.getSelectedItem().toString(),Evaluasi1.getSelectedItem().toString(),
-                    Evaluasi2.getSelectedItem().toString(),Evaluasi3.getSelectedItem().toString(),Evaluasi4.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
+                    Evaluasi2.getSelectedItem().toString(),Evaluasi3.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -1271,11 +1246,11 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Infeksi,BtnBatal);
-        }*/
+            Valid.pindah(evt,Evaluasi3,BtnBatal);
+        }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
@@ -1295,7 +1270,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else {
-                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString())){
+                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
@@ -1324,7 +1299,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString())){
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
@@ -1392,7 +1367,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Memahami & Mampu Menjelaskan Kembali</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perlu Edukasi Ulang</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mampu Mendemonstrasikan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Terjadi Insiden Jatuh</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                     "</tr>"
@@ -1430,7 +1404,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
                         "</tr>");
                 }
                 
@@ -1560,8 +1533,8 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),28).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),28).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),27).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirRisikoJatuhNeonatus.jasper","report","::[ Formulir Risiko Jatuh Neonatus ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_risiko_jatuh_neonatus.tanggal,"+
                     "penilaian_risiko_jatuh_neonatus.intervensi1,penilaian_risiko_jatuh_neonatus.intervensi2,penilaian_risiko_jatuh_neonatus.intervensi3,"+
@@ -1571,7 +1544,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                     "penilaian_risiko_jatuh_neonatus.edukasi4,penilaian_risiko_jatuh_neonatus.edukasi5,penilaian_risiko_jatuh_neonatus.sasaran1,"+
                     "penilaian_risiko_jatuh_neonatus.sasaran2,penilaian_risiko_jatuh_neonatus.sasaran3,penilaian_risiko_jatuh_neonatus.sasaran4,"+
                     "penilaian_risiko_jatuh_neonatus.evaluasi1,penilaian_risiko_jatuh_neonatus.evaluasi2,penilaian_risiko_jatuh_neonatus.evaluasi3,"+
-                    "penilaian_risiko_jatuh_neonatus.evaluasi4,penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
+                    "penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
                     "from penilaian_risiko_jatuh_neonatus inner join reg_periksa on penilaian_risiko_jatuh_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on petugas.nip=penilaian_risiko_jatuh_neonatus.nip "+
@@ -1671,16 +1644,12 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     }//GEN-LAST:event_Evaluasi1KeyPressed
 
     private void Evaluasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi3KeyPressed
-        Valid.pindah(evt,Evaluasi2,Evaluasi4);
+        Valid.pindah(evt,Evaluasi2,BtnSimpan);
     }//GEN-LAST:event_Evaluasi3KeyPressed
 
     private void Evaluasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi2KeyPressed
         Valid.pindah(evt,Evaluasi1,Evaluasi3);
     }//GEN-LAST:event_Evaluasi2KeyPressed
-
-    private void Evaluasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Evaluasi4KeyPressed
-        Valid.pindah(evt,Evaluasi3,BtnSimpan);
-    }//GEN-LAST:event_Evaluasi4KeyPressed
 
     private void DetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikKeyPressed
         Valid.pindah(evt,Menit,btnPetugas);
@@ -1736,7 +1705,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     private widget.ComboBox Evaluasi1;
     private widget.ComboBox Evaluasi2;
     private widget.ComboBox Evaluasi3;
-    private widget.ComboBox Evaluasi4;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox Intervensi1;
     private widget.ComboBox Intervensi2;
@@ -1808,12 +1776,10 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     private widget.Label jLabel82;
     private widget.Label jLabel83;
     private widget.Label jLabel84;
-    private widget.Label jLabel85;
     private widget.Label jLabel86;
     private widget.Label jLabel87;
     private widget.Label jLabel88;
     private widget.Label jLabel89;
-    private widget.Label jLabel90;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
@@ -1843,7 +1809,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                     "penilaian_risiko_jatuh_neonatus.edukasi4,penilaian_risiko_jatuh_neonatus.edukasi5,penilaian_risiko_jatuh_neonatus.sasaran1,"+
                     "penilaian_risiko_jatuh_neonatus.sasaran2,penilaian_risiko_jatuh_neonatus.sasaran3,penilaian_risiko_jatuh_neonatus.sasaran4,"+
                     "penilaian_risiko_jatuh_neonatus.evaluasi1,penilaian_risiko_jatuh_neonatus.evaluasi2,penilaian_risiko_jatuh_neonatus.evaluasi3,"+
-                    "penilaian_risiko_jatuh_neonatus.evaluasi4,penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
+                    "penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
                     "from penilaian_risiko_jatuh_neonatus inner join reg_periksa on penilaian_risiko_jatuh_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on petugas.nip=penilaian_risiko_jatuh_neonatus.nip "+
@@ -1858,7 +1824,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                     "penilaian_risiko_jatuh_neonatus.edukasi4,penilaian_risiko_jatuh_neonatus.edukasi5,penilaian_risiko_jatuh_neonatus.sasaran1,"+
                     "penilaian_risiko_jatuh_neonatus.sasaran2,penilaian_risiko_jatuh_neonatus.sasaran3,penilaian_risiko_jatuh_neonatus.sasaran4,"+
                     "penilaian_risiko_jatuh_neonatus.evaluasi1,penilaian_risiko_jatuh_neonatus.evaluasi2,penilaian_risiko_jatuh_neonatus.evaluasi3,"+
-                    "penilaian_risiko_jatuh_neonatus.evaluasi4,penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
+                    "penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
                     "from penilaian_risiko_jatuh_neonatus inner join reg_periksa on penilaian_risiko_jatuh_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on petugas.nip=penilaian_risiko_jatuh_neonatus.nip "+
@@ -1887,7 +1853,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                         rs.getString("intervensi1"),rs.getString("intervensi2"),rs.getString("intervensi3"),rs.getString("intervensi4"),rs.getString("intervensi5"),rs.getString("intervensi6"),
                         rs.getString("intervensi7"),rs.getString("intervensi8"),rs.getString("intervensi9"),rs.getString("edukasi1"),rs.getString("edukasi2"),rs.getString("edukasi3"),
                         rs.getString("edukasi4"),rs.getString("edukasi5"),rs.getString("sasaran1"),rs.getString("sasaran2"),rs.getString("sasaran3"),rs.getString("sasaran4"),
-                        rs.getString("evaluasi1"),rs.getString("evaluasi2"),rs.getString("evaluasi3"),rs.getString("evaluasi4"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("evaluasi1"),rs.getString("evaluasi2"),rs.getString("evaluasi3"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1928,7 +1894,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         Evaluasi1.setSelectedItem("Ya");
         Evaluasi2.setSelectedItem("Ya");
         Evaluasi3.setSelectedItem("Ya");
-        Evaluasi4.setSelectedItem("Tidak");
         Tanggal.setDate(new Date());
         Intervensi1.requestFocus();
     } 
@@ -1961,7 +1926,6 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             Evaluasi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
             Evaluasi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
             Evaluasi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            Evaluasi4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
@@ -2011,9 +1975,9 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>643){
+            if(internalFrame1.getHeight()>613){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,476));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,446));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -2050,13 +2014,13 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
     private void ganti() {
         if(Sequel.mengedittf("penilaian_risiko_jatuh_neonatus","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,intervensi1=?,intervensi2=?,intervensi3=?,intervensi4=?,intervensi5=?,intervensi6=?,"+
                 "intervensi7=?,intervensi8=?,intervensi9=?,edukasi1=?,edukasi2=?,edukasi3=?,edukasi4=?,edukasi5=?,sasaran1=?,sasaran2=?,sasaran3=?,sasaran4=?,evaluasi1=?,evaluasi2=?,evaluasi3=?,"+
-                "evaluasi4=?,nip=?",27,new String[]{
+                "nip=?",26,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Intervensi1.getSelectedItem().toString(),
                 Intervensi2.getSelectedItem().toString(),Intervensi3.getSelectedItem().toString(),Intervensi4.getSelectedItem().toString(),Intervensi5.getSelectedItem().toString(),
                 Intervensi6.getSelectedItem().toString(),Intervensi7.getSelectedItem().toString(),Intervensi8.getSelectedItem().toString(),Intervensi9.getSelectedItem().toString(),
                 Edukasi1.getSelectedItem().toString(),Edukasi2.getSelectedItem().toString(),Edukasi3.getSelectedItem().toString(),Edukasi4.getSelectedItem().toString(),Edukasi5.getSelectedItem().toString(),
                 Sasaran1.getSelectedItem().toString(),Sasaran2.getSelectedItem().toString(),Sasaran3.getSelectedItem().toString(),Sasaran4.getSelectedItem().toString(),Evaluasi1.getSelectedItem().toString(),
-                Evaluasi2.getSelectedItem().toString(),Evaluasi3.getSelectedItem().toString(),Evaluasi4.getSelectedItem().toString(),KodePetugas.getText(),
+                Evaluasi2.getSelectedItem().toString(),Evaluasi3.getSelectedItem().toString(),KodePetugas.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -2086,9 +2050,8 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
             tbObat.setValueAt(Evaluasi1.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
             tbObat.setValueAt(Evaluasi2.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
             tbObat.setValueAt(Evaluasi3.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
-            tbObat.setValueAt(Evaluasi4.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
-            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),28);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),29);
+            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),27);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),28);
             emptTeks();
         }
     }

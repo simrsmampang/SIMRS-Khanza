@@ -19091,7 +19091,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         "penilaian_risiko_jatuh_neonatus.edukasi3,penilaian_risiko_jatuh_neonatus.edukasi4,penilaian_risiko_jatuh_neonatus.edukasi5,"+
                         "penilaian_risiko_jatuh_neonatus.sasaran1,penilaian_risiko_jatuh_neonatus.sasaran2,penilaian_risiko_jatuh_neonatus.sasaran3,"+
                         "penilaian_risiko_jatuh_neonatus.sasaran4,penilaian_risiko_jatuh_neonatus.evaluasi1,penilaian_risiko_jatuh_neonatus.evaluasi2,"+
-                        "penilaian_risiko_jatuh_neonatus.evaluasi3,penilaian_risiko_jatuh_neonatus.evaluasi4,penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
+                        "penilaian_risiko_jatuh_neonatus.evaluasi3,penilaian_risiko_jatuh_neonatus.nip,petugas.nama "+
                         "from penilaian_risiko_jatuh_neonatus inner join petugas on petugas.nip=penilaian_risiko_jatuh_neonatus.nip "+
                         "where penilaian_risiko_jatuh_neonatus.no_rawat='"+norawat+"'").executeQuery();
                     if(rs2.next()){
@@ -19249,11 +19249,6 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td width='4%' valign='top' align='center'>3</td>"+
                                               "<td width='76%' valign='top'>Mampu Mendemonstrasikan</td>"+
                                               "<td width='20%' valign='top' align='center'>"+rs2.getString("evaluasi3")+"</td>"+
-                                          "</tr>"+
-                                          "<tr>"+
-                                              "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Terjadi Insiden Jatuh</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("evaluasi4")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
