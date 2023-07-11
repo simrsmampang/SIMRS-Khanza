@@ -210,7 +210,7 @@ public final class akses {
             master_rencana_keperawatan_geriatri=false,checklist_kriteria_masuk_hcu=false,checklist_kriteria_keluar_hcu=false,penilaian_risiko_dekubitus=false,
             master_menolak_anjuran_medis=false,penolakan_anjuran_medis=false,laporan_tahunan_penolakan_anjuran_medis=false,template_laporan_operasi=false,hasil_tindakan_eswl=false,
             checklist_kriteria_masuk_icu=false,checklist_kriteria_keluar_icu=false,akses_dokter_lain_rawat_jalan=false,follow_up_dbd=false,penilaian_risiko_jatuh_neonatus=false,
-            validasi_pengajuan_biaya=false,pemeriksaan_fisik_ralan_per_penyakit=false;
+            validasi_pengajuan_biaya=false,pemeriksaan_fisik_ralan_per_penyakit=false,penilaian_lanjutan_resiko_jatuh_geriatri=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1196,6 +1196,7 @@ public final class akses {
                         akses.penilaian_risiko_jatuh_neonatus=true;
                         akses.validasi_pengajuan_biaya=true;
                         akses.pemeriksaan_fisik_ralan_per_penyakit=true;
+                        akses.penilaian_lanjutan_resiko_jatuh_geriatri=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2165,6 +2166,7 @@ public final class akses {
                         akses.penilaian_risiko_jatuh_neonatus=rs2.getBoolean("penilaian_risiko_jatuh_neonatus");
                         akses.validasi_pengajuan_biaya=rs2.getBoolean("validasi_pengajuan_biaya");
                         akses.pemeriksaan_fisik_ralan_per_penyakit=rs2.getBoolean("pemeriksaan_fisik_ralan_per_penyakit");
+                        akses.penilaian_lanjutan_resiko_jatuh_geriatri=rs2.getBoolean("penilaian_lanjutan_resiko_jatuh_geriatri");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3132,6 +3134,7 @@ public final class akses {
                         akses.penilaian_risiko_jatuh_neonatus=false;
                         akses.validasi_pengajuan_biaya=false;
                         akses.pemeriksaan_fisik_ralan_per_penyakit=false;
+                        akses.penilaian_lanjutan_resiko_jatuh_geriatri=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4159,4 +4162,5 @@ public final class akses {
     public static boolean getpenilaian_risiko_jatuh_neonatus(){return akses.penilaian_risiko_jatuh_neonatus;}
     public static boolean getvalidasi_pengajuan_biaya(){return akses.validasi_pengajuan_biaya;}
     public static boolean getpemeriksaan_fisik_ralan_per_penyakit(){return akses.pemeriksaan_fisik_ralan_per_penyakit;}
+    public static boolean getpenilaian_lanjutan_resiko_jatuh_geriatri(){return akses.penilaian_lanjutan_resiko_jatuh_geriatri;}
 }   

@@ -36,7 +36,7 @@ public class DlgKIPPasienRalan extends javax.swing.JDialog {
                 pulang=0,rawat=0,rujuk=0,kbl=0,kbp=0,kll=0,klp=0;
     private String sthr0s6l="",sthr0s6p="",sthr7s28l="",sthr7s28p="",sthr28s1thl="",sthr28s1thp="",stth1s4l="",stth1s4p="",
                 stth5s14l="",stth5s14p="",stth15s24l="",stth15s24p="",stth25s44l="",stth25s44p="",stth45s64l="",stth45s64p="",
-                stlbth65l="",stlbth65p="",stmatilb48="",stmatikr48="",diagnosa="",stpulang="",strawat="",strujuk="",
+                stlbth65l="",stlbth65p="",diagnosa="",stpulang="",strawat="",strujuk="",
                 stkbl="",stkbp="",stkll="",stklp="";
     
     /** Creates new form DlgProgramStudi
