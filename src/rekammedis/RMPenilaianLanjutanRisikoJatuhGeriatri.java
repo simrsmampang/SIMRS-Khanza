@@ -1,5 +1,5 @@
 /*
- * Candra Tim IT RS Handayani Lampung Utara
+ * by Mas Elkhanza
  */
 
 
@@ -12,12 +12,16 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,6 +35,9 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 
@@ -46,8 +53,8 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private int rlansia=0;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private StringBuilder htmlContent;
     private String finger="";
     /** Creates new form DlgRujuk
      * @param parent
@@ -59,9 +66,10 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Skala Morse 1","N.M. 1",
-            "Skala Morse 2","N.M. 2","Skala Morse 3","N.M. 3","Skala Morse 4","N.M. 4","Skala Morse 5","N.M. 5",
-            "Skala Morse 6","N.M. 6","Total","Hasil Skrining","Saran","NIP","Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal","Gangguan Gaya Berjalan (Diseret, Menghentak, Berayun)","N. 1",
+            "Pusing/Pingsan Pada Posisi Tegak","N. 2","Kebingungan Setiap Saat","N. 3","Nokturia/Inkontinen","N. 4","Kebingunan Intermiten","N. 5",
+            "Kelemahan Umum","N. 6","Obat-obatan Berisiko Tinggi","N. 7","Riwayat Jatuh Dalam Waktu 12 Bulan","N. 8","Osteoporosis","N. 9",
+            "Gangguan Pendengaran Atau Penglihatan","N. 10","Usia 70 Tahun Ke Atas","N. 11","Total","Hasil Skrining","Saran","NIP","Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -71,7 +79,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 23; i++) {
+        for (i = 0; i < 33; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -110,14 +118,34 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
             }else if(i==17){
                 column.setPreferredWidth(40);
             }else if(i==18){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(75);
             }else if(i==19){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(40);
             }else if(i==20){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(75);
             }else if(i==21){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(40);
             }else if(i==22){
+                column.setPreferredWidth(75);
+            }else if(i==23){
+                column.setPreferredWidth(40);
+            }else if(i==24){
+                column.setPreferredWidth(75);
+            }else if(i==25){
+                column.setPreferredWidth(40);
+            }else if(i==26){
+                column.setPreferredWidth(75);
+            }else if(i==27){
+                column.setPreferredWidth(40);
+            }else if(i==28){
+                column.setPreferredWidth(40);
+            }else if(i==29){
+                column.setPreferredWidth(200);
+            }else if(i==30){
+                column.setPreferredWidth(200);
+            }else if(i==31){
+                column.setPreferredWidth(90);
+            }else if(i==32){
                 column.setPreferredWidth(150);
             }
         }
@@ -178,6 +206,24 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         ChkInput.setSelected(false);
         isForm();
         jam();
+        
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
 
 
@@ -191,8 +237,9 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianLanjutanRisikoJatuh = new javax.swing.JMenuItem();
+        MnPenilaianLanjutanRisikoGeriatri = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -278,25 +325,65 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         jLabel236 = new widget.Label();
         jLabel237 = new widget.Label();
         jLabel238 = new widget.Label();
+        jLabel239 = new widget.Label();
+        jLabel235 = new widget.Label();
+        SkalaResiko7 = new widget.ComboBox();
+        NilaiResiko7 = new widget.TextBox();
+        jLabel240 = new widget.Label();
+        jLabel229 = new widget.Label();
+        jLabel232 = new widget.Label();
+        jLabel241 = new widget.Label();
+        jLabel242 = new widget.Label();
+        jLabel243 = new widget.Label();
+        jLabel244 = new widget.Label();
+        jLabel245 = new widget.Label();
+        jLabel246 = new widget.Label();
+        jLabel247 = new widget.Label();
+        jLabel248 = new widget.Label();
+        jLabel249 = new widget.Label();
+        SkalaResiko8 = new widget.ComboBox();
+        jLabel250 = new widget.Label();
+        NilaiResiko8 = new widget.TextBox();
+        jLabel251 = new widget.Label();
+        jLabel252 = new widget.Label();
+        jLabel253 = new widget.Label();
+        SkalaResiko9 = new widget.ComboBox();
+        jLabel254 = new widget.Label();
+        NilaiResiko9 = new widget.TextBox();
+        jLabel255 = new widget.Label();
+        jLabel256 = new widget.Label();
+        jLabel257 = new widget.Label();
+        SkalaResiko10 = new widget.ComboBox();
+        jLabel258 = new widget.Label();
+        NilaiResiko10 = new widget.TextBox();
+        NilaiResiko11 = new widget.TextBox();
+        jLabel259 = new widget.Label();
+        SkalaResiko11 = new widget.ComboBox();
+        jLabel260 = new widget.Label();
+        jLabel261 = new widget.Label();
+        jLabel262 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianLanjutanRisikoJatuh.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianLanjutanRisikoJatuh.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianLanjutanRisikoJatuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setText("Formulir Penilaian Lanjutan Risiko Jatuh Lansia");
-        MnPenilaianLanjutanRisikoJatuh.setName("MnPenilaianLanjutanRisikoJatuh"); // NOI18N
-        MnPenilaianLanjutanRisikoJatuh.setPreferredSize(new java.awt.Dimension(290, 26));
-        MnPenilaianLanjutanRisikoJatuh.addActionListener(new java.awt.event.ActionListener() {
+        MnPenilaianLanjutanRisikoGeriatri.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianLanjutanRisikoGeriatri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianLanjutanRisikoGeriatri.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianLanjutanRisikoGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianLanjutanRisikoGeriatri.setText("Formulir Penilaian Lanjutan Risiko Jatuh Geriatri");
+        MnPenilaianLanjutanRisikoGeriatri.setName("MnPenilaianLanjutanRisikoGeriatri"); // NOI18N
+        MnPenilaianLanjutanRisikoGeriatri.setPreferredSize(new java.awt.Dimension(290, 26));
+        MnPenilaianLanjutanRisikoGeriatri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianLanjutanRisikoJatuhActionPerformed(evt);
+                MnPenilaianLanjutanRisikoGeriatriActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianLanjutanRisikoJatuh);
+        jPopupMenu1.add(MnPenilaianLanjutanRisikoGeriatri);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -468,7 +555,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -482,7 +569,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -574,7 +661,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         FormInput.setBorder(null);
         FormInput.setMaximumSize(new java.awt.Dimension(32767, 35767));
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(970, 563));
+        FormInput.setPreferredSize(new java.awt.Dimension(830, 593));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -604,7 +691,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -722,10 +809,10 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         jLabel57.setBounds(14, 70, 80, 23);
 
         jLabel217.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel217.setText("1. Risiko Gangguan Gaya Berjalan (Diseret, Menghentak, Berayun)");
+        jLabel217.setText("1.");
         jLabel217.setName("jLabel217"); // NOI18N
         FormInput.add(jLabel217);
-        jLabel217.setBounds(34, 90, 510, 23);
+        jLabel217.setBounds(34, 90, 20, 23);
 
         jLabel219.setText("Skala :");
         jLabel219.setName("jLabel219"); // NOI18N
@@ -750,7 +837,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         jLabel218.setText("Nilai :");
         jLabel218.setName("jLabel218"); // NOI18N
         FormInput.add(jLabel218);
-        jLabel218.setBounds(655, 90, 70, 23);
+        jLabel218.setBounds(675, 90, 50, 23);
 
         NilaiResiko1.setEditable(false);
         NilaiResiko1.setFocusTraversalPolicyProvider(true);
@@ -759,10 +846,10 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         NilaiResiko1.setBounds(729, 90, 60, 23);
 
         jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel220.setText("2. Pusing/Pingsan Pada Posisi Tegak");
+        jLabel220.setText("2.");
         jLabel220.setName("jLabel220"); // NOI18N
         FormInput.add(jLabel220);
-        jLabel220.setBounds(34, 120, 520, 23);
+        jLabel220.setBounds(34, 120, 20, 23);
 
         jLabel221.setText("Skala :");
         jLabel221.setName("jLabel221"); // NOI18N
@@ -787,7 +874,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         jLabel222.setText("Nilai :");
         jLabel222.setName("jLabel222"); // NOI18N
         FormInput.add(jLabel222);
-        jLabel222.setBounds(655, 120, 70, 23);
+        jLabel222.setBounds(675, 120, 50, 23);
 
         NilaiResiko2.setEditable(false);
         NilaiResiko2.setFocusTraversalPolicyProvider(true);
@@ -796,10 +883,10 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         NilaiResiko2.setBounds(729, 120, 60, 23);
 
         jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel223.setText("3. Kebingungan Setiap Saat");
+        jLabel223.setText("3. ");
         jLabel223.setName("jLabel223"); // NOI18N
         FormInput.add(jLabel223);
-        jLabel223.setBounds(34, 150, 520, 23);
+        jLabel223.setBounds(34, 150, 20, 23);
 
         jLabel224.setText("Skala :");
         jLabel224.setName("jLabel224"); // NOI18N
@@ -824,7 +911,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         jLabel225.setText("Nilai :");
         jLabel225.setName("jLabel225"); // NOI18N
         FormInput.add(jLabel225);
-        jLabel225.setBounds(655, 150, 70, 23);
+        jLabel225.setBounds(675, 150, 50, 23);
 
         NilaiResiko3.setEditable(false);
         NilaiResiko3.setFocusTraversalPolicyProvider(true);
@@ -833,10 +920,10 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         NilaiResiko3.setBounds(729, 150, 60, 23);
 
         jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel226.setText("4. Nokturia/Inkontinen");
+        jLabel226.setText("4.");
         jLabel226.setName("jLabel226"); // NOI18N
         FormInput.add(jLabel226);
-        jLabel226.setBounds(34, 180, 520, 23);
+        jLabel226.setBounds(34, 180, 20, 23);
 
         jLabel227.setText("Skala :");
         jLabel227.setName("jLabel227"); // NOI18N
@@ -861,7 +948,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         jLabel228.setText("Nilai :");
         jLabel228.setName("jLabel228"); // NOI18N
         FormInput.add(jLabel228);
-        jLabel228.setBounds(655, 180, 70, 23);
+        jLabel228.setBounds(675, 180, 50, 23);
 
         NilaiResiko4.setEditable(false);
         NilaiResiko4.setFocusTraversalPolicyProvider(true);
@@ -892,7 +979,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         jLabel231.setText("Nilai :");
         jLabel231.setName("jLabel231"); // NOI18N
         FormInput.add(jLabel231);
-        jLabel231.setBounds(655, 210, 70, 23);
+        jLabel231.setBounds(675, 210, 50, 23);
 
         NilaiResiko5.setEditable(false);
         NilaiResiko5.setFocusTraversalPolicyProvider(true);
@@ -923,7 +1010,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         jLabel234.setText("Nilai :");
         jLabel234.setName("jLabel234"); // NOI18N
         FormInput.add(jLabel234);
-        jLabel234.setBounds(655, 240, 70, 23);
+        jLabel234.setBounds(675, 240, 50, 23);
 
         NilaiResiko6.setEditable(false);
         NilaiResiko6.setFocusTraversalPolicyProvider(true);
@@ -932,23 +1019,23 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         NilaiResiko6.setBounds(729, 240, 60, 23);
 
         TingkatResiko.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
+        TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0 - 3), Tindakan : Intervensi pencegahan risiko jatuh standar");
         TingkatResiko.setToolTipText("");
         TingkatResiko.setName("TingkatResiko"); // NOI18N
         FormInput.add(TingkatResiko);
-        TingkatResiko.setBounds(34, 390, 640, 23);
+        TingkatResiko.setBounds(34, 420, 640, 23);
 
         NilaiResikoTotal.setEditable(false);
         NilaiResikoTotal.setFocusTraversalPolicyProvider(true);
         NilaiResikoTotal.setName("NilaiResikoTotal"); // NOI18N
         FormInput.add(NilaiResikoTotal);
-        NilaiResikoTotal.setBounds(729, 390, 60, 23);
+        NilaiResikoTotal.setBounds(729, 420, 60, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Hasil Skrining :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(14, 420, 110, 23);
+        jLabel30.setBounds(14, 450, 110, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -965,13 +1052,13 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         scrollPane1.setViewportView(HasilSkrining);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(34, 440, 755, 43);
+        scrollPane1.setBounds(34, 470, 755, 43);
 
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel31.setText("Saran :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(14, 490, 110, 23);
+        jLabel31.setBounds(14, 520, 110, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -988,7 +1075,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         scrollPane2.setViewportView(Saran);
 
         FormInput.add(scrollPane2);
-        scrollPane2.setBounds(34, 510, 755, 43);
+        scrollPane2.setBounds(34, 540, 755, 43);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -1002,31 +1089,288 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 420, 810, 1);
+        jSeparator3.setBounds(0, 450, 810, 1);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 490, 810, 1);
+        jSeparator4.setBounds(0, 520, 810, 1);
 
         jLabel236.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel236.setText("5. Kebingunan Intermiten");
+        jLabel236.setText("5.");
         jLabel236.setName("jLabel236"); // NOI18N
         FormInput.add(jLabel236);
-        jLabel236.setBounds(34, 210, 520, 23);
+        jLabel236.setBounds(34, 210, 20, 23);
 
         jLabel237.setText("Total :");
         jLabel237.setName("jLabel237"); // NOI18N
         FormInput.add(jLabel237);
-        jLabel237.setBounds(655, 390, 70, 23);
+        jLabel237.setBounds(675, 420, 50, 23);
 
         jLabel238.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel238.setText("7. Kelemahan Umum");
+        jLabel238.setText("6.");
         jLabel238.setName("jLabel238"); // NOI18N
         FormInput.add(jLabel238);
-        jLabel238.setBounds(34, 240, 520, 23);
+        jLabel238.setBounds(34, 240, 20, 23);
+
+        jLabel239.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel239.setText("7.");
+        jLabel239.setName("jLabel239"); // NOI18N
+        FormInput.add(jLabel239);
+        jLabel239.setBounds(34, 270, 20, 23);
+
+        jLabel235.setText("Skala :");
+        jLabel235.setName("jLabel235"); // NOI18N
+        FormInput.add(jLabel235);
+        jLabel235.setBounds(510, 270, 80, 23);
+
+        SkalaResiko7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaResiko7.setName("SkalaResiko7"); // NOI18N
+        SkalaResiko7.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SkalaResiko7ItemStateChanged(evt);
+            }
+        });
+        SkalaResiko7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SkalaResiko7KeyPressed(evt);
+            }
+        });
+        FormInput.add(SkalaResiko7);
+        SkalaResiko7.setBounds(594, 270, 80, 23);
+
+        NilaiResiko7.setEditable(false);
+        NilaiResiko7.setFocusTraversalPolicyProvider(true);
+        NilaiResiko7.setName("NilaiResiko7"); // NOI18N
+        FormInput.add(NilaiResiko7);
+        NilaiResiko7.setBounds(729, 270, 60, 23);
+
+        jLabel240.setText("Nilai :");
+        jLabel240.setName("jLabel240"); // NOI18N
+        FormInput.add(jLabel240);
+        jLabel240.setBounds(675, 270, 50, 23);
+
+        jLabel229.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel229.setText("Gangguan Gaya Berjalan (Diseret, Menghentak, Berayun)");
+        jLabel229.setName("jLabel229"); // NOI18N
+        FormInput.add(jLabel229);
+        jLabel229.setBounds(52, 90, 500, 23);
+
+        jLabel232.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel232.setText("Pusing/Pingsan Pada Posisi Tegak");
+        jLabel232.setName("jLabel232"); // NOI18N
+        FormInput.add(jLabel232);
+        jLabel232.setBounds(52, 120, 500, 23);
+
+        jLabel241.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel241.setText("Kebingungan Setiap Saat");
+        jLabel241.setName("jLabel241"); // NOI18N
+        FormInput.add(jLabel241);
+        jLabel241.setBounds(52, 150, 500, 23);
+
+        jLabel242.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel242.setText("Nokturia/Inkontinen");
+        jLabel242.setName("jLabel242"); // NOI18N
+        FormInput.add(jLabel242);
+        jLabel242.setBounds(52, 180, 500, 23);
+
+        jLabel243.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel243.setText("Kebingunan Intermiten");
+        jLabel243.setName("jLabel243"); // NOI18N
+        FormInput.add(jLabel243);
+        jLabel243.setBounds(52, 210, 500, 23);
+
+        jLabel244.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel244.setText("Kelemahan Umum");
+        jLabel244.setName("jLabel244"); // NOI18N
+        FormInput.add(jLabel244);
+        jLabel244.setBounds(52, 240, 500, 23);
+
+        jLabel245.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel245.setText("Obat-obatan Berisiko Tinggi (Diuretic, Narkotik, Sedative, Anti Psikotik, Laksatif, Vasodilator, ");
+        jLabel245.setName("jLabel245"); // NOI18N
+        FormInput.add(jLabel245);
+        jLabel245.setBounds(52, 264, 500, 23);
+
+        jLabel246.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel246.setText("Antiaritmia, Anti Hipertensi, Anti Diabetik, Anti Depresan, Neuroleptik, NSAID)");
+        jLabel246.setName("jLabel246"); // NOI18N
+        FormInput.add(jLabel246);
+        jLabel246.setBounds(52, 277, 500, 23);
+
+        jLabel247.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel247.setText("8.");
+        jLabel247.setName("jLabel247"); // NOI18N
+        FormInput.add(jLabel247);
+        jLabel247.setBounds(34, 300, 20, 23);
+
+        jLabel248.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel248.setText("Riwayat Jatuh Dalam Waktu 12 Bulan");
+        jLabel248.setName("jLabel248"); // NOI18N
+        FormInput.add(jLabel248);
+        jLabel248.setBounds(52, 300, 500, 23);
+
+        jLabel249.setText("Skala :");
+        jLabel249.setName("jLabel249"); // NOI18N
+        FormInput.add(jLabel249);
+        jLabel249.setBounds(510, 300, 80, 23);
+
+        SkalaResiko8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaResiko8.setName("SkalaResiko8"); // NOI18N
+        SkalaResiko8.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SkalaResiko8ItemStateChanged(evt);
+            }
+        });
+        SkalaResiko8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SkalaResiko8KeyPressed(evt);
+            }
+        });
+        FormInput.add(SkalaResiko8);
+        SkalaResiko8.setBounds(594, 300, 80, 23);
+
+        jLabel250.setText("Nilai :");
+        jLabel250.setName("jLabel250"); // NOI18N
+        FormInput.add(jLabel250);
+        jLabel250.setBounds(675, 300, 50, 23);
+
+        NilaiResiko8.setEditable(false);
+        NilaiResiko8.setFocusTraversalPolicyProvider(true);
+        NilaiResiko8.setName("NilaiResiko8"); // NOI18N
+        FormInput.add(NilaiResiko8);
+        NilaiResiko8.setBounds(729, 300, 60, 23);
+
+        jLabel251.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel251.setText("9.");
+        jLabel251.setName("jLabel251"); // NOI18N
+        FormInput.add(jLabel251);
+        jLabel251.setBounds(34, 330, 20, 23);
+
+        jLabel252.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel252.setText("Osteoporosis");
+        jLabel252.setName("jLabel252"); // NOI18N
+        FormInput.add(jLabel252);
+        jLabel252.setBounds(52, 330, 500, 23);
+
+        jLabel253.setText("Skala :");
+        jLabel253.setName("jLabel253"); // NOI18N
+        FormInput.add(jLabel253);
+        jLabel253.setBounds(510, 330, 80, 23);
+
+        SkalaResiko9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaResiko9.setName("SkalaResiko9"); // NOI18N
+        SkalaResiko9.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SkalaResiko9ItemStateChanged(evt);
+            }
+        });
+        SkalaResiko9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SkalaResiko9KeyPressed(evt);
+            }
+        });
+        FormInput.add(SkalaResiko9);
+        SkalaResiko9.setBounds(594, 330, 80, 23);
+
+        jLabel254.setText("Nilai :");
+        jLabel254.setName("jLabel254"); // NOI18N
+        FormInput.add(jLabel254);
+        jLabel254.setBounds(675, 330, 50, 23);
+
+        NilaiResiko9.setEditable(false);
+        NilaiResiko9.setFocusTraversalPolicyProvider(true);
+        NilaiResiko9.setName("NilaiResiko9"); // NOI18N
+        FormInput.add(NilaiResiko9);
+        NilaiResiko9.setBounds(729, 330, 60, 23);
+
+        jLabel255.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel255.setText("10.");
+        jLabel255.setName("jLabel255"); // NOI18N
+        FormInput.add(jLabel255);
+        jLabel255.setBounds(34, 360, 20, 23);
+
+        jLabel256.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel256.setText("Gangguan Pendengaran Atau Penglihatan");
+        jLabel256.setName("jLabel256"); // NOI18N
+        FormInput.add(jLabel256);
+        jLabel256.setBounds(52, 360, 500, 23);
+
+        jLabel257.setText("Skala :");
+        jLabel257.setName("jLabel257"); // NOI18N
+        FormInput.add(jLabel257);
+        jLabel257.setBounds(510, 360, 80, 23);
+
+        SkalaResiko10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaResiko10.setName("SkalaResiko10"); // NOI18N
+        SkalaResiko10.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SkalaResiko10ItemStateChanged(evt);
+            }
+        });
+        SkalaResiko10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SkalaResiko10KeyPressed(evt);
+            }
+        });
+        FormInput.add(SkalaResiko10);
+        SkalaResiko10.setBounds(594, 360, 80, 23);
+
+        jLabel258.setText("Nilai :");
+        jLabel258.setName("jLabel258"); // NOI18N
+        FormInput.add(jLabel258);
+        jLabel258.setBounds(675, 360, 50, 23);
+
+        NilaiResiko10.setEditable(false);
+        NilaiResiko10.setFocusTraversalPolicyProvider(true);
+        NilaiResiko10.setName("NilaiResiko10"); // NOI18N
+        FormInput.add(NilaiResiko10);
+        NilaiResiko10.setBounds(729, 360, 60, 23);
+
+        NilaiResiko11.setEditable(false);
+        NilaiResiko11.setFocusTraversalPolicyProvider(true);
+        NilaiResiko11.setName("NilaiResiko11"); // NOI18N
+        FormInput.add(NilaiResiko11);
+        NilaiResiko11.setBounds(729, 390, 60, 23);
+
+        jLabel259.setText("Nilai :");
+        jLabel259.setName("jLabel259"); // NOI18N
+        FormInput.add(jLabel259);
+        jLabel259.setBounds(675, 390, 50, 23);
+
+        SkalaResiko11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SkalaResiko11.setName("SkalaResiko11"); // NOI18N
+        SkalaResiko11.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SkalaResiko11ItemStateChanged(evt);
+            }
+        });
+        SkalaResiko11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SkalaResiko11KeyPressed(evt);
+            }
+        });
+        FormInput.add(SkalaResiko11);
+        SkalaResiko11.setBounds(594, 390, 80, 23);
+
+        jLabel260.setText("Skala :");
+        jLabel260.setName("jLabel260"); // NOI18N
+        FormInput.add(jLabel260);
+        jLabel260.setBounds(510, 390, 80, 23);
+
+        jLabel261.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel261.setText("11.");
+        jLabel261.setName("jLabel261"); // NOI18N
+        FormInput.add(jLabel261);
+        jLabel261.setBounds(34, 390, 20, 23);
+
+        jLabel262.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel262.setText("Usia 70 Tahun Ke Atas");
+        jLabel262.setName("jLabel262"); // NOI18N
+        FormInput.add(jLabel262);
+        jLabel262.setBounds(52, 390, 500, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1062,18 +1406,22 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         }else if(Saran.getText().trim().equals("")){
             Valid.textKosong(Saran,"Saran");
         }else{
-            if(Sequel.menyimpantf("penilaian_lanjutan_resiko_jatuh_lansia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",18,new String[]{
+            if(Sequel.menyimpantf("penilaian_lanjutan_resiko_jatuh_geriatri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",28,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),
                 SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(), 
                 SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
-                NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText()
+                SkalaResiko7.getSelectedItem().toString(),NilaiResiko7.getText(),SkalaResiko8.getSelectedItem().toString(),NilaiResiko8.getText(),
+                SkalaResiko9.getSelectedItem().toString(),NilaiResiko9.getText(),SkalaResiko10.getSelectedItem().toString(),NilaiResiko10.getText(),
+                SkalaResiko11.getSelectedItem().toString(),NilaiResiko11.getText(),NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText()
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                     SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),
                     SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(),SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
-                    NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText(),NamaPetugas.getText()
+                    SkalaResiko7.getSelectedItem().toString(),NilaiResiko7.getText(),SkalaResiko8.getSelectedItem().toString(),NilaiResiko8.getText(),SkalaResiko9.getSelectedItem().toString(),NilaiResiko9.getText(),
+                    SkalaResiko10.getSelectedItem().toString(),NilaiResiko10.getText(),SkalaResiko11.getSelectedItem().toString(),NilaiResiko11.getText(),NilaiResikoTotal.getText(),HasilSkrining.getText(),
+                    Saran.getText(),NIP.getText(),NamaPetugas.getText()
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -1106,7 +1454,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -1139,7 +1487,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1176,49 +1524,127 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptLanjutanRisikoJatuhLansia.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Lansia ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_lansia.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_lansia.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.saran,penilaian_lanjutan_resiko_jatuh_lansia.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_lansia inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_lansia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_lansia.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    "order by penilaian_lanjutan_resiko_jatuh_lansia.tanggal",param);
-            }else{
-                Valid.MyReportqry("rptLanjutanRisikoJatuhLansia.jasper","report","::[ Data Penilaian Lanjutan Risiko Jatuh Lansia ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_lansia.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_lansia.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.saran,penilaian_lanjutan_resiko_jatuh_lansia.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_lansia inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_lansia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_lansia.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "or penilaian_lanjutan_resiko_jatuh_lansia.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by penilaian_lanjutan_resiko_jatuh_lansia.tanggal ",param);
-            }  
+            try{
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.R.M.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>JK</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Gangguan Gaya Berjalan (Diseret, Menghentak, Berayun)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pusing/Pingsan Pada Posisi Tegak</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kebingungan Setiap Saat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nokturia/Inkontinen</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kebingunan Intermiten</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelemahan Umum</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Obat-obatan Berisiko Tinggi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Jatuh Dalam Waktu 12 Bulan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Osteoporosis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 9</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Gangguan Pendengaran Atau Penglihatan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 10</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Usia 70 Tahun Ke Atas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N. 11</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Total</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hasil Skrining</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Saran</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas</b></td>"+
+                    "</tr>"
+                );
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
+                        "</tr>");
+                }
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
+
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("PenilaianRisikoJatuhGeriatri.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN LANJUTAN RISIKO JATUH GERIATRI<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
+
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1323,7 +1749,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         Valid.pindah(evt,Detik,SkalaResiko1);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnPenilaianLanjutanRisikoJatuhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianLanjutanRisikoJatuhActionPerformed
+    private void MnPenilaianLanjutanRisikoGeriatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianLanjutanRisikoGeriatriActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1333,31 +1759,34 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirPenilaianLanjutanRisikoJatuhLansia.jasper","report","::[ Formulir Penilaian Lanjutan Risiko Jatuh Lansia ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_lansia.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_lansia.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.saran,penilaian_lanjutan_resiko_jatuh_lansia.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_lansia inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_lansia.no_rawat=reg_periksa.no_rawat "+
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),32).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),31).toString():finger)+"\n"+Tanggal.getSelectedItem());
+            Valid.MyReportqry("rptFormulirPenilaianLanjutanRisikoJatuhGeriatri.jasper","report","::[ Formulir Penilaian Lanjutan Risiko Jatuh Geriatri ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_geriatri.tanggal,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala1,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai1,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala2,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai2,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala3,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai3,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala4,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai4,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala5,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai5,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala6,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai6,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala7,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai7,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala8,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai8,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala9,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai9,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala10,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai10,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala11,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai11,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_totalnilai,penilaian_lanjutan_resiko_jatuh_geriatri.hasil_skrining,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.saran,penilaian_lanjutan_resiko_jatuh_geriatri.nip,petugas.nama "+
+                    "from penilaian_lanjutan_resiko_jatuh_geriatri inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_geriatri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_lansia.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_geriatri.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianLanjutanRisikoJatuhActionPerformed
+    }//GEN-LAST:event_MnPenilaianLanjutanRisikoGeriatriActionPerformed
 
     private void SkalaResiko1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko1ItemStateChanged
         if(SkalaResiko1.getSelectedIndex()==0){
             NilaiResiko1.setText("0");
         }else if(SkalaResiko1.getSelectedIndex()==1){
-            NilaiResiko1.setText("6");
-        }else{
-            NilaiResiko1.setText("6");
+            NilaiResiko1.setText("4");
         }
         isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko1ItemStateChanged
@@ -1370,11 +1799,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         if(SkalaResiko2.getSelectedIndex()==0){
             NilaiResiko2.setText("0");
         }else if(SkalaResiko2.getSelectedIndex()==1){
-            NilaiResiko2.setText("14");
-        }if(SkalaResiko2.getSelectedIndex()==1){
-            NilaiResiko2.setText("14");
-        }else{
-            NilaiResiko2.setText("14");    
+            NilaiResiko2.setText("3");
         }
         isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko2ItemStateChanged
@@ -1387,11 +1812,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         if(SkalaResiko3.getSelectedIndex()==0){
             NilaiResiko3.setText("0");
         }else if(SkalaResiko3.getSelectedIndex()==1){
-            NilaiResiko3.setText("1");
-        }if(SkalaResiko3.getSelectedIndex()==1){
-            NilaiResiko3.setText("1");
-        }else{
-            NilaiResiko3.setText("1");
+            NilaiResiko3.setText("3");
         }
         isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko3ItemStateChanged
@@ -1403,8 +1824,8 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     private void SkalaResiko4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko4ItemStateChanged
         if(SkalaResiko4.getSelectedIndex()==0){
             NilaiResiko4.setText("0");
-        }else{
-            NilaiResiko4.setText("2");
+        }else if(SkalaResiko4.getSelectedIndex()==1){
+            NilaiResiko4.setText("3");
         }
         isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko4ItemStateChanged
@@ -1417,11 +1838,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         if(SkalaResiko5.getSelectedIndex()==0){
             NilaiResiko5.setText("0");
         }else if(SkalaResiko5.getSelectedIndex()==1){
-            NilaiResiko5.setText("1");
-        }if(SkalaResiko5.getSelectedIndex()==1){
-            NilaiResiko5.setText("2");   
-        }else{
-            NilaiResiko5.setText("3");
+            NilaiResiko5.setText("2");
         }
         isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko5ItemStateChanged
@@ -1434,27 +1851,87 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         if(SkalaResiko6.getSelectedIndex()==0){
             NilaiResiko6.setText("0");
         }else if(SkalaResiko6.getSelectedIndex()==1){
-            NilaiResiko6.setText("1");
-        if(SkalaResiko6.getSelectedIndex()==1){
             NilaiResiko6.setText("2");
-        }
-        }else{
-            NilaiResiko6.setText("3");
         }
         isTotalResikoJatuh();
     }//GEN-LAST:event_SkalaResiko6ItemStateChanged
 
     private void SkalaResiko6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko6KeyPressed
-        Valid.pindah(evt,SkalaResiko5,HasilSkrining);
+        Valid.pindah(evt,SkalaResiko5,SkalaResiko7);
     }//GEN-LAST:event_SkalaResiko6KeyPressed
 
     private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
-        Valid.pindah2(evt,SkalaResiko6,Saran);
+        Valid.pindah2(evt,SkalaResiko11,Saran);
     }//GEN-LAST:event_HasilSkriningKeyPressed
 
     private void SaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaranKeyPressed
         Valid.pindah2(evt,HasilSkrining,BtnSimpan);
     }//GEN-LAST:event_SaranKeyPressed
+
+    private void SkalaResiko7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko7ItemStateChanged
+        if(SkalaResiko7.getSelectedIndex()==0){
+            NilaiResiko7.setText("0");
+        }else if(SkalaResiko7.getSelectedIndex()==1){
+            NilaiResiko7.setText("2");
+        }
+        isTotalResikoJatuh();
+    }//GEN-LAST:event_SkalaResiko7ItemStateChanged
+
+    private void SkalaResiko7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko7KeyPressed
+        Valid.pindah(evt,SkalaResiko6,SkalaResiko8);
+    }//GEN-LAST:event_SkalaResiko7KeyPressed
+
+    private void SkalaResiko8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko8ItemStateChanged
+        if(SkalaResiko8.getSelectedIndex()==0){
+            NilaiResiko8.setText("0");
+        }else if(SkalaResiko8.getSelectedIndex()==1){
+            NilaiResiko8.setText("2");
+        }
+        isTotalResikoJatuh();
+    }//GEN-LAST:event_SkalaResiko8ItemStateChanged
+
+    private void SkalaResiko8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko8KeyPressed
+        Valid.pindah(evt,SkalaResiko7,SkalaResiko9);
+    }//GEN-LAST:event_SkalaResiko8KeyPressed
+
+    private void SkalaResiko9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko9ItemStateChanged
+        if(SkalaResiko9.getSelectedIndex()==0){
+            NilaiResiko9.setText("0");
+        }else if(SkalaResiko9.getSelectedIndex()==1){
+            NilaiResiko9.setText("1");
+        }
+        isTotalResikoJatuh();
+    }//GEN-LAST:event_SkalaResiko9ItemStateChanged
+
+    private void SkalaResiko9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko9KeyPressed
+        Valid.pindah(evt,SkalaResiko8,SkalaResiko10);
+    }//GEN-LAST:event_SkalaResiko9KeyPressed
+
+    private void SkalaResiko10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko10ItemStateChanged
+        if(SkalaResiko10.getSelectedIndex()==0){
+            NilaiResiko10.setText("0");
+        }else if(SkalaResiko10.getSelectedIndex()==1){
+            NilaiResiko10.setText("1");
+        }
+        isTotalResikoJatuh();
+    }//GEN-LAST:event_SkalaResiko10ItemStateChanged
+
+    private void SkalaResiko10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko10KeyPressed
+        Valid.pindah(evt,SkalaResiko9,SkalaResiko11);
+    }//GEN-LAST:event_SkalaResiko10KeyPressed
+
+    private void SkalaResiko11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko11ItemStateChanged
+        if(SkalaResiko11.getSelectedIndex()==0){
+            NilaiResiko11.setText("0");
+        }else if(SkalaResiko11.getSelectedIndex()==1){
+            NilaiResiko11.setText("1");
+        }
+        isTotalResikoJatuh();
+    }//GEN-LAST:event_SkalaResiko11ItemStateChanged
+
+    private void SkalaResiko11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko11KeyPressed
+        Valid.pindah(evt,SkalaResiko10,HasilSkrining);
+    }//GEN-LAST:event_SkalaResiko11KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1491,26 +1968,37 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.Label LCount;
+    private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnPenilaianLanjutanRisikoJatuh;
+    private javax.swing.JMenuItem MnPenilaianLanjutanRisikoGeriatri;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private widget.TextBox NilaiResiko1;
+    private widget.TextBox NilaiResiko10;
+    private widget.TextBox NilaiResiko11;
     private widget.TextBox NilaiResiko2;
     private widget.TextBox NilaiResiko3;
     private widget.TextBox NilaiResiko4;
     private widget.TextBox NilaiResiko5;
     private widget.TextBox NilaiResiko6;
+    private widget.TextBox NilaiResiko7;
+    private widget.TextBox NilaiResiko8;
+    private widget.TextBox NilaiResiko9;
     private widget.TextBox NilaiResikoTotal;
     private javax.swing.JPanel PanelInput;
     private widget.TextArea Saran;
     private widget.ScrollPane Scroll;
     private widget.ComboBox SkalaResiko1;
+    private widget.ComboBox SkalaResiko10;
+    private widget.ComboBox SkalaResiko11;
     private widget.ComboBox SkalaResiko2;
     private widget.ComboBox SkalaResiko3;
     private widget.ComboBox SkalaResiko4;
     private widget.ComboBox SkalaResiko5;
     private widget.ComboBox SkalaResiko6;
+    private widget.ComboBox SkalaResiko7;
+    private widget.ComboBox SkalaResiko8;
+    private widget.ComboBox SkalaResiko9;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1536,13 +2024,40 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     private widget.Label jLabel226;
     private widget.Label jLabel227;
     private widget.Label jLabel228;
+    private widget.Label jLabel229;
     private widget.Label jLabel230;
     private widget.Label jLabel231;
+    private widget.Label jLabel232;
     private widget.Label jLabel233;
     private widget.Label jLabel234;
+    private widget.Label jLabel235;
     private widget.Label jLabel236;
     private widget.Label jLabel237;
     private widget.Label jLabel238;
+    private widget.Label jLabel239;
+    private widget.Label jLabel240;
+    private widget.Label jLabel241;
+    private widget.Label jLabel242;
+    private widget.Label jLabel243;
+    private widget.Label jLabel244;
+    private widget.Label jLabel245;
+    private widget.Label jLabel246;
+    private widget.Label jLabel247;
+    private widget.Label jLabel248;
+    private widget.Label jLabel249;
+    private widget.Label jLabel250;
+    private widget.Label jLabel251;
+    private widget.Label jLabel252;
+    private widget.Label jLabel253;
+    private widget.Label jLabel254;
+    private widget.Label jLabel255;
+    private widget.Label jLabel256;
+    private widget.Label jLabel257;
+    private widget.Label jLabel258;
+    private widget.Label jLabel259;
+    private widget.Label jLabel260;
+    private widget.Label jLabel261;
+    private widget.Label jLabel262;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
     private widget.Label jLabel4;
@@ -1568,35 +2083,45 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_lansia.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_lansia.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.saran,penilaian_lanjutan_resiko_jatuh_lansia.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_lansia inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_lansia.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_geriatri.tanggal,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala1,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai1,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala2,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai2,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala3,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai3,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala4,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai4,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala5,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai5,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala6,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai6,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala7,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai7,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala8,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai8,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala9,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai9,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala10,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai10,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala11,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai11,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_totalnilai,penilaian_lanjutan_resiko_jatuh_geriatri.hasil_skrining,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.saran,penilaian_lanjutan_resiko_jatuh_geriatri.nip,petugas.nama "+
+                    "from penilaian_lanjutan_resiko_jatuh_geriatri inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_geriatri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_lansia.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.tanggal between ? and ? order by penilaian_lanjutan_resiko_jatuh_lansia.tanggal");
+                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_geriatri.nip=petugas.nip where "+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.tanggal between ? and ? order by penilaian_lanjutan_resiko_jatuh_geriatri.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_lansia.tanggal,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala1,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala2,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai2,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala3,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai3,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala4,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala5,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai5,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_skala6,penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_nilai6,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.penilaian_jatuhmorse_totalnilai,penilaian_lanjutan_resiko_jatuh_lansia.hasil_skrining,"+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.saran,penilaian_lanjutan_resiko_jatuh_lansia.nip,petugas.nama "+
-                    "from penilaian_lanjutan_resiko_jatuh_lansia inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_lansia.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_geriatri.tanggal,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala1,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai1,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala2,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai2,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala3,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai3,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala4,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai4,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala5,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai5,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala6,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai6,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala7,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai7,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala8,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai8,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala9,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai9,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala10,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai10,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala11,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai11,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_totalnilai,penilaian_lanjutan_resiko_jatuh_geriatri.hasil_skrining,"+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.saran,penilaian_lanjutan_resiko_jatuh_geriatri.nip,petugas.nama "+
+                    "from penilaian_lanjutan_resiko_jatuh_geriatri inner join reg_periksa on penilaian_lanjutan_resiko_jatuh_geriatri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_lansia.nip=petugas.nip where "+
-                    "penilaian_lanjutan_resiko_jatuh_lansia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_lanjutan_resiko_jatuh_lansia.nip like ? or petugas.nama like ?) "+
-                    "order by penilaian_lanjutan_resiko_jatuh_lansia.tanggal ");
+                    "inner join petugas on penilaian_lanjutan_resiko_jatuh_geriatri.nip=petugas.nip where "+
+                    "penilaian_lanjutan_resiko_jatuh_geriatri.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_lanjutan_resiko_jatuh_geriatri.nip like ? or petugas.nama like ?) "+
+                    "order by penilaian_lanjutan_resiko_jatuh_geriatri.tanggal ");
             }
                 
             try {
@@ -1617,10 +2142,13 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("penilaian_jatuhmorse_skala1"),rs.getString("penilaian_jatuhmorse_nilai1"),rs.getString("penilaian_jatuhmorse_skala2"),rs.getString("penilaian_jatuhmorse_nilai2"),
-                        rs.getString("penilaian_jatuhmorse_skala3"),rs.getString("penilaian_jatuhmorse_nilai3"),rs.getString("penilaian_jatuhmorse_skala4"),rs.getString("penilaian_jatuhmorse_nilai4"),
-                        rs.getString("penilaian_jatuhmorse_skala5"),rs.getString("penilaian_jatuhmorse_nilai5"),rs.getString("penilaian_jatuhmorse_skala6"),rs.getString("penilaian_jatuhmorse_nilai6"),
-                        rs.getString("penilaian_jatuhmorse_totalnilai"),rs.getString("hasil_skrining"),rs.getString("saran"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("penilaian_jatuh_skala1"),rs.getString("penilaian_jatuh_nilai1"),rs.getString("penilaian_jatuh_skala2"),rs.getString("penilaian_jatuh_nilai2"),
+                        rs.getString("penilaian_jatuh_skala3"),rs.getString("penilaian_jatuh_nilai3"),rs.getString("penilaian_jatuh_skala4"),rs.getString("penilaian_jatuh_nilai4"),
+                        rs.getString("penilaian_jatuh_skala5"),rs.getString("penilaian_jatuh_nilai5"),rs.getString("penilaian_jatuh_skala6"),rs.getString("penilaian_jatuh_nilai6"),
+                        rs.getString("penilaian_jatuh_skala7"),rs.getString("penilaian_jatuh_nilai7"),rs.getString("penilaian_jatuh_skala8"),rs.getString("penilaian_jatuh_nilai8"),
+                        rs.getString("penilaian_jatuh_skala9"),rs.getString("penilaian_jatuh_nilai9"),rs.getString("penilaian_jatuh_skala10"),rs.getString("penilaian_jatuh_nilai10"),
+                        rs.getString("penilaian_jatuh_skala11"),rs.getString("penilaian_jatuh_nilai11"),rs.getString("penilaian_jatuh_totalnilai"),rs.getString("hasil_skrining"),
+                        rs.getString("saran"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1653,6 +2181,16 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         NilaiResiko5.setText("0");
         SkalaResiko6.setSelectedIndex(0);
         NilaiResiko6.setText("0");
+        SkalaResiko7.setSelectedIndex(0);
+        NilaiResiko7.setText("0");
+        SkalaResiko8.setSelectedIndex(0);
+        NilaiResiko8.setText("0");
+        SkalaResiko9.setSelectedIndex(0);
+        NilaiResiko9.setText("0");
+        SkalaResiko10.setSelectedIndex(0);
+        NilaiResiko10.setText("0");
+        SkalaResiko11.setSelectedIndex(0);
+        NilaiResiko11.setText("0");
         NilaiResikoTotal.setText("0");
         Saran.setText("");
         HasilSkrining.setText("");
@@ -1665,6 +2203,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             SkalaResiko1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             NilaiResiko1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             SkalaResiko2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
@@ -1677,15 +2216,26 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
             NilaiResiko5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
             SkalaResiko6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             NilaiResiko6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            NilaiResikoTotal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            Saran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            SkalaResiko7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            NilaiResiko7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            SkalaResiko8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            NilaiResiko8.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            SkalaResiko9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            NilaiResiko9.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            SkalaResiko10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            NilaiResiko10.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            SkalaResiko11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            NilaiResiko11.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            NilaiResikoTotal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            Saran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
+    
     private void isRawat() {
          Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
     }
@@ -1729,17 +2279,10 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>668){
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,486));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }else{
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-175));
+            FormInput.setVisible(true);      
+            ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
             ChkInput.setVisible(false);            
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
@@ -1749,10 +2292,10 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_lansia());
-        BtnHapus.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_lansia());
-        BtnEdit.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_lansia());
-        BtnPrint.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_lansia()); 
+        BtnSimpan.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_geriatri());
+        BtnHapus.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_geriatri());
+        BtnEdit.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_geriatri());
+        BtnPrint.setEnabled(akses.getpenilaian_lanjutan_resiko_jatuh_geriatri()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1819,16 +2362,20 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_lanjutan_resiko_jatuh_lansia","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,penilaian_jatuhmorse_skala1=?,penilaian_jatuhmorse_nilai1=?,"+
-                "penilaian_jatuhmorse_skala2=?,penilaian_jatuhmorse_nilai2=?,penilaian_jatuhmorse_skala3=?,penilaian_jatuhmorse_nilai3=?,penilaian_jatuhmorse_skala4=?,"+
-                "penilaian_jatuhmorse_nilai4=?,penilaian_jatuhmorse_skala5=?,penilaian_jatuhmorse_nilai5=?,penilaian_jatuhmorse_skala6=?,penilaian_jatuhmorse_nilai6=?,"+
-                "penilaian_jatuhmorse_totalnilai=?,hasil_skrining=?,saran=?,nip=?",20,new String[]{
+        if(Sequel.mengedittf("penilaian_lanjutan_resiko_jatuh_geriatri","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,penilaian_jatuh_skala1=?,penilaian_jatuh_nilai1=?,"+
+                "penilaian_jatuh_skala2=?,penilaian_jatuh_nilai2=?,penilaian_jatuh_skala3=?,penilaian_jatuh_nilai3=?,penilaian_jatuh_skala4=?,"+
+                "penilaian_jatuh_nilai4=?,penilaian_jatuh_skala5=?,penilaian_jatuh_nilai5=?,penilaian_jatuh_skala6=?,penilaian_jatuh_nilai6=?,"+
+                "penilaian_jatuh_skala7=?,penilaian_jatuh_nilai7=?,penilaian_jatuh_skala8=?,penilaian_jatuh_nilai8=?,penilaian_jatuh_skala9=?,"+
+                "penilaian_jatuh_nilai9=?,penilaian_jatuh_skala10=?,penilaian_jatuh_nilai10=?,penilaian_jatuh_skala11=?,penilaian_jatuh_nilai11=?,"+
+                "penilaian_jatuh_totalnilai=?,hasil_skrining=?,saran=?,nip=?",30,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),
                 SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(), 
                 SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),
-                NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                SkalaResiko7.getSelectedItem().toString(),NilaiResiko7.getText(),SkalaResiko8.getSelectedItem().toString(),NilaiResiko8.getText(),
+                SkalaResiko9.getSelectedItem().toString(),NilaiResiko9.getText(),SkalaResiko10.getSelectedItem().toString(),NilaiResiko10.getText(),
+                SkalaResiko11.getSelectedItem().toString(),NilaiResiko11.getText(),NilaiResikoTotal.getText(),HasilSkrining.getText(),Saran.getText(),
+                NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1848,17 +2395,27 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
             tbObat.setValueAt(NilaiResiko5.getText(),tbObat.getSelectedRow(),15);
             tbObat.setValueAt(SkalaResiko6.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
             tbObat.setValueAt(NilaiResiko6.getText(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(NilaiResikoTotal.getText(),tbObat.getSelectedRow(),18);
-            tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),19);
-            tbObat.setValueAt(Saran.getText(),tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),21);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(SkalaResiko7.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+            tbObat.setValueAt(NilaiResiko7.getText(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(SkalaResiko8.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(NilaiResiko8.getText(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(SkalaResiko9.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(NilaiResiko9.getText(),tbObat.getSelectedRow(),23);
+            tbObat.setValueAt(SkalaResiko10.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(NilaiResiko10.getText(),tbObat.getSelectedRow(),25);
+            tbObat.setValueAt(SkalaResiko11.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
+            tbObat.setValueAt(NilaiResiko11.getText(),tbObat.getSelectedRow(),27);
+            tbObat.setValueAt(NilaiResikoTotal.getText(),tbObat.getSelectedRow(),28);
+            tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),29);
+            tbObat.setValueAt(Saran.getText(),tbObat.getSelectedRow(),30);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),31);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),32);
             emptTeks();
         }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_lanjutan_resiko_jatuh_lansia where tanggal=? and no_rawat=?",2,new String[]{
+        if(Sequel.queryu2tf("delete from penilaian_lanjutan_resiko_jatuh_geriatri where tanggal=? and no_rawat=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1871,23 +2428,19 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
     
     private void isTotalResikoJatuh(){
         try {
-            if((Integer.parseInt(NilaiResiko5.getText())+Integer.parseInt(NilaiResiko6.getText()))<=3){
-                rlansia=0;
-            }else{
-                rlansia=7;
-            }
-
-            NilaiResikoTotal.setText((Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+rlansia)+"");
-            if(Integer.parseInt(NilaiResikoTotal.getText())<6){
-                TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-5), Tindakan : Intervensi pencegahan risiko jatuh standar");
-            }else if(Integer.parseInt(NilaiResikoTotal.getText())<17){
-                TingkatResiko.setText("Tingkat Resiko : Risiko Sedang (6-16), Tindakan : Intervensi pencegahan risiko jatuh standar");
-            }else if(Integer.parseInt(NilaiResikoTotal.getText())>=17){
-                TingkatResiko.setText("Tingkat Resiko : Risiko Tinggi (> 17), Tindakan : Intervensi pencegahan risiko jatuh standar dan Intervensi risiko jatuh tinggi");
+            NilaiResikoTotal.setText(
+                (Integer.parseInt(NilaiResiko1.getText())+Integer.parseInt(NilaiResiko2.getText())+Integer.parseInt(NilaiResiko3.getText())+Integer.parseInt(NilaiResiko4.getText())+
+                 Integer.parseInt(NilaiResiko5.getText())+Integer.parseInt(NilaiResiko6.getText())+Integer.parseInt(NilaiResiko7.getText())+Integer.parseInt(NilaiResiko8.getText())+
+                 Integer.parseInt(NilaiResiko9.getText())+Integer.parseInt(NilaiResiko10.getText())+Integer.parseInt(NilaiResiko11.getText()))+""
+            );
+            if(Integer.parseInt(NilaiResikoTotal.getText())<=3){
+                TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0 - 3), Tindakan : Intervensi pencegahan risiko jatuh standar");
+            }else if(Integer.parseInt(NilaiResikoTotal.getText())>=4){
+                TingkatResiko.setText("Tingkat Resiko : Risiko Tinggi (>= 4), Tindakan : Intervensi pencegahan risiko jatuh standar dan Intervensi risiko jatuh tinggi");
             }
         } catch (Exception e) {
             NilaiResikoTotal.setText("0");
-            TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-5), Tindakan : Intervensi pencegahan risiko jatuh standar");
+            TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0 - 3), Tindakan : Intervensi pencegahan risiko jatuh standar");
         }
     } 
 }
