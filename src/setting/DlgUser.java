@@ -231,7 +231,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Catatan ADIME Gizi","[K]Pengajuan Biaya","[M]Penilaian Awal Keperawatan Ralan Geriatri","[M]Master Masalah Keperawatan Geriatri","[M]Master Rencana Keperawatan Geriatri",
                 "[M]Check List Kriteria Masuk HCU","[M]Check List Kriteria Keluar HCU","[M]Penilaian Risiko Dekubitus","[P]Master Menolak Anjuran Medis","[P]Penolakan Anjuran Medis",
                 "[J]Laporan Tahunan Penolakan Anjuran Medis","[M]Master Template Laporan Operasi","[M]Dokumentasi Tindakan ESWL","[M]Check List Kriteria Masuk ICU",
-                "[M]Check List Kriteria Keluar ICU","[A]Akses Ke Dokter Lain Rawat Jalan","[M]Follow Up DBD","[M]Penilaian Lanjutan Risiko Jatuh Neonatus","[K]Validasi Pengajuan Biaya",
+                "[M]Check List Kriteria Keluar ICU","[A]Akses Ke Dokter Lain Rawat Jalan","[M]Follow Up DBD","[M]Penilaian Lanjutan Risiko Jatuh Neonatus","[K]Persetujuan Pengajuan Biaya",
                 "[J]Pemeriksaan Fisik Ralan Per Penyakit","[M]Penilaian Lanjutan Risiko Jatuh Geriatri"
         };
         
@@ -2861,7 +2861,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(225);
                     break;
                 case 964:
-                    column.setPreferredWidth(143);
+                    column.setPreferredWidth(163);
                     break;
                 case 965:
                     column.setPreferredWidth(201);
@@ -4403,7 +4403,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "akses_dokter_lain_rawat_jalan='"+tbUser.getValueAt(i,961).toString()+"',"+
                     "follow_up_dbd='"+tbUser.getValueAt(i,962).toString()+"',"+
                     "penilaian_risiko_jatuh_neonatus='"+tbUser.getValueAt(i,963).toString()+"',"+
-                    "validasi_pengajuan_biaya='"+tbUser.getValueAt(i,964).toString()+"',"+
+                    "persetujuan_pengajuan_biaya='"+tbUser.getValueAt(i,964).toString()+"',"+
                     "pemeriksaan_fisik_ralan_per_penyakit='"+tbUser.getValueAt(i,965).toString()+"',"+
                     "penilaian_lanjutan_resiko_jatuh_geriatri='"+tbUser.getValueAt(i,966).toString()+"'")==true){
                     emptTeks();
@@ -5568,7 +5568,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "akses_dokter_lain_rawat_jalan='"+tbUser.getValueAt(barisdicopy,961).toString()+"',"+
                                         "follow_up_dbd='"+tbUser.getValueAt(barisdicopy,962).toString()+"',"+
                                         "penilaian_risiko_jatuh_neonatus='"+tbUser.getValueAt(barisdicopy,963).toString()+"',"+
-                                        "validasi_pengajuan_biaya='"+tbUser.getValueAt(barisdicopy,964).toString()+"',"+
+                                        "persetujuan_pengajuan_biaya='"+tbUser.getValueAt(barisdicopy,964).toString()+"',"+
                                         "pemeriksaan_fisik_ralan_per_penyakit='"+tbUser.getValueAt(barisdicopy,965).toString()+"',"+
                                         "penilaian_lanjutan_resiko_jatuh_geriatri='"+tbUser.getValueAt(barisdicopy,966).toString()+"'");
                                 }
@@ -5851,7 +5851,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.pengajuan_biaya,user.penilaian_awal_keperawatan_ralan_geriatri,user.master_masalah_keperawatan_geriatri,user.master_rencana_keperawatan_geriatri,"+
                 "user.checklist_kriteria_masuk_hcu,user.checklist_kriteria_keluar_hcu,user.penilaian_risiko_dekubitus,user.master_menolak_anjuran_medis,user.penolakan_anjuran_medis,"+
                 "user.laporan_tahunan_penolakan_anjuran_medis,user.template_laporan_operasi,user.hasil_tindakan_eswl,user.checklist_kriteria_masuk_icu,"+
-                "user.checklist_kriteria_keluar_icu,user.akses_dokter_lain_rawat_jalan,user.follow_up_dbd,user.penilaian_risiko_jatuh_neonatus,user.validasi_pengajuan_biaya,"+
+                "user.checklist_kriteria_keluar_icu,user.akses_dokter_lain_rawat_jalan,user.follow_up_dbd,user.penilaian_risiko_jatuh_neonatus,user.persetujuan_pengajuan_biaya,"+
                 "user.pemeriksaan_fisik_ralan_per_penyakit,user.penilaian_lanjutan_resiko_jatuh_geriatri from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
@@ -6829,7 +6829,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("akses_dokter_lain_rawat_jalan"),
                                rs.getBoolean("follow_up_dbd"),
                                rs.getBoolean("penilaian_risiko_jatuh_neonatus"),
-                               rs.getBoolean("validasi_pengajuan_biaya"),
+                               rs.getBoolean("persetujuan_pengajuan_biaya"),
                                rs.getBoolean("pemeriksaan_fisik_ralan_per_penyakit"),
                                rs.getBoolean("penilaian_lanjutan_resiko_jatuh_geriatri")
                             });
@@ -7797,7 +7797,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("akses_dokter_lain_rawat_jalan"),
                            rs.getBoolean("follow_up_dbd"),
                            rs.getBoolean("penilaian_risiko_jatuh_neonatus"),
-                           rs.getBoolean("validasi_pengajuan_biaya"),
+                           rs.getBoolean("persetujuan_pengajuan_biaya"),
                            rs.getBoolean("pemeriksaan_fisik_ralan_per_penyakit"),
                            rs.getBoolean("penilaian_lanjutan_resiko_jatuh_geriatri")
                         });
