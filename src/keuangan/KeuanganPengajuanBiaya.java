@@ -809,11 +809,6 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         Bidang.setEditable(false);
         Bidang.setHighlighter(null);
         Bidang.setName("Bidang"); // NOI18N
-        Bidang.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BidangKeyPressed(evt);
-            }
-        });
         FormInput.add(Bidang);
         Bidang.setBounds(484, 40, 100, 23);
 
@@ -825,11 +820,6 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         Departemen.setEditable(false);
         Departemen.setHighlighter(null);
         Departemen.setName("Departemen"); // NOI18N
-        Departemen.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DepartemenKeyPressed(evt);
-            }
-        });
         FormInput.add(Departemen);
         Departemen.setBounds(670, 40, 100, 23);
 
@@ -841,22 +831,12 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         KdPetugasPJ.setEditable(false);
         KdPetugasPJ.setHighlighter(null);
         KdPetugasPJ.setName("KdPetugasPJ"); // NOI18N
-        KdPetugasPJ.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPetugasPJKeyPressed(evt);
-            }
-        });
         FormInput.add(KdPetugasPJ);
         KdPetugasPJ.setBounds(459, 10, 110, 23);
 
         NmPetugasPJ.setEditable(false);
         NmPetugasPJ.setHighlighter(null);
         NmPetugasPJ.setName("NmPetugasPJ"); // NOI18N
-        NmPetugasPJ.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmPetugasPJKeyPressed(evt);
-            }
-        });
         FormInput.add(NmPetugasPJ);
         NmPetugasPJ.setBounds(572, 10, 167, 23);
 
@@ -1197,22 +1177,6 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         emptTeks();
         tampil();
     }//GEN-LAST:event_formWindowOpened
-
-    private void BidangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BidangKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BidangKeyPressed
-
-    private void DepartemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DepartemenKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DepartemenKeyPressed
-
-    private void KdPetugasPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasPJKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdPetugasPJKeyPressed
-
-    private void NmPetugasPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmPetugasPJKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NmPetugasPJKeyPressed
 
     private void btnPetugasPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasPJActionPerformed
         pilihan=2;
