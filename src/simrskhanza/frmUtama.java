@@ -701,6 +701,7 @@ import keuangan.DlgLhtBankJabar;
 import keuangan.DlgLhtBankPapua;
 import keuangan.DlgRekapBiayaRegistrasi;
 import keuangan.KeuanganPengajuanBiaya;
+import keuangan.KeuanganPersetujuanPengajuanBiaya;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -20433,6 +20434,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPersetujuanPengajuanBiayaActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganPersetujuanPengajuanBiaya aplikasi=new KeuanganPersetujuanPengajuanBiaya(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21109,7 +21122,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
             btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan,btnPenilaianRisikoJatuhNeonatus,btnPemeriksaanFisikRalanPerPenyakit,
-            btnPenilaianRisikoJatuhGeriatri;
+            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya;
     
     public void isWall(){
         try{            
@@ -23417,6 +23430,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpengajuan_biaya()==true){
                 Panelmenu.add(btnPengajuanBiayaKuangan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpersetujuan_pengajuan_biaya()==true){
+                Panelmenu.add(btnPersetujuanPengajuanBiaya);
                 jmlmenu++;
             }
 
@@ -28193,6 +28211,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpengajuan_biaya()==true){
             Panelmenu.add(btnPengajuanBiayaKuangan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpersetujuan_pengajuan_biaya()==true){
+            Panelmenu.add(btnPersetujuanPengajuanBiaya);
             jmlmenu++;
         }
 
@@ -33836,6 +33859,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpengajuan_biaya()==true){
             if(btnPengajuanBiayaKuangan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengajuanBiayaKuangan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpersetujuan_pengajuan_biaya()==true){
+            if(btnPersetujuanPengajuanBiaya.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPersetujuanPengajuanBiaya);
                 jmlmenu++;
             }                
         }
@@ -41432,5 +41462,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianRisikoJatuhGeriatri.setName("btnPenilaianRisikoJatuhGeriatri"); 
         btnPenilaianRisikoJatuhGeriatri.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianRisikoJatuhGeriatri.addActionListener(this::btnPenilaianRisikoJatuhGeriatriActionPerformed);
+        
+        btnPersetujuanPengajuanBiaya = new widget.ButtonBig();
+        btnPersetujuanPengajuanBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7013438_office_briefcase_business_bag_finance_icon.png"))); 
+        btnPersetujuanPengajuanBiaya.setText("Persetujuan Pengajuan Biaya");
+        btnPersetujuanPengajuanBiaya.setIconTextGap(0);
+        btnPersetujuanPengajuanBiaya.setName("btnPersetujuanPengajuanBiaya"); 
+        btnPersetujuanPengajuanBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPersetujuanPengajuanBiaya.addActionListener(this::btnPersetujuanPengajuanBiayaActionPerformed);
     }
 }

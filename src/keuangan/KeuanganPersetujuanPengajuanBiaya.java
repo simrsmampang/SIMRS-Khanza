@@ -330,7 +330,7 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
 
         BtnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnBayar.setMnemonic('s');
-        BtnBayar.setText("Validasi");
+        BtnBayar.setText("Setujui");
         BtnBayar.setToolTipText("Alt+S");
         BtnBayar.setName("BtnBayar"); // NOI18N
         BtnBayar.setPreferredSize(new java.awt.Dimension(100, 30));
