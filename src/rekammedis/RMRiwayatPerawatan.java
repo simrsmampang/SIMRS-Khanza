@@ -19302,7 +19302,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala11,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai11,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_totalnilai,"+
                             "penilaian_lanjutan_resiko_jatuh_geriatri.hasil_skrining,penilaian_lanjutan_resiko_jatuh_geriatri.saran,penilaian_lanjutan_resiko_jatuh_geriatri.nip,petugas.nama "+
                             "from penilaian_lanjutan_resiko_jatuh_geriatri inner join petugas on penilaian_lanjutan_resiko_jatuh_geriatri.nip=petugas.nip where "+
-                            "penilaian_lanjutan_resiko_jatuh_dewasa.no_rawat='"+norawat+"'").executeQuery();
+                            "penilaian_lanjutan_resiko_jatuh_geriatri.no_rawat='"+norawat+"'").executeQuery();
                     if(rs2.next()){
                         htmlContent.append(
                           "<tr class='isi'>"+ 
@@ -19314,8 +19314,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "<tr align='center'>"+
                                     "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
                                     "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal & Petugas</td>"+
-                                    "<td valign='top' width='22%' bgcolor='#FFFAF8'>Parameter</td>"+
-                                    "<td valign='top' width='26%' bgcolor='#FFFAF8'>Kriteria</td>"+
+                                    "<td valign='top' width='38%' bgcolor='#FFFAF8'>Parameter</td>"+
+                                    "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kriteria</td>"+
                                     "<td valign='top' width='5%' bgcolor='#FFFAF8'>Skor</td>"+
                                     "<td valign='top' width='14%' bgcolor='#FFFAF8'>Hasil Skrining</td>"+
                                     "<td valign='top' width='14%' bgcolor='#FFFAF8'>Saran</td>"+
