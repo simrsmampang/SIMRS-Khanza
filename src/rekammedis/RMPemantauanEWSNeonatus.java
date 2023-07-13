@@ -38,7 +38,7 @@ import kepegawaian.DlgCariPetugas;
  *
  * @author perpustakaan
  */
-public final class RMPemantauanEWSNeonantus extends javax.swing.JDialog {
+public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -50,7 +50,7 @@ public final class RMPemantauanEWSNeonantus extends javax.swing.JDialog {
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
-    public RMPemantauanEWSNeonantus(java.awt.Frame parent, boolean modal) {
+    public RMPemantauanEWSNeonatus(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocation(8,1);
@@ -1395,7 +1395,7 @@ public final class RMPemantauanEWSNeonantus extends javax.swing.JDialog {
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            RMPemantauanEWSNeonantus dialog = new RMPemantauanEWSNeonantus(new javax.swing.JFrame(), true);
+            RMPemantauanEWSNeonatus dialog = new RMPemantauanEWSNeonatus(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
