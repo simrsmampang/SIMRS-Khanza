@@ -357,11 +357,6 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekonsiliasi Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -381,16 +376,6 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         Scroll2.setOpaque(true);
 
         tbPemeriksaan.setName("tbPemeriksaan"); // NOI18N
-        tbPemeriksaan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbPemeriksaanMouseClicked(evt);
-            }
-        });
-        tbPemeriksaan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbPemeriksaanKeyPressed(evt);
-            }
-        });
         Scroll2.setViewportView(tbPemeriksaan);
 
         jPanel3.add(Scroll2, java.awt.BorderLayout.CENTER);
@@ -550,7 +535,7 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         PanelInput.add(jLabel9);
         jLabel9.setBounds(197, 40, 69, 23);
 
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-07-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -588,11 +573,6 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkJln.setName("ChkJln"); // NOI18N
-        ChkJln.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkJlnActionPerformed(evt);
-            }
-        });
         PanelInput.add(ChkJln);
         ChkJln.setBounds(687, 70, 23, 23);
 
@@ -644,14 +624,9 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         PanelInput.add(jLabel5);
         jLabel5.setBounds(346, 150, 120, 23);
 
-        RekonsiliasiSaat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admisi", "Transfer Antar Ruang", "Pindah Faskes Lain" }));
+        RekonsiliasiSaat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admisi", "Transfer Antar Ruang", "Pindah Faskes Lain", "Pulang" }));
         RekonsiliasiSaat.setName("RekonsiliasiSaat"); // NOI18N
         RekonsiliasiSaat.setPreferredSize(new java.awt.Dimension(45, 23));
-        RekonsiliasiSaat.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                RekonsiliasiSaatItemStateChanged(evt);
-            }
-        });
         RekonsiliasiSaat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RekonsiliasiSaatKeyPressed(evt);
@@ -712,11 +687,6 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         DampakAlergi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Ringan", "Sedang", "Berat" }));
         DampakAlergi.setName("DampakAlergi"); // NOI18N
         DampakAlergi.setPreferredSize(new java.awt.Dimension(45, 23));
-        DampakAlergi.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DampakAlergiItemStateChanged(evt);
-            }
-        });
         DampakAlergi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DampakAlergiKeyPressed(evt);
@@ -754,26 +724,9 @@ public final class RMRekonsiliasiObat extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkJlnActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_ChkJlnActionPerformed
-
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        
+        Valid.pindah(evt, TNoRekonsialiasi, AlergiObat);
     }//GEN-LAST:event_TanggalKeyPressed
-
-    private void tbPemeriksaanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPemeriksaanMouseClicked
-        if(tabMode.getRowCount()!=0){
-            try {
-               // getData2();
-            } catch (java.lang.NullPointerException e) {
-            }
-        }
-    }//GEN-LAST:event_tbPemeriksaanMouseClicked
-
-    private void tbPemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPemeriksaanKeyPressed
-        
-    }//GEN-LAST:event_tbPemeriksaanKeyPressed
 
     private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
         petugas.isCek();
@@ -784,7 +737,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_BtnPetugasActionPerformed
 
     private void TNoRekonsialiasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRekonsialiasiKeyPressed
-       
+        Valid.pindah(evt, BtnPetugas, AlergiObat);
     }//GEN-LAST:event_TNoRekonsialiasiKeyPressed
 
     private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
@@ -794,32 +747,20 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }//GEN-LAST:event_TanggalItemStateChanged
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-    }//GEN-LAST:event_formWindowOpened
-
-    private void RekonsiliasiSaatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RekonsiliasiSaatItemStateChanged
-        
-    }//GEN-LAST:event_RekonsiliasiSaatItemStateChanged
-
     private void RekonsiliasiSaatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RekonsiliasiSaatKeyPressed
-       
+        Valid.pindah2(evt, DampakAlergi, BtnTambah);
     }//GEN-LAST:event_RekonsiliasiSaatKeyPressed
 
     private void AlergiObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiObatKeyPressed
-        
+        Valid.pindah2(evt, TNoRekonsialiasi, ManifestasiAlergi);
     }//GEN-LAST:event_AlergiObatKeyPressed
 
     private void ManifestasiAlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ManifestasiAlergiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt, AlergiObat, DampakAlergi);
     }//GEN-LAST:event_ManifestasiAlergiKeyPressed
 
-    private void DampakAlergiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DampakAlergiItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DampakAlergiItemStateChanged
-
     private void DampakAlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DampakAlergiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, ManifestasiAlergi, RekonsiliasiSaat);
     }//GEN-LAST:event_DampakAlergiKeyPressed
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
@@ -834,7 +775,11 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_BtnTambahActionPerformed
 
     private void BtnTambahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnTambahKeyPressed
-        
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnTambahActionPerformed(null);
+        }else{
+            Valid.pindah(evt,RekonsiliasiSaat,BtnBatal);
+        }
     }//GEN-LAST:event_BtnTambahKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
@@ -860,7 +805,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            dispose();
+        }else{Valid.pindah(evt,BtnCari,BtnTambah);}
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
@@ -875,7 +822,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
-        
+        Valid.pindah(evt, BtnBatal, BtnKeluar);
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
@@ -1068,6 +1015,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         Tanggal.setDate(new Date());
         AlergiObat.setText("");
         ManifestasiAlergi.setText("");
+        DampakAlergi.setSelectedIndex(0);
+        
         autoNomor();
         TNoRekonsialiasi.requestFocus();
     }

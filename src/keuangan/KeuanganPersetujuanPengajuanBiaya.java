@@ -49,6 +49,8 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
         initComponents();
         this.setLocation(8,1);
         setSize(885,674);
+        
+        DlgPersetujuan.setSize(600,133);
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Pengajuan","Tanggal","NIK","Diajukan Oleh","Bidang","Departemen","Urgensi","Uraian","Tujuan",
@@ -180,6 +182,19 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
     private void initComponents() {
 
         TKd = new widget.TextBox();
+        DlgPersetujuan = new javax.swing.JDialog();
+        internalFrame4 = new widget.InternalFrame();
+        panelBiasa2 = new widget.PanelBiasa();
+        jLabel3 = new widget.Label();
+        NoPengajuan = new widget.TextBox();
+        jLabel12 = new widget.Label();
+        Jumlah = new widget.TextBox();
+        Harga = new widget.TextBox();
+        jLabel13 = new widget.Label();
+        jLabel14 = new widget.Label();
+        Total = new widget.TextBox();
+        BtnSimpanRekon = new widget.Button();
+        BtnKeluarRekon = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -203,6 +218,105 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
+
+        DlgPersetujuan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        DlgPersetujuan.setName("DlgPersetujuan"); // NOI18N
+        DlgPersetujuan.setUndecorated(true);
+        DlgPersetujuan.setResizable(false);
+
+        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Pengajuan Biaya/Anggaran Yang Disetujui ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame4.setName("internalFrame4"); // NOI18N
+        internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelBiasa2.setName("panelBiasa2"); // NOI18N
+        panelBiasa2.setLayout(null);
+
+        jLabel3.setText("No.Pengajuan :");
+        jLabel3.setName("jLabel3"); // NOI18N
+        panelBiasa2.add(jLabel3);
+        jLabel3.setBounds(0, 10, 85, 23);
+
+        NoPengajuan.setHighlighter(null);
+        NoPengajuan.setName("NoPengajuan"); // NOI18N
+        panelBiasa2.add(NoPengajuan);
+        NoPengajuan.setBounds(89, 10, 130, 23);
+
+        jLabel12.setText("Volume :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        panelBiasa2.add(jLabel12);
+        jLabel12.setBounds(222, 10, 52, 23);
+
+        Jumlah.setHighlighter(null);
+        Jumlah.setName("Jumlah"); // NOI18N
+        Jumlah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JumlahKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(Jumlah);
+        Jumlah.setBounds(278, 10, 55, 23);
+
+        Harga.setHighlighter(null);
+        Harga.setName("Harga"); // NOI18N
+        Harga.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HargaKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(Harga);
+        Harga.setBounds(388, 10, 120, 23);
+
+        jLabel13.setText("Harga :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        panelBiasa2.add(jLabel13);
+        jLabel13.setBounds(334, 10, 50, 23);
+
+        jLabel14.setText("Total :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        panelBiasa2.add(jLabel14);
+        jLabel14.setBounds(0, 40, 85, 23);
+
+        Total.setEditable(false);
+        Total.setHighlighter(null);
+        Total.setName("Total"); // NOI18N
+        panelBiasa2.add(Total);
+        Total.setBounds(89, 40, 160, 23);
+
+        BtnSimpanRekon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpanRekon.setMnemonic('S');
+        BtnSimpanRekon.setText("Simpan");
+        BtnSimpanRekon.setToolTipText("Alt+S");
+        BtnSimpanRekon.setName("BtnSimpanRekon"); // NOI18N
+        BtnSimpanRekon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanRekonActionPerformed(evt);
+            }
+        });
+        BtnSimpanRekon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSimpanRekonKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(BtnSimpanRekon);
+        BtnSimpanRekon.setBounds(300, 40, 100, 30);
+
+        BtnKeluarRekon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnKeluarRekon.setMnemonic('U');
+        BtnKeluarRekon.setText("Tutup");
+        BtnKeluarRekon.setToolTipText("Alt+U");
+        BtnKeluarRekon.setName("BtnKeluarRekon"); // NOI18N
+        BtnKeluarRekon.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluarRekon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluarRekonActionPerformed(evt);
+            }
+        });
+        panelBiasa2.add(BtnKeluarRekon);
+        BtnKeluarRekon.setBounds(408, 40, 100, 30);
+
+        internalFrame4.add(panelBiasa2, java.awt.BorderLayout.CENTER);
+
+        DlgPersetujuan.getContentPane().add(internalFrame4, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -523,15 +637,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnSetujuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSetujuiActionPerformed
         if(tbBangsal.getSelectedRow()> -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            KeuanganHutangNonMedisBelumLunas form=new KeuanganHutangNonMedisBelumLunas(null,false);
-            form.isCek();
-            form.tampilTagihan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
-            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            form.setLocationRelativeTo(internalFrame1);
-            form.setVisible(true);
+            DlgPersetujuan.setLocationRelativeTo(internalFrame1);
+            DlgPersetujuan.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Tagihan yang diajukan..!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Pengajuan yang diajukan..!!");
         }
     }//GEN-LAST:event_BtnSetujuiActionPerformed
 
@@ -560,6 +670,30 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnTolakKeyPressed
 
+    private void BtnSimpanRekonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanRekonKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnSimpanRekonActionPerformed(null);
+        }else{
+            //Valid.pindah(evt,PerubahanAturanPakai,BtnKeluarRekon);
+        }
+    }//GEN-LAST:event_BtnSimpanRekonKeyPressed
+
+    private void BtnSimpanRekonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanRekonActionPerformed
+        
+    }//GEN-LAST:event_BtnSimpanRekonActionPerformed
+
+    private void BtnKeluarRekonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarRekonActionPerformed
+        DlgPersetujuan.dispose();
+    }//GEN-LAST:event_BtnKeluarRekonActionPerformed
+
+    private void JumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahKeyPressed
+        //Valid.pindah(evt,Urgensi,Harga);
+    }//GEN-LAST:event_JumlahKeyPressed
+
+    private void HargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HargaKeyPressed
+        //Valid.pindah(evt,Jumlah,Uraian);
+    }//GEN-LAST:event_HargaKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -580,21 +714,34 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKeluarRekon;
     private widget.Button BtnPegawai;
     private widget.Button BtnPrint;
     private widget.Button BtnSetujui;
+    private widget.Button BtnSimpanRekon;
     private widget.Button BtnTolak;
+    private javax.swing.JDialog DlgPersetujuan;
+    private widget.TextBox Harga;
+    private widget.TextBox Jumlah;
     private javax.swing.JLabel LCount;
+    private widget.TextBox NoPengajuan;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
+    private widget.TextBox Total;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame4;
     private javax.swing.JLabel jLabel10;
+    private widget.Label jLabel12;
+    private widget.Label jLabel13;
+    private widget.Label jLabel14;
+    private widget.Label jLabel3;
     private javax.swing.JPanel jPanel1;
     private widget.TextBox kdpegawai;
     private widget.Label label17;
     private widget.Label label19;
     private widget.TextBox nmpegawai;
+    private widget.PanelBiasa panelBiasa2;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.Table tbBangsal;
