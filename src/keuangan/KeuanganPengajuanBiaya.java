@@ -63,7 +63,17 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
                 "No.Pengajuan","Tanggal","NIK","Diajukan Oleh","Bidang","Departemen","Urgensi","Uraian","Tujuan",
                 "Target Sasaran","Lokasi","Jml","Harga", "Total", "Keterangan", "NIK P.J.","P.J. Terkait", "Status"
             }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             Class[] types = new Class[] {
+                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                  java.lang.String.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.String.class,
+                  java.lang.String.class,java.lang.String.class,java.lang.String.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
         };
         tbObat.setModel(tabMode);
 
@@ -947,8 +957,14 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
                     Double.toString(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),Keterangan.getText(),
                     KdPetugasPJ.getText(),"Proses Pengajuan"
                 })==true){
-                    tampil();
+                    tabMode.addRow(new Object[]{
+                        NoPengajuan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPetugas.getText(),NmPetugas.getText(),Bidang.getText(),Departemen.getText(),
+                        Urgensi.getSelectedItem().toString(),Uraian.getText(),Tujuan.getText(),TargetSasaran.getText(),Lokasi.getText(),Double.parseDouble(Jumlah.getText()),
+                        Double.parseDouble(Harga.getText()),(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),Keterangan.getText(),KdPetugasPJ.getText(),
+                        NmPetugasPJ.getText(),"Proses Pengajuan"
+                    });
                     emptTeks();
+                    hitung();
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1435,15 +1451,13 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }   
                 rs=ps.executeQuery();
                 i=1;
-                total=0;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_pengajuan"),rs.getString("tanggal"),rs.getString("nik"),rs.getString("namapengaju"),rs.getString("bidang"),
                         rs.getString("departemen"),rs.getString("urgensi"),rs.getString("uraian_latar_belakang"),rs.getString("tujuan_pengajuan"),rs.getString("target_sasaran"),
-                        rs.getString("lokasi_kegiatan"),rs.getString("jumlah"),Valid.SetAngka(rs.getDouble("harga")),Valid.SetAngka(rs.getDouble("total")),rs.getString("keterangan"),
+                        rs.getString("lokasi_kegiatan"),rs.getDouble("jumlah"),rs.getDouble("harga"),rs.getDouble("total"),rs.getString("keterangan"),
                         rs.getString("nik_pj"),rs.getString("namapj"),rs.getString("status")
                     });
-                    total=total+rs.getDouble("total");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1455,11 +1469,10 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     ps.close();
                 }
             }
+            hitung();
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(""+tabMode.getRowCount());
-        LCount1.setText(Valid.SetAngka(total));
     }
 
     private void emptTeks() {
@@ -1549,9 +1562,35 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 Double.toString(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),Keterangan.getText(),KdPetugasPJ.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
-                tampil();
+                tbObat.setValueAt(NoPengajuan.getText(),tbObat.getSelectedRow(),0);
+                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+""),tbObat.getSelectedRow(),1);
+                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),2);
+                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),3);
+                tbObat.setValueAt(Bidang.getText(),tbObat.getSelectedRow(),4);
+                tbObat.setValueAt(Departemen.getText(),tbObat.getSelectedRow(),5);
+                tbObat.setValueAt(Urgensi.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
+                tbObat.setValueAt(Uraian.getText(),tbObat.getSelectedRow(),7);
+                tbObat.setValueAt(Tujuan.getText(),tbObat.getSelectedRow(),8);
+                tbObat.setValueAt(TargetSasaran.getText(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(Lokasi.getText(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(Double.parseDouble(Jumlah.getText()),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(Double.parseDouble(Harga.getText()),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt((Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(KdPetugasPJ.getText(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(NmPetugasPJ.getText(),tbObat.getSelectedRow(),16);
                 emptTeks();
+                hitung();
         }
+    }
+    
+    private void hitung(){
+        total=0;
+        for(i=0;i<tabMode.getRowCount();i++){
+            total=total+Valid.SetAngka(tbObat.getValueAt(i,13).toString());
+        }
+        LCount.setText(""+tabMode.getRowCount());
+        LCount1.setText(Valid.SetAngka(total));
     }
 
     private void hapus() {
@@ -1559,6 +1598,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             tabMode.removeRow(tbObat.getSelectedRow());
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
+            hitung();
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
