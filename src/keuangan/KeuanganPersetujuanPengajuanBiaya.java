@@ -50,7 +50,7 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
         this.setLocation(8,1);
         setSize(885,674);
         
-        DlgPersetujuan.setSize(600,133);
+        DlgPersetujuan.setSize(540,103);
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Pengajuan","Tanggal","NIK","Diajukan Oleh","Bidang","Departemen","Urgensi","Uraian","Tujuan",
@@ -231,20 +231,20 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
         panelBiasa2.setName("panelBiasa2"); // NOI18N
         panelBiasa2.setLayout(null);
 
-        jLabel3.setText("No.Pengajuan :");
+        jLabel3.setText("Nomor :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelBiasa2.add(jLabel3);
-        jLabel3.setBounds(0, 10, 85, 23);
+        jLabel3.setBounds(0, 10, 55, 23);
 
         NoPengajuan.setHighlighter(null);
         NoPengajuan.setName("NoPengajuan"); // NOI18N
         panelBiasa2.add(NoPengajuan);
-        NoPengajuan.setBounds(89, 10, 130, 23);
+        NoPengajuan.setBounds(59, 10, 130, 23);
 
         jLabel12.setText("Volume :");
         jLabel12.setName("jLabel12"); // NOI18N
         panelBiasa2.add(jLabel12);
-        jLabel12.setBounds(222, 10, 52, 23);
+        jLabel12.setBounds(206, 10, 52, 23);
 
         Jumlah.setHighlighter(null);
         Jumlah.setName("Jumlah"); // NOI18N
@@ -254,7 +254,7 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
             }
         });
         panelBiasa2.add(Jumlah);
-        Jumlah.setBounds(278, 10, 55, 23);
+        Jumlah.setBounds(262, 10, 55, 23);
 
         Harga.setHighlighter(null);
         Harga.setName("Harga"); // NOI18N
@@ -274,13 +274,13 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
         jLabel14.setText("Total :");
         jLabel14.setName("jLabel14"); // NOI18N
         panelBiasa2.add(jLabel14);
-        jLabel14.setBounds(0, 40, 85, 23);
+        jLabel14.setBounds(0, 40, 55, 23);
 
         Total.setEditable(false);
         Total.setHighlighter(null);
         Total.setName("Total"); // NOI18N
         panelBiasa2.add(Total);
-        Total.setBounds(89, 40, 160, 23);
+        Total.setBounds(59, 40, 160, 23);
 
         BtnSimpanRekon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpanRekon.setMnemonic('S');
