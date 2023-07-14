@@ -57,8 +57,9 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tanggal","Skor Respirasi","Skor 1","Skor Oksigen","Skor 2","Skor Suplemen Oksigen","Skor 3",
-            "Skor Tekanan Darah","Skor 4","Skor Laju Jantung","Skor 5","Skor Kesadaran","Skor 6","Skor Temperatur","Skor 7","Ttl.Skor","Kesimpulan","NIP","Petugas","Tgl.Lahir"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tanggal","Pernapasan","Skor 1","Saturasi Oksigen","Skor 2","Penggunaan O2","Skor 3",
+            "Denyut Jantung","Skor 4","Retraksi Dada","Skor 5","CRT","Skor 6","Suhu","Skor 7","Warna Kulit","Skor 8","Ttl.Skor","Kesimpulan",
+            "NIP","Petugas","Tgl.Lahir"
         }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -68,7 +69,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 25; i++) {
+        for (i = 0; i < 27; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                  column.setPreferredWidth(105);
@@ -111,12 +112,16 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             }else if(i==19){
                  column.setPreferredWidth(39);
             }else if(i==20){
-                 column.setPreferredWidth(45);
+                 column.setPreferredWidth(145);     
             }else if(i==21){
-                 column.setPreferredWidth(450);
+                 column.setPreferredWidth(39);
             }else if(i==22){
-                 column.setPreferredWidth(80);
+                 column.setPreferredWidth(45);
             }else if(i==23){
+                 column.setPreferredWidth(450);
+            }else if(i==24){
+                 column.setPreferredWidth(80);
+            }else if(i==25){
                  column.setPreferredWidth(150);
             }else{
                  column.setMinWidth(0);
@@ -272,6 +277,8 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         cmbSkor8 = new widget.ComboBox();
         jLabel36 = new widget.Label();
         Skor8 = new widget.TextBox();
+        jLabel41 = new widget.Label();
+        cmbCodeBlue = new widget.ComboBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -811,7 +818,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         ParameterSkor.setFocusTraversalPolicyProvider(true);
         ParameterSkor.setName("ParameterSkor"); // NOI18N
         FormInput.add(ParameterSkor);
-        ParameterSkor.setBounds(121, 210, 668, 23);
+        ParameterSkor.setBounds(121, 210, 470, 23);
 
         jLabel28.setText("Parameter :");
         jLabel28.setName("jLabel28"); // NOI18N
@@ -988,6 +995,16 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         FormInput.add(Skor8);
         Skor8.setBounds(745, 180, 44, 23);
 
+        jLabel41.setText("Aktifkan Code Blue :");
+        jLabel41.setName("jLabel41"); // NOI18N
+        FormInput.add(jLabel41);
+        jLabel41.setBounds(595, 210, 110, 23);
+
+        cmbCodeBlue.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        cmbCodeBlue.setName("cmbCodeBlue"); // NOI18N
+        FormInput.add(cmbCodeBlue);
+        cmbCodeBlue.setBounds(709, 210, 80, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -1048,7 +1065,9 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         }else if(Skor6.getText().trim().equals("")){
             Valid.textKosong(Skor6,"Skor 6");
         }else if(Skor7.getText().trim().equals("")){
-            Valid.textKosong(Skor1,"Skor 7");    
+            Valid.textKosong(Skor7,"Skor 7");    
+        }else if(Skor8.getText().trim().equals("")){
+            Valid.textKosong(Skor8,"Skor 8");    
         }else{
             isCombo1();
             isCombo2();
@@ -1057,20 +1076,22 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             isCombo5();
             isCombo6();
             isCombo7();
+            isCombo8();
             isjml();
             isHitung();
-            if(Sequel.menyimpantf("pemantauan_pews_dewasa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
+            if(Sequel.menyimpantf("pemantauan_ews_neonatus","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
                 cmbSkor3.getSelectedItem().toString(),Skor3.getText(),cmbSkor4.getSelectedItem().toString(),Skor4.getText(),
                 cmbSkor5.getSelectedItem().toString(),Skor5.getText(),cmbSkor6.getSelectedItem().toString(),Skor6.getText(),
-                cmbSkor7.getSelectedItem().toString(),Skor7.getText(),TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText()
+                cmbSkor7.getSelectedItem().toString(),Skor7.getText(),cmbSkor8.getSelectedItem().toString(),Skor8.getText(),
+                TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText()
             })==true){
                 tabMode.addRow(new String[]{
                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                     cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),cmbSkor3.getSelectedItem().toString(),Skor3.getText(),cmbSkor4.getSelectedItem().toString(),Skor4.getText(),
-                    cmbSkor5.getSelectedItem().toString(),Skor5.getText(),cmbSkor6.getSelectedItem().toString(),Skor6.getText(),cmbSkor7.getSelectedItem().toString(),Skor7.getText(),TotalSkor.getText(),ParameterSkor.getText(),
-                    KdPetugas.getText(),NmPetugas.getText(),TglLahir.getText()
+                    cmbSkor5.getSelectedItem().toString(),Skor5.getText(),cmbSkor6.getSelectedItem().toString(),Skor6.getText(),cmbSkor7.getSelectedItem().toString(),Skor7.getText(),cmbSkor8.getSelectedItem().toString(),Skor8.getText(),
+                    TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText(),NmPetugas.getText(),TglLahir.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -1103,7 +1124,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -1150,27 +1171,27 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
               Valid.MyReportqry("rptDataPemantauanPEWSDewasa.jasper","report","::[ Data Pemantauan PEWS Dewasa ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_pews_dewasa.tanggal,pemantauan_pews_dewasa.parameter_laju_respirasi,pemantauan_pews_dewasa.skor_laju_respirasi,pemantauan_pews_dewasa.parameter_saturasi_oksigen,"+
-                    "pemantauan_pews_dewasa.skor_saturasi_oksigen,pemantauan_pews_dewasa.parameter_suplemen_oksigen,pemantauan_pews_dewasa.skor_suplemen_oksigen,pemantauan_pews_dewasa.parameter_tekanan_darah_sistolik,"+
-                    "pemantauan_pews_dewasa.skor_tekanan_darah_sistolik,pemantauan_pews_dewasa.parameter_laju_jantung,pemantauan_pews_dewasa.skor_laju_jantung,pemantauan_pews_dewasa.parameter_kesadaran,"+
-                    "pemantauan_pews_dewasa.skor_kesadaran,pemantauan_pews_dewasa.parameter_temperatur,pemantauan_pews_dewasa.skor_temperatur,pemantauan_pews_dewasa.skor_total,pemantauan_pews_dewasa.parameter_total,pemantauan_pews_dewasa.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from pemantauan_pews_dewasa inner join reg_periksa on pemantauan_pews_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pemantauan_ews_neonatus.tanggal,pemantauan_ews_neonatus.parameter_laju_respirasi,pemantauan_ews_neonatus.skor_laju_respirasi,pemantauan_ews_neonatus.parameter_saturasi_oksigen,"+
+                    "pemantauan_ews_neonatus.skor_saturasi_oksigen,pemantauan_ews_neonatus.parameter_suplemen_oksigen,pemantauan_ews_neonatus.skor_suplemen_oksigen,pemantauan_ews_neonatus.parameter_tekanan_darah_sistolik,"+
+                    "pemantauan_ews_neonatus.skor_tekanan_darah_sistolik,pemantauan_ews_neonatus.parameter_laju_jantung,pemantauan_ews_neonatus.skor_laju_jantung,pemantauan_ews_neonatus.parameter_kesadaran,"+
+                    "pemantauan_ews_neonatus.skor_kesadaran,pemantauan_ews_neonatus.parameter_temperatur,pemantauan_ews_neonatus.skor_temperatur,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total,pemantauan_ews_neonatus.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from pemantauan_ews_neonatus inner join reg_periksa on pemantauan_ews_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews_dewasa.nip=petugas.nip where "+
-                    "pemantauan_pews_dewasa.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by pemantauan_pews_dewasa.tanggal ",param);
+                    "inner join petugas on pemantauan_ews_neonatus.nip=petugas.nip where "+
+                    "pemantauan_ews_neonatus.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' order by pemantauan_ews_neonatus.tanggal ",param);
             }else{
                 Valid.MyReportqry("rptDataPemantauanPEWSDewasa.jasper","report","::[ Data Pemantauan PEWS Dewasa ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_pews_dewasa.tanggal,pemantauan_pews_dewasa.parameter_laju_respirasi,pemantauan_pews_dewasa.skor_laju_respirasi,pemantauan_pews_dewasa.parameter_saturasi_oksigen,"+
-                    "pemantauan_pews_dewasa.skor_saturasi_oksigen,pemantauan_pews_dewasa.parameter_suplemen_oksigen,pemantauan_pews_dewasa.skor_suplemen_oksigen,pemantauan_pews_dewasa.parameter_tekanan_darah_sistolik,"+
-                    "pemantauan_pews_dewasa.skor_tekanan_darah_sistolik,pemantauan_pews_dewasa.parameter_laju_jantung,pemantauan_pews_dewasa.skor_laju_jantung,pemantauan_pews_dewasa.parameter_kesadaran,"+
-                    "pemantauan_pews_dewasa.skor_kesadaran,pemantauan_pews_dewasa.parameter_temperatur,pemantauan_pews_dewasa.skor_temperatur,pemantauan_pews_dewasa.skor_total,pemantauan_pews_dewasa.parameter_total,pemantauan_pews_dewasa.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from pemantauan_pews_dewasa inner join reg_periksa on pemantauan_pews_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pemantauan_ews_neonatus.tanggal,pemantauan_ews_neonatus.parameter_laju_respirasi,pemantauan_ews_neonatus.skor_laju_respirasi,pemantauan_ews_neonatus.parameter_saturasi_oksigen,"+
+                    "pemantauan_ews_neonatus.skor_saturasi_oksigen,pemantauan_ews_neonatus.parameter_suplemen_oksigen,pemantauan_ews_neonatus.skor_suplemen_oksigen,pemantauan_ews_neonatus.parameter_tekanan_darah_sistolik,"+
+                    "pemantauan_ews_neonatus.skor_tekanan_darah_sistolik,pemantauan_ews_neonatus.parameter_laju_jantung,pemantauan_ews_neonatus.skor_laju_jantung,pemantauan_ews_neonatus.parameter_kesadaran,"+
+                    "pemantauan_ews_neonatus.skor_kesadaran,pemantauan_ews_neonatus.parameter_temperatur,pemantauan_ews_neonatus.skor_temperatur,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total,pemantauan_ews_neonatus.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from pemantauan_ews_neonatus inner join reg_periksa on pemantauan_ews_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews_dewasa.nip=petugas.nip "+
-                    "where pemantauan_pews_dewasa.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText()+"%' or pasien.no_rkm_medis like '%"+TCari.getText()+"%' or pasien.nm_pasien like '%"+TCari.getText()+"%' or pemantauan_pews_dewasa.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%') "+
-                    "order by pemantauan_pews_dewasa.tanggal ",param);
+                    "inner join petugas on pemantauan_ews_neonatus.nip=petugas.nip "+
+                    "where pemantauan_ews_neonatus.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
+                    "(reg_periksa.no_rawat like '%"+TCari.getText()+"%' or pasien.no_rkm_medis like '%"+TCari.getText()+"%' or pasien.nm_pasien like '%"+TCari.getText()+"%' or pemantauan_ews_neonatus.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%') "+
+                    "order by pemantauan_ews_neonatus.tanggal ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1289,12 +1310,12 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where diagnosa_awal<>'' and no_rawat=? ",TNoRw.getText()));
             Valid.MyReportqry("rptFormulirPemantauanPEWSD.jasper","report","::[ Pemantauan EWS Dewasa ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_pews_dewasa.tanggal,pemantauan_pews_dewasa.parameter_laju_respirasi,pemantauan_pews_dewasa.skor_laju_respirasi,pemantauan_pews_dewasa.parameter_saturasi_oksigen,"+
-                    "pemantauan_pews_dewasa.skor_saturasi_oksigen,pemantauan_pews_dewasa.parameter_suplemen_oksigen,pemantauan_pews_dewasa.skor_suplemen_oksigen,pemantauan_pews_dewasa.parameter_tekanan_darah_sistolik,"+
-                    "pemantauan_pews_dewasa.skor_tekanan_darah_sistolik,pemantauan_pews_dewasa.parameter_laju_jantung,pemantauan_pews_dewasa.skor_laju_jantung,pemantauan_pews_dewasa.parameter_kesadaran,"+
-                    "pemantauan_pews_dewasa.skor_kesadaran,pemantauan_pews_dewasa.parameter_temperatur,pemantauan_pews_dewasa.skor_temperatur,pemantauan_pews_dewasa.skor_total,pemantauan_pews_dewasa.parameter_total,pemantauan_pews_dewasa.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from pemantauan_pews_dewasa inner join reg_periksa on pemantauan_pews_dewasa.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews_dewasa.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "pasien.jk,pemantauan_ews_neonatus.tanggal,pemantauan_ews_neonatus.parameter_laju_respirasi,pemantauan_ews_neonatus.skor_laju_respirasi,pemantauan_ews_neonatus.parameter_saturasi_oksigen,"+
+                    "pemantauan_ews_neonatus.skor_saturasi_oksigen,pemantauan_ews_neonatus.parameter_suplemen_oksigen,pemantauan_ews_neonatus.skor_suplemen_oksigen,pemantauan_ews_neonatus.parameter_tekanan_darah_sistolik,"+
+                    "pemantauan_ews_neonatus.skor_tekanan_darah_sistolik,pemantauan_ews_neonatus.parameter_laju_jantung,pemantauan_ews_neonatus.skor_laju_jantung,pemantauan_ews_neonatus.parameter_kesadaran,"+
+                    "pemantauan_ews_neonatus.skor_kesadaran,pemantauan_ews_neonatus.parameter_temperatur,pemantauan_ews_neonatus.skor_temperatur,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total,pemantauan_ews_neonatus.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from pemantauan_ews_neonatus inner join reg_periksa on pemantauan_ews_neonatus.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on pemantauan_ews_neonatus.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPemantauanPEWSActionPerformed
 
@@ -1354,13 +1375,15 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         }else if(Skor6.getText().trim().equals("")){
             Valid.textKosong(Skor6,"Skor 6");
         }else if(Skor7.getText().trim().equals("")){
-            Valid.textKosong(Skor1,"Skor 7");    
+            Valid.textKosong(Skor7,"Skor 7");    
+        }else if(Skor8.getText().trim().equals("")){
+            Valid.textKosong(Skor8,"Skor 8");    
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1492,6 +1515,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     private widget.TextBox TotalSkor;
     private widget.TextBox Umur;
     private widget.Button btnPetugas;
+    private widget.ComboBox cmbCodeBlue;
     private widget.ComboBox cmbSkor1;
     private widget.ComboBox cmbSkor2;
     private widget.ComboBox cmbSkor3;
@@ -1524,6 +1548,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     private widget.Label jLabel35;
     private widget.Label jLabel36;
     private widget.Label jLabel4;
+    private widget.Label jLabel41;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -1539,28 +1564,30 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_pews_dewasa.tanggal,pemantauan_pews_dewasa.parameter_laju_respirasi,pemantauan_pews_dewasa.skor_laju_respirasi,pemantauan_pews_dewasa.parameter_saturasi_oksigen,"+
-                    "pemantauan_pews_dewasa.skor_saturasi_oksigen,pemantauan_pews_dewasa.parameter_suplemen_oksigen,pemantauan_pews_dewasa.skor_suplemen_oksigen,pemantauan_pews_dewasa.parameter_tekanan_darah_sistolik,"+
-                    "pemantauan_pews_dewasa.skor_tekanan_darah_sistolik,pemantauan_pews_dewasa.parameter_laju_jantung,pemantauan_pews_dewasa.skor_laju_jantung,pemantauan_pews_dewasa.parameter_kesadaran,"+
-                    "pemantauan_pews_dewasa.skor_kesadaran,pemantauan_pews_dewasa.parameter_temperatur,pemantauan_pews_dewasa.skor_temperatur,pemantauan_pews_dewasa.skor_total,pemantauan_pews_dewasa.parameter_total,pemantauan_pews_dewasa.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from pemantauan_pews_dewasa inner join reg_periksa on pemantauan_pews_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pemantauan_ews_neonatus.tanggal,"+
+                    "pemantauan_ews_neonatus.parameter1,pemantauan_ews_neonatus.skor1,pemantauan_ews_neonatus.parameter2,pemantauan_ews_neonatus.skor2,pemantauan_ews_neonatus.parameter3,"+
+                    "pemantauan_ews_neonatus.skor3,pemantauan_ews_neonatus.parameter4,pemantauan_ews_neonatus.skor4,pemantauan_ews_neonatus.parameter5,pemantauan_ews_neonatus.skor5,"+
+                    "pemantauan_ews_neonatus.parameter6,pemantauan_ews_neonatus.skor6,pemantauan_ews_neonatus.parameter7,pemantauan_ews_neonatus.skor7,pemantauan_ews_neonatus.parameter8,"+
+                    "pemantauan_ews_neonatus.skor8,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total`,pemantauan_ews_neonatus.nip,petugas.nama,"+
+                    "date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from pemantauan_ews_neonatus inner join reg_periksa on pemantauan_ews_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews_dewasa.nip=petugas.nip where "+
-                    "pemantauan_pews_dewasa.tanggal between ? and ? order by pemantauan_pews_dewasa.tanggal ");
+                    "inner join petugas on pemantauan_ews_neonatus.nip=petugas.nip where "+
+                    "pemantauan_ews_neonatus.tanggal between ? and ? order by pemantauan_ews_neonatus.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pemantauan_pews_dewasa.tanggal,pemantauan_pews_dewasa.parameter_laju_respirasi,pemantauan_pews_dewasa.skor_laju_respirasi,pemantauan_pews_dewasa.parameter_saturasi_oksigen,"+
-                    "pemantauan_pews_dewasa.skor_saturasi_oksigen,pemantauan_pews_dewasa.parameter_suplemen_oksigen,pemantauan_pews_dewasa.skor_suplemen_oksigen,pemantauan_pews_dewasa.parameter_tekanan_darah_sistolik,"+
-                    "pemantauan_pews_dewasa.skor_tekanan_darah_sistolik,pemantauan_pews_dewasa.parameter_laju_jantung,pemantauan_pews_dewasa.skor_laju_jantung,pemantauan_pews_dewasa.parameter_kesadaran,"+
-                    "pemantauan_pews_dewasa.skor_kesadaran,pemantauan_pews_dewasa.parameter_temperatur,pemantauan_pews_dewasa.skor_temperatur,pemantauan_pews_dewasa.skor_total,pemantauan_pews_dewasa.parameter_total,pemantauan_pews_dewasa.nip,petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    "from pemantauan_pews_dewasa inner join reg_periksa on pemantauan_pews_dewasa.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pemantauan_ews_neonatus.tanggal,"+
+                    "pemantauan_ews_neonatus.parameter1,pemantauan_ews_neonatus.skor1,pemantauan_ews_neonatus.parameter2,pemantauan_ews_neonatus.skor2,pemantauan_ews_neonatus.parameter3,"+
+                    "pemantauan_ews_neonatus.skor3,pemantauan_ews_neonatus.parameter4,pemantauan_ews_neonatus.skor4,pemantauan_ews_neonatus.parameter5,pemantauan_ews_neonatus.skor5,"+
+                    "pemantauan_ews_neonatus.parameter6,pemantauan_ews_neonatus.skor6,pemantauan_ews_neonatus.parameter7,pemantauan_ews_neonatus.skor7,pemantauan_ews_neonatus.parameter8,"+
+                    "pemantauan_ews_neonatus.skor8,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total`,pemantauan_ews_neonatus.nip,petugas.nama,"+
+                    "date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "from pemantauan_ews_neonatus inner join reg_periksa on pemantauan_ews_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_pews_dewasa.nip=petugas.nip "+
-                    "where pemantauan_pews_dewasa.tanggal between ? and ? and "+
-                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or pemantauan_pews_dewasa.nip like ? or petugas.nama like ?) "+
-                    "order by pemantauan_pews_dewasa.tanggal ");
+                    "inner join petugas on pemantauan_ews_neonatus.nip=petugas.nip "+
+                    "where pemantauan_ews_neonatus.tanggal between ? and ? and "+
+                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or pemantauan_ews_neonatus.nip like ? or petugas.nama like ?) "+
+                    "order by pemantauan_ews_neonatus.tanggal ");
             }
                 
             try {
@@ -1580,13 +1607,10 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),
-                        rs.getString("tanggal"),rs.getString("parameter_laju_respirasi"),rs.getString("skor_laju_respirasi"),
-                        rs.getString("parameter_saturasi_oksigen"),rs.getString("skor_saturasi_oksigen"),rs.getString("parameter_suplemen_oksigen"),
-                        rs.getString("skor_suplemen_oksigen"),rs.getString("parameter_tekanan_darah_sistolik"),rs.getString("skor_tekanan_darah_sistolik"),
-                        rs.getString("parameter_laju_jantung"),rs.getString("skor_laju_jantung"),rs.getString("parameter_kesadaran"),
-                        rs.getString("skor_kesadaran"),rs.getString("parameter_temperatur"),rs.getString("skor_temperatur"),rs.getString("skor_total"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),
+                        rs.getString("tanggal"),rs.getString("parameter1"),rs.getString("skor1"),rs.getString("parameter2"),rs.getString("skor2"),rs.getString("parameter3"),
+                        rs.getString("skor3"),rs.getString("parameter4"),rs.getString("skor4"),rs.getString("parameter5"),rs.getString("skor5"),rs.getString("parameter6"),
+                        rs.getString("skor6"),rs.getString("parameter7"),rs.getString("skor7"),rs.getString("parameter8"),rs.getString("skor8"),rs.getString("skor_total"),
                         rs.getString("parameter_total"),rs.getString("nip"),rs.getString("nama"),rs.getString("lahir")
                     });
                 }
@@ -1749,28 +1773,18 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     }
     
     private void isHitung(){
-        i=0;
-        if(cmbSkor1.getSelectedItem().equals("<= 5")||cmbSkor1.getSelectedItem().equals(">= 35")){
-            i++;
-        }
-        if(cmbSkor4.getSelectedItem().equals("<= 70")){
-            i++;
-        }
-        if(cmbSkor5.getSelectedItem().equals(">= 140")||cmbSkor5.getSelectedItem().equals("<= 40")){
-            i++;
-        }
-        if(cmbSkor6.getSelectedItem().equals("Unrespon")){
-            i++;
-        }
-        
-        if(Integer.parseInt(TotalSkor.getText())>8){
-            ParameterSkor.setText("Lakukan RJP oleh petugas/tim primer, aktivasi code blue henti jantung (...), respon Tim Medis Emergency (TME) segera, maksimal 5 menit, informasikan dan konsultasikan ke DPJP");
-        }else if((Integer.parseInt(TotalSkor.getText())>=7)||(i>0)){
-            ParameterSkor.setText("Resusitasi dan monitoring secara kontinyu ole dokter jaga dan perawat senior, aktivasi code blue kegawatan medis (....) respon Tim Medis Emergency (TME) segera, maksimal 10 menit, informasikr dan konsultasikan ke DPJP");
-        }else if(Integer.parseInt(TotalSkor.getText())>=5){
-            ParameterSkor.setText("Asesment segera oleh dokter jaga (respon segera, maks 5 menit) konsultasi DPJP dan spesialis terkait, eskalasi perawatan dan monitoring tap jam, pertimbangkan perawatan dengan monitoring yang sesua (HCU)");
-        }else if(Integer.parseInt(TotalSkor.getText())>0){
-            ParameterSkor.setText("Assement segera oleh perawat senior, respon segera, maks 5 menit, eskalasi perawat dan frekuensi monitoring per 4-6 jam, jika diperlukan assesment oleh dokter jaga bangsal");
+        if(Integer.parseInt(TotalSkor.getText())>6){
+            ParameterSkor.setText("Petugas : Panggilan Darurat, Monitoring : Berkelanjutan, Tindakan : Menghubungi tim emergency jaga/aktifkan Code Blue");
+        }else if(Integer.parseInt(TotalSkor.getText())==6){
+            ParameterSkor.setText("Petugas : Perawat Jaga & Dokter Jaga, Monitoring : Berkelanjutan, Tindakan : Melapor ke DPJP");
+        }else if((Integer.parseInt(TotalSkor.getText())==4)||(Integer.parseInt(TotalSkor.getText())==5)){
+            ParameterSkor.setText("Petugas : Perawat Jaga & Dokter Jaga, Monitoring : Per 30 menit, Tindakan : Perawat jaga melakukan monitoring ulang dan melapor ke dokter jaga");
+        }else if(Integer.parseInt(TotalSkor.getText())==3){
+            ParameterSkor.setText("Petugas : Perawat Jaga & Dokter Jaga, Monitoring : Per 1 jam, Tindakan : Perawat jaga melakukan monitoring ulang dan melapor ke dokter jaga");
+        }else if(Integer.parseInt(TotalSkor.getText())==2){
+            ParameterSkor.setText("Petugas : Perawat Jaga, Monitoring : Per 2 jam, Tindakan : Semua perubahan kondisi pasien harus meningkatkan frekuensi monitor untuk tindakan klinis yang tepat");
+        }else if(Integer.parseInt(TotalSkor.getText())==1){
+            ParameterSkor.setText("Petugas : Perawat Jaga, Monitoring : Per 4 jam, Tindakan : Semua perubahan kondisi pasien harus meningkatkan frekuensi monitor untuk tindakan klinis yang tepat");
         }else if(Integer.parseInt(TotalSkor.getText())==0){
             ParameterSkor.setText("Beresiko rendah, ulangi setiap 7 jam");
         }
@@ -1778,15 +1792,15 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     
     public void emptTeks() {
         Tanggal.setDate(new Date());
-        cmbSkor1.setSelectedIndex(3);
+        cmbSkor1.setSelectedIndex(2);
         Skor1.setText("0");
         Skor1.setBackground(Color.WHITE);
         Skor1.setForeground(new Color(50,50,50));
-        cmbSkor2.setSelectedIndex(0);
+        cmbSkor2.setSelectedIndex(2);
         Skor2.setText("0");
         Skor2.setBackground(Color.WHITE);
         Skor2.setForeground(new Color(50,50,50));
-        cmbSkor3.setSelectedIndex(0);
+        cmbSkor3.setSelectedIndex(1);
         Skor3.setText("0");
         Skor3.setBackground(Color.WHITE);
         Skor3.setForeground(new Color(50,50,50));
@@ -1794,18 +1808,22 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         Skor4.setText("0");
         Skor4.setBackground(Color.WHITE);
         Skor4.setForeground(new Color(50,50,50));
-        cmbSkor5.setSelectedIndex(4);
+        cmbSkor5.setSelectedIndex(2);
         Skor5.setText("0");
         Skor5.setBackground(Color.WHITE);
         Skor5.setForeground(new Color(50,50,50));
-        cmbSkor6.setSelectedIndex(0);
+        cmbSkor6.setSelectedIndex(1);
         Skor6.setText("0");
         Skor6.setBackground(Color.WHITE);
         Skor6.setForeground(new Color(50,50,50));
-        cmbSkor7.setSelectedIndex(2);
+        cmbSkor7.setSelectedIndex(1);
         Skor7.setText("0");
         Skor7.setBackground(Color.WHITE);
         Skor7.setForeground(new Color(50,50,50));
+        cmbSkor8.setSelectedIndex(0);
+        Skor8.setText("0");
+        Skor8.setBackground(Color.WHITE);
+        Skor8.setForeground(new Color(50,50,50));
         TotalSkor.setText("0");
         ParameterSkor.setText("Beresiko rendah, ulangi setiap 7 jam");
         cmbSkor1.requestFocus();
@@ -1895,10 +1913,10 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpemantauan_pews_dewasa());
-        BtnHapus.setEnabled(akses.getpemantauan_pews_dewasa());
-        BtnEdit.setEnabled(akses.getpemantauan_pews_dewasa());
-        BtnPrint.setEnabled(akses.getpemantauan_pews_dewasa()); 
+        BtnSimpan.setEnabled(akses.getpemantauan_ews_neonatus());
+        BtnHapus.setEnabled(akses.getpemantauan_ews_neonatus());
+        BtnEdit.setEnabled(akses.getpemantauan_ews_neonatus());
+        BtnPrint.setEnabled(akses.getpemantauan_ews_neonatus()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1973,18 +1991,19 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         isCombo5();
         isCombo6();
         isCombo7();
+        isCombo8();
         isjml();
         isHitung();
-        if(Sequel.mengedittf("pemantauan_pews_dewasa","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,parameter_laju_respirasi=?,skor_laju_respirasi=?,parameter_saturasi_oksigen=?,"+
-                "skor_saturasi_oksigen=?,parameter_suplemen_oksigen=?,skor_suplemen_oksigen=?,parameter_tekanan_darah_sistolik=?,skor_tekanan_darah_sistolik=?,"+
-                "parameter_laju_jantung=?,skor_laju_jantung=?,parameter_kesadaran=?,skor_kesadaran=?,parameter_temperatur=?,skor_temperatur=?,skor_total=?,"+
-                "parameter_total=?,nip=?",21,new String[]{
+        if(Sequel.mengedittf("pemantauan_ews_neonatus","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,parameter1=?,skor1=?,parameter2=?,skor2=?,parameter3=?,"+
+            "skor3=?,parameter4=?,skor4=?,parameter5=?,skor5=?,parameter6=?,skor6=?,parameter7=?,skor7=?,parameter8=?,skor8=?,skor_total=?,parameter_total=?,"+
+            "nip=?",23,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
             cmbSkor3.getSelectedItem().toString(),Skor3.getText(),cmbSkor4.getSelectedItem().toString(),Skor4.getText(),
             cmbSkor5.getSelectedItem().toString(),Skor5.getText(),cmbSkor6.getSelectedItem().toString(),Skor6.getText(),
-            cmbSkor7.getSelectedItem().toString(),Skor7.getText(),TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText(),
-            tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            cmbSkor7.getSelectedItem().toString(),Skor7.getText(),cmbSkor8.getSelectedItem().toString(),Skor8.getText(),
+            TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2006,17 +2025,19 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             tbObat.setValueAt(Skor6.getText(),tbObat.getSelectedRow(),17);
             tbObat.setValueAt(cmbSkor7.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
             tbObat.setValueAt(Skor7.getText(),tbObat.getSelectedRow(),19);
-            tbObat.setValueAt(TotalSkor.getText(),tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(ParameterSkor.getText(),tbObat.getSelectedRow(),21);
-            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),22);
-            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),23);
-            tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(cmbSkor8.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(Skor8.getText(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(TotalSkor.getText(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(ParameterSkor.getText(),tbObat.getSelectedRow(),23);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),25);
+            tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),26);
             emptTeks();
         }
     }
     
     private void hapus() {
-        if(Sequel.queryu2tf("delete from pemantauan_pews_dewasa where tanggal=? and no_rawat=?",2,new String[]{
+        if(Sequel.queryu2tf("delete from pemantauan_ews_neonatus where tanggal=? and no_rawat=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
