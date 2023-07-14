@@ -1605,54 +1605,38 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     }
     
     private void isCombo1(){
-        if(cmbSkor1.getSelectedItem().equals("<= 5")){
-            Skor1.setBackground(Color.BLUE);
-            Skor1.setForeground(Color.WHITE);
-            Skor1.setText("7");
-        }else if(cmbSkor1.getSelectedItem().equals("6 - 8")){
+        if(cmbSkor1.getSelectedItem().equals("<= 29")){
             Skor1.setBackground(Color.RED);
             Skor1.setForeground(Color.WHITE);
-            Skor1.setText("3");
-        }else if(cmbSkor1.getSelectedItem().equals("9 - 11")){
+            Skor1.setText("2");
+        }else if(cmbSkor1.getSelectedItem().equals("30 - 39")){
             Skor1.setBackground(Color.YELLOW);
             Skor1.setForeground(Color.GREEN);
             Skor1.setText("1");
-        }else if(cmbSkor1.getSelectedItem().equals("12 - 20")){
+        }else if(cmbSkor1.getSelectedItem().equals("40 - 60")){
             Skor1.setBackground(Color.WHITE);
             Skor1.setForeground(new Color(50,50,50));
             Skor1.setText("0");
-        }else if(cmbSkor1.getSelectedItem().equals("21 - 24")){
-            Skor1.setBackground(Color.ORANGE);
-            Skor1.setForeground(Color.WHITE);
-            Skor1.setText("2");
-        }else if(cmbSkor1.getSelectedItem().equals("25 - 34")){
+        }else if(cmbSkor1.getSelectedItem().equals(">= 61")){
             Skor1.setBackground(Color.RED);
             Skor1.setForeground(Color.WHITE);
-            Skor1.setText("3");
-        }else if(cmbSkor1.getSelectedItem().equals(">= 35")){
-            Skor1.setBackground(Color.BLUE);
-            Skor1.setForeground(Color.WHITE);
-            Skor1.setText("7");    
+            Skor1.setText("2");
         }
     }
     
     private void isCombo2(){
-        if(cmbSkor2.getSelectedItem().equals(">= 95")){
+        if(cmbSkor2.getSelectedItem().equals(">= 94")){
             Skor2.setBackground(Color.WHITE);
             Skor2.setForeground(new Color(50,50,50));
             Skor2.setText("0");
-        }else if(cmbSkor2.getSelectedItem().equals("94 - 95")){
+        }else if(cmbSkor2.getSelectedItem().equals("90 - 93")){
             Skor2.setBackground(Color.YELLOW);
             Skor2.setForeground(Color.GREEN);
             Skor2.setText("1");
-        }else if(cmbSkor2.getSelectedItem().equals("92 - 93")){
-            Skor2.setBackground(Color.ORANGE);
-            Skor2.setForeground(Color.WHITE); 
-            Skor2.setText("2");
-        }else if(cmbSkor2.getSelectedItem().equals("<= 92")){
+        }else if(cmbSkor2.getSelectedItem().equals("<= 90")){
             Skor2.setBackground(Color.RED);
             Skor2.setForeground(Color.WHITE); 
-            Skor2.setText("3");    
+            Skor2.setText("2");
         }
     }
     
