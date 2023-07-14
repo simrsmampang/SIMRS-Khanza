@@ -926,7 +926,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel33);
         jLabel33.setBounds(460, 120, 120, 23);
 
-        cmbSkor7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 36,5", "36,5 - 37,5", ">= 37,5" }));
+        cmbSkor7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 36", "5", "36", "5 - 37", "5", ">= 37", "5" }));
         cmbSkor7.setName("cmbSkor7"); // NOI18N
         cmbSkor7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {

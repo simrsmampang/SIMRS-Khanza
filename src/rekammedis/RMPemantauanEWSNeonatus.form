@@ -1282,10 +1282,14 @@
                 <Component class="widget.ComboBox" name="cmbSkor7">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="&lt;= 36,5"/>
-                        <StringItem index="1" value="36,5 - 37,5"/>
-                        <StringItem index="2" value="&gt;= 37,5"/>
+                      <StringArray count="7">
+                        <StringItem index="0" value="&lt;= 36"/>
+                        <StringItem index="1" value="5"/>
+                        <StringItem index="2" value="36"/>
+                        <StringItem index="3" value="5 - 37"/>
+                        <StringItem index="4" value="5"/>
+                        <StringItem index="5" value="&gt;= 37"/>
+                        <StringItem index="6" value="5"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="cmbSkor7" noResource="true"/>
