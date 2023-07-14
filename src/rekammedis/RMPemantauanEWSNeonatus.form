@@ -343,7 +343,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-07-2023"/>
+                        <StringItem index="0" value="14-07-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -371,7 +371,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-07-2023"/>
+                        <StringItem index="0" value="14-07-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -530,7 +530,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-07-2023"/>
+                        <StringItem index="0" value="14-07-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -874,7 +874,7 @@
                 <Component class="widget.Label" name="jLabel14">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="1. Laju Respirasi/Menit"/>
+                    <Property name="text" type="java.lang.String" value="1. Pernapasan"/>
                     <Property name="name" type="java.lang.String" value="jLabel14" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -886,17 +886,13 @@
                 <Component class="widget.ComboBox" name="cmbSkor1">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="7">
-                        <StringItem index="0" value="&lt;= 5"/>
-                        <StringItem index="1" value="6 - 8"/>
-                        <StringItem index="2" value="9 - 11"/>
-                        <StringItem index="3" value="12 - 20"/>
-                        <StringItem index="4" value="21 - 24"/>
-                        <StringItem index="5" value="25 - 34"/>
-                        <StringItem index="6" value="&gt;= 35"/>
+                      <StringArray count="4">
+                        <StringItem index="0" value="&lt;= 29"/>
+                        <StringItem index="1" value="30 - 39"/>
+                        <StringItem index="2" value="40 - 60"/>
+                        <StringItem index="3" value="&gt;= 61"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="3"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor1" noResource="true"/>
                   </Properties>
                   <Events>
@@ -924,11 +920,10 @@
                 <Component class="widget.ComboBox" name="cmbSkor2">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="&gt;= 95"/>
-                        <StringItem index="1" value="94 - 95"/>
-                        <StringItem index="2" value="92 - 93"/>
-                        <StringItem index="3" value="&lt;= 92"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="&lt;= 90"/>
+                        <StringItem index="1" value="90 - 93"/>
+                        <StringItem index="2" value="&gt;= 94"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="cmbSkor2" noResource="true"/>
@@ -996,7 +991,7 @@
                 <Component class="widget.Label" name="jLabel23">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="7. Temperatur"/>
+                    <Property name="text" type="java.lang.String" value="7. Suhu"/>
                     <Property name="name" type="java.lang.String" value="jLabel23" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -1100,17 +1095,14 @@
                 <Component class="widget.ComboBox" name="cmbSkor4">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="7">
-                        <StringItem index="0" value="&gt;= 220"/>
-                        <StringItem index="1" value="181 - 220"/>
-                        <StringItem index="2" value="111 - 180"/>
-                        <StringItem index="3" value="101 - 110"/>
-                        <StringItem index="4" value="91 - 100"/>
-                        <StringItem index="5" value="71 - 90"/>
-                        <StringItem index="6" value="&lt;= 70"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="&lt;= 80"/>
+                        <StringItem index="1" value="81 - 119"/>
+                        <StringItem index="2" value="120 - 160"/>
+                        <StringItem index="3" value="161 - 180"/>
+                        <StringItem index="4" value="&gt;= 181"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor4" noResource="true"/>
                   </Properties>
                   <Events>
@@ -1126,7 +1118,7 @@
                 <Component class="widget.Label" name="jLabel24">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="3. Suplemen Oksigen"/>
+                    <Property name="text" type="java.lang.String" value="3. Penggunaan O2"/>
                     <Property name="name" type="java.lang.String" value="jLabel24" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -1138,17 +1130,12 @@
                 <Component class="widget.ComboBox" name="cmbSkor5">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="7">
-                        <StringItem index="0" value="&gt;= 140"/>
-                        <StringItem index="1" value="131 - 140"/>
-                        <StringItem index="2" value="111 - 130"/>
-                        <StringItem index="3" value="91 - 110"/>
-                        <StringItem index="4" value="51 - 90"/>
-                        <StringItem index="5" value="41 - 50"/>
-                        <StringItem index="6" value="&lt;= 40"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Berat"/>
+                        <StringItem index="1" value="Ringan"/>
+                        <StringItem index="2" value="Tidak"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor5" noResource="true"/>
                   </Properties>
                   <Events>
@@ -1164,7 +1151,7 @@
                 <Component class="widget.Label" name="jLabel25">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="4. Tekanan Darah Sistolik"/>
+                    <Property name="text" type="java.lang.String" value="4. Denyut Jantung"/>
                     <Property name="name" type="java.lang.String" value="jLabel25" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -1176,10 +1163,9 @@
                 <Component class="widget.ComboBox" name="cmbSkor6">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Sadar"/>
-                        <StringItem index="1" value="Nyeri/Verbal"/>
-                        <StringItem index="2" value="Unrespon"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="&gt;= 3 Detik"/>
+                        <StringItem index="1" value="&lt;= 3 Detik"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="cmbSkor6" noResource="true"/>
@@ -1197,7 +1183,7 @@
                 <Component class="widget.Label" name="jLabel29">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="5. Laju Jatung/Menit"/>
+                    <Property name="text" type="java.lang.String" value="5. Retraksi Dada"/>
                     <Property name="name" type="java.lang.String" value="jLabel29" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -1284,7 +1270,7 @@
                 <Component class="widget.Label" name="jLabel33">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="6. Kesadaran"/>
+                    <Property name="text" type="java.lang.String" value="6. CRT"/>
                     <Property name="name" type="java.lang.String" value="jLabel33" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -1296,15 +1282,12 @@
                 <Component class="widget.ComboBox" name="cmbSkor7">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="&lt;= 35"/>
-                        <StringItem index="1" value="35.1 - 36"/>
-                        <StringItem index="2" value="36.1 - 38"/>
-                        <StringItem index="3" value="38.1 - 39"/>
-                        <StringItem index="4" value="&gt;= 39"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="&lt;= 36,5"/>
+                        <StringItem index="1" value="36,5 - 37,5"/>
+                        <StringItem index="2" value="&gt;= 37,5"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor7" noResource="true"/>
                   </Properties>
                   <Events>
@@ -1339,6 +1322,63 @@
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="690" y="120" width="50" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Label" name="jLabel35">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="8. Warna Kulit"/>
+                    <Property name="name" type="java.lang.String" value="jLabel35" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="460" y="180" width="120" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.ComboBox" name="cmbSkor8">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="Pink"/>
+                        <StringItem index="1" value="Pucat"/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="cmbSkor8" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbSkor8ItemStateChanged"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbSkor8KeyPressed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="580" y="180" width="115" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Label" name="jLabel36">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Skor :"/>
+                    <Property name="name" type="java.lang.String" value="jLabel36" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="690" y="180" width="50" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.TextBox" name="Skor8">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
+                    <Property name="name" type="java.lang.String" value="Skor8" noResource="true"/>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="745" y="180" width="44" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

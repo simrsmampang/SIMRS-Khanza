@@ -268,6 +268,10 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         cmbSkor7 = new widget.ComboBox();
         Skor7 = new widget.TextBox();
         jLabel34 = new widget.Label();
+        jLabel35 = new widget.Label();
+        cmbSkor8 = new widget.ComboBox();
+        jLabel36 = new widget.Label();
+        Skor8 = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -463,7 +467,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-07-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -477,7 +481,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-07-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -573,7 +577,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-07-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -690,13 +694,12 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("1. Laju Respirasi/Menit");
+        jLabel14.setText("1. Pernapasan");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
         jLabel14.setBounds(40, 90, 140, 23);
 
-        cmbSkor1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 5", "6 - 8", "9 - 11", "12 - 20", "21 - 24", "25 - 34", ">= 35" }));
-        cmbSkor1.setSelectedIndex(3);
+        cmbSkor1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 29", "30 - 39", "40 - 60", ">= 61" }));
         cmbSkor1.setName("cmbSkor1"); // NOI18N
         cmbSkor1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -717,7 +720,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(40, 120, 140, 23);
 
-        cmbSkor2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">= 95", "94 - 95", "92 - 93", "<= 92" }));
+        cmbSkor2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 90", "90 - 93", ">= 94" }));
         cmbSkor2.setName("cmbSkor2"); // NOI18N
         cmbSkor2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -759,7 +762,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         Skor2.setBounds(345, 120, 44, 23);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel23.setText("7. Temperatur");
+        jLabel23.setText("7. Suhu");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
         jLabel23.setBounds(460, 150, 120, 23);
@@ -815,8 +818,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel28);
         jLabel28.setBounds(0, 70, 75, 23);
 
-        cmbSkor4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">= 220", "181 - 220", "111 - 180", "101 - 110", "91 - 100", "71 - 90", "<= 70" }));
-        cmbSkor4.setSelectedIndex(2);
+        cmbSkor4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 80", "81 - 119", "120 - 160", "161 - 180", ">= 181" }));
         cmbSkor4.setName("cmbSkor4"); // NOI18N
         cmbSkor4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -832,13 +834,12 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         cmbSkor4.setBounds(180, 180, 115, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel24.setText("3. Suplemen Oksigen");
+        jLabel24.setText("3. Penggunaan O2");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
         jLabel24.setBounds(40, 150, 140, 23);
 
-        cmbSkor5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">= 140", "131 - 140", "111 - 130", "91 - 110", "51 - 90", "41 - 50", "<= 40" }));
-        cmbSkor5.setSelectedIndex(4);
+        cmbSkor5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Berat", "Ringan", "Tidak" }));
         cmbSkor5.setName("cmbSkor5"); // NOI18N
         cmbSkor5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -854,12 +855,12 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         cmbSkor5.setBounds(580, 90, 115, 23);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel25.setText("4. Tekanan Darah Sistolik");
+        jLabel25.setText("4. Denyut Jantung");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
         jLabel25.setBounds(40, 180, 140, 23);
 
-        cmbSkor6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sadar", "Nyeri/Verbal", "Unrespon" }));
+        cmbSkor6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">= 3 Detik", "<= 3 Detik" }));
         cmbSkor6.setName("cmbSkor6"); // NOI18N
         cmbSkor6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -875,7 +876,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         cmbSkor6.setBounds(580, 120, 115, 23);
 
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel29.setText("5. Laju Jatung/Menit");
+        jLabel29.setText("5. Retraksi Dada");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
         jLabel29.setBounds(460, 90, 120, 23);
@@ -920,13 +921,12 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         Skor6.setBounds(745, 120, 44, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel33.setText("6. Kesadaran");
+        jLabel33.setText("6. CRT");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
         jLabel33.setBounds(460, 120, 120, 23);
 
-        cmbSkor7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 35", "35.1 - 36", "36.1 - 38", "38.1 - 39", ">= 39" }));
-        cmbSkor7.setSelectedIndex(2);
+        cmbSkor7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 36,5", "36,5 - 37,5", ">= 37,5" }));
         cmbSkor7.setName("cmbSkor7"); // NOI18N
         cmbSkor7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -953,6 +953,40 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
         jLabel34.setBounds(690, 120, 50, 23);
+
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel35.setText("8. Warna Kulit");
+        jLabel35.setName("jLabel35"); // NOI18N
+        FormInput.add(jLabel35);
+        jLabel35.setBounds(460, 180, 120, 23);
+
+        cmbSkor8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pink", "Pucat" }));
+        cmbSkor8.setName("cmbSkor8"); // NOI18N
+        cmbSkor8.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSkor8ItemStateChanged(evt);
+            }
+        });
+        cmbSkor8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbSkor8KeyPressed(evt);
+            }
+        });
+        FormInput.add(cmbSkor8);
+        cmbSkor8.setBounds(580, 180, 115, 23);
+
+        jLabel36.setText("Skor :");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(690, 180, 50, 23);
+
+        Skor8.setEditable(false);
+        Skor8.setText("0");
+        Skor8.setFocusTraversalPolicyProvider(true);
+        Skor8.setName("Skor8"); // NOI18N
+        Skor8.setOpaque(true);
+        FormInput.add(Skor8);
+        Skor8.setBounds(745, 180, 44, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1390,6 +1424,14 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         Valid.pindah(evt, cmbSkor6,BtnSimpan);
     }//GEN-LAST:event_cmbSkor7KeyPressed
 
+    private void cmbSkor8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSkor8ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSkor8ItemStateChanged
+
+    private void cmbSkor8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbSkor8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSkor8KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1438,6 +1480,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     private widget.TextBox Skor5;
     private widget.TextBox Skor6;
     private widget.TextBox Skor7;
+    private widget.TextBox Skor8;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1454,6 +1497,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     private widget.ComboBox cmbSkor5;
     private widget.ComboBox cmbSkor6;
     private widget.ComboBox cmbSkor7;
+    private widget.ComboBox cmbSkor8;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel14;
     private widget.Label jLabel16;
@@ -1475,6 +1519,8 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     private widget.Label jLabel32;
     private widget.Label jLabel33;
     private widget.Label jLabel34;
+    private widget.Label jLabel35;
+    private widget.Label jLabel36;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
