@@ -59,7 +59,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tanggal","Pernapasan","Skor 1","Saturasi Oksigen","Skor 2","Penggunaan O2","Skor 3",
             "Denyut Jantung","Skor 4","Retraksi Dada","Skor 5","CRT","Skor 6","Suhu","Skor 7","Warna Kulit","Skor 8","Ttl.Skor","Kesimpulan",
-            "NIP","Petugas","Tgl.Lahir"
+            "Code Blue","NIP","Petugas","Tgl.Lahir"
         }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -69,7 +69,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 27; i++) {
+        for (i = 0; i < 28; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                  column.setPreferredWidth(105);
@@ -120,8 +120,10 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             }else if(i==23){
                  column.setPreferredWidth(450);
             }else if(i==24){
-                 column.setPreferredWidth(80);
+                 column.setPreferredWidth(70);
             }else if(i==25){
+                 column.setPreferredWidth(80);
+            }else if(i==26){
                  column.setPreferredWidth(150);
             }else{
                  column.setMinWidth(0);
@@ -1079,19 +1081,19 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             isCombo8();
             isjml();
             isHitung();
-            if(Sequel.menyimpantf("pemantauan_ews_neonatus","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
+            if(Sequel.menyimpantf("pemantauan_ews_neonatus","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",22,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
                 cmbSkor3.getSelectedItem().toString(),Skor3.getText(),cmbSkor4.getSelectedItem().toString(),Skor4.getText(),
                 cmbSkor5.getSelectedItem().toString(),Skor5.getText(),cmbSkor6.getSelectedItem().toString(),Skor6.getText(),
                 cmbSkor7.getSelectedItem().toString(),Skor7.getText(),cmbSkor8.getSelectedItem().toString(),Skor8.getText(),
-                TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText()
+                TotalSkor.getText(),ParameterSkor.getText(),cmbCodeBlue.getSelectedItem().toString(),KdPetugas.getText()
             })==true){
                 tabMode.addRow(new String[]{
                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                     cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),cmbSkor3.getSelectedItem().toString(),Skor3.getText(),cmbSkor4.getSelectedItem().toString(),Skor4.getText(),
                     cmbSkor5.getSelectedItem().toString(),Skor5.getText(),cmbSkor6.getSelectedItem().toString(),Skor6.getText(),cmbSkor7.getSelectedItem().toString(),Skor7.getText(),cmbSkor8.getSelectedItem().toString(),Skor8.getText(),
-                    TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText(),NmPetugas.getText(),TglLahir.getText()
+                    TotalSkor.getText(),ParameterSkor.getText(),cmbCodeBlue.getSelectedItem().toString(),KdPetugas.getText(),NmPetugas.getText(),TglLahir.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -1124,7 +1126,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString())){
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -1383,7 +1385,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString())){
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1568,8 +1570,8 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
                     "pemantauan_ews_neonatus.parameter1,pemantauan_ews_neonatus.skor1,pemantauan_ews_neonatus.parameter2,pemantauan_ews_neonatus.skor2,pemantauan_ews_neonatus.parameter3,"+
                     "pemantauan_ews_neonatus.skor3,pemantauan_ews_neonatus.parameter4,pemantauan_ews_neonatus.skor4,pemantauan_ews_neonatus.parameter5,pemantauan_ews_neonatus.skor5,"+
                     "pemantauan_ews_neonatus.parameter6,pemantauan_ews_neonatus.skor6,pemantauan_ews_neonatus.parameter7,pemantauan_ews_neonatus.skor7,pemantauan_ews_neonatus.parameter8,"+
-                    "pemantauan_ews_neonatus.skor8,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total`,pemantauan_ews_neonatus.nip,petugas.nama,"+
-                    "date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "pemantauan_ews_neonatus.skor8,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total,pemantauan_ews_neonatus.code_blue,pemantauan_ews_neonatus.nip,"+
+                    "petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
                     "from pemantauan_ews_neonatus inner join reg_periksa on pemantauan_ews_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on pemantauan_ews_neonatus.nip=petugas.nip where "+
@@ -1580,12 +1582,12 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
                     "pemantauan_ews_neonatus.parameter1,pemantauan_ews_neonatus.skor1,pemantauan_ews_neonatus.parameter2,pemantauan_ews_neonatus.skor2,pemantauan_ews_neonatus.parameter3,"+
                     "pemantauan_ews_neonatus.skor3,pemantauan_ews_neonatus.parameter4,pemantauan_ews_neonatus.skor4,pemantauan_ews_neonatus.parameter5,pemantauan_ews_neonatus.skor5,"+
                     "pemantauan_ews_neonatus.parameter6,pemantauan_ews_neonatus.skor6,pemantauan_ews_neonatus.parameter7,pemantauan_ews_neonatus.skor7,pemantauan_ews_neonatus.parameter8,"+
-                    "pemantauan_ews_neonatus.skor8,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total`,pemantauan_ews_neonatus.nip,petugas.nama,"+
-                    "date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    "pemantauan_ews_neonatus.skor8,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total,pemantauan_ews_neonatus.code_blue,pemantauan_ews_neonatus.nip,"+
+                    "petugas.nama,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
                     "from pemantauan_ews_neonatus inner join reg_periksa on pemantauan_ews_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on pemantauan_ews_neonatus.nip=petugas.nip "+
-                    "where pemantauan_ews_neonatus.tanggal between ? and ? and "+
+                    "inner join petugas on pemantauan_ews_neonatus.nip=petugas.nip where "+
+                    "pemantauan_ews_neonatus.tanggal between ? and ? and "+
                     "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or pemantauan_ews_neonatus.nip like ? or petugas.nama like ?) "+
                     "order by pemantauan_ews_neonatus.tanggal ");
             }
@@ -1611,7 +1613,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
                         rs.getString("tanggal"),rs.getString("parameter1"),rs.getString("skor1"),rs.getString("parameter2"),rs.getString("skor2"),rs.getString("parameter3"),
                         rs.getString("skor3"),rs.getString("parameter4"),rs.getString("skor4"),rs.getString("parameter5"),rs.getString("skor5"),rs.getString("parameter6"),
                         rs.getString("skor6"),rs.getString("parameter7"),rs.getString("skor7"),rs.getString("parameter8"),rs.getString("skor8"),rs.getString("skor_total"),
-                        rs.getString("parameter_total"),rs.getString("nip"),rs.getString("nama"),rs.getString("lahir")
+                        rs.getString("parameter_total"),rs.getString("code_blue"),rs.getString("nip"),rs.getString("nama"),rs.getString("lahir")
                     });
                 }
             } catch (Exception e) {
@@ -1826,6 +1828,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         Skor8.setForeground(new Color(50,50,50));
         TotalSkor.setText("0");
         ParameterSkor.setText("Beresiko rendah, ulangi setiap 7 jam");
+        cmbCodeBlue.setSelectedIndex(0);
         cmbSkor1.requestFocus();
     } 
 
@@ -1996,14 +1999,14 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         isHitung();
         if(Sequel.mengedittf("pemantauan_ews_neonatus","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,parameter1=?,skor1=?,parameter2=?,skor2=?,parameter3=?,"+
             "skor3=?,parameter4=?,skor4=?,parameter5=?,skor5=?,parameter6=?,skor6=?,parameter7=?,skor7=?,parameter8=?,skor8=?,skor_total=?,parameter_total=?,"+
-            "nip=?",23,new String[]{
+            "code_blue=?,nip=?",24,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
             cmbSkor3.getSelectedItem().toString(),Skor3.getText(),cmbSkor4.getSelectedItem().toString(),Skor4.getText(),
             cmbSkor5.getSelectedItem().toString(),Skor5.getText(),cmbSkor6.getSelectedItem().toString(),Skor6.getText(),
             cmbSkor7.getSelectedItem().toString(),Skor7.getText(),cmbSkor8.getSelectedItem().toString(),Skor8.getText(),
-            TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
-            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            TotalSkor.getText(),ParameterSkor.getText(),cmbCodeBlue.getSelectedItem().toString(),KdPetugas.getText(),
+            tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2029,9 +2032,10 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             tbObat.setValueAt(Skor8.getText(),tbObat.getSelectedRow(),21);
             tbObat.setValueAt(TotalSkor.getText(),tbObat.getSelectedRow(),22);
             tbObat.setValueAt(ParameterSkor.getText(),tbObat.getSelectedRow(),23);
-            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),26);
+            tbObat.setValueAt(cmbCodeBlue.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),25);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),26);
+            tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),27);
             emptTeks();
         }
     }
