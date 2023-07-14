@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPegawai;
@@ -50,7 +51,7 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
         this.setLocation(8,1);
         setSize(885,674);
         
-        DlgPersetujuan.setSize(540,103);
+        DlgPersetujuan.setSize(532,106);
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Pengajuan","Tanggal","NIK","Diajukan Oleh","Bidang","Departemen","Urgensi","Uraian","Tujuan",
@@ -170,6 +171,40 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
             @Override
             public void keyReleased(KeyEvent e) {}
         });
+        
+        Harga.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isHitung();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isHitung();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isHitung();
+            }
+        });
+        
+        Jumlah.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isHitung();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isHitung();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isHitung();
+            }
+        });
     }
 
     /** This method is called from within the constructor to
@@ -236,6 +271,7 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
         panelBiasa2.add(jLabel3);
         jLabel3.setBounds(0, 10, 55, 23);
 
+        NoPengajuan.setEditable(false);
         NoPengajuan.setHighlighter(null);
         NoPengajuan.setName("NoPengajuan"); // NOI18N
         panelBiasa2.add(NoPengajuan);
@@ -330,6 +366,16 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
         Scroll.setOpaque(true);
 
         tbBangsal.setName("tbBangsal"); // NOI18N
+        tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbBangsalMouseClicked(evt);
+            }
+        });
+        tbBangsal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbBangsalKeyReleased(evt);
+            }
+        });
         Scroll.setViewportView(tbBangsal);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
@@ -570,6 +616,7 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
 }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        DlgPersetujuan.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -639,6 +686,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             DlgPersetujuan.setLocationRelativeTo(internalFrame1);
             DlgPersetujuan.setVisible(true);
+            Jumlah.requestFocus();
             this.setCursor(Cursor.getDefaultCursor());
         }else{
             JOptionPane.showMessageDialog(null,"Silahkan pilih No.Pengajuan yang diajukan..!!");
@@ -674,7 +722,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanRekonActionPerformed(null);
         }else{
-            //Valid.pindah(evt,PerubahanAturanPakai,BtnKeluarRekon);
+            Valid.pindah(evt,Harga,BtnKeluarRekon);
         }
     }//GEN-LAST:event_BtnSimpanRekonKeyPressed
 
@@ -687,12 +735,32 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnKeluarRekonActionPerformed
 
     private void JumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahKeyPressed
-        //Valid.pindah(evt,Urgensi,Harga);
+        Valid.pindah(evt,BtnKeluarRekon,Harga);
     }//GEN-LAST:event_JumlahKeyPressed
 
     private void HargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HargaKeyPressed
-        //Valid.pindah(evt,Jumlah,Uraian);
+        Valid.pindah(evt,Jumlah,BtnSimpanRekon);
     }//GEN-LAST:event_HargaKeyPressed
+
+    private void tbBangsalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBangsalKeyReleased
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbBangsalKeyReleased
+
+    private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
+        if(tabMode.getRowCount()!=0){
+            try {
+                getData();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbBangsalMouseClicked
 
     /**
     * @param args the command line arguments
@@ -814,5 +882,20 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             kdpegawai.setText(akses.getkode());
             nmpegawai.setText(pegawai.tampil3(kdpegawai.getText()));
         }  
+    }
+    
+    private void getData() {
+        if(tbBangsal.getSelectedRow()!= -1){
+            NoPengajuan.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
+            Jumlah.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString());
+            Harga.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString());
+            Total.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),13).toString());
+        }
+    }
+    
+    private void isHitung(){
+        if((!Harga.getText().equals(""))&&(!Jumlah.getText().equals(""))){
+            Total.setText(Valid.SetAngka(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())));
+        }
     }
 }
