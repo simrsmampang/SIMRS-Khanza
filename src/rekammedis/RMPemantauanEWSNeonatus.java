@@ -926,7 +926,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         FormInput.add(jLabel33);
         jLabel33.setBounds(460, 120, 120, 23);
 
-        cmbSkor7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 36", "5", "36", "5 - 37", "5", ">= 37", "5" }));
+        cmbSkor7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 36,5", "36,5 - 37,5", ">= 37,5" }));
         cmbSkor7.setName("cmbSkor7"); // NOI18N
         cmbSkor7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1421,15 +1421,17 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     }//GEN-LAST:event_cmbSkor7ItemStateChanged
 
     private void cmbSkor7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbSkor7KeyPressed
-        Valid.pindah(evt, cmbSkor6,BtnSimpan);
+        Valid.pindah(evt, cmbSkor6,cmbSkor8);
     }//GEN-LAST:event_cmbSkor7KeyPressed
 
     private void cmbSkor8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSkor8ItemStateChanged
-        // TODO add your handling code here:
+        isCombo8();
+        isjml();
+        isHitung();
     }//GEN-LAST:event_cmbSkor8ItemStateChanged
 
     private void cmbSkor8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbSkor8KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, cmbSkor7,BtnSimpan);
     }//GEN-LAST:event_cmbSkor8KeyPressed
 
     /**
@@ -1653,107 +1655,84 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
     }
     
     private void isCombo4(){
-        if(cmbSkor4.getSelectedItem().equals(">= 220")){
+        if(cmbSkor4.getSelectedItem().equals("<= 80")){
             Skor4.setBackground(Color.RED);
             Skor4.setForeground(Color.WHITE);
-            Skor4.setText("3");
-        }else if(cmbSkor4.getSelectedItem().equals("181 - 220")){
-            Skor4.setBackground(Color.ORANGE);
-            Skor4.setForeground(Color.WHITE);
             Skor4.setText("2");
-        }else if(cmbSkor4.getSelectedItem().equals("111 - 180")){
-            Skor4.setBackground(Color.WHITE);
-            Skor4.setForeground(new Color(50,50,50));
-            Skor4.setText("0");
-        }else if(cmbSkor4.getSelectedItem().equals("101 - 110")){
+        }else if(cmbSkor4.getSelectedItem().equals("81 - 119")){
             Skor4.setBackground(Color.YELLOW);
             Skor4.setForeground(Color.GREEN);
             Skor4.setText("1");
-        }else if(cmbSkor4.getSelectedItem().equals("91 - 100")){
-            Skor4.setBackground(Color.ORANGE);
-            Skor4.setForeground(Color.WHITE);
-            Skor4.setText("2");
-        }else if(cmbSkor4.getSelectedItem().equals("71 - 90")){
+        }else if(cmbSkor4.getSelectedItem().equals("120 - 160")){
+            Skor4.setBackground(Color.WHITE);
+            Skor4.setForeground(new Color(50,50,50));
+            Skor4.setText("0");
+        }else if(cmbSkor4.getSelectedItem().equals("161 - 180")){
+            Skor4.setBackground(Color.YELLOW);
+            Skor4.setForeground(Color.GREEN);
+            Skor4.setText("1");
+        }else if(cmbSkor4.getSelectedItem().equals(">= 181")){
             Skor4.setBackground(Color.RED);
             Skor4.setForeground(Color.WHITE);
-            Skor4.setText("3");
-        }else if(cmbSkor4.getSelectedItem().equals("<= 70")){
-            Skor4.setBackground(Color.BLUE);
-            Skor4.setForeground(Color.WHITE);
-            Skor4.setText("7");    
+            Skor4.setText("2");
         }
     }
     
     private void isCombo5(){
-        if(cmbSkor5.getSelectedItem().equals(">= 140")){
-            Skor5.setBackground(Color.BLUE);
-            Skor5.setForeground(Color.WHITE);
-            Skor5.setText("7");
-        }else if(cmbSkor5.getSelectedItem().equals("131 - 140")){
+        if(cmbSkor5.getSelectedItem().equals("Berat")){
             Skor5.setBackground(Color.RED);
             Skor5.setForeground(Color.WHITE);
-            Skor5.setText("3");
-        }else if(cmbSkor5.getSelectedItem().equals("111 - 130")){
-            Skor5.setBackground(Color.ORANGE);
-            Skor5.setForeground(Color.WHITE);
             Skor5.setText("2");
-        }else if(cmbSkor5.getSelectedItem().equals("91 - 110")){
+        }else if(cmbSkor5.getSelectedItem().equals("Ringan")){
             Skor5.setBackground(Color.YELLOW);
             Skor5.setForeground(Color.GREEN);
             Skor5.setText("1");
-        }else if(cmbSkor5.getSelectedItem().equals("51 - 90")){
+        }else if(cmbSkor5.getSelectedItem().equals("Tidak")){
             Skor5.setBackground(Color.WHITE);
             Skor5.setForeground(new Color(50,50,50));
             Skor5.setText("0");
-        }else if(cmbSkor5.getSelectedItem().equals("41 - 50")){
-            Skor5.setBackground(Color.ORANGE);
-            Skor5.setForeground(Color.WHITE);
-            Skor5.setText("2");
-        }else if(cmbSkor5.getSelectedItem().equals("<= 40")){
-            Skor5.setBackground(Color.BLUE);
-            Skor5.setForeground(Color.WHITE);
-            Skor5.setText("7");    
         }
     }
     
     private void isCombo6(){
-        if(cmbSkor6.getSelectedItem().equals("Nyeri/Verbal")){
-            Skor6.setBackground(Color.RED);
-            Skor6.setForeground(Color.WHITE);
-            Skor6.setText("3");
-        }else if(cmbSkor6.getSelectedItem().equals("Unrespon")){
-            Skor6.setBackground(Color.BLUE);
-            Skor6.setForeground(Color.WHITE);
-            Skor6.setText("7");    
-        }else{
+        if(cmbSkor6.getSelectedItem().equals(">= 3 Detik")){
+            Skor6.setBackground(Color.YELLOW);
+            Skor6.setForeground(Color.GREEN);
+            Skor6.setText("1");
+        }else if(cmbSkor6.getSelectedItem().equals("<= 3 Detik")){
             Skor6.setBackground(Color.WHITE);
             Skor6.setForeground(new Color(50,50,50));
             Skor6.setText("0");
         }
     } 
+    
     private void isCombo7(){
-        if(cmbSkor7.getSelectedItem().equals("<= 35")){
-            Skor7.setBackground(Color.RED);
-            Skor7.setForeground(Color.WHITE);
-            Skor7.setText("3");
-        }else if(cmbSkor7.getSelectedItem().equals("35.1 - 36")){
+        if(cmbSkor7.getSelectedItem().equals("<= 36,5")){
             Skor7.setBackground(Color.YELLOW);
             Skor7.setForeground(Color.GREEN);
             Skor7.setText("1");
-        }else if(cmbSkor7.getSelectedItem().equals("36.1 - 38")){
+        }else if(cmbSkor7.getSelectedItem().equals("36,5 - 37,5")){
             Skor7.setBackground(Color.WHITE);
             Skor7.setForeground(new Color(50,50,50));
             Skor7.setText("0");
-        }else if(cmbSkor7.getSelectedItem().equals("38.1 - 39")){
+        }else if(cmbSkor7.getSelectedItem().equals(">= 37,5")){
             Skor7.setBackground(Color.YELLOW);
             Skor7.setForeground(Color.GREEN);
             Skor7.setText("1");
-        }else if(cmbSkor7.getSelectedItem().equals(">= 39")){
-            Skor7.setBackground(Color.ORANGE);
-            Skor7.setForeground(Color.WHITE);
-            Skor7.setText("2");    
         }
-    }     
+    }  
+    
+    private void isCombo8(){
+       if(cmbSkor8.getSelectedItem().equals("Pucat")){
+            Skor8.setBackground(Color.RED);
+            Skor8.setForeground(Color.WHITE);
+            Skor8.setText("2");
+        }else if(cmbSkor8.getSelectedItem().equals("Pink")){
+            Skor8.setBackground(Color.WHITE);
+            Skor8.setForeground(new Color(50,50,50));
+            Skor8.setText("0");
+        }
+    }
     
     private void isjml(){
         if((!Skor1.getText().equals(""))&&(!Skor2.getText().equals(""))&&(!Skor3.getText().equals(""))&&(!Skor4.getText().equals(""))&&(!Skor5.getText().equals(""))&&(!Skor6.getText().equals(""))&&(!Skor7.getText().equals(""))){
