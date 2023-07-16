@@ -709,6 +709,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         jLabel14.setBounds(40, 90, 140, 23);
 
         cmbSkor1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 29", "30 - 39", "40 - 60", ">= 61" }));
+        cmbSkor1.setSelectedIndex(2);
         cmbSkor1.setName("cmbSkor1"); // NOI18N
         cmbSkor1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -730,6 +731,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         jLabel17.setBounds(40, 120, 140, 23);
 
         cmbSkor2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 90", "90 - 93", ">= 94" }));
+        cmbSkor2.setSelectedIndex(2);
         cmbSkor2.setName("cmbSkor2"); // NOI18N
         cmbSkor2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -828,6 +830,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         jLabel28.setBounds(0, 70, 75, 23);
 
         cmbSkor4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 80", "81 - 119", "120 - 160", "161 - 180", ">= 181" }));
+        cmbSkor4.setSelectedIndex(2);
         cmbSkor4.setName("cmbSkor4"); // NOI18N
         cmbSkor4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -849,6 +852,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         jLabel24.setBounds(40, 150, 140, 23);
 
         cmbSkor5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Berat", "Ringan", "Tidak" }));
+        cmbSkor5.setSelectedIndex(2);
         cmbSkor5.setName("cmbSkor5"); // NOI18N
         cmbSkor5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -870,6 +874,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         jLabel25.setBounds(40, 180, 140, 23);
 
         cmbSkor6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">= 3 Detik", "<= 3 Detik" }));
+        cmbSkor6.setSelectedIndex(1);
         cmbSkor6.setName("cmbSkor6"); // NOI18N
         cmbSkor6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -936,6 +941,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
         jLabel33.setBounds(470, 120, 110, 23);
 
         cmbSkor7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<= 36,5", "36,5 - 37,5", ">= 37,5" }));
+        cmbSkor7.setSelectedIndex(1);
         cmbSkor7.setName("cmbSkor7"); // NOI18N
         cmbSkor7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1318,7 +1324,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
                     "pemantauan_ews_neonatus.skor3,pemantauan_ews_neonatus.parameter4,pemantauan_ews_neonatus.skor4,pemantauan_ews_neonatus.parameter5,pemantauan_ews_neonatus.skor5,"+
                     "pemantauan_ews_neonatus.parameter6,pemantauan_ews_neonatus.skor6,pemantauan_ews_neonatus.parameter7,pemantauan_ews_neonatus.skor7,pemantauan_ews_neonatus.parameter8,"+
                     "pemantauan_ews_neonatus.skor8,pemantauan_ews_neonatus.skor_total,pemantauan_ews_neonatus.parameter_total,pemantauan_ews_neonatus.code_blue,pemantauan_ews_neonatus.nip,"+
-                    "petugas.nama "+
+                    "petugas.nama,pasien.tgl_lahir "+
                     "from pemantauan_ews_neonatus inner join reg_periksa on pemantauan_ews_neonatus.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on pemantauan_ews_neonatus.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);

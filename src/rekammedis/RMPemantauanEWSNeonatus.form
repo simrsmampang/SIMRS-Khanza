@@ -893,6 +893,7 @@
                         <StringItem index="3" value="&gt;= 61"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor1" noResource="true"/>
                   </Properties>
                   <Events>
@@ -926,6 +927,7 @@
                         <StringItem index="2" value="&gt;= 94"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor2" noResource="true"/>
                   </Properties>
                   <Events>
@@ -1103,6 +1105,7 @@
                         <StringItem index="4" value="&gt;= 181"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor4" noResource="true"/>
                   </Properties>
                   <Events>
@@ -1136,6 +1139,7 @@
                         <StringItem index="2" value="Tidak"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="2"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor5" noResource="true"/>
                   </Properties>
                   <Events>
@@ -1168,6 +1172,7 @@
                         <StringItem index="1" value="&lt;= 3 Detik"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="1"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor6" noResource="true"/>
                   </Properties>
                   <Events>
@@ -1288,6 +1293,7 @@
                         <StringItem index="2" value="&gt;= 37,5"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="1"/>
                     <Property name="name" type="java.lang.String" value="cmbSkor7" noResource="true"/>
                   </Properties>
                   <Events>
