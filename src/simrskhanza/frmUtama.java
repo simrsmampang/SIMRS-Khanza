@@ -825,6 +825,7 @@ import rekammedis.RMMCU;
 import rekammedis.RMPemantauanMEOWS;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPemantauanEWSD;
+import rekammedis.RMPemantauanEWSNeonatus;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanIGD;
@@ -20446,6 +20447,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPemantauanEWSNeonatusActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPemantauanEWSNeonatus aplikasi=new RMPemantauanEWSNeonatus(this,false);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21122,7 +21136,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
             btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan,btnPenilaianRisikoJatuhNeonatus,btnPemeriksaanFisikRalanPerPenyakit,
-            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya;
+            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus;
     
     public void isWall(){
         try{            
@@ -24654,6 +24668,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpemantauan_meows_obstetri()==true){
                 Panelmenu.add(btnPemantauanMEOWS);
+                jmlmenu++;
+            }
+            
+            if(akses.getpemantauan_ews_neonatus()==true){
+                Panelmenu.add(btnPemantauanEWSNeonatus);
                 jmlmenu++;
             }
             
@@ -29433,6 +29452,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpemantauan_meows_obstetri()==true){
             Panelmenu.add(btnPemantauanMEOWS);
+            jmlmenu++;
+        }
+        
+        if(akses.getpemantauan_ews_neonatus()==true){
+            Panelmenu.add(btnPemantauanEWSNeonatus);
             jmlmenu++;
         }
             
@@ -35570,6 +35594,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpemantauan_ews_neonatus()==true){
+            if(btnPemantauanEWSNeonatus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemantauanEWSNeonatus);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gethemodialisa()==true){
             if(btnHemodialisa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHemodialisa);
@@ -41470,5 +41501,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPersetujuanPengajuanBiaya.setName("btnPersetujuanPengajuanBiaya"); 
         btnPersetujuanPengajuanBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPersetujuanPengajuanBiaya.addActionListener(this::btnPersetujuanPengajuanBiayaActionPerformed);
+        
+        btnPemantauanEWSNeonatus = new widget.ButtonBig();
+        btnPemantauanEWSNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7717229_mom_family_baby_kid_child_icon.png"))); 
+        btnPemantauanEWSNeonatus.setText("Pemantauan EWS Pasien Neonatus");
+        btnPemantauanEWSNeonatus.setIconTextGap(0);
+        btnPemantauanEWSNeonatus.setName("btnPemantauanEWSNeonatus"); 
+        btnPemantauanEWSNeonatus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemantauanEWSNeonatus.addActionListener(this::btnPemantauanEWSNeonatusActionPerformed);
     }
 }
