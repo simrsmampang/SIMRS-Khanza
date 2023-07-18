@@ -727,7 +727,30 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnSimpanRekonKeyPressed
 
     private void BtnSimpanRekonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanRekonActionPerformed
-        
+        if(NoPengajuan.getText().trim().equals("")){
+            Valid.textKosong(NoPengajuan,"No.Pengajuan");
+        }else if(Jumlah.getText().trim().equals("")||Jumlah.getText().trim().equals("0")){
+            Valid.textKosong(Jumlah,"Jumlah");
+        }else if(Harga.getText().trim().equals("")||Harga.getText().trim().equals("0")){
+            Valid.textKosong(Harga,"Harga");
+        }else if(Total.getText().trim().equals("")||Total.getText().trim().equals("0")){
+            Valid.textKosong(Harga,"Total");
+        }else{
+            if(tbBangsal.getSelectedRow()> -1){
+                if(Sequel.menyimpantf("pengajuan_biaya_disetujui","?,?,?,?","Data",4,new String[]{
+                    NoPengajuan.getText(),Jumlah.getText(),Harga.getText(),Double.toString(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText()))
+                })==true){
+                    if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Disetujui'",1,new String[]{
+                            tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()
+                        })==true){
+                            tabMode.removeRow(tbBangsal.getSelectedRow());
+                            hitung();
+                    }
+                }   
+            }else{
+                JOptionPane.showMessageDialog(null,"Silahkan pilih No.Pengajuan yang diajukan..!!");
+            }
+        }
     }//GEN-LAST:event_BtnSimpanRekonActionPerformed
 
     private void BtnKeluarRekonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarRekonActionPerformed
