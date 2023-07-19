@@ -746,6 +746,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             tabMode.removeRow(tbBangsal.getSelectedRow());
                             hitung();
                     }
+                    DlgPersetujuan.dispose();
                 }   
             }else{
                 JOptionPane.showMessageDialog(null,"Silahkan pilih No.Pengajuan yang diajukan..!!");
