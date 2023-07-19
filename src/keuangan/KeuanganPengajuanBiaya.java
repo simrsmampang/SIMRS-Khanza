@@ -237,7 +237,6 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppProses = new javax.swing.JMenuItem();
-        ppDosetujui = new javax.swing.JMenuItem();
         ppDitolak = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -321,22 +320,6 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppProses);
-
-        ppDosetujui.setBackground(new java.awt.Color(255, 255, 254));
-        ppDosetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDosetujui.setForeground(new java.awt.Color(50, 50, 50));
-        ppDosetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppDosetujui.setText("Set Status Disetujui");
-        ppDosetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppDosetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDosetujui.setName("ppDosetujui"); // NOI18N
-        ppDosetujui.setPreferredSize(new java.awt.Dimension(200, 26));
-        ppDosetujui.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppDosetujuiBtnPrintActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppDosetujui);
 
         ppDitolak.setBackground(new java.awt.Color(255, 255, 254));
         ppDitolak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -530,7 +513,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -544,7 +527,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -629,7 +612,7 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         jLabel8.setBounds(233, 10, 55, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1263,36 +1246,6 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }//GEN-LAST:event_ppProsesBtnPrintActionPerformed
 
-    private void ppDosetujuiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDosetujuiBtnPrintActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-        }else{
-            if(tbObat.getSelectedRow()> -1){
-                if(akses.getkode().equals("Admin Utama")){
-                    if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Disetujui'",1,new String[]{
-                            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                        })==true){
-                            tampil();
-                            emptTeks();
-                    }
-                }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString())){
-                        if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Disetujui'",1,new String[]{
-                                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                            })==true){
-                                tampil();
-                                emptTeks();
-                        }
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Harus oleh P.J.Terkait sesuai user login..!!");
-                    }
-                }
-            }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
-            }
-        }
-    }//GEN-LAST:event_ppDosetujuiBtnPrintActionPerformed
-
     private void ppDitolakBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDitolakBtnPrintActionPerformed
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
@@ -1410,7 +1363,6 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppDitolak;
-    private javax.swing.JMenuItem ppDosetujui;
     private javax.swing.JMenuItem ppProses;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
@@ -1533,8 +1485,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         BtnHapus.setEnabled(akses.getpengajuan_biaya());
         BtnEdit.setEnabled(akses.getpengajuan_biaya());
         ppDitolak.setEnabled(akses.getpengajuan_biaya());
-        ppDosetujui.setEnabled(akses.getpengajuan_biaya());
-        ppProses.setEnabled(akses.getpengajuan_biaya());
+        ppProses.setEnabled(akses.getpersetujuan_pengajuan_biaya());
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
