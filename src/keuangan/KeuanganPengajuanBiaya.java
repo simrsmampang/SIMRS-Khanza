@@ -235,9 +235,6 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        ppProses = new javax.swing.JMenuItem();
-        ppDitolak = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -302,41 +299,6 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
         TargetSasaran = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
-        jPopupMenu1.setForeground(new java.awt.Color(50, 50, 50));
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        ppProses.setBackground(new java.awt.Color(255, 255, 254));
-        ppProses.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppProses.setForeground(new java.awt.Color(50, 50, 50));
-        ppProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppProses.setText("Set Status Proses Pengajuan");
-        ppProses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppProses.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppProses.setName("ppProses"); // NOI18N
-        ppProses.setPreferredSize(new java.awt.Dimension(200, 26));
-        ppProses.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppProsesBtnPrintActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppProses);
-
-        ppDitolak.setBackground(new java.awt.Color(255, 255, 254));
-        ppDitolak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDitolak.setForeground(new java.awt.Color(50, 50, 50));
-        ppDitolak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppDitolak.setText("Set Status Ditolak");
-        ppDitolak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppDitolak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDitolak.setName("ppDitolak"); // NOI18N
-        ppDitolak.setPreferredSize(new java.awt.Dimension(200, 26));
-        ppDitolak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppDitolakBtnPrintActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppDitolak);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -357,7 +319,6 @@ public final class KeuanganPengajuanBiaya extends javax.swing.JDialog {
 
         tbObat.setAutoCreateRowSorter(true);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1216,66 +1177,6 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         Valid.pindah(evt,Lokasi,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
 
-    private void ppProsesBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppProsesBtnPrintActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-        }else{
-            if(tbObat.getSelectedRow()> -1){
-                if(akses.getkode().equals("Admin Utama")){
-                    if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Proses Pengajuan'",1,new String[]{
-                            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                        })==true){
-                            tampil();
-                            emptTeks();
-                    }
-                }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString())){
-                        if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Proses Pengajuan'",1,new String[]{
-                                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                            })==true){
-                                tampil();
-                                emptTeks();
-                        }
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Harus oleh P.J.Terkait sesuai user login..!!");
-                    }
-                }
-            }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
-            }
-        }
-    }//GEN-LAST:event_ppProsesBtnPrintActionPerformed
-
-    private void ppDitolakBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDitolakBtnPrintActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-        }else{
-            if(tbObat.getSelectedRow()> -1){
-                if(akses.getkode().equals("Admin Utama")){
-                    if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Ditolak'",1,new String[]{
-                            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                        })==true){
-                            tampil();
-                            emptTeks();
-                    }
-                }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString())){
-                        if(Sequel.mengedittf("pengajuan_biaya","no_pengajuan=?","status='Ditolak'",1,new String[]{
-                                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                            })==true){
-                                tampil();
-                                emptTeks();
-                        }
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Harus oleh P.J.Terkait sesuai user login..!!");
-                    }
-                }
-            }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
-            }
-        }
-    }//GEN-LAST:event_ppDitolakBtnPrintActionPerformed
-
     private void LokasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiKeyPressed
         Valid.pindah(evt,TargetSasaran,Keterangan);
     }//GEN-LAST:event_LokasiKeyPressed
@@ -1359,11 +1260,8 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppDitolak;
-    private javax.swing.JMenuItem ppProses;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbObat;
@@ -1484,8 +1382,6 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         BtnSimpan.setEnabled(akses.getpengajuan_biaya());
         BtnHapus.setEnabled(akses.getpengajuan_biaya());
         BtnEdit.setEnabled(akses.getpengajuan_biaya());
-        ppDitolak.setEnabled(akses.getpengajuan_biaya());
-        ppProses.setEnabled(akses.getpersetujuan_pengajuan_biaya());
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
