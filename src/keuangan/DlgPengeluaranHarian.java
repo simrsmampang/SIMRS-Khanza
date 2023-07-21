@@ -95,7 +95,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(110);
             }else if(i==5){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(350);
             }else if(i==6){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -963,7 +963,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void KdKategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKategoriKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_kategori from kategori_pengeluaran_harian where kode_kategori=?",NmKategori,KdKategori.getText());
+            Sequel.cariIsi("select kategori_pengeluaran_harian.nama_kategori from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?",NmKategori,KdKategori.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnKategoriActionPerformed(null);
         }else{            

@@ -54,7 +54,7 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
         DlgPersetujuan.setSize(532,106);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Pengajuan","Tanggal","NIK","Diajukan Oleh","Bidang","Departemen","Urgensi","Uraian","Tujuan",
+                "No.Pengajuan","Tanggal","NIP","Diajukan Oleh","Bidang","Departemen","Urgensi","Uraian","Tujuan",
                 "Target Sasaran","Lokasi","Jml","Harga", "Total", "Keterangan"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}

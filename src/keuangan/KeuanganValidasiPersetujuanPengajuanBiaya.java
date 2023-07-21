@@ -51,8 +51,8 @@ public final class KeuanganValidasiPersetujuanPengajuanBiaya extends javax.swing
         setSize(885,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Pengajuan","Tanggal","NIK","Diajukan Oleh","Bidang","Departemen","Urgensi","Uraian","Tujuan",
-                "Target Sasaran","Lokasi","Jml","Harga", "Total", "Keterangan", "NIK P.J.","P.J. Terkait"
+                "No.Pengajuan","Tanggal","NIP","Diajukan Oleh","Bidang","Departemen","Urgensi","Uraian","Tujuan",
+                "Target Sasaran","Lokasi","Jml","Harga", "Total", "Keterangan", "NIP P.J.","P.J. Terkait"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
@@ -517,12 +517,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBayarActionPerformed
         if(tbBangsal.getSelectedRow()> -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            KeuanganHutangObatBelumLunas form=new KeuanganHutangObatBelumLunas(null,false);
+            DlgPengeluaranHarian form=new DlgPengeluaranHarian(null,false);
             form.isCek();
-            form.tampilTagihan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
+            form.emptTeks();
+            form.setPengajuan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),"Validasi pengajuan No."+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+" tanggal "+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString()+" oleh "+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),3).toString()+" NIP "+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),2).toString(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(),13).toString());
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
+            tabMode.removeRow(tbBangsal.getSelectedRow());
             this.setCursor(Cursor.getDefaultCursor());
         }else{
             JOptionPane.showMessageDialog(null,"Silahkan pilih No.Pengajuan yang diajukan..!!");
@@ -530,7 +532,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnBayarActionPerformed
 
     private void BtnBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBayarKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnBayarActionPerformed(null);
+        }else{
+            Valid.pindah(evt,TCari,BtnPrint);
+        }
     }//GEN-LAST:event_BtnBayarKeyPressed
 
     private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
@@ -547,7 +553,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnPegawaiActionPerformed
 
     private void BtnPegawaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPegawaiKeyPressed
-        //Valid.pindah(evt,DTPCari2,TCari);
+        Valid.pindah(evt,BtnKeluar,TCari);
     }//GEN-LAST:event_BtnPegawaiKeyPressed
 
     private void kdpegawaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpegawaiKeyPressed
