@@ -53,6 +53,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
     private DlgCariKategoriPengeluaran kategori=new DlgCariKategoriPengeluaran(null,false);
     private double total=0;
     private boolean sukses=true;
+    private String nopengajuanbiaya="";
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -709,6 +710,9 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
             }   
             
             if(sukses==true){
+                if(!nopengajuanbiaya.equals("")){
+                    Sequel.queryu("update pengajuan_biaya set status='Divalidasi' where no_pengajuan='"+nopengajuanbiaya+"'");
+                }
                 Sequel.Commit();
             }else{
                 sukses=false;
@@ -1101,6 +1105,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NmKategori.setText("");
         Tanggal.setDate(new Date());
         KdKategori.requestFocus();
+        nopengajuanbiaya="";
         autoNomor();
     }
 
@@ -1147,5 +1152,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,3),signed)),0) from pengeluaran_harian where tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
                 "PH"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,Nomor); 
+    }
+    
+    public void setPengajuan(String nopengajuan,String keterangan,String pengeluaran){
+        nopengajuanbiaya=nopengajuan;
+        Nomor.setText(nopengajuan);
+        Keterangan.setText(keterangan);
+        Pengeluaran.setText(pengeluaran);
     }
 }

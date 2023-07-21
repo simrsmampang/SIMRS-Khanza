@@ -17,7 +17,6 @@ public class SIMRSKhanza {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
         WidgetUtilities.invokeLater(() -> {
            frmUtama utama=frmUtama.getInstance();
            utama.isWall();
