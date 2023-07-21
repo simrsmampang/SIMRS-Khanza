@@ -702,6 +702,7 @@ import keuangan.DlgLhtBankPapua;
 import keuangan.DlgRekapBiayaRegistrasi;
 import keuangan.KeuanganPengajuanBiaya;
 import keuangan.KeuanganPersetujuanPengajuanBiaya;
+import keuangan.KeuanganValidasiPersetujuanPengajuanBiaya;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -20460,6 +20461,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnValidasiPersetujuanPengajuanBiayaActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganValidasiPersetujuanPengajuanBiaya aplikasi=new KeuanganValidasiPersetujuanPengajuanBiaya(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21136,7 +21149,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
             btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan,btnPenilaianRisikoJatuhNeonatus,btnPemeriksaanFisikRalanPerPenyakit,
-            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus;
+            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya;
     
     public void isWall(){
         try{            
@@ -23449,6 +23462,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpersetujuan_pengajuan_biaya()==true){
                 Panelmenu.add(btnPersetujuanPengajuanBiaya);
+                jmlmenu++;
+            }
+            
+            if(akses.getvalidasi_persetujuan_pengajuan_biaya()==true){
+                Panelmenu.add(btnValidasiPersetujuanPengajuanBiaya);
                 jmlmenu++;
             }
 
@@ -28235,6 +28253,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpersetujuan_pengajuan_biaya()==true){
             Panelmenu.add(btnPersetujuanPengajuanBiaya);
+            jmlmenu++;
+        }
+        
+        if(akses.getvalidasi_persetujuan_pengajuan_biaya()==true){
+            Panelmenu.add(btnValidasiPersetujuanPengajuanBiaya);
             jmlmenu++;
         }
 
@@ -33890,6 +33913,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpersetujuan_pengajuan_biaya()==true){
             if(btnPersetujuanPengajuanBiaya.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPersetujuanPengajuanBiaya);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getvalidasi_persetujuan_pengajuan_biaya()==true){
+            if(btnValidasiPersetujuanPengajuanBiaya.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnValidasiPersetujuanPengajuanBiaya);
                 jmlmenu++;
             }                
         }
@@ -41509,5 +41539,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPemantauanEWSNeonatus.setName("btnPemantauanEWSNeonatus"); 
         btnPemantauanEWSNeonatus.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPemantauanEWSNeonatus.addActionListener(this::btnPemantauanEWSNeonatusActionPerformed);
+        
+        btnValidasiPersetujuanPengajuanBiaya = new widget.ButtonBig();
+        btnValidasiPersetujuanPengajuanBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7013442_finance_business_money_payment_inflation_icon.png"))); 
+        btnValidasiPersetujuanPengajuanBiaya.setText("Validasi Persetujuan Pengajuan Biaya");
+        btnValidasiPersetujuanPengajuanBiaya.setIconTextGap(0);
+        btnValidasiPersetujuanPengajuanBiaya.setName("btnValidasiPersetujuanPengajuanBiaya"); 
+        btnValidasiPersetujuanPengajuanBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnValidasiPersetujuanPengajuanBiaya.addActionListener(this::btnValidasiPersetujuanPengajuanBiayaActionPerformed);
     }
 }

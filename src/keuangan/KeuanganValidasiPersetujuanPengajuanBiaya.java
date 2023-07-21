@@ -427,25 +427,12 @@ public final class KeuanganValidasiPersetujuanPengajuanBiaya extends javax.swing
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
-            
-            int row=tabMode.getRowCount();
-            for(i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'"+i+"','"+
-                                tabMode.getValueAt(i,0).toString()+"','"+
-                                tabMode.getValueAt(i,1).toString()+"','"+
-                                tabMode.getValueAt(i,2).toString()+"','"+
-                                tabMode.getValueAt(i,3).toString()+"','"+
-                                tabMode.getValueAt(i,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penagihan Piutang Pasien"); 
-            }
-            i++;
-            Sequel.menyimpan("temporary","'"+i+"','TOTAL TAGIHAN :','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penagihan Piutang Pasien"); 
-            Map<String, Object> param = new HashMap<>();    
+            Map<String, Object> param = new HashMap<>(); 
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
@@ -453,9 +440,21 @@ public final class KeuanganValidasiPersetujuanPengajuanBiaya extends javax.swing
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptValidasiTagihanObatBHP.jasper","report","::[ Data Pegajuan Titip Faktur/Tagihan Obat & BHP ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-            this.setCursor(Cursor.getDefaultCursor());
+            Valid.MyReportqry("rptValidasiPersetujuanPengajuanBiaya.jasper","report","::[ Data Pengajuan Biaya Yang Disetujui ]::",
+                   "select pengajuan_biaya.no_pengajuan,pengajuan_biaya.tanggal,pengajuan_biaya.nik,peg1.nama as namapengaju,"+
+                   "peg1.bidang,peg1.departemen,pengajuan_biaya.urgensi,pengajuan_biaya.uraian_latar_belakang,pengajuan_biaya.tujuan_pengajuan,"+
+                   "pengajuan_biaya.target_sasaran,pengajuan_biaya.lokasi_kegiatan,pengajuan_biaya_disetujui.jumlah,pengajuan_biaya_disetujui.harga,"+
+                   "pengajuan_biaya_disetujui.total,pengajuan_biaya.keterangan,pengajuan_biaya.nik_pj,peg2.nama as namapj,pengajuan_biaya.status "+
+                   "from pengajuan_biaya inner join pegawai as peg1 on pengajuan_biaya.nik=peg1.nik "+
+                   "inner join pegawai as peg2 on pengajuan_biaya.nik_pj=peg2.nik "+
+                   "inner join pengajuan_biaya_disetujui on pengajuan_biaya_disetujui.no_pengajuan=pengajuan_biaya.no_pengajuan "+
+                   "where pengajuan_biaya.status='Disetujui' and pengajuan_biaya.nik_pj like '%"+kdpegawai.getText().trim()+"%' "+
+                   (TCari.getText().trim().equals("")?"":"and (pengajuan_biaya.no_pengajuan like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.nik like '%"+TCari.getText().trim()+"%' or peg1.nama like '%"+TCari.getText().trim()+"%' or "+
+                   "peg1.bidang like '%"+TCari.getText().trim()+"%' or peg1.departemen like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.urgensi like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.uraian_latar_belakang like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.tujuan_pengajuan like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.lokasi_kegiatan like '%"+TCari.getText().trim()+"%' or pengajuan_biaya.keterangan like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_biaya.nik_pj like '%"+TCari.getText().trim()+"%' or peg2.nama like '%"+TCari.getText().trim()+"%')")+" order by pengajuan_biaya.tanggal",param);
         }
+        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -609,13 +608,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    "from pengajuan_biaya inner join pegawai as peg1 on pengajuan_biaya.nik=peg1.nik "+
                    "inner join pegawai as peg2 on pengajuan_biaya.nik_pj=peg2.nik "+
                    "inner join pengajuan_biaya_disetujui on pengajuan_biaya_disetujui.no_pengajuan=pengajuan_biaya.no_pengajuan "+
-                   "where pengajuan_biaya.status='Disetujui' and pengajuan_biaya.nik_pj=? "+
+                   "where pengajuan_biaya.status='Disetujui' and pengajuan_biaya.nik_pj like ? "+
                    (TCari.getText().trim().equals("")?"":"and (pengajuan_biaya.no_pengajuan like ? or pengajuan_biaya.nik like ? or peg1.nama like ? or "+
                    "peg1.bidang like ? or peg1.departemen like ? or pengajuan_biaya.urgensi like ? or pengajuan_biaya.uraian_latar_belakang like ? or "+
                    "pengajuan_biaya.tujuan_pengajuan like ? or pengajuan_biaya.lokasi_kegiatan like ? or pengajuan_biaya.keterangan like ? or "+
                    "pengajuan_biaya.nik_pj like ? or peg2.nama like ?)")+" order by pengajuan_biaya.tanggal");
             try {
-                ps.setString(1,kdpegawai.getText());
+                ps.setString(1,"%"+kdpegawai.getText().trim()+"%");
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(2,"%"+TCari.getText().trim()+"%");
                     ps.setString(3,"%"+TCari.getText().trim()+"%");
