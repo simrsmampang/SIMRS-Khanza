@@ -604,16 +604,20 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ps=koneksi.prepareStatement(
                    "select pengajuan_biaya.no_pengajuan,pengajuan_biaya.tanggal,pengajuan_biaya.nik,peg1.nama as namapengaju,"+
                    "peg1.bidang,peg1.departemen,pengajuan_biaya.urgensi,pengajuan_biaya.uraian_latar_belakang,pengajuan_biaya.tujuan_pengajuan,"+
-                   "pengajuan_biaya.target_sasaran,pengajuan_biaya.lokasi_kegiatan,pengajuan_biaya.jumlah,pengajuan_biaya.harga,"+
-                   "pengajuan_biaya.total,pengajuan_biaya.keterangan,pengajuan_biaya.nik_pj,peg2.nama as namapj,pengajuan_biaya.status "+
-                   "from pengajuan_biaya inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_biaya.nik=peg1.nik "+
-                   "and pengajuan_biaya.nik_pj=peg2.nik where pengajuan_biaya.tanggal between ? and ? "+
+                   "pengajuan_biaya.target_sasaran,pengajuan_biaya.lokasi_kegiatan,pengajuan_biaya_disetujui.jumlah,pengajuan_biaya_disetujui.harga,"+
+                   "pengajuan_biaya_disetujui.total,pengajuan_biaya.keterangan,pengajuan_biaya.nik_pj,peg2.nama as namapj,pengajuan_biaya.status "+
+                   "from pengajuan_biaya inner join pegawai as peg1 on pengajuan_biaya.nik=peg1.nik "+
+                   "inner join pegawai as peg2 on pengajuan_biaya.nik_pj=peg2.nik "+
+                   "inner join pengajuan_biaya_disetujui on pengajuan_biaya_disetujui.no_pengajuan=pengajuan_biaya.no_pengajuan "+
+                   "where pengajuan_biaya.status='Disetujui' and pengajuan_biaya.nik_pj=? "+
                    (TCari.getText().trim().equals("")?"":"and (pengajuan_biaya.no_pengajuan like ? or pengajuan_biaya.nik like ? or peg1.nama like ? or "+
                    "peg1.bidang like ? or peg1.departemen like ? or pengajuan_biaya.urgensi like ? or pengajuan_biaya.uraian_latar_belakang like ? or "+
                    "pengajuan_biaya.tujuan_pengajuan like ? or pengajuan_biaya.lokasi_kegiatan like ? or pengajuan_biaya.keterangan like ? or "+
-                   "pengajuan_biaya.nik_pj like ? or peg2.nama like ? or pengajuan_biaya.status like ?)")+" order by pengajuan_biaya.tanggal");
+                   "pengajuan_biaya.nik_pj like ? or peg2.nama like ?)")+" order by pengajuan_biaya.tanggal");
             try {
+                ps.setString(1,kdpegawai.getText());
                 if(!TCari.getText().trim().equals("")){
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
                     ps.setString(3,"%"+TCari.getText().trim()+"%");
                     ps.setString(4,"%"+TCari.getText().trim()+"%");
                     ps.setString(5,"%"+TCari.getText().trim()+"%");
@@ -621,12 +625,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.setString(7,"%"+TCari.getText().trim()+"%");
                     ps.setString(8,"%"+TCari.getText().trim()+"%");
                     ps.setString(9,"%"+TCari.getText().trim()+"%");
-                    ps.setString(10,"%"+TCari.getText().trim()+"%");
                     ps.setString(11,"%"+TCari.getText().trim()+"%");
                     ps.setString(12,"%"+TCari.getText().trim()+"%");
                     ps.setString(13,"%"+TCari.getText().trim()+"%");
                     ps.setString(14,"%"+TCari.getText().trim()+"%");
-                    ps.setString(15,"%"+TCari.getText().trim()+"%");
                 }   
                 rs=ps.executeQuery();
                 i=1;
@@ -635,7 +637,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         rs.getString("no_pengajuan"),rs.getString("tanggal"),rs.getString("nik"),rs.getString("namapengaju"),rs.getString("bidang"),
                         rs.getString("departemen"),rs.getString("urgensi"),rs.getString("uraian_latar_belakang"),rs.getString("tujuan_pengajuan"),rs.getString("target_sasaran"),
                         rs.getString("lokasi_kegiatan"),rs.getDouble("jumlah"),rs.getDouble("harga"),rs.getDouble("total"),rs.getString("keterangan"),
-                        rs.getString("nik_pj"),rs.getString("namapj"),rs.getString("status")
+                        rs.getString("nik_pj"),rs.getString("namapj")
                     });
                 }
             } catch (Exception e) {
