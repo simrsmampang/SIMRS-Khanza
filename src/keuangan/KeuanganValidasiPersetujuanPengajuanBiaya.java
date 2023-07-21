@@ -535,7 +535,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
         if(tbBangsal.getSelectedRow()!= -1){  
-            LCount1.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
+            LCount1.setText(Valid.SetAngka(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),13).toString()))+"");
         }
     }//GEN-LAST:event_tbBangsalMouseClicked
 
