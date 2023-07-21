@@ -617,6 +617,7 @@ public final class KeuanganPersetujuanPengajuanBiaya extends javax.swing.JDialog
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         DlgPersetujuan.dispose();
+        pegawai.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
