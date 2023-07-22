@@ -27,8 +27,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 
 /**
  *
@@ -39,7 +42,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private int i=0;
     private ApiICareBPJS api=new ApiICareBPJS();
-    private String URL="",link="",utc="";
+    private String link="",utc="",requestJson="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -353,9 +356,11 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(NoKartu.getText().equals("")){
-            Valid.textKosong(NoKartu,"No.Kartu");
+            Valid.textKosong(NoKartu,"Parameter");
+        }else if(KdDPJPLayanan.getText().equals("")){
+            Valid.textKosong(KdDPJPLayanan,"Dokter");
         }else{
-            tampil(NoKartu.getText());
+            tampil();
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
@@ -420,44 +425,36 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String nomorrujukan) {
-        /*try {
+    public void tampil() {
+        try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    utc=String.valueOf(api.GetUTCdatetimeAsString());
-	    headers.add("X-Timestamp",utc);
-	    headers.add("X-Signature",api.getHmac(utc));
-            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
-	    requestEntity = new HttpEntity(headers);
-            URL = link+"/monitoring/HistoriPelayanan/NoKartu/"+nomorrujukan+"/tglMulai/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/tglAkhir/"+Valid.SetTgl(DTPCari2.getSelectedItem()+"");	
-	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            headers.add("x-cons-id",koneksiDB.CONSIDAPIICARE());
+            utc=String.valueOf(api.GetUTCdatetimeAsString());
+            headers.add("x-timestamp",utc);
+            headers.add("x-signature",api.getHmac(utc));
+            headers.add("user_key",koneksiDB.USERKEYAPIICARE());
+            requestJson="{"+
+                            "\"param\": \""+NoKartu.getText().trim()+"\","+
+                            "\"kodedokter\": "+KdDPJPLayanan.getText().trim()+""+
+                        "}";
+            System.out.println("JSON : "+requestJson+"\n");
+	    requestEntity = new HttpEntity(requestJson,headers);
+            requestJson= api.getRest().exchange(link+"/api/rs/validate", HttpMethod.POST, requestEntity, String.class).getBody();
+            System.out.println("JSON : "+requestJson);
+            root = mapper.readTree(requestJson);
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
-                Valid.tabelKosong(tabMode);
-                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc)).path("histori");
-                //response = root.path("response").path("histori");
-                if(response.isArray()){
-                    i=1;
-                    for(JsonNode list:response){
-                        tabMode.addRow(new Object[]{
-                            i+".",list.path("diagnosa").asText(),list.path("jnsPelayanan").asText().replaceAll("1","Rawat Inap").replaceAll("2","Rawat Jalan"),
-                            list.path("kelasRawat").asText(),list.path("namaPeserta").asText(),list.path("noKartu").asText(),list.path("noSep").asText(),
-                            list.path("noRujukan").asText(),list.path("poli").asText(),list.path("ppkPelayanan").asText(),list.path("tglPlgSep").asText(),
-                            list.path("tglSep").asText()
-                        });    
-                        i++;
-                    }
-                }        
+                
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   
         } catch (Exception ex) {
-            System.out.println("Notifikasi Peserta : "+ex);
+            System.out.println("Notifikasi : "+ex);
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
             }
-        }*/
+        }
     } 
  
 }
