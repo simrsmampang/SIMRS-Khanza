@@ -451,6 +451,7 @@ import bridging.InhealthTindakanRadiologi;
 import bridging.InhealthTindakanRalan;
 import bridging.InhealthTindakanRanap;
 import bridging.CoronaPasien;
+import bridging.ICareRiwayatPerawatan;
 import bridging.INACBGPerawatanCorona;
 import bridging.MobileJKNPembatalanPendaftaran;
 import bridging.MobileJKNReferensiPendaftaran;
@@ -20503,6 +20504,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRiwayatPerawatanICareActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ICareRiwayatPerawatan aplikasi=new ICareRiwayatPerawatan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21179,7 +21191,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
             btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan,btnPenilaianRisikoJatuhNeonatus,btnPemeriksaanFisikRalanPerPenyakit,
-            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya;
+            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya,btnRiwayatPerawatanICare;
     
     public void isWall(){
         try{            
@@ -23779,6 +23791,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_referensi_spesialistik_apotek()==true){
                 Panelmenu.add(btnBPJSReferensiSpesialistikApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getriwayat_perawatan_icare_bpjs()==true){
+                Panelmenu.add(btnRiwayatPerawatanICare);
                 jmlmenu++;
             }
             
@@ -28569,6 +28586,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbpjs_referensi_spesialistik_apotek()==true){
             Panelmenu.add(btnBPJSReferensiSpesialistikApotek);
+            jmlmenu++;
+        }
+        
+        if(akses.getriwayat_perawatan_icare_bpjs()==true){
+            Panelmenu.add(btnRiwayatPerawatanICare);
             jmlmenu++;
         }
         
@@ -34342,6 +34364,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_referensi_spesialistik_apotek()==true){
             if(btnBPJSReferensiSpesialistikApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSReferensiSpesialistikApotek);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getriwayat_perawatan_icare_bpjs()==true){
+            if(btnRiwayatPerawatanICare.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRiwayatPerawatanICare);
                 jmlmenu++;
             }                
         }
@@ -41577,5 +41606,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnValidasiPersetujuanPengajuanBiaya.setName("btnValidasiPersetujuanPengajuanBiaya"); 
         btnValidasiPersetujuanPengajuanBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
         btnValidasiPersetujuanPengajuanBiaya.addActionListener(this::btnValidasiPersetujuanPengajuanBiayaActionPerformed);
+        
+        btnRiwayatPerawatanICare = new widget.ButtonBig();
+        btnRiwayatPerawatanICare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs.png"))); 
+        btnRiwayatPerawatanICare.setText("Riwayat Perawatan ICare BPJS");
+        btnRiwayatPerawatanICare.setIconTextGap(0);
+        btnRiwayatPerawatanICare.setName("btnRiwayatPerawatanICare"); 
+        btnRiwayatPerawatanICare.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatPerawatanICare.addActionListener(this::btnRiwayatPerawatanICareActionPerformed);
     }
 }
