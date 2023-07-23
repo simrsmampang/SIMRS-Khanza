@@ -1,10 +1,4 @@
-/build/**
-/dist/**
-/lib/**
-/nbproject/**
+/build
+/dist
+/lib
 !.gitignore
-!/nbproject/build-impl.xml
-!/nbproject/build-native.xml
-!/nbproject/project.xml
-!/nbproject/config.conf
-!/nbproject/project.properties
