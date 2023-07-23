@@ -216,15 +216,13 @@ public class frmUtama extends javax.swing.JFrame {
                     Tanggal2.setText(tanggalFormat.format(date)); 
                 }
                 
-                if(detik.equals("01")&&menit.equals("01")){
-                    if((nilai_jam%6)==0){
-                        encounter();
-                        observationTTV();
-                        vaksin();
-                        prosedur();
-                        condition();
-                        clinicalimpression();
-                    }
+                if((detik.equals("01")&&menit.equals("01"))||(detik.equals("01")&&menit.equals("30"))){
+                    encounter();
+                    observationTTV();
+                    vaksin();
+                    prosedur();
+                    condition();
+                    clinicalimpression();
                 }
             }
         };
@@ -2434,11 +2432,14 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,"+
                    "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.penilaian,"+
-                   "pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan, "+
+                   "pemeriksaan_ralan.keluhan,pemeriksaan_ralan.pemeriksaan,satu_sehat_condition.kd_penyakit,"+
+                   "penyakit.nm_penyakit,satu_sehat_condition.id_condition,"+
                    "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression "+
                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_condition on satu_sehat_condition.no_rawat=reg_periksa.no_rawat and satu_sehat_condition.status='Ralan' "+
+                   "inner join penyakit on penyakit.kd_penyakit=satu_sehat_condition.kd_penyakit "+
                    "inner join pemeriksaan_ralan on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on pemeriksaan_ralan.nip=pegawai.nik "+
                    "left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ralan.no_rawat "+
@@ -2475,7 +2476,34 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"assessor\" : {"+
                                                 "\"reference\" : \"Practitioner/"+iddokter+"\""+
                                             "},"+
-                                            "\"summary\" : \""+rs.getString("penilaian")+"\""+
+                                            "\"summary\" : \""+rs.getString("penilaian")+"\","+
+                                            "\"finding\": [" +
+                                                "{" +
+                                                    "\"itemCodeableConcept\": {"+
+                                                        "\"coding\": ["+
+                                                            "{"+
+                                                                "\"system\": \"http://hl7.org/fhir/sid/icd-10\","+
+                                                                "\"code\": \""+rs.getString("kd_penyakit")+"\","+
+                                                                "\"display\": \""+rs.getString("nm_penyakit")+"\""+
+                                                            "}"+
+                                                        "]"+
+                                                    "},"+
+                                                    "\"itemReference\": {"+
+                                                        "\"reference\": \"Condition/"+rs.getString("id_condition")+"\""+
+                                                    "}"+
+                                                "}"+
+                                            "],"+
+                                            "\"prognosisCodeableConcept\": ["+
+                                                "{"+
+                                                    "\"coding\": ["+
+                                                        "{"+
+                                                            "\"system\": \"http://terminology.kemkes.go.id/CodeSystem/clinical-term\","+
+                                                            "\"code\": \"PR000001\","+
+                                                            "\"display\": \"Prognosis\""+
+                                                        "}"+
+                                                    "]"+
+                                                "}"+
+                                            "]"+
                                        "}";
                                 TeksArea.append("URL : "+link+"/ClinicalImpression"+"\n");
                                 TeksArea.append("Request JSON : "+json+"\n");
@@ -2511,11 +2539,17 @@ public class frmUtama extends javax.swing.JFrame {
             ps=koneksi.prepareStatement(
                    "select reg_periksa.no_rawat,pasien.no_ktp,satu_sehat_encounter.id_encounter,pegawai.no_ktp as ktppraktisi,"+
                    "pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.penilaian,"+
-                   "pemeriksaan_ranap.keluhan,pemeriksaan_ranap.pemeriksaan, "+
-                   "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression from reg_periksa inner join pasien "+
-                   "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
-                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
-                   "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ranap.no_rawat "+
+                   "pemeriksaan_ranap.keluhan,pemeriksaan_ranap.pemeriksaan,satu_sehat_condition.kd_penyakit,"+
+                   "penyakit.nm_penyakit,satu_sehat_condition.id_condition,"+
+                   "ifnull(satu_sehat_clinicalimpression.id_clinicalimpression,'') as satu_sehat_clinicalimpression "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
+                   "inner join satu_sehat_condition on satu_sehat_condition.no_rawat=reg_periksa.no_rawat and satu_sehat_condition.status='Ranap' "+
+                   "inner join penyakit on penyakit.kd_penyakit=satu_sehat_condition.kd_penyakit "+
+                   "inner join pemeriksaan_ranap on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat "+
+                   "inner join pegawai on pemeriksaan_ranap.nip=pegawai.nik "+
+                   "left join satu_sehat_clinicalimpression on satu_sehat_clinicalimpression.no_rawat=pemeriksaan_ranap.no_rawat "+
                    "and satu_sehat_clinicalimpression.tgl_perawatan=pemeriksaan_ranap.tgl_perawatan and satu_sehat_clinicalimpression.jam_rawat=pemeriksaan_ranap.jam_rawat "+
                    "and satu_sehat_clinicalimpression.status='Ranap' where pemeriksaan_ranap.penilaian<>'' and nota_inap.tanggal between ? and ? "+
                    "order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat");
@@ -2547,7 +2581,34 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"assessor\" : {"+
                                                 "\"reference\" : \"Practitioner/"+iddokter+"\""+
                                             "},"+
-                                            "\"summary\" : \""+rs.getString("penilaian")+"\""+
+                                            "\"summary\" : \""+rs.getString("penilaian")+"\","+
+                                            "\"finding\": [" +
+                                                "{" +
+                                                    "\"itemCodeableConcept\": {"+
+                                                        "\"coding\": ["+
+                                                            "{"+
+                                                                "\"system\": \"http://hl7.org/fhir/sid/icd-10\","+
+                                                                "\"code\": \""+rs.getString("kd_penyakit")+"\","+
+                                                                "\"display\": \""+rs.getString("nm_penyakit")+"\""+
+                                                            "}"+
+                                                        "]"+
+                                                    "},"+
+                                                    "\"itemReference\": {"+
+                                                        "\"reference\": \"Condition/"+rs.getString("id_condition")+"\""+
+                                                    "}"+
+                                                "}"+
+                                            "],"+
+                                            "\"prognosisCodeableConcept\": ["+
+                                                "{"+
+                                                    "\"coding\": ["+
+                                                        "{"+
+                                                            "\"system\": \"http://terminology.kemkes.go.id/CodeSystem/clinical-term\","+
+                                                            "\"code\": \"PR000001\","+
+                                                            "\"display\": \"Prognosis\""+
+                                                        "}"+
+                                                    "]"+
+                                                "}"+
+                                            "]"+
                                        "}";
                                 TeksArea.append("URL : "+link+"/ClinicalImpression"+"\n");
                                 TeksArea.append("Request JSON : "+json+"\n");

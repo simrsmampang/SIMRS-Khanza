@@ -757,6 +757,7 @@ public final class KeuanganTagihanObatBHP extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        suplier.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 

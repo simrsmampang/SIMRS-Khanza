@@ -8,7 +8,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import inventory.InventoryCariSuplier;
 import ipsrs.IPSRSCariSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -432,6 +431,7 @@ public final class KeuanganValidasiTagihanNonMedis extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        suplier.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -479,20 +479,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
-    private void kdsuplierKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsuplierKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from suplier where kd_pj=?", nmsuplier,kdsuplier.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select png_jawab from suplier where kd_pj=?", nmsuplier,kdsuplier.getText());
-            BtnAll.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select png_jawab from suplier where kd_pj=?", nmsuplier,kdsuplier.getText());
-            TCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnSeek2ActionPerformed(null);
-        }
-    }//GEN-LAST:event_kdsuplierKeyPressed
-
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         suplier.isCek();
         suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -529,6 +515,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             LCount1.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
         }
     }//GEN-LAST:event_tbBangsalMouseClicked
+
+    private void kdsuplierKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsuplierKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnSeek2ActionPerformed(null);
+        }
+    }//GEN-LAST:event_kdsuplierKeyPressed
 
     /**
     * @param args the command line arguments

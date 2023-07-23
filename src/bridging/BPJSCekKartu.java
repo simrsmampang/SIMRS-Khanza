@@ -78,7 +78,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             p_alamatpj=0,p_kelurahanpj=0,p_kecamatanpj=0,p_kabupatenpj=0,jmlhari=0,
             p_propinsi=0,p_propinsipj=0,kuota=0;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-    private String kdkel="",kdkec="",kdkab="",kdprop="",nosisrute="",BASENOREG="",URUTNOREG="",statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
+    private String kdkel="",kdkec="",kdkab="",kdprop="",nosisrute="",BASENOREG="",URUTNOREG="",ADDANTRIANAPIMOBILEJKN="no",statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",jammulai="",
             umur="",umurdaftar="0",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",prb="",datajam="",jamselesai="",
@@ -88,7 +88,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private PreparedStatement ps,pskelengkapan,pscariumur,pssetalamat,pstni,pspolri;
     private ResultSet rs,rs2;
     private double biaya=0;
-    private boolean empt=false;
+    private boolean empt=false,statusantrean=true;
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -1627,12 +1627,6 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            
-            try {
-                DIAGNOSARUJUKANMASUKAPIBPJS=koneksiDB.DIAGNOSARUJUKANMASUKAPIBPJS();
-            } catch (Exception e) {
-                DIAGNOSARUJUKANMASUKAPIBPJS="no";
-            }
         }catch(Exception e){
             System.out.println(e);
         }
@@ -1640,19 +1634,42 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         hariawal=Sequel.cariIsi("select set_jam_minimal.hariawal from set_jam_minimal");
         
         try {
+            DIAGNOSARUJUKANMASUKAPIBPJS=koneksiDB.DIAGNOSARUJUKANMASUKAPIBPJS();
+        } catch (Exception e) {
+            DIAGNOSARUJUKANMASUKAPIBPJS="no";
+        }
+
+        try {
             user=akses.getkode().replace(" ","").substring(0,9);
         } catch (Exception e) {
             user=akses.getkode();
         }
         
         try {
-            link=koneksiDB.URLAPIBPJS();            
+            link=koneksiDB.URLAPIBPJS(); 
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+        
+        try {          
             URUTNOREG=koneksiDB.URUTNOREG();
-            BASENOREG=koneksiDB.BASENOREG();
         } catch (Exception e) {
             URUTNOREG="";
+            System.out.println("Notif : "+e);
+        }
+        
+        try {
+            BASENOREG=koneksiDB.BASENOREG();
+        } catch (Exception e) {
             BASENOREG="";
-            System.out.println("E : "+e);
+            System.out.println("Notif : "+e);
+        }
+        
+        try {
+            ADDANTRIANAPIMOBILEJKN=koneksiDB.ADDANTRIANAPIMOBILEJKN();
+        } catch (Exception e) {
+            ADDANTRIANAPIMOBILEJKN="";
+            System.out.println("Notif : "+e);
         }
         
         if(tampilkantni.equals("Yes")){
@@ -7008,8 +7025,22 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                             Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
                         }
                     }
-                    SimpanAntrianOnSite();
-                    insertSEP();
+                    
+                    if(ADDANTRIANAPIMOBILEJKN.equals("yes")){
+                        if(SimpanAntrianOnSite()==true){
+                            insertSEP();
+                        }else{
+                            Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+                            Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+                            Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+                            if(statuspasien.equals("Baru")){
+                                Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
+                            }
+                            JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter / Nomor Referensi..!!");
+                        }
+                    }else{
+                        insertSEP();
+                    }
             }
         }else if(JenisPelayanan.getSelectedIndex()==0){
             isNumber();
@@ -7233,20 +7264,21 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         this.nosisrute=norujuk;
     }
     
-    public void SimpanAntrianOnSite(){
+    public boolean SimpanAntrianOnSite(){
+        statusantrean=true;
         if((!NoRujukan.getText().equals(""))||(!NoSKDP.getText().equals(""))){
-            if(TujuanKunjungan.getSelectedItem().toString().equals("0. Normal")&&FlagProsedur.getSelectedItem().toString().equals("")&&Penunjang.getSelectedItem().toString().equals("")&&AsesmenPoli.getSelectedItem().toString().equals("")){
+            if(TujuanKunjungan.getSelectedItem().toString().trim().equals("0. Normal")&&FlagProsedur.getSelectedItem().toString().trim().equals("")&&Penunjang.getSelectedItem().toString().trim().equals("")&&AsesmenPoli.getSelectedItem().toString().trim().equals("")){
                 if(AsalRujukan.getSelectedIndex()==0){
                     jeniskunjungan="1";
                 }else{
                     jeniskunjungan="4";
                 }
-            }else if(TujuanKunjungan.getSelectedItem().toString().equals("2. Konsul Dokter")&&FlagProsedur.getSelectedItem().toString().equals("")&&Penunjang.getSelectedItem().toString().equals("")&&AsesmenPoli.getSelectedItem().toString().equals("5. Tujuan Kontrol")){
+            }else if(TujuanKunjungan.getSelectedItem().toString().trim().equals("2. Konsul Dokter")&&FlagProsedur.getSelectedItem().toString().trim().equals("")&&Penunjang.getSelectedItem().toString().trim().equals("")&&AsesmenPoli.getSelectedItem().toString().trim().equals("5. Tujuan Kontrol")){
                 jeniskunjungan="3";
-            }else if(TujuanKunjungan.getSelectedItem().toString().equals("0. Normal")&&FlagProsedur.getSelectedItem().toString().equals("")&&Penunjang.getSelectedItem().toString().equals("")&&AsesmenPoli.getSelectedItem().toString().equals("4. Atas Instruksi RS")){
+            }else if(TujuanKunjungan.getSelectedItem().toString().trim().equals("0. Normal")&&FlagProsedur.getSelectedItem().toString().trim().equals("")&&Penunjang.getSelectedItem().toString().trim().equals("")&&AsesmenPoli.getSelectedItem().toString().trim().equals("4. Atas Instruksi RS")){
                 jeniskunjungan="2";
             }else{
-                if(TujuanKunjungan.getSelectedItem().toString().equals("2. Konsul Dokter")&&AsesmenPoli.getSelectedItem().toString().equals("5. Tujuan Kontrol")){
+                if(TujuanKunjungan.getSelectedItem().toString().trim().equals("2. Konsul Dokter")&&AsesmenPoli.getSelectedItem().toString().trim().equals("5. Tujuan Kontrol")){
                     jeniskunjungan="3";
                 }else{
                     jeniskunjungan="2";
@@ -7294,9 +7326,11 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                         datajam=Sequel.cariIsi("select DATE_ADD(concat('"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"',' ','"+jammulai+"'),INTERVAL "+(Integer.parseInt(TNoReg.getText())*10)+" MINUTE) ");
                         parsedDate = dateFormat.parse(datajam);
                     }else{
+                        statusantrean=false;
                         System.out.println("Jadwal tidak ditemukan...!");
                     }
                 } catch (Exception e) {
+                    statusantrean=false;
                     System.out.println("Notif : "+e);
                 } finally{
                     if(rs!=null){
@@ -7307,6 +7341,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     }
                 }  
                 
+                respon="200";
                 if(!NoRujukan.getText().equals("")){
                     try {
                         headers = new HttpHeaders();
@@ -7351,6 +7386,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                         respon=nameNode.path("code").asText();
                         System.out.println("respon WS BPJS Kirim Pakai NoRujukan : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                     } catch (Exception e) {
+                        statusantrean=false;
                         System.out.println("Notif No.Rujuk : "+e);
                     }
                 }
@@ -7398,14 +7434,20 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                             nameNode = root.path("metadata");  
                             System.out.println("respon WS BPJS Kirim Pakai SKDP : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
+                            if(nameNode.path("code").asText().equals("201")){
+                                statusantrean=false;
+                            }
                         } catch (Exception e) {
+                            statusantrean=false;
                             System.out.println("Notif SKDP : "+e);
                         }
                     }
                 }
             } catch (Exception e) {
+                statusantrean=false;
                 System.out.println("Notif : "+e);
             }
         }
+        return statusantrean;
     }
 }

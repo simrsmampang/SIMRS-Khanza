@@ -120,6 +120,8 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
         R1 = new widget.RadioButton();
         R2 = new widget.RadioButton();
         R3 = new widget.RadioButton();
+        R4 = new widget.RadioButton();
+        R5 = new widget.RadioButton();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -184,13 +186,29 @@ public class InventoryObatBHPTidakBergerak extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi1.add(R3);
 
+        buttonGroup1.add(R4);
+        R4.setText("9 Bulan");
+        R4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        R4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        R4.setName("R4"); // NOI18N
+        R4.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi1.add(R4);
+
+        buttonGroup1.add(R5);
+        R5.setText("12 Bulan");
+        R5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        R5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        R5.setName("R5"); // NOI18N
+        R5.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi1.add(R5);
+
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(69, 23));
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(150, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -400,6 +418,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.RadioButton R1;
     private widget.RadioButton R2;
     private widget.RadioButton R3;
+    private widget.RadioButton R4;
+    private widget.RadioButton R5;
     private widget.TextBox TCari;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
@@ -420,6 +440,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 pilihan="where riwayat_barang_medis.posisi<>'Opname' and riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 3 MONTH) and current_date()";
             }else if(R3.isSelected()==true){
                 pilihan="where riwayat_barang_medis.posisi<>'Opname' and riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 6 MONTH) and current_date()";
+            }else if(R4.isSelected()==true){
+                pilihan="where riwayat_barang_medis.posisi<>'Opname' and riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 9 MONTH) and current_date()";
+            }else if(R5.isSelected()==true){
+                pilihan="where riwayat_barang_medis.posisi<>'Opname' and riwayat_barang_medis.tanggal between SUBDATE(current_date(), INTERVAL 12 MONTH) and current_date()";
             }
             ps=koneksi.prepareStatement(
                     "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama,databarang."+hppfarmasi+" as harga "+

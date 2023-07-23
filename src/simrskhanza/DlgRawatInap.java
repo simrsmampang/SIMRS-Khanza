@@ -63,6 +63,7 @@ import rekammedis.RMDataCatatanKeperawatanRanap;
 import rekammedis.RMDataCatatanObservasiRanap;
 import rekammedis.RMDataCatatanObservasiRanapKebidanan;
 import rekammedis.RMDataCatatanObservasiRanapPostPartum;
+import rekammedis.RMDataFollowUpDBD;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
 import rekammedis.RMDataResumePasienRanap;
@@ -72,7 +73,8 @@ import rekammedis.RMHasilTindakanESWL;
 import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMPemantauanMEOWS;
 import rekammedis.RMPemantauanPEWS;
-import rekammedis.RMPemantauanPEWSD;
+import rekammedis.RMPemantauanEWSD;
+import rekammedis.RMPemantauanEWSNeonatus;
 import rekammedis.RMPenilaianAwalKeperawatanKebidananRanap;
 import rekammedis.RMPenilaianAwalKeperawatanRanap;
 import rekammedis.RMPenilaianAwalMedisRanapDewasa;
@@ -81,6 +83,7 @@ import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMPenilaianKorbanKekerasan;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhAnak;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhDewasa;
+import rekammedis.RMPenilaianLanjutanRisikoJatuhGeriatri;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhLansia;
 import rekammedis.RMPenilaianPasienPenyakitMenular;
 import rekammedis.RMPenilaianPasienTerminal;
@@ -88,6 +91,7 @@ import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMPenilaianRisikoDekubitus;
+import rekammedis.RMPenilaianRisikoJatuhNeonatus;
 import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
@@ -1306,6 +1310,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnPenilaianLanjutanResikoJatuhDewasa = new widget.Button();
         BtnPenilaianLanjutanResikoJatuhAnak = new widget.Button();
         BtnPenilaianLanjutanResikoJatuhLansia = new widget.Button();
+        BtnPenilaianLanjutanResikoJatuhNeonatus = new widget.Button();
+        BtnPenilaianLanjutanResikoJatuhGeriatri = new widget.Button();
         BtnPenilaianResikoDekubitus = new widget.Button();
         BtnHasilPemeriksaanUSG = new widget.Button();
         BtnDokumentasiESWL = new widget.Button();
@@ -1313,11 +1319,13 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnCatatanObservasiRanap = new widget.Button();
         BtnCatatanObservasiRanapKebidanan = new widget.Button();
         BtnCatatanObservasiRanapPostPartum = new widget.Button();
+        BtnFollowUpDBD = new widget.Button();
         BtnCatatanKeperawatan = new widget.Button();
         BtnCatatanCekGDS = new widget.Button();
         BtnPemantauanPEWSAnak = new widget.Button();
         BtnPemantauanPEWSDewasa = new widget.Button();
         BtnPemantauanMEOWS = new widget.Button();
+        BtnPemantauanEWSNeonatus = new widget.Button();
         BtnChecklistKriteriaMasukHCU = new widget.Button();
         BtnChecklistKriteriaKeluarHCU = new widget.Button();
         BtnChecklistKriteriaMasukICU = new widget.Button();
@@ -1544,7 +1552,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1558,7 +1566,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3211,7 +3219,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TPasien.setBounds(283, 10, 260, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2023" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2023" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3856,6 +3864,40 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
         FormMenu.add(BtnPenilaianLanjutanResikoJatuhLansia);
 
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setText("Lanjutan Risiko Jatuh Neonatus");
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setFocusPainted(false);
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setName("BtnPenilaianLanjutanResikoJatuhNeonatus"); // NOI18N
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setRoundRect(false);
+        BtnPenilaianLanjutanResikoJatuhNeonatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPenilaianLanjutanResikoJatuhNeonatusActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnPenilaianLanjutanResikoJatuhNeonatus);
+
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setText("Lanjutan Risiko Jatuh Geriatri");
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setFocusPainted(false);
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setName("BtnPenilaianLanjutanResikoJatuhGeriatri"); // NOI18N
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setRoundRect(false);
+        BtnPenilaianLanjutanResikoJatuhGeriatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPenilaianLanjutanResikoJatuhGeriatriActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnPenilaianLanjutanResikoJatuhGeriatri);
+
         BtnPenilaianResikoDekubitus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnPenilaianResikoDekubitus.setText("Risiko Dekubitus");
         BtnPenilaianResikoDekubitus.setFocusPainted(false);
@@ -3975,6 +4017,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
         FormMenu.add(BtnCatatanObservasiRanapPostPartum);
 
+        BtnFollowUpDBD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnFollowUpDBD.setText("Follow Up DBD");
+        BtnFollowUpDBD.setFocusPainted(false);
+        BtnFollowUpDBD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnFollowUpDBD.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnFollowUpDBD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnFollowUpDBD.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnFollowUpDBD.setName("BtnFollowUpDBD"); // NOI18N
+        BtnFollowUpDBD.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnFollowUpDBD.setRoundRect(false);
+        BtnFollowUpDBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnFollowUpDBDActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnFollowUpDBD);
+
         BtnCatatanKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnCatatanKeperawatan.setText("Catatan Keperawatan");
         BtnCatatanKeperawatan.setFocusPainted(false);
@@ -4059,6 +4118,23 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnPemantauanMEOWS);
+
+        BtnPemantauanEWSNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPemantauanEWSNeonatus.setText("Pemantauan EWS Neonatus");
+        BtnPemantauanEWSNeonatus.setFocusPainted(false);
+        BtnPemantauanEWSNeonatus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPemantauanEWSNeonatus.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPemantauanEWSNeonatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPemantauanEWSNeonatus.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPemantauanEWSNeonatus.setName("BtnPemantauanEWSNeonatus"); // NOI18N
+        BtnPemantauanEWSNeonatus.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPemantauanEWSNeonatus.setRoundRect(false);
+        BtnPemantauanEWSNeonatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPemantauanEWSNeonatusActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnPemantauanEWSNeonatus);
 
         BtnChecklistKriteriaMasukHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnChecklistKriteriaMasukHCU.setText("Check List Masuk HCU");
@@ -7785,7 +7861,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            RMPemantauanPEWSD form=new RMPemantauanPEWSD(null,false);
+            RMPemantauanEWSD form=new RMPemantauanEWSD(null,false);
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
@@ -7991,6 +8067,78 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnChecklistKriteriaKeluarICUActionPerformed
 
+    private void BtnFollowUpDBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFollowUpDBDActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDataFollowUpDBD form=new RMDataFollowUpDBD(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnFollowUpDBDActionPerformed
+
+    private void BtnPenilaianLanjutanResikoJatuhNeonatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenilaianLanjutanResikoJatuhNeonatusActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianRisikoJatuhNeonatus form=new RMPenilaianRisikoJatuhNeonatus(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPenilaianLanjutanResikoJatuhNeonatusActionPerformed
+
+    private void BtnPenilaianLanjutanResikoJatuhGeriatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenilaianLanjutanResikoJatuhGeriatriActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianLanjutanRisikoJatuhGeriatri form=new RMPenilaianLanjutanRisikoJatuhGeriatri(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPenilaianLanjutanResikoJatuhGeriatriActionPerformed
+
+    private void BtnPemantauanEWSNeonatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPemantauanEWSNeonatusActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPemantauanEWSNeonatus form=new RMPemantauanEWSNeonatus(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPemantauanEWSNeonatusActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8038,6 +8186,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnDiagnosa;
     private widget.Button BtnDokumentasiESWL;
     private widget.Button BtnEdit;
+    private widget.Button BtnFollowUpDBD;
     private widget.Button BtnHapus;
     private widget.Button BtnHasilPemeriksaanUSG;
     private widget.Button BtnInformasiObat;
@@ -8048,13 +8197,16 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnMonitoringAsuhanGizi;
     private widget.Button BtnMonitoringReaksiTranfusi;
     private widget.Button BtnObatBhp;
+    private widget.Button BtnPemantauanEWSNeonatus;
     private widget.Button BtnPemantauanMEOWS;
     private widget.Button BtnPemantauanPEWSAnak;
     private widget.Button BtnPemantauanPEWSDewasa;
     private widget.Button BtnPenilaianKorbanKekerasan;
     private widget.Button BtnPenilaianLanjutanResikoJatuhAnak;
     private widget.Button BtnPenilaianLanjutanResikoJatuhDewasa;
+    private widget.Button BtnPenilaianLanjutanResikoJatuhGeriatri;
     private widget.Button BtnPenilaianLanjutanResikoJatuhLansia;
+    private widget.Button BtnPenilaianLanjutanResikoJatuhNeonatus;
     private widget.Button BtnPenilaianPasienPenyakitMenular;
     private widget.Button BtnPenilaianPasienTerminal;
     private widget.Button BtnPenilaianPreAnestesi;
@@ -8935,6 +9087,22 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnChecklistKriteriaKeluarICU.setVisible(akses.getchecklist_kriteria_keluar_icu()); 
         if(akses.getchecklist_kriteria_keluar_icu()==true){
+            tinggi=tinggi+24;
+        }
+        BtnFollowUpDBD.setVisible(akses.getfollow_up_dbd()); 
+        if(akses.getfollow_up_dbd()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setVisible(akses.getpenilaian_risiko_jatuh_neonatus()); 
+        if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setVisible(akses.getpenilaian_lanjutan_resiko_jatuh_geriatri()); 
+        if(akses.getpenilaian_lanjutan_resiko_jatuh_geriatri()==true){
+            tinggi=tinggi+24;
+        }
+        BtnPemantauanEWSNeonatus.setVisible(akses.getpemantauan_ews_neonatus()); 
+        if(akses.getpemantauan_ews_neonatus()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));

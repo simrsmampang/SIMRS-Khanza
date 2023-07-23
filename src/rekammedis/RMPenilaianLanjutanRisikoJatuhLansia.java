@@ -469,7 +469,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-03-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -483,7 +483,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-03-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -605,7 +605,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-03-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -945,7 +945,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
         NilaiResiko6.setBounds(729, 260, 60, 23);
 
         TingkatResiko.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-24), Tindakan : Intervensi pencegahan risiko jatuh standar");
+        TingkatResiko.setText("Tingkat Resiko : Risiko Rendah (0-5), Tindakan : Intervensi pencegahan risiko jatuh standar");
         TingkatResiko.setToolTipText("");
         TingkatResiko.setName("TingkatResiko"); // NOI18N
         FormInput.add(TingkatResiko);
@@ -1378,7 +1378,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             NilaiResiko2.setText("0");
         }else if(SkalaResiko2.getSelectedIndex()==1){
             NilaiResiko2.setText("14");
-        }if(SkalaResiko2.getSelectedIndex()==1){
+        }else if(SkalaResiko2.getSelectedIndex()==2){
             NilaiResiko2.setText("14");
         }else{
             NilaiResiko2.setText("14");    
@@ -1395,7 +1395,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             NilaiResiko3.setText("0");
         }else if(SkalaResiko3.getSelectedIndex()==1){
             NilaiResiko3.setText("1");
-        }if(SkalaResiko3.getSelectedIndex()==1){
+        }else if(SkalaResiko3.getSelectedIndex()==2){
             NilaiResiko3.setText("1");
         }else{
             NilaiResiko3.setText("1");
@@ -1425,7 +1425,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             NilaiResiko5.setText("0");
         }else if(SkalaResiko5.getSelectedIndex()==1){
             NilaiResiko5.setText("1");
-        }if(SkalaResiko5.getSelectedIndex()==1){
+        }else if(SkalaResiko5.getSelectedIndex()==2){
             NilaiResiko5.setText("2");   
         }else{
             NilaiResiko5.setText("3");
@@ -1442,9 +1442,8 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             NilaiResiko6.setText("0");
         }else if(SkalaResiko6.getSelectedIndex()==1){
             NilaiResiko6.setText("1");
-        if(SkalaResiko6.getSelectedIndex()==1){
+        }else if(SkalaResiko6.getSelectedIndex()==2){
             NilaiResiko6.setText("2");
-        }
         }else{
             NilaiResiko6.setText("3");
         }
@@ -1673,6 +1672,7 @@ public final class RMPenilaianLanjutanRisikoJatuhLansia extends javax.swing.JDia
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             SkalaResiko1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             NilaiResiko1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             SkalaResiko2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());

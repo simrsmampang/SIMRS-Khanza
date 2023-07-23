@@ -451,6 +451,7 @@ import bridging.InhealthTindakanRadiologi;
 import bridging.InhealthTindakanRalan;
 import bridging.InhealthTindakanRanap;
 import bridging.CoronaPasien;
+import bridging.ICareRiwayatPerawatan;
 import bridging.INACBGPerawatanCorona;
 import bridging.MobileJKNPembatalanPendaftaran;
 import bridging.MobileJKNReferensiPendaftaran;
@@ -700,6 +701,9 @@ import kepegawaian.DlgAuditSterilisasiAlat;
 import keuangan.DlgLhtBankJabar;
 import keuangan.DlgLhtBankPapua;
 import keuangan.DlgRekapBiayaRegistrasi;
+import keuangan.KeuanganPengajuanBiaya;
+import keuangan.KeuanganPersetujuanPengajuanBiaya;
+import keuangan.KeuanganValidasiPersetujuanPengajuanBiaya;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -723,6 +727,7 @@ import laporan.DlgPelayananLabMB;
 import laporan.DlgPelayananLabPA;
 import laporan.DlgPelayananOperasi;
 import laporan.DlgPelayananPoli;
+import laporan.DlgPemeriksaanFisikRalanPerPenyakit;
 import laporan.DlgPenyakit;
 import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
@@ -808,6 +813,7 @@ import rekammedis.RMDataCatatanObservasiIGD;
 import rekammedis.RMDataCatatanObservasiRanap;
 import rekammedis.RMDataCatatanObservasiRanapKebidanan;
 import rekammedis.RMDataCatatanObservasiRanapPostPartum;
+import rekammedis.RMDataFollowUpDBD;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
 import rekammedis.RMDataResumePasienRanap;
@@ -820,7 +826,8 @@ import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMMCU;
 import rekammedis.RMPemantauanMEOWS;
 import rekammedis.RMPemantauanPEWS;
-import rekammedis.RMPemantauanPEWSD;
+import rekammedis.RMPemantauanEWSD;
+import rekammedis.RMPemantauanEWSNeonatus;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanIGD;
@@ -849,6 +856,7 @@ import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMPenilaianKorbanKekerasan;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhAnak;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhDewasa;
+import rekammedis.RMPenilaianLanjutanRisikoJatuhGeriatri;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhLansia;
 import rekammedis.RMPenilaianPasienKeracunan;
 import rekammedis.RMPenilaianPasienPenyakitMenular;
@@ -857,6 +865,7 @@ import rekammedis.RMPenilaianPreAnastesi;
 import rekammedis.RMPenilaianPreOperasi;
 import rekammedis.RMPenilaianPsikologi;
 import rekammedis.RMPenilaianRisikoDekubitus;
+import rekammedis.RMPenilaianRisikoJatuhNeonatus;
 import rekammedis.RMPenilaianTambahanBunuhDiri;
 import rekammedis.RMPenilaianTambahanGeriatri;
 import rekammedis.RMPenilaianTambahanMelarikanDiri;
@@ -879,6 +888,36 @@ import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
 import setting.DlgRuangOperasi;
 import setting.DlgSetHargaToko;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgBahasa;
+import simrskhanza.DlgCacatFisik;
+import simrskhanza.DlgCariPeriksaLab;
+import simrskhanza.DlgCariPeriksaLabMB;
+import simrskhanza.DlgCariPeriksaLabPA;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariTagihanOperasi;
+import simrskhanza.DlgDpjp;
+import simrskhanza.DlgGolonganPolri;
+import simrskhanza.DlgGolonganTNI;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgJabatanPolri;
+import simrskhanza.DlgJabatanTNI;
+import simrskhanza.DlgKasirRalan;
+import simrskhanza.DlgLhtCatatanPasien;
+import simrskhanza.DlgPangkatPolri;
+import simrskhanza.DlgPangkatTNI;
+import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgPerusahaan;
+import simrskhanza.DlgRawatJalan;
+import simrskhanza.DlgReg;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujukMasuk;
+import simrskhanza.DlgSatuanPolri;
+import simrskhanza.DlgSatuanTNI;
+import simrskhanza.DlgSuku;
 import smsui.frmSmsView;
 import surat.PengumumanEPasien;
 import surat.SuratAlmari;
@@ -1874,7 +1913,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/06/2023" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21/07/2023" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -19271,7 +19310,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        RMPemantauanPEWSD aplikasi=new RMPemantauanPEWSD(this,false);
+        RMPemantauanEWSD aplikasi=new RMPemantauanEWSD(this,false);
         aplikasi.isCek();
         aplikasi.emptTeks();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
@@ -20366,6 +20405,115 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnDataFollowUpDBDActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataFollowUpDBD aplikasi=new RMDataFollowUpDBD(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPengajuanBiayaKuanganActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganPengajuanBiaya form=new KeuanganPengajuanBiaya(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenilaianRisikoJatuhNeonatusActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianRisikoJatuhNeonatus aplikasi=new RMPenilaianRisikoJatuhNeonatus(this,false);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPemeriksaanFisikRalanPerPenyakitActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPemeriksaanFisikRalanPerPenyakit aplikasi=new DlgPemeriksaanFisikRalanPerPenyakit(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenilaianRisikoJatuhGeriatriActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianLanjutanRisikoJatuhGeriatri aplikasi=new RMPenilaianLanjutanRisikoJatuhGeriatri(this,false);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPersetujuanPengajuanBiayaActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganPersetujuanPengajuanBiaya aplikasi=new KeuanganPersetujuanPengajuanBiaya(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPemantauanEWSNeonatusActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPemantauanEWSNeonatus aplikasi=new RMPemantauanEWSNeonatus(this,false);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnValidasiPersetujuanPengajuanBiayaActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganValidasiPersetujuanPengajuanBiaya aplikasi=new KeuanganValidasiPersetujuanPengajuanBiaya(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnRiwayatPerawatanICareActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ICareRiwayatPerawatan aplikasi=new ICareRiwayatPerawatan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     
     /**
     * @param args the command line arguments
@@ -21042,7 +21190,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianPasienKeracunan,btnPemantauanMEOWS,btnCatatanADIMEGizi,btnMasterMasalahKeperawatanGeriatri,btnMasterRencanaKeperawatanGeriatri,
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
-            btnChecklistKriteriaKeluarICU;
+            btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan,btnPenilaianRisikoJatuhNeonatus,btnPemeriksaanFisikRalanPerPenyakit,
+            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya,btnRiwayatPerawatanICare;
     
     public void isWall(){
         try{            
@@ -23051,6 +23200,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnLaporanTahunanPenolakanAnjuranMedis);                 
                 jmlmenu++;
             }
+            
+            if(akses.getpemeriksaan_fisik_ralan_per_penyakit()==true){
+                Panelmenu.add(btnPemeriksaanFisikRalanPerPenyakit);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==10){   
             jmlmenu=0;
             if(akses.getkamar()==true){
@@ -23342,6 +23496,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnBayarJMDokter);
                 jmlmenu++;
             }
+            
+            if(akses.getpengajuan_biaya()==true){
+                Panelmenu.add(btnPengajuanBiayaKuangan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpersetujuan_pengajuan_biaya()==true){
+                Panelmenu.add(btnPersetujuanPengajuanBiaya);
+                jmlmenu++;
+            }
+            
+            if(akses.getvalidasi_persetujuan_pengajuan_biaya()==true){
+                Panelmenu.add(btnValidasiPersetujuanPengajuanBiaya);
+                jmlmenu++;
+            }
 
             if(akses.getposting_jurnal()==true){
                 Panelmenu.add(btnPostingJurnal); 
@@ -23622,6 +23791,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_referensi_spesialistik_apotek()==true){
                 Panelmenu.add(btnBPJSReferensiSpesialistikApotek);
+                jmlmenu++;
+            }
+            
+            if(akses.getriwayat_perawatan_icare_bpjs()==true){
+                Panelmenu.add(btnRiwayatPerawatanICare);
                 jmlmenu++;
             }
             
@@ -24532,6 +24706,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getfollow_up_dbd()==true){
+                Panelmenu.add(btnDataFollowUpDBD);
+                jmlmenu++;
+            }
+            
             if(akses.getcatatan_keperawatan_ranap()==true){
                 Panelmenu.add(btnCatatanKeperawatanRanap);
                 jmlmenu++;
@@ -24554,6 +24733,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpemantauan_meows_obstetri()==true){
                 Panelmenu.add(btnPemantauanMEOWS);
+                jmlmenu++;
+            }
+            
+            if(akses.getpemantauan_ews_neonatus()==true){
+                Panelmenu.add(btnPemantauanEWSNeonatus);
                 jmlmenu++;
             }
             
@@ -24644,6 +24828,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_lanjutan_resiko_jatuh_lansia()==true){
                 Panelmenu.add(btnPenilaianRisikoJatuhLansia);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_lanjutan_resiko_jatuh_geriatri()==true){
+                Panelmenu.add(btnPenilaianRisikoJatuhGeriatri);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
+                Panelmenu.add(btnPenilaianRisikoJatuhNeonatus);
                 jmlmenu++;
             }
             
@@ -27803,6 +27997,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnLaporanTahunanPenolakanAnjuranMedis);                 
             jmlmenu++;
         }
+        
+        if(akses.getpemeriksaan_fisik_ralan_per_penyakit()==true){
+            Panelmenu.add(btnPemeriksaanFisikRalanPerPenyakit);
+            jmlmenu++;
+        }
 
         if(akses.getkamar()==true){
             Panelmenu.add(btnKamar);
@@ -28093,6 +28292,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnBayarJMDokter);
             jmlmenu++;
         }
+        
+        if(akses.getpengajuan_biaya()==true){
+            Panelmenu.add(btnPengajuanBiayaKuangan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpersetujuan_pengajuan_biaya()==true){
+            Panelmenu.add(btnPersetujuanPengajuanBiaya);
+            jmlmenu++;
+        }
+        
+        if(akses.getvalidasi_persetujuan_pengajuan_biaya()==true){
+            Panelmenu.add(btnValidasiPersetujuanPengajuanBiaya);
+            jmlmenu++;
+        }
 
         if(akses.getposting_jurnal()==true){
             Panelmenu.add(btnPostingJurnal); 
@@ -28372,6 +28586,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbpjs_referensi_spesialistik_apotek()==true){
             Panelmenu.add(btnBPJSReferensiSpesialistikApotek);
+            jmlmenu++;
+        }
+        
+        if(akses.getriwayat_perawatan_icare_bpjs()==true){
+            Panelmenu.add(btnRiwayatPerawatanICare);
             jmlmenu++;
         }
         
@@ -29281,6 +29500,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getfollow_up_dbd()==true){
+            Panelmenu.add(btnDataFollowUpDBD);
+            jmlmenu++;
+        }
+        
         if(akses.getcatatan_keperawatan_ranap()==true){
             Panelmenu.add(btnCatatanKeperawatanRanap);
             jmlmenu++;
@@ -29303,6 +29527,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpemantauan_meows_obstetri()==true){
             Panelmenu.add(btnPemantauanMEOWS);
+            jmlmenu++;
+        }
+        
+        if(akses.getpemantauan_ews_neonatus()==true){
+            Panelmenu.add(btnPemantauanEWSNeonatus);
             jmlmenu++;
         }
             
@@ -29393,6 +29622,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_lanjutan_resiko_jatuh_lansia()==true){
             Panelmenu.add(btnPenilaianRisikoJatuhLansia);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_lanjutan_resiko_jatuh_geriatri()==true){
+            Panelmenu.add(btnPenilaianRisikoJatuhGeriatri);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
+            Panelmenu.add(btnPenilaianRisikoJatuhNeonatus);
             jmlmenu++;
         }
         
@@ -33303,6 +33542,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpemeriksaan_fisik_ralan_per_penyakit()==true){  
+            if(btnPemeriksaanFisikRalanPerPenyakit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemeriksaanFisikRalanPerPenyakit);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getkamar()==true){
             if(btnKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKamar);
@@ -33709,6 +33955,27 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpengajuan_biaya()==true){
+            if(btnPengajuanBiayaKuangan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengajuanBiayaKuangan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpersetujuan_pengajuan_biaya()==true){
+            if(btnPersetujuanPengajuanBiaya.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPersetujuanPengajuanBiaya);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getvalidasi_persetujuan_pengajuan_biaya()==true){
+            if(btnValidasiPersetujuanPengajuanBiaya.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnValidasiPersetujuanPengajuanBiaya);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getposting_jurnal()==true){
             if(btnPostingJurnal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPostingJurnal); 
@@ -34097,6 +34364,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbpjs_referensi_spesialistik_apotek()==true){
             if(btnBPJSReferensiSpesialistikApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSReferensiSpesialistikApotek);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getriwayat_perawatan_icare_bpjs()==true){
+            if(btnRiwayatPerawatanICare.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRiwayatPerawatanICare);
                 jmlmenu++;
             }                
         }
@@ -35367,6 +35641,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getfollow_up_dbd()==true){
+            if(btnDataFollowUpDBD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDataFollowUpDBD);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getcatatan_keperawatan_ranap()==true){
             if(btnCatatanKeperawatanRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCatatanKeperawatanRanap);
@@ -35398,6 +35679,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpemantauan_meows_obstetri()==true){
             if(btnPemantauanMEOWS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPemantauanMEOWS);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpemantauan_ews_neonatus()==true){
+            if(btnPemantauanEWSNeonatus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemantauanEWSNeonatus);
                 jmlmenu++;
             }                
         }
@@ -35524,6 +35812,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenilaian_lanjutan_resiko_jatuh_lansia()==true){
             if(btnPenilaianRisikoJatuhLansia.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianRisikoJatuhLansia);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_lanjutan_resiko_jatuh_geriatri()==true){
+            if(btnPenilaianRisikoJatuhGeriatri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianRisikoJatuhGeriatri);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_risiko_jatuh_neonatus()==true){
+            if(btnPenilaianRisikoJatuhNeonatus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianRisikoJatuhNeonatus);
                 jmlmenu++;
             }                
         }
@@ -41240,5 +41542,77 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnChecklistKriteriaKeluarICU.setName("btnChecklistKriteriaKeluarICU"); 
         btnChecklistKriteriaKeluarICU.setPreferredSize(new java.awt.Dimension(200, 90));
         btnChecklistKriteriaKeluarICU.addActionListener(this::btnChecklistKriteriaKeluarICUActionPerformed);
+        
+        btnDataFollowUpDBD = new widget.ButtonBig();
+        btnDataFollowUpDBD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5972298_carrier_insect_mosquito_transmission_virus_icon.png"))); 
+        btnDataFollowUpDBD.setText("Follow Up DBD");
+        btnDataFollowUpDBD.setIconTextGap(0);
+        btnDataFollowUpDBD.setName("btnDataFollowUpDBD"); 
+        btnDataFollowUpDBD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataFollowUpDBD.addActionListener(this::btnDataFollowUpDBDActionPerformed);
+        
+        btnPengajuanBiayaKuangan = new widget.ButtonBig();
+        btnPengajuanBiayaKuangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7013431_file_document_finance_business_laptop_icon.png"))); 
+        btnPengajuanBiayaKuangan.setText("Pengajuan Biaya");
+        btnPengajuanBiayaKuangan.setIconTextGap(0);
+        btnPengajuanBiayaKuangan.setName("btnPengajuanBiayaKuangan"); 
+        btnPengajuanBiayaKuangan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengajuanBiayaKuangan.addActionListener(this::btnPengajuanBiayaKuanganActionPerformed);
+        
+        btnPenilaianRisikoJatuhNeonatus = new widget.ButtonBig();
+        btnPenilaianRisikoJatuhNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7717236_hand_baby_kid_motherhood_mothers_icon.png"))); 
+        btnPenilaianRisikoJatuhNeonatus.setText("Penilaian Lanjutan Risiko Jatuh Neonatus");
+        btnPenilaianRisikoJatuhNeonatus.setIconTextGap(0);
+        btnPenilaianRisikoJatuhNeonatus.setName("btnPenilaianRisikoJatuhNeonatus"); 
+        btnPenilaianRisikoJatuhNeonatus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianRisikoJatuhNeonatus.addActionListener(this::btnPenilaianRisikoJatuhNeonatusActionPerformed);
+        
+        btnPemeriksaanFisikRalanPerPenyakit = new widget.ButtonBig();
+        btnPemeriksaanFisikRalanPerPenyakit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9161307_graph_user_chart_statistics_business_icon.png"))); 
+        btnPemeriksaanFisikRalanPerPenyakit.setText("Pemeriksaan Fisik Ralan Per Penyakit");
+        btnPemeriksaanFisikRalanPerPenyakit.setIconTextGap(0);
+        btnPemeriksaanFisikRalanPerPenyakit.setName("btnPemeriksaanFisikRalanPerPenyakit"); 
+        btnPemeriksaanFisikRalanPerPenyakit.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemeriksaanFisikRalanPerPenyakit.addActionListener(this::btnPemeriksaanFisikRalanPerPenyakitActionPerformed);
+        
+        btnPenilaianRisikoJatuhGeriatri = new widget.ButtonBig();
+        btnPenilaianRisikoJatuhGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5958966_mask_medical_pollution_security_icon.png"))); 
+        btnPenilaianRisikoJatuhGeriatri.setText("Penilaian Lanjutan Risiko Jatuh Geriatri");
+        btnPenilaianRisikoJatuhGeriatri.setIconTextGap(0);
+        btnPenilaianRisikoJatuhGeriatri.setName("btnPenilaianRisikoJatuhGeriatri"); 
+        btnPenilaianRisikoJatuhGeriatri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianRisikoJatuhGeriatri.addActionListener(this::btnPenilaianRisikoJatuhGeriatriActionPerformed);
+        
+        btnPersetujuanPengajuanBiaya = new widget.ButtonBig();
+        btnPersetujuanPengajuanBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7013438_office_briefcase_business_bag_finance_icon.png"))); 
+        btnPersetujuanPengajuanBiaya.setText("Persetujuan Pengajuan Biaya");
+        btnPersetujuanPengajuanBiaya.setIconTextGap(0);
+        btnPersetujuanPengajuanBiaya.setName("btnPersetujuanPengajuanBiaya"); 
+        btnPersetujuanPengajuanBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPersetujuanPengajuanBiaya.addActionListener(this::btnPersetujuanPengajuanBiayaActionPerformed);
+        
+        btnPemantauanEWSNeonatus = new widget.ButtonBig();
+        btnPemantauanEWSNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7717229_mom_family_baby_kid_child_icon.png"))); 
+        btnPemantauanEWSNeonatus.setText("Pemantauan EWS Pasien Neonatus");
+        btnPemantauanEWSNeonatus.setIconTextGap(0);
+        btnPemantauanEWSNeonatus.setName("btnPemantauanEWSNeonatus"); 
+        btnPemantauanEWSNeonatus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemantauanEWSNeonatus.addActionListener(this::btnPemantauanEWSNeonatusActionPerformed);
+        
+        btnValidasiPersetujuanPengajuanBiaya = new widget.ButtonBig();
+        btnValidasiPersetujuanPengajuanBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7013442_finance_business_money_payment_inflation_icon.png"))); 
+        btnValidasiPersetujuanPengajuanBiaya.setText("Validasi Persetujuan Pengajuan Biaya");
+        btnValidasiPersetujuanPengajuanBiaya.setIconTextGap(0);
+        btnValidasiPersetujuanPengajuanBiaya.setName("btnValidasiPersetujuanPengajuanBiaya"); 
+        btnValidasiPersetujuanPengajuanBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnValidasiPersetujuanPengajuanBiaya.addActionListener(this::btnValidasiPersetujuanPengajuanBiayaActionPerformed);
+        
+        btnRiwayatPerawatanICare = new widget.ButtonBig();
+        btnRiwayatPerawatanICare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs.png"))); 
+        btnRiwayatPerawatanICare.setText("Riwayat Perawatan ICare BPJS");
+        btnRiwayatPerawatanICare.setIconTextGap(0);
+        btnRiwayatPerawatanICare.setName("btnRiwayatPerawatanICare"); 
+        btnRiwayatPerawatanICare.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatPerawatanICare.addActionListener(this::btnRiwayatPerawatanICareActionPerformed);
     }
 }
