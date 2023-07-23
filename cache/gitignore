@@ -1,4 +1,5 @@
 *.*
+!.gitignore
 !kabupaten.iyem
 !kecamatan.iyem
 !kelurahan.iyem
