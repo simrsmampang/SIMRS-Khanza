@@ -703,6 +703,7 @@ import keuangan.DlgLhtBankPapua;
 import keuangan.DlgRekapBiayaRegistrasi;
 import keuangan.KeuanganPengajuanBiaya;
 import keuangan.KeuanganPersetujuanPengajuanBiaya;
+import keuangan.KeuanganRekapPengajuanBiaya;
 import keuangan.KeuanganValidasiPersetujuanPengajuanBiaya;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
@@ -20515,6 +20516,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRekapPengajuanBiayaActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganRekapPengajuanBiaya aplikasi=new KeuanganRekapPengajuanBiaya(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21191,7 +21203,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianAwalKeperawatanRalanGeriatri,btnChecklistKriteriaMasukHCU,btnChecklistKriteriaKeluarHCU,btnPenilaianRisikoDekubitus,btnMasterMenolakAnjuranMedis,
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
             btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan,btnPenilaianRisikoJatuhNeonatus,btnPemeriksaanFisikRalanPerPenyakit,
-            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya,btnRiwayatPerawatanICare;
+            btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya,btnRiwayatPerawatanICare,
+            btnRekapPengajuanBiaya;
     
     public void isWall(){
         try{            
@@ -23509,6 +23522,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getvalidasi_persetujuan_pengajuan_biaya()==true){
                 Panelmenu.add(btnValidasiPersetujuanPengajuanBiaya);
+                jmlmenu++;
+            }
+            
+            if(akses.getrekap_pengajuan_biaya()==true){
+                Panelmenu.add(btnRekapPengajuanBiaya);
                 jmlmenu++;
             }
 
@@ -28305,6 +28323,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getvalidasi_persetujuan_pengajuan_biaya()==true){
             Panelmenu.add(btnValidasiPersetujuanPengajuanBiaya);
+            jmlmenu++;
+        }
+        
+        if(akses.getrekap_pengajuan_biaya()==true){
+            Panelmenu.add(btnRekapPengajuanBiaya);
             jmlmenu++;
         }
 
@@ -33972,6 +33995,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getvalidasi_persetujuan_pengajuan_biaya()==true){
             if(btnValidasiPersetujuanPengajuanBiaya.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnValidasiPersetujuanPengajuanBiaya);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getrekap_pengajuan_biaya()==true){
+            if(btnRekapPengajuanBiaya.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapPengajuanBiaya);
                 jmlmenu++;
             }                
         }
@@ -41614,5 +41644,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRiwayatPerawatanICare.setName("btnRiwayatPerawatanICare"); 
         btnRiwayatPerawatanICare.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRiwayatPerawatanICare.addActionListener(this::btnRiwayatPerawatanICareActionPerformed);
+        
+        btnRekapPengajuanBiaya = new widget.ButtonBig();
+        btnRekapPengajuanBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1901528_business_chart_infographic_icon.png"))); 
+        btnRekapPengajuanBiaya.setText("Rekap Pengajuan Biaya");
+        btnRekapPengajuanBiaya.setIconTextGap(0);
+        btnRekapPengajuanBiaya.setName("btnRekapPengajuanBiaya"); 
+        btnRekapPengajuanBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPengajuanBiaya.addActionListener(this::btnRekapPengajuanBiayaActionPerformed);
     }
 }
