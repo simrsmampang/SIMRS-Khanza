@@ -424,10 +424,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
             headers.add("x-timestamp",utc);
             headers.add("x-signature",api.getHmac(utc));
             headers.add("user_key",koneksiDB.USERKEYAPIICARE());
-            //System.out.println("x-signature:"+api.getHmac(utc));
-            //System.out.println("x-timestamp:"+utc);
-            //System.out.println("x-cons-id:"+koneksiDB.CONSIDAPIICARE());
-            //System.out.println("user_key:"+koneksiDB.USERKEYAPIICARE());
             requestJson="{"+
                             "\"param\": \""+NoKartu.getText().trim()+"\","+
                             "\"kodedokter\": "+KdDPJPLayanan.getText().trim()+""+
@@ -458,6 +454,10 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         }
     } 
     
+    public void setPasien(String param,String kodedokter){
+        NoKartu.setText(param);
+        KdDPJPLayanan.setText(kodedokter);
+    }
     
     private void createScene() {        
         Platform.runLater(new Runnable() {
