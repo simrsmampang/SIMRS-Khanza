@@ -6271,6 +6271,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                         TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
                                         TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");
                                         SpO2.setText("");TEvaluasi.setText("");
+                                        tbPemeriksaan.clearSelection();
                                 }   
                             }else{
                                 if(akses.getkode().equals(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),23).toString())){
@@ -6317,9 +6318,11 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                             TPemeriksaan.setText("");TAlergi.setText("");LingkarPerut.setText("");
                                             TindakLanjut.setText("");TPenilaian.setText("");TInstruksi.setText("");
                                             SpO2.setText("");TEvaluasi.setText("");
+                                            tbPemeriksaan.clearSelection();
                                     }   
                                 }else{
                                     JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter/petugas yang bersangkutan..!!");
+                                    tbPemeriksaan.clearSelection();
                                 }
                             }                         
                         }else{
@@ -6377,9 +6380,11 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     cmbAlbus.setSelectedIndex(0);TVulva.setText("");TPortio.setText("");cmbDalam.setSelectedIndex(0);TTebal.setText("");
                                     cmbArah.setSelectedIndex(0);TPembukaan.setText("");TPenurunan.setText("");TDenominator.setText("");cmbKetuban.setSelectedIndex(0);
                                     cmbFeto.getSelectedItem().toString();
+                                    tbPemeriksaanObstetri.clearSelection();
                             }
                         }else{
                             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data yang mau diganti..!!");
+                            tbPemeriksaanObstetri.clearSelection();
                             TCari.requestFocus();
                         }
                     }   break;
@@ -6431,6 +6436,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     TBentuk.setText(""); TCavumUteri.setText(""); cmbMobilitas.setSelectedIndex(0);
                                     TUkuran.setText(""); cmbNyeriTekan.setSelectedIndex(0);
                                     TAdnexaKanan.setText(""); TAdnexaKiri.setText(""); TCavumDouglas.getText();
+                                    tbPemeriksaanGinekologi.clearSelection();
                             }                            
                         }else{
                             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data yang mau diganti..!!");
@@ -6456,6 +6462,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     tbCatatan.setValueAt(TDokter3.getText(),tbCatatan.getSelectedRow(), 7);
                                     tbCatatan.setValueAt(Catatan.getText(),tbCatatan.getSelectedRow(), 8);
                                     Catatan.setText("");
+                                    tbCatatan.clearSelection();
                             }                            
                         }else{
                             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data yang mau diganti..!!");

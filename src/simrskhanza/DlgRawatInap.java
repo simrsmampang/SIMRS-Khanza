@@ -4967,6 +4967,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TAdnexaKiri.setText("");
         TCavumDouglas.setText("");
         cmbKesadaran.setSelectedIndex(0);
+        tbRawatDr.clearSelection();
+        tbRawatPr.clearSelection();
+        tbRawatDrPr.clearSelection();
+        tbPemeriksaan.clearSelection();
+        tbPemeriksaanObstetri.clearSelection();
+        tbPemeriksaanGinekologi.clearSelection();
         TNoRw.requestFocus();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
