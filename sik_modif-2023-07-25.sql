@@ -1,12 +1,20 @@
 SET FOREIGN_KEY_CHECKS=0;
 
-CREATE TABLE `sik`.`antripenolakananjuranmedis`  (
+CREATE TABLE `sik_smc`.`antripenolakananjuranmedis`  (
   `no_surat` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`no_surat`) USING BTREE
 ) ENGINE = MyISAM CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`catatan_adime_gizi`  (
+ALTER TABLE `sik_smc`.`bayar_piutang` DROP FOREIGN KEY `bayar_piutang_ibfk_4`;
+
+ALTER TABLE `sik_smc`.`bayar_piutang` DROP FOREIGN KEY `bayar_piutang_ibfk_5`;
+
+ALTER TABLE `sik_smc`.`bayar_piutang` ADD CONSTRAINT `bayar_piutang_ibfk_4` FOREIGN KEY (`kd_rek_diskon_piutang`) REFERENCES `sik_smc`.`rekening` (`kd_rek`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `sik_smc`.`bayar_piutang` ADD CONSTRAINT `bayar_piutang_ibfk_5` FOREIGN KEY (`kd_rek_tidak_terbayar`) REFERENCES `sik_smc`.`rekening` (`kd_rek`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+CREATE TABLE `sik_smc`.`catatan_adime_gizi`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `asesmen` varchar(1000) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -18,15 +26,15 @@ CREATE TABLE `sik`.`catatan_adime_gizi`  (
   `nip` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
-  CONSTRAINT `catatan_adime_gizi_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `catatan_adime_gizi_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `catatan_adime_gizi_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `catatan_adime_gizi_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik_smc`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-ALTER TABLE `sik`.`catatan_cek_gds` DROP PRIMARY KEY;
+ALTER TABLE `sik_smc`.`catatan_cek_gds` DROP PRIMARY KEY;
 
-ALTER TABLE `sik`.`catatan_cek_gds` ADD PRIMARY KEY (`no_rawat`, `tgl_perawatan`, `jam_rawat`) USING BTREE;
+ALTER TABLE `sik_smc`.`catatan_cek_gds` ADD PRIMARY KEY (`no_rawat`, `tgl_perawatan`, `jam_rawat`) USING BTREE;
 
-CREATE TABLE `sik`.`checklist_kriteria_keluar_hcu`  (
+CREATE TABLE `sik_smc`.`checklist_kriteria_keluar_hcu`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `kriteria1` enum('Ya','Tidak') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -44,11 +52,11 @@ CREATE TABLE `sik`.`checklist_kriteria_keluar_hcu`  (
   `nik` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nik`(`nik`) USING BTREE,
-  CONSTRAINT `checklist_kriteria_keluar_hcu_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `checklist_kriteria_keluar_hcu_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `checklist_kriteria_keluar_hcu_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik_smc`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `checklist_kriteria_keluar_hcu_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`checklist_kriteria_keluar_icu`  (
+CREATE TABLE `sik_smc`.`checklist_kriteria_keluar_icu`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `kriteria1` enum('Ya','Tidak') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -65,11 +73,11 @@ CREATE TABLE `sik`.`checklist_kriteria_keluar_icu`  (
   `nik` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nik`(`nik`) USING BTREE,
-  CONSTRAINT `checklist_kriteria_keluar_icu_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `checklist_kriteria_keluar_icu_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `checklist_kriteria_keluar_icu_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik_smc`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `checklist_kriteria_keluar_icu_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`checklist_kriteria_masuk_hcu`  (
+CREATE TABLE `sik_smc`.`checklist_kriteria_masuk_hcu`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `kardiologi1` enum('Ya','Tidak') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -97,11 +105,11 @@ CREATE TABLE `sik`.`checklist_kriteria_masuk_hcu`  (
   `nik` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nik`(`nik`) USING BTREE,
-  CONSTRAINT `checklist_kriteria_masuk_hcu_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `checklist_kriteria_masuk_hcu_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `checklist_kriteria_masuk_hcu_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik_smc`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `checklist_kriteria_masuk_hcu_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`checklist_kriteria_masuk_icu`  (
+CREATE TABLE `sik_smc`.`checklist_kriteria_masuk_icu`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `prioritas1_1` enum('Ya','Tidak') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -146,11 +154,11 @@ CREATE TABLE `sik`.`checklist_kriteria_masuk_icu`  (
   `nik` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nik`(`nik`) USING BTREE,
-  CONSTRAINT `checklist_kriteria_masuk_icu_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `checklist_kriteria_masuk_icu_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `checklist_kriteria_masuk_icu_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik_smc`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `checklist_kriteria_masuk_icu_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`follow_up_dbd`  (
+CREATE TABLE `sik_smc`.`follow_up_dbd`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tgl_perawatan` date NOT NULL,
   `jam_rawat` time NOT NULL,
@@ -163,11 +171,11 @@ CREATE TABLE `sik`.`follow_up_dbd`  (
   PRIMARY KEY (`no_rawat`, `tgl_perawatan`, `jam_rawat`) USING BTREE,
   INDEX `no_rawat`(`no_rawat`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
-  CONSTRAINT `follow_up_dbd_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `follow_up_dbd_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `follow_up_dbd_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `follow_up_dbd_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik_smc`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`hasil_tindakan_eswl`  (
+CREATE TABLE `sik_smc`.`hasil_tindakan_eswl`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `mulai` datetime NOT NULL,
   `selesai` datetime NOT NULL,
@@ -188,33 +196,33 @@ CREATE TABLE `sik`.`hasil_tindakan_eswl`  (
   PRIMARY KEY (`no_rawat`, `mulai`) USING BTREE,
   INDEX `kd_dokter`(`kd_dokter`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
-  CONSTRAINT `hasil_tindakan_eswl_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `hasil_tindakan_eswl_ibfk_2` FOREIGN KEY (`kd_dokter`) REFERENCES `sik`.`dokter` (`kd_dokter`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `hasil_tindakan_eswl_ibfk_3` FOREIGN KEY (`nip`) REFERENCES `sik`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `hasil_tindakan_eswl_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `hasil_tindakan_eswl_ibfk_2` FOREIGN KEY (`kd_dokter`) REFERENCES `sik_smc`.`dokter` (`kd_dokter`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `hasil_tindakan_eswl_ibfk_3` FOREIGN KEY (`nip`) REFERENCES `sik_smc`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`master_masalah_keperawatan_geriatri`  (
+CREATE TABLE `sik_smc`.`master_masalah_keperawatan_geriatri`  (
   `kode_masalah` varchar(3) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nama_masalah` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`kode_masalah`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`master_menolak_anjuran_medis`  (
+CREATE TABLE `sik_smc`.`master_menolak_anjuran_medis`  (
   `kode_penolakan` varchar(3) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nama_penolakan` varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`kode_penolakan`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`master_rencana_keperawatan_geriatri`  (
+CREATE TABLE `sik_smc`.`master_rencana_keperawatan_geriatri`  (
   `kode_masalah` varchar(3) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `kode_rencana` varchar(3) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `rencana_keperawatan` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`kode_rencana`) USING BTREE,
   INDEX `kode_masalah`(`kode_masalah`) USING BTREE,
-  CONSTRAINT `master_rencana_keperawatan_geriatri_ibfk_1` FOREIGN KEY (`kode_masalah`) REFERENCES `sik`.`master_masalah_keperawatan_geriatri` (`kode_masalah`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `master_rencana_keperawatan_geriatri_ibfk_1` FOREIGN KEY (`kode_masalah`) REFERENCES `sik_smc`.`master_masalah_keperawatan_geriatri` (`kode_masalah`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`pemantauan_ews_neonatus`  (
+CREATE TABLE `sik_smc`.`pemantauan_ews_neonatus`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `parameter1` enum('<= 29','30 - 39','40 - 60','>= 61') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -239,11 +247,11 @@ CREATE TABLE `sik`.`pemantauan_ews_neonatus`  (
   `nip` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
-  CONSTRAINT `pemantauan_ews_neonatus_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `sik`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `pemantauan_ews_neonatus_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `pemantauan_ews_neonatus_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `sik_smc`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `pemantauan_ews_neonatus_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`pemantauan_meows_obstetri`  (
+CREATE TABLE `sik_smc`.`pemantauan_meows_obstetri`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `parameter_pernapasan` enum('>= 30','21 - 30','11 - 20','< 12') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -272,13 +280,13 @@ CREATE TABLE `sik`.`pemantauan_meows_obstetri`  (
   `nip` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
-  CONSTRAINT `pemantauan_meows_obstetri_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `sik`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `pemantauan_meows_obstetri_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `pemantauan_meows_obstetri_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `sik_smc`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `pemantauan_meows_obstetri_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-ALTER TABLE `sik`.`pemantauan_pews_dewasa` ADD CONSTRAINT `pemantauan_pews_dewasa_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `sik_smc`.`pemantauan_pews_dewasa` ADD CONSTRAINT `pemantauan_pews_dewasa_ibfk_2` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-CREATE TABLE `sik`.`pengajuan_biaya`  (
+CREATE TABLE `sik_smc`.`pengajuan_biaya`  (
   `no_pengajuan` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` date NOT NULL,
   `nik` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -296,20 +304,20 @@ CREATE TABLE `sik`.`pengajuan_biaya`  (
   PRIMARY KEY (`no_pengajuan`) USING BTREE,
   INDEX `nik`(`nik`) USING BTREE,
   INDEX `nik_pj`(`nik_pj`) USING BTREE,
-  CONSTRAINT `pengajuan_biaya_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik`.`pegawai` (`nik`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `pengajuan_biaya_ibfk_2` FOREIGN KEY (`nik_pj`) REFERENCES `sik`.`pegawai` (`nik`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `pengajuan_biaya_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `sik_smc`.`pegawai` (`nik`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `pengajuan_biaya_ibfk_2` FOREIGN KEY (`nik_pj`) REFERENCES `sik_smc`.`pegawai` (`nik`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`pengajuan_biaya_disetujui`  (
+CREATE TABLE `sik_smc`.`pengajuan_biaya_disetujui`  (
   `no_pengajuan` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `jumlah` double NOT NULL,
   `harga` double NOT NULL,
   `total` double NOT NULL,
   PRIMARY KEY (`no_pengajuan`) USING BTREE,
-  CONSTRAINT `pengajuan_biaya_disetujui_ibfk_1` FOREIGN KEY (`no_pengajuan`) REFERENCES `sik`.`pengajuan_biaya` (`no_pengajuan`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `pengajuan_biaya_disetujui_ibfk_1` FOREIGN KEY (`no_pengajuan`) REFERENCES `sik_smc`.`pengajuan_biaya` (`no_pengajuan`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`penilaian_awal_keperawatan_ralan_geriatri`  (
+CREATE TABLE `sik_smc`.`penilaian_awal_keperawatan_ralan_geriatri`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `informasi` enum('Autoanamnesis','Alloanamnesis') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -392,29 +400,29 @@ CREATE TABLE `sik`.`penilaian_awal_keperawatan_ralan_geriatri`  (
   `nip` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`no_rawat`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
-  CONSTRAINT `penilaian_awal_keperawatan_ralan_geriatri_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `penilaian_awal_keperawatan_ralan_geriatri_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `penilaian_awal_keperawatan_ralan_geriatri_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `penilaian_awal_keperawatan_ralan_geriatri_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik_smc`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`penilaian_awal_keperawatan_ralan_masalah_geriatri`  (
+CREATE TABLE `sik_smc`.`penilaian_awal_keperawatan_ralan_masalah_geriatri`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `kode_masalah` varchar(3) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`no_rawat`, `kode_masalah`) USING BTREE,
   INDEX `kode_masalah`(`kode_masalah`) USING BTREE,
-  CONSTRAINT `penilaian_awal_keperawatan_ralan_masalah_geriatri_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `penilaian_awal_keperawatan_ralan_masalah_geriatri_ibfk_2` FOREIGN KEY (`kode_masalah`) REFERENCES `sik`.`master_masalah_keperawatan_geriatri` (`kode_masalah`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `penilaian_awal_keperawatan_ralan_masalah_geriatri_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `penilaian_awal_keperawatan_ralan_masalah_geriatri_ibfk_2` FOREIGN KEY (`kode_masalah`) REFERENCES `sik_smc`.`master_masalah_keperawatan_geriatri` (`kode_masalah`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`penilaian_awal_keperawatan_ralan_rencana_geriatri`  (
+CREATE TABLE `sik_smc`.`penilaian_awal_keperawatan_ralan_rencana_geriatri`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `kode_rencana` varchar(3) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`no_rawat`, `kode_rencana`) USING BTREE,
   INDEX `kode_rencana`(`kode_rencana`) USING BTREE,
-  CONSTRAINT `penilaian_awal_keperawatan_ralan_rencana_geriatri_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `penilaian_awal_keperawatan_ralan_rencana_geriatri_ibfk_2` FOREIGN KEY (`kode_rencana`) REFERENCES `sik`.`master_rencana_keperawatan_geriatri` (`kode_rencana`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `penilaian_awal_keperawatan_ralan_rencana_geriatri_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `penilaian_awal_keperawatan_ralan_rencana_geriatri_ibfk_2` FOREIGN KEY (`kode_rencana`) REFERENCES `sik_smc`.`master_rencana_keperawatan_geriatri` (`kode_rencana`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`penilaian_lanjutan_resiko_jatuh_geriatri`  (
+CREATE TABLE `sik_smc`.`penilaian_lanjutan_resiko_jatuh_geriatri`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `penilaian_jatuh_skala1` enum('Tidak','Ya') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -445,10 +453,10 @@ CREATE TABLE `sik`.`penilaian_lanjutan_resiko_jatuh_geriatri`  (
   `nip` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
-  CONSTRAINT `penilaian_lanjutan_resiko_jatuh_geriatri_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `sik`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `penilaian_lanjutan_resiko_jatuh_geriatri_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `sik_smc`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`penilaian_risiko_dekubitus`  (
+CREATE TABLE `sik_smc`.`penilaian_risiko_dekubitus`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `kondisi_fisik` enum('Baik','Sedang','Buruk','Sangat Buruk') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -466,11 +474,11 @@ CREATE TABLE `sik`.`penilaian_risiko_dekubitus`  (
   `nip` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
-  CONSTRAINT `penilaian_risiko_dekubitus_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `penilaian_risiko_dekubitus_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `penilaian_risiko_dekubitus_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `penilaian_risiko_dekubitus_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik_smc`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`penilaian_risiko_jatuh_neonatus`  (
+CREATE TABLE `sik_smc`.`penilaian_risiko_jatuh_neonatus`  (
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
   `intervensi1` enum('Tidak','Ya') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -497,13 +505,37 @@ CREATE TABLE `sik`.`penilaian_risiko_jatuh_neonatus`  (
   `nip` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`no_rawat`, `tanggal`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE,
-  CONSTRAINT `penilaian_risiko_jatuh_neonatus_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `penilaian_risiko_jatuh_neonatus_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `penilaian_risiko_jatuh_neonatus_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `penilaian_risiko_jatuh_neonatus_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `sik_smc`.`petugas` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-ALTER TABLE `sik`.`rekonsiliasi_obat` MODIFY COLUMN `rekonsiliasi_obat_saat` enum('Admisi','Transfer Antar Ruang','Pindah Faskes Lain','Pulang') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `tanggal_wawancara`;
+ALTER TABLE `sik_smc`.`rekonsiliasi_obat` MODIFY COLUMN `rekonsiliasi_obat_saat` enum('Admisi','Transfer Antar Ruang','Pindah Faskes Lain','Pulang') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `tanggal_wawancara`;
 
-CREATE TABLE `sik`.`surat_penolakan_anjuran_medis`  (
+ALTER TABLE `sik_smc`.`set_akun` DROP FOREIGN KEY `set_akun_ibfk_58`;
+
+ALTER TABLE `sik_smc`.`set_akun` DROP FOREIGN KEY `set_akun_ibfk_59`;
+
+ALTER TABLE `sik_smc`.`set_akun` DROP FOREIGN KEY `set_akun_ibfk_60`;
+
+ALTER TABLE `sik_smc`.`set_akun` DROP FOREIGN KEY `set_akun_ibfk_61`;
+
+ALTER TABLE `sik_smc`.`set_akun` DROP FOREIGN KEY `set_akun_ibfk_62`;
+
+ALTER TABLE `sik_smc`.`set_akun` DROP FOREIGN KEY `set_akun_ibfk_63`;
+
+ALTER TABLE `sik_smc`.`set_akun` ADD CONSTRAINT `set_akun_ibfk_58` FOREIGN KEY (`Pengadaan_Dapur`) REFERENCES `sik_smc`.`rekening` (`kd_rek`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `sik_smc`.`set_akun` ADD CONSTRAINT `set_akun_ibfk_59` FOREIGN KEY (`Stok_Keluar_Dapur`) REFERENCES `sik_smc`.`rekening` (`kd_rek`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `sik_smc`.`set_akun` ADD CONSTRAINT `set_akun_ibfk_60` FOREIGN KEY (`Kontra_Stok_Keluar_Dapur`) REFERENCES `sik_smc`.`rekening` (`kd_rek`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE `sik_smc`.`set_akun` ADD CONSTRAINT `set_akun_ibfk_61` FOREIGN KEY (`PPN_Keluaran`) REFERENCES `sik_smc`.`rekening` (`kd_rek`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `sik_smc`.`set_akun` ADD CONSTRAINT `set_akun_ibfk_62` FOREIGN KEY (`Diskon_Piutang`) REFERENCES `sik_smc`.`rekening` (`kd_rek`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `sik_smc`.`set_akun` ADD CONSTRAINT `set_akun_ibfk_63` FOREIGN KEY (`Piutang_Tidak_Terbayar`) REFERENCES `sik_smc`.`rekening` (`kd_rek`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+CREATE TABLE `sik_smc`.`surat_penolakan_anjuran_medis`  (
   `no_surat` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `no_rawat` varchar(17) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal` datetime NOT NULL,
@@ -521,19 +553,19 @@ CREATE TABLE `sik`.`surat_penolakan_anjuran_medis`  (
   INDEX `nik`(`nik`) USING BTREE,
   INDEX `no_rawat`(`no_rawat`) USING BTREE,
   INDEX `kode_penolakan`(`kode_penolakan`) USING BTREE,
-  CONSTRAINT `surat_penolakan_anjuran_medis_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `surat_penolakan_anjuran_medis_ibfk_2` FOREIGN KEY (`kode_penolakan`) REFERENCES `sik`.`master_menolak_anjuran_medis` (`kode_penolakan`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `surat_penolakan_anjuran_medis_ibfk_3` FOREIGN KEY (`nik`) REFERENCES `sik`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `surat_penolakan_anjuran_medis_ibfk_1` FOREIGN KEY (`no_rawat`) REFERENCES `sik_smc`.`reg_periksa` (`no_rawat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `surat_penolakan_anjuran_medis_ibfk_2` FOREIGN KEY (`kode_penolakan`) REFERENCES `sik_smc`.`master_menolak_anjuran_medis` (`kode_penolakan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `surat_penolakan_anjuran_medis_ibfk_3` FOREIGN KEY (`nik`) REFERENCES `sik_smc`.`pegawai` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`surat_penolakan_anjuran_medis_pembuat_pernyataan`  (
+CREATE TABLE `sik_smc`.`surat_penolakan_anjuran_medis_pembuat_pernyataan`  (
   `no_surat` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `photo` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`no_surat`) USING BTREE,
-  CONSTRAINT `surat_penolakan_anjuran_medis_pembuat_pernyataan_ibfk_1` FOREIGN KEY (`no_surat`) REFERENCES `sik`.`surat_penolakan_anjuran_medis` (`no_surat`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `surat_penolakan_anjuran_medis_pembuat_pernyataan_ibfk_1` FOREIGN KEY (`no_surat`) REFERENCES `sik_smc`.`surat_penolakan_anjuran_medis` (`no_surat`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `sik`.`template_laporan_operasi`  (
+CREATE TABLE `sik_smc`.`template_laporan_operasi`  (
   `no_template` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nama_operasi` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `diagnosa_preop` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -544,54 +576,56 @@ CREATE TABLE `sik`.`template_laporan_operasi`  (
   PRIMARY KEY (`no_template`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `pemantauan_meows_obstetri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_pasien_keracunan`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `pemantauan_meows_obstetri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_pasien_keracunan`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `catatan_adime_gizi` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `pemantauan_meows_obstetri`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `catatan_adime_gizi` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `pemantauan_meows_obstetri`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `pengajuan_biaya` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `catatan_adime_gizi`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `pengajuan_biaya` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `catatan_adime_gizi`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `penilaian_awal_keperawatan_ralan_geriatri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `pengajuan_biaya`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `penilaian_awal_keperawatan_ralan_geriatri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `pengajuan_biaya`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `master_masalah_keperawatan_geriatri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_awal_keperawatan_ralan_geriatri`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `master_masalah_keperawatan_geriatri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_awal_keperawatan_ralan_geriatri`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `master_rencana_keperawatan_geriatri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `master_masalah_keperawatan_geriatri`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `master_rencana_keperawatan_geriatri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `master_masalah_keperawatan_geriatri`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `checklist_kriteria_masuk_hcu` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `master_rencana_keperawatan_geriatri`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `checklist_kriteria_masuk_hcu` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `master_rencana_keperawatan_geriatri`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `checklist_kriteria_keluar_hcu` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `checklist_kriteria_masuk_hcu`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `checklist_kriteria_keluar_hcu` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `checklist_kriteria_masuk_hcu`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `penilaian_risiko_dekubitus` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `checklist_kriteria_keluar_hcu`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `penilaian_risiko_dekubitus` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `checklist_kriteria_keluar_hcu`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `master_menolak_anjuran_medis` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_risiko_dekubitus`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `master_menolak_anjuran_medis` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_risiko_dekubitus`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `penolakan_anjuran_medis` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `master_menolak_anjuran_medis`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `penolakan_anjuran_medis` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `master_menolak_anjuran_medis`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `laporan_tahunan_penolakan_anjuran_medis` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penolakan_anjuran_medis`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `laporan_tahunan_penolakan_anjuran_medis` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penolakan_anjuran_medis`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `template_laporan_operasi` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `laporan_tahunan_penolakan_anjuran_medis`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `template_laporan_operasi` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `laporan_tahunan_penolakan_anjuran_medis`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `hasil_tindakan_eswl` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `template_laporan_operasi`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `hasil_tindakan_eswl` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `template_laporan_operasi`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `checklist_kriteria_masuk_icu` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `hasil_tindakan_eswl`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `checklist_kriteria_masuk_icu` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `hasil_tindakan_eswl`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `checklist_kriteria_keluar_icu` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `checklist_kriteria_masuk_icu`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `checklist_kriteria_keluar_icu` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `checklist_kriteria_masuk_icu`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `akses_dokter_lain_rawat_jalan` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `checklist_kriteria_keluar_icu`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `akses_dokter_lain_rawat_jalan` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `checklist_kriteria_keluar_icu`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `follow_up_dbd` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `akses_dokter_lain_rawat_jalan`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `follow_up_dbd` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `akses_dokter_lain_rawat_jalan`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `penilaian_risiko_jatuh_neonatus` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `follow_up_dbd`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `penilaian_risiko_jatuh_neonatus` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `follow_up_dbd`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `persetujuan_pengajuan_biaya` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_risiko_jatuh_neonatus`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `persetujuan_pengajuan_biaya` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_risiko_jatuh_neonatus`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `pemeriksaan_fisik_ralan_per_penyakit` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `persetujuan_pengajuan_biaya`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `pemeriksaan_fisik_ralan_per_penyakit` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `persetujuan_pengajuan_biaya`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `penilaian_lanjutan_resiko_jatuh_geriatri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `pemeriksaan_fisik_ralan_per_penyakit`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `penilaian_lanjutan_resiko_jatuh_geriatri` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `pemeriksaan_fisik_ralan_per_penyakit`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `pemantauan_ews_neonatus` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_lanjutan_resiko_jatuh_geriatri`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `pemantauan_ews_neonatus` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `penilaian_lanjutan_resiko_jatuh_geriatri`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `validasi_persetujuan_pengajuan_biaya` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `pemantauan_ews_neonatus`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `validasi_persetujuan_pengajuan_biaya` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `pemantauan_ews_neonatus`;
 
-ALTER TABLE `sik`.`user` ADD COLUMN `riwayat_perawatan_icare_bpjs` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `validasi_persetujuan_pengajuan_biaya`;
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `riwayat_perawatan_icare_bpjs` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `validasi_persetujuan_pengajuan_biaya`;
+
+ALTER TABLE `sik_smc`.`user` ADD COLUMN `rekap_pengajuan_biaya` enum('true','false') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `riwayat_perawatan_icare_bpjs`;
 
 SET FOREIGN_KEY_CHECKS=1;
