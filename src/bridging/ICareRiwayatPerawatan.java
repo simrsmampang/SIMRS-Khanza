@@ -12,36 +12,50 @@
 
 package bridging;
 
-import fungsi.WarnaTable;
 import java.awt.Dimension;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.validasi;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
+import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker;
+import static javafx.concurrent.Worker.State.FAILED;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.web.PopupFeatures;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebEvent;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Callback;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 
 /**
  *
  * @author dosen
  */
 public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
-    private int i=0;
     private ApiICareBPJS api=new ApiICareBPJS();
     private String link="",utc="",requestJson="";
     private HttpHeaders headers ;
@@ -49,8 +63,16 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
+    private JsonNode response;
     private BPJSCekReferensiDokter dpjp=new BPJSCekReferensiDokter(null,false);
     private PCareCekReferensiDokter dpjp2=new PCareCekReferensiDokter(null,false);
+    private final JFXPanel jfxPanel = new JFXPanel();
+    private WebEngine engine;
+ 
+    private final JLabel lblStatus = new JLabel();
+
+    private final JTextField txtURL = new JTextField();
+    private final JProgressBar progressBar = new JProgressBar();
         
     /** Creates new form DlgKamar
      * @param parent
@@ -58,50 +80,11 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     public ICareRiwayatPerawatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        initComponents2();
+        
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"No.","Diagnosa","Jenis Pelayanan","Kelas Rawat","Nama Peserta","No.Kartu","No.SEP","No.Rujukan","Poli","PPK Pelayanan","Pulang SEP","Tgl.SEP"};
-        tabMode=new DefaultTableModel(null,row){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
-        };
-        tbKamar.setModel(tabMode);
-
-        //tbKamar.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamar.getBackground()));
-        tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-        for (i = 0; i < 12; i++) {
-            TableColumn column = tbKamar.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(35);
-            }else if(i==1){
-                column.setPreferredWidth(230);
-            }else if(i==2){
-                column.setPreferredWidth(88);
-            }else if(i==3){
-                column.setPreferredWidth(70);
-            }else if(i==4){
-                column.setPreferredWidth(160);
-            }else if(i==5){
-                column.setPreferredWidth(85);
-            }else if(i==6){
-                column.setPreferredWidth(125);
-            }else if(i==7){
-                column.setPreferredWidth(125);
-            }else if(i==8){
-                column.setPreferredWidth(115);
-            }else if(i==9){
-                column.setPreferredWidth(160);
-            }else if(i==10){
-                column.setPreferredWidth(65);
-            }else if(i==11){
-                column.setPreferredWidth(65);
-            }
-        }
-        
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         NoKartu.setDocument(new batasInput((int)100).getKata(NoKartu));
         KdDPJPLayanan.setDocument(new batasInput((int)100).getKata(KdDPJPLayanan));
@@ -181,6 +164,19 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         });
     }
     
+    private void initComponents2() {           
+        txtURL.addActionListener((ActionEvent e) -> {
+            loadURL(txtURL.getText());
+        });
+  
+        progressBar.setPreferredSize(new Dimension(150, 18));
+        progressBar.setStringPainted(true);
+        
+        PanelContent.add(jfxPanel, BorderLayout.CENTER);
+        
+        internalFrame1.add(PanelContent);        
+    }
+    
     
 
     /** This method is called from within the constructor to
@@ -193,8 +189,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     private void initComponents() {
 
         internalFrame1 = new widget.InternalFrame();
-        Scroll = new widget.ScrollPane();
-        tbKamar = new widget.Table();
         panelGlass6 = new widget.panelisi();
         jLabel16 = new widget.Label();
         NoKartu = new widget.TextBox();
@@ -205,6 +199,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel17 = new widget.Label();
         BtnKeluar = new widget.Button();
+        PanelContent = new widget.panelisi();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -215,16 +210,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Perawatan ICare BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
-
-        Scroll.setName("Scroll"); // NOI18N
-        Scroll.setOpaque(true);
-
-        tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKamar.setName("tbKamar"); // NOI18N
-        Scroll.setViewportView(tbKamar);
-
-        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass6.setName("panelGlass6"); // NOI18N
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
@@ -330,6 +315,11 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
 
+        PanelContent.setName("PanelContent"); // NOI18N
+        PanelContent.setPreferredSize(new java.awt.Dimension(55, 55));
+        PanelContent.setLayout(new java.awt.BorderLayout());
+        internalFrame1.add(PanelContent, java.awt.BorderLayout.CENTER);
+
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -415,14 +405,13 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     private widget.TextBox KdDPJPLayanan;
     private widget.Label LabelPoli6;
     private widget.TextBox NoKartu;
-    private widget.ScrollPane Scroll;
+    private widget.panelisi PanelContent;
     private widget.Button btnDPJPLayanan;
     private widget.Button btnDPJPLayanan1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.panelisi panelGlass6;
-    private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
@@ -435,6 +424,10 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
             headers.add("x-timestamp",utc);
             headers.add("x-signature",api.getHmac(utc));
             headers.add("user_key",koneksiDB.USERKEYAPIICARE());
+            //System.out.println("x-signature:"+api.getHmac(utc));
+            //System.out.println("x-timestamp:"+utc);
+            //System.out.println("x-cons-id:"+koneksiDB.CONSIDAPIICARE());
+            //System.out.println("user_key:"+koneksiDB.USERKEYAPIICARE());
             requestJson="{"+
                             "\"param\": \""+NoKartu.getText().trim()+"\","+
                             "\"kodedokter\": "+KdDPJPLayanan.getText().trim()+""+
@@ -447,7 +440,13 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
             root = mapper.readTree(requestJson);
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
-                
+                response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
+                System.out.println("Response : "+response.path("url"));
+                try {
+                    loadURL(response.path("url").asText());
+                } catch (Exception ex) {
+                    System.out.println("Notifikasi : "+ex);
+                }
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   
@@ -458,5 +457,101 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
             }
         }
     } 
+    
+    
+    private void createScene() {        
+        Platform.runLater(new Runnable() {
+
+            public void run() {
+                WebView view = new WebView();
+                
+                engine = view.getEngine();
+                engine.setJavaScriptEnabled(true);
+                
+                engine.setCreatePopupHandler(new Callback<PopupFeatures, WebEngine>() {
+                    @Override
+                    public WebEngine call(PopupFeatures p) {
+                        Stage stage = new Stage(StageStyle.TRANSPARENT);
+                        return view.getEngine();
+                    }
+                });
+                
+                engine.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
+                    SwingUtilities.invokeLater(() -> {
+                        ICareRiwayatPerawatan.this.setTitle(newValue);
+                    });
+                });
+                
+                
+                engine.setOnStatusChanged((final WebEvent<String> event) -> {
+                    SwingUtilities.invokeLater(() -> {
+                        lblStatus.setText(event.getData());
+                    });
+                });
+                
+                
+                engine.getLoadWorker().workDoneProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldValue, final Number newValue) -> {
+                    SwingUtilities.invokeLater(() -> {
+                        progressBar.setValue(newValue.intValue());
+                    });                                                   
+                });
+                
+                engine.getLoadWorker().exceptionProperty().addListener((ObservableValue<? extends Throwable> o, Throwable old, final Throwable value) -> {
+                    if (engine.getLoadWorker().getState() == FAILED) {
+                        SwingUtilities.invokeLater(() -> {
+                            JOptionPane.showMessageDialog(
+                                    PanelContent,
+                                    (value != null) ?
+                                            engine.getLocation() + "\n" + value.getMessage() :
+                                            engine.getLocation() + "\nUnexpected Catatan.",
+                                    "Loading Catatan...",
+                                    JOptionPane.ERROR_MESSAGE);
+                        });
+                    }
+                });
+                
+                
+                engine.locationProperty().addListener((ObservableValue<? extends String> ov, String oldValue, final String newValue) -> {
+                    SwingUtilities.invokeLater(() -> {
+                        txtURL.setText(newValue);
+                    });
+                });
+                
+                engine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
+                    @Override
+                    public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
+                        if (newState == Worker.State.SUCCEEDED) {
+                            try {
+                                System.out.println("URL : "+engine.getLocation());
+                            } catch (Exception ex) {
+                                System.out.println("Notifikasi : "+ex);
+                            }
+                        } 
+                    }
+                });
+                
+                jfxPanel.setScene(new Scene(view));
+            }
+        });
+    }
+ 
+    public void loadURL(String url) {  
+        try {
+            createScene();
+        } catch (Exception e) {
+        }
+        
+        Platform.runLater(() -> {
+            try {
+                engine.load(url);
+            }catch (Exception exception) {
+                engine.load(url);
+            }
+        });        
+    }    
+    
+    public void CloseScane(){
+        Platform.setImplicitExit(false);
+    }
  
 }
