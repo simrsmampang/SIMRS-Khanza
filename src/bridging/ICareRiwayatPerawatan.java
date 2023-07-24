@@ -32,6 +32,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
 /**
  *
@@ -48,7 +49,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
-    private JsonNode response;
     private BPJSCekReferensiDokter dpjp=new BPJSCekReferensiDokter(null,false);
     private PCareCekReferensiDokter dpjp2=new PCareCekReferensiDokter(null,false);
         
@@ -429,6 +429,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("Content-Type","application/json");
             headers.add("x-cons-id",koneksiDB.CONSIDAPIICARE());
             utc=String.valueOf(api.GetUTCdatetimeAsString());
             headers.add("x-timestamp",utc);
@@ -440,7 +441,8 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
                         "}";
             System.out.println("JSON : "+requestJson+"\n");
 	    requestEntity = new HttpEntity(requestJson,headers);
-            requestJson= api.getRest().exchange(link+"/api/rs/validate", HttpMethod.POST, requestEntity, String.class).getBody();
+            requestJson= mapper.writeValueAsString(api.getRest().exchange(link+"/api/rs/validate", HttpMethod.POST, requestEntity,Object.class).getBody());
+            System.out.println("URL:"+link+"/api/rs/validate");
             System.out.println("JSON : "+requestJson);
             root = mapper.readTree(requestJson);
             nameNode = root.path("metaData");
@@ -450,7 +452,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   
         } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
+            System.out.println("Notifikasi : "+ex.getMessage());
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
             }
