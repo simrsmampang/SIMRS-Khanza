@@ -148,7 +148,7 @@ public class frmUtana extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPerformEncryptionActionPerformed
 
     private void buttonPerformDecryptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerformDecryptionActionPerformed
-        // TODO add your handling code here:
+        textDecryptedResult.setText(EnkripsiAES.decrypt(textEncrypted.getText()));
     }//GEN-LAST:event_buttonPerformDecryptionActionPerformed
 
     /**
