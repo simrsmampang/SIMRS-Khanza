@@ -91,14 +91,24 @@
             <?php 
                 $_sql="select * from antripoli where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'" ;  
                 $hasil=bukaquery($_sql);
-                while ($data = mysqli_fetch_array ($hasil)){
-                    echo "<font size='6' color='#DD0000'><b>".getOne("select concat(reg_periksa.no_reg,' ',reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'")."</b></font>";
-                    if($data['status']=="1"){
-                        echo "<audio autoplay='true' src='bell.wav'>";
-                        bukaquery2("update antripoli set antripoli.status='0' where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'");
-                    }   
-                }
             ?>
+            <?php while ($data = mysqli_fetch_array($hasil)): ?>
+                <div style='font-size: 32px; color: #DD0000; font-weight: 700; padding-top: 1rem; padding-bottom: 1rem'>
+                    <?= getOne("select concat(reg_periksa.no_reg,' ',reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'"); ?>
+
+                    <?php if ($data['status'] == "1"): ?>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', e => {
+                                let noAntrian = '<?= getOne("select concat(reg_periksa.no_reg,', ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'"); ?>'
+                                let poli = '<?= getOne("select nm_poli from poliklinik where kd_poli = '" . $kd_poli . "'"); ?>'
+
+                                responsiveVoice.speak(`Nomor antrian ${noAntrian}, ${poli}`, 'Indonesian Male', { rate: 0.8 })
+                            })
+                        </script>
+                        <?php bukaquery2("update antripoli set antripoli.status='0' where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'"); ?>
+                    <?php endif; ?>
+                </div>
+            <?php endwhile; ?>
             </td>
         </tr>
         </tr>
@@ -131,6 +141,7 @@
          </tr>
     </table>
      <img src="ft-2.jpg" alt="bar-pic" width="100%" height="83">
+     <script src="https://code.responsivevoice.org/responsivevoice.js?key=OGPOBj1g"></script>
 </body>
 <?php 
   echo "<meta http-equiv='refresh' content='10;URL=?iyem=".encrypt_decrypt("{\"kd_poli\":\"".$kd_poli."\",\"kd_dokter\":\"".$kd_dokter."\"}","e")."'>";
