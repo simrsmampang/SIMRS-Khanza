@@ -3194,7 +3194,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        int promptHapus = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus resume medis?", "Hapus resume medis", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        int promptHapus = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus resume medis pasien?", "Hapus resume medis", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         
         if (promptHapus != JOptionPane.YES_OPTION) {
             return;
