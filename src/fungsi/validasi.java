@@ -1202,7 +1202,7 @@ public final class validasi {
         return s;
     }
     
-    public String SetTglJam(String original, String pattern, String namaKolom)
+    public String SetTglJam(String original, String pattern)
     {
         original = original.replaceAll("'", "");
         String out = "";
@@ -1215,8 +1215,6 @@ public final class validasi {
             
             out = dfOut.format(date);
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, String.format("Format tanggal pada kolom %s salah!", namaKolom));
-            
             System.out.println("Notif : " + ex);
         }
         
