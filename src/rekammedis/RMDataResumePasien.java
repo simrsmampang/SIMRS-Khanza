@@ -1357,6 +1357,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                     ProsedurUtama.getText(),KodeProsedurUtama.getText(),ProsedurSekunder1.getText(),KodeProsedurSekunder1.getText(),ProsedurSekunder2.getText(), 
                     KodeProsedurSekunder2.getText(),ProsedurSekunder3.getText(),KodeProsedurSekunder3.getText(),Kondisi.getSelectedItem().toString(),Obat2an.getText()
                 })==true){
+                    JOptionPane.showMessageDialog(null, "Resume medis pasien berhasil disimpan!");
+                
                     tampil();
                     emptTeks();
             }
@@ -2390,12 +2392,20 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 KodeProsedurSekunder2.getText(),ProsedurSekunder3.getText(),KodeProsedurSekunder3.getText(),Kondisi.getSelectedItem().toString(),Obat2an.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()
             })==true){
+                JOptionPane.showMessageDialog(null, "Resume medis pasien telah diganti!");
+                
                tampil();
                emptTeks();
         }
     }
 
     private void hapus() {
+        int promptHapus = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus resume medis pasien?", "Hapus resume medis", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        
+        if (promptHapus != JOptionPane.YES_OPTION) {
+            return;
+        }
+        
         if(Sequel.queryu2tf("delete from resume_pasien where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()
         })==true){

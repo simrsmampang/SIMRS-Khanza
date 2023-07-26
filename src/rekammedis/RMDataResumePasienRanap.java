@@ -1916,7 +1916,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private void TPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPasienKeyPressed
         Valid.pindah(evt,TCari,BtnSimpan);
 }//GEN-LAST:event_TPasienKeyPressed
-
+    
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().equals("")||TNoRM.getText().equals("")||TPasien.getText().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
@@ -1929,6 +1929,16 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         }else if(DiagnosaUtama.getText().equals("")){
             Valid.textKosong(DiagnosaUtama,"Diagnosa Utama");
         }else{
+            String tglJam = Valid.SetTglJam(Kontrol.getSelectedItem().toString(), "dd-MM-yyyy HH:mm:ss");
+            
+            if (tglJam.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Format Tanggal pada kolom \"Tanggal & Jam Kontrol\" salah!");
+                
+                Kontrol.requestFocus();
+                
+                return;
+            }
+            
             if(Sequel.menyimpantf("resume_pasien_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",41,new String[]{
                     TNoRw.getText(),KodeDokter.getText(),DiagnosaAwal.getText(),Alasan.getText(),KeluhanUtama.getText(),PemeriksaanFisik.getText(),JalannyaPenyakit.getText(),
                     PemeriksaanRad.getText(),HasilLaborat.getText(),TindakanSelamaDiRS.getText(),ObatSelamaDiRS.getText(),DiagnosaUtama.getText(),KodeDiagnosaUtama.getText(),
@@ -1937,7 +1947,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                     ProsedurSekunder1.getText(),KodeProsedurSekunder1.getText(),ProsedurSekunder2.getText(),KodeProsedurSekunder2.getText(),ProsedurSekunder3.getText(), 
                     KodeProsedurSekunder3.getText(),Alergi.getText(),Diet.getText(),LabBelum.getText(),Edukasi.getText(),CaraKeluar.getSelectedItem().toString(),KetKeluar.getText(),
                     Keadaan.getSelectedItem().toString(),KetKeadaanPulang.getText(),DIlanjutkan.getSelectedItem().toString(),KetDilanjutkan.getText(),
-                    Valid.SetTgl(Kontrol.getSelectedItem()+"")+" "+Kontrol.getSelectedItem().toString().substring(11,19),ObatPulang.getText()
+                    tglJam,ObatPulang.getText()
                 })==true){
                     tabMode.addRow(new String[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),KodeDokter.getText(),NamaDokter.getText(),KodeDokterPengirim.getText(),NamaDokterPengirim.getText(),
@@ -1948,10 +1958,11 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                         ProsedurUtama.getText(),KodeProsedurUtama.getText(),ProsedurSekunder1.getText(),KodeProsedurSekunder1.getText(),ProsedurSekunder2.getText(),KodeProsedurSekunder2.getText(),
                         ProsedurSekunder3.getText(),KodeProsedurSekunder3.getText(),Alergi.getText(),Diet.getText(),LabBelum.getText(),Edukasi.getText(),Keadaan.getSelectedItem().toString(),
                         KetKeadaanPulang.getText(),CaraKeluar.getSelectedItem().toString(),KetKeluar.getText(),DIlanjutkan.getSelectedItem().toString(),KetDilanjutkan.getText(),
-                        Valid.SetTgl(Kontrol.getSelectedItem()+"")+" "+Kontrol.getSelectedItem().toString().substring(11,19),ObatPulang.getText(),KdPj.getText(),CaraBayar.getText()
+                        tglJam,ObatPulang.getText(),KdPj.getText(),CaraBayar.getText()
                     });
                     emptTeks();
                     LCount.setText(""+tabMode.getRowCount());
+                    JOptionPane.showMessageDialog(null, "Resume medis pasien berhasil disimpan!");
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -3096,6 +3107,16 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     }
 
     private void ganti() {
+        String tglJam = Valid.SetTglJam(Kontrol.getSelectedItem().toString(), "dd-MM-yyyy HH:mm:ss");
+        
+        if (tglJam.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Format Tanggal pada kolom \"Tanggal & Jam Kontrol\" salah!");
+            
+            Kontrol.requestFocus();
+
+            return;
+        }
+        
         if(Sequel.mengedittf("resume_pasien_ranap","no_rawat=?","no_rawat=?,kd_dokter=?,diagnosa_awal=?,alasan=?,keluhan_utama=?,pemeriksaan_fisik=?,jalannya_penyakit=?,pemeriksaan_penunjang=?,"+
                 "hasil_laborat=?,tindakan_dan_operasi=?,obat_di_rs=?,diagnosa_utama=?,kd_diagnosa_utama=?,diagnosa_sekunder=?,kd_diagnosa_sekunder=?,diagnosa_sekunder2=?,kd_diagnosa_sekunder2=?,"+
                 "diagnosa_sekunder3=?,kd_diagnosa_sekunder3=?,diagnosa_sekunder4=?,kd_diagnosa_sekunder4=?,prosedur_utama=?,kd_prosedur_utama=?,prosedur_sekunder=?,kd_prosedur_sekunder=?,"+
@@ -3108,7 +3129,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                 ProsedurSekunder1.getText(),KodeProsedurSekunder1.getText(),ProsedurSekunder2.getText(),KodeProsedurSekunder2.getText(),ProsedurSekunder3.getText(), 
                 KodeProsedurSekunder3.getText(),Alergi.getText(),Diet.getText(),LabBelum.getText(),Edukasi.getText(),CaraKeluar.getSelectedItem().toString(),KetKeluar.getText(),
                 Keadaan.getSelectedItem().toString(),KetKeadaanPulang.getText(),DIlanjutkan.getSelectedItem().toString(),KetDilanjutkan.getText(),
-                Valid.SetTgl(Kontrol.getSelectedItem()+"")+" "+Kontrol.getSelectedItem().toString().substring(11,19),ObatPulang.getText(),
+                tglJam,ObatPulang.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                 })==true){
                     
@@ -3162,15 +3183,23 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                    tbObat.setValueAt(KetKeluar.getText(),tbObat.getSelectedRow(),47);
                    tbObat.setValueAt(DIlanjutkan.getSelectedItem().toString(),tbObat.getSelectedRow(),48);
                    tbObat.setValueAt(KetDilanjutkan.getText(),tbObat.getSelectedRow(),49);
-                   tbObat.setValueAt(Valid.SetTgl(Kontrol.getSelectedItem()+"")+" "+Kontrol.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),50);
+                   tbObat.setValueAt(tglJam,tbObat.getSelectedRow(),50);
                    tbObat.setValueAt(ObatPulang.getText(),tbObat.getSelectedRow(),51);
                    tbObat.setValueAt(KdPj.getText(),tbObat.getSelectedRow(),52);
                    tbObat.setValueAt(CaraBayar.getText(),tbObat.getSelectedRow(),53);
                    emptTeks();
+                   
+                   JOptionPane.showMessageDialog(null, "Resume medis pasien telah diganti!");
             }
     }
 
     private void hapus() {
+        int promptHapus = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus resume medis pasien?", "Hapus resume medis", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        
+        if (promptHapus != JOptionPane.YES_OPTION) {
+            return;
+        }
+        
         if(Sequel.queryu2tf("delete from resume_pasien_ranap where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){

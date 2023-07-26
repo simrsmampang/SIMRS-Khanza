@@ -1202,6 +1202,25 @@ public final class validasi {
         return s;
     }
     
+    public String SetTglJam(String original, String pattern)
+    {
+        original = original.replaceAll("'", "");
+        String out = "";
+        
+        SimpleDateFormat dfIn = new SimpleDateFormat(pattern);
+        SimpleDateFormat dfOut = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        
+        try {
+            Date date = dfIn.parse(original);
+            
+            out = dfOut.format(date);
+        } catch (ParseException ex) {
+            System.out.println("Notif : " + ex);
+        }
+        
+        return out;
+    }
+    
     public String SetTglJam(String original){
         original=original.replaceAll("'","");
         s = "";
