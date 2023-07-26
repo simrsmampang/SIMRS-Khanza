@@ -1538,7 +1538,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             
             case 1:
                 for (i = 0; i < tbBelumDitagihkan.getRowCount(); i++) {
-                    tbBelumDitagihkan.setValueAt(true, i, 0);
+                    tbBelumDitagihkan.setValueAt(false, i, 0);
                 }
             break;
         }

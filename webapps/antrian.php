@@ -88,27 +88,35 @@
         <tr class='head2' border='0'>
             <td width='35%' align='center'><font size='6' color='#DD0000'><b>Panggilan Poli</b></font></td><td><font size='6' color='#DD0000'><b>:</b></font></td>
             <td width='64%' align='center'>
-            <?php 
-                $_sql="select * from antripoli where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'" ;  
-                $hasil=bukaquery($_sql);
-            ?>
-            <?php while ($data = mysqli_fetch_array($hasil)): ?>
-                <div style='font-size: 32px; color: #DD0000; font-weight: 700; padding-top: 1rem; padding-bottom: 1rem'>
-                    <?= getOne("select concat(reg_periksa.no_reg,' ',reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'"); ?>
+                <?php 
+                    $_sql="select * from antripoli where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'" ;  
+                    $hasil=bukaquery($_sql);
+                ?>
+                <?php while ($data = mysqli_fetch_array($hasil)): ?>
+                    <div style='font-size: 32px; color: #DD0000; font-weight: 700; padding-top: 1rem; padding-bottom: 1rem'>
+                        <?= getOne("select concat(reg_periksa.no_reg,' ',reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'"); ?>
 
-                    <?php if ($data['status'] == "1"): ?>
-                        <script>
-                            document.addEventListener('DOMContentLoaded', e => {
-                                let noAntrian = '<?= getOne("select concat(reg_periksa.no_reg,', ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'"); ?>'
-                                let poli = '<?= getOne("select nm_poli from poliklinik where kd_poli = '" . $kd_poli . "'"); ?>'
+                        <?php if ($data['status'] == "1"): ?>
+                            <script>
+                                if (document.readyState !== 'loading') {
+                                    console.log('Document has been ready, calling function...')
+                                    callPasien()
+                                } else {
+                                    document.addEventListener('DOMContentLoaded', e => callPasien())
+                                }
 
-                                responsiveVoice.speak(`Nomor antrian ${noAntrian}, ${poli}`, 'Indonesian Male', { rate: 0.8 })
-                            })
-                        </script>
-                        <?php bukaquery2("update antripoli set antripoli.status='0' where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'"); ?>
-                    <?php endif; ?>
-                </div>
-            <?php endwhile; ?>
+                                function callPasien()
+                                {
+                                    let noAntrian = '<?= strtolower(getOne("select concat(reg_periksa.no_reg,', ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'")); ?>'
+                                    let poli = '<?= strtolower(getOne("select nm_poli from poliklinik where kd_poli = '" . $kd_poli . "'")); ?>'
+    
+                                    responsiveVoice.speak(`Nomor antrian ${noAntrian}, ${poli}`, 'Indonesian Female', { rate: 0.7 })
+                                }
+                            </script>
+                            <?php bukaquery2("update antripoli set antripoli.status='0' where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'"); ?>
+                        <?php endif; ?>
+                    </div>
+                <?php endwhile; ?>
             </td>
         </tr>
         </tr>
