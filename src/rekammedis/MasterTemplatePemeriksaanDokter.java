@@ -1,5 +1,6 @@
 package rekammedis;
 import fungsi.WarnaTable;
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -16,7 +17,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabModeDiagnosa,tabModeProsedur;
+    private final DefaultTableModel tabMode,tabModeDiagnosa,tabModeProsedur,tabModeRadiologi,tabModePK,tabModeDetailPK,
+                tabModePermintaanPA,tabModeMB,tabModeDetailMB,tabModeObatUmum,tabModeObatRacikan,tabModeDetailObatRacikan;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -25,6 +27,9 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
     private int i,index=0,jml=0;
     private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek;
     private boolean[] pilih;
+    private WarnaTable2 warna=new WarnaTable2();
+    private WarnaTable2 warna2=new WarnaTable2();
+    private WarnaTable2 warna3=new WarnaTable2();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -131,6 +136,400 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         }
         tbProsedur.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeRadiologi=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPermintaanRadiologi.setModel(tabModeRadiologi);        
+        
+        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+        tbPermintaanRadiologi.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPermintaanRadiologi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for(i = 0; i < 3; i++) {
+            TableColumn column = tbPermintaanRadiologi.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(130);
+            }else if(i==2){
+                column.setPreferredWidth(480);
+            }
+        }
+        tbPermintaanRadiologi.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModePK=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPermintaanPK.setModel(tabModePK);
+
+        tbPermintaanPK.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPermintaanPK.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for(i = 0; i < 3; i++) {
+            TableColumn column = tbPermintaanPK.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(100);
+            }else if(i==2){
+                column.setPreferredWidth(520);
+            }
+        }
+        tbPermintaanPK.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeDetailPK=new DefaultTableModel(null,new Object[]{"P","Pemeriksaan","Satuan","Nilai Rujukan","id_template"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                    boolean a = false;
+                    if (colIndex==0) {
+                        a=true;
+                    }
+                    return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }              
+        };
+        
+        tbDetailPK.setModel(tabModeDetailPK);
+        //tampilPr();
+
+        tbDetailPK.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbDetailPK.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 5; i++) {
+            TableColumn column = tbDetailPK.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(356);
+            }else if(i==2){
+                column.setPreferredWidth(50);
+            }else if(i==3){
+                column.setPreferredWidth(345);
+            }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);                
+            }
+        }
+        
+        tbDetailPK.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModePermintaanPA=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPermintaanPA.setModel(tabModePermintaanPA);
+
+        tbPermintaanPA.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPermintaanPA.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for(i = 0; i < 3; i++) {
+            TableColumn column = tbPermintaanPA.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(100);
+            }else if(i==2){
+                column.setPreferredWidth(652);
+            }
+        }
+        tbPermintaanPA.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeMB=new DefaultTableModel(null,new Object[]{"P","Kode Periksa","Nama Pemeriksaan"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPermintaanMB.setModel(tabModeMB);
+
+        tbPermintaanMB.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPermintaanMB.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        for(i = 0; i < 3; i++) {
+            TableColumn column = tbPermintaanMB.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(100);
+            }else if(i==2){
+                column.setPreferredWidth(520);
+            }
+        }
+        tbPermintaanMB.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeDetailMB=new DefaultTableModel(null,new Object[]{"P","Pemeriksaan","Satuan","Nilai Rujukan","id_template"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                    boolean a = false;
+                    if (colIndex==0) {
+                        a=true;
+                    }
+                    return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }              
+        };
+        
+        tbDetailMB.setModel(tabModeDetailMB);
+        //tampilPr();
+
+        tbDetailMB.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbDetailMB.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 5; i++) {
+            TableColumn column = tbDetailMB.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(356);
+            }else if(i==2){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);  
+            }else if(i==3){
+                column.setPreferredWidth(345);
+            }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);                
+            }
+        }
+        tbDetailMB.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeObatUmum=new DefaultTableModel(null,new Object[]{
+                "K","Jumlah","Kode Barang","Nama Barang","Satuan","Komposisi",
+                "Harga(Rp)","Jenis Obat","Aturan Pakai","I.F.","H.Beli","Stok"
+            }){
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if ((colIndex==0)||(colIndex==1)||(colIndex==8)) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Object.class, 
+                java.lang.Object.class,java.lang.Object.class,java.lang.Double.class,java.lang.Double.class
+             };
+             /*Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+             };*/
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbResep.setModel(tabModeObatUmum);
+        //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
+        tbResep.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        for (i = 0; i < 12; i++) {
+            TableColumn column = tbResep.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(45);
+            }else if(i==2){
+                column.setPreferredWidth(70);
+            }else if(i==3){
+                column.setPreferredWidth(240);
+            }else if(i==4){
+                column.setPreferredWidth(75);
+            }else if(i==5){
+                column.setPreferredWidth(110);
+            }else if(i==6){
+                column.setPreferredWidth(85);
+            }else if(i==7){
+                column.setPreferredWidth(110);
+            }else if(i==8){
+                column.setPreferredWidth(130);
+            }else if(i==9){
+                column.setPreferredWidth(100);
+            }else if(i==10){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==11){
+                column.setPreferredWidth(50);
+            }                 
+        }
+        warna.kolom=1;
+        tbResep.setDefaultRenderer(Object.class,warna);
+        
+        tabModeObatRacikan=new DefaultTableModel(null,new Object[]{
+                "No","Nama Racikan","Kode Racik","Metode Racik","Jml.Racik",
+                "Aturan Pakai","Keterangan"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = true;
+                if ((colIndex==0)||(colIndex==2)||(colIndex==3)) {
+                    a=false;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+
+        tbObatRacikan.setModel(tabModeObatRacikan);
+        tbObatRacikan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbObatRacikan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);        
+        
+        for (i = 0; i < 7; i++) {
+            TableColumn column = tbObatRacikan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(25);
+            }else if(i==1){
+                column.setPreferredWidth(250);
+            }else if(i==2){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==3){
+                column.setPreferredWidth(100);
+            }else if(i==4){
+                column.setPreferredWidth(60);
+            }else if(i==5){
+                column.setPreferredWidth(200);
+            }else if(i==6){
+                column.setPreferredWidth(250);
+            }
+        }
+
+        warna2.kolom=4;
+        tbObatRacikan.setDefaultRenderer(Object.class,warna2);
+        
+        tabModeDetailObatRacikan=new DefaultTableModel(null,new Object[]{
+                "No","Kode Barang","Nama Barang","Satuan","Harga(Rp)","H.Beli",
+                "Jenis Obat","Stok","Kps","P1","/","P2","Kandungan","Jml","I.F.",
+                "Komposisi"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if ((colIndex==9)||(colIndex==11)||(colIndex==12)||(colIndex==13)) {
+                    a=true;
+                }
+                return a;
+             }             
+             Class[] types = new Class[] {
+                java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
+                java.lang.Object.class,java.lang.Double.class,java.lang.Object.class,
+                java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+
+        tbDetailObatRacikan.setModel(tabModeDetailObatRacikan);
+        tbDetailObatRacikan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbDetailObatRacikan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);        
+        
+        for (i = 0; i < 16; i++) {
+            TableColumn column = tbDetailObatRacikan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(25);
+            }else if(i==1){
+                column.setPreferredWidth(75);
+            }else if(i==2){
+                column.setPreferredWidth(240);
+            }else if(i==3){
+                column.setPreferredWidth(45);
+            }else if(i==4){
+                column.setPreferredWidth(85);
+            }else if(i==5){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==6){
+                column.setPreferredWidth(110);
+            }else if(i==7){
+                column.setPreferredWidth(50);
+            }else if(i==8){
+                column.setPreferredWidth(40);
+            }else if(i==9){
+                column.setPreferredWidth(25);
+            }else if(i==10){
+                column.setMinWidth(11);
+                column.setMaxWidth(11);
+            }else if(i==11){
+                column.setPreferredWidth(25);
+            }else if(i==12){
+                column.setPreferredWidth(60);
+            }else if(i==13){
+                column.setPreferredWidth(40);
+            }else if(i==14){
+                column.setPreferredWidth(100);
+            }else if(i==15){
+                column.setPreferredWidth(150);
+            }
+        }
+
+        warna3.kolom=9;
+        tbDetailObatRacikan.setDefaultRenderer(Object.class,warna3);
 
         Kd.setDocument(new batasInput((byte)5).getKata(Kd));
         //Nm.setDocument(new batasInput((byte)50).getKata(Nm));      
@@ -210,44 +609,49 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         tbProsedur = new widget.Table();
         BtnCariPenyakit2 = new widget.Button();
         Scroll3 = new widget.ScrollPane();
-        tbDiagnosa2 = new widget.Table();
+        tbPermintaanRadiologi = new widget.Table();
         Diagnosa2 = new widget.TextBox();
         jLabel15 = new widget.Label();
         jLabel16 = new widget.Label();
         Diagnosa3 = new widget.TextBox();
         BtnCariPenyakit3 = new widget.Button();
         Scroll4 = new widget.ScrollPane();
-        tbDiagnosa3 = new widget.Table();
+        tbPermintaanPK = new widget.Table();
         Scroll5 = new widget.ScrollPane();
-        tbDiagnosa4 = new widget.Table();
+        tbDetailPK = new widget.Table();
         Diagnosa4 = new widget.TextBox();
         BtnCariPenyakit4 = new widget.Button();
         jLabel17 = new widget.Label();
         Diagnosa5 = new widget.TextBox();
         BtnCariPenyakit5 = new widget.Button();
         Scroll6 = new widget.ScrollPane();
-        tbDiagnosa5 = new widget.Table();
+        tbPermintaanPA = new widget.Table();
         jLabel18 = new widget.Label();
         Diagnosa6 = new widget.TextBox();
         BtnCariPenyakit6 = new widget.Button();
         Scroll7 = new widget.ScrollPane();
-        tbDiagnosa6 = new widget.Table();
+        tbPermintaanMB = new widget.Table();
         Diagnosa7 = new widget.TextBox();
         BtnCariPenyakit7 = new widget.Button();
         Scroll8 = new widget.ScrollPane();
-        tbDiagnosa7 = new widget.Table();
+        tbDetailMB = new widget.Table();
         jLabel19 = new widget.Label();
         BtnCariPenyakit8 = new widget.Button();
         Diagnosa8 = new widget.TextBox();
         Scroll9 = new widget.ScrollPane();
-        tbDiagnosa8 = new widget.Table();
+        tbResep = new widget.Table();
         jLabel20 = new widget.Label();
         Scroll10 = new widget.ScrollPane();
-        tbDiagnosa9 = new widget.Table();
+        tbObatRacikan = new widget.Table();
         Diagnosa10 = new widget.TextBox();
         BtnCariPenyakit10 = new widget.Button();
         Scroll11 = new widget.ScrollPane();
-        tbDiagnosa10 = new widget.Table();
+        tbDetailObatRacikan = new widget.Table();
+        jLabel21 = new widget.Label();
+        Diagnosa9 = new widget.TextBox();
+        BtnCariPenyakit9 = new widget.Button();
+        Scroll12 = new widget.ScrollPane();
+        tbPermintaanRadiologi1 = new widget.Table();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -293,7 +697,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(700, 2483));
+        FormInput.setPreferredSize(new java.awt.Dimension(700, 2966));
         FormInput.setLayout(null);
 
         label12.setText("No.Template :");
@@ -586,8 +990,8 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbDiagnosa2.setName("tbDiagnosa2"); // NOI18N
-        Scroll3.setViewportView(tbDiagnosa2);
+        tbPermintaanRadiologi.setName("tbPermintaanRadiologi"); // NOI18N
+        Scroll3.setViewportView(tbPermintaanRadiologi);
 
         FormInput.add(Scroll3);
         Scroll3.setBounds(16, 1027, 670, 116);
@@ -612,7 +1016,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         jLabel16.setText("Permintaan Laborat Patologi Klinis :");
         jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
-        jLabel16.setBounds(20, 1160, 190, 23);
+        jLabel16.setBounds(16, 1150, 190, 23);
 
         Diagnosa3.setHighlighter(null);
         Diagnosa3.setName("Diagnosa3"); // NOI18N
@@ -622,7 +1026,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa3);
-        Diagnosa3.setBounds(20, 1180, 640, 23);
+        Diagnosa3.setBounds(16, 1170, 640, 23);
 
         BtnCariPenyakit3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariPenyakit3.setMnemonic('1');
@@ -635,27 +1039,27 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariPenyakit3);
-        BtnCariPenyakit3.setBounds(660, 1180, 28, 23);
+        BtnCariPenyakit3.setBounds(658, 1170, 28, 23);
 
         Scroll4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
-        tbDiagnosa3.setName("tbDiagnosa3"); // NOI18N
-        Scroll4.setViewportView(tbDiagnosa3);
+        tbPermintaanPK.setName("tbPermintaanPK"); // NOI18N
+        Scroll4.setViewportView(tbPermintaanPK);
 
         FormInput.add(Scroll4);
-        Scroll4.setBounds(20, 1210, 670, 76);
+        Scroll4.setBounds(16, 1197, 670, 109);
 
         Scroll5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll5.setName("Scroll5"); // NOI18N
         Scroll5.setOpaque(true);
 
-        tbDiagnosa4.setName("tbDiagnosa4"); // NOI18N
-        Scroll5.setViewportView(tbDiagnosa4);
+        tbDetailPK.setName("tbDetailPK"); // NOI18N
+        Scroll5.setViewportView(tbDetailPK);
 
         FormInput.add(Scroll5);
-        Scroll5.setBounds(20, 1320, 670, 186);
+        Scroll5.setBounds(16, 1337, 670, 216);
 
         Diagnosa4.setHighlighter(null);
         Diagnosa4.setName("Diagnosa4"); // NOI18N
@@ -665,7 +1069,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa4);
-        Diagnosa4.setBounds(20, 1290, 640, 23);
+        Diagnosa4.setBounds(16, 1310, 640, 23);
 
         BtnCariPenyakit4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariPenyakit4.setMnemonic('1');
@@ -678,13 +1082,13 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariPenyakit4);
-        BtnCariPenyakit4.setBounds(660, 1290, 28, 23);
+        BtnCariPenyakit4.setBounds(658, 1310, 28, 23);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel17.setText("Permintaan Laborat Patologi Anatomi :");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(20, 1510, 250, 23);
+        jLabel17.setBounds(16, 1560, 250, 23);
 
         Diagnosa5.setHighlighter(null);
         Diagnosa5.setName("Diagnosa5"); // NOI18N
@@ -694,7 +1098,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa5);
-        Diagnosa5.setBounds(20, 1530, 640, 23);
+        Diagnosa5.setBounds(16, 1580, 640, 23);
 
         BtnCariPenyakit5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariPenyakit5.setMnemonic('1');
@@ -707,23 +1111,23 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariPenyakit5);
-        BtnCariPenyakit5.setBounds(660, 1530, 28, 23);
+        BtnCariPenyakit5.setBounds(658, 1580, 28, 23);
 
         Scroll6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll6.setName("Scroll6"); // NOI18N
         Scroll6.setOpaque(true);
 
-        tbDiagnosa5.setName("tbDiagnosa5"); // NOI18N
-        Scroll6.setViewportView(tbDiagnosa5);
+        tbPermintaanPA.setName("tbPermintaanPA"); // NOI18N
+        Scroll6.setViewportView(tbPermintaanPA);
 
         FormInput.add(Scroll6);
-        Scroll6.setBounds(20, 1560, 670, 76);
+        Scroll6.setBounds(16, 1607, 670, 126);
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel18.setText("Permintaan Laborat Mikrobiologi & Bio Molekuler :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(20, 1650, 270, 23);
+        jLabel18.setBounds(16, 1740, 270, 23);
 
         Diagnosa6.setHighlighter(null);
         Diagnosa6.setName("Diagnosa6"); // NOI18N
@@ -733,7 +1137,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa6);
-        Diagnosa6.setBounds(20, 1670, 640, 23);
+        Diagnosa6.setBounds(16, 1760, 640, 23);
 
         BtnCariPenyakit6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariPenyakit6.setMnemonic('1');
@@ -746,17 +1150,17 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariPenyakit6);
-        BtnCariPenyakit6.setBounds(660, 1670, 28, 23);
+        BtnCariPenyakit6.setBounds(658, 1760, 28, 23);
 
         Scroll7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll7.setName("Scroll7"); // NOI18N
         Scroll7.setOpaque(true);
 
-        tbDiagnosa6.setName("tbDiagnosa6"); // NOI18N
-        Scroll7.setViewportView(tbDiagnosa6);
+        tbPermintaanMB.setName("tbPermintaanMB"); // NOI18N
+        Scroll7.setViewportView(tbPermintaanMB);
 
         FormInput.add(Scroll7);
-        Scroll7.setBounds(20, 1700, 670, 76);
+        Scroll7.setBounds(16, 1787, 670, 109);
 
         Diagnosa7.setHighlighter(null);
         Diagnosa7.setName("Diagnosa7"); // NOI18N
@@ -766,7 +1170,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa7);
-        Diagnosa7.setBounds(20, 1780, 640, 23);
+        Diagnosa7.setBounds(16, 1900, 640, 23);
 
         BtnCariPenyakit7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariPenyakit7.setMnemonic('1');
@@ -779,23 +1183,23 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariPenyakit7);
-        BtnCariPenyakit7.setBounds(660, 1780, 28, 23);
+        BtnCariPenyakit7.setBounds(658, 1900, 28, 23);
 
         Scroll8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll8.setName("Scroll8"); // NOI18N
         Scroll8.setOpaque(true);
 
-        tbDiagnosa7.setName("tbDiagnosa7"); // NOI18N
-        Scroll8.setViewportView(tbDiagnosa7);
+        tbDetailMB.setName("tbDetailMB"); // NOI18N
+        Scroll8.setViewportView(tbDetailMB);
 
         FormInput.add(Scroll8);
-        Scroll8.setBounds(20, 1810, 670, 106);
+        Scroll8.setBounds(16, 1927, 670, 216);
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel19.setText("Obat Umum/Non Racikan :");
+        jLabel19.setText("Obat Non Racikan :");
         jLabel19.setName("jLabel19"); // NOI18N
         FormInput.add(jLabel19);
-        jLabel19.setBounds(20, 1930, 270, 23);
+        jLabel19.setBounds(16, 2150, 270, 23);
 
         BtnCariPenyakit8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariPenyakit8.setMnemonic('1');
@@ -808,7 +1212,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariPenyakit8);
-        BtnCariPenyakit8.setBounds(660, 1950, 28, 23);
+        BtnCariPenyakit8.setBounds(658, 2170, 28, 23);
 
         Diagnosa8.setHighlighter(null);
         Diagnosa8.setName("Diagnosa8"); // NOI18N
@@ -818,33 +1222,33 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa8);
-        Diagnosa8.setBounds(20, 1950, 640, 23);
+        Diagnosa8.setBounds(16, 2170, 640, 23);
 
         Scroll9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll9.setName("Scroll9"); // NOI18N
         Scroll9.setOpaque(true);
 
-        tbDiagnosa8.setName("tbDiagnosa8"); // NOI18N
-        Scroll9.setViewportView(tbDiagnosa8);
+        tbResep.setName("tbResep"); // NOI18N
+        Scroll9.setViewportView(tbResep);
 
         FormInput.add(Scroll9);
-        Scroll9.setBounds(20, 1980, 670, 76);
+        Scroll9.setBounds(16, 2197, 670, 216);
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel20.setText("Obat Racikan :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(20, 2070, 270, 23);
+        jLabel20.setBounds(16, 2420, 270, 23);
 
         Scroll10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll10.setName("Scroll10"); // NOI18N
         Scroll10.setOpaque(true);
 
-        tbDiagnosa9.setName("tbDiagnosa9"); // NOI18N
-        Scroll10.setViewportView(tbDiagnosa9);
+        tbObatRacikan.setName("tbObatRacikan"); // NOI18N
+        Scroll10.setViewportView(tbObatRacikan);
 
         FormInput.add(Scroll10);
-        Scroll10.setBounds(20, 2090, 670, 50);
+        Scroll10.setBounds(16, 2440, 670, 96);
 
         Diagnosa10.setHighlighter(null);
         Diagnosa10.setName("Diagnosa10"); // NOI18N
@@ -854,7 +1258,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diagnosa10);
-        Diagnosa10.setBounds(20, 2150, 640, 23);
+        Diagnosa10.setBounds(16, 2540, 640, 23);
 
         BtnCariPenyakit10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariPenyakit10.setMnemonic('1');
@@ -867,17 +1271,56 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCariPenyakit10);
-        BtnCariPenyakit10.setBounds(660, 2150, 28, 23);
+        BtnCariPenyakit10.setBounds(658, 2540, 28, 23);
 
         Scroll11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll11.setName("Scroll11"); // NOI18N
         Scroll11.setOpaque(true);
 
-        tbDiagnosa10.setName("tbDiagnosa10"); // NOI18N
-        Scroll11.setViewportView(tbDiagnosa10);
+        tbDetailObatRacikan.setName("tbDetailObatRacikan"); // NOI18N
+        Scroll11.setViewportView(tbDetailObatRacikan);
 
         FormInput.add(Scroll11);
-        Scroll11.setBounds(20, 2180, 670, 106);
+        Scroll11.setBounds(16, 2567, 670, 216);
+
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel21.setText("Tindakan :");
+        jLabel21.setName("jLabel21"); // NOI18N
+        FormInput.add(jLabel21);
+        jLabel21.setBounds(16, 2790, 120, 23);
+
+        Diagnosa9.setHighlighter(null);
+        Diagnosa9.setName("Diagnosa9"); // NOI18N
+        Diagnosa9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Diagnosa9KeyPressed(evt);
+            }
+        });
+        FormInput.add(Diagnosa9);
+        Diagnosa9.setBounds(16, 2810, 640, 23);
+
+        BtnCariPenyakit9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCariPenyakit9.setMnemonic('1');
+        BtnCariPenyakit9.setToolTipText("Alt+1");
+        BtnCariPenyakit9.setName("BtnCariPenyakit9"); // NOI18N
+        BtnCariPenyakit9.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCariPenyakit9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariPenyakit9ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnCariPenyakit9);
+        BtnCariPenyakit9.setBounds(658, 2810, 28, 23);
+
+        Scroll12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
+        Scroll12.setName("Scroll12"); // NOI18N
+        Scroll12.setOpaque(true);
+
+        tbPermintaanRadiologi1.setName("tbPermintaanRadiologi1"); // NOI18N
+        Scroll12.setViewportView(tbPermintaanRadiologi1);
+
+        FormInput.add(Scroll12);
+        Scroll12.setBounds(16, 2840, 670, 116);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1384,6 +1827,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCariPenyakit10ActionPerformed
 
+    private void Diagnosa9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosa9KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Diagnosa9KeyPressed
+
+    private void BtnCariPenyakit9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPenyakit9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCariPenyakit9ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1414,6 +1865,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnCariPenyakit6;
     private widget.Button BtnCariPenyakit7;
     private widget.Button BtnCariPenyakit8;
+    private widget.Button BtnCariPenyakit9;
     private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
@@ -1428,6 +1880,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public widget.TextBox Diagnosa6;
     public widget.TextBox Diagnosa7;
     public widget.TextBox Diagnosa8;
+    public widget.TextBox Diagnosa9;
     private widget.PanelBiasa FormInput;
     private widget.TextBox Kd;
     private widget.TextBox KdDokter;
@@ -1439,6 +1892,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll10;
     private widget.ScrollPane Scroll11;
+    private widget.ScrollPane Scroll12;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -1465,6 +1919,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel20;
+    private widget.Label jLabel21;
     private widget.Label jLabel40;
     private widget.Label jLabel41;
     private widget.Label jLabel42;
@@ -1484,18 +1939,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.ScrollPane scrollPane5;
     private widget.ScrollPane scrollPane6;
     private widget.ScrollPane scrollPane7;
+    public widget.Table tbDetailMB;
+    public widget.Table tbDetailObatRacikan;
+    public widget.Table tbDetailPK;
     public widget.Table tbDiagnosa;
-    public widget.Table tbDiagnosa10;
-    public widget.Table tbDiagnosa2;
-    public widget.Table tbDiagnosa3;
-    public widget.Table tbDiagnosa4;
-    public widget.Table tbDiagnosa5;
-    public widget.Table tbDiagnosa6;
-    public widget.Table tbDiagnosa7;
-    public widget.Table tbDiagnosa8;
-    public widget.Table tbDiagnosa9;
     private widget.Table tbDokter;
+    public widget.Table tbObatRacikan;
+    public widget.Table tbPermintaanMB;
+    public widget.Table tbPermintaanPA;
+    public widget.Table tbPermintaanPK;
+    public widget.Table tbPermintaanRadiologi;
+    public widget.Table tbPermintaanRadiologi1;
     public widget.Table tbProsedur;
+    public widget.Table tbResep;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
