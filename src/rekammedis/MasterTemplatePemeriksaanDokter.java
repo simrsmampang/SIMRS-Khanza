@@ -18,7 +18,8 @@ import javax.swing.table.TableColumn;
 
 public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabModeDiagnosa,tabModeProsedur,tabModeRadiologi,tabModePK,tabModeDetailPK,
-                tabModePermintaanPA,tabModeMB,tabModeDetailMB,tabModeObatUmum,tabModeObatRacikan,tabModeDetailObatRacikan;
+                tabModePermintaanPA,tabModeMB,tabModeDetailMB,tabModeObatUmum,tabModeObatRacikan,tabModeDetailObatRacikan,
+                TabModeTindakan;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -530,6 +531,66 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
 
         warna3.kolom=9;
         tbDetailObatRacikan.setDefaultRenderer(Object.class,warna3);
+        
+        TabModeTindakan=new DefaultTableModel(null,new Object[]{
+            "P","Kode","Nama Perawatan","Kategori Perawatan","Tarif/Biaya","Bagian RS","BHP","JM Dokter","JM Perawat","KSO","Menejemen"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,  
+                java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Double.class
+             };
+             /*Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+             };*/
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbTindakan.setModel(TabModeTindakan);
+        tbTindakan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbTindakan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        for (i = 0; i < 11; i++) {
+            TableColumn column = tbTindakan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(90);
+            }else if(i==2){
+                column.setPreferredWidth(420);
+            }else if(i==3){
+                column.setPreferredWidth(150);
+            }else if(i==5){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==6){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==7){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==8){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==9){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==10){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else{
+                column.setPreferredWidth(90);
+            }
+        }
+        tbTindakan.setDefaultRenderer(Object.class, new WarnaTable());
 
         Kd.setDocument(new batasInput((byte)5).getKata(Kd));
         //Nm.setDocument(new batasInput((byte)50).getKata(Nm));      
@@ -651,7 +712,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         Diagnosa9 = new widget.TextBox();
         BtnCariPenyakit9 = new widget.Button();
         Scroll12 = new widget.ScrollPane();
-        tbPermintaanRadiologi1 = new widget.Table();
+        tbTindakan = new widget.Table();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -1316,8 +1377,8 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
         Scroll12.setName("Scroll12"); // NOI18N
         Scroll12.setOpaque(true);
 
-        tbPermintaanRadiologi1.setName("tbPermintaanRadiologi1"); // NOI18N
-        Scroll12.setViewportView(tbPermintaanRadiologi1);
+        tbTindakan.setName("tbTindakan"); // NOI18N
+        Scroll12.setViewportView(tbTindakan);
 
         FormInput.add(Scroll12);
         Scroll12.setBounds(16, 2840, 670, 116);
@@ -1949,9 +2010,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public widget.Table tbPermintaanPA;
     public widget.Table tbPermintaanPK;
     public widget.Table tbPermintaanRadiologi;
-    public widget.Table tbPermintaanRadiologi1;
     public widget.Table tbProsedur;
     public widget.Table tbResep;
+    public widget.Table tbTindakan;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {

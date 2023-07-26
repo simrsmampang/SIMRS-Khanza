@@ -9398,12 +9398,27 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }else{
             if(tbPetugas.getSelectedRow()!= -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                akses.setform("DlgReg");
-                ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
-                dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                dlgki.setLocationRelativeTo(internalFrame1);
-                dlgki.setPasien(Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?",TNoRM.getText()),Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs=?",KdDokter.getText()));
-                dlgki.setVisible(true);
+                variabel=Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs=?",KdDokter.getText());
+                if(!variabel.equals("")){
+                    akses.setform("DlgReg");
+                    ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
+                    dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    dlgki.setLocationRelativeTo(internalFrame1);
+                    dlgki.setPasien(Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?",TNoRM.getText()),variabel);   
+                    dlgki.setVisible(true);
+                }else{
+                    variabel=Sequel.cariIsi("select maping_dokter_pcare.kd_dokter from maping_dokter_pcare where maping_dokter_pcare.kd_dokter_pcare=?",KdDokter.getText());
+                    if(!variabel.equals("")){
+                        akses.setform("DlgReg");
+                        ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
+                        dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        dlgki.setLocationRelativeTo(internalFrame1);
+                        dlgki.setPasien(Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?",TNoRM.getText()),variabel);   
+                        dlgki.setVisible(true);
+                    }else{
+                       JOptionPane.showMessageDialog(null,"Maaf, Dokter tidak terdaftar di mapping dokter vklaim...!!!"); 
+                    } 
+                }       
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -9419,12 +9434,27 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }else{
             if(tbPetugas.getSelectedRow()!= -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                akses.setform("DlgReg");
-                ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
-                dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                dlgki.setLocationRelativeTo(internalFrame1);
-                dlgki.setPasien(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_rkm_medis=?",TNoRM.getText()),Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs=?",KdDokter.getText()));
-                dlgki.setVisible(true);
+                variabel=Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs=?",KdDokter.getText());
+                if(!variabel.equals("")){
+                    akses.setform("DlgReg");
+                    ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
+                    dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    dlgki.setLocationRelativeTo(internalFrame1);
+                    dlgki.setPasien(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_rkm_medis=?",TNoRM.getText()),variabel);   
+                    dlgki.setVisible(true);
+                }else{
+                    variabel=Sequel.cariIsi("select maping_dokter_pcare.kd_dokter from maping_dokter_pcare where maping_dokter_pcare.kd_dokter_pcare=?",KdDokter.getText());
+                    if(!variabel.equals("")){
+                        akses.setform("DlgReg");
+                        ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
+                        dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        dlgki.setLocationRelativeTo(internalFrame1);
+                        dlgki.setPasien(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_rkm_medis=?",TNoRM.getText()),variabel);   
+                        dlgki.setVisible(true);
+                    }else{
+                       JOptionPane.showMessageDialog(null,"Maaf, Dokter tidak terdaftar di mapping dokter vklaim...!!!"); 
+                    } 
+                }
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
