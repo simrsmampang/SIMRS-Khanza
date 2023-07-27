@@ -7149,7 +7149,11 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                 if(AsalRujukan.getSelectedIndex()==0){
                     jeniskunjungan="1";
                 }else{
-                    jeniskunjungan="4";
+                    if(!NoSKDP.getText().equals("")){
+                        jeniskunjungan="3";
+                    }else{
+                        jeniskunjungan="4";
+                    }
                 }
             }else if(TujuanKunjungan.getSelectedItem().toString().trim().equals("2. Konsul Dokter")&&FlagProsedur.getSelectedItem().toString().trim().equals("")&&Penunjang.getSelectedItem().toString().trim().equals("")&&AsesmenPoli.getSelectedItem().toString().trim().equals("5. Tujuan Kontrol")){
                 jeniskunjungan="3";
