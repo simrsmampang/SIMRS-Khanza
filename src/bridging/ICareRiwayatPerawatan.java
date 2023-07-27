@@ -158,6 +158,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         LabelPoli6.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass6.add(LabelPoli6);
 
+        KdDPJPLayanan.setEditable(false);
         KdDPJPLayanan.setBackground(new java.awt.Color(245, 250, 240));
         KdDPJPLayanan.setHighlighter(null);
         KdDPJPLayanan.setName("KdDPJPLayanan"); // NOI18N
