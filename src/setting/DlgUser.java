@@ -233,7 +233,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[J]Laporan Tahunan Penolakan Anjuran Medis","[M]Master Template Laporan Operasi","[M]Dokumentasi Tindakan ESWL","[M]Check List Kriteria Masuk ICU",
                 "[M]Check List Kriteria Keluar ICU","[A]Akses Ke Dokter Lain Rawat Jalan","[M]Follow Up DBD","[M]Penilaian Lanjutan Risiko Jatuh Neonatus","[K]Persetujuan Pengajuan Biaya",
                 "[J]Pemeriksaan Fisik Ralan Per Penyakit","[M]Penilaian Lanjutan Risiko Jatuh Geriatri","[M]Pemantauan EWS Pasien Neonatus","[K]Validasi Persetujuan Pengajuan Biaya",
-                "[L]Riwayat Perawatan ICare BPJS","[K]Rekap Pengajuan Biaya","[M]Penilaian Awal Medis Ralan Kulit Kelamin"
+                "[L]Riwayat Perawatan ICare BPJS","[K]Rekap Pengajuan Biaya","[M]Penilaian Awal Medis Ralan Kulit & Kelamin"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -2885,7 +2885,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(134);
                     break;
                 case 971:
-                    column.setPreferredWidth(220);
+                    column.setPreferredWidth(234);
                     break;
                 default:
                     column.setPreferredWidth(135);

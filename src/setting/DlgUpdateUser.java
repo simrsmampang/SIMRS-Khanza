@@ -4061,8 +4061,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[M]Pemantauan EWS Pasien Neonatus",pemantauan_ews_neonatus});
         }
         
-        if("[M]Penilaian Awal Medis Ralan Kulit Kelamin".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[M]Penilaian Awal Medis Ralan Kulit Kelamin",penilaian_awal_medis_ralan_kulit_kelamin});
+        if("[M]Penilaian Awal Medis Ralan Kulit & Kelamin".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Penilaian Awal Medis Ralan Kulit & Kelamin",penilaian_awal_medis_ralan_kulit_kelamin});
         }
         
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7948,7 +7948,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pemantauan_ews_neonatus='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[M]Penilaian Awal Medis Ralan Kulit Kelamin".equals(tbUser.getValueAt(i,1).toString())){
+            if("[M]Penilaian Awal Medis Ralan Kulit & Kelamin".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_medis_ralan_kulit_kelamin='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
