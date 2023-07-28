@@ -300,7 +300,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
             System.out.println("JSON : "+requestJson+"\n");
 	    requestEntity = new HttpEntity(requestJson,headers);
             requestJson= mapper.writeValueAsString(api.getRest().exchange(link+"/api/rs/validate", HttpMethod.POST, requestEntity,Object.class).getBody());
-            System.out.println("URL:"+link+"/api/rs/validate");
+            System.out.println("URL:"+link+"/validate");
             System.out.println("JSON : "+requestJson);
             root = mapper.readTree(requestJson);
             nameNode = root.path("metaData");

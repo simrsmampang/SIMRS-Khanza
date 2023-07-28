@@ -9062,7 +9062,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             if(tbKasirRalan2.getSelectedRow()!= -1){
                 if(Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString())>0){
                     JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
-                }else{                    
+                }else{      
+                    dlgrwjl2.emptTeks();
                     dlgrwjl2.isCek();
                     dlgrwjl2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgrwjl2.setLocationRelativeTo(internalFrame1);
@@ -13194,7 +13195,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             if(tbKasirRalan.getSelectedRow()!= -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                variabel=Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
+                variabel=Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter_bpjs from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
                 if(!variabel.equals("")){
                     akses.setform("DlgReg");
                     ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
@@ -13203,7 +13204,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     dlgki.setPasien(Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?",TNoRMCari.getText()),variabel);   
                     dlgki.setVisible(true);
                 }else{
-                    variabel=Sequel.cariIsi("select maping_dokter_pcare.kd_dokter from maping_dokter_pcare where maping_dokter_pcare.kd_dokter_pcare=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
+                    variabel=Sequel.cariIsi("select maping_dokter_pcare.kd_dokter_pcare from maping_dokter_pcare where maping_dokter_pcare.kd_dokter=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
                     if(!variabel.equals("")){
                         akses.setform("DlgReg");
                         ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
@@ -13212,7 +13213,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         dlgki.setPasien(Sequel.cariIsi("select pasien.no_ktp from pasien where pasien.no_rkm_medis=?",TNoRMCari.getText()),variabel);   
                         dlgki.setVisible(true);
                     }else{
-                       JOptionPane.showMessageDialog(null,"Maaf, Dokter tidak terdaftar di mapping dokter vklaim...!!!"); 
+                       JOptionPane.showMessageDialog(null,"Maaf, Dokter tidak terdaftar di mapping dokter BPJS...!!!"); 
                     } 
                 }
                 this.setCursor(Cursor.getDefaultCursor());
@@ -13230,7 +13231,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             if(tbKasirRalan.getSelectedRow()!= -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                variabel=Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
+                variabel=Sequel.cariIsi("select maping_dokter_dpjpvclaim.kd_dokter_bpjs from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
                 if(!variabel.equals("")){
                     akses.setform("DlgReg");
                     ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
@@ -13239,7 +13240,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     dlgki.setPasien(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_rkm_medis=?",TNoRMCari.getText()),variabel);   
                     dlgki.setVisible(true);
                 }else{
-                    variabel=Sequel.cariIsi("select maping_dokter_pcare.kd_dokter from maping_dokter_pcare where maping_dokter_pcare.kd_dokter_pcare=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
+                    variabel=Sequel.cariIsi("select maping_dokter_pcare.kd_dokter_pcare from maping_dokter_pcare where maping_dokter_pcare.kd_dokter=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
                     if(!variabel.equals("")){
                         akses.setform("DlgReg");
                         ICareRiwayatPerawatan dlgki=new ICareRiwayatPerawatan(null,false);
@@ -13248,7 +13249,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         dlgki.setPasien(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_rkm_medis=?",TNoRMCari.getText()),variabel);   
                         dlgki.setVisible(true);
                     }else{
-                       JOptionPane.showMessageDialog(null,"Maaf, Dokter tidak terdaftar di mapping dokter vklaim...!!!"); 
+                       JOptionPane.showMessageDialog(null,"Maaf, Dokter tidak terdaftar di mapping dokter BPJS...!!!"); 
                     } 
                 }
                 this.setCursor(Cursor.getDefaultCursor());
