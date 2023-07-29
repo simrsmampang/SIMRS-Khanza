@@ -318,7 +318,7 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
         label11 = new widget.Label();
         TglAsuhan = new widget.Tanggal();
         jLabel41 = new widget.Label();
-        Status = new widget.ComboBox();
+        StatusNutrisi = new widget.ComboBox();
         jLabel108 = new widget.Label();
         scrollPane17 = new widget.ScrollPane();
         Diagnosis = new widget.TextArea();
@@ -993,15 +993,15 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
         FormInput.add(jLabel41);
         jLabel41.setBounds(44, 290, 90, 23);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Skor < 2", "Skor >= 2" }));
-        Status.setName("Status"); // NOI18N
-        Status.addKeyListener(new java.awt.event.KeyAdapter() {
+        StatusNutrisi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Skor < 2", "Skor >= 2" }));
+        StatusNutrisi.setName("StatusNutrisi"); // NOI18N
+        StatusNutrisi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                StatusKeyPressed(evt);
+                StatusNutrisiKeyPressed(evt);
             }
         });
-        FormInput.add(Status);
-        Status.setBounds(121, 290, 100, 23);
+        FormInput.add(StatusNutrisi);
+        StatusNutrisi.setBounds(121, 290, 100, 23);
 
         jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel108.setText("Diagnosis Kerja :");
@@ -1398,10 +1398,9 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
         }else if(RPO.getText().trim().equals("")){
             Valid.textKosong(RPO,"Riwayat Pengunaan obat");
         }else{
-            
             if(Sequel.menyimpantf("penilaian_medis_ralan_kulitdankelamin","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",27,new String[]{
                     TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),RPK.getText(),Kesadaran.getSelectedItem().toString(),Status.getSelectedItem().toString(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),Nyeri.getText(),GCS.getText(),
+                    KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),RPK.getText(),Kesadaran.getSelectedItem().toString(),StatusNutrisi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),Nyeri.getText(),GCS.getText(),
                     Tindakan.getText(),Pemeriksaan.getText(),Diagnosis.getText(),Diagnosis2.getText(),
                     Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
                 })==true){
@@ -1769,7 +1768,7 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
-        Valid.pindah(evt,RR,Nyeri);
+        Valid.pindah(evt,StatusNutrisi,Nyeri);
     }//GEN-LAST:event_BBKeyPressed
 
     private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
@@ -1781,11 +1780,11 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,Status,Nadi);
+        Valid.pindah(evt,Kesadaran,Nadi);
     }//GEN-LAST:event_TDKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
-        Valid.pindah(evt,Suhu,BB);
+        Valid.pindah(evt,Suhu,StatusNutrisi);
     }//GEN-LAST:event_RRKeyPressed
 
     private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
@@ -1797,15 +1796,15 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
     }//GEN-LAST:event_KeluhanUtamaKeyPressed
 
     private void RPDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPDKeyPressed
-        Valid.pindah2(evt,RPS,RPO);
+        Valid.pindah2(evt,RPO,Kesadaran);
     }//GEN-LAST:event_RPDKeyPressed
 
     private void RPOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPOKeyPressed
-        Valid.pindah2(evt,RPD,RPK);
+        Valid.pindah2(evt,RPK,RPD);
     }//GEN-LAST:event_RPOKeyPressed
 
     private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
-        Valid.pindah(evt,Nyeri,Pemeriksaan);
+        Valid.pindah(evt,Nyeri,Statusderma);
     }//GEN-LAST:event_GCSKeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
@@ -1815,11 +1814,11 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void RPSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPSKeyPressed
-        Valid.pindah2(evt,KeluhanUtama,RPD);
+        Valid.pindah2(evt,KeluhanUtama,RPK);
     }//GEN-LAST:event_RPSKeyPressed
 
     private void KesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesadaranKeyPressed
-        Valid.pindah(evt,RPK,Status);
+        Valid.pindah(evt,RPD,TD);
     }//GEN-LAST:event_KesadaranKeyPressed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
@@ -1827,11 +1826,11 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
     }//GEN-LAST:event_NyeriKeyPressed
 
     private void PemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanKeyPressed
-        Valid.pindah2(evt,Edukasi,Diagnosis);
+        Valid.pindah2(evt,Statusderma,Diagnosis);
     }//GEN-LAST:event_PemeriksaanKeyPressed
 
     private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
-        Valid.pindah2(evt,Diagnosis2,BtnSimpan);
+        Valid.pindah2(evt,Tindakan,BtnSimpan);
     }//GEN-LAST:event_EdukasiKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
@@ -1869,24 +1868,24 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
-    private void StatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusKeyPressed
-         Valid.pindah2(evt,Kesadaran,TD);
-    }//GEN-LAST:event_StatusKeyPressed
+    private void StatusNutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusNutrisiKeyPressed
+         Valid.pindah(evt,RR,BB);
+    }//GEN-LAST:event_StatusNutrisiKeyPressed
 
     private void DiagnosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKeyPressed
          Valid.pindah2(evt,Pemeriksaan,Diagnosis2);
     }//GEN-LAST:event_DiagnosisKeyPressed
 
     private void Diagnosis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosis2KeyPressed
-         Valid.pindah2(evt,Diagnosis,Edukasi);
+         Valid.pindah2(evt,Diagnosis,Permasalahan);
     }//GEN-LAST:event_Diagnosis2KeyPressed
 
     private void RPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPKKeyPressed
-        // TODO add your handling code here:
+         Valid.pindah2(evt,RPS,RPO);
     }//GEN-LAST:event_RPKKeyPressed
 
     private void StatusdermaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusdermaKeyPressed
-        // TODO add your handling code here:
+         Valid.pindah2(evt,GCS,Pemeriksaan);
     }//GEN-LAST:event_StatusdermaKeyPressed
 
     private void PermasalahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PermasalahanKeyPressed
@@ -1956,7 +1955,7 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
     private widget.TextArea RPS;
     private widget.TextBox RR;
     private widget.ScrollPane Scroll;
-    private widget.ComboBox Status;
+    private widget.ComboBox StatusNutrisi;
     private widget.TextArea Statusderma;
     private widget.TextBox Suhu;
     private widget.TextBox TCari;
@@ -2119,7 +2118,7 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
         RPO.setText("");
         RPK.setText("");
         Kesadaran.setSelectedIndex(0);
-        Status.setSelectedIndex(0);
+        StatusNutrisi.setSelectedIndex(0);
         TD.setText("");
         Nadi.setText("");
         Suhu.setText("");
@@ -2157,7 +2156,7 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
             RPO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             RPK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             Kesadaran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Status.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            StatusNutrisi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
@@ -2241,7 +2240,8 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
         if(Sequel.queryu2tf("delete from penilaian_medis_ralan_kulitdankelamin where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
-            tampil();
+            tabMode.removeRow(tbObat.getSelectedRow());
+            LCount.setText(""+tabMode.getRowCount());
             TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
@@ -2250,7 +2250,7 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
 
     private void ganti() {
         if(Sequel.mengedittf("penilaian_medis_ralan_kulitdankelamin","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpd=?,rpo=?,rpk=?,kesadaran=?,status=?,td=?,nadi=?,suhu=?,rr=?,bb=?,nyeri=?,gcs=?,statusderma=?,pemeriksaan=?,diagnosis=?,diagnosis2=?,permasalahan=?,terapi=?,tindakan=?,edukasi=?",28,new String[]{
-                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),RPK.getText(),Kesadaran.getSelectedItem().toString(),Status.getSelectedItem().toString(),TD.getText(),Nadi.getText(),
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),RPK.getText(),Kesadaran.getSelectedItem().toString(),StatusNutrisi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),
                 Suhu.getText(),RR.getText(),BB.getText(),Nyeri.getText(),GCS.getText(),
                 Statusderma.getText(),Pemeriksaan.getText(),Diagnosis.getText(),Diagnosis2.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
