@@ -103,9 +103,9 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
             }else if(i==13){
                 column.setPreferredWidth(150);
             }else if(i==14){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(100);
             }else if(i==15){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
             }else if(i==16){
                 column.setPreferredWidth(90);
             }else if(i==17){
