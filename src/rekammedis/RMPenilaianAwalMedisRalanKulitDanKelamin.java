@@ -63,7 +63,7 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
             "Riwayat Penggunakan Obat","Riwayat Penyakit Keluarga","Kesadaran","Status Nutrisi","TD(mmHg)","Nadi(x/menit)","Suhu","RR(x/menit)","BB(Kg)","Nyeri","GCS",
-            "Keterangan Dermatovenereologis","Pemeriksaan","Diagnosis","Diagnosis Banding","Permasalahan","Terapi","Tindakan","Edukasi"
+            "Keterangan Dermatovenereologis","Pemeriksaan","Diagnosis Kerja","Diagnosis Banding","Permasalahan","Terapi","Tindakan","Edukasi"
         }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -103,27 +103,27 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
             }else if(i==13){
                 column.setPreferredWidth(150);
             }else if(i==14){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(150);
             }else if(i==15){
-                column.setPreferredWidth(100);
-            }else if(i==16){
-                column.setPreferredWidth(90);
-            }else if(i==17){
-                column.setPreferredWidth(50);
-            }else if(i==18){
                 column.setPreferredWidth(80);
-            }else if(i==19){
+            }else if(i==16){
+                column.setPreferredWidth(77);
+            }else if(i==17){
                 column.setPreferredWidth(60);
+            }else if(i==18){
+                column.setPreferredWidth(76);
+            }else if(i==19){
+                column.setPreferredWidth(35);
             }else if(i==20){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(69);
             }else if(i==21){
-                column.setPreferredWidth(67);
+                column.setPreferredWidth(40);
             }else if(i==22){
                 column.setPreferredWidth(40);
             }else if(i==23){
                 column.setPreferredWidth(40);
             }else if(i==24){
-                column.setPreferredWidth(1000);
+                column.setPreferredWidth(300);
             }else if(i==25){
                 column.setPreferredWidth(300);
             }else if(i==26){
@@ -131,13 +131,13 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
             }else if(i==27){
                 column.setPreferredWidth(200);
             }else if(i==28){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(200);
             }else if(i==29){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==30){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(200);
             }else if(i==31){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
