@@ -1803,21 +1803,20 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());          
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            //param.put("lokalis",Sequel.cariGambar("select lokalis from gambar")); 
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            param.put("lokalis",Sequel.cariGambar("select gambar.lokalisortho from gambar")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
-            finger1=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger1","Pasien \n"+tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()+"\nNO RM "+(finger1.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),1).toString():finger1)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanKulitdankelamin.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Neurologi ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanKulitKelamin.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Kulit & Kelamin ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_kulitdankelamin.tanggal,"+
                 "penilaian_medis_ralan_kulitdankelamin.kd_dokter,penilaian_medis_ralan_kulitdankelamin.anamnesis,penilaian_medis_ralan_kulitdankelamin.hubungan,penilaian_medis_ralan_kulitdankelamin.keluhan_utama,penilaian_medis_ralan_kulitdankelamin.rps,penilaian_medis_ralan_kulitdankelamin.rpd,penilaian_medis_ralan_kulitdankelamin.rpo,penilaian_medis_ralan_kulitdankelamin.rpk,"+
                 "penilaian_medis_ralan_kulitdankelamin.kesadaran,penilaian_medis_ralan_kulitdankelamin.status,penilaian_medis_ralan_kulitdankelamin.td,penilaian_medis_ralan_kulitdankelamin.nadi,penilaian_medis_ralan_kulitdankelamin.suhu,penilaian_medis_ralan_kulitdankelamin.rr,penilaian_medis_ralan_kulitdankelamin.bb,penilaian_medis_ralan_kulitdankelamin.nyeri,penilaian_medis_ralan_kulitdankelamin.gcs,"+
                 "penilaian_medis_ralan_kulitdankelamin.statusderma,penilaian_medis_ralan_kulitdankelamin.pemeriksaan,penilaian_medis_ralan_kulitdankelamin.diagnosis,penilaian_medis_ralan_kulitdankelamin.diagnosis2,penilaian_medis_ralan_kulitdankelamin.permasalahan,penilaian_medis_ralan_kulitdankelamin.terapi,penilaian_medis_ralan_kulitdankelamin.tindakan,penilaian_medis_ralan_kulitdankelamin.edukasi,dokter.nm_dokter "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_medis_ralan_kulitdankelamin on reg_periksa.no_rawat=penilaian_medis_ralan_kulitdankelamin.no_rawat "+
-                "inner join dokter on penilaian_medis_ralan_kulitdankelamin.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_kulitdankelamin.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "inner join dokter on penilaian_medis_ralan_kulitdankelamin.kd_dokter=dokter.kd_dokter "+
+                "where penilaian_medis_ralan_kulitdankelamin.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
