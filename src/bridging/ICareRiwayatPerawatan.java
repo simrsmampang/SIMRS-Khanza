@@ -131,7 +131,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Perawatan ICare BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Perawatan ICare FKTL BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -230,7 +230,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnCariActionPerformed(null);
         }else{
-            //Valid.pindah(evt,NoKartu,BtnRegist);
+            Valid.pindah(evt,NoKartu,BtnKeluar);
         }
     }//GEN-LAST:event_BtnCariKeyPressed
 
@@ -293,6 +293,10 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
             headers.add("x-timestamp",utc);
             headers.add("x-signature",api.getHmac(utc));
             headers.add("user_key",koneksiDB.USERKEYAPIICARE());
+            //System.out.println("x-signature:"+api.getHmac(utc));
+            //System.out.println("x-timestamp:"+utc);
+            //System.out.println("x-cons-id:"+koneksiDB.CONSIDAPIICARE());
+            //System.out.println("user_key:"+koneksiDB.USERKEYAPIICARE());
             requestJson="{"+
                             "\"param\": \""+NoKartu.getText().trim()+"\","+
                             "\"kodedokter\": "+KdDPJPLayanan.getText().trim()+""+
