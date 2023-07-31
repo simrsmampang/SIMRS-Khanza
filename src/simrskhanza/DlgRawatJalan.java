@@ -97,6 +97,7 @@ import rekammedis.RMPenilaianAwalMedisRalanBedahMulut;
 import rekammedis.RMPenilaianAwalMedisRalanDewasa;
 import rekammedis.RMPenilaianAwalMedisRalanGeriatri;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
+import rekammedis.RMPenilaianAwalMedisRalanKulitDanKelamin;
 import rekammedis.RMPenilaianAwalMedisRalanMata;
 import rekammedis.RMPenilaianAwalMedisRalanNeurologi;
 import rekammedis.RMPenilaianAwalMedisRalanOrthopedi;
@@ -1565,6 +1566,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnAwalMedisBedah = new widget.Button();
         BtnAwalMedisBedahMulut = new widget.Button();
         BtnAwalMedisGeriatri = new widget.Button();
+        BtnAwalMedisKulitKelamin = new widget.Button();
         BtnRujukKeluar = new widget.Button();
         BtnCatatan = new widget.Button();
         BtnCatatanObservasiIGD = new widget.Button();
@@ -1780,7 +1782,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-07-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1794,7 +1796,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-07-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3507,7 +3509,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-07-2023" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-07-2023" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -4215,6 +4217,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnAwalMedisGeriatri);
+
+        BtnAwalMedisKulitKelamin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnAwalMedisKulitKelamin.setText("Awal Medis Kulit & Kelamin");
+        BtnAwalMedisKulitKelamin.setFocusPainted(false);
+        BtnAwalMedisKulitKelamin.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnAwalMedisKulitKelamin.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalMedisKulitKelamin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalMedisKulitKelamin.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalMedisKulitKelamin.setName("BtnAwalMedisKulitKelamin"); // NOI18N
+        BtnAwalMedisKulitKelamin.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnAwalMedisKulitKelamin.setRoundRect(false);
+        BtnAwalMedisKulitKelamin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAwalMedisKulitKelaminActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnAwalMedisKulitKelamin);
 
         BtnRujukKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnRujukKeluar.setText("Rujuk Keluar");
@@ -8600,6 +8619,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnPemantauanEWSNeonatusActionPerformed
 
+    private void BtnAwalMedisKulitKelaminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAwalMedisKulitKelaminActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianAwalMedisRalanKulitDanKelamin form=new RMPenilaianAwalMedisRalanKulitDanKelamin(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnAwalMedisKulitKelaminActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8635,6 +8671,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnAwalMedisGeriatri;
     private widget.Button BtnAwalMedisIGD;
     private widget.Button BtnAwalMedisKandungan;
+    private widget.Button BtnAwalMedisKulitKelamin;
     private widget.Button BtnAwalMedisMata;
     private widget.Button BtnAwalMedisNeurologi;
     private widget.Button BtnAwalMedisOrthopedi;
@@ -9557,6 +9594,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnPemantauanEWSNeonatus.setVisible(akses.getpemantauan_ews_neonatus()); 
         if(akses.getpemantauan_ews_neonatus()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAwalMedisKulitKelamin.setVisible(akses.getpenilaian_awal_medis_ralan_kulit_kelamin()); 
+        if(akses.getpenilaian_awal_medis_ralan_kulit_kelamin()==true){
             tinggi=tinggi+24;
         }
         FormMenu.setPreferredSize(new Dimension(195,(tinggi+10)));

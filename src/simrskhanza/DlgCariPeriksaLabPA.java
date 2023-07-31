@@ -34,6 +34,7 @@ import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import laporan.DlgBerkasRawat;
+import rekammedis.RMRiwayatPerawatan;
 
 public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -354,6 +355,7 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
         Tinggi300 = new javax.swing.JMenuItem();
         Tinggi350 = new javax.swing.JMenuItem();
         Tinggi400 = new javax.swing.JMenuItem();
+        ppRiwayat = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
@@ -604,6 +606,22 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(Tinggi400);
+
+        ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
+        ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRiwayat.setForeground(new java.awt.Color(50, 50, 50));
+        ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppRiwayat.setText("Riwayat Perawatan");
+        ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppRiwayat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppRiwayat.setName("ppRiwayat"); // NOI18N
+        ppRiwayat.setPreferredSize(new java.awt.Dimension(190, 26));
+        ppRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppRiwayatBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppRiwayat);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -914,7 +932,7 @@ public class DlgCariPeriksaLabPA extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255,250,250));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -2081,6 +2099,28 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         tbDokter.setRowHeight(22);
     }//GEN-LAST:event_Tinggi22ActionPerformed
 
+    private void ppRiwayatBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRiwayatBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(tbDokter.getSelectedRow()<= -1){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
+        }else {
+            if(Kd2.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu...!!!!");
+            }else{
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
+                datapasien=Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat=?",Kd2.getText());
+                resume.setNoRm(datapasien,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().replaceAll(datapasien+" ",""));
+                resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resume.setLocationRelativeTo(internalFrame1);
+                resume.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_ppRiwayatBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2164,6 +2204,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.panelisi panelisi2;
     private widget.panelisi panelisi3;
     private javax.swing.JMenuItem ppBerkasDigital;
+    private javax.swing.JMenuItem ppRiwayat;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane3;
@@ -2575,6 +2616,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         MnCetakNota.setEnabled(akses.getpemeriksaan_lab_pa());
         BtnHapus.setEnabled(akses.getpemeriksaan_lab_pa());
         BtnPrint.setEnabled(akses.getpemeriksaan_lab_pa());
+        ppRiwayat.setEnabled(akses.getresume_pasien());   
         ppBerkasDigital.setEnabled(akses.getberkas_digital_perawatan());     
     }
     

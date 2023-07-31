@@ -22,9 +22,6 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -41,7 +38,6 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -64,8 +60,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private BPJSCekReferensiDokter dpjp=new BPJSCekReferensiDokter(null,false);
-    private PCareCekReferensiDokter dpjp2=new PCareCekReferensiDokter(null,false);
     private final JFXPanel jfxPanel = new JFXPanel();
     private WebEngine engine;
  
@@ -94,74 +88,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
-        
-        dpjp.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dpjp.getTable().getSelectedRow()!= -1){  
-                    KdDPJPLayanan.setText(dpjp.getTable().getValueAt(dpjp.getTable().getSelectedRow(),1).toString());
-                }  
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        dpjp.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    dpjp.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        dpjp2.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dpjp2.getTable().getSelectedRow()!= -1){  
-                    KdDPJPLayanan.setText(dpjp2.getTable().getValueAt(dpjp2.getTable().getSelectedRow(),1).toString());
-                }  
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        dpjp2.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    dpjp2.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
     }
     
     private void initComponents2() {           
@@ -194,8 +120,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         NoKartu = new widget.TextBox();
         LabelPoli6 = new widget.Label();
         KdDPJPLayanan = new widget.TextBox();
-        btnDPJPLayanan = new widget.Button();
-        btnDPJPLayanan1 = new widget.Button();
         BtnCari = new widget.Button();
         jLabel17 = new widget.Label();
         BtnKeluar = new widget.Button();
@@ -221,7 +145,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         panelGlass6.add(jLabel16);
 
         NoKartu.setName("NoKartu"); // NOI18N
-        NoKartu.setPreferredSize(new java.awt.Dimension(150, 23));
+        NoKartu.setPreferredSize(new java.awt.Dimension(170, 23));
         NoKartu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoKartuKeyPressed(evt);
@@ -234,45 +158,12 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         LabelPoli6.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass6.add(LabelPoli6);
 
+        KdDPJPLayanan.setEditable(false);
         KdDPJPLayanan.setBackground(new java.awt.Color(245, 250, 240));
         KdDPJPLayanan.setHighlighter(null);
         KdDPJPLayanan.setName("KdDPJPLayanan"); // NOI18N
         KdDPJPLayanan.setPreferredSize(new java.awt.Dimension(130, 23));
         panelGlass6.add(KdDPJPLayanan);
-
-        btnDPJPLayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnDPJPLayanan.setMnemonic('X');
-        btnDPJPLayanan.setToolTipText("Alt+X");
-        btnDPJPLayanan.setName("btnDPJPLayanan"); // NOI18N
-        btnDPJPLayanan.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnDPJPLayanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDPJPLayananActionPerformed(evt);
-            }
-        });
-        btnDPJPLayanan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnDPJPLayananKeyPressed(evt);
-            }
-        });
-        panelGlass6.add(btnDPJPLayanan);
-
-        btnDPJPLayanan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnDPJPLayanan1.setMnemonic('X');
-        btnDPJPLayanan1.setToolTipText("Alt+X");
-        btnDPJPLayanan1.setName("btnDPJPLayanan1"); // NOI18N
-        btnDPJPLayanan1.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnDPJPLayanan1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDPJPLayanan1ActionPerformed(evt);
-            }
-        });
-        btnDPJPLayanan1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnDPJPLayanan1KeyPressed(evt);
-            }
-        });
-        panelGlass6.add(btnDPJPLayanan1);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('6');
@@ -355,16 +246,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
-    private void btnDPJPLayananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDPJPLayananKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDPJPLayananKeyPressed
-
-    private void btnDPJPLayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPLayananActionPerformed
-        dpjp.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dpjp.setLocationRelativeTo(internalFrame1);
-        dpjp.setVisible(true);
-    }//GEN-LAST:event_btnDPJPLayananActionPerformed
-
     private void NoKartuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKartuKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCariActionPerformed(null);
@@ -372,16 +253,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
             BtnKeluar.requestFocus();
         }
     }//GEN-LAST:event_NoKartuKeyPressed
-
-    private void btnDPJPLayanan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPLayanan1ActionPerformed
-        dpjp2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dpjp2.setLocationRelativeTo(internalFrame1);
-        dpjp2.setVisible(true);
-    }//GEN-LAST:event_btnDPJPLayanan1ActionPerformed
-
-    private void btnDPJPLayanan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDPJPLayanan1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDPJPLayanan1KeyPressed
 
     /**
     * @param args the command line arguments
@@ -406,8 +277,6 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
     private widget.Label LabelPoli6;
     private widget.TextBox NoKartu;
     private widget.panelisi PanelContent;
-    private widget.Button btnDPJPLayanan;
-    private widget.Button btnDPJPLayanan1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
@@ -431,7 +300,7 @@ public final class ICareRiwayatPerawatan extends javax.swing.JDialog {
             System.out.println("JSON : "+requestJson+"\n");
 	    requestEntity = new HttpEntity(requestJson,headers);
             requestJson= mapper.writeValueAsString(api.getRest().exchange(link+"/api/rs/validate", HttpMethod.POST, requestEntity,Object.class).getBody());
-            System.out.println("URL:"+link+"/api/rs/validate");
+            System.out.println("URL:"+link+"/validate");
             System.out.println("JSON : "+requestJson);
             root = mapper.readTree(requestJson);
             nameNode = root.path("metaData");

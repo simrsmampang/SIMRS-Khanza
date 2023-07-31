@@ -233,7 +233,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[J]Laporan Tahunan Penolakan Anjuran Medis","[M]Master Template Laporan Operasi","[M]Dokumentasi Tindakan ESWL","[M]Check List Kriteria Masuk ICU",
                 "[M]Check List Kriteria Keluar ICU","[A]Akses Ke Dokter Lain Rawat Jalan","[M]Follow Up DBD","[M]Penilaian Lanjutan Risiko Jatuh Neonatus","[K]Persetujuan Pengajuan Biaya",
                 "[J]Pemeriksaan Fisik Ralan Per Penyakit","[M]Penilaian Lanjutan Risiko Jatuh Geriatri","[M]Pemantauan EWS Pasien Neonatus","[K]Validasi Persetujuan Pengajuan Biaya",
-                "[L]Riwayat Perawatan ICare BPJS","[K]Rekap Pengajuan Biaya"
+                "[L]Riwayat Perawatan ICare BPJS","[K]Rekap Pengajuan Biaya","[M]Penilaian Awal Medis Ralan Kulit & Kelamin"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -517,7 +517,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 971;i++) {
+        for (i = 0; i < 972;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -2884,6 +2884,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 970:
                     column.setPreferredWidth(134);
                     break;
+                case 971:
+                    column.setPreferredWidth(234);
+                    break;
                 default:
                     column.setPreferredWidth(135);
                     break;
@@ -3381,7 +3384,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3406,7 +3409,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -4424,7 +4427,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "pemantauan_ews_neonatus='"+tbUser.getValueAt(i,967).toString()+"',"+
                     "validasi_persetujuan_pengajuan_biaya='"+tbUser.getValueAt(i,968).toString()+"',"+
                     "riwayat_perawatan_icare_bpjs='"+tbUser.getValueAt(i,969).toString()+"',"+
-                    "rekap_pengajuan_biaya='"+tbUser.getValueAt(i,970).toString()+"'")==true){
+                    "rekap_pengajuan_biaya='"+tbUser.getValueAt(i,970).toString()+"',"+
+                    "penilaian_awal_medis_ralan_kulit_kelamin='"+tbUser.getValueAt(i,971).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -5593,7 +5597,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "pemantauan_ews_neonatus='"+tbUser.getValueAt(barisdicopy,967).toString()+"',"+
                                         "validasi_persetujuan_pengajuan_biaya='"+tbUser.getValueAt(barisdicopy,968).toString()+"',"+
                                         "riwayat_perawatan_icare_bpjs='"+tbUser.getValueAt(barisdicopy,969).toString()+"',"+
-                                        "rekap_pengajuan_biaya='"+tbUser.getValueAt(barisdicopy,970).toString()+"'");
+                                        "rekap_pengajuan_biaya='"+tbUser.getValueAt(barisdicopy,970).toString()+"',"+
+                                        "penilaian_awal_medis_ralan_kulit_kelamin='"+tbUser.getValueAt(barisdicopy,971).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -5876,7 +5881,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.laporan_tahunan_penolakan_anjuran_medis,user.template_laporan_operasi,user.hasil_tindakan_eswl,user.checklist_kriteria_masuk_icu,"+
                 "user.checklist_kriteria_keluar_icu,user.akses_dokter_lain_rawat_jalan,user.follow_up_dbd,user.penilaian_risiko_jatuh_neonatus,user.persetujuan_pengajuan_biaya,"+
                 "user.pemeriksaan_fisik_ralan_per_penyakit,user.penilaian_lanjutan_resiko_jatuh_geriatri,user.pemantauan_ews_neonatus,user.validasi_persetujuan_pengajuan_biaya,"+
-                "user.riwayat_perawatan_icare_bpjs,user.rekap_pengajuan_biaya from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.riwayat_perawatan_icare_bpjs,user.rekap_pengajuan_biaya,user.penilaian_awal_medis_ralan_kulit_kelamin from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -6859,7 +6864,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("pemantauan_ews_neonatus"),
                                rs.getBoolean("validasi_persetujuan_pengajuan_biaya"),
                                rs.getBoolean("riwayat_perawatan_icare_bpjs"),
-                               rs.getBoolean("rekap_pengajuan_biaya")
+                               rs.getBoolean("rekap_pengajuan_biaya"),
+                               rs.getBoolean("penilaian_awal_medis_ralan_kulit_kelamin")
                             });
                         }   
                     } catch (Exception e) {
@@ -7831,7 +7837,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("pemantauan_ews_neonatus"),
                            rs.getBoolean("validasi_persetujuan_pengajuan_biaya"),
                            rs.getBoolean("riwayat_perawatan_icare_bpjs"),
-                           rs.getBoolean("rekap_pengajuan_biaya")
+                           rs.getBoolean("rekap_pengajuan_biaya"),
+                           rs.getBoolean("penilaian_awal_medis_ralan_kulit_kelamin")
                         });
                     }                                             
                  }
