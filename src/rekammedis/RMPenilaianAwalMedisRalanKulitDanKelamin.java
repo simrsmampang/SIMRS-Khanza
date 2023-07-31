@@ -51,7 +51,7 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
     private int i=0;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private StringBuilder htmlContent;
-    private String finger="",finger1="";
+    private String finger="";
     
     /** Creates new form DlgRujuk
      * @param parent
