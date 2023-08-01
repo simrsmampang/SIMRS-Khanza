@@ -43,7 +43,7 @@ import kepegawaian.DlgCariDokter;
  *
  * @author perpustakaan
  */
-public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDialog {
+public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -59,7 +59,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
-    public RMPenilaianAwalMedisRalanHemodialisa(java.awt.Frame parent, boolean modal) {
+    public RMPenilaianAwalMedisHemodialisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
@@ -964,6 +964,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
+        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.setPreferredSize(new java.awt.Dimension(457, 480));
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1244,7 +1245,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator12.setName("jSeparator12"); // NOI18N
         FormInput.add(jSeparator12);
-        jSeparator12.setBounds(0, 221, 880, 2);
+        jSeparator12.setBounds(0, 221, 880, 3);
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel39.setText("Keadaan Umum :");
@@ -1405,7 +1406,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         jSeparator13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator13.setName("jSeparator13"); // NOI18N
         FormInput.add(jSeparator13);
-        jSeparator13.setBounds(0, 700, 880, 2);
+        jSeparator13.setBounds(0, 700, 880, 3);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel101.setText("IV. PEMERIKSAAN PENUNJANG");
@@ -1420,7 +1421,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         label11.setBounds(370, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023 08:40:58" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023 13:00:22" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1614,7 +1615,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
 
         TglTransplantasi.setEditable(false);
         TglTransplantasi.setForeground(new java.awt.Color(50, 70, 50));
-        TglTransplantasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglTransplantasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglTransplantasi.setDisplayFormat("dd-MM-yyyy");
         TglTransplantasi.setName("TglTransplantasi"); // NOI18N
         TglTransplantasi.setOpaque(false);
@@ -1633,7 +1634,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
 
         TglCAPD.setEditable(false);
         TglCAPD.setForeground(new java.awt.Color(50, 70, 50));
-        TglCAPD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglCAPD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglCAPD.setDisplayFormat("dd-MM-yyyy");
         TglCAPD.setName("TglCAPD"); // NOI18N
         TglCAPD.setOpaque(false);
@@ -1699,7 +1700,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         jSeparator14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator14.setName("jSeparator14"); // NOI18N
         FormInput.add(jSeparator14);
-        jSeparator14.setBounds(0, 560, 880, 2);
+        jSeparator14.setBounds(0, 560, 880, 3);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel24.setText("Napas:");
@@ -1934,7 +1935,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         jSeparator17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator17.setName("jSeparator17"); // NOI18N
         FormInput.add(jSeparator17);
-        jSeparator17.setBounds(0, 1072, 880, 2);
+        jSeparator17.setBounds(0, 1072, 880, 3);
 
         jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel73.setText("1. Foto Thorax :");
@@ -1943,7 +1944,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         jLabel73.setBounds(20, 1110, 100, 23);
 
         TglThorax.setForeground(new java.awt.Color(50, 70, 50));
-        TglThorax.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglThorax.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglThorax.setDisplayFormat("dd-MM-yyyy");
         TglThorax.setName("TglThorax"); // NOI18N
         TglThorax.setOpaque(false);
@@ -1961,7 +1962,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         TglThorax.setBounds(170, 1110, 100, 20);
 
         TglDialisis.setForeground(new java.awt.Color(50, 70, 50));
-        TglDialisis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglDialisis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglDialisis.setDisplayFormat("dd-MM-yyyy");
         TglDialisis.setName("TglDialisis"); // NOI18N
         TglDialisis.setOpaque(false);
@@ -1985,7 +1986,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         jLabel74.setBounds(20, 1140, 100, 23);
 
         TglEKG.setForeground(new java.awt.Color(50, 70, 50));
-        TglEKG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglEKG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglEKG.setDisplayFormat("dd-MM-yyyy");
         TglEKG.setName("TglEKG"); // NOI18N
         TglEKG.setOpaque(false);
@@ -2009,7 +2010,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         jLabel75.setBounds(20, 1170, 100, 23);
 
         TglBNO.setForeground(new java.awt.Color(50, 70, 50));
-        TglBNO.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglBNO.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglBNO.setDisplayFormat("dd-MM-yyyy");
         TglBNO.setName("TglBNO"); // NOI18N
         TglBNO.setOpaque(false);
@@ -2027,7 +2028,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         TglBNO.setBounds(170, 1170, 100, 20);
 
         TglUSG.setForeground(new java.awt.Color(50, 70, 50));
-        TglUSG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglUSG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglUSG.setDisplayFormat("dd-MM-yyyy");
         TglUSG.setName("TglUSG"); // NOI18N
         TglUSG.setOpaque(false);
@@ -2057,7 +2058,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         jLabel77.setBounds(20, 1230, 100, 23);
 
         TglRenogram.setForeground(new java.awt.Color(50, 70, 50));
-        TglRenogram.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglRenogram.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglRenogram.setDisplayFormat("dd-MM-yyyy");
         TglRenogram.setName("TglRenogram"); // NOI18N
         TglRenogram.setOpaque(false);
@@ -2075,7 +2076,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         TglRenogram.setBounds(170, 1230, 100, 20);
 
         TglLaboratorium.setForeground(new java.awt.Color(50, 70, 50));
-        TglLaboratorium.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglLaboratorium.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglLaboratorium.setDisplayFormat("dd-MM-yyyy");
         TglLaboratorium.setName("TglLaboratorium"); // NOI18N
         TglLaboratorium.setOpaque(false);
@@ -2111,7 +2112,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         jLabel80.setBounds(320, 1170, 100, 23);
 
         TglKultururin.setForeground(new java.awt.Color(50, 70, 50));
-        TglKultururin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglKultururin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglKultururin.setDisplayFormat("dd-MM-yyyy");
         TglKultururin.setName("TglKultururin"); // NOI18N
         TglKultururin.setOpaque(false);
@@ -2129,7 +2130,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         TglKultururin.setBounds(470, 1200, 100, 20);
 
         TglArteriografi.setForeground(new java.awt.Color(50, 70, 50));
-        TglArteriografi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglArteriografi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglArteriografi.setDisplayFormat("dd-MM-yyyy");
         TglArteriografi.setName("TglArteriografi"); // NOI18N
         TglArteriografi.setOpaque(false);
@@ -2147,7 +2148,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         TglArteriografi.setBounds(470, 1170, 100, 20);
 
         TglCTscan.setForeground(new java.awt.Color(50, 70, 50));
-        TglCTscan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglCTscan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglCTscan.setDisplayFormat("dd-MM-yyyy");
         TglCTscan.setName("TglCTscan"); // NOI18N
         TglCTscan.setOpaque(false);
@@ -2165,7 +2166,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         TglCTscan.setBounds(470, 1140, 100, 20);
 
         TglBiopsi.setForeground(new java.awt.Color(50, 70, 50));
-        TglBiopsi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        TglBiopsi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         TglBiopsi.setDisplayFormat("dd-MM-yyyy");
         TglBiopsi.setName("TglBiopsi"); // NOI18N
         TglBiopsi.setOpaque(false);
@@ -2473,43 +2474,43 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
 
         cblab.setName("cblab"); // NOI18N
         FormInput.add(cblab);
-        cblab.setBounds(440, 1230, 20, 21);
+        cblab.setBounds(440, 1230, 20, 19);
 
         cbrenogram.setName("cbrenogram"); // NOI18N
         FormInput.add(cbrenogram);
-        cbrenogram.setBounds(140, 1230, 20, 21);
+        cbrenogram.setBounds(140, 1230, 20, 19);
 
         cbkultur.setName("cbkultur"); // NOI18N
         FormInput.add(cbkultur);
-        cbkultur.setBounds(440, 1200, 20, 21);
+        cbkultur.setBounds(440, 1200, 20, 19);
 
         cbarteri.setName("cbarteri"); // NOI18N
         FormInput.add(cbarteri);
-        cbarteri.setBounds(440, 1170, 20, 21);
+        cbarteri.setBounds(440, 1170, 20, 19);
 
         cbctscan.setName("cbctscan"); // NOI18N
         FormInput.add(cbctscan);
-        cbctscan.setBounds(440, 1140, 21, 21);
+        cbctscan.setBounds(440, 1140, 19, 19);
 
         cbbiopsi.setName("cbbiopsi"); // NOI18N
         FormInput.add(cbbiopsi);
-        cbbiopsi.setBounds(440, 1110, 21, 21);
+        cbbiopsi.setBounds(440, 1110, 19, 19);
 
         cbusg.setName("cbusg"); // NOI18N
         FormInput.add(cbusg);
-        cbusg.setBounds(140, 1200, 20, 21);
+        cbusg.setBounds(140, 1200, 20, 19);
 
         cbbno.setName("cbbno"); // NOI18N
         FormInput.add(cbbno);
-        cbbno.setBounds(140, 1170, 20, 21);
+        cbbno.setBounds(140, 1170, 20, 19);
 
         cbekg.setName("cbekg"); // NOI18N
         FormInput.add(cbekg);
-        cbekg.setBounds(140, 1140, 20, 21);
+        cbekg.setBounds(140, 1140, 20, 19);
 
         cbthorax.setName("cbthorax"); // NOI18N
         FormInput.add(cbthorax);
-        cbthorax.setBounds(140, 1110, 20, 21);
+        cbthorax.setBounds(140, 1110, 20, 19);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2552,7 +2553,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2566,7 +2567,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3678,7 +3679,7 @@ public final class RMPenilaianAwalMedisRalanHemodialisa extends javax.swing.JDia
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            RMPenilaianAwalMedisRalanHemodialisa dialog = new RMPenilaianAwalMedisRalanHemodialisa(new javax.swing.JFrame(), true);
+            RMPenilaianAwalMedisHemodialisa dialog = new RMPenilaianAwalMedisHemodialisa(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
