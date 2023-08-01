@@ -1,5 +1,5 @@
 /*
- * Kontribusi dari Abdul Wahid, RSUD Cipayung Jakarta Timur
+ * Kontribusi dari windiarto
  */
 
 
@@ -2575,7 +2575,6 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ranap());
         BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ranap());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ranap());
         BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ranap());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);

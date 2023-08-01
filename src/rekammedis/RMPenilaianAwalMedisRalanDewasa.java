@@ -2376,7 +2376,6 @@ public final class RMPenilaianAwalMedisRalanDewasa extends javax.swing.JDialog {
         BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan());
         BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan());
         BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

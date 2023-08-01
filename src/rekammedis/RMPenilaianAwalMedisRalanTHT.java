@@ -1,5 +1,5 @@
 /*
- * Kontribusi dari Abdul Wahid, RSUD Cipayung Jakarta Timur
+ * Kontribusi dari RSUD Prembun
  */
 
 
@@ -2376,7 +2376,6 @@ public final class RMPenilaianAwalMedisRalanTHT extends javax.swing.JDialog {
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_tht());
         BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_tht());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_tht());
         BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_tht());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);

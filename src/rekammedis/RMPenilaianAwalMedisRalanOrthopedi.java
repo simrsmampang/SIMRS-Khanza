@@ -2524,7 +2524,6 @@ public final class RMPenilaianAwalMedisRalanOrthopedi extends javax.swing.JDialo
         BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_orthopedi());
         BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_orthopedi());
         BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_orthopedi());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_orthopedi());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

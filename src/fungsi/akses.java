@@ -211,7 +211,8 @@ public final class akses {
             master_menolak_anjuran_medis=false,penolakan_anjuran_medis=false,laporan_tahunan_penolakan_anjuran_medis=false,template_laporan_operasi=false,hasil_tindakan_eswl=false,
             checklist_kriteria_masuk_icu=false,checklist_kriteria_keluar_icu=false,akses_dokter_lain_rawat_jalan=false,follow_up_dbd=false,penilaian_risiko_jatuh_neonatus=false,
             persetujuan_pengajuan_biaya=false,pemeriksaan_fisik_ralan_per_penyakit=false,penilaian_lanjutan_resiko_jatuh_geriatri=false,pemantauan_ews_neonatus=false,
-            validasi_persetujuan_pengajuan_biaya=false,riwayat_perawatan_icare_bpjs=false,rekap_pengajuan_biaya=false,penilaian_awal_medis_ralan_kulit_kelamin=false;
+            validasi_persetujuan_pengajuan_biaya=false,riwayat_perawatan_icare_bpjs=false,rekap_pengajuan_biaya=false,penilaian_awal_medis_ralan_kulit_kelamin=false,
+            akun_host_to_host_bank_mandiri=false,penilaian_medis_ralan_hemodialisa=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1203,6 +1204,8 @@ public final class akses {
                         akses.riwayat_perawatan_icare_bpjs=true;
                         akses.rekap_pengajuan_biaya=true;
                         akses.penilaian_awal_medis_ralan_kulit_kelamin=true;
+                        akses.akun_host_to_host_bank_mandiri=true;
+                        akses.penilaian_medis_ralan_hemodialisa=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2178,6 +2181,8 @@ public final class akses {
                         akses.riwayat_perawatan_icare_bpjs=rs2.getBoolean("riwayat_perawatan_icare_bpjs");
                         akses.rekap_pengajuan_biaya=rs2.getBoolean("rekap_pengajuan_biaya");
                         akses.penilaian_awal_medis_ralan_kulit_kelamin=rs2.getBoolean("penilaian_awal_medis_ralan_kulit_kelamin");
+                        akses.akun_host_to_host_bank_mandiri=rs2.getBoolean("akun_host_to_host_bank_mandiri");
+                        akses.penilaian_medis_ralan_hemodialisa=rs2.getBoolean("penilaian_medis_ralan_hemodialisa");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3151,6 +3156,8 @@ public final class akses {
                         akses.riwayat_perawatan_icare_bpjs=false;
                         akses.rekap_pengajuan_biaya=false;
                         akses.penilaian_awal_medis_ralan_kulit_kelamin=false;
+                        akses.akun_host_to_host_bank_mandiri=false;
+                        akses.penilaian_medis_ralan_hemodialisa=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4184,4 +4191,6 @@ public final class akses {
     public static boolean getriwayat_perawatan_icare_bpjs(){return akses.riwayat_perawatan_icare_bpjs;}
     public static boolean getrekap_pengajuan_biaya(){return akses.rekap_pengajuan_biaya;}
     public static boolean getpenilaian_awal_medis_ralan_kulit_kelamin(){return akses.penilaian_awal_medis_ralan_kulit_kelamin;}
+    public static boolean getakun_host_to_host_bank_mandiri(){return akses.akun_host_to_host_bank_mandiri;}
+    public static boolean getpenilaian_medis_ralan_hemodialisa(){return akses.penilaian_medis_ralan_hemodialisa;}
 }   

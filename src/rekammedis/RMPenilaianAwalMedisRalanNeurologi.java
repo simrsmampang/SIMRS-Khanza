@@ -2604,7 +2604,6 @@ public final class RMPenilaianAwalMedisRalanNeurologi extends javax.swing.JDialo
         BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_neurologi());
         BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_neurologi());
         BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_neurologi());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_neurologi());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

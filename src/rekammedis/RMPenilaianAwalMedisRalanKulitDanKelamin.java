@@ -2167,20 +2167,19 @@ public final class RMPenilaianAwalMedisRalanKulitDanKelamin extends javax.swing.
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
+        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_kulit_kelamin());
+        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_kulit_kelamin());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_kulit_kelamin());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", NmDokter,KdDokter.getText());
+            NmDokter.setText(dokter.tampil3(KdDokter.getText()));
             if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");
             }
-        }            
+        }          
     }
     
     public void setTampil(){

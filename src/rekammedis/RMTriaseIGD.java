@@ -3990,16 +3990,19 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 1..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 1","PDF Triase Skala 1"},"Lambar Triase Skala 1");
-                    switch (pilihan) {
-                        case "Lembar Triase Skala 1":
-                              Valid.MyReportqry("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
-                        case "PDF Triase Skala 1":
-                              Valid.MyReportqrypdf("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
-                    } 
+                      
+                    try {
+                        pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 1..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 1","PDF Triase Skala 1"},"Lambar Triase Skala 1");
+                        switch (pilihan) {
+                            case "Lembar Triase Skala 1":
+                                  Valid.MyReportqry("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                            case "PDF Triase Skala 1":
+                                  Valid.MyReportqrypdf("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                        } 
+                    } catch (Exception e) {
+                    }
                 }else if(LoadHTML.getText().contains("#FF0000")){
                     Map<String, Object> param = new HashMap<>(); 
                     param.put("namars",akses.getnamars());
@@ -4108,15 +4111,18 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 2..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 2","PDF Triase Skala 2"},"Lambar Triase Skala 2");
-                    switch (pilihan) {
-                        case "Lembar Triase Skala 2":
-                              Valid.MyReportqry("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
-                        case "PDF Triase Skala 2":
-                              Valid.MyReportqrypdf("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
+                      
+                    try {
+                        pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 2..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 2","PDF Triase Skala 2"},"Lambar Triase Skala 2");
+                        switch (pilihan) {
+                            case "Lembar Triase Skala 2":
+                                  Valid.MyReportqry("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                            case "PDF Triase Skala 2":
+                                  Valid.MyReportqrypdf("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                        }
+                    } catch (Exception e) {
                     } 
                 }else if(LoadHTML.getText().contains("#C8C800")){
                     Map<String, Object> param = new HashMap<>(); 
@@ -4225,15 +4231,18 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 3..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 3","PDF Triase Skala 3"},"Lembar Triase Skala 3");
-                    switch (pilihan) {
-                        case "Lembar Triase Skala 3":
-                              Valid.MyReportqry("rptLembarTriaseSkala3.jasper","report","::[ Triase Skala 3 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
-                        case "PDF Triase Skala 3":
-                              Valid.MyReportqrypdf("rptLembarTriaseSkala3.jasper","report","::[ Triase Skala 3 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
+                       
+                    try {
+                        pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 3..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 3","PDF Triase Skala 3"},"Lembar Triase Skala 3");
+                        switch (pilihan) {
+                            case "Lembar Triase Skala 3":
+                                  Valid.MyReportqry("rptLembarTriaseSkala3.jasper","report","::[ Triase Skala 3 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                            case "PDF Triase Skala 3":
+                                  Valid.MyReportqrypdf("rptLembarTriaseSkala3.jasper","report","::[ Triase Skala 3 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                        }
+                    } catch (Exception e) {
                     }
                 }else if(LoadHTML.getText().contains("#00AA00")){
                     Map<String, Object> param = new HashMap<>(); 
@@ -4342,15 +4351,18 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 4..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 4","PDF Triase Skala 4"},"Lembar Triase Skala 4");
-                    switch (pilihan) {
-                        case "Lembar Triase Skala 4":
-                              Valid.MyReportqry("rptLembarTriaseSkala4.jasper","report","::[ Triase Skala 4 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
-                        case "PDF Triase Skala 4":
-                              Valid.MyReportqrypdf("rptLembarTriaseSkala4.jasper","report","::[ Triase Skala 4 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
+                      
+                    try {
+                        pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 4..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 4","PDF Triase Skala 4"},"Lembar Triase Skala 4");
+                        switch (pilihan) {
+                            case "Lembar Triase Skala 4":
+                                  Valid.MyReportqry("rptLembarTriaseSkala4.jasper","report","::[ Triase Skala 4 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                            case "PDF Triase Skala 4":
+                                  Valid.MyReportqrypdf("rptLembarTriaseSkala4.jasper","report","::[ Triase Skala 4 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                        }
+                    } catch (Exception e) {
                     }
                 }else if(LoadHTML.getText().contains("#969696")){
                     Map<String, Object> param = new HashMap<>(); 
@@ -4459,15 +4471,18 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 5..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 5","PDF Triase Skala 5"},"Lembar Triase Skala 5");
-                    switch (pilihan) {
-                        case "Lembar Triase Skala 5":
-                              Valid.MyReportqry("rptLembarTriaseSkala5.jasper","report","::[ Triase Skala 5 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
-                        case "PDF Triase Skala 5":
-                              Valid.MyReportqry("rptLembarTriaseSkala5.jasper","report","::[ Triase Skala 5 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
-                              break;
+                        
+                    try {
+                        pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 5..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 5","PDF Triase Skala 5"},"Lembar Triase Skala 5");
+                        switch (pilihan) {
+                            case "Lembar Triase Skala 5":
+                                  Valid.MyReportqry("rptLembarTriaseSkala5.jasper","report","::[ Triase Skala 5 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                            case "PDF Triase Skala 5":
+                                  Valid.MyReportqry("rptLembarTriaseSkala5.jasper","report","::[ Triase Skala 5 ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                                  break;
+                        }
+                    } catch (Exception e) {
                     }
                 }
                 this.setCursor(Cursor.getDefaultCursor());

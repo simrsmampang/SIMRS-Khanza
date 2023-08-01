@@ -40,21 +40,39 @@
                             http_response_code(200);
                         }else{
                             if(empty($url[1])){
-                                $response = array(
-                                    'response' => '0',
-                                    'msg' => 'Sukses',
-                                    'reff_id' => $referensiid,
-                                    'trx_id' => $data['no_nota'],
-                                    'norm' => $data['no_rkm_medis'],
-                                    'nama' => $data['nm_pasien'],
-                                    'carabayar' => 'Umum/Pribadi',
-                                    'total_biaya' => $data['besar_bayar'],
-                                    'bayar' => $data['besar_bayar'],
-                                    'tgl_id' => $data['tgl_closing']
-                                );
-                                http_response_code(200);
-                            }else {
-                                if (!empty($url[1])) {
+                                if(getOne2("SELECT TIMESTAMPDIFF(MINUTE,tagihan_sadewa.tgl_bayar,now()) from tagihan_sadewa where tagihan_sadewa.no_nota='".$data['no_rawat']."'")>60){
+                                    $response = array(
+                                        'reff_id' => $referensiid,
+                                        'reff_num' => '',
+                                        'response' => '-5',
+                                        'msg' => 'Referensi ID sudah Expired'
+                                    );
+                                    http_response_code(200);
+                                }else{
+                                    $response = array(
+                                        'response' => '0',
+                                        'msg' => 'Sukses',
+                                        'reff_id' => $referensiid,
+                                        'trx_id' => $data['no_nota'],
+                                        'norm' => $data['no_rkm_medis'],
+                                        'nama' => $data['nm_pasien'],
+                                        'carabayar' => 'Umum/Pribadi',
+                                        'total_biaya' => $data['besar_bayar'],
+                                        'bayar' => $data['besar_bayar'],
+                                        'tgl_id' => $data['tgl_closing']
+                                    );
+                                    http_response_code(200);
+                                }
+                            }else if (!empty($url[1])) {
+                                if(getOne2("SELECT TIMESTAMPDIFF(MINUTE,tagihan_sadewa.tgl_bayar,now()) from tagihan_sadewa where tagihan_sadewa.no_nota='".$data['no_rawat']."'")>60){
+                                    $response = array(
+                                        'reff_id' => $referensiid,
+                                        'reff_num' => '',
+                                        'response' => '-5',
+                                        'msg' => 'Referensi ID sudah Expired'
+                                    );
+                                    http_response_code(200);
+                                }else{
                                     $referensinum = validTeks3($url[1],20);
                                     if (!preg_match("/^[0-9]{16}$/",$referensinum)){ 
                                         $response = array(
