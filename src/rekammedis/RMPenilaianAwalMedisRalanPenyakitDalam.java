@@ -2437,7 +2437,6 @@ public final class RMPenilaianAwalMedisRalanPenyakitDalam extends javax.swing.JD
         BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
         BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
         BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

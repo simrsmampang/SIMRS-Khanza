@@ -296,14 +296,20 @@ public final class ICareRiwayatPerawatanFKTP extends javax.swing.JDialog {
             headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             headers.add("x-signature",api.getHmac(utc));
             headers.add("user_key",koneksiDB.USERKEYAPIICARE());
+            //System.out.println("Content-Type:application/json");
+            //System.out.println("x-signature:"+api.getHmac(utc));
+            //System.out.println("x-timestamp:"+utc);
+            //System.out.println("x-cons-id:"+koneksiDB.CONSIDAPIICARE());
+            //System.out.println("user_key:"+koneksiDB.USERKEYAPIICARE());
+            //System.out.println("X-authorization:"+"Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             requestJson="{"+
                             "\"param\": \""+NoKartu.getText().trim()+"\","+
                             "\"kodedokter\": "+KdDPJPLayanan.getText().trim()+""+
                         "}";
             System.out.println("JSON : "+requestJson+"\n");
-	    requestEntity = new HttpEntity(requestJson,headers);
-            requestJson= mapper.writeValueAsString(api.getRest().exchange(link+"/api/rs/validate", HttpMethod.POST, requestEntity,Object.class).getBody());
             System.out.println("URL:"+link+"/validate");
+	    requestEntity = new HttpEntity(requestJson,headers);
+            requestJson= mapper.writeValueAsString(api.getRest().exchange(link+"/validate", HttpMethod.POST, requestEntity,Object.class).getBody());
             System.out.println("JSON : "+requestJson);
             root = mapper.readTree(requestJson);
             nameNode = root.path("metaData");

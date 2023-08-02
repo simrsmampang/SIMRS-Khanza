@@ -2645,7 +2645,6 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
         BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
         BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
         BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_penyakit_dalam());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);

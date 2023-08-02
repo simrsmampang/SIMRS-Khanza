@@ -2751,7 +2751,6 @@ public final class RMPenilaianAwalMedisRalanKandungan extends javax.swing.JDialo
         BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_kebidanan());
         BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_kebidanan());
         BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_kebidanan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_kebidanan());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
