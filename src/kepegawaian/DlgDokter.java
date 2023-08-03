@@ -591,12 +591,12 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel3.setText("Kode Dokter :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(2, 12, 105, 23);
+        jLabel3.setBounds(2, 12, 95, 23);
 
         jLabel4.setText("Nama Dokter :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(2, 42, 105, 23);
+        jLabel4.setBounds(2, 42, 95, 23);
 
         TTmp.setName("TTmp"); // NOI18N
         TTmp.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -605,7 +605,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTmp);
-        TTmp.setBounds(111, 102, 146, 23);
+        TTmp.setBounds(101, 102, 156, 23);
 
         CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
         CmbJk.setName("CmbJk"); // NOI18N
@@ -615,7 +615,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbJk);
-        CmbJk.setBounds(111, 72, 110, 23);
+        CmbJk.setBounds(101, 72, 110, 23);
 
         TNm.setHighlighter(null);
         TNm.setName("TNm"); // NOI18N
@@ -625,12 +625,12 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNm);
-        TNm.setBounds(111, 42, 254, 23);
+        TNm.setBounds(101, 42, 264, 23);
 
         jLabel8.setText("Jenis Kelamin :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(2, 72, 105, 23);
+        jLabel8.setBounds(2, 72, 95, 23);
 
         jLabel9.setText("Gol. Darah :");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -650,10 +650,10 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel13.setText("Tmp/Tgl. Lahir :");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(2, 102, 105, 23);
+        jLabel13.setBounds(2, 102, 95, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-08-2020" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2022" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -745,12 +745,12 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(TKd);
-        TKd.setBounds(111, 12, 140, 23);
+        TKd.setBounds(101, 12, 150, 23);
 
         jLabel15.setText("No.Ijin Praktek :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(2, 132, 105, 23);
+        jLabel15.setBounds(2, 132, 95, 23);
 
         TNoi.setName("TNoi"); // NOI18N
         TNoi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -759,7 +759,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoi);
-        TNoi.setBounds(111, 132, 254, 23);
+        TNoi.setBounds(101, 132, 264, 23);
 
         jLabel22.setText("Alumni :");
         jLabel22.setName("jLabel22"); // NOI18N
