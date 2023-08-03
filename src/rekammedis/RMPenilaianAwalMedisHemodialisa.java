@@ -1493,7 +1493,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         jLabel56.setText("Ikterik :");
         jLabel56.setName("jLabel56"); // NOI18N
         FormInput.add(jLabel56);
-        jLabel56.setBounds(50, 460, 60, 23);
+        jLabel56.setBounds(0, 460, 135, 23);
 
         Ikterik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Ikterik.setName("Ikterik"); // NOI18N
@@ -1503,25 +1503,25 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Ikterik);
-        Ikterik.setBounds(120, 460, 80, 23);
+        Ikterik.setBounds(139, 460, 80, 23);
 
-        jLabel57.setText("Jantung  :");
+        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel57.setText("4. Jantung  :");
         jLabel57.setToolTipText("");
-        jLabel57.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
-        jLabel57.setBounds(40, 590, 80, 23);
+        jLabel57.setBounds(44, 570, 80, 23);
 
-        jLabel58.setText("Konjungtiva  :");
-        jLabel58.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel58.setText("2. Konjungtiva  :");
         jLabel58.setName("jLabel58"); // NOI18N
         FormInput.add(jLabel58);
-        jLabel58.setBounds(40, 490, 100, 23);
+        jLabel58.setBounds(44, 490, 100, 23);
 
         jLabel59.setText("Anemia:");
         jLabel59.setName("jLabel59"); // NOI18N
         FormInput.add(jLabel59);
-        jLabel59.setBounds(90, 510, 60, 23);
+        jLabel59.setBounds(0, 510, 135, 23);
 
         Konjungtiva.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Konjungtiva.setName("Konjungtiva"); // NOI18N
@@ -1531,13 +1531,13 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Konjungtiva);
-        Konjungtiva.setBounds(160, 510, 80, 23);
+        Konjungtiva.setBounds(139, 510, 80, 23);
 
-        jLabel60.setText("Tekanan Vena Jugularis (JVP):");
-        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel60.setText("3. Tekanan Vena Jugularis (JVP) :");
         jLabel60.setName("jLabel60"); // NOI18N
         FormInput.add(jLabel60);
-        jLabel60.setBounds(20, 550, 180, 23);
+        jLabel60.setBounds(44, 540, 180, 23);
 
         JVP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Meningkat" }));
         JVP.setName("JVP"); // NOI18N
@@ -1547,17 +1547,17 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(JVP);
-        JVP.setBounds(210, 550, 128, 23);
+        JVP.setBounds(210, 540, 128, 23);
 
-        jLabel61.setText("Bising:");
+        jLabel61.setText("Bising :");
         jLabel61.setName("jLabel61"); // NOI18N
         FormInput.add(jLabel61);
-        jLabel61.setBounds(140, 620, 60, 23);
+        jLabel61.setBounds(0, 620, 135, 23);
 
-        jLabel62.setText("Kardiomegali:");
+        jLabel62.setText("Kardiomegali :");
         jLabel62.setName("jLabel62"); // NOI18N
         FormInput.add(jLabel62);
-        jLabel62.setBounds(120, 590, 80, 23);
+        jLabel62.setBounds(0, 590, 135, 23);
 
         Kardiomegali.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Kardiomegali.setName("Kardiomegali"); // NOI18N
@@ -1567,7 +1567,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kardiomegali);
-        Kardiomegali.setBounds(210, 590, 80, 23);
+        Kardiomegali.setBounds(139, 590, 80, 23);
 
         Bising.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Bising.setName("Bising"); // NOI18N
@@ -1577,10 +1577,10 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Bising);
-        Bising.setBounds(210, 620, 80, 23);
+        Bising.setBounds(139, 620, 80, 23);
 
         jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel63.setText("Sklera  :");
+        jLabel63.setText("1. Sklera  :");
         jLabel63.setName("jLabel63"); // NOI18N
         FormInput.add(jLabel63);
         jLabel63.setBounds(44, 440, 80, 23);
