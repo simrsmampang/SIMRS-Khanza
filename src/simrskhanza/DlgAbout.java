@@ -38,21 +38,8 @@ public class DlgAbout extends javax.swing.JDialog {
         internalFrame1 = new widget.InternalFrame();
         jLabel6 = new javax.swing.JLabel();
         panelGlass1 = new usu.widget.glass.PanelGlass();
-        jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         panelGlass4 = new usu.widget.glass.PanelGlass();
         jLabel19 = new javax.swing.JLabel();
@@ -95,14 +82,6 @@ public class DlgAbout extends javax.swing.JDialog {
         panelGlass1.setRound(false);
         panelGlass1.setLayout(null);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Database Server :");
-        jLabel4.setName("jLabel4"); // NOI18N
-        panelGlass1.add(jLabel4);
-        jLabel4.setBounds(0, 22, 104, 14);
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(50, 50, 50));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -111,99 +90,12 @@ public class DlgAbout extends javax.swing.JDialog {
         panelGlass1.add(jLabel7);
         jLabel7.setBounds(0, 8, 104, 14);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("Default Database :");
-        jLabel8.setName("jLabel8"); // NOI18N
-        panelGlass1.add(jLabel8);
-        jLabel8.setBounds(0, 36, 104, 14);
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("File Konfigurasi :");
-        jLabel9.setName("jLabel9"); // NOI18N
-        panelGlass1.add(jLabel9);
-        jLabel9.setBounds(0, 50, 104, 14);
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Default Port :");
-        jLabel10.setName("jLabel10"); // NOI18N
-        panelGlass1.add(jLabel10);
-        jLabel10.setBounds(0, 64, 104, 14);
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel11.setText("Untuk mensetting aplikasi menjadi Client");
-        jLabel11.setName("jLabel11"); // NOI18N
-        panelGlass1.add(jLabel11);
-        jLabel11.setBounds(230, 8, 210, 14);
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel12.setText("Server, ganti HOST Localhost dengan");
-        jLabel12.setName("jLabel12"); // NOI18N
-        panelGlass1.add(jLabel12);
-        jLabel12.setBounds(230, 22, 200, 14);
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel13.setText("alamat/IP Address dari server yang di");
-        jLabel13.setName("jLabel13"); // NOI18N
-        panelGlass1.add(jLabel13);
-        jLabel13.setBounds(230, 36, 200, 14);
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel14.setText("gunakan. Jagan lupa untuk mengatur hak");
-        jLabel14.setName("jLabel14"); // NOI18N
-        panelGlass1.add(jLabel14);
-        jLabel14.setBounds(230, 50, 220, 14);
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel15.setText("akses di MySQL server agar terkoneksi");
-        jLabel15.setName("jLabel15"); // NOI18N
-        panelGlass1.add(jLabel15);
-        jLabel15.setBounds(230, 64, 210, 14);
-
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel17.setText("Update 2022-07-31");
+        jLabel17.setText("2023-08-04");
         jLabel17.setName("jLabel17"); // NOI18N
         panelGlass1.add(jLabel17);
         jLabel17.setBounds(107, 8, 120, 14);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel5.setText("MySQL Server");
-        jLabel5.setName("jLabel5"); // NOI18N
-        panelGlass1.add(jLabel5);
-        jLabel5.setBounds(107, 22, 120, 14);
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel18.setText("sik");
-        jLabel18.setName("jLabel18"); // NOI18N
-        panelGlass1.add(jLabel18);
-        jLabel18.setBounds(107, 36, 120, 14);
-
-        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel29.setText("database.xml");
-        jLabel29.setName("jLabel29"); // NOI18N
-        panelGlass1.add(jLabel29);
-        jLabel29.setBounds(107, 50, 120, 14);
-
-        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel30.setText("3306");
-        jLabel30.setName("jLabel30"); // NOI18N
-        panelGlass1.add(jLabel30);
-        jLabel30.setBounds(107, 64, 120, 14);
 
         internalFrame1.add(panelGlass1);
         panelGlass1.setBounds(7, 38, 454, 90);
@@ -395,15 +287,8 @@ public class DlgAbout extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnKeluar;
     private widget.InternalFrame internalFrame1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -414,19 +299,13 @@ public class DlgAbout extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private usu.widget.glass.PanelGlass panelGlass1;
     private usu.widget.glass.PanelGlass panelGlass4;
     private usu.widget.glass.PanelGlass panelGlass5;
