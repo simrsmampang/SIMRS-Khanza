@@ -1,7 +1,7 @@
 <?php
     ob_start();
     session_start();
-    date_default_timezone_set('Asia/Jakarta');
+    date_default_timezone_set('Asia/Makassar');
     require_once('conf/command.php');
     require_once('conf/conf.php');
     header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
@@ -30,4 +30,3 @@
     }else{
         include_once "indexuser.php";
     }
-?>
