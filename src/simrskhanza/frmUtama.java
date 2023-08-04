@@ -14,6 +14,7 @@ package simrskhanza;
 
 import bridging.AkunRekeningBankJabar;
 import bridging.AkunRekeningBankJateng;
+import bridging.AkunRekeningBankMandiri;
 import bridging.AkunRekeningBankPapua;
 import rekammedis.RMRiwayatPerawatan;
 import setting.DlgPenelusuranLogin;
@@ -20542,6 +20543,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnHostToHostBankMandiriActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        AkunRekeningBankMandiri aplikasi=new AkunRekeningBankMandiri(this,false);
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -21219,7 +21232,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenolakanAnjuranMedis,btnLaporanTahunanPenolakanAnjuranMedis,btnMasterTemplateLaporanOperasi,btnDokumentasiTindakanESWL,btnChecklistKriteriaMasukICU,
             btnChecklistKriteriaKeluarICU,btnDataFollowUpDBD,btnPengajuanBiayaKuangan,btnPenilaianRisikoJatuhNeonatus,btnPemeriksaanFisikRalanPerPenyakit,
             btnPenilaianRisikoJatuhGeriatri,btnPersetujuanPengajuanBiaya,btnPemantauanEWSNeonatus,btnValidasiPersetujuanPengajuanBiaya,btnRiwayatPerawatanICare,
-            btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin;
+            btnRekapPengajuanBiaya,btnPenilaianAwalMedisRalanKulitKelamin,btnHostToHostBankMandiri;
     
     public void isWall(){
         try{            
@@ -24154,6 +24167,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getakun_host_to_host_bank_papua()==true){
                 Panelmenu.add(btnAkunRekeningHtHBankPapua);
+                jmlmenu++;
+            }
+            
+            if(akses.getakun_host_to_host_bank_mandiri()==true){
+                Panelmenu.add(btnHostToHostBankMandiri);
                 jmlmenu++;
             }
             
@@ -28959,6 +28977,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getakun_host_to_host_bank_papua()==true){
             Panelmenu.add(btnAkunRekeningHtHBankPapua);
+            jmlmenu++;
+        }
+        
+        if(akses.getakun_host_to_host_bank_mandiri()==true){
+            Panelmenu.add(btnHostToHostBankMandiri);
             jmlmenu++;
         }
         
@@ -34881,6 +34904,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getakun_host_to_host_bank_papua()==true){
             if(btnAkunRekeningHtHBankPapua.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAkunRekeningHtHBankPapua);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getakun_host_to_host_bank_mandiri()==true){
+            if(btnHostToHostBankMandiri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHostToHostBankMandiri);
                 jmlmenu++;
             }                
         }
@@ -41692,5 +41722,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisRalanKulitKelamin.setName("btnPenilaianAwalMedisRalanKulitKelamin"); 
         btnPenilaianAwalMedisRalanKulitKelamin.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisRalanKulitKelamin.addActionListener(this::btnPenilaianAwalMedisRalanKulitKelaminActionPerformed);
+        
+        btnHostToHostBankMandiri = new widget.ButtonBig();
+        btnHostToHostBankMandiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mandiri.png"))); 
+        btnHostToHostBankMandiri.setText("Host To Host Bank Mandiri");
+        btnHostToHostBankMandiri.setIconTextGap(0);
+        btnHostToHostBankMandiri.setName("btnHostToHostBankMandiri"); 
+        btnHostToHostBankMandiri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHostToHostBankMandiri.addActionListener(this::btnHostToHostBankMandiriActionPerformed);
     }
 }
