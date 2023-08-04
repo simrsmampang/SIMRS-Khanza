@@ -16,7 +16,7 @@
             $session = curl_init ( $url );			
             $cid = "1000";
             $ckey = "1112";			
-            date_default_timezone_set("Asia/Jakarta");
+            date_default_timezone_set("Asia/Makassar");
             $timestamp = strtotime(date("Y/m/d H:i:s"));
             $data = $cid."&".$timestamp;
             $signature = hash_hmac('sha256', $data, $ckey, true);
@@ -73,4 +73,3 @@
                 echo "Response : ".$response;
             }		
 	}
- ?>
