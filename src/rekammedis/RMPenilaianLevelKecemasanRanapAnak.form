@@ -340,7 +340,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="04-08-2023"/>
+                        <StringItem index="0" value="05-08-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -368,7 +368,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="04-08-2023"/>
+                        <StringItem index="0" value="05-08-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -630,7 +630,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="04-08-2023 17:16:21"/>
+                            <StringItem index="0" value="05-08-2023 10:11:04"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -704,12 +704,14 @@
                     <Component class="widget.ComboBox" name="Prioritas1_5">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas1_5" noResource="true"/>
                       </Properties>
                       <Events>
@@ -717,7 +719,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="266" y="150" width="90" height="23"/>
+                          <AbsoluteConstraints x="266" y="150" width="60" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -793,7 +795,7 @@
                     <Component class="widget.Label" name="jLabel53">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="I. PRIORITAS 1"/>
+                        <Property name="text" type="java.lang.String" value="1. Perasaan Ansietas (cemas) :"/>
                         <Property name="name" type="java.lang.String" value="jLabel53" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -827,12 +829,14 @@
                     <Component class="widget.ComboBox" name="Prioritas1_6">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas1_6" noResource="true"/>
                       </Properties>
                       <Events>
@@ -840,7 +844,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="699" y="150" width="90" height="23"/>
+                          <AbsoluteConstraints x="699" y="150" width="60" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -858,12 +862,14 @@
                     <Component class="widget.ComboBox" name="Prioritas1_2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas1_2" noResource="true"/>
                       </Properties>
                       <Events>
@@ -871,7 +877,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="699" y="90" width="90" height="23"/>
+                          <AbsoluteConstraints x="699" y="90" width="60" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -889,12 +895,14 @@
                     <Component class="widget.ComboBox" name="Prioritas1_3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas1_3" noResource="true"/>
                       </Properties>
                       <Events>
@@ -902,7 +910,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="277" y="120" width="90" height="23"/>
+                          <AbsoluteConstraints x="277" y="120" width="60" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -932,12 +940,14 @@
                     <Component class="widget.ComboBox" name="Prioritas1_1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas1_1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -945,14 +955,14 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="318" y="90" width="90" height="23"/>
+                          <AbsoluteConstraints x="318" y="90" width="60" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="widget.Label" name="jLabel65">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Pasca Operasi Dengan Gangguan Nafas Atau Hipotensi"/>
+                        <Property name="text" type="java.lang.String" value="Cemas"/>
                         <Property name="name" type="java.lang.String" value="jLabel65" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -975,12 +985,14 @@
                     <Component class="widget.ComboBox" name="Prioritas1_4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas1_4" noResource="true"/>
                       </Properties>
                       <Events>
@@ -988,7 +1000,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="699" y="120" width="90" height="23"/>
+                          <AbsoluteConstraints x="699" y="120" width="60" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1065,12 +1077,14 @@
                     <Component class="widget.ComboBox" name="Prioritas2_1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas2_1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1107,12 +1121,14 @@
                     <Component class="widget.ComboBox" name="Prioritas2_3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas2_3" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1138,12 +1154,14 @@
                     <Component class="widget.ComboBox" name="Prioritas2_2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas2_2" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1181,12 +1199,14 @@
                     <Component class="widget.ComboBox" name="Prioritas2_4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas2_4" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1212,12 +1232,14 @@
                     <Component class="widget.ComboBox" name="Prioritas2_5">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas2_5" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1243,12 +1265,14 @@
                     <Component class="widget.ComboBox" name="Prioritas2_6">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas2_6" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1274,12 +1298,14 @@
                     <Component class="widget.ComboBox" name="Prioritas2_8">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas2_8" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1317,12 +1343,14 @@
                     <Component class="widget.ComboBox" name="Prioritas2_7">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas2_7" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1418,12 +1446,14 @@
                     <Component class="widget.ComboBox" name="Prioritas3_1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas3_1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1449,12 +1479,14 @@
                     <Component class="widget.ComboBox" name="Prioritas3_2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas3_2" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1492,12 +1524,14 @@
                     <Component class="widget.ComboBox" name="Prioritas3_3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas3_3" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1523,12 +1557,14 @@
                     <Component class="widget.ComboBox" name="Prioritas3_4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Prioritas3_4" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1613,12 +1649,14 @@
                     <Component class="widget.ComboBox" name="TandaVital1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="TandaVital1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1655,12 +1693,14 @@
                     <Component class="widget.ComboBox" name="TandaVital2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="TandaVital2" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1698,12 +1738,14 @@
                     <Component class="widget.ComboBox" name="TandaVital3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="TandaVital3" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1729,12 +1771,14 @@
                     <Component class="widget.ComboBox" name="TandaVital4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="TandaVital4" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1760,12 +1804,14 @@
                     <Component class="widget.ComboBox" name="TandaVital5">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="TandaVital5" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1826,12 +1872,14 @@
                     <Component class="widget.ComboBox" name="Laborat1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Laborat1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1892,12 +1940,14 @@
                     <Component class="widget.ComboBox" name="Laborat5">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Laborat5" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1923,12 +1973,14 @@
                     <Component class="widget.ComboBox" name="Laborat4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Laborat4" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1943,12 +1995,14 @@
                     <Component class="widget.ComboBox" name="Laborat3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Laborat3" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1997,12 +2051,14 @@
                     <Component class="widget.ComboBox" name="Laborat2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Laborat2" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2028,12 +2084,14 @@
                     <Component class="widget.ComboBox" name="Laborat6">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Laborat6" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2129,12 +2187,14 @@
                     <Component class="widget.ComboBox" name="Radiologi1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Radiologi1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2172,12 +2232,14 @@
                     <Component class="widget.ComboBox" name="Radiologi2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Radiologi2" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2273,12 +2335,14 @@
                     <Component class="widget.ComboBox" name="Kinis1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Kinis1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2304,12 +2368,14 @@
                     <Component class="widget.ComboBox" name="Kinis2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Kinis2" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2335,12 +2401,14 @@
                     <Component class="widget.ComboBox" name="Kinis3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Kinis3" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2367,12 +2435,14 @@
                     <Component class="widget.ComboBox" name="Kinis4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Kinis4" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2398,12 +2468,14 @@
                     <Component class="widget.ComboBox" name="Kinis5">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Kinis5" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2440,12 +2512,14 @@
                     <Component class="widget.ComboBox" name="Kinis6">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Kinis6" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2483,12 +2557,14 @@
                     <Component class="widget.ComboBox" name="Kinis7">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Kinis7" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2514,12 +2590,14 @@
                     <Component class="widget.ComboBox" name="Kinis8">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
-                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="Kinis8" noResource="true"/>
                       </Properties>
                       <Events>

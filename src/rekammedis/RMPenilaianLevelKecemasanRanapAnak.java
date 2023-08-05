@@ -538,7 +538,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -552,7 +552,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -701,7 +701,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-08-2023 17:16:15" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023 10:11:04" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -746,8 +746,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(btnPetugas);
         btnPetugas.setBounds(761, 40, 28, 23);
 
-        Prioritas1_5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_5.setSelectedIndex(1);
+        Prioritas1_5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas1_5.setName("Prioritas1_5"); // NOI18N
         Prioritas1_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -755,7 +754,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }
         });
         FormInput.add(Prioritas1_5);
-        Prioritas1_5.setBounds(266, 150, 90, 23);
+        Prioritas1_5.setBounds(266, 150, 60, 23);
 
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel58.setText("Gagal Ginjal Dengan Tanda Bendungan Paru");
@@ -783,7 +782,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         jSeparator2.setBounds(0, 70, 810, 1);
 
         jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel53.setText("I. PRIORITAS 1");
+        jLabel53.setText("1. Perasaan Ansietas (cemas) :");
         jLabel53.setName("jLabel53"); // NOI18N
         FormInput.add(jLabel53);
         jLabel53.setBounds(10, 70, 180, 23);
@@ -798,8 +797,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel60);
         jLabel60.setBounds(490, 150, 205, 23);
 
-        Prioritas1_6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_6.setSelectedIndex(1);
+        Prioritas1_6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas1_6.setName("Prioritas1_6"); // NOI18N
         Prioritas1_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -807,15 +805,14 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }
         });
         FormInput.add(Prioritas1_6);
-        Prioritas1_6.setBounds(699, 150, 90, 23);
+        Prioritas1_6.setBounds(699, 150, 60, 23);
 
         jLabel61.setText("Gagal Nafas :");
         jLabel61.setName("jLabel61"); // NOI18N
         FormInput.add(jLabel61);
         jLabel61.setBounds(495, 90, 200, 23);
 
-        Prioritas1_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_2.setSelectedIndex(1);
+        Prioritas1_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas1_2.setName("Prioritas1_2"); // NOI18N
         Prioritas1_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -823,15 +820,14 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }
         });
         FormInput.add(Prioritas1_2);
-        Prioritas1_2.setBounds(699, 90, 90, 23);
+        Prioritas1_2.setBounds(699, 90, 60, 23);
 
         jLabel62.setText(":");
         jLabel62.setName("jLabel62"); // NOI18N
         FormInput.add(jLabel62);
         jLabel62.setBounds(0, 120, 273, 23);
 
-        Prioritas1_3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_3.setSelectedIndex(1);
+        Prioritas1_3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas1_3.setName("Prioritas1_3"); // NOI18N
         Prioritas1_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -839,7 +835,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }
         });
         FormInput.add(Prioritas1_3);
-        Prioritas1_3.setBounds(277, 120, 90, 23);
+        Prioritas1_3.setBounds(277, 120, 60, 23);
 
         jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel63.setText("Gagal Jantung Dengan Tanda Bendungan Paru");
@@ -852,8 +848,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel64);
         jLabel64.setBounds(0, 90, 314, 23);
 
-        Prioritas1_1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_1.setSelectedIndex(1);
+        Prioritas1_1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas1_1.setName("Prioritas1_1"); // NOI18N
         Prioritas1_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -861,10 +856,10 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }
         });
         FormInput.add(Prioritas1_1);
-        Prioritas1_1.setBounds(318, 90, 90, 23);
+        Prioritas1_1.setBounds(318, 90, 60, 23);
 
         jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel65.setText("Pasca Operasi Dengan Gangguan Nafas Atau Hipotensi");
+        jLabel65.setText("Cemas");
         jLabel65.setName("jLabel65"); // NOI18N
         FormInput.add(jLabel65);
         jLabel65.setBounds(40, 90, 290, 23);
@@ -874,8 +869,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel66);
         jLabel66.setBounds(495, 120, 200, 23);
 
-        Prioritas1_4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_4.setSelectedIndex(1);
+        Prioritas1_4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas1_4.setName("Prioritas1_4"); // NOI18N
         Prioritas1_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -883,7 +877,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }
         });
         FormInput.add(Prioritas1_4);
-        Prioritas1_4.setBounds(699, 120, 90, 23);
+        Prioritas1_4.setBounds(699, 120, 60, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
@@ -911,8 +905,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel67);
         jLabel67.setBounds(40, 200, 120, 23);
 
-        Prioritas2_1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas2_1.setSelectedIndex(1);
+        Prioritas2_1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas2_1.setName("Prioritas2_1"); // NOI18N
         Prioritas2_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -932,8 +925,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel69);
         jLabel69.setBounds(555, 200, 140, 23);
 
-        Prioritas2_3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas2_3.setSelectedIndex(1);
+        Prioritas2_3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas2_3.setName("Prioritas2_3"); // NOI18N
         Prioritas2_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -948,8 +940,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel70);
         jLabel70.setBounds(280, 200, 140, 23);
 
-        Prioritas2_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas2_2.setSelectedIndex(1);
+        Prioritas2_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas2_2.setName("Prioritas2_2"); // NOI18N
         Prioritas2_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -970,8 +961,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel72);
         jLabel72.setBounds(0, 230, 122, 23);
 
-        Prioritas2_4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas2_4.setSelectedIndex(1);
+        Prioritas2_4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas2_4.setName("Prioritas2_4"); // NOI18N
         Prioritas2_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -986,8 +976,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel73);
         jLabel73.setBounds(280, 230, 140, 23);
 
-        Prioritas2_5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas2_5.setSelectedIndex(1);
+        Prioritas2_5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas2_5.setName("Prioritas2_5"); // NOI18N
         Prioritas2_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1002,8 +991,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel74);
         jLabel74.setBounds(555, 230, 140, 23);
 
-        Prioritas2_6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas2_6.setSelectedIndex(1);
+        Prioritas2_6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas2_6.setName("Prioritas2_6"); // NOI18N
         Prioritas2_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1018,8 +1006,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel75);
         jLabel75.setBounds(255, 260, 310, 23);
 
-        Prioritas2_8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas2_8.setSelectedIndex(1);
+        Prioritas2_8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas2_8.setName("Prioritas2_8"); // NOI18N
         Prioritas2_8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1040,8 +1027,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel77);
         jLabel77.setBounds(0, 260, 128, 23);
 
-        Prioritas2_7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas2_7.setSelectedIndex(1);
+        Prioritas2_7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas2_7.setName("Prioritas2_7"); // NOI18N
         Prioritas2_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1082,8 +1068,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel79);
         jLabel79.setBounds(0, 310, 240, 23);
 
-        Prioritas3_1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas3_1.setSelectedIndex(1);
+        Prioritas3_1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas3_1.setName("Prioritas3_1"); // NOI18N
         Prioritas3_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1098,8 +1083,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel80);
         jLabel80.setBounds(375, 310, 320, 23);
 
-        Prioritas3_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas3_2.setSelectedIndex(1);
+        Prioritas3_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas3_2.setName("Prioritas3_2"); // NOI18N
         Prioritas3_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1120,8 +1104,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel82);
         jLabel82.setBounds(0, 340, 151, 23);
 
-        Prioritas3_3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas3_3.setSelectedIndex(1);
+        Prioritas3_3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas3_3.setName("Prioritas3_3"); // NOI18N
         Prioritas3_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1136,8 +1119,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel83);
         jLabel83.setBounds(255, 340, 440, 23);
 
-        Prioritas3_4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas3_4.setSelectedIndex(1);
+        Prioritas3_4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Prioritas3_4.setName("Prioritas3_4"); // NOI18N
         Prioritas3_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1173,8 +1155,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel84);
         jLabel84.setBounds(40, 390, 160, 23);
 
-        TandaVital1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        TandaVital1.setSelectedIndex(1);
+        TandaVital1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TandaVital1.setName("TandaVital1"); // NOI18N
         TandaVital1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1194,8 +1175,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel86);
         jLabel86.setBounds(375, 390, 320, 23);
 
-        TandaVital2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        TandaVital2.setSelectedIndex(1);
+        TandaVital2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TandaVital2.setName("TandaVital2"); // NOI18N
         TandaVital2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1216,8 +1196,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel88);
         jLabel88.setBounds(0, 420, 128, 23);
 
-        TandaVital3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        TandaVital3.setSelectedIndex(1);
+        TandaVital3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TandaVital3.setName("TandaVital3"); // NOI18N
         TandaVital3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1232,8 +1211,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel89);
         jLabel89.setBounds(280, 420, 140, 23);
 
-        TandaVital4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        TandaVital4.setSelectedIndex(1);
+        TandaVital4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TandaVital4.setName("TandaVital4"); // NOI18N
         TandaVital4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1248,8 +1226,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel90);
         jLabel90.setBounds(555, 420, 140, 23);
 
-        TandaVital5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        TandaVital5.setSelectedIndex(1);
+        TandaVital5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TandaVital5.setName("TandaVital5"); // NOI18N
         TandaVital5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1273,8 +1250,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jSeparator10);
         jSeparator10.setBounds(0, 450, 810, 1);
 
-        Laborat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Laborat1.setSelectedIndex(1);
+        Laborat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Laborat1.setName("Laborat1"); // NOI18N
         Laborat1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1306,8 +1282,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel93);
         jLabel93.setBounds(325, 500, 120, 23);
 
-        Laborat5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Laborat5.setSelectedIndex(1);
+        Laborat5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Laborat5.setName("Laborat5"); // NOI18N
         Laborat5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1322,8 +1297,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel94);
         jLabel94.setBounds(555, 470, 140, 23);
 
-        Laborat4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Laborat4.setSelectedIndex(1);
+        Laborat4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Laborat4.setName("Laborat4"); // NOI18N
         Laborat4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1333,8 +1307,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(Laborat4);
         Laborat4.setBounds(176, 500, 90, 23);
 
-        Laborat3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Laborat3.setSelectedIndex(1);
+        Laborat3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Laborat3.setName("Laborat3"); // NOI18N
         Laborat3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1360,8 +1333,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel97);
         jLabel97.setBounds(325, 470, 120, 23);
 
-        Laborat2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Laborat2.setSelectedIndex(1);
+        Laborat2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Laborat2.setName("Laborat2"); // NOI18N
         Laborat2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1376,8 +1348,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel98);
         jLabel98.setBounds(555, 500, 140, 23);
 
-        Laborat6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Laborat6.setSelectedIndex(1);
+        Laborat6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Laborat6.setName("Laborat6"); // NOI18N
         Laborat6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1418,8 +1389,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel101);
         jLabel101.setBounds(0, 550, 510, 23);
 
-        Radiologi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Radiologi1.setSelectedIndex(1);
+        Radiologi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Radiologi1.setName("Radiologi1"); // NOI18N
         Radiologi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1440,8 +1410,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel103);
         jLabel103.setBounds(0, 580, 574, 23);
 
-        Radiologi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Radiologi2.setSelectedIndex(1);
+        Radiologi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Radiologi2.setName("Radiologi2"); // NOI18N
         Radiologi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1482,8 +1451,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel106);
         jLabel106.setBounds(0, 630, 117, 23);
 
-        Kinis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kinis1.setSelectedIndex(1);
+        Kinis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kinis1.setName("Kinis1"); // NOI18N
         Kinis1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1498,8 +1466,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel107);
         jLabel107.setBounds(305, 630, 140, 23);
 
-        Kinis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kinis2.setSelectedIndex(1);
+        Kinis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kinis2.setName("Kinis2"); // NOI18N
         Kinis2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1514,8 +1481,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel108);
         jLabel108.setBounds(635, 630, 60, 23);
 
-        Kinis3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kinis3.setSelectedIndex(1);
+        Kinis3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kinis3.setName("Kinis3"); // NOI18N
         Kinis3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1531,8 +1497,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel109);
         jLabel109.setBounds(40, 660, 90, 23);
 
-        Kinis4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kinis4.setSelectedIndex(1);
+        Kinis4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kinis4.setName("Kinis4"); // NOI18N
         Kinis4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1547,8 +1512,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel110);
         jLabel110.setBounds(305, 660, 140, 23);
 
-        Kinis5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kinis5.setSelectedIndex(1);
+        Kinis5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kinis5.setName("Kinis5"); // NOI18N
         Kinis5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1568,8 +1532,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel112);
         jLabel112.setBounds(635, 660, 60, 23);
 
-        Kinis6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kinis6.setSelectedIndex(1);
+        Kinis6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kinis6.setName("Kinis6"); // NOI18N
         Kinis6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1590,8 +1553,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel114);
         jLabel114.setBounds(0, 690, 88, 23);
 
-        Kinis7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kinis7.setSelectedIndex(1);
+        Kinis7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kinis7.setName("Kinis7"); // NOI18N
         Kinis7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1606,8 +1568,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel115);
         jLabel115.setBounds(305, 690, 140, 23);
 
-        Kinis8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kinis8.setSelectedIndex(1);
+        Kinis8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kinis8.setName("Kinis8"); // NOI18N
         Kinis8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
