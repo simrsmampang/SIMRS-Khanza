@@ -1270,7 +1270,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     getDatadetailobatracikan(i);
                 }
             }
-            
+            tampilobat();
             return;
         }
         
