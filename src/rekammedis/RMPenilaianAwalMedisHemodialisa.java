@@ -67,7 +67,9 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             "Keterangan Bengkak Seluruh Tubuh","Urin Berdarah","Keterangan Urin Berdarah","Penyakit Ginjal Laom","Keterangan Penyakit Ginjal Laom","Penyakit Lain",
             "Keterangan Penyakit Lain","Konsumsi Obat Nefro","Keterangan Konsumsi Obat Nefro","Dialisis_pertama","Pernah CPAD","Tgl.CPAD","Pernah Transplantasi",
             "Tgl.Transplantasi","Keadaan Umum","Kesadaran","Nadi(x/menit)","BB(Kg)","TD(mmHg)","Suhu(°C)","Napas(x/menit)","TB(Cm)","Hepatomegali","Splenomegali",
-            "Ascites","Edema","whezzing","ronchi","ikterik","tekanan_vena","anemia","kardiomegali","bising","thorax","tanggal_thorax","Egha Saputra Dharta","tanggal_ekg","bno","tanggal_bno","usg","tanggal_usg","renogram","tanggal_renogram","biopsi","tanggal_biopsi","ctscan","tanggal_ctscan","arteriografi","tanggal_arteriografi","kultur_urin","tanggal_kultur_urin","laborat","tanggal_laborat","hematokrit","hemoglobin","leukosit","trombosit","hitung_jenis","ureum","urin_lengkap","kreatinin","cct","sgot","sgpt","ct","asam_urat","hbsag","anti_hcv","edukasi"
+            "Ascites","Edema","Whezzing","Ronchi","Ikterik","Tekanan Vena","Anemia","Kardiomegali","Bising","Thorax","Tgl.Thorax","EKG","Tgl.EKG","BNO","Tgl.BNO",
+            "USG","Tgl.USG","Renogram","Tgl.Renogram","Biopsi","Tgl.Biopsi","CT Scan","Tgl.CT Scan","Arteriografi","Tgl.Arteriografi","Kultur Urin","Tgl.Kultur Urin",
+            "laborat","tanggal_laborat","hematokrit","hemoglobin","leukosit","trombosit","hitung_jenis","ureum","urin_lengkap","kreatinin","cct","sgot","sgpt","ct","asam_urat","hbsag","anti_hcv","edukasi"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
