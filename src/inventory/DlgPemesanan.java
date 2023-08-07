@@ -136,6 +136,8 @@ public class DlgPemesanan extends javax.swing.JDialog {
                 column.setPreferredWidth(85);
             }else if(i==13){
                 column.setPreferredWidth(70);
+            }else if(i==25){
+                column.setPreferredWidth(30);
             }else{
                 column.setMinWidth(0);
                 column.setMaxWidth(0);                   

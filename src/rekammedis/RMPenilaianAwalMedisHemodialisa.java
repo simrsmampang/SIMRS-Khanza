@@ -1,5 +1,5 @@
 /*
- * Kontribusi dari Abdul Wahid, RSUD Cipayung Jakarta Timur
+ * Kontribusi RSUD Prembun
  */
 
 
@@ -14,8 +14,6 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -53,8 +51,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     private int i=0;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private StringBuilder htmlContent;
-    private String finger="",finger1="",dbhipertensi="",dbdm="",dbbsk="",dbosk="",dbisk="",dbbst="",dbub="",dbpgl="",dbpl="",dbkon="",
-            dbcapd="",dbtransplantasi="",dbthorax="",dbekg="",dbbno="",dbusg="",dbrenogram="",dbbiopsi="",dbctscan="",dbarteri="",dbkultur="",dblab="";
+    private String finger="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -63,263 +60,17 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        
-        Hipertensi.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(Hipertensi.getSelectedItem().toString())){
-            TxtHipertensi.setEnabled(true);
-            }else{
-            TxtHipertensi.setEnabled(false);    
-            }  
-           }
-        });
-        DM.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(DM.getSelectedItem().toString())){
-            Txtdm.setEnabled(true);
-            }else{
-            Txtdm.setEnabled(false);    
-            }  
-           }
-        });
-        BSK.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(BSK.getSelectedItem().toString())){
-            Txtbsk.setEnabled(true);
-            }else{
-            Txtbsk.setEnabled(false);    
-            }  
-           }
-        });
-        OSK.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(OSK.getSelectedItem().toString())){
-            Txtosk.setEnabled(true);
-            }else{
-            Txtosk.setEnabled(false);    
-            }  
-           }
-        });
-        ISK.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(ISK.getSelectedItem().toString())){
-            Txtisk.setEnabled(true);
-            }else{
-            Txtisk.setEnabled(false);    
-            }  
-           }
-        });
-        BST.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(BST.getSelectedItem().toString())){
-            Txtbst.setEnabled(true);
-            }else{
-            Txtbst.setEnabled(false);    
-            }  
-           }
-        });
-        UB.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(UB.getSelectedItem().toString())){
-            Txtub.setEnabled(true);
-            }else{
-            Txtub.setEnabled(false);    
-            }  
-           }
-        });
-        PGL.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(PGL.getSelectedItem().toString())){
-            Txtpgl.setEnabled(true);
-            }else{
-            Txtpgl.setEnabled(false);    
-            }  
-           }
-        });
-        PL.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(PL.getSelectedItem().toString())){
-            Txtpl.setEnabled(true);
-            }else{
-            Txtpl.setEnabled(false);    
-            }  
-           }
-        });
-        KON.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(KON.getSelectedItem().toString())){
-            Txtkon.setEnabled(true);
-            }else{
-            Txtkon.setEnabled(false);    
-            }  
-           }
-        });
-        CAPD.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(CAPD.getSelectedItem().toString())){
-            TglCAPD.setEnabled(true);
-            }else{
-            TglCAPD.setEnabled(false);    
-            }  
-           }
-        });
-        Transplantasi.addActionListener(new ActionListener () {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            if("YA".equals(Transplantasi.getSelectedItem().toString())){
-            TglTransplantasi.setEnabled(true);
-            }else{
-            TglTransplantasi.setEnabled(false);    
-            }  
-           }
-        });
-        ActionListener cbthoraxact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cbthorax.isSelected()){
-                    TglThorax.setEnabled(true);
-                }else{
-                    TglThorax.setEnabled(false);    
-                }  
-            }
-        };
-        TglThorax.setEnabled(false);
-        cbthorax.addActionListener(cbthoraxact);
-        
-        ActionListener cbekgact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cbekg.isSelected()){
-                    TglEKG.setEnabled(true);
-                }else{
-                    TglEKG.setEnabled(false);    
-                }  
-            }
-        };
-        TglEKG.setEnabled(false);
-        cbekg.addActionListener(cbekgact);
-        
-        ActionListener cbbnoact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cbbno.isSelected()){
-                    TglBNO.setEnabled(true);
-                }else{
-                    TglBNO.setEnabled(false);    
-                }  
-            }
-        };
-        TglBNO.setEnabled(false);
-        cbbno.addActionListener(cbbnoact);
-        
-        ActionListener cbusgact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cbusg.isSelected()){
-                    TglUSG.setEnabled(true);
-                }else{
-                    TglUSG.setEnabled(false);    
-                }  
-            }
-        };
-        TglUSG.setEnabled(false);
-        cbusg.addActionListener(cbusgact);
-        
-        ActionListener cbrenogramact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cbrenogram.isSelected()){
-                    TglRenogram.setEnabled(true);
-                }else{
-                    TglRenogram.setEnabled(false);    
-                }  
-            }
-        };
-        TglRenogram.setEnabled(false);
-        cbrenogram.addActionListener(cbrenogramact);
-        
-        ActionListener cbbiopsiact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cbbiopsi.isSelected()){
-                    TglBiopsi.setEnabled(true);
-                }else{
-                    TglBiopsi.setEnabled(false);    
-                }  
-            }
-        };
-        TglBiopsi.setEnabled(false);
-        cbbiopsi.addActionListener(cbbiopsiact);
-        
-        ActionListener cbctscanact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cbctscan.isSelected()){
-                    TglCTscan.setEnabled(true);
-                }else{
-                    TglCTscan.setEnabled(false);    
-                }  
-            }
-        };
-        TglCTscan.setEnabled(false);
-        cbctscan.addActionListener(cbctscanact);
-        
-        ActionListener cbarteriact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cbarteri.isSelected()){
-                    TglArteriografi.setEnabled(true);
-                }else{
-                    TglArteriografi.setEnabled(false);    
-                }  
-            }
-        };
-        TglArteriografi.setEnabled(false);
-        cbarteri.addActionListener(cbarteriact);
-        
-        ActionListener cbkulturact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cbkultur.isSelected()){
-                    TglKultururin.setEnabled(true);
-                }else{
-                    TglKultururin.setEnabled(false);    
-                }  
-            }
-        };
-        TglKultururin.setEnabled(false);
-        cbkultur.addActionListener(cbkulturact);
-        
-        ActionListener cblabact = new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(cblab.isSelected()){
-                    TglLaboratorium.setEnabled(true);
-                }else{
-                    TglLaboratorium.setEnabled(false);    
-                }  
-            }
-        };
-        TglLaboratorium.setEnabled(false);
-        cblab.addActionListener(cblabact);
-        
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Rawat Jalan","Rawat Inap","Riwayat Alergi","Nyeri","Status Nutrisi",
-            "Hipertensi","Diabetes Melitus","Batu Saluran Kemih","Operasi Saluran Kemih","Infeksi Saluran Kemih","Bengkak Seluruh Tubuh","Urin Berdarah","Penyakit Ginjal Laom","Penyakit Lain","Konsumsi Obat Nefrotoksis",
-            "Dialisis Pertama","CAPD","Pernah Transplantasi","Keadaan Umum","Kesadaran","BB(Kg)","TB(Cm)","Suhu","Nadi(x/menit)","TD(mmHg)","Napas(x/menit)","Sklera Ikterik","Konjungtiva","Tekanan Vena Jugularis","Jantung Kardiomegali","Jantung Bising",
-            "Paru Whezzing","Paru Ronchi","Abdomen Hepatomegali","Abdomen Splenomegali","Abdomen Ascites","Ekstremitas Edema","Foto Thoraks","EKG","BNO","USG","Renogram","PA Biopsi Ginjal","CT Scan","Arteriografi","Kultur Urin","Laboratorium",
-            "Hematokrit","Hemoglobin","Leukosit","Trombosit","Hitung Jenis","Ureum","Kreatinin","Asam Urat","SGOT","SGPT","HbsAg","CT","Urin Lengkap","CCT","Anti HCV","Edukasi"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP","Nama Dokter","Tanggal","Anamnesis","Hubungan","Asal Poli/Ruangan","Riwayat Alergi Obat",
+            "Skala Nyeri","Status Nutrisi","Hipertensi","Keterangan Hipertensi","Diabetes","Keterangan Diabetes","Batu Saluran Kemih","Keterangan Batu Saluran Kemih",
+            "Operasi Saluran Kemih","Keterangan Operasi Saluran Kemih","Infeksi Saluran Kemih","Keterangan Infeksi Saluran Kemih","Bengkak Seluruh Tubuh",
+            "Keterangan Bengkak Seluruh Tubuh","Urin Berdarah","Keterangan Urin Berdarah","Penyakit Ginjal Laom","Keterangan Penyakit Ginjal Laom","Penyakit Lain",
+            "Keterangan Penyakit Lain","Konsumsi Obat Nefro","Keterangan Konsumsi Obat Nefro","Dialisis_pertama","Pernah CPAD","Tgl.CPAD","Pernah Transplantasi",
+            "Tgl.Transplantasi","Keadaan Umum","Kesadaran","Nadi(x/menit)","BB(Kg)","TD(mmHg)","Suhu(°C)","Napas(x/menit)","TB(Cm)","Hepatomegali","Splenomegali",
+            "Ascites","Edema","Whezzing","Ronchi","Ikterik","Tekanan Vena","Anemia","Kardiomegali","Bising","Thorax","Tgl.Thorax","EKG","Tgl.EKG","BNO","Tgl.BNO",
+            "USG","Tgl.USG","Renogram","Tgl.Renogram","Biopsi","Tgl.Biopsi","CT Scan","Tgl.CT Scan","Arteriografi","Tgl.Arteriografi","Kultur Urin","Tgl.Kultur Urin",
+            "Laborat","Tgl.Laborat","Hematokrit","Hemoglobin","Leukosit","Trombosit","Hitung Jenis","Ureum","Urin Lengkap","Kreatinin","CCT","SGOT","SGPT","CT/BT",
+            "Asam Urat","HbsAg","Anti HCV","Edukasi"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -350,162 +101,45 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }else if(i==9){
                 column.setPreferredWidth(100);
-            }else if(i==10){
-                column.setPreferredWidth(300);
-            }else if(i==11){
-                column.setPreferredWidth(150);
-            }else if(i==12){
-                column.setPreferredWidth(150);
-            }else if(i==13){
-                column.setPreferredWidth(150);
-            }else if(i==14){
-                column.setPreferredWidth(120);
-            }else if(i==15){
-                column.setPreferredWidth(120);
-            }else if(i==16){
-                column.setPreferredWidth(100);
-            }else if(i==17){
-                column.setPreferredWidth(100);
-            }else if(i==18){
-                column.setPreferredWidth(100);
-            }else if(i==19){
-                column.setPreferredWidth(100);
-            }else if(i==20){
-                column.setPreferredWidth(100);
-            }else if(i==21){
-                column.setPreferredWidth(100);
-            }else if(i==22){
-                column.setPreferredWidth(100);
-            }else if(i==23){
-                column.setPreferredWidth(100);
-            }else if(i==24){
-                column.setPreferredWidth(100);
-            }else if(i==25){
-                column.setPreferredWidth(100);
-            }else if(i==26){
-                column.setPreferredWidth(100);
-            }else if(i==27){
-                column.setPreferredWidth(100);
-            }else if(i==28){
-                column.setPreferredWidth(100);
-            }else if(i==39){
-                column.setPreferredWidth(150);
-            }else if(i==30){
-                column.setPreferredWidth(40);
-            }else if(i==31){
-                column.setPreferredWidth(40);
-            }else if(i==32){
-                column.setPreferredWidth(40);
-            }else if(i==33){
-                column.setPreferredWidth(40);
-            }else if(i==34){
-                column.setPreferredWidth(40);
-            }else if(i==35){
-                column.setPreferredWidth(40);
-            }else if(i==36){
-                column.setPreferredWidth(40);
-            }else if(i==37){
-                column.setPreferredWidth(100);
-            }else if(i==38){
-                column.setPreferredWidth(100);
-            }else if(i==39){
-                column.setPreferredWidth(100);
-            }else if(i==40){
-                column.setPreferredWidth(100);
-            }else if(i==41){
-                column.setPreferredWidth(150);
-            }else if(i==42){
-                column.setPreferredWidth(150);
-            }else if(i==43){
-                column.setPreferredWidth(150);
-            }else if(i==44){
-                column.setPreferredWidth(150);
-            }else if(i==45){
-                column.setPreferredWidth(150);
-            }else if(i==46){
-                column.setPreferredWidth(150);
-            }else if(i==47){
-                column.setPreferredWidth(150);
-            }else if(i==48){
-                column.setPreferredWidth(150);
-            }else if(i==49){
-                column.setPreferredWidth(150);
-            }else if(i==50){
-                column.setPreferredWidth(150);
-            }else if(i==51){
-                column.setPreferredWidth(150);
-            }else if(i==52){
-                column.setPreferredWidth(150);
-            }else if(i==53){
-                column.setPreferredWidth(150);
-            }else if(i==54){
-                column.setPreferredWidth(150);
-            }else if(i==55){
-                column.setPreferredWidth(150);
-            }else if(i==56){
-                column.setPreferredWidth(150);
-            }else if(i==57){
-                column.setPreferredWidth(150);
-            }else if(i==58){
-                column.setPreferredWidth(150);
-            }else if(i==59){
-                column.setPreferredWidth(150);
-            }else if(i==60){
-                column.setPreferredWidth(150);
-            }else if(i==61){
-                column.setPreferredWidth(150);
-            }else if(i==62){
-                column.setPreferredWidth(150);
-            }else if(i==63){
-                column.setPreferredWidth(150);
-            }else if(i==64){
-                column.setPreferredWidth(150);
-            }else if(i==65){
-                column.setPreferredWidth(150);
-            }else if(i==66){
-                column.setPreferredWidth(150);
-            }else if(i==67){
-                column.setPreferredWidth(150);
-            }else if(i==68){
-                column.setPreferredWidth(150);
-            }else if(i==69){
-                column.setPreferredWidth(150);
-            }else if(i==70){
-                column.setPreferredWidth(150);
-            }else if(i==71){
-                column.setPreferredWidth(150);
-            }else if(i==72){
-                column.setPreferredWidth(500);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Hubungan.setDocument(new batasInput((int)30).getKata(Hubungan));
-        Alergi.setDocument(new batasInput((int)50).getKata(Alergi));
-        Status.setDocument(new batasInput((byte)100).getKata(Status));
-        TD.setDocument(new batasInput((byte)10).getKata(TD));
-        Nadi.setDocument(new batasInput((byte)10).getKata(Nadi));
-        Suhu.setDocument(new batasInput((byte)10).getKata(Suhu));
-        BB.setDocument(new batasInput((byte)10).getKata(BB));
-        TB.setDocument(new batasInput((byte)10).getKata(TB));
-        //Txtkepala.setDocument(new batasInput((byte)500).getKata(Txtkepala));
-        //Txtthorax.setDocument(new batasInput((byte)500).getKata(Txtthorax));
-        //Txtabdomen.setDocument(new batasInput((byte)500).getKata(Txtabdomen));
-        //Txtekstremitas.setDocument(new batasInput((byte)500).getKata(Txtekstremitas));
-        //Txtcolumna.setDocument(new batasInput((byte)500).getKata(Txtcolumna));
-        //Txtmuskulos.setDocument(new batasInput((byte)500).getKata(Txtmuskulos));
-        //Txtlainnya.setDocument(new batasInput((byte)500).getKata(Txtlainnya));
-        //Lab.setDocument(new batasInput((byte)500).getKata(Lab));
-        //Rad.setDocument(new batasInput((byte)500).getKata(Rad));
-        //Pemeriksaan.setDocument(new batasInput((int)500).getKata(Pemeriksaan));
-        //Diagnosis.setDocument(new batasInput((int)500).getKata(Diagnosis));
-        //Diagnosis2.setDocument(new batasInput((int)500).getKata(Diagnosis2));
-        //Permasalahan.setDocument(new batasInput((int)500).getKata(Permasalahan));
-        //Tindakan.setDocument(new batasInput((byte)500).getKata(Tindakan));
-        //Terapi.setDocument(new batasInput((byte)500).getKata(Terapi));
-        Edukasi.setDocument(new batasInput((int)500).getKata(Edukasi));
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        Hubungan.setDocument(new batasInput((byte)30).getKata(Hubungan));
+        AsalRuangan.setDocument(new batasInput((byte)50).getKata(AsalRuangan));
+        Alergi.setDocument(new batasInput((int)100).getKata(Alergi));
+        StatusNutrisi.setDocument(new batasInput((int)100).getKata(StatusNutrisi));
+        KeteranganHipertensi.setDocument(new batasInput((byte)30).getKata(KeteranganHipertensi));
+        KeteranganDiabetesMelitus.setDocument(new batasInput((byte)30).getKata(KeteranganDiabetesMelitus));
+        KeteranganBatuSaluranKemih.setDocument(new batasInput((byte)30).getKata(KeteranganBatuSaluranKemih));
+        KeteranganOperasiSaluranKemih.setDocument(new batasInput((byte)30).getKata(KeteranganOperasiSaluranKemih));
+        KeteranganInfeksiSaluranKemih.setDocument(new batasInput((byte)30).getKata(KeteranganInfeksiSaluranKemih));
+        KeteranganBengkakSeluruhTubuh.setDocument(new batasInput((byte)30).getKata(KeteranganBengkakSeluruhTubuh));
+        KeteranganUrinBerdarah.setDocument(new batasInput((byte)30).getKata(KeteranganUrinBerdarah));
+        KeteranganPenyakitGinjalLaom.setDocument(new batasInput((byte)30).getKata(KeteranganPenyakitGinjalLaom));
+        KeteranganPenyakitLain.setDocument(new batasInput((byte)30).getKata(KeteranganPenyakitLain));
+        KeteranganKonsumsiObatNefrotoksis.setDocument(new batasInput((byte)30).getKata(KeteranganKonsumsiObatNefrotoksis));
+        Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
+        BB.setDocument(new batasInput((byte)5).getKata(BB));
+        TD.setDocument(new batasInput((byte)8).getKata(TD));
+        Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
+        Napas.setDocument(new batasInput((byte)5).getKata(Napas));
+        TB.setDocument(new batasInput((byte)5).getKata(TB));
+        Hematokrit.setDocument(new batasInput((byte)30).getKata(Hematokrit));
+        Hemoglobin.setDocument(new batasInput((byte)30).getKata(Hemoglobin));
+        Leukosit.setDocument(new batasInput((byte)30).getKata(Leukosit));
+        Trombosit.setDocument(new batasInput((byte)30).getKata(Trombosit));
+        HitungJenis.setDocument(new batasInput((byte)30).getKata(HitungJenis));
+        Ureum.setDocument(new batasInput((byte)30).getKata(Ureum));
+        UrinLengkap.setDocument(new batasInput((byte)30).getKata(UrinLengkap));
+        Kreatinin.setDocument(new batasInput((byte)30).getKata(Kreatinin));
+        CCT.setDocument(new batasInput((byte)30).getKata(CCT));
+        SGOT.setDocument(new batasInput((byte)30).getKata(SGOT));
+        SGPT.setDocument(new batasInput((byte)30).getKata(SGPT));
+        CT.setDocument(new batasInput((byte)30).getKata(CT));
+        AsamUrat.setDocument(new batasInput((byte)30).getKata(AsamUrat));
+        Edukasi.setDocument(new batasInput((byte)30).getKata(Edukasi));
         
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -628,31 +262,30 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         Hubungan = new widget.TextBox();
         jLabel40 = new widget.Label();
         jLabel29 = new widget.Label();
-        Status = new widget.TextBox();
-        DM = new widget.ComboBox();
+        StatusNutrisi = new widget.TextBox();
+        DiabetesMelitus = new widget.ComboBox();
         jLabel44 = new widget.Label();
-        ISK = new widget.ComboBox();
+        InfeksiSaluranKemih = new widget.ComboBox();
         jLabel45 = new widget.Label();
-        BST = new widget.ComboBox();
+        BengkakSeluruhTubuh = new widget.ComboBox();
         jLabel46 = new widget.Label();
         Hipertensi = new widget.ComboBox();
         jLabel49 = new widget.Label();
-        BSK = new widget.ComboBox();
+        BatuSaluranKemih = new widget.ComboBox();
         jLabel50 = new widget.Label();
-        OSK = new widget.ComboBox();
+        OperasiSaluranKemih = new widget.ComboBox();
         jLabel51 = new widget.Label();
-        PGL = new widget.ComboBox();
+        PenyakitGinjalLaom = new widget.ComboBox();
         jLabel101 = new widget.Label();
         label11 = new widget.Label();
         TglAsuhan = new widget.Tanggal();
-        jLabel104 = new widget.Label();
         jLabel41 = new widget.Label();
         Nyeri = new widget.ComboBox();
         jLabel95 = new widget.Label();
         scrollPane14 = new widget.ScrollPane();
         Edukasi = new widget.TextArea();
         jLabel47 = new widget.Label();
-        UB = new widget.ComboBox();
+        UrinBerdarah = new widget.ComboBox();
         jLabel113 = new widget.Label();
         jLabel52 = new widget.Label();
         jLabel48 = new widget.Label();
@@ -660,8 +293,8 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         Transplantasi = new widget.ComboBox();
         jLabel53 = new widget.Label();
         jLabel54 = new widget.Label();
-        PL = new widget.ComboBox();
-        KON = new widget.ComboBox();
+        PenyakitLain = new widget.ComboBox();
+        KonsumsiObatNefrotoksis = new widget.ComboBox();
         jLabel55 = new widget.Label();
         jLabel24 = new widget.Label();
         Napas = new widget.TextBox();
@@ -671,7 +304,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         jLabel58 = new widget.Label();
         jLabel59 = new widget.Label();
         Konjungtiva = new widget.ComboBox();
-        JVP = new widget.ComboBox();
+        TekananVenaJugularis = new widget.ComboBox();
         jLabel60 = new widget.Label();
         jLabel61 = new widget.Label();
         jLabel62 = new widget.Label();
@@ -745,37 +378,27 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         HbsAg = new widget.ComboBox();
         AntiHCV = new widget.ComboBox();
         jLabel88 = new widget.Label();
-        cblab = new javax.swing.JCheckBox();
-        cbrenogram = new javax.swing.JCheckBox();
-        cbkultur = new javax.swing.JCheckBox();
-        cbarteri = new javax.swing.JCheckBox();
-        cbctscan = new javax.swing.JCheckBox();
-        cbbiopsi = new javax.swing.JCheckBox();
-        cbusg = new javax.swing.JCheckBox();
-        cbbno = new javax.swing.JCheckBox();
-        cbekg = new javax.swing.JCheckBox();
-        cbthorax = new javax.swing.JCheckBox();
-        Ranap = new widget.TextBox();
+        AsalRuangan = new widget.TextBox();
         Alergi = new widget.TextBox();
         jLabel89 = new widget.Label();
         jLabel90 = new widget.Label();
         jSeparator2 = new javax.swing.JSeparator();
-        TxtHipertensi = new widget.TextBox();
-        Txtdm = new widget.TextBox();
-        Txtbsk = new widget.TextBox();
-        Txtosk = new widget.TextBox();
-        Txtisk = new widget.TextBox();
-        Txtbst = new widget.TextBox();
-        Txtub = new widget.TextBox();
-        Txtpgl = new widget.TextBox();
-        Txtpl = new widget.TextBox();
-        Txtkon = new widget.TextBox();
+        KeteranganHipertensi = new widget.TextBox();
+        KeteranganDiabetesMelitus = new widget.TextBox();
+        KeteranganBatuSaluranKemih = new widget.TextBox();
+        KeteranganOperasiSaluranKemih = new widget.TextBox();
+        KeteranganInfeksiSaluranKemih = new widget.TextBox();
+        KeteranganBengkakSeluruhTubuh = new widget.TextBox();
+        KeteranganUrinBerdarah = new widget.TextBox();
+        KeteranganPenyakitGinjalLaom = new widget.TextBox();
+        KeteranganPenyakitLain = new widget.TextBox();
+        KeteranganKonsumsiObatNefrotoksis = new widget.TextBox();
         jSeparator3 = new javax.swing.JSeparator();
         TglCAPD = new widget.Tanggal();
         TglTransplantasi = new widget.Tanggal();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel91 = new widget.Label();
-        Keadaan = new widget.ComboBox();
+        KeadaanUmum = new widget.ComboBox();
         jLabel42 = new widget.Label();
         jLabel39 = new widget.Label();
         Kesadaran = new widget.ComboBox();
@@ -789,6 +412,19 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         jLabel28 = new widget.Label();
         jLabel93 = new widget.Label();
         jSeparator5 = new javax.swing.JSeparator();
+        ChkUSG = new widget.CekBox();
+        ChkThorax = new widget.CekBox();
+        ChkEKG = new widget.CekBox();
+        ChkBNO = new widget.CekBox();
+        ChkRenogram = new widget.CekBox();
+        ChkBiopsiGinjal = new widget.CekBox();
+        ChkCTScan = new widget.CekBox();
+        ChkArteriografi = new widget.CekBox();
+        ChkKulturUrin = new widget.CekBox();
+        ChkLaborat = new widget.CekBox();
+        jLabel96 = new widget.Label();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel102 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -986,7 +622,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(870, 1850));
+        FormInput.setPreferredSize(new java.awt.Dimension(870, 973));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -1195,55 +831,55 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         FormInput.add(jLabel29);
         jLabel29.setBounds(270, 110, 100, 23);
 
-        Status.setFocusTraversalPolicyProvider(true);
-        Status.setName("Status"); // NOI18N
-        Status.addKeyListener(new java.awt.event.KeyAdapter() {
+        StatusNutrisi.setFocusTraversalPolicyProvider(true);
+        StatusNutrisi.setName("StatusNutrisi"); // NOI18N
+        StatusNutrisi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                StatusKeyPressed(evt);
+                StatusNutrisiKeyPressed(evt);
             }
         });
-        FormInput.add(Status);
-        Status.setBounds(374, 110, 300, 23);
+        FormInput.add(StatusNutrisi);
+        StatusNutrisi.setBounds(374, 110, 300, 23);
 
-        DM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        DM.setName("DM"); // NOI18N
-        DM.addKeyListener(new java.awt.event.KeyAdapter() {
+        DiabetesMelitus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        DiabetesMelitus.setName("DiabetesMelitus"); // NOI18N
+        DiabetesMelitus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DMKeyPressed(evt);
+                DiabetesMelitusKeyPressed(evt);
             }
         });
-        FormInput.add(DM);
-        DM.setBounds(164, 190, 80, 23);
+        FormInput.add(DiabetesMelitus);
+        DiabetesMelitus.setBounds(164, 190, 80, 23);
 
         jLabel44.setText("Infeksi Saluran Kemih :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
         jLabel44.setBounds(0, 280, 160, 23);
 
-        ISK.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        ISK.setName("ISK"); // NOI18N
-        ISK.addKeyListener(new java.awt.event.KeyAdapter() {
+        InfeksiSaluranKemih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        InfeksiSaluranKemih.setName("InfeksiSaluranKemih"); // NOI18N
+        InfeksiSaluranKemih.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ISKKeyPressed(evt);
+                InfeksiSaluranKemihKeyPressed(evt);
             }
         });
-        FormInput.add(ISK);
-        ISK.setBounds(164, 280, 80, 23);
+        FormInput.add(InfeksiSaluranKemih);
+        InfeksiSaluranKemih.setBounds(164, 280, 80, 23);
 
         jLabel45.setText("Bengkak Seluruh Tubuh :");
         jLabel45.setName("jLabel45"); // NOI18N
         FormInput.add(jLabel45);
         jLabel45.setBounds(430, 160, 160, 23);
 
-        BST.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        BST.setName("BST"); // NOI18N
-        BST.addKeyListener(new java.awt.event.KeyAdapter() {
+        BengkakSeluruhTubuh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        BengkakSeluruhTubuh.setName("BengkakSeluruhTubuh"); // NOI18N
+        BengkakSeluruhTubuh.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BSTKeyPressed(evt);
+                BengkakSeluruhTubuhKeyPressed(evt);
             }
         });
-        FormInput.add(BST);
-        BST.setBounds(594, 160, 80, 23);
+        FormInput.add(BengkakSeluruhTubuh);
+        BengkakSeluruhTubuh.setBounds(594, 160, 80, 23);
 
         jLabel46.setText("Mengalami Hipertensi :");
         jLabel46.setName("jLabel46"); // NOI18N
@@ -1252,11 +888,6 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
 
         Hipertensi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Hipertensi.setName("Hipertensi"); // NOI18N
-        Hipertensi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HipertensiActionPerformed(evt);
-            }
-        });
         Hipertensi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HipertensiKeyPressed(evt);
@@ -1270,50 +901,50 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         FormInput.add(jLabel49);
         jLabel49.setBounds(0, 220, 160, 23);
 
-        BSK.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        BSK.setName("BSK"); // NOI18N
-        BSK.addKeyListener(new java.awt.event.KeyAdapter() {
+        BatuSaluranKemih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        BatuSaluranKemih.setName("BatuSaluranKemih"); // NOI18N
+        BatuSaluranKemih.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BSKKeyPressed(evt);
+                BatuSaluranKemihKeyPressed(evt);
             }
         });
-        FormInput.add(BSK);
-        BSK.setBounds(164, 220, 80, 23);
+        FormInput.add(BatuSaluranKemih);
+        BatuSaluranKemih.setBounds(164, 220, 80, 23);
 
         jLabel50.setText("Operasi Saluran Kemih :");
         jLabel50.setName("jLabel50"); // NOI18N
         FormInput.add(jLabel50);
         jLabel50.setBounds(0, 250, 160, 23);
 
-        OSK.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        OSK.setName("OSK"); // NOI18N
-        OSK.addActionListener(new java.awt.event.ActionListener() {
+        OperasiSaluranKemih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        OperasiSaluranKemih.setName("OperasiSaluranKemih"); // NOI18N
+        OperasiSaluranKemih.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OSKActionPerformed(evt);
+                OperasiSaluranKemihActionPerformed(evt);
             }
         });
-        OSK.addKeyListener(new java.awt.event.KeyAdapter() {
+        OperasiSaluranKemih.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                OSKKeyPressed(evt);
+                OperasiSaluranKemihKeyPressed(evt);
             }
         });
-        FormInput.add(OSK);
-        OSK.setBounds(164, 250, 80, 23);
+        FormInput.add(OperasiSaluranKemih);
+        OperasiSaluranKemih.setBounds(164, 250, 80, 23);
 
         jLabel51.setText("Penyakit Ginjal Laom :");
         jLabel51.setName("jLabel51"); // NOI18N
         FormInput.add(jLabel51);
         jLabel51.setBounds(430, 220, 160, 23);
 
-        PGL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PGL.setName("PGL"); // NOI18N
-        PGL.addKeyListener(new java.awt.event.KeyAdapter() {
+        PenyakitGinjalLaom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        PenyakitGinjalLaom.setName("PenyakitGinjalLaom"); // NOI18N
+        PenyakitGinjalLaom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PGLKeyPressed(evt);
+                PenyakitGinjalLaomKeyPressed(evt);
             }
         });
-        FormInput.add(PGL);
-        PGL.setBounds(594, 220, 80, 23);
+        FormInput.add(PenyakitGinjalLaom);
+        PenyakitGinjalLaom.setBounds(594, 220, 80, 23);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel101.setText("IV. PEMERIKSAAN PENUNJANG");
@@ -1328,7 +959,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023 13:00:22" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023 15:07:43" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1344,12 +975,6 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         });
         FormInput.add(TglAsuhan);
         TglAsuhan.setBounds(436, 40, 130, 23);
-
-        jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel104.setText("Edukasi :");
-        jLabel104.setName("jLabel104"); // NOI18N
-        FormInput.add(jLabel104);
-        jLabel104.setBounds(20, 1730, 190, 23);
 
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel41.setText("Skala Nyeri");
@@ -1388,22 +1013,22 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         scrollPane14.setViewportView(Edukasi);
 
         FormInput.add(scrollPane14);
-        scrollPane14.setBounds(20, 1760, 800, 63);
+        scrollPane14.setBounds(44, 900, 810, 63);
 
         jLabel47.setText("Urin Berdarah :");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
         jLabel47.setBounds(430, 190, 160, 23);
 
-        UB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        UB.setName("UB"); // NOI18N
-        UB.addKeyListener(new java.awt.event.KeyAdapter() {
+        UrinBerdarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        UrinBerdarah.setName("UrinBerdarah"); // NOI18N
+        UrinBerdarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                UBKeyPressed(evt);
+                UrinBerdarahKeyPressed(evt);
             }
         });
-        FormInput.add(UB);
-        UB.setBounds(594, 190, 80, 23);
+        FormInput.add(UrinBerdarah);
+        UrinBerdarah.setBounds(594, 190, 80, 23);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel113.setText("III. PEMERIKSAAN FISIK PADA HD PERTAMA");
@@ -1423,6 +1048,11 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
 
         CAPD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         CAPD.setName("CAPD"); // NOI18N
+        CAPD.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CAPDItemStateChanged(evt);
+            }
+        });
         CAPD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CAPDKeyPressed(evt);
@@ -1433,6 +1063,11 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
 
         Transplantasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Transplantasi.setName("Transplantasi"); // NOI18N
+        Transplantasi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TransplantasiItemStateChanged(evt);
+            }
+        });
         Transplantasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TransplantasiKeyPressed(evt);
@@ -1451,25 +1086,25 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         FormInput.add(jLabel54);
         jLabel54.setBounds(430, 250, 160, 23);
 
-        PL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PL.setName("PL"); // NOI18N
-        PL.addKeyListener(new java.awt.event.KeyAdapter() {
+        PenyakitLain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        PenyakitLain.setName("PenyakitLain"); // NOI18N
+        PenyakitLain.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PLKeyPressed(evt);
+                PenyakitLainKeyPressed(evt);
             }
         });
-        FormInput.add(PL);
-        PL.setBounds(594, 250, 80, 23);
+        FormInput.add(PenyakitLain);
+        PenyakitLain.setBounds(594, 250, 80, 23);
 
-        KON.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        KON.setName("KON"); // NOI18N
-        KON.addKeyListener(new java.awt.event.KeyAdapter() {
+        KonsumsiObatNefrotoksis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KonsumsiObatNefrotoksis.setName("KonsumsiObatNefrotoksis"); // NOI18N
+        KonsumsiObatNefrotoksis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KONKeyPressed(evt);
+                KonsumsiObatNefrotoksisKeyPressed(evt);
             }
         });
-        FormInput.add(KON);
-        KON.setBounds(594, 280, 80, 23);
+        FormInput.add(KonsumsiObatNefrotoksis);
+        KonsumsiObatNefrotoksis.setBounds(594, 280, 80, 23);
 
         jLabel55.setText("Konsumsi Obat Nefrotoksis :");
         jLabel55.setName("jLabel55"); // NOI18N
@@ -1534,15 +1169,15 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         FormInput.add(Konjungtiva);
         Konjungtiva.setBounds(774, 460, 80, 23);
 
-        JVP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Meningkat" }));
-        JVP.setName("JVP"); // NOI18N
-        JVP.addKeyListener(new java.awt.event.KeyAdapter() {
+        TekananVenaJugularis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Meningkat" }));
+        TekananVenaJugularis.setName("TekananVenaJugularis"); // NOI18N
+        TekananVenaJugularis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                JVPKeyPressed(evt);
+                TekananVenaJugularisKeyPressed(evt);
             }
         });
-        FormInput.add(JVP);
-        JVP.setBounds(506, 570, 90, 23);
+        FormInput.add(TekananVenaJugularis);
+        TekananVenaJugularis.setBounds(506, 570, 90, 23);
 
         jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel60.setText("Tekanan Vena Jugularis (JVP)");
@@ -1698,39 +1333,30 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         jLabel72.setBounds(44, 550, 140, 23);
 
         jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel73.setText("1. Foto Thorax :");
+        jLabel73.setText("1. Foto Thorax ");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(20, 1110, 100, 23);
+        jLabel73.setBounds(44, 620, 100, 23);
 
         TglThorax.setForeground(new java.awt.Color(50, 70, 50));
-        TglThorax.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglThorax.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglThorax.setDisplayFormat("dd-MM-yyyy");
+        TglThorax.setEnabled(false);
         TglThorax.setName("TglThorax"); // NOI18N
         TglThorax.setOpaque(false);
-        TglThorax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglThoraxActionPerformed(evt);
-            }
-        });
         TglThorax.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglThoraxKeyPressed(evt);
             }
         });
         FormInput.add(TglThorax);
-        TglThorax.setBounds(170, 1110, 100, 20);
+        TglThorax.setBounds(161, 620, 90, 23);
 
         TglDialisis.setForeground(new java.awt.Color(50, 70, 50));
-        TglDialisis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglDialisis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglDialisis.setDisplayFormat("dd-MM-yyyy");
         TglDialisis.setName("TglDialisis"); // NOI18N
         TglDialisis.setOpaque(false);
-        TglDialisis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglDialisisActionPerformed(evt);
-            }
-        });
         TglDialisis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglDialisisKeyPressed(evt);
@@ -1740,226 +1366,189 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         TglDialisis.setBounds(134, 330, 90, 23);
 
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel74.setText("2. EKG :");
+        jLabel74.setText("2. EKG ");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(20, 1140, 100, 23);
+        jLabel74.setBounds(44, 650, 100, 23);
 
         TglEKG.setForeground(new java.awt.Color(50, 70, 50));
-        TglEKG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglEKG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglEKG.setDisplayFormat("dd-MM-yyyy");
+        TglEKG.setEnabled(false);
         TglEKG.setName("TglEKG"); // NOI18N
         TglEKG.setOpaque(false);
-        TglEKG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglEKGActionPerformed(evt);
-            }
-        });
         TglEKG.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglEKGKeyPressed(evt);
             }
         });
         FormInput.add(TglEKG);
-        TglEKG.setBounds(170, 1140, 100, 20);
+        TglEKG.setBounds(161, 650, 90, 23);
 
         jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel75.setText("3. BNO/IVP :");
+        jLabel75.setText("3. BNO/IVP");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(20, 1170, 100, 23);
+        jLabel75.setBounds(44, 680, 100, 23);
 
         TglBNO.setForeground(new java.awt.Color(50, 70, 50));
-        TglBNO.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglBNO.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglBNO.setDisplayFormat("dd-MM-yyyy");
+        TglBNO.setEnabled(false);
         TglBNO.setName("TglBNO"); // NOI18N
         TglBNO.setOpaque(false);
-        TglBNO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglBNOActionPerformed(evt);
-            }
-        });
         TglBNO.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglBNOKeyPressed(evt);
             }
         });
         FormInput.add(TglBNO);
-        TglBNO.setBounds(170, 1170, 100, 20);
+        TglBNO.setBounds(161, 680, 90, 23);
 
         TglUSG.setForeground(new java.awt.Color(50, 70, 50));
-        TglUSG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglUSG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglUSG.setDisplayFormat("dd-MM-yyyy");
+        TglUSG.setEnabled(false);
         TglUSG.setName("TglUSG"); // NOI18N
         TglUSG.setOpaque(false);
-        TglUSG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglUSGActionPerformed(evt);
-            }
-        });
         TglUSG.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglUSGKeyPressed(evt);
             }
         });
         FormInput.add(TglUSG);
-        TglUSG.setBounds(170, 1200, 100, 20);
+        TglUSG.setBounds(161, 710, 90, 23);
 
         jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel76.setText("4. USG :");
+        jLabel76.setText("4. USG");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(20, 1200, 100, 23);
+        jLabel76.setBounds(44, 710, 100, 23);
 
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel77.setText("5. Renogram :");
+        jLabel77.setText("5. Renogram ");
         jLabel77.setName("jLabel77"); // NOI18N
         FormInput.add(jLabel77);
-        jLabel77.setBounds(20, 1230, 100, 23);
+        jLabel77.setBounds(345, 620, 105, 23);
 
         TglRenogram.setForeground(new java.awt.Color(50, 70, 50));
-        TglRenogram.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglRenogram.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglRenogram.setDisplayFormat("dd-MM-yyyy");
+        TglRenogram.setEnabled(false);
         TglRenogram.setName("TglRenogram"); // NOI18N
         TglRenogram.setOpaque(false);
-        TglRenogram.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglRenogramActionPerformed(evt);
-            }
-        });
         TglRenogram.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglRenogramKeyPressed(evt);
             }
         });
         FormInput.add(TglRenogram);
-        TglRenogram.setBounds(170, 1230, 100, 20);
+        TglRenogram.setBounds(470, 620, 90, 23);
 
         TglLaboratorium.setForeground(new java.awt.Color(50, 70, 50));
-        TglLaboratorium.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglLaboratorium.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglLaboratorium.setDisplayFormat("dd-MM-yyyy");
+        TglLaboratorium.setEnabled(false);
         TglLaboratorium.setName("TglLaboratorium"); // NOI18N
         TglLaboratorium.setOpaque(false);
-        TglLaboratorium.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglLaboratoriumActionPerformed(evt);
-            }
-        });
         TglLaboratorium.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglLaboratoriumKeyPressed(evt);
             }
         });
         FormInput.add(TglLaboratorium);
-        TglLaboratorium.setBounds(470, 1230, 100, 20);
+        TglLaboratorium.setBounds(764, 650, 90, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel78.setText("10. Laboratorium :");
+        jLabel78.setText("10. Laboratorium");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(320, 1230, 100, 23);
+        jLabel78.setBounds(645, 650, 100, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel79.setText("9. Kultur Urin :");
+        jLabel79.setText("9. Kultur Urin");
         jLabel79.setName("jLabel79"); // NOI18N
         FormInput.add(jLabel79);
-        jLabel79.setBounds(320, 1200, 100, 23);
+        jLabel79.setBounds(645, 620, 100, 23);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel80.setText("8. Arteriografi :");
+        jLabel80.setText("8. Arteriografi");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
-        jLabel80.setBounds(320, 1170, 100, 23);
+        jLabel80.setBounds(345, 710, 105, 23);
 
         TglKultururin.setForeground(new java.awt.Color(50, 70, 50));
-        TglKultururin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglKultururin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglKultururin.setDisplayFormat("dd-MM-yyyy");
+        TglKultururin.setEnabled(false);
         TglKultururin.setName("TglKultururin"); // NOI18N
         TglKultururin.setOpaque(false);
-        TglKultururin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglKultururinActionPerformed(evt);
-            }
-        });
         TglKultururin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglKultururinKeyPressed(evt);
             }
         });
         FormInput.add(TglKultururin);
-        TglKultururin.setBounds(470, 1200, 100, 20);
+        TglKultururin.setBounds(764, 620, 90, 23);
 
         TglArteriografi.setForeground(new java.awt.Color(50, 70, 50));
-        TglArteriografi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglArteriografi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglArteriografi.setDisplayFormat("dd-MM-yyyy");
+        TglArteriografi.setEnabled(false);
         TglArteriografi.setName("TglArteriografi"); // NOI18N
         TglArteriografi.setOpaque(false);
-        TglArteriografi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglArteriografiActionPerformed(evt);
-            }
-        });
         TglArteriografi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglArteriografiKeyPressed(evt);
             }
         });
         FormInput.add(TglArteriografi);
-        TglArteriografi.setBounds(470, 1170, 100, 20);
+        TglArteriografi.setBounds(470, 710, 90, 23);
 
         TglCTscan.setForeground(new java.awt.Color(50, 70, 50));
-        TglCTscan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglCTscan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglCTscan.setDisplayFormat("dd-MM-yyyy");
+        TglCTscan.setEnabled(false);
         TglCTscan.setName("TglCTscan"); // NOI18N
         TglCTscan.setOpaque(false);
-        TglCTscan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglCTscanActionPerformed(evt);
-            }
-        });
         TglCTscan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglCTscanKeyPressed(evt);
             }
         });
         FormInput.add(TglCTscan);
-        TglCTscan.setBounds(470, 1140, 100, 20);
+        TglCTscan.setBounds(470, 680, 90, 23);
 
         TglBiopsi.setForeground(new java.awt.Color(50, 70, 50));
-        TglBiopsi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        TglBiopsi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglBiopsi.setDisplayFormat("dd-MM-yyyy");
+        TglBiopsi.setEnabled(false);
         TglBiopsi.setName("TglBiopsi"); // NOI18N
         TglBiopsi.setOpaque(false);
-        TglBiopsi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglBiopsiActionPerformed(evt);
-            }
-        });
         TglBiopsi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglBiopsiKeyPressed(evt);
             }
         });
         FormInput.add(TglBiopsi);
-        TglBiopsi.setBounds(470, 1110, 100, 20);
+        TglBiopsi.setBounds(470, 650, 90, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel81.setText("7. CT Scan :");
+        jLabel81.setText("7. CT Scan");
         jLabel81.setName("jLabel81"); // NOI18N
         FormInput.add(jLabel81);
-        jLabel81.setBounds(320, 1140, 100, 23);
+        jLabel81.setBounds(345, 680, 105, 23);
 
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel82.setText("6. PA Biopsi Ginjal :");
+        jLabel82.setText("6. PA Biopsi Ginjal");
         jLabel82.setName("jLabel82"); // NOI18N
         FormInput.add(jLabel82);
-        jLabel82.setBounds(320, 1110, 100, 23);
+        jLabel82.setBounds(345, 650, 105, 23);
 
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel26.setText("Hematokrit :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(20, 1270, 80, 23);
+        jLabel26.setBounds(0, 760, 135, 23);
 
         Hematokrit.setFocusTraversalPolicyProvider(true);
         Hematokrit.setName("Hematokrit"); // NOI18N
@@ -1969,13 +1558,12 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Hematokrit);
-        Hematokrit.setBounds(140, 1270, 300, 23);
+        Hematokrit.setBounds(139, 760, 110, 23);
 
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel27.setText("Hemoglobin :");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
-        jLabel27.setBounds(20, 1300, 80, 23);
+        jLabel27.setBounds(0, 790, 135, 23);
 
         Hemoglobin.setFocusTraversalPolicyProvider(true);
         Hemoglobin.setName("Hemoglobin"); // NOI18N
@@ -1985,13 +1573,12 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Hemoglobin);
-        Hemoglobin.setBounds(140, 1300, 300, 23);
+        Hemoglobin.setBounds(139, 790, 110, 23);
 
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Leukosit :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(20, 1330, 80, 23);
+        jLabel30.setBounds(0, 820, 135, 23);
 
         Leukosit.setFocusTraversalPolicyProvider(true);
         Leukosit.setName("Leukosit"); // NOI18N
@@ -2001,7 +1588,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Leukosit);
-        Leukosit.setBounds(140, 1330, 300, 23);
+        Leukosit.setBounds(139, 820, 110, 23);
 
         Trombosit.setFocusTraversalPolicyProvider(true);
         Trombosit.setName("Trombosit"); // NOI18N
@@ -2011,19 +1598,17 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Trombosit);
-        Trombosit.setBounds(140, 1360, 300, 23);
+        Trombosit.setBounds(139, 850, 110, 23);
 
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel31.setText("Trombosit :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(20, 1360, 80, 23);
+        jLabel31.setBounds(0, 850, 135, 23);
 
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel32.setText("Hitung Jenis :");
         jLabel32.setName("jLabel32"); // NOI18N
         FormInput.add(jLabel32);
-        jLabel32.setBounds(20, 1390, 80, 23);
+        jLabel32.setBounds(255, 760, 95, 23);
 
         HitungJenis.setFocusTraversalPolicyProvider(true);
         HitungJenis.setName("HitungJenis"); // NOI18N
@@ -2033,13 +1618,12 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(HitungJenis);
-        HitungJenis.setBounds(140, 1390, 300, 23);
+        HitungJenis.setBounds(354, 760, 110, 23);
 
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel33.setText("Ureum :");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
-        jLabel33.setBounds(20, 1420, 80, 23);
+        jLabel33.setBounds(255, 790, 95, 23);
 
         Ureum.setFocusTraversalPolicyProvider(true);
         Ureum.setName("Ureum"); // NOI18N
@@ -2049,7 +1633,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Ureum);
-        Ureum.setBounds(140, 1420, 300, 23);
+        Ureum.setBounds(354, 790, 110, 23);
 
         Kreatinin.setFocusTraversalPolicyProvider(true);
         Kreatinin.setName("Kreatinin"); // NOI18N
@@ -2059,19 +1643,17 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kreatinin);
-        Kreatinin.setBounds(140, 1450, 300, 23);
+        Kreatinin.setBounds(354, 850, 110, 23);
 
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel34.setText("Kreatinin :");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
-        jLabel34.setBounds(20, 1450, 80, 23);
+        jLabel34.setBounds(255, 850, 95, 23);
 
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel35.setText("Asam Urat :");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(20, 1480, 80, 23);
+        jLabel35.setBounds(660, 760, 80, 23);
 
         AsamUrat.setFocusTraversalPolicyProvider(true);
         AsamUrat.setName("AsamUrat"); // NOI18N
@@ -2081,13 +1663,12 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(AsamUrat);
-        AsamUrat.setBounds(140, 1480, 300, 23);
+        AsamUrat.setBounds(744, 760, 110, 23);
 
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel36.setText("SGOT :");
         jLabel36.setName("jLabel36"); // NOI18N
         FormInput.add(jLabel36);
-        jLabel36.setBounds(20, 1510, 80, 23);
+        jLabel36.setBounds(460, 790, 75, 23);
 
         SGOT.setFocusTraversalPolicyProvider(true);
         SGOT.setName("SGOT"); // NOI18N
@@ -2097,7 +1678,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(SGOT);
-        SGOT.setBounds(140, 1510, 300, 23);
+        SGOT.setBounds(539, 790, 110, 23);
 
         SGPT.setFocusTraversalPolicyProvider(true);
         SGPT.setName("SGPT"); // NOI18N
@@ -2107,7 +1688,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(SGPT);
-        SGPT.setBounds(140, 1540, 300, 23);
+        SGPT.setBounds(539, 820, 110, 23);
 
         CT.setFocusTraversalPolicyProvider(true);
         CT.setName("CT"); // NOI18N
@@ -2117,7 +1698,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(CT);
-        CT.setBounds(140, 1600, 300, 23);
+        CT.setBounds(539, 850, 110, 23);
 
         UrinLengkap.setFocusTraversalPolicyProvider(true);
         UrinLengkap.setName("UrinLengkap"); // NOI18N
@@ -2127,7 +1708,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(UrinLengkap);
-        UrinLengkap.setBounds(140, 1630, 300, 23);
+        UrinLengkap.setBounds(354, 820, 110, 23);
 
         CCT.setFocusTraversalPolicyProvider(true);
         CCT.setName("CCT"); // NOI18N
@@ -2137,45 +1718,39 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(CCT);
-        CCT.setBounds(140, 1660, 300, 23);
+        CCT.setBounds(539, 760, 110, 23);
 
-        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel43.setText("Anti HCV :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(20, 1690, 80, 23);
+        jLabel43.setBounds(660, 820, 80, 23);
 
-        jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel83.setText("CCT :");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
-        jLabel83.setBounds(20, 1660, 80, 23);
+        jLabel83.setBounds(460, 760, 75, 23);
 
-        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel84.setText("Urin Lengkap :");
         jLabel84.setName("jLabel84"); // NOI18N
         FormInput.add(jLabel84);
-        jLabel84.setBounds(20, 1630, 80, 23);
+        jLabel84.setBounds(255, 820, 95, 23);
 
-        jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel85.setText("CT/BT :");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(20, 1600, 80, 23);
+        jLabel85.setBounds(460, 850, 75, 23);
 
-        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel86.setText("HbsAg :");
         jLabel86.setName("jLabel86"); // NOI18N
         FormInput.add(jLabel86);
-        jLabel86.setBounds(20, 1570, 80, 23);
+        jLabel86.setBounds(660, 790, 80, 23);
 
-        jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel87.setText("SGPT :");
         jLabel87.setName("jLabel87"); // NOI18N
         FormInput.add(jLabel87);
-        jLabel87.setBounds(20, 1540, 80, 23);
+        jLabel87.setBounds(460, 820, 75, 23);
 
-        HbsAg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "NON REAKTIF", "REAKTIF" }));
+        HbsAg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Non Reaktif", "Reaktif" }));
         HbsAg.setName("HbsAg"); // NOI18N
         HbsAg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2183,9 +1758,9 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(HbsAg);
-        HbsAg.setBounds(140, 1570, 128, 23);
+        HbsAg.setBounds(744, 790, 110, 23);
 
-        AntiHCV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "NON REAKTIF", "REAKTIF" }));
+        AntiHCV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Non Reaktif", "Reaktif" }));
         AntiHCV.setName("AntiHCV"); // NOI18N
         AntiHCV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2193,7 +1768,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }
         });
         FormInput.add(AntiHCV);
-        AntiHCV.setBounds(140, 1690, 128, 23);
+        AntiHCV.setBounds(744, 820, 110, 23);
 
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel88.setText("Asal Poli/Ruangan");
@@ -2201,56 +1776,16 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         FormInput.add(jLabel88);
         jLabel88.setBounds(16, 80, 110, 23);
 
-        cblab.setName("cblab"); // NOI18N
-        FormInput.add(cblab);
-        cblab.setBounds(440, 1230, 20, 19);
-
-        cbrenogram.setName("cbrenogram"); // NOI18N
-        FormInput.add(cbrenogram);
-        cbrenogram.setBounds(140, 1230, 20, 19);
-
-        cbkultur.setName("cbkultur"); // NOI18N
-        FormInput.add(cbkultur);
-        cbkultur.setBounds(440, 1200, 20, 19);
-
-        cbarteri.setName("cbarteri"); // NOI18N
-        FormInput.add(cbarteri);
-        cbarteri.setBounds(440, 1170, 20, 19);
-
-        cbctscan.setName("cbctscan"); // NOI18N
-        FormInput.add(cbctscan);
-        cbctscan.setBounds(440, 1140, 19, 19);
-
-        cbbiopsi.setName("cbbiopsi"); // NOI18N
-        FormInput.add(cbbiopsi);
-        cbbiopsi.setBounds(440, 1110, 19, 19);
-
-        cbusg.setName("cbusg"); // NOI18N
-        FormInput.add(cbusg);
-        cbusg.setBounds(140, 1200, 20, 19);
-
-        cbbno.setName("cbbno"); // NOI18N
-        FormInput.add(cbbno);
-        cbbno.setBounds(140, 1170, 20, 19);
-
-        cbekg.setName("cbekg"); // NOI18N
-        FormInput.add(cbekg);
-        cbekg.setBounds(140, 1140, 20, 19);
-
-        cbthorax.setName("cbthorax"); // NOI18N
-        FormInput.add(cbthorax);
-        cbthorax.setBounds(140, 1110, 20, 19);
-
-        Ranap.setFocusTraversalPolicyProvider(true);
-        Ranap.setName("Ranap"); // NOI18N
-        Ranap.addKeyListener(new java.awt.event.KeyAdapter() {
+        AsalRuangan.setFocusTraversalPolicyProvider(true);
+        AsalRuangan.setName("AsalRuangan"); // NOI18N
+        AsalRuangan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RanapKeyPressed(evt);
+                AsalRuanganKeyPressed(evt);
             }
         });
-        FormInput.add(Ranap);
-        Ranap.setBounds(117, 80, 200, 23);
-        Ranap.getAccessibleContext().setAccessibleDescription("");
+        FormInput.add(AsalRuangan);
+        AsalRuangan.setBounds(117, 80, 200, 23);
+        AsalRuangan.getAccessibleContext().setAccessibleDescription("");
 
         Alergi.setFocusTraversalPolicyProvider(true);
         Alergi.setName("Alergi"); // NOI18N
@@ -2279,105 +1814,105 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         FormInput.add(jSeparator2);
         jSeparator2.setBounds(0, 140, 880, 1);
 
-        TxtHipertensi.setFocusTraversalPolicyProvider(true);
-        TxtHipertensi.setName("TxtHipertensi"); // NOI18N
-        TxtHipertensi.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganHipertensi.setFocusTraversalPolicyProvider(true);
+        KeteranganHipertensi.setName("KeteranganHipertensi"); // NOI18N
+        KeteranganHipertensi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtHipertensiKeyPressed(evt);
+                KeteranganHipertensiKeyPressed(evt);
             }
         });
-        FormInput.add(TxtHipertensi);
-        TxtHipertensi.setBounds(246, 160, 178, 23);
+        FormInput.add(KeteranganHipertensi);
+        KeteranganHipertensi.setBounds(246, 160, 178, 23);
 
-        Txtdm.setFocusTraversalPolicyProvider(true);
-        Txtdm.setName("Txtdm"); // NOI18N
-        Txtdm.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganDiabetesMelitus.setFocusTraversalPolicyProvider(true);
+        KeteranganDiabetesMelitus.setName("KeteranganDiabetesMelitus"); // NOI18N
+        KeteranganDiabetesMelitus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtdmKeyPressed(evt);
+                KeteranganDiabetesMelitusKeyPressed(evt);
             }
         });
-        FormInput.add(Txtdm);
-        Txtdm.setBounds(246, 190, 178, 23);
+        FormInput.add(KeteranganDiabetesMelitus);
+        KeteranganDiabetesMelitus.setBounds(246, 190, 178, 23);
 
-        Txtbsk.setFocusTraversalPolicyProvider(true);
-        Txtbsk.setName("Txtbsk"); // NOI18N
-        Txtbsk.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganBatuSaluranKemih.setFocusTraversalPolicyProvider(true);
+        KeteranganBatuSaluranKemih.setName("KeteranganBatuSaluranKemih"); // NOI18N
+        KeteranganBatuSaluranKemih.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtbskKeyPressed(evt);
+                KeteranganBatuSaluranKemihKeyPressed(evt);
             }
         });
-        FormInput.add(Txtbsk);
-        Txtbsk.setBounds(246, 220, 178, 23);
+        FormInput.add(KeteranganBatuSaluranKemih);
+        KeteranganBatuSaluranKemih.setBounds(246, 220, 178, 23);
 
-        Txtosk.setFocusTraversalPolicyProvider(true);
-        Txtosk.setName("Txtosk"); // NOI18N
-        Txtosk.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganOperasiSaluranKemih.setFocusTraversalPolicyProvider(true);
+        KeteranganOperasiSaluranKemih.setName("KeteranganOperasiSaluranKemih"); // NOI18N
+        KeteranganOperasiSaluranKemih.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtoskKeyPressed(evt);
+                KeteranganOperasiSaluranKemihKeyPressed(evt);
             }
         });
-        FormInput.add(Txtosk);
-        Txtosk.setBounds(246, 250, 178, 23);
+        FormInput.add(KeteranganOperasiSaluranKemih);
+        KeteranganOperasiSaluranKemih.setBounds(246, 250, 178, 23);
 
-        Txtisk.setFocusTraversalPolicyProvider(true);
-        Txtisk.setName("Txtisk"); // NOI18N
-        Txtisk.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganInfeksiSaluranKemih.setFocusTraversalPolicyProvider(true);
+        KeteranganInfeksiSaluranKemih.setName("KeteranganInfeksiSaluranKemih"); // NOI18N
+        KeteranganInfeksiSaluranKemih.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtiskKeyPressed(evt);
+                KeteranganInfeksiSaluranKemihKeyPressed(evt);
             }
         });
-        FormInput.add(Txtisk);
-        Txtisk.setBounds(246, 280, 178, 23);
+        FormInput.add(KeteranganInfeksiSaluranKemih);
+        KeteranganInfeksiSaluranKemih.setBounds(246, 280, 178, 23);
 
-        Txtbst.setFocusTraversalPolicyProvider(true);
-        Txtbst.setName("Txtbst"); // NOI18N
-        Txtbst.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganBengkakSeluruhTubuh.setFocusTraversalPolicyProvider(true);
+        KeteranganBengkakSeluruhTubuh.setName("KeteranganBengkakSeluruhTubuh"); // NOI18N
+        KeteranganBengkakSeluruhTubuh.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtbstKeyPressed(evt);
+                KeteranganBengkakSeluruhTubuhKeyPressed(evt);
             }
         });
-        FormInput.add(Txtbst);
-        Txtbst.setBounds(676, 160, 178, 23);
+        FormInput.add(KeteranganBengkakSeluruhTubuh);
+        KeteranganBengkakSeluruhTubuh.setBounds(676, 160, 178, 23);
 
-        Txtub.setFocusTraversalPolicyProvider(true);
-        Txtub.setName("Txtub"); // NOI18N
-        Txtub.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganUrinBerdarah.setFocusTraversalPolicyProvider(true);
+        KeteranganUrinBerdarah.setName("KeteranganUrinBerdarah"); // NOI18N
+        KeteranganUrinBerdarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtubKeyPressed(evt);
+                KeteranganUrinBerdarahKeyPressed(evt);
             }
         });
-        FormInput.add(Txtub);
-        Txtub.setBounds(676, 190, 178, 23);
+        FormInput.add(KeteranganUrinBerdarah);
+        KeteranganUrinBerdarah.setBounds(676, 190, 178, 23);
 
-        Txtpgl.setFocusTraversalPolicyProvider(true);
-        Txtpgl.setName("Txtpgl"); // NOI18N
-        Txtpgl.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganPenyakitGinjalLaom.setFocusTraversalPolicyProvider(true);
+        KeteranganPenyakitGinjalLaom.setName("KeteranganPenyakitGinjalLaom"); // NOI18N
+        KeteranganPenyakitGinjalLaom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtpglKeyPressed(evt);
+                KeteranganPenyakitGinjalLaomKeyPressed(evt);
             }
         });
-        FormInput.add(Txtpgl);
-        Txtpgl.setBounds(676, 220, 178, 23);
+        FormInput.add(KeteranganPenyakitGinjalLaom);
+        KeteranganPenyakitGinjalLaom.setBounds(676, 220, 178, 23);
 
-        Txtpl.setFocusTraversalPolicyProvider(true);
-        Txtpl.setName("Txtpl"); // NOI18N
-        Txtpl.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganPenyakitLain.setFocusTraversalPolicyProvider(true);
+        KeteranganPenyakitLain.setName("KeteranganPenyakitLain"); // NOI18N
+        KeteranganPenyakitLain.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtplKeyPressed(evt);
+                KeteranganPenyakitLainKeyPressed(evt);
             }
         });
-        FormInput.add(Txtpl);
-        Txtpl.setBounds(676, 250, 178, 23);
+        FormInput.add(KeteranganPenyakitLain);
+        KeteranganPenyakitLain.setBounds(676, 250, 178, 23);
 
-        Txtkon.setFocusTraversalPolicyProvider(true);
-        Txtkon.setName("Txtkon"); // NOI18N
-        Txtkon.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKonsumsiObatNefrotoksis.setFocusTraversalPolicyProvider(true);
+        KeteranganKonsumsiObatNefrotoksis.setName("KeteranganKonsumsiObatNefrotoksis"); // NOI18N
+        KeteranganKonsumsiObatNefrotoksis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtkonKeyPressed(evt);
+                KeteranganKonsumsiObatNefrotoksisKeyPressed(evt);
             }
         });
-        FormInput.add(Txtkon);
-        Txtkon.setBounds(676, 280, 178, 23);
+        FormInput.add(KeteranganKonsumsiObatNefrotoksis);
+        KeteranganKonsumsiObatNefrotoksis.setBounds(676, 280, 178, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
@@ -2387,15 +1922,11 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         jSeparator3.setBounds(0, 310, 880, 1);
 
         TglCAPD.setForeground(new java.awt.Color(50, 70, 50));
-        TglCAPD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2023" }));
+        TglCAPD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglCAPD.setDisplayFormat("dd-MM-yyyy");
+        TglCAPD.setEnabled(false);
         TglCAPD.setName("TglCAPD"); // NOI18N
         TglCAPD.setOpaque(false);
-        TglCAPD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglCAPDActionPerformed(evt);
-            }
-        });
         TglCAPD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglCAPDKeyPressed(evt);
@@ -2405,15 +1936,11 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         TglCAPD.setBounds(414, 330, 90, 23);
 
         TglTransplantasi.setForeground(new java.awt.Color(50, 70, 50));
-        TglTransplantasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2023" }));
+        TglTransplantasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         TglTransplantasi.setDisplayFormat("dd-MM-yyyy");
+        TglTransplantasi.setEnabled(false);
         TglTransplantasi.setName("TglTransplantasi"); // NOI18N
         TglTransplantasi.setOpaque(false);
-        TglTransplantasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TglTransplantasiActionPerformed(evt);
-            }
-        });
         TglTransplantasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglTransplantasiKeyPressed(evt);
@@ -2435,15 +1962,15 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         FormInput.add(jLabel91);
         jLabel91.setBounds(44, 380, 90, 23);
 
-        Keadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Sakit Ringan", "Sakit Sedang", "Sakit Berat" }));
-        Keadaan.setName("Keadaan"); // NOI18N
-        Keadaan.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeadaanUmum.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Sakit Ringan", "Sakit Sedang", "Sakit Berat" }));
+        KeadaanUmum.setName("KeadaanUmum"); // NOI18N
+        KeadaanUmum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeadaanKeyPressed(evt);
+                KeadaanUmumKeyPressed(evt);
             }
         });
-        FormInput.add(Keadaan);
-        Keadaan.setBounds(131, 380, 118, 23);
+        FormInput.add(KeadaanUmum);
+        KeadaanUmum.setBounds(131, 380, 118, 23);
 
         jLabel42.setText(":");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -2531,6 +2058,155 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         FormInput.add(jSeparator5);
         jSeparator5.setBounds(0, 600, 880, 1);
 
+        ChkUSG.setBorder(null);
+        ChkUSG.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkUSG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkUSG.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkUSG.setName("ChkUSG"); // NOI18N
+        ChkUSG.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkUSGItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkUSG);
+        ChkUSG.setBounds(135, 710, 23, 23);
+
+        ChkThorax.setBorder(null);
+        ChkThorax.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkThorax.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkThorax.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkThorax.setName("ChkThorax"); // NOI18N
+        ChkThorax.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkThoraxItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkThorax);
+        ChkThorax.setBounds(135, 620, 23, 23);
+
+        ChkEKG.setBorder(null);
+        ChkEKG.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkEKG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkEKG.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkEKG.setName("ChkEKG"); // NOI18N
+        ChkEKG.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkEKGItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkEKG);
+        ChkEKG.setBounds(135, 650, 23, 23);
+
+        ChkBNO.setBorder(null);
+        ChkBNO.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkBNO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkBNO.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkBNO.setName("ChkBNO"); // NOI18N
+        ChkBNO.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkBNOItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkBNO);
+        ChkBNO.setBounds(135, 680, 23, 23);
+
+        ChkRenogram.setBorder(null);
+        ChkRenogram.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkRenogram.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkRenogram.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkRenogram.setName("ChkRenogram"); // NOI18N
+        ChkRenogram.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkRenogramItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkRenogram);
+        ChkRenogram.setBounds(444, 620, 23, 23);
+
+        ChkBiopsiGinjal.setBorder(null);
+        ChkBiopsiGinjal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkBiopsiGinjal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkBiopsiGinjal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkBiopsiGinjal.setName("ChkBiopsiGinjal"); // NOI18N
+        ChkBiopsiGinjal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkBiopsiGinjalItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkBiopsiGinjal);
+        ChkBiopsiGinjal.setBounds(444, 650, 23, 23);
+
+        ChkCTScan.setBorder(null);
+        ChkCTScan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkCTScan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkCTScan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkCTScan.setName("ChkCTScan"); // NOI18N
+        ChkCTScan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkCTScanItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkCTScan);
+        ChkCTScan.setBounds(444, 680, 23, 23);
+
+        ChkArteriografi.setBorder(null);
+        ChkArteriografi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkArteriografi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkArteriografi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkArteriografi.setName("ChkArteriografi"); // NOI18N
+        ChkArteriografi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkArteriografiItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkArteriografi);
+        ChkArteriografi.setBounds(444, 710, 23, 23);
+
+        ChkKulturUrin.setBorder(null);
+        ChkKulturUrin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkKulturUrin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkKulturUrin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkKulturUrin.setName("ChkKulturUrin"); // NOI18N
+        ChkKulturUrin.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkKulturUrinItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkKulturUrin);
+        ChkKulturUrin.setBounds(738, 620, 23, 23);
+
+        ChkLaborat.setBorder(null);
+        ChkLaborat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkLaborat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkLaborat.setName("ChkLaborat"); // NOI18N
+        ChkLaborat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkLaboratItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkLaborat);
+        ChkLaborat.setBounds(738, 650, 23, 23);
+
+        jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel96.setText("Hasil Pemeriksaan Laboratorium :");
+        jLabel96.setName("jLabel96"); // NOI18N
+        FormInput.add(jLabel96);
+        jLabel96.setBounds(44, 740, 210, 23);
+
+        jSeparator6.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator6.setName("jSeparator6"); // NOI18N
+        FormInput.add(jSeparator6);
+        jSeparator6.setBounds(0, 880, 880, 1);
+
+        jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel102.setText("V. EDUKASI");
+        jLabel102.setName("jLabel102"); // NOI18N
+        FormInput.add(jLabel102);
+        jLabel102.setBounds(10, 880, 190, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -2572,7 +2248,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2586,7 +2262,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2646,145 +2322,31 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            isRawat();
-        }else{            
-            Valid.pindah(evt,TCari,BtnDokter);
-        }
-}//GEN-LAST:event_TNoRwKeyPressed
-
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRM.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Alergi.getText().trim().equals("")){
-            Valid.textKosong(Alergi,"Riwayat Penyakit Keluarga");
+        }else if(AsalRuangan.getText().trim().equals("")){
+            Valid.textKosong(AsalRuangan,"Asal Ruangan");
         }else{
-            if(Hipertensi.getSelectedItem().toString()=="YA"){
-                dbhipertensi=TxtHipertensi.getText();
-            }else{
-                dbhipertensi=Hipertensi.getSelectedItem().toString();
-            }
-            if(DM.getSelectedItem().toString()=="YA"){
-                dbdm=Txtdm.getText();
-            }else{
-                dbdm=DM.getSelectedItem().toString();
-            }
-            if(BSK.getSelectedItem().toString()=="YA"){
-                dbbsk=Txtbsk.getText();
-            }else{
-                dbbsk=BSK.getSelectedItem().toString();
-            }
-            if(OSK.getSelectedItem().toString()=="YA"){
-                dbosk=Txtosk.getText();
-            }else{
-                dbosk=OSK.getSelectedItem().toString();
-            }
-            if(ISK.getSelectedItem().toString()=="YA"){
-                dbisk=Txtisk.getText();
-            }else{
-                dbisk=ISK.getSelectedItem().toString();
-            }
-            if(BST.getSelectedItem().toString()=="YA"){
-                dbbst=Txtbst.getText();
-            }else{
-                dbbst=BST.getSelectedItem().toString();
-            }
-            if(UB.getSelectedItem().toString()=="YA"){
-                dbub=Txtub.getText();
-            }else{
-                dbub=UB.getSelectedItem().toString();
-            }
-            if(PGL.getSelectedItem().toString()=="YA"){
-                dbpgl=Txtpgl.getText();
-            }else{
-                dbpgl=PGL.getSelectedItem().toString();
-            }
-            if(PL.getSelectedItem().toString()=="YA"){
-                dbpl=Txtpl.getText();
-            }else{
-                dbpl=PL.getSelectedItem().toString();
-            }
-            if(KON.getSelectedItem().toString()=="YA"){
-                dbkon=Txtkon.getText();
-            }else{
-                dbkon=KON.getSelectedItem().toString();
-            }
-            if(CAPD.getSelectedItem().toString()=="YA"){
-                dbcapd=Valid.SetTgl(TglCAPD.getSelectedItem()+"");
-            }else{
-                dbcapd=CAPD.getSelectedItem().toString();
-            }
-            if(Transplantasi.getSelectedItem().toString()=="YA"){
-                dbtransplantasi=Valid.SetTgl(TglTransplantasi.getSelectedItem()+"");
-            }else{
-                dbtransplantasi=Transplantasi.getSelectedItem().toString();
-            }
-            if(cbthorax.isSelected()){
-                    dbthorax=Valid.SetTgl(TglThorax.getSelectedItem()+"");
-                }else{
-                    dbthorax="";   
-                }
-            if(cbekg.isSelected()){
-                    dbekg=Valid.SetTgl(TglEKG.getSelectedItem()+"");
-                }else{
-                    dbekg="";   
-                }
-            if(cbbno.isSelected()){
-                    dbbno=Valid.SetTgl(TglBNO.getSelectedItem()+"");
-                }else{
-                    dbbno="";   
-                }
-            if(cbusg.isSelected()){
-                    dbusg=Valid.SetTgl(TglUSG.getSelectedItem()+"");
-                }else{
-                    dbusg="";   
-                }
-            if(cbrenogram.isSelected()){
-                    dbrenogram=Valid.SetTgl(TglRenogram.getSelectedItem()+"");
-                }else{
-                    dbrenogram="";   
-                }
-            if(cbbiopsi.isSelected()){
-                    dbbiopsi=Valid.SetTgl(TglBiopsi.getSelectedItem()+"");
-                }else{
-                    dbbiopsi="";   
-                }
-            if(cbctscan.isSelected()){
-                    dbctscan=Valid.SetTgl(TglCTscan.getSelectedItem()+"");
-                }else{
-                    dbctscan="";  
-                }
-            if(cbarteri.isSelected()){
-                    dbarteri=Valid.SetTgl(TglArteriografi.getSelectedItem()+"");
-                }else{
-                    dbarteri="";  
-                }  
-            if(cbkultur.isSelected()){
-                    dbkultur=Valid.SetTgl(TglKultururin.getSelectedItem()+"");
-                }else{
-                    dbkultur="";  
-                }  
-            if(cblab.isSelected()){
-                    dblab=Valid.SetTgl(TglLaboratorium.getSelectedItem()+"");
-                }else{
-                    dblab="";  
-                }  
-            //LocalDate dls = LocalDate.parse(TglDialisis.getSelectedItem().toString(), DateTimeFormatter.BASIC_ISO_DATE);
-            /*String dls = TglDialisis.getSelectedItem().toString();
-            if(Sequel.menyimpantf("penilaian_medis_ralan_hemodialisa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",68,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    Rajal.getSelectedItem().toString(),Ranap.getSelectedItem().toString(),Alergi.getText(),Nyeri.getSelectedItem().toString(),Status.getText(),dbhipertensi,dbdm,dbbsk,dbosk,dbisk,dbbst,dbub,dbpgl,dbpl,dbkon,Valid.SetTgl(TglDialisis.getSelectedItem()+""),dbcapd,dbtransplantasi,
-                    Keadaan.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),BB.getText(),TB.getText(),Suhu.getText(),Nadi.getText(),TD.getText(),Napas.getText(),Ikterik.getSelectedItem().toString(),Konjungtiva.getSelectedItem().toString(),JVP.getSelectedItem().toString(),
-                    Kardiomegali.getSelectedItem().toString(),Bising.getSelectedItem().toString(),Whezzing.getSelectedItem().toString(),Ronchi.getSelectedItem().toString(),Hepatomegali.getSelectedItem().toString(),Splenomegali.getSelectedItem().toString(),Ascites.getSelectedItem().toString(),Edema.getSelectedItem().toString(),
-                    dbthorax,dbekg,dbbno,dbusg,dbrenogram,dbbiopsi,dbctscan,dbarteri,dbkultur,dblab,
-                    Hematokrit.getText(),Hemoglobin.getText(),Leukosit.getText(),Trombosit.getText(),HitungJenis.getText(),Ureum.getText(),Kreatinin.getText(),AsamUrat.getText(),SGOT.getText(),SGPT.getText(),HbsAg.getSelectedItem().toString(),CT.getText(),UrinLengkap.getText(),CCT.getText(),AntiHCV.getSelectedItem().toString(),Edukasi.getText()
-                })!=true){
-            } else {
+            if(Sequel.menyimpantf("penilaian_medis_ralan_hemodialisa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,","Data",89,new String[]{
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),AsalRuangan.getText(),Alergi.getText(),Nyeri.getSelectedItem().toString(), 
+                StatusNutrisi.getText(),Hipertensi.getSelectedItem().toString(),KeteranganHipertensi.getText(),DiabetesMelitus.getSelectedItem().toString(),KeteranganDiabetesMelitus.getText(),BatuSaluranKemih.getSelectedItem().toString(),KeteranganBatuSaluranKemih.getText(),
+                OperasiSaluranKemih.getSelectedItem().toString(),KeteranganOperasiSaluranKemih.getText(),InfeksiSaluranKemih.getSelectedItem().toString(),KeteranganInfeksiSaluranKemih.getText(),BengkakSeluruhTubuh.getSelectedItem().toString(),KeteranganBengkakSeluruhTubuh.getText(), 
+                UrinBerdarah.getSelectedItem().toString(),KeteranganUrinBerdarah.getText(),PenyakitGinjalLaom.getSelectedItem().toString(),KeteranganPenyakitGinjalLaom.getText(),PenyakitLain.getSelectedItem().toString(),KeteranganPenyakitLain.getText(),KonsumsiObatNefrotoksis.getSelectedItem().toString(), 
+                KeteranganKonsumsiObatNefrotoksis.getText(),Valid.SetTgl(TglDialisis.getSelectedItem()+""),CAPD.getSelectedItem().toString(),Valid.SetTgl(TglCAPD.getSelectedItem()+""),Transplantasi.getSelectedItem().toString(),Valid.SetTgl(TglTransplantasi.getSelectedItem()+""), 
+                KeadaanUmum.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),Nadi.getText(),BB.getText(),TD.getText(),Suhu.getText(),Napas.getText(),TB.getText(),Hepatomegali.getSelectedItem().toString(),Splenomegali.getSelectedItem().toString(),Ascites.getSelectedItem().toString(), 
+                Edema.getSelectedItem().toString(),Whezzing.getSelectedItem().toString(),Ronchi.getSelectedItem().toString(),Ikterik.getSelectedItem().toString(),TekananVenaJugularis.getSelectedItem().toString(),Konjungtiva.getSelectedItem().toString(),Kardiomegali.getSelectedItem().toString(),
+                Bising.getSelectedItem().toString(),(ChkThorax.isSelected()==true?"Ya":"Tidak"),(ChkThorax.isSelected()==true?Valid.SetTgl(TglThorax.getSelectedItem()+""):"0000-00-00"),(ChkEKG.isSelected()==true?"Ya":"Tidak"),(ChkEKG.isSelected()==true?Valid.SetTgl(TglEKG.getSelectedItem()+""):"0000-00-00"), 
+                (ChkBNO.isSelected()==true?"Ya":"Tidak"),(ChkBNO.isSelected()==true?Valid.SetTgl(TglBNO.getSelectedItem()+""):"0000-00-00"),(ChkUSG.isSelected()==true?"Ya":"Tidak"),(ChkUSG.isSelected()==true?Valid.SetTgl(TglUSG.getSelectedItem()+""):"0000-00-00"),(ChkRenogram.isSelected()==true?"Ya":"Tidak"), 
+                (ChkRenogram.isSelected()==true?Valid.SetTgl(TglRenogram.getSelectedItem()+""):"0000-00-00"),(ChkBiopsiGinjal.isSelected()==true?"Ya":"Tidak"),(ChkBiopsiGinjal.isSelected()==true?Valid.SetTgl(TglBiopsi.getSelectedItem()+""):"0000-00-00"),(ChkCTScan.isSelected()==true?"Ya":"Tidak"), 
+                (ChkCTScan.isSelected()==true?Valid.SetTgl(TglCTscan.getSelectedItem()+""):"0000-00-00"),(ChkArteriografi.isSelected()==true?"Ya":"Tidak"),(ChkArteriografi.isSelected()==true?Valid.SetTgl(TglArteriografi.getSelectedItem()+""):"0000-00-00"),(ChkKulturUrin.isSelected()==true?"Ya":"Tidak"), 
+                (ChkKulturUrin.isSelected()==true?Valid.SetTgl(TglKultururin.getSelectedItem()+""):"0000-00-00"),(ChkLaborat.isSelected()==true?"Ya":"Tidak"),(ChkLaborat.isSelected()==true?Valid.SetTgl(TglLaboratorium.getSelectedItem()+""):"0000-00-00"),Hematokrit.getText(),Hemoglobin.getText(), 
+                Leukosit.getText(),Trombosit.getText(),HitungJenis.getText(),Ureum.getText(),UrinLengkap.getText(),Kreatinin.getText(),CCT.getText(),SGOT.getText(),SGPT.getText(),CT.getText(),AsamUrat.getText(),HbsAg.getSelectedItem().toString(),AntiHCV.getSelectedItem().toString(),Edukasi.getText()
+            })==true){
                 emptTeks();
-            }*/
+            }  
         }
     
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -2840,119 +2402,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         }else if(Alergi.getText().trim().equals("")){
             Valid.textKosong(Alergi,"Riwayat Penyakit Keluarga");
         }else{
-            if(Hipertensi.getSelectedItem()=="YA"){
-               dbhipertensi=TxtHipertensi.getText();
-            }else {
-                dbhipertensi=Hipertensi.getSelectedItem().toString();
-            }
-            if(DM.getSelectedItem()=="YA"){
-               dbdm=Txtdm.getText();
-            }else {
-                dbdm=DM.getSelectedItem().toString();
-            }
-            if(BSK.getSelectedItem()=="YA"){
-               dbbsk=Txtbsk.getText();
-            }else {
-                dbbsk=BSK.getSelectedItem().toString();
-            }
-            if(OSK.getSelectedItem()=="YA"){
-               dbosk=Txtosk.getText();
-            }else {
-                dbosk=OSK.getSelectedItem().toString();
-            }
-            if(ISK.getSelectedItem()=="YA"){
-               dbisk=Txtisk.getText();
-            }else {
-                dbisk=ISK.getSelectedItem().toString();
-            }
-            if(BST.getSelectedItem()=="YA"){
-               dbbst=Txtbst.getText();
-            }else {
-                dbbst=BST.getSelectedItem().toString();
-            }
-            if(UB.getSelectedItem()=="YA"){
-               dbub=Txtub.getText();
-            }else {
-                dbub=UB.getSelectedItem().toString();
-            }
-            if(PGL.getSelectedItem()=="YA"){
-               dbpgl=Txtpgl.getText();
-            }else {
-                dbpgl=PGL.getSelectedItem().toString();
-            }
-            if(PL.getSelectedItem()=="YA"){
-               dbpl=Txtpl.getText();
-            }else {
-                dbpl=PL.getSelectedItem().toString();
-            }
-            if(KON.getSelectedItem()=="YA"){
-               dbkon=Txtkon.getText();
-            }else {
-                dbkon=KON.getSelectedItem().toString();
-            }
-            if(cbthorax.isSelected()){
-                    dbthorax=Valid.SetTgl(TglThorax.getSelectedItem()+"");
-                }else{
-                    dbthorax="";   
-                }
-            if(cbekg.isSelected()){
-                    dbekg=Valid.SetTgl(TglEKG.getSelectedItem()+"");
-                }else{
-                    dbekg="";   
-                }
-            if(cbbno.isSelected()){
-                    dbbno=Valid.SetTgl(TglBNO.getSelectedItem()+"");
-                }else{
-                    dbbno="";   
-                }
-            if(cbusg.isSelected()){
-                    dbusg=Valid.SetTgl(TglUSG.getSelectedItem()+"");
-                }else{
-                    dbusg="";   
-                }
-            if(cbrenogram.isSelected()){
-                    dbrenogram=Valid.SetTgl(TglRenogram.getSelectedItem()+"");
-                }else{
-                    dbrenogram="";   
-                }
-            if(cbbiopsi.isSelected()){
-                    dbbiopsi=Valid.SetTgl(TglBiopsi.getSelectedItem()+"");
-                }else{
-                    dbbiopsi="";   
-                }
-            if(cbctscan.isSelected()){
-                    dbctscan=Valid.SetTgl(TglCTscan.getSelectedItem()+"");
-                }else{
-                    dbctscan="";   
-                }
-            if(cbarteri.isSelected()){
-                    dbarteri=Valid.SetTgl(TglArteriografi.getSelectedItem()+"");
-                }else{
-                    dbarteri="";   
-                }
-            if(cbkultur.isSelected()){
-                    dbkultur=Valid.SetTgl(TglKultururin.getSelectedItem()+"");
-                }else{
-                    dbkultur="";   
-                }  
-            if(cblab.isSelected()){
-                    dblab=Valid.SetTgl(TglLaboratorium.getSelectedItem()+"");
-                }else{
-                    dblab="";   
-                }  
-            if(tbObat.getSelectedRow()>-1){
-                if(akses.getkode().equals("Admin Utama")){
-                    ganti();
-                }else{
-                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
-                        ganti();
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
-                    }
-                }
-            }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
-            }
+            
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -3300,87 +2750,11 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
 
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void KdDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterKeyPressed
-        
-    }//GEN-LAST:event_KdDokterKeyPressed
-
-    private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
-        dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setAlwaysOnTop(false);
-        dokter.setVisible(true);
-    }//GEN-LAST:event_BtnDokterActionPerformed
-
-    private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-        //Valid.pindah(evt,Monitoring,BtnSimpan);
-    }//GEN-LAST:event_BtnDokterKeyPressed
-
-    private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
-        Valid.pindah(evt,TD,Suhu);
-    }//GEN-LAST:event_NadiKeyPressed
-
-    private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
-        //Valid.pindah(evt,Nadi,RR);
-    }//GEN-LAST:event_SuhuKeyPressed
-
-    private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,Nyeri,Nadi);
-    }//GEN-LAST:event_TDKeyPressed
-
-    private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
-        Valid.pindah(evt,TglAsuhan,Hubungan);
-    }//GEN-LAST:event_AnamnesisKeyPressed
-
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
             tampil();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
-
-    private void StatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusKeyPressed
-        Valid.pindah(evt,BB,TB);
-    }//GEN-LAST:event_StatusKeyPressed
-
-    private void DMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DMKeyPressed
-        //Valid.pindah(evt,GCS,Thoraks);
-    }//GEN-LAST:event_DMKeyPressed
-
-    private void ISKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ISKKeyPressed
-        //Valid.pindah(evt,Columna,Lainnya);
-    }//GEN-LAST:event_ISKKeyPressed
-
-    private void BSTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BSTKeyPressed
-       // Valid.pindah(evt,Muskulos,Lab);
-    }//GEN-LAST:event_BSTKeyPressed
-
-    private void HipertensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HipertensiKeyPressed
-       // Valid.pindah(evt,Kepala,Abdomen);
-    }//GEN-LAST:event_HipertensiKeyPressed
-
-    private void BSKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BSKKeyPressed
-        //Valid.pindah(evt,Thoraks,Ekstremitas);
-    }//GEN-LAST:event_BSKKeyPressed
-
-    private void OSKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OSKKeyPressed
-        //Valid.pindah(evt,Ekstremitas,Lainnya);
-    }//GEN-LAST:event_OSKKeyPressed
-
-    private void PGLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PGLKeyPressed
-        //Valid.pindah(evt,Abdomen,Columna);
-    }//GEN-LAST:event_PGLKeyPressed
-
-    private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
-        //Valid.pindah2(evt,Diagnosis2,BtnSimpan);
-    }//GEN-LAST:event_EdukasiKeyPressed
-
-    private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
-        Valid.pindah(evt,Edukasi,Anamnesis);
-    }//GEN-LAST:event_TglAsuhanKeyPressed
-
-    private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
-        //Valid.pindah(evt,Anamnesis,KeluhanUtama);
-    }//GEN-LAST:event_HubunganKeyPressed
 
     private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
         if(tbObat.getSelectedRow()>-1){
@@ -3395,9 +2769,6 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             param.put("lokalis",Sequel.cariGambar("select lokalis from gambar")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
-            finger1=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger1","Pasien \n"+tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()+"\nNO RM "+(finger1.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),1).toString():finger1)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
-            
             Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanHemodialisa.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Hemodialisa]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_hemodialisa.tanggal,"+
                         "penilaian_medis_ralan_hemodialisa.kd_dokter,penilaian_medis_ralan_hemodialisa.anamnesis,penilaian_medis_ralan_hemodialisa.hubungan,penilaian_medis_ralan_hemodialisa.rajal,penilaian_medis_ralan_hemodialisa.ranap,penilaian_medis_ralan_hemodialisa.alergi,penilaian_medis_ralan_hemodialisa.nyeri,"+
@@ -3413,317 +2784,441 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
-    private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
-         Valid.pindah2(evt,Kesadaran,TD);
-    }//GEN-LAST:event_NyeriKeyPressed
+    private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
+        Valid.pindah(evt,Nadi,TD);
+    }//GEN-LAST:event_BBKeyPressed
 
-    private void OSKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OSKActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OSKActionPerformed
+    private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
+        Valid.pindah(evt,Napas,Hepatomegali);
+    }//GEN-LAST:event_TBKeyPressed
 
-    private void HipertensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HipertensiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HipertensiActionPerformed
+    private void KesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesadaranKeyPressed
+        Valid.pindah(evt,KeadaanUmum,Nadi);
+    }//GEN-LAST:event_KesadaranKeyPressed
 
-    private void UBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UBKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UBKeyPressed
+    private void KeadaanUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanUmumKeyPressed
+        Valid.pindah(evt,TglTransplantasi,Kesadaran);
+    }//GEN-LAST:event_KeadaanUmumKeyPressed
 
-    private void CAPDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CAPDKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CAPDKeyPressed
+    private void TglTransplantasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglTransplantasiKeyPressed
+        Valid.pindah2(evt,Transplantasi,KeadaanUmum);
+    }//GEN-LAST:event_TglTransplantasiKeyPressed
+
+    private void TglCAPDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglCAPDKeyPressed
+        Valid.pindah2(evt,CAPD,Transplantasi);
+    }//GEN-LAST:event_TglCAPDKeyPressed
+
+    private void KeteranganKonsumsiObatNefrotoksisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKonsumsiObatNefrotoksisKeyPressed
+        Valid.pindah(evt,KonsumsiObatNefrotoksis,TglDialisis);
+    }//GEN-LAST:event_KeteranganKonsumsiObatNefrotoksisKeyPressed
+
+    private void KeteranganPenyakitLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPenyakitLainKeyPressed
+        Valid.pindah(evt,PenyakitLain,KonsumsiObatNefrotoksis);
+    }//GEN-LAST:event_KeteranganPenyakitLainKeyPressed
+
+    private void KeteranganPenyakitGinjalLaomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPenyakitGinjalLaomKeyPressed
+        Valid.pindah(evt,PenyakitGinjalLaom,PenyakitLain);
+    }//GEN-LAST:event_KeteranganPenyakitGinjalLaomKeyPressed
+
+    private void KeteranganUrinBerdarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganUrinBerdarahKeyPressed
+        Valid.pindah(evt,UrinBerdarah,PenyakitGinjalLaom);
+    }//GEN-LAST:event_KeteranganUrinBerdarahKeyPressed
+
+    private void KeteranganBengkakSeluruhTubuhKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganBengkakSeluruhTubuhKeyPressed
+        Valid.pindah(evt,BengkakSeluruhTubuh,UrinBerdarah);
+    }//GEN-LAST:event_KeteranganBengkakSeluruhTubuhKeyPressed
+
+    private void KeteranganInfeksiSaluranKemihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganInfeksiSaluranKemihKeyPressed
+        Valid.pindah(evt,InfeksiSaluranKemih,BengkakSeluruhTubuh);
+    }//GEN-LAST:event_KeteranganInfeksiSaluranKemihKeyPressed
+
+    private void KeteranganOperasiSaluranKemihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganOperasiSaluranKemihKeyPressed
+        Valid.pindah(evt,OperasiSaluranKemih,InfeksiSaluranKemih);
+    }//GEN-LAST:event_KeteranganOperasiSaluranKemihKeyPressed
+
+    private void KeteranganBatuSaluranKemihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganBatuSaluranKemihKeyPressed
+        Valid.pindah(evt,BatuSaluranKemih,OperasiSaluranKemih);
+    }//GEN-LAST:event_KeteranganBatuSaluranKemihKeyPressed
+
+    private void KeteranganDiabetesMelitusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganDiabetesMelitusKeyPressed
+        Valid.pindah(evt,DiabetesMelitus,BatuSaluranKemih);
+    }//GEN-LAST:event_KeteranganDiabetesMelitusKeyPressed
+
+    private void KeteranganHipertensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganHipertensiKeyPressed
+        Valid.pindah(evt,Hipertensi,DiabetesMelitus);
+    }//GEN-LAST:event_KeteranganHipertensiKeyPressed
+
+    private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
+        Valid.pindah(evt,AsalRuangan,Nyeri);
+    }//GEN-LAST:event_AlergiKeyPressed
+
+    private void AsalRuanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsalRuanganKeyPressed
+        Valid.pindah(evt,Hubungan,Alergi);
+    }//GEN-LAST:event_AsalRuanganKeyPressed
+
+    private void AntiHCVKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AntiHCVKeyPressed
+        Valid.pindah(evt,HbsAg,Edukasi);
+    }//GEN-LAST:event_AntiHCVKeyPressed
+
+    private void HbsAgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HbsAgKeyPressed
+        Valid.pindah(evt,AsamUrat,AntiHCV);
+    }//GEN-LAST:event_HbsAgKeyPressed
+
+    private void CCTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CCTKeyPressed
+        Valid.pindah(evt,Kreatinin,SGOT);
+    }//GEN-LAST:event_CCTKeyPressed
+
+    private void UrinLengkapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UrinLengkapKeyPressed
+        Valid.pindah(evt,Ureum,Kreatinin);
+    }//GEN-LAST:event_UrinLengkapKeyPressed
+
+    private void CTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTKeyPressed
+        Valid.pindah(evt,SGPT,AsamUrat);
+    }//GEN-LAST:event_CTKeyPressed
+
+    private void SGPTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SGPTKeyPressed
+        Valid.pindah(evt,SGOT,CT);
+    }//GEN-LAST:event_SGPTKeyPressed
+
+    private void SGOTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SGOTKeyPressed
+        Valid.pindah(evt,CCT,SGPT);
+    }//GEN-LAST:event_SGOTKeyPressed
+
+    private void AsamUratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsamUratKeyPressed
+        Valid.pindah(evt,CT,HbsAg);
+    }//GEN-LAST:event_AsamUratKeyPressed
+
+    private void KreatininKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KreatininKeyPressed
+        Valid.pindah(evt,UrinLengkap,CCT);
+    }//GEN-LAST:event_KreatininKeyPressed
+
+    private void UreumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UreumKeyPressed
+        Valid.pindah(evt,HitungJenis,UrinLengkap);
+    }//GEN-LAST:event_UreumKeyPressed
+
+    private void HitungJenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HitungJenisKeyPressed
+        Valid.pindah(evt,Trombosit,Ureum);
+    }//GEN-LAST:event_HitungJenisKeyPressed
+
+    private void TrombositKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TrombositKeyPressed
+        Valid.pindah(evt,Leukosit,HitungJenis);
+    }//GEN-LAST:event_TrombositKeyPressed
+
+    private void LeukositKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LeukositKeyPressed
+        Valid.pindah(evt,Hemoglobin,Trombosit);
+    }//GEN-LAST:event_LeukositKeyPressed
+
+    private void HemoglobinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HemoglobinKeyPressed
+        Valid.pindah(evt,Hematokrit,Leukosit);
+    }//GEN-LAST:event_HemoglobinKeyPressed
+
+    private void HematokritKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HematokritKeyPressed
+        Valid.pindah(evt,TglLaboratorium,Hemoglobin);
+    }//GEN-LAST:event_HematokritKeyPressed
+
+    private void TglBiopsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglBiopsiKeyPressed
+        Valid.pindah2(evt,TglRenogram,TglCTscan);
+    }//GEN-LAST:event_TglBiopsiKeyPressed
+
+    private void TglCTscanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglCTscanKeyPressed
+        Valid.pindah2(evt,TglBiopsi,TglArteriografi);
+    }//GEN-LAST:event_TglCTscanKeyPressed
+
+    private void TglArteriografiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglArteriografiKeyPressed
+        Valid.pindah2(evt,TglCTscan,TglKultururin);
+    }//GEN-LAST:event_TglArteriografiKeyPressed
+
+    private void TglKultururinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglKultururinKeyPressed
+        Valid.pindah2(evt,TglArteriografi,TglLaboratorium);
+    }//GEN-LAST:event_TglKultururinKeyPressed
+
+    private void TglLaboratoriumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglLaboratoriumKeyPressed
+        Valid.pindah2(evt,TglKultururin,Hematokrit);
+    }//GEN-LAST:event_TglLaboratoriumKeyPressed
+
+    private void TglRenogramKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglRenogramKeyPressed
+        Valid.pindah2(evt,TglUSG,TglBiopsi);
+    }//GEN-LAST:event_TglRenogramKeyPressed
+
+    private void TglUSGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglUSGKeyPressed
+        Valid.pindah2(evt,TglBNO,TglRenogram);
+    }//GEN-LAST:event_TglUSGKeyPressed
+
+    private void TglBNOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglBNOKeyPressed
+        Valid.pindah2(evt,TglEKG,TglUSG);
+    }//GEN-LAST:event_TglBNOKeyPressed
+
+    private void TglEKGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglEKGKeyPressed
+        Valid.pindah2(evt,TglThorax,TglBNO);
+    }//GEN-LAST:event_TglEKGKeyPressed
+
+    private void TglDialisisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglDialisisKeyPressed
+        Valid.pindah2(evt,KeteranganKonsumsiObatNefrotoksis,CAPD);
+    }//GEN-LAST:event_TglDialisisKeyPressed
+
+    private void TglThoraxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglThoraxKeyPressed
+        Valid.pindah2(evt,Bising,TglEKG);
+    }//GEN-LAST:event_TglThoraxKeyPressed
+
+    private void EdemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdemaKeyPressed
+        Valid.pindah(evt,Ascites,Whezzing);
+    }//GEN-LAST:event_EdemaKeyPressed
+
+    private void AscitesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AscitesKeyPressed
+        Valid.pindah(evt,Splenomegali,Edema);
+    }//GEN-LAST:event_AscitesKeyPressed
+
+    private void SplenomegaliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SplenomegaliKeyPressed
+        Valid.pindah(evt,Hepatomegali,Ascites);
+    }//GEN-LAST:event_SplenomegaliKeyPressed
+
+    private void HepatomegaliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HepatomegaliKeyPressed
+        Valid.pindah(evt,TB,Splenomegali);
+    }//GEN-LAST:event_HepatomegaliKeyPressed
+
+    private void RonchiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RonchiKeyPressed
+        Valid.pindah(evt,Whezzing,Ikterik);
+    }//GEN-LAST:event_RonchiKeyPressed
+
+    private void WhezzingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WhezzingKeyPressed
+        Valid.pindah(evt,Edema,Ronchi);
+    }//GEN-LAST:event_WhezzingKeyPressed
+
+    private void BisingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BisingKeyPressed
+        Valid.pindah(evt,Kardiomegali,TglThorax);
+    }//GEN-LAST:event_BisingKeyPressed
+
+    private void KardiomegaliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KardiomegaliKeyPressed
+        Valid.pindah(evt,Konjungtiva,Bising);
+    }//GEN-LAST:event_KardiomegaliKeyPressed
+
+    private void TekananVenaJugularisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TekananVenaJugularisKeyPressed
+        Valid.pindah(evt,Ikterik,Konjungtiva);
+    }//GEN-LAST:event_TekananVenaJugularisKeyPressed
+
+    private void KonjungtivaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonjungtivaKeyPressed
+        Valid.pindah(evt,TekananVenaJugularis,Kardiomegali);
+    }//GEN-LAST:event_KonjungtivaKeyPressed
+
+    private void IkterikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IkterikKeyPressed
+        Valid.pindah(evt,Ronchi,TekananVenaJugularis);
+    }//GEN-LAST:event_IkterikKeyPressed
+
+    private void NapasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NapasKeyPressed
+        Valid.pindah(evt,Suhu,TB);
+    }//GEN-LAST:event_NapasKeyPressed
+
+    private void KonsumsiObatNefrotoksisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonsumsiObatNefrotoksisKeyPressed
+        Valid.pindah(evt,KeteranganPenyakitLain,KeteranganKonsumsiObatNefrotoksis);
+    }//GEN-LAST:event_KonsumsiObatNefrotoksisKeyPressed
+
+    private void PenyakitLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyakitLainKeyPressed
+        Valid.pindah(evt,KeteranganPenyakitGinjalLaom,KeteranganPenyakitLain);
+    }//GEN-LAST:event_PenyakitLainKeyPressed
 
     private void TransplantasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransplantasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TglCAPD,TglTransplantasi);
     }//GEN-LAST:event_TransplantasiKeyPressed
+
+    private void CAPDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CAPDKeyPressed
+        Valid.pindah(evt,TglDialisis,TglCAPD);
+    }//GEN-LAST:event_CAPDKeyPressed
+
+    private void UrinBerdarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UrinBerdarahKeyPressed
+        Valid.pindah(evt,KeteranganBengkakSeluruhTubuh,KeteranganUrinBerdarah);
+    }//GEN-LAST:event_UrinBerdarahKeyPressed
+
+    private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
+        Valid.pindah2(evt,AntiHCV,BtnSimpan);
+    }//GEN-LAST:event_EdukasiKeyPressed
+
+    private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
+        Valid.pindah(evt,Alergi,StatusNutrisi);
+    }//GEN-LAST:event_NyeriKeyPressed
+
+    private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
+        Valid.pindah(evt,Edukasi,Anamnesis);
+    }//GEN-LAST:event_TglAsuhanKeyPressed
 
     private void TglAsuhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglAsuhanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TglAsuhanActionPerformed
 
-    private void PLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PLKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PLKeyPressed
-
-    private void KONKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KONKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KONKeyPressed
-
-    private void NapasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NapasKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NapasKeyPressed
-
-    private void IkterikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IkterikKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IkterikKeyPressed
-
-    private void KonjungtivaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonjungtivaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KonjungtivaKeyPressed
-
-    private void JVPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JVPKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JVPKeyPressed
-
-    private void KardiomegaliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KardiomegaliKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KardiomegaliKeyPressed
-
-    private void BisingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BisingKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BisingKeyPressed
-
-    private void WhezzingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WhezzingKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_WhezzingKeyPressed
-
-    private void RonchiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RonchiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RonchiKeyPressed
-
-    private void HepatomegaliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HepatomegaliKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HepatomegaliKeyPressed
-
-    private void SplenomegaliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SplenomegaliKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SplenomegaliKeyPressed
-
-    private void AscitesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AscitesKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AscitesKeyPressed
-
-    private void EdemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdemaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EdemaKeyPressed
-
-    private void TglThoraxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglThoraxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglThoraxActionPerformed
-
-    private void TglThoraxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglThoraxKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglThoraxKeyPressed
-
-    private void TglDialisisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglDialisisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglDialisisActionPerformed
-
-    private void TglDialisisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglDialisisKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglDialisisKeyPressed
-
-    private void TglEKGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglEKGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglEKGActionPerformed
-
-    private void TglEKGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglEKGKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglEKGKeyPressed
-
-    private void TglBNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglBNOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglBNOActionPerformed
-
-    private void TglBNOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglBNOKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglBNOKeyPressed
-
-    private void TglUSGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglUSGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglUSGActionPerformed
-
-    private void TglUSGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglUSGKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglUSGKeyPressed
-
-    private void TglRenogramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglRenogramActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglRenogramActionPerformed
-
-    private void TglRenogramKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglRenogramKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglRenogramKeyPressed
-
-    private void TglLaboratoriumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglLaboratoriumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglLaboratoriumActionPerformed
-
-    private void TglLaboratoriumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglLaboratoriumKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglLaboratoriumKeyPressed
-
-    private void TglKultururinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglKultururinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglKultururinActionPerformed
-
-    private void TglKultururinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglKultururinKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglKultururinKeyPressed
-
-    private void TglArteriografiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglArteriografiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglArteriografiActionPerformed
-
-    private void TglArteriografiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglArteriografiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglArteriografiKeyPressed
-
-    private void TglCTscanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglCTscanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglCTscanActionPerformed
-
-    private void TglCTscanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglCTscanKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglCTscanKeyPressed
-
-    private void TglBiopsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglBiopsiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglBiopsiActionPerformed
-
-    private void TglBiopsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglBiopsiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglBiopsiKeyPressed
-
-    private void HematokritKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HematokritKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HematokritKeyPressed
-
-    private void HemoglobinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HemoglobinKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HemoglobinKeyPressed
-
-    private void LeukositKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LeukositKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LeukositKeyPressed
-
-    private void TrombositKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TrombositKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TrombositKeyPressed
-
-    private void HitungJenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HitungJenisKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HitungJenisKeyPressed
-
-    private void UreumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UreumKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UreumKeyPressed
-
-    private void KreatininKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KreatininKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KreatininKeyPressed
-
-    private void AsamUratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsamUratKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AsamUratKeyPressed
-
-    private void SGOTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SGOTKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SGOTKeyPressed
-
-    private void SGPTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SGPTKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SGPTKeyPressed
-
-    private void CTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CTKeyPressed
-
-    private void UrinLengkapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UrinLengkapKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UrinLengkapKeyPressed
-
-    private void CCTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CCTKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CCTKeyPressed
-
-    private void HbsAgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HbsAgKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HbsAgKeyPressed
-
-    private void AntiHCVKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AntiHCVKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AntiHCVKeyPressed
-
-    private void RanapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RanapKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RanapKeyPressed
-
-    private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AlergiKeyPressed
-
-    private void TxtHipertensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtHipertensiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtHipertensiKeyPressed
-
-    private void TxtdmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtdmKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtdmKeyPressed
-
-    private void TxtbskKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtbskKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtbskKeyPressed
-
-    private void TxtoskKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtoskKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtoskKeyPressed
-
-    private void TxtiskKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtiskKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtiskKeyPressed
-
-    private void TxtbstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtbstKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtbstKeyPressed
-
-    private void TxtubKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtubKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtubKeyPressed
-
-    private void TxtpglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtpglKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtpglKeyPressed
-
-    private void TxtplKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtplKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtplKeyPressed
-
-    private void TxtkonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtkonKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtkonKeyPressed
-
-    private void TglCAPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglCAPDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglCAPDActionPerformed
-
-    private void TglCAPDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglCAPDKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglCAPDKeyPressed
-
-    private void TglTransplantasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TglTransplantasiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglTransplantasiActionPerformed
-
-    private void TglTransplantasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglTransplantasiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglTransplantasiKeyPressed
-
-    private void KeadaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanKeyPressed
-        Valid.pindah(evt,Alergi,Kesadaran);
-    }//GEN-LAST:event_KeadaanKeyPressed
-
-    private void KesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesadaranKeyPressed
-        //Valid.pindah(evt,Keadaan,GCS);
-    }//GEN-LAST:event_KesadaranKeyPressed
-
-    private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
-        //Valid.pindah(evt,GCS,BB);
-    }//GEN-LAST:event_TBKeyPressed
-
-    private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
-        Valid.pindah(evt,TB,TD);
-    }//GEN-LAST:event_BBKeyPressed
+    private void PenyakitGinjalLaomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyakitGinjalLaomKeyPressed
+        Valid.pindah(evt,KeteranganUrinBerdarah,KeteranganPenyakitGinjalLaom);
+    }//GEN-LAST:event_PenyakitGinjalLaomKeyPressed
+
+    private void OperasiSaluranKemihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OperasiSaluranKemihKeyPressed
+        Valid.pindah(evt,KeteranganBatuSaluranKemih,KeteranganOperasiSaluranKemih);
+    }//GEN-LAST:event_OperasiSaluranKemihKeyPressed
+
+    private void OperasiSaluranKemihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OperasiSaluranKemihActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OperasiSaluranKemihActionPerformed
+
+    private void BatuSaluranKemihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BatuSaluranKemihKeyPressed
+        Valid.pindah(evt,KeteranganDiabetesMelitus,KeteranganBatuSaluranKemih);
+    }//GEN-LAST:event_BatuSaluranKemihKeyPressed
+
+    private void HipertensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HipertensiKeyPressed
+        Valid.pindah(evt,Nyeri,KeteranganHipertensi);
+    }//GEN-LAST:event_HipertensiKeyPressed
+
+    private void BengkakSeluruhTubuhKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BengkakSeluruhTubuhKeyPressed
+        Valid.pindah(evt,KeteranganInfeksiSaluranKemih,KeteranganBengkakSeluruhTubuh);
+    }//GEN-LAST:event_BengkakSeluruhTubuhKeyPressed
+
+    private void InfeksiSaluranKemihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InfeksiSaluranKemihKeyPressed
+        Valid.pindah(evt,KeteranganOperasiSaluranKemih,KeteranganInfeksiSaluranKemih);
+    }//GEN-LAST:event_InfeksiSaluranKemihKeyPressed
+
+    private void DiabetesMelitusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiabetesMelitusKeyPressed
+        Valid.pindah(evt,KeteranganHipertensi,KeteranganDiabetesMelitus);
+    }//GEN-LAST:event_DiabetesMelitusKeyPressed
+
+    private void StatusNutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusNutrisiKeyPressed
+        Valid.pindah(evt,Nyeri,Hipertensi);
+    }//GEN-LAST:event_StatusNutrisiKeyPressed
+
+    private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
+        Valid.pindah(evt,Anamnesis,AsalRuangan);
+    }//GEN-LAST:event_HubunganKeyPressed
+
+    private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
+        Valid.pindah(evt,TglAsuhan,Hubungan);
+    }//GEN-LAST:event_AnamnesisKeyPressed
+
+    private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
+        Valid.pindah(evt,BB,Suhu);
+    }//GEN-LAST:event_TDKeyPressed
+
+    private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
+        Valid.pindah(evt,TD,Napas);
+    }//GEN-LAST:event_SuhuKeyPressed
+
+    private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
+        Valid.pindah(evt,Kesadaran,BB);
+    }//GEN-LAST:event_NadiKeyPressed
+
+    private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
+        //Valid.pindah(evt,Monitoring,BtnSimpan);
+    }//GEN-LAST:event_BtnDokterKeyPressed
+
+    private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setAlwaysOnTop(false);
+        dokter.setVisible(true);
+    }//GEN-LAST:event_BtnDokterActionPerformed
+
+    private void KdDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterKeyPressed
+
+    }//GEN-LAST:event_KdDokterKeyPressed
+
+    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isRawat();
+        }else{
+            Valid.pindah(evt,TCari,BtnDokter);
+        }
+    }//GEN-LAST:event_TNoRwKeyPressed
+
+    private void CAPDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CAPDItemStateChanged
+        if(CAPD.getSelectedIndex()==0){
+            TglCAPD.setEnabled(false);
+        }else{
+            TglCAPD.setEnabled(true);
+        }
+    }//GEN-LAST:event_CAPDItemStateChanged
+
+    private void TransplantasiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TransplantasiItemStateChanged
+        if(Transplantasi.getSelectedIndex()==0){
+            TglTransplantasi.setEnabled(false);
+        }else{
+            TglTransplantasi.setEnabled(true);
+        }
+    }//GEN-LAST:event_TransplantasiItemStateChanged
+
+    private void ChkThoraxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkThoraxItemStateChanged
+        if(ChkThorax.isSelected()==true){
+            TglThorax.setEnabled(true);
+        }else{
+            TglThorax.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkThoraxItemStateChanged
+
+    private void ChkEKGItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkEKGItemStateChanged
+        if(ChkEKG.isSelected()==true){
+            TglEKG.setEnabled(true);
+        }else{
+            TglEKG.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkEKGItemStateChanged
+
+    private void ChkBNOItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkBNOItemStateChanged
+        if(ChkBNO.isSelected()==true){
+            TglBNO.setEnabled(true);
+        }else{
+            TglBNO.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkBNOItemStateChanged
+
+    private void ChkUSGItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkUSGItemStateChanged
+        if(ChkUSG.isSelected()==true){
+            TglUSG.setEnabled(true);
+        }else{
+            TglUSG.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkUSGItemStateChanged
+
+    private void ChkRenogramItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkRenogramItemStateChanged
+        if(ChkRenogram.isSelected()==true){
+            TglRenogram.setEnabled(true);
+        }else{
+            TglRenogram.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkRenogramItemStateChanged
+
+    private void ChkBiopsiGinjalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkBiopsiGinjalItemStateChanged
+        if(ChkBiopsiGinjal.isSelected()==true){
+            TglBiopsi.setEnabled(true);
+        }else{
+            TglBiopsi.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkBiopsiGinjalItemStateChanged
+
+    private void ChkCTScanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkCTScanItemStateChanged
+        if(ChkCTScan.isSelected()==true){
+            TglCTscan.setEnabled(true);
+        }else{
+            TglCTscan.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkCTScanItemStateChanged
+
+    private void ChkArteriografiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkArteriografiItemStateChanged
+        if(ChkArteriografi.isSelected()==true){
+            TglArteriografi.setEnabled(true);
+        }else{
+            TglArteriografi.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkArteriografiItemStateChanged
+
+    private void ChkKulturUrinItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkKulturUrinItemStateChanged
+        if(ChkKulturUrin.isSelected()==true){
+            TglKultururin.setEnabled(true);
+        }else{
+            TglKultururin.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkKulturUrinItemStateChanged
+
+    private void ChkLaboratItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkLaboratItemStateChanged
+        if(ChkLaborat.isSelected()==true){
+            TglLaboratorium.setEnabled(true);
+        }else{
+            TglLaboratorium.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkLaboratItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -3745,11 +3240,12 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     private widget.TextBox Alergi;
     private widget.ComboBox Anamnesis;
     private widget.ComboBox AntiHCV;
+    private widget.TextBox AsalRuangan;
     private widget.TextBox AsamUrat;
     private widget.ComboBox Ascites;
     private widget.TextBox BB;
-    private widget.ComboBox BSK;
-    private widget.ComboBox BST;
+    private widget.ComboBox BatuSaluranKemih;
+    private widget.ComboBox BengkakSeluruhTubuh;
     private widget.ComboBox Bising;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
@@ -3763,9 +3259,19 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     private widget.ComboBox CAPD;
     private widget.TextBox CCT;
     private widget.TextBox CT;
-    private widget.ComboBox DM;
+    private widget.CekBox ChkArteriografi;
+    private widget.CekBox ChkBNO;
+    private widget.CekBox ChkBiopsiGinjal;
+    private widget.CekBox ChkCTScan;
+    private widget.CekBox ChkEKG;
+    private widget.CekBox ChkKulturUrin;
+    private widget.CekBox ChkLaborat;
+    private widget.CekBox ChkRenogram;
+    private widget.CekBox ChkThorax;
+    private widget.CekBox ChkUSG;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private widget.ComboBox DiabetesMelitus;
     private widget.ComboBox Edema;
     private widget.TextArea Edukasi;
     private widget.PanelBiasa FormInput;
@@ -3776,16 +3282,25 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     private widget.ComboBox Hipertensi;
     private widget.TextBox HitungJenis;
     private widget.TextBox Hubungan;
-    private widget.ComboBox ISK;
     private widget.ComboBox Ikterik;
-    private widget.ComboBox JVP;
+    private widget.ComboBox InfeksiSaluranKemih;
     private widget.TextBox Jk;
-    private widget.ComboBox KON;
     private widget.ComboBox Kardiomegali;
     private widget.TextBox KdDokter;
-    private widget.ComboBox Keadaan;
+    private widget.ComboBox KeadaanUmum;
     private widget.ComboBox Kesadaran;
+    private widget.TextBox KeteranganBatuSaluranKemih;
+    private widget.TextBox KeteranganBengkakSeluruhTubuh;
+    private widget.TextBox KeteranganDiabetesMelitus;
+    private widget.TextBox KeteranganHipertensi;
+    private widget.TextBox KeteranganInfeksiSaluranKemih;
+    private widget.TextBox KeteranganKonsumsiObatNefrotoksis;
+    private widget.TextBox KeteranganOperasiSaluranKemih;
+    private widget.TextBox KeteranganPenyakitGinjalLaom;
+    private widget.TextBox KeteranganPenyakitLain;
+    private widget.TextBox KeteranganUrinBerdarah;
     private widget.ComboBox Konjungtiva;
+    private widget.ComboBox KonsumsiObatNefrotoksis;
     private widget.TextBox Kreatinin;
     private widget.Label LCount;
     private widget.TextBox Leukosit;
@@ -3795,16 +3310,15 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     private widget.TextBox Napas;
     private widget.TextBox NmDokter;
     private widget.ComboBox Nyeri;
-    private widget.ComboBox OSK;
-    private widget.ComboBox PGL;
-    private widget.ComboBox PL;
-    private widget.TextBox Ranap;
+    private widget.ComboBox OperasiSaluranKemih;
+    private widget.ComboBox PenyakitGinjalLaom;
+    private widget.ComboBox PenyakitLain;
     private widget.ComboBox Ronchi;
     private widget.TextBox SGOT;
     private widget.TextBox SGPT;
     private widget.ScrollPane Scroll;
     private widget.ComboBox Splenomegali;
-    private widget.TextBox Status;
+    private widget.TextBox StatusNutrisi;
     private widget.TextBox Suhu;
     private widget.TextBox TB;
     private widget.TextBox TCari;
@@ -3813,6 +3327,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabRawat;
+    private widget.ComboBox TekananVenaJugularis;
     private widget.Tanggal TglArteriografi;
     private widget.Tanggal TglAsuhan;
     private widget.Tanggal TglBNO;
@@ -3830,36 +3345,16 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     private widget.Tanggal TglUSG;
     private widget.ComboBox Transplantasi;
     private widget.TextBox Trombosit;
-    private widget.TextBox TxtHipertensi;
-    private widget.TextBox Txtbsk;
-    private widget.TextBox Txtbst;
-    private widget.TextBox Txtdm;
-    private widget.TextBox Txtisk;
-    private widget.TextBox Txtkon;
-    private widget.TextBox Txtosk;
-    private widget.TextBox Txtpgl;
-    private widget.TextBox Txtpl;
-    private widget.TextBox Txtub;
-    private widget.ComboBox UB;
     private widget.TextBox Ureum;
+    private widget.ComboBox UrinBerdarah;
     private widget.TextBox UrinLengkap;
     private widget.ComboBox Whezzing;
-    private javax.swing.JCheckBox cbarteri;
-    private javax.swing.JCheckBox cbbiopsi;
-    private javax.swing.JCheckBox cbbno;
-    private javax.swing.JCheckBox cbctscan;
-    private javax.swing.JCheckBox cbekg;
-    private javax.swing.JCheckBox cbkultur;
-    private javax.swing.JCheckBox cblab;
-    private javax.swing.JCheckBox cbrenogram;
-    private javax.swing.JCheckBox cbthorax;
-    private javax.swing.JCheckBox cbusg;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.Label jLabel10;
     private widget.Label jLabel101;
-    private widget.Label jLabel104;
+    private widget.Label jLabel102;
     private widget.Label jLabel11;
     private widget.Label jLabel113;
     private widget.Label jLabel12;
@@ -3948,12 +3443,14 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     private widget.Label jLabel93;
     private widget.Label jLabel94;
     private widget.Label jLabel95;
+    private widget.Label jLabel96;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private widget.Label label11;
     private widget.Label label14;
     private widget.panelisi panelGlass8;
@@ -4040,54 +3537,76 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        /*Anamnesis.setSelectedIndex(0);
+        TglAsuhan.setDate(new Date());
+        Anamnesis.setSelectedIndex(0);
         Hubungan.setText("");
-        Rajal.setSelectedIndex(0);
-        Ranap.setSelectedIndex(0);
+        AsalRuangan.setText("");
         Alergi.setText("");
         Nyeri.setSelectedIndex(0);
-        Status.setText("");
+        StatusNutrisi.setText("");
         Hipertensi.setSelectedIndex(0);
-        DM.setSelectedIndex(0);
-        BSK.setSelectedIndex(0);
-        OSK.setSelectedIndex(0);
-        ISK.setSelectedIndex(0);
-        BST.setSelectedIndex(0);
-        UB.setSelectedIndex(0);
-        PGL.setSelectedIndex(0);
-        PL.setSelectedIndex(0);
-        KON.setSelectedIndex(0);
+        KeteranganHipertensi.setText("");
+        DiabetesMelitus.setSelectedIndex(0);
+        KeteranganDiabetesMelitus.setText("");
+        BatuSaluranKemih.setSelectedIndex(0);
+        KeteranganBatuSaluranKemih.setText("");
+        OperasiSaluranKemih.setSelectedIndex(0);
+        KeteranganOperasiSaluranKemih.setText("");
+        InfeksiSaluranKemih.setSelectedIndex(0);
+        KeteranganInfeksiSaluranKemih.setText("");
+        BengkakSeluruhTubuh.setSelectedIndex(0);
+        KeteranganBengkakSeluruhTubuh.setText("");
+        UrinBerdarah.setSelectedIndex(0);
+        KeteranganUrinBerdarah.setText("");
+        PenyakitGinjalLaom.setSelectedIndex(0);
+        KeteranganPenyakitGinjalLaom.setText("");
+        PenyakitLain.setSelectedIndex(0);
+        KeteranganPenyakitLain.setText("");
+        KonsumsiObatNefrotoksis.setSelectedIndex(0);
+        KeteranganKonsumsiObatNefrotoksis.setText("");
         TglDialisis.setDate(new Date());
         CAPD.setSelectedIndex(0);
+        TglCAPD.setDate(new Date());
         Transplantasi.setSelectedIndex(0);
-        Keadaan.setSelectedIndex(0);
+        TglTransplantasi.setDate(new Date());
+        KeadaanUmum.setSelectedIndex(0);
         Kesadaran.setSelectedIndex(0);
-        BB.setText("");
-        TB.setText("");
-        Suhu.setText("");
         Nadi.setText("");
+        BB.setText("");
         TD.setText("");
+        Suhu.setText("");
         Napas.setText("");
-        Ikterik.setSelectedIndex(0);
-        Konjungtiva.setSelectedIndex(0);
-        JVP.setSelectedIndex(0);
-        Kardiomegali.setSelectedIndex(0);
-        Bising.setSelectedIndex(0);
-        Whezzing.setSelectedIndex(0);
-        Ronchi.setSelectedIndex(0);
+        TB.setText("");
         Hepatomegali.setSelectedIndex(0);
         Splenomegali.setSelectedIndex(0);
         Ascites.setSelectedIndex(0);
         Edema.setSelectedIndex(0);
+        Whezzing.setSelectedIndex(0);
+        Ronchi.setSelectedIndex(0);
+        Ikterik.setSelectedIndex(0);
+        TekananVenaJugularis.setSelectedIndex(0);
+        Konjungtiva.setSelectedIndex(0);
+        Kardiomegali.setSelectedIndex(0);
+        Bising.setSelectedIndex(0);
+        ChkThorax.setSelected(false);
         TglThorax.setDate(new Date());
+        ChkEKG.setSelected(false);
         TglEKG.setDate(new Date());
+        ChkBNO.setSelected(false);
         TglBNO.setDate(new Date());
+        ChkUSG.setSelected(false);
         TglUSG.setDate(new Date());
+        ChkRenogram.setSelected(false);
         TglRenogram.setDate(new Date());
+        ChkBiopsiGinjal.setSelected(false);
         TglBiopsi.setDate(new Date());
+        ChkCTScan.setSelected(false);
         TglCTscan.setDate(new Date());
+        ChkArteriografi.setSelected(false);
         TglArteriografi.setDate(new Date());
+        ChkKulturUrin.setSelected(false);
         TglKultururin.setDate(new Date());
+        ChkLaborat.setSelected(false);
         TglLaboratorium.setDate(new Date());
         Hematokrit.setText("");
         Hemoglobin.setText("");
@@ -4095,19 +3614,17 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         Trombosit.setText("");
         HitungJenis.setText("");
         Ureum.setText("");
+        UrinLengkap.setText("");
         Kreatinin.setText("");
-        AsamUrat.setText("");
+        CCT.setText("");
         SGOT.setText("");
         SGPT.setText("");
-        HbsAg.setSelectedIndex(0);
         CT.setText("");
-        UrinLengkap.setText("");
-        CCT.setText("");
+        AsamUrat.setText("");
+        HbsAg.setSelectedIndex(0);
         AntiHCV.setSelectedIndex(0);
         Edukasi.setText("");
-        TglAsuhan.setDate(new Date());
-        TabRawat.setSelectedIndex(0);
-        Anamnesis.requestFocus();*/
+        Anamnesis.requestFocus();
     } 
 
     private void getData() {
