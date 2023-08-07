@@ -2796,47 +2796,94 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Operasi Dengan Gangguan Nafas Atau Hipotensi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Jantung Dengan Tanda Bendungan Paru</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Asam Basa / Elektrolit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Ginjal Dengan Tanda Bendungan Paru</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Syok Karena Perdarahan Anafilaksis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Operasi Besar</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang Berulang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Kesadaran</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dehidrasi Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Jalan Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Arimia Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asma Akut Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diabetes Yang Memerlukan Terapi Insulin Kontinyu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyakit Keganasan Dengan Metastasis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Geriatrik Dengan Fungsi Hidup Sebelumnya Minimal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Dengan GCS 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Jantung, Penyakit Paru Terminal Disertai Komplikasi Penyakit Akut Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi < 40 atau >150 (x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SBP < 80 mmHg Atau 20 mmHg Di Bawah SBP Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MAP < 60 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DBP > 120 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>R > 35 x/menit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Na < 110 meq/L Atau > 170 meq/L</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ca > 15 mg/dl</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GDS > 800 mg/dl</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>K < 2 meq/L Atau 7meq/L</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PaO2 < 50 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PH < 7,1 Atau 7,7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perbedaan Cerebrovaskuler, SAH, Atau Contusion Dengan Gangguan Kesadaran Atau Neorologi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ruptor Organ Dalam, Kandung Kemih, Hati, Varices Esophagus Atau Uterus Dengan Gangguan Hemodinamik</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pupil Anisokor</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Obstruksi Jalan Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anuria</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang Berulang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tamponade Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Coma</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sianosis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Luka Bakar > 10 % BSA</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP/Kode Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/IGD</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cemas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Firasat Buruk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pikiran Sendiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mudah Tersinggung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merasa Tegang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lesu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tak Bisa Istirahat Tenang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mudah Terkejut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mudah Menangis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gemetar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gelisah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada Gelap</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada OrangAsing</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada Kerumunan Banyak Orang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada Binatang Besar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada Keramaian Lalu Lintas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Ditinggal Sendiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sulit Tidur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Terbangun Malam Hari</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidur Tidak Nyeyak</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mimpi Buruk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bangun Dengan Lesu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Banyak Mengalami Mimpi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mimpi Menakutkan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sulit Konsentrasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Daya Ingat Buruk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hilangnya Minat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berkurangnya Kesenangan Pada Hobi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sedih</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bangun Dini Hari</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perasaan Berubah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sakit Nyeri Di Otot</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kaku</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kedutan Otot</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gigi Gemerutuk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suara Tidak Stabil</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tinnitus</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penglihatan Kabur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muka Merah Gejala Somatic</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merasa Lemah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perasaan Ditusuk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takhikardia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berdebar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Di Dada</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Denyut Nadi Mengeras</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perasaan Lesu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Detak Jantung Menghilang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merasa Tertekan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perasaan Tercekik</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sering Menarik Napas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Napas Pendek</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bulu Berdiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sulit Menelan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perut Melilit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ganguan Pencernaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rasa Kembung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Makan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Terbakar Perut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sukar BAB</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muntah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BAB Lembek</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kehilangan BB</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mual</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sering BAK</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Bisa Menahan Kencing</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Menjadi Dingin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Manorrhagia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Amenorrhoea</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ejakulasi Praecocks</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ereksi Hilang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Impotensi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mulut Kering</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muka Merah Gejala Otonom</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mudah Berkeringat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bulu Berdiri Gejala Otonom</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sakit Kepala</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gelisah Wawancara</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Napas Pendek Wawancara</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jari Gemetar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kerut Kening</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muka Tegang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tonus Meningkat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Tenang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muka Merah Wawancara</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Skor</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                     "</tr>"
                 );
                 
@@ -2890,6 +2937,53 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                             "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,49).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,50).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,51).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,52).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,53).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,54).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,55).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,56).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,57).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,58).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,59).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,60).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,61).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,62).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,63).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,64).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,65).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,66).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,67).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,68).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,69).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,70).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,71).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,72).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,73).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,74).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,75).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,76).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,77).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,78).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,79).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,80).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,81).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,82).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,83).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,84).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,85).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,86).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,87).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,88).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,89).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,90).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,91).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,92).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,93).toString()+"</td>"+
                         "</tr>");
                 }
                 
