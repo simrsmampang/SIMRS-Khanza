@@ -7356,7 +7356,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelJudul.add(jLabel8);
         jLabel8.setBounds(130, 50, 850, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Projects\\php\\smc-sisro\\public\\img\\icon-96x96.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/icon-96x96.png"))); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
         panelJudul.add(jLabel1);
         jLabel1.setBounds(30, 0, 90, 142);
