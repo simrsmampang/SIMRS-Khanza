@@ -649,7 +649,7 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				<text><![CDATA[Agama/Kepercayaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="183" y="285" width="5" height="13" uuid="e49f6dbb-d11c-450f-8225-cd0b568694af"/>
+				<reportElement x="183" y="286" width="5" height="13" uuid="7840ea75-0a10-4306-872e-8d57ea32f128"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -657,23 +657,7 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="44" y="285" width="139" height="13" uuid="812bb6ef-0d83-4297-91ca-5fdcd7fd7592"/>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="10"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[Kiriman dari]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="183" y="298" width="5" height="13" uuid="7840ea75-0a10-4306-872e-8d57ea32f128"/>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="10"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="44" y="298" width="139" height="13" uuid="9a27bcfc-e549-4cb3-8b85-fa30a9f529ea"/>
+				<reportElement x="44" y="286" width="139" height="13" uuid="9a27bcfc-e549-4cb3-8b85-fa30a9f529ea"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -681,7 +665,7 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				<text><![CDATA[Status Pembayaran]]></text>
 			</staticText>
 			<line>
-				<reportElement x="42" y="312" width="509" height="1" uuid="5ba00e74-f611-4750-b2b2-37f4c670e347"/>
+				<reportElement x="42" y="307" width="509" height="1" uuid="5ba00e74-f611-4750-b2b2-37f4c670e347"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -711,7 +695,7 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				<textFieldExpression><![CDATA[$F{agama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="189" y="298" width="251" height="13" uuid="c2903eb3-8840-4f1e-9673-f8897774b84f"/>
+				<reportElement mode="Transparent" x="189" y="286" width="251" height="13" uuid="c2903eb3-8840-4f1e-9673-f8897774b84f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1463,7 +1447,7 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="126" y="767" width="20" height="13" uuid="6a3a66a2-3b8a-4d6f-ac3d-cbad4da8feda"/>
+				<reportElement x="125" y="767" width="20" height="13" uuid="6a3a66a2-3b8a-4d6f-ac3d-cbad4da8feda"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -1479,7 +1463,7 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				<text><![CDATA[Dokter Operator : 1.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="126" y="754" width="20" height="13" uuid="767e7faa-520a-4539-a1e8-d5d941d06074"/>
+				<reportElement x="125" y="754" width="20" height="13" uuid="767e7faa-520a-4539-a1e8-d5d941d06074"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -1495,7 +1479,7 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				<text><![CDATA[Dokter Anastesi : 1.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="376" y="767" width="20" height="13" uuid="28f3985f-3070-45d7-8a72-8294faae65dc"/>
+				<reportElement x="374" y="767" width="20" height="13" uuid="28f3985f-3070-45d7-8a72-8294faae65dc"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -1503,7 +1487,7 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				<text><![CDATA[3.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="376" y="754" width="20" height="13" uuid="f7bd5729-73e0-4f73-adb4-be9e93d3e37b"/>
+				<reportElement x="374" y="754" width="20" height="13" uuid="f7bd5729-73e0-4f73-adb4-be9e93d3e37b"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -1872,16 +1856,8 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Dokter yang merawat]]></text>
+				<text><![CDATA[DPJP yang merawat]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="407" y="882" width="142" height="13" uuid="dc31d8fe-d7c9-4d6c-a94c-e4ebb20ca16d"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="10"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{doktermasuk}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="38" y="882" width="350" height="13" uuid="523cc330-e72b-4ff8-aee2-c8eca6edbd13"/>
 				<textElement>
@@ -1891,22 +1867,6 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				<text><![CDATA[NB : Tulis lengkap dengan huruf cetak, jelas dan terbaca (tidak disingkat)]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="189" y="207" width="251" height="13" uuid="260dcb5b-f6bc-4cd4-a7ed-30135954cdbb"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="10" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{dirawatke}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement mode="Transparent" x="189" y="220" width="251" height="13" uuid="70f3ffc0-5bb4-4c55-a0dc-37c6b28c2a32"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="10" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{terakhirdirawat}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement mode="Transparent" x="189" y="259" width="251" height="13" uuid="e3e7e2eb-b299-4014-9cc6-7885e55fc144"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
@@ -1914,14 +1874,14 @@ and suku_bangsa.id=pasien.suku_bangsa]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_suku_bangsa}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement mode="Transparent" x="189" y="285" width="251" height="13" uuid="baaf9406-ce5b-4c3d-9cc6-8ff2dbc31800"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="10" isBold="false"/>
+			<staticText>
+				<reportElement x="407" y="881" width="144" height="13" uuid="636b0ea2-62da-4edf-8147-06306709204a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{kiriman}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[(.......................................)]]></text>
+			</staticText>
 		</band>
 	</title>
 </jasperReport>
