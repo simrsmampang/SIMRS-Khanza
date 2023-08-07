@@ -35,7 +35,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import kepegawaian.DlgCariPegawai;
+import kepegawaian.DlgCariPetugas;
 
 
 /**
@@ -50,7 +50,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;    
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+    private DlgCariPetugas pegawai=new DlgCariPetugas(null,false);
     private String finger="";
     private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
@@ -308,10 +308,10 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         jSeparator13 = new javax.swing.JSeparator();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel104 = new widget.Label();
-        Kinis1 = new widget.ComboBox();
+        BangunDiniHari = new widget.ComboBox();
         jLabel105 = new widget.Label();
         jLabel107 = new widget.Label();
-        Kinis2 = new widget.ComboBox();
+        PerasaanBerubah = new widget.ComboBox();
         jLabel108 = new widget.Label();
         KedutanOtot = new widget.ComboBox();
         SakitNyeriDiOtot = new widget.ComboBox();
@@ -470,8 +470,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         jSeparator29 = new javax.swing.JSeparator();
         jSeparator30 = new javax.swing.JSeparator();
         jLabel24 = new widget.Label();
-        KodePetugas1 = new widget.TextBox();
-        KodePetugas2 = new widget.TextBox();
+        KeteranganSkor = new widget.TextBox();
+        TotalSkor = new widget.TextBox();
         jLabel184 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -666,7 +666,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-08-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -680,7 +680,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-08-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -829,7 +829,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2023 21:52:40" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-08-2023 19:06:34" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -841,21 +841,21 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(Tanggal);
         Tanggal.setBounds(79, 40, 130, 23);
 
-        jLabel23.setText("DPJP / Dokter Jaga / IGD :");
+        jLabel23.setText("Petugas :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(221, 40, 160, 23);
+        jLabel23.setBounds(221, 40, 140, 23);
 
         KodePetugas.setEditable(false);
         KodePetugas.setHighlighter(null);
         KodePetugas.setName("KodePetugas"); // NOI18N
         FormInput.add(KodePetugas);
-        KodePetugas.setBounds(385, 40, 127, 23);
+        KodePetugas.setBounds(365, 40, 127, 23);
 
         NamaPetugas.setEditable(false);
         NamaPetugas.setName("NamaPetugas"); // NOI18N
         FormInput.add(NamaPetugas);
-        NamaPetugas.setBounds(514, 40, 245, 23);
+        NamaPetugas.setBounds(494, 40, 265, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -931,6 +931,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Cemas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Cemas.setName("Cemas"); // NOI18N
+        Cemas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CemasItemStateChanged(evt);
+            }
+        });
         Cemas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CemasKeyPressed(evt);
@@ -1463,15 +1468,15 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel104);
         jLabel104.setBounds(10, 490, 180, 23);
 
-        Kinis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
-        Kinis1.setName("Kinis1"); // NOI18N
-        Kinis1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BangunDiniHari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
+        BangunDiniHari.setName("BangunDiniHari"); // NOI18N
+        BangunDiniHari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kinis1KeyPressed(evt);
+                BangunDiniHariKeyPressed(evt);
             }
         });
-        FormInput.add(Kinis1);
-        Kinis1.setBounds(136, 460, 60, 23);
+        FormInput.add(BangunDiniHari);
+        BangunDiniHari.setBounds(136, 460, 60, 23);
 
         jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel105.setText("Bangun Dini Hari");
@@ -1484,15 +1489,15 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel107);
         jLabel107.setBounds(256, 460, 245, 23);
 
-        Kinis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
-        Kinis2.setName("Kinis2"); // NOI18N
-        Kinis2.addKeyListener(new java.awt.event.KeyAdapter() {
+        PerasaanBerubah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
+        PerasaanBerubah.setName("PerasaanBerubah"); // NOI18N
+        PerasaanBerubah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kinis2KeyPressed(evt);
+                PerasaanBerubahKeyPressed(evt);
             }
         });
-        FormInput.add(Kinis2);
-        Kinis2.setBounds(505, 460, 60, 23);
+        FormInput.add(PerasaanBerubah);
+        PerasaanBerubah.setBounds(505, 460, 60, 23);
 
         jLabel108.setText("Kedutan Otot :");
         jLabel108.setName("jLabel108"); // NOI18N
@@ -1928,10 +1933,10 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(PerutMelilit);
         PerutMelilit.setBounds(293, 830, 60, 23);
 
-        jLabel134.setText("Ganguan Pencernaan :");
+        jLabel134.setText("Gangguan Pencernaan :");
         jLabel134.setName("jLabel134"); // NOI18N
         FormInput.add(jLabel134);
-        jLabel134.setBounds(370, 830, 130, 23);
+        jLabel134.setBounds(375, 830, 130, 23);
 
         GanguanPencernaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         GanguanPencernaan.setName("GanguanPencernaan"); // NOI18N
@@ -1941,7 +1946,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }
         });
         FormInput.add(GanguanPencernaan);
-        GanguanPencernaan.setBounds(504, 830, 60, 23);
+        GanguanPencernaan.setBounds(509, 830, 60, 23);
 
         jLabel135.setText("Rasa Penuh & Kembung :");
         jLabel135.setName("jLabel135"); // NOI18N
@@ -2607,17 +2612,17 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel24);
         jLabel24.setBounds(10, 1200, 130, 23);
 
-        KodePetugas1.setEditable(false);
-        KodePetugas1.setHighlighter(null);
-        KodePetugas1.setName("KodePetugas1"); // NOI18N
-        FormInput.add(KodePetugas1);
-        KodePetugas1.setBounds(180, 1200, 609, 23);
+        KeteranganSkor.setEditable(false);
+        KeteranganSkor.setHighlighter(null);
+        KeteranganSkor.setName("KeteranganSkor"); // NOI18N
+        FormInput.add(KeteranganSkor);
+        KeteranganSkor.setBounds(180, 1200, 609, 23);
 
-        KodePetugas2.setEditable(false);
-        KodePetugas2.setHighlighter(null);
-        KodePetugas2.setName("KodePetugas2"); // NOI18N
-        FormInput.add(KodePetugas2);
-        KodePetugas2.setBounds(128, 1200, 50, 23);
+        TotalSkor.setEditable(false);
+        TotalSkor.setHighlighter(null);
+        TotalSkor.setName("TotalSkor"); // NOI18N
+        FormInput.add(TotalSkor);
+        TotalSkor.setBounds(128, 1200, 50, 23);
 
         jLabel184.setText(":");
         jLabel184.setName("jLabel184"); // NOI18N
@@ -2662,7 +2667,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),SulitTidur.getSelectedItem().toString(),TerbangunMalamHari.getSelectedItem().toString(),
                 TidurTidakNyeyak.getSelectedItem().toString(),MimpiBuruk.getSelectedItem().toString(),BangunDenganLesu.getSelectedItem().toString(),BanyakMengalamiMimpi.getSelectedItem().toString(),
                 MimpiMenakutkan.getSelectedItem().toString(),SulitKonsentrasi.getSelectedItem().toString(),DayaIngatBuruk.getSelectedItem().toString(),HilangnyaMinat.getSelectedItem().toString(),
-                BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),Sedih.getSelectedItem().toString(),Kinis1.getSelectedItem().toString(),Kinis2.getSelectedItem().toString(),
+                BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),Sedih.getSelectedItem().toString(),BangunDiniHari.getSelectedItem().toString(),PerasaanBerubah.getSelectedItem().toString(),
                 KedutanOtot.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),GigiGemerutuk.getSelectedItem().toString(),SuaraTidakStabil.getSelectedItem().toString(),
                 Tinnitus.getSelectedItem().toString(),KodePetugas.getText()
             })==true){
@@ -2674,7 +2679,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                     TakutDitinggalSendiri.getSelectedItem().toString(),TakutPadaBinatangBesar.getSelectedItem().toString(),TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),SulitTidur.getSelectedItem().toString(),
                     TerbangunMalamHari.getSelectedItem().toString(),TidurTidakNyeyak.getSelectedItem().toString(),MimpiBuruk.getSelectedItem().toString(),BangunDenganLesu.getSelectedItem().toString(),BanyakMengalamiMimpi.getSelectedItem().toString(),
                     MimpiMenakutkan.getSelectedItem().toString(),SulitKonsentrasi.getSelectedItem().toString(),DayaIngatBuruk.getSelectedItem().toString(),HilangnyaMinat.getSelectedItem().toString(),BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),
-                    Sedih.getSelectedItem().toString(),Kinis1.getSelectedItem().toString(),Kinis2.getSelectedItem().toString(),KedutanOtot.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),
+                    Sedih.getSelectedItem().toString(),BangunDiniHari.getSelectedItem().toString(),PerasaanBerubah.getSelectedItem().toString(),KedutanOtot.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),
                     GigiGemerutuk.getSelectedItem().toString(),SuaraTidakStabil.getSelectedItem().toString(),Tinnitus.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
@@ -2687,7 +2692,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Infeksi,BtnBatal);
+            Valid.pindah(evt,MukaMerahWawancara,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -3067,328 +3072,332 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }//GEN-LAST:event_CemasKeyPressed
 
     private void MudahTersinggungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahTersinggungKeyPressed
-        Valid.pindah(evt,TakutPikiranSendiri,PenglihatanKabur);
+        Valid.pindah(evt,TakutPikiranSendiri,MerasaTegang);
     }//GEN-LAST:event_MudahTersinggungKeyPressed
 
     private void MerasaTegangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerasaTegangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MudahTersinggung,Lesu);
     }//GEN-LAST:event_MerasaTegangKeyPressed
 
     private void TakBisaIstirahatTenangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakBisaIstirahatTenangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Lesu,MudahTerkejut);
     }//GEN-LAST:event_TakBisaIstirahatTenangKeyPressed
 
     private void LesuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LesuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MerasaTegang,TakBisaIstirahatTenang);
     }//GEN-LAST:event_LesuKeyPressed
 
     private void MudahTerkejutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahTerkejutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakBisaIstirahatTenang,MudahMenangis);
     }//GEN-LAST:event_MudahTerkejutKeyPressed
 
     private void MudahMenangisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahMenangisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MudahTerkejut,Gemetar);
     }//GEN-LAST:event_MudahMenangisKeyPressed
 
     private void GemetarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GemetarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MudahMenangis,Gelisah);
     }//GEN-LAST:event_GemetarKeyPressed
 
     private void TakutPadaGelapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaGelapKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Gelisah,TakutPadaOrangAsing);
     }//GEN-LAST:event_TakutPadaGelapKeyPressed
 
     private void GelisahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GelisahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Gemetar,TakutPadaGelap);
     }//GEN-LAST:event_GelisahKeyPressed
 
     private void TakutPadaOrangAsingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaOrangAsingKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaGelap,TakutPadaKerumunanBanyakOrang);
     }//GEN-LAST:event_TakutPadaOrangAsingKeyPressed
 
     private void TakutDitinggalSendiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutDitinggalSendiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaKeramaianLaluLintas,SulitTidur);
     }//GEN-LAST:event_TakutDitinggalSendiriKeyPressed
 
     private void TakutPadaBinatangBesarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaBinatangBesarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaKerumunanBanyakOrang,TakutPadaKeramaianLaluLintas);
     }//GEN-LAST:event_TakutPadaBinatangBesarKeyPressed
 
     private void TakutPadaKeramaianLaluLintasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaKeramaianLaluLintasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaBinatangBesar,TakutDitinggalSendiri);
     }//GEN-LAST:event_TakutPadaKeramaianLaluLintasKeyPressed
 
     private void TakutPadaKerumunanBanyakOrangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaKerumunanBanyakOrangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaOrangAsing,TakutPadaBinatangBesar);
     }//GEN-LAST:event_TakutPadaKerumunanBanyakOrangKeyPressed
 
     private void SulitTidurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SulitTidurKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutDitinggalSendiri,TerbangunMalamHari);
     }//GEN-LAST:event_SulitTidurKeyPressed
 
     private void TerbangunMalamHariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerbangunMalamHariKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SulitTidur,TidurTidakNyeyak);
     }//GEN-LAST:event_TerbangunMalamHariKeyPressed
 
     private void TidurTidakNyeyakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TidurTidakNyeyakKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TerbangunMalamHari,MimpiBuruk);
     }//GEN-LAST:event_TidurTidakNyeyakKeyPressed
 
     private void MimpiBurukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MimpiBurukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TidurTidakNyeyak,BangunDenganLesu);
     }//GEN-LAST:event_MimpiBurukKeyPressed
 
     private void BangunDenganLesuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BangunDenganLesuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MimpiBuruk,BanyakMengalamiMimpi);
     }//GEN-LAST:event_BangunDenganLesuKeyPressed
 
     private void DayaIngatBurukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DayaIngatBurukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SulitKonsentrasi,HilangnyaMinat);
     }//GEN-LAST:event_DayaIngatBurukKeyPressed
 
     private void MimpiMenakutkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MimpiMenakutkanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BanyakMengalamiMimpi,SulitKonsentrasi);
     }//GEN-LAST:event_MimpiMenakutkanKeyPressed
 
     private void SulitKonsentrasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SulitKonsentrasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MimpiMenakutkan,DayaIngatBuruk);
     }//GEN-LAST:event_SulitKonsentrasiKeyPressed
 
     private void BanyakMengalamiMimpiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BanyakMengalamiMimpiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BangunDenganLesu,MimpiMenakutkan);
     }//GEN-LAST:event_BanyakMengalamiMimpiKeyPressed
 
     private void HilangnyaMinatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HilangnyaMinatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DayaIngatBuruk,BerkurangnyaKesenanganPadaHobi);
     }//GEN-LAST:event_HilangnyaMinatKeyPressed
 
     private void BerkurangnyaKesenanganPadaHobiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BerkurangnyaKesenanganPadaHobiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HilangnyaMinat,Sedih);
     }//GEN-LAST:event_BerkurangnyaKesenanganPadaHobiKeyPressed
 
     private void SedihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SedihKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BerkurangnyaKesenanganPadaHobi,BangunDiniHari);
     }//GEN-LAST:event_SedihKeyPressed
 
-    private void Kinis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kinis1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Kinis1KeyPressed
+    private void BangunDiniHariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BangunDiniHariKeyPressed
+        Valid.pindah(evt,Sedih,PerasaanBerubah);
+    }//GEN-LAST:event_BangunDiniHariKeyPressed
 
-    private void Kinis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kinis2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Kinis2KeyPressed
+    private void PerasaanBerubahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerasaanBerubahKeyPressed
+        Valid.pindah(evt,BangunDiniHari,SakitNyeriDiOtot);
+    }//GEN-LAST:event_PerasaanBerubahKeyPressed
 
     private void KedutanOtotKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KedutanOtotKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kaku,GigiGemerutuk);
     }//GEN-LAST:event_KedutanOtotKeyPressed
 
     private void SakitNyeriDiOtotKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SakitNyeriDiOtotKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerasaanBerubah,Kaku);
     }//GEN-LAST:event_SakitNyeriDiOtotKeyPressed
 
     private void KakuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KakuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SakitNyeriDiOtot,KedutanOtot);
     }//GEN-LAST:event_KakuKeyPressed
 
     private void GigiGemerutukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GigiGemerutukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KedutanOtot,SuaraTidakStabil);
     }//GEN-LAST:event_GigiGemerutukKeyPressed
 
     private void SuaraTidakStabilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuaraTidakStabilKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GigiGemerutuk,Tinnitus);
     }//GEN-LAST:event_SuaraTidakStabilKeyPressed
 
     private void TinnitusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TinnitusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SuaraTidakStabil,PenglihatanKabur);
     }//GEN-LAST:event_TinnitusKeyPressed
 
     private void PenglihatanKaburKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenglihatanKaburKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tinnitus,MukaMerahGejalaSomatic);
     }//GEN-LAST:event_PenglihatanKaburKeyPressed
 
     private void MukaMerahGejalaSomaticKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MukaMerahGejalaSomaticKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PenglihatanKabur,MerasaLemah);
     }//GEN-LAST:event_MukaMerahGejalaSomaticKeyPressed
 
     private void MerasaLemahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerasaLemahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MukaMerahGejalaSomatic,PerasaanDitusuk);
     }//GEN-LAST:event_MerasaLemahKeyPressed
 
     private void PerasaanDitusukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerasaanDitusukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MerasaLemah,Takhikardia);
     }//GEN-LAST:event_PerasaanDitusukKeyPressed
 
     private void TakhikardiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakhikardiaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerasaanDitusuk,Berdebar);
     }//GEN-LAST:event_TakhikardiaKeyPressed
 
     private void BerdebarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BerdebarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Takhikardia,NyeriDiDada);
     }//GEN-LAST:event_BerdebarKeyPressed
 
     private void NyeriDiDadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriDiDadaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Berdebar,DenyutNadiMengeras);
     }//GEN-LAST:event_NyeriDiDadaKeyPressed
 
     private void DenyutNadiMengerasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DenyutNadiMengerasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NyeriDiDada,PerasaanLesu);
     }//GEN-LAST:event_DenyutNadiMengerasKeyPressed
 
     private void PerasaanLesuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerasaanLesuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DenyutNadiMengeras,DetakJantungMenghilang);
     }//GEN-LAST:event_PerasaanLesuKeyPressed
 
     private void DetakJantungMenghilangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetakJantungMenghilangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerasaanLesu,MerasaTertekan);
     }//GEN-LAST:event_DetakJantungMenghilangKeyPressed
 
     private void MerasaTertekanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerasaTertekanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DetakJantungMenghilang,PerasaanTercekik);
     }//GEN-LAST:event_MerasaTertekanKeyPressed
 
     private void NapasPendekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NapasPendekKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SeringMenarikNapas,BuluBerdiri);
     }//GEN-LAST:event_NapasPendekKeyPressed
 
     private void SeringMenarikNapasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeringMenarikNapasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerasaanTercekik,NapasPendek);
     }//GEN-LAST:event_SeringMenarikNapasKeyPressed
 
     private void PerasaanTercekikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerasaanTercekikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MerasaTertekan,SeringMenarikNapas);
     }//GEN-LAST:event_PerasaanTercekikKeyPressed
 
     private void BuluBerdiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuluBerdiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NapasPendek,SulitMenelan);
     }//GEN-LAST:event_BuluBerdiriKeyPressed
 
     private void SulitMenelanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SulitMenelanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BuluBerdiri,PerutMelilit);
     }//GEN-LAST:event_SulitMenelanKeyPressed
 
     private void PerutMelilitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerutMelilitKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SulitMenelan,GanguanPencernaan);
     }//GEN-LAST:event_PerutMelilitKeyPressed
 
     private void GanguanPencernaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GanguanPencernaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerutMelilit,RasaKembung);
     }//GEN-LAST:event_GanguanPencernaanKeyPressed
 
     private void RasaKembungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RasaKembungKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GanguanPencernaan,NyeriMakan);
     }//GEN-LAST:event_RasaKembungKeyPressed
 
     private void NyeriMakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriMakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RasaKembung,TerbakarPerut);
     }//GEN-LAST:event_NyeriMakanKeyPressed
 
     private void TerbakarPerutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerbakarPerutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NyeriMakan,SukarBAB);
     }//GEN-LAST:event_TerbakarPerutKeyPressed
 
     private void MualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MualKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KehilanganBB,SeringBAK);
     }//GEN-LAST:event_MualKeyPressed
 
     private void MuntahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MuntahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SukarBAB,BABLembek);
     }//GEN-LAST:event_MuntahKeyPressed
 
     private void BABLembekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BABLembekKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Muntah,KehilanganBB);
     }//GEN-LAST:event_BABLembekKeyPressed
 
     private void KehilanganBBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KehilanganBBKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BABLembek,Mual);
     }//GEN-LAST:event_KehilanganBBKeyPressed
 
     private void SukarBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SukarBABKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TerbakarPerut,Muntah);
     }//GEN-LAST:event_SukarBABKeyPressed
 
     private void SeringBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeringBAKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Mual,TidakBisaMenahanKencing);
     }//GEN-LAST:event_SeringBAKKeyPressed
 
     private void TidakBisaMenahanKencingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TidakBisaMenahanKencingKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SeringBAK,MenjadiDingin);
     }//GEN-LAST:event_TidakBisaMenahanKencingKeyPressed
 
     private void MenjadiDinginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenjadiDinginKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TidakBisaMenahanKencing,Manorrhagia);
     }//GEN-LAST:event_MenjadiDinginKeyPressed
 
     private void AmenorrhoeaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AmenorrhoeaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Manorrhagia,EjakulasiPraecocks);
     }//GEN-LAST:event_AmenorrhoeaKeyPressed
 
     private void ManorrhagiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ManorrhagiaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MenjadiDingin,Amenorrhoea);
     }//GEN-LAST:event_ManorrhagiaKeyPressed
 
     private void EjakulasiPraecocksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EjakulasiPraecocksKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Amenorrhoea,EreksiHilang);
     }//GEN-LAST:event_EjakulasiPraecocksKeyPressed
 
     private void EreksiHilangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EreksiHilangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EjakulasiPraecocks,Impotensi);
     }//GEN-LAST:event_EreksiHilangKeyPressed
 
     private void ImpotensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ImpotensiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EreksiHilang,MulutKering);
     }//GEN-LAST:event_ImpotensiKeyPressed
 
     private void MulutKeringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MulutKeringKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Impotensi,MukaMerahGejalaOtonom);
     }//GEN-LAST:event_MulutKeringKeyPressed
 
     private void MukaMerahGejalaOtonomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MukaMerahGejalaOtonomKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MulutKering,MudahBerkeringat);
     }//GEN-LAST:event_MukaMerahGejalaOtonomKeyPressed
 
     private void MudahBerkeringatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahBerkeringatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MukaMerahGejalaOtonom,BuluBerdiri);
     }//GEN-LAST:event_MudahBerkeringatKeyPressed
 
     private void BuluBerdiriGejalaOtonomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuluBerdiriGejalaOtonomKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MudahBerkeringat,SakitKepala);
     }//GEN-LAST:event_BuluBerdiriGejalaOtonomKeyPressed
 
     private void SakitKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SakitKepalaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BangunDenganLesu,GelisahWawancara);
     }//GEN-LAST:event_SakitKepalaKeyPressed
 
     private void GelisahWawancaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GelisahWawancaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SakitKepala,NapasPendek);
     }//GEN-LAST:event_GelisahWawancaraKeyPressed
 
     private void NapasPendekWawancaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NapasPendekWawancaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GelisahWawancara,JariGemetar);
     }//GEN-LAST:event_NapasPendekWawancaraKeyPressed
 
     private void JariGemetarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JariGemetarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NapasPendek,KerutKening);
     }//GEN-LAST:event_JariGemetarKeyPressed
 
     private void KerutKeningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KerutKeningKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,JariGemetar,MukaTegang);
     }//GEN-LAST:event_KerutKeningKeyPressed
 
     private void MukaMerahWawancaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MukaMerahWawancaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TidakTenang,BtnSimpan);
     }//GEN-LAST:event_MukaMerahWawancaraKeyPressed
 
     private void TidakTenangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TidakTenangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TonusMeningkat,MukaMerahWawancara);
     }//GEN-LAST:event_TidakTenangKeyPressed
 
     private void TonusMeningkatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TonusMeningkatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MukaTegang,TidakTenang);
     }//GEN-LAST:event_TonusMeningkatKeyPressed
 
     private void MukaTegangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MukaTegangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KerutKening,TonusMeningkat);
     }//GEN-LAST:event_MukaTegangKeyPressed
+
+    private void CemasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CemasItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_CemasItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -3410,6 +3419,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox Amenorrhoea;
     private widget.ComboBox BABLembek;
     private widget.ComboBox BangunDenganLesu;
+    private widget.ComboBox BangunDiniHari;
     private widget.ComboBox BanyakMengalamiMimpi;
     private widget.ComboBox Berdebar;
     private widget.ComboBox BerkurangnyaKesenanganPadaHobi;
@@ -3447,11 +3457,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox KedutanOtot;
     private widget.ComboBox KehilanganBB;
     private widget.ComboBox KerutKening;
-    private widget.ComboBox Kinis1;
-    private widget.ComboBox Kinis2;
+    private widget.TextBox KeteranganSkor;
     private widget.TextBox KodePetugas;
-    private widget.TextBox KodePetugas1;
-    private widget.TextBox KodePetugas2;
     private widget.Label LCount;
     private widget.ComboBox Lesu;
     private widget.editorpane LoadHTML;
@@ -3481,6 +3488,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox NyeriMakan;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PenglihatanKabur;
+    private widget.ComboBox PerasaanBerubah;
     private widget.ComboBox PerasaanDitusuk;
     private widget.ComboBox PerasaanLesu;
     private widget.ComboBox PerasaanTercekik;
@@ -3519,6 +3527,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox TidurTidakNyeyak;
     private widget.ComboBox Tinnitus;
     private widget.ComboBox TonusMeningkat;
+    private widget.TextBox TotalSkor;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel100;
@@ -3798,45 +3807,92 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }
     
     public void emptTeks() {
-        Cemas.setSelectedIndex(1);
-        FirasatBuruk.setSelectedIndex(1);
-        TakutPikiranSendiri.setSelectedIndex(1);
-        MudahTersinggung.setSelectedIndex(1);
-        PenglihatanKabur.setSelectedIndex(1);
-        MukaMerahGejalaSomatic.setSelectedIndex(1);
-        MerasaTegang.setSelectedIndex(1);
-        Lesu.setSelectedIndex(1);
-        TakBisaIstirahatTenang.setSelectedIndex(1);
-        MudahTerkejut.setSelectedIndex(1);
-        MudahMenangis.setSelectedIndex(1);
-        Gemetar.setSelectedIndex(1);
-        Gelisah.setSelectedIndex(1);
-        TakutPadaGelap.setSelectedIndex(1);
-        TakutPadaOrangAsing.setSelectedIndex(1);
-        TakutDitinggalSendiri.setSelectedIndex(1);
-        TakutPadaBinatangBesar.setSelectedIndex(1);
-        TakutPadaKeramaianLaluLintas.setSelectedIndex(1);
-        TakutPadaKerumunanBanyakOrang.setSelectedIndex(1);
-        SulitTidur.setSelectedIndex(1);
-        TerbangunMalamHari.setSelectedIndex(1);
-        TidurTidakNyeyak.setSelectedIndex(1);
-        MimpiBuruk.setSelectedIndex(1);
-        BangunDenganLesu.setSelectedIndex(1);
-        BanyakMengalamiMimpi.setSelectedIndex(1);
-        MimpiMenakutkan.setSelectedIndex(1);
-        SulitKonsentrasi.setSelectedIndex(1);
-        DayaIngatBuruk.setSelectedIndex(1);
-        HilangnyaMinat.setSelectedIndex(1);
-        BerkurangnyaKesenanganPadaHobi.setSelectedIndex(1);
-        Sedih.setSelectedIndex(1);
-        Kinis1.setSelectedIndex(1);
-        Kinis2.setSelectedIndex(1);
-        KedutanOtot.setSelectedIndex(1);
-        SakitNyeriDiOtot.setSelectedIndex(1);
-        Kaku.setSelectedIndex(1);
-        GigiGemerutuk.setSelectedIndex(1);
-        SuaraTidakStabil.setSelectedIndex(1);
-        Tinnitus.setSelectedIndex(1);
+        Cemas.setSelectedIndex(0);
+        FirasatBuruk.setSelectedIndex(0);
+        TakutPikiranSendiri.setSelectedIndex(0);
+        MudahTersinggung.setSelectedIndex(0);
+        MerasaTegang.setSelectedIndex(0);
+        Lesu.setSelectedIndex(0);
+        TakBisaIstirahatTenang.setSelectedIndex(0);
+        MudahTerkejut.setSelectedIndex(0);
+        MudahMenangis.setSelectedIndex(0);
+        Gemetar.setSelectedIndex(0);
+        Gelisah.setSelectedIndex(0);
+        TakutPadaGelap.setSelectedIndex(0);
+        TakutPadaOrangAsing.setSelectedIndex(0);
+        TakutPadaKerumunanBanyakOrang.setSelectedIndex(0);
+        TakutPadaBinatangBesar.setSelectedIndex(0);
+        TakutPadaKeramaianLaluLintas.setSelectedIndex(0);
+        TakutDitinggalSendiri.setSelectedIndex(0);
+        SulitTidur.setSelectedIndex(0);
+        TerbangunMalamHari.setSelectedIndex(0);
+        TidurTidakNyeyak.setSelectedIndex(0);
+        MimpiBuruk.setSelectedIndex(0);
+        BangunDenganLesu.setSelectedIndex(0);
+        BanyakMengalamiMimpi.setSelectedIndex(0);
+        MimpiMenakutkan.setSelectedIndex(0);
+        SulitKonsentrasi.setSelectedIndex(0);
+        DayaIngatBuruk.setSelectedIndex(0);
+        HilangnyaMinat.setSelectedIndex(0);
+        BerkurangnyaKesenanganPadaHobi.setSelectedIndex(0);
+        Sedih.setSelectedIndex(0);
+        BangunDiniHari.setSelectedIndex(0);
+        PerasaanBerubah.setSelectedIndex(0);
+        SakitNyeriDiOtot.setSelectedIndex(0);
+        Kaku.setSelectedIndex(0);
+        KedutanOtot.setSelectedIndex(0);
+        GigiGemerutuk.setSelectedIndex(0);
+        SuaraTidakStabil.setSelectedIndex(0);
+        Tinnitus.setSelectedIndex(0);
+        PenglihatanKabur.setSelectedIndex(0);
+        MukaMerahGejalaSomatic.setSelectedIndex(0);
+        MerasaLemah.setSelectedIndex(0);
+        PerasaanDitusuk.setSelectedIndex(0);
+        Takhikardia.setSelectedIndex(0);
+        Berdebar.setSelectedIndex(0);
+        NyeriDiDada.setSelectedIndex(0);
+        DenyutNadiMengeras.setSelectedIndex(0);
+        PerasaanLesu.setSelectedIndex(0);
+        DetakJantungMenghilang.setSelectedIndex(0);
+        MerasaTertekan.setSelectedIndex(0);
+        PerasaanTercekik.setSelectedIndex(0);
+        SeringMenarikNapas.setSelectedIndex(0);
+        NapasPendek.setSelectedIndex(0);
+        BuluBerdiri.setSelectedIndex(0);
+        SulitMenelan.setSelectedIndex(0);
+        PerutMelilit.setSelectedIndex(0);
+        GanguanPencernaan.setSelectedIndex(0);
+        RasaKembung.setSelectedIndex(0);
+        NyeriMakan.setSelectedIndex(0);
+        TerbakarPerut.setSelectedIndex(0);
+        SukarBAB.setSelectedIndex(0);
+        Muntah.setSelectedIndex(0);
+        BABLembek.setSelectedIndex(0);
+        KehilanganBB.setSelectedIndex(0);
+        Mual.setSelectedIndex(0);
+        SeringBAK.setSelectedIndex(0);
+        TidakBisaMenahanKencing.setSelectedIndex(0);
+        MenjadiDingin.setSelectedIndex(0);
+        Manorrhagia.setSelectedIndex(0);
+        Amenorrhoea.setSelectedIndex(0);
+        EjakulasiPraecocks.setSelectedIndex(0);
+        EreksiHilang.setSelectedIndex(0);
+        Impotensi.setSelectedIndex(0);
+        MulutKering.setSelectedIndex(0);
+        MukaMerahGejalaOtonom.setSelectedIndex(0);
+        MudahBerkeringat.setSelectedIndex(0);
+        BuluBerdiriGejalaOtonom.setSelectedIndex(0);
+        SakitKepala.setSelectedIndex(0);
+        GelisahWawancara.setSelectedIndex(0);
+        NapasPendekWawancara.setSelectedIndex(0);
+        JariGemetar.setSelectedIndex(0);
+        KerutKening.setSelectedIndex(0);
+        MukaTegang.setSelectedIndex(0);
+        TonusMeningkat.setSelectedIndex(0);
+        TidakTenang.setSelectedIndex(0);
+        MukaMerahWawancara.setSelectedIndex(0);
+        TotalSkor.setText("");
+        KeteranganSkor.setText("");
         Tanggal.setDate(new Date());
         Cemas.requestFocus();
     } 
@@ -3848,45 +3904,6 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            Cemas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            FirasatBuruk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            TakutPikiranSendiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            MudahTersinggung.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            PenglihatanKabur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            MukaMerahGejalaSomatic.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            MerasaTegang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Lesu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            TakBisaIstirahatTenang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            MudahTerkejut.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            MudahMenangis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Gemetar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Gelisah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            TakutPadaGelap.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            TakutPadaOrangAsing.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            TakutDitinggalSendiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            TakutPadaBinatangBesar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            TakutPadaKeramaianLaluLintas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            TakutPadaKerumunanBanyakOrang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            SulitTidur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            TerbangunMalamHari.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            TidurTidakNyeyak.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
-            MimpiBuruk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
-            BangunDenganLesu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
-            BanyakMengalamiMimpi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
-            MimpiMenakutkan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            SulitKonsentrasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
-            DayaIngatBuruk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            HilangnyaMinat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
-            BerkurangnyaKesenanganPadaHobi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
-            Sedih.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
-            Kinis1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
-            Kinis2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
-            KedutanOtot.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
-            SakitNyeriDiOtot.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
-            Kaku.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
-            GigiGemerutuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
-            SuaraTidakStabil.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
-            Tinnitus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
@@ -3946,15 +3963,19 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getchecklist_kriteria_masuk_icu());
-        BtnHapus.setEnabled(akses.getchecklist_kriteria_masuk_icu());
-        BtnEdit.setEnabled(akses.getchecklist_kriteria_masuk_icu());
-        BtnPrint.setEnabled(akses.getchecklist_kriteria_masuk_icu()); 
+        BtnSimpan.setEnabled(akses.getpenilaian_level_kecemasan_ranap_anak());
+        BtnHapus.setEnabled(akses.getpenilaian_level_kecemasan_ranap_anak());
+        BtnEdit.setEnabled(akses.getpenilaian_level_kecemasan_ranap_anak());
         if(akses.getjml2()>=1){
+            KodePetugas.setEditable(false);
             btnPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
-            NamaPetugas.setText(pegawai.tampil3(akses.getkode()));
-        }
+            NamaPetugas.setText(pegawai.tampil3(KodePetugas.getText()));
+            if(NamaPetugas.getText().equals("")){
+                KodePetugas.setText("");
+                JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
+            }
+        } 
     }
 
     private void ganti() {
@@ -3972,7 +3993,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),SulitTidur.getSelectedItem().toString(),TerbangunMalamHari.getSelectedItem().toString(),
                 TidurTidakNyeyak.getSelectedItem().toString(),MimpiBuruk.getSelectedItem().toString(),BangunDenganLesu.getSelectedItem().toString(),BanyakMengalamiMimpi.getSelectedItem().toString(),
                 MimpiMenakutkan.getSelectedItem().toString(),SulitKonsentrasi.getSelectedItem().toString(),DayaIngatBuruk.getSelectedItem().toString(),HilangnyaMinat.getSelectedItem().toString(),
-                BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),Sedih.getSelectedItem().toString(),Kinis1.getSelectedItem().toString(),Kinis2.getSelectedItem().toString(),
+                BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),Sedih.getSelectedItem().toString(),BangunDiniHari.getSelectedItem().toString(),PerasaanBerubah.getSelectedItem().toString(),
                 KedutanOtot.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),GigiGemerutuk.getSelectedItem().toString(),SuaraTidakStabil.getSelectedItem().toString(),
                 Tinnitus.getSelectedItem().toString(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
@@ -4013,8 +4034,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             tbObat.setValueAt(HilangnyaMinat.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
             tbObat.setValueAt(BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),tbObat.getSelectedRow(),35);
             tbObat.setValueAt(Sedih.getSelectedItem().toString(),tbObat.getSelectedRow(),36);
-            tbObat.setValueAt(Kinis1.getSelectedItem().toString(),tbObat.getSelectedRow(),37);
-            tbObat.setValueAt(Kinis2.getSelectedItem().toString(),tbObat.getSelectedRow(),38);
+            tbObat.setValueAt(BangunDiniHari.getSelectedItem().toString(),tbObat.getSelectedRow(),37);
+            tbObat.setValueAt(PerasaanBerubah.getSelectedItem().toString(),tbObat.getSelectedRow(),38);
             tbObat.setValueAt(KedutanOtot.getSelectedItem().toString(),tbObat.getSelectedRow(),39);
             tbObat.setValueAt(SakitNyeriDiOtot.getSelectedItem().toString(),tbObat.getSelectedRow(),40);
             tbObat.setValueAt(Kaku.getSelectedItem().toString(),tbObat.getSelectedRow(),41);
@@ -4036,6 +4057,68 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             emptTeks();
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
+    }
+
+    private void isTotalSkor() {
+        try {
+            TotalSkor.setText(
+                    (Integer.parseInt(Cemas.getSelectedItem().toString())+Integer.parseInt(FirasatBuruk.getSelectedItem().toString())+
+                     Integer.parseInt(TakutPikiranSendiri.getSelectedItem().toString())+Integer.parseInt(MudahTersinggung.getSelectedItem().toString())+
+                     Integer.parseInt(MerasaTegang.getSelectedItem().toString())+Integer.parseInt(Lesu.getSelectedItem().toString())+
+                     Integer.parseInt(TakBisaIstirahatTenang.getSelectedItem().toString())+Integer.parseInt(MudahTerkejut.getSelectedItem().toString())+
+                     Integer.parseInt(MudahMenangis.getSelectedItem().toString())+Integer.parseInt(Gemetar.getSelectedItem().toString())+
+                     Integer.parseInt(Gelisah.getSelectedItem().toString())+Integer.parseInt(TakutPadaGelap.getSelectedItem().toString())+
+                     Integer.parseInt(TakutPadaOrangAsing.getSelectedItem().toString())+Integer.parseInt(TakutPadaKerumunanBanyakOrang.getSelectedItem().toString())+
+                     Integer.parseInt(TakutPadaBinatangBesar.getSelectedItem().toString())+Integer.parseInt(TakutPadaKeramaianLaluLintas.getSelectedItem().toString())+
+                     Integer.parseInt(TakutDitinggalSendiri.getSelectedItem().toString())+Integer.parseInt(SulitTidur.getSelectedItem().toString())+
+                     Integer.parseInt(TerbangunMalamHari.getSelectedItem().toString())+Integer.parseInt(TidurTidakNyeyak.getSelectedItem().toString())+
+                     Integer.parseInt(MimpiBuruk.getSelectedItem().toString())+Integer.parseInt(BangunDenganLesu.getSelectedItem().toString())+
+                     Integer.parseInt(BanyakMengalamiMimpi.getSelectedItem().toString())+Integer.parseInt(MimpiMenakutkan.getSelectedItem().toString())+
+                     Integer.parseInt(SulitKonsentrasi.getSelectedItem().toString())+Integer.parseInt(DayaIngatBuruk.getSelectedItem().toString())+
+                     Integer.parseInt(HilangnyaMinat.getSelectedItem().toString())+Integer.parseInt(BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString())+
+                     Integer.parseInt(Sedih.getSelectedItem().toString())+Integer.parseInt(BangunDiniHari.getSelectedItem().toString())+
+                     Integer.parseInt(PerasaanBerubah.getSelectedItem().toString())+Integer.parseInt(SakitNyeriDiOtot.getSelectedItem().toString())+
+                     Integer.parseInt(Kaku.getSelectedItem().toString())+Integer.parseInt(KedutanOtot.getSelectedItem().toString())+
+                     Integer.parseInt(GigiGemerutuk.getSelectedItem().toString())+Integer.parseInt(SuaraTidakStabil.getSelectedItem().toString())+
+                     Integer.parseInt(Tinnitus.getSelectedItem().toString())+Integer.parseInt(PenglihatanKabur.getSelectedItem().toString())+
+                     Integer.parseInt(MukaMerahGejalaSomatic.getSelectedItem().toString())+Integer.parseInt(MerasaLemah.getSelectedItem().toString())+
+                     Integer.parseInt(PerasaanDitusuk.getSelectedItem().toString())+Integer.parseInt(Takhikardia.getSelectedItem().toString())+
+                     Integer.parseInt(Berdebar.getSelectedItem().toString())+Integer.parseInt(NyeriDiDada.getSelectedItem().toString())+
+                     Integer.parseInt(DenyutNadiMengeras.getSelectedItem().toString())+Integer.parseInt(PerasaanLesu.getSelectedItem().toString())+
+                     Integer.parseInt(DetakJantungMenghilang.getSelectedItem().toString())+Integer.parseInt(MerasaTertekan.getSelectedItem().toString())+
+                     Integer.parseInt(PerasaanTercekik.getSelectedItem().toString())+Integer.parseInt(SeringMenarikNapas.getSelectedItem().toString())+
+                     Integer.parseInt(NapasPendek.getSelectedItem().toString())+Integer.parseInt(BuluBerdiri.getSelectedItem().toString())+
+                     Integer.parseInt(SulitMenelan.getSelectedItem().toString())+Integer.parseInt(PerutMelilit.getSelectedItem().toString())+
+                     Integer.parseInt(GanguanPencernaan.getSelectedItem().toString())+Integer.parseInt(RasaKembung.getSelectedItem().toString())+
+                     Integer.parseInt(NyeriMakan.getSelectedItem().toString())+Integer.parseInt(TerbakarPerut.getSelectedItem().toString())+
+                     Integer.parseInt(SukarBAB.getSelectedItem().toString())+Integer.parseInt(Muntah.getSelectedItem().toString())+
+                     Integer.parseInt(BABLembek.getSelectedItem().toString())+Integer.parseInt(KehilanganBB.getSelectedItem().toString())+
+                     Integer.parseInt(Mual.getSelectedItem().toString())+Integer.parseInt(SeringBAK.getSelectedItem().toString())+
+                     Integer.parseInt(TidakBisaMenahanKencing.getSelectedItem().toString())+Integer.parseInt(MenjadiDingin.getSelectedItem().toString())+
+                     Integer.parseInt(Manorrhagia.getSelectedItem().toString())+Integer.parseInt(Amenorrhoea.getSelectedItem().toString())+
+                     Integer.parseInt(EjakulasiPraecocks.getSelectedItem().toString())+Integer.parseInt(EreksiHilang.getSelectedItem().toString())+
+                     Integer.parseInt(Impotensi.getSelectedItem().toString())+Integer.parseInt(MulutKering.getSelectedItem().toString())+
+                     Integer.parseInt(MukaMerahGejalaOtonom.getSelectedItem().toString())+Integer.parseInt(MudahBerkeringat.getSelectedItem().toString())+
+                     Integer.parseInt(BuluBerdiriGejalaOtonom.getSelectedItem().toString())+Integer.parseInt(SakitKepala.getSelectedItem().toString())+
+                     Integer.parseInt(GelisahWawancara.getSelectedItem().toString())+Integer.parseInt(NapasPendekWawancara.getSelectedItem().toString())+
+                     Integer.parseInt(JariGemetar.getSelectedItem().toString())+Integer.parseInt(KerutKening.getSelectedItem().toString())+
+                     Integer.parseInt(MukaTegang.getSelectedItem().toString())+Integer.parseInt(TonusMeningkat.getSelectedItem().toString())+
+                     Integer.parseInt(TidakTenang.getSelectedItem().toString())+Integer.parseInt(MukaMerahWawancara.getSelectedItem().toString()))+"");
+            if(Integer.parseInt(TotalSkor.getText())<14){
+                KeteranganSkor.setText("Tidak Mengalami Kecemasan");
+            }else if(Integer.parseInt(TotalSkor.getText())<=20){
+                KeteranganSkor.setText("Kecemasan Ringan");
+            }else if(Integer.parseInt(TotalSkor.getText())<=27){
+                KeteranganSkor.setText("Kecemasan Sedang");
+            }else if(Integer.parseInt(TotalSkor.getText())<=41){
+                KeteranganSkor.setText("Kecemasan Berat");
+            }else if(Integer.parseInt(TotalSkor.getText())>41){
+                KeteranganSkor.setText("Kecemasan Sangat Berat");
+            }
+        }catch (Exception e) {
+            TotalSkor.setText("0");
+            KeteranganSkor.setText("Tidak Mengalami Kecemasan");
         }
     }
 }
