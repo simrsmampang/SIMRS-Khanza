@@ -41763,7 +41763,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHostToHostBankMandiri.addActionListener(this::btnHostToHostBankMandiriActionPerformed);
         
         btnPenilaianLevelKecemasanRanapAnak = new widget.ButtonBig();
-        btnPenilaianLevelKecemasanRanapAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6954600_fear_ghost_halloween_scary_spooky_icon.png"))); 
+        btnPenilaianLevelKecemasanRanapAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8468129_dead_death_fear_grim_horror_icon.png"))); 
         btnPenilaianLevelKecemasanRanapAnak.setText("Penilaian Level Kecemasan Ranap Anak");
         btnPenilaianLevelKecemasanRanapAnak.setIconTextGap(0);
         btnPenilaianLevelKecemasanRanapAnak.setName("btnPenilaianLevelKecemasanRanapAnak"); 

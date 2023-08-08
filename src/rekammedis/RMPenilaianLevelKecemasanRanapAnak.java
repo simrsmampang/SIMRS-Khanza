@@ -65,7 +65,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Cemas","Firasat Buruk","Takut Pikiran Sendiri","Mudah Tersinggung",
             "Merasa Tegang","Lesu","Tak Bisa Istirahat Tenang","Mudah Terkejut","Mudah Menangis","Gemetar","Gelisah","Takut Pada Gelap",
-            "Takut Pada OrangAsing","Takut Pada Kerumunan Banyak Orang","Takut Pada Binatang Besar","Takut Pada Keramaian Lalu Lintas",
+            "Takut Pada Orang Asing","Takut Pada Kerumunan Banyak Orang","Takut Pada Binatang Besar","Takut Pada Keramaian Lalu Lintas",
             "Takut Ditinggal Sendiri","Sulit Tidur","Terbangun Malam Hari","Tidur Tidak Nyeyak","Mimpi Buruk","Bangun Dengan Lesu",
             "Banyak Mengalami Mimpi","Mimpi Menakutkan","Sulit Konsentrasi","Daya Ingat Buruk","Hilangnya Minat","Berkurangnya Kesenangan Pada Hobi",
             "Sedih","Bangun Dini Hari","Perasaan Berubah","Sakit Nyeri Di Otot","Kaku","Kedutan Otot","Gigi Gemerutuk","Suara Tidak Stabil",
@@ -112,11 +112,47 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }else if(i==11){
                 column.setPreferredWidth(32);
             }else if(i==12){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(132);
             }else if(i==13){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(84);
             }else if(i==14){
+                column.setPreferredWidth(89);
+            }else if(i==15){
+                column.setPreferredWidth(51);
+            }else if(i==16){
+                column.setPreferredWidth(45);
+            }else if(i==17){
                 column.setPreferredWidth(95);
+            }else if(i==18){
+                column.setPreferredWidth(127);
+            }else if(i==19){
+                column.setPreferredWidth(190);
+            }else if(i==20){
+                column.setPreferredWidth(140);
+            }else if(i==21){
+                column.setPreferredWidth(172);
+            }else if(i==22){
+                column.setPreferredWidth(120);
+            }else if(i==23){
+                column.setPreferredWidth(60);
+            }else if(i==24){
+                column.setPreferredWidth(120);
+            }else if(i==25){
+                column.setPreferredWidth(100);
+            }else if(i==26){
+                column.setPreferredWidth(69);
+            }else if(i==27){
+                column.setPreferredWidth(110);
+            }else if(i==28){
+                column.setPreferredWidth(130);
+            }else if(i==29){
+                column.setPreferredWidth(99);
+            }else if(i==30){
+                column.setPreferredWidth(90);
+            }else if(i==31){
+                column.setPreferredWidth(96);
+            }else if(i==32){
+                column.setPreferredWidth(90);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
