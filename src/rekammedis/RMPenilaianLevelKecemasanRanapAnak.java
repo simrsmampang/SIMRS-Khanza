@@ -3868,7 +3868,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }//GEN-LAST:event_MukaMerahGejalaOtonomKeyPressed
 
     private void MudahBerkeringatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahBerkeringatKeyPressed
-        Valid.pindah(evt,MukaMerahGejalaOtonom,BuluBerdiri);
+        Valid.pindah(evt,MukaMerahGejalaOtonom,BuluBerdiriGejalaOtonom);
     }//GEN-LAST:event_MudahBerkeringatKeyPressed
 
     private void BuluBerdiriGejalaOtonomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuluBerdiriGejalaOtonomKeyPressed
@@ -3880,7 +3880,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }//GEN-LAST:event_SakitKepalaKeyPressed
 
     private void GelisahWawancaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GelisahWawancaraKeyPressed
-        Valid.pindah(evt,SakitKepala,NapasPendek);
+        Valid.pindah(evt,SakitKepala,NapasPendekWawancara);
     }//GEN-LAST:event_GelisahWawancaraKeyPressed
 
     private void NapasPendekWawancaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NapasPendekWawancaraKeyPressed
