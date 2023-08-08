@@ -85,7 +85,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 90; i++) {
+        for (i = 0; i < 94; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -99,6 +99,22 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 column.setPreferredWidth(25);
             }else if(i==5){
                 column.setPreferredWidth(115);
+            }else if(i==6){
+                column.setPreferredWidth(42);
+            }else if(i==7){
+                column.setPreferredWidth(72);
+            }else if(i==8){
+                column.setPreferredWidth(109);
+            }else if(i==9){
+                column.setPreferredWidth(105);
+            }else if(i==10){
+                column.setPreferredWidth(90);
+            }else if(i==11){
+                column.setPreferredWidth(35);
+            }else if(i==12){
+                column.setPreferredWidth(80);
+            }else if(i==13){
+                column.setPreferredWidth(90);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -3404,7 +3420,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='5100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='7100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -3425,17 +3441,17 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 );
                 bg.close();
 
-                File f = new File("DataChecklistKriteriaMasukICU.html");            
+                File f = new File("DataPenilaianevelKecemasanRanapAnak.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='5100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='7100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA MASUK ICU<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN LEVEL KECEMASAN PASIEN RAWAT INAP ANAK<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
