@@ -41768,6 +41768,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianLevelKecemasanRanapAnak.setIconTextGap(0);
         btnPenilaianLevelKecemasanRanapAnak.setName("btnPenilaianLevelKecemasanRanapAnak"); 
         btnPenilaianLevelKecemasanRanapAnak.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenilaianLevelKecemasanRanapAnak.addActionListener(this::btnHostToHostBankMandiriActionPerformed);
+        btnPenilaianLevelKecemasanRanapAnak.addActionListener(this::btnPenilaianLevelKecemasanRanapAnakActionPerformed);
     }
 }
