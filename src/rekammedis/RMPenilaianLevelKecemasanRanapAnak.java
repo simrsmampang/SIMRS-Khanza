@@ -150,9 +150,37 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }else if(i==30){
                 column.setPreferredWidth(90);
             }else if(i==31){
-                column.setPreferredWidth(96);
+                column.setPreferredWidth(93);
             }else if(i==32){
+                column.setPreferredWidth(87);
+            }else if(i==33){
+                column.setPreferredWidth(188);
+            }else if(i==34){
+                column.setPreferredWidth(36);
+            }else if(i==35){
                 column.setPreferredWidth(90);
+            }else if(i==36){
+                column.setPreferredWidth(97);
+            }else if(i==37){
+                column.setPreferredWidth(99);
+            }else if(i==38){
+                column.setPreferredWidth(33);
+            }else if(i==39){
+                column.setPreferredWidth(74);
+            }else if(i==40){
+                column.setPreferredWidth(85);
+            }else if(i==41){
+                column.setPreferredWidth(98);
+            }else if(i==42){
+                column.setPreferredWidth(47);
+            }else if(i==43){
+                column.setPreferredWidth(99);
+            }else if(i==44){
+                column.setPreferredWidth(142);
+            }else if(i==45){
+                column.setPreferredWidth(86);
+            }else if(i==46){
+                column.setPreferredWidth(100);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
