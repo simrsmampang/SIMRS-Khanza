@@ -340,7 +340,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="07-08-2023"/>
+                        <StringItem index="0" value="08-08-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -368,7 +368,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="07-08-2023"/>
+                        <StringItem index="0" value="08-08-2023"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -630,7 +630,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="07-08-2023 19:06:34"/>
+                            <StringItem index="0" value="08-08-2023 06:18:12"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -795,6 +795,7 @@
                         <Property name="name" type="java.lang.String" value="FirasatBuruk" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="FirasatBurukItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FirasatBurukKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -817,6 +818,7 @@
                         <Property name="name" type="java.lang.String" value="TakutPikiranSendiri" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TakutPikiranSendiriItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TakutPikiranSendiriKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -896,6 +898,7 @@
                         <Property name="name" type="java.lang.String" value="MudahTersinggung" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MudahTersinggungItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MudahTersinggungKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -976,6 +979,7 @@
                         <Property name="name" type="java.lang.String" value="MerasaTegang" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MerasaTegangItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MerasaTegangKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1021,6 +1025,7 @@
                         <Property name="name" type="java.lang.String" value="TakBisaIstirahatTenang" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TakBisaIstirahatTenangItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TakBisaIstirahatTenangKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1054,6 +1059,7 @@
                         <Property name="name" type="java.lang.String" value="Lesu" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="LesuItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LesuKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1087,6 +1093,7 @@
                         <Property name="name" type="java.lang.String" value="MudahTerkejut" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MudahTerkejutItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MudahTerkejutKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1109,6 +1116,7 @@
                         <Property name="name" type="java.lang.String" value="MudahMenangis" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MudahMenangisItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MudahMenangisKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1154,6 +1162,7 @@
                         <Property name="name" type="java.lang.String" value="Gemetar" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="GemetarItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="GemetarKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1176,6 +1185,7 @@
                         <Property name="name" type="java.lang.String" value="TakutPadaGelap" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TakutPadaGelapItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TakutPadaGelapKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1221,6 +1231,7 @@
                         <Property name="name" type="java.lang.String" value="Gelisah" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="GelisahItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="GelisahKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1312,6 +1323,7 @@
                         <Property name="name" type="java.lang.String" value="TakutPadaOrangAsing" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TakutPadaOrangAsingItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TakutPadaOrangAsingKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1345,6 +1357,7 @@
                         <Property name="name" type="java.lang.String" value="TakutDitinggalSendiri" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TakutDitinggalSendiriItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TakutDitinggalSendiriKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1367,6 +1380,7 @@
                         <Property name="name" type="java.lang.String" value="TakutPadaBinatangBesar" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TakutPadaBinatangBesarItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TakutPadaBinatangBesarKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1412,6 +1426,7 @@
                         <Property name="name" type="java.lang.String" value="TakutPadaKeramaianLaluLintas" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TakutPadaKeramaianLaluLintasItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TakutPadaKeramaianLaluLintasKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1503,6 +1518,7 @@
                         <Property name="name" type="java.lang.String" value="TakutPadaKerumunanBanyakOrang" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TakutPadaKerumunanBanyakOrangItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TakutPadaKerumunanBanyakOrangKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1525,6 +1541,7 @@
                         <Property name="name" type="java.lang.String" value="SulitTidur" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SulitTidurItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SulitTidurKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1570,6 +1587,7 @@
                         <Property name="name" type="java.lang.String" value="TerbangunMalamHari" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TerbangunMalamHariItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TerbangunMalamHariKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1603,6 +1621,7 @@
                         <Property name="name" type="java.lang.String" value="TidurTidakNyeyak" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TidurTidakNyeyakItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TidurTidakNyeyakKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1636,6 +1655,7 @@
                         <Property name="name" type="java.lang.String" value="MimpiBuruk" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MimpiBurukItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MimpiBurukKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1704,6 +1724,7 @@
                         <Property name="name" type="java.lang.String" value="BangunDenganLesu" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="BangunDenganLesuItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BangunDenganLesuKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1761,6 +1782,7 @@
                         <Property name="name" type="java.lang.String" value="DayaIngatBuruk" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="DayaIngatBurukItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DayaIngatBurukKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1794,6 +1816,7 @@
                         <Property name="name" type="java.lang.String" value="SulitKonsentrasi" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SulitKonsentrasiItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SulitKonsentrasiKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1816,6 +1839,7 @@
                         <Property name="name" type="java.lang.String" value="MimpiMenakutkan" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MimpiMenakutkanItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MimpiMenakutkanKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1861,6 +1885,7 @@
                         <Property name="name" type="java.lang.String" value="BanyakMengalamiMimpi" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="BanyakMengalamiMimpiItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BanyakMengalamiMimpiKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1883,6 +1908,7 @@
                         <Property name="name" type="java.lang.String" value="HilangnyaMinat" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="HilangnyaMinatItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="HilangnyaMinatKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1986,6 +2012,7 @@
                         <Property name="name" type="java.lang.String" value="BerkurangnyaKesenanganPadaHobi" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="BerkurangnyaKesenanganPadaHobiItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BerkurangnyaKesenanganPadaHobiKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2019,6 +2046,7 @@
                         <Property name="name" type="java.lang.String" value="Sedih" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SedihItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SedihKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2099,6 +2127,7 @@
                         <Property name="name" type="java.lang.String" value="BangunDiniHari" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="BangunDiniHariItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BangunDiniHariKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2144,6 +2173,7 @@
                         <Property name="name" type="java.lang.String" value="PerasaanBerubah" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="PerasaanBerubahItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PerasaanBerubahKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2177,6 +2207,7 @@
                         <Property name="name" type="java.lang.String" value="KedutanOtot" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KedutanOtotItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KedutanOtotKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2199,6 +2230,7 @@
                         <Property name="name" type="java.lang.String" value="SakitNyeriDiOtot" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SakitNyeriDiOtotItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SakitNyeriDiOtotKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2244,6 +2276,7 @@
                         <Property name="name" type="java.lang.String" value="Kaku" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KakuItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KakuKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2277,6 +2310,7 @@
                         <Property name="name" type="java.lang.String" value="GigiGemerutuk" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="GigiGemerutukItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="GigiGemerutukKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2299,6 +2333,7 @@
                         <Property name="name" type="java.lang.String" value="SuaraTidakStabil" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SuaraTidakStabilItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SuaraTidakStabilKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2333,6 +2368,7 @@
                         <Property name="name" type="java.lang.String" value="Tinnitus" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TinnitusItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TinnitusKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2436,6 +2472,7 @@
                         <Property name="name" type="java.lang.String" value="PenglihatanKabur" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="PenglihatanKaburItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PenglihatanKaburKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2458,6 +2495,7 @@
                         <Property name="name" type="java.lang.String" value="MukaMerahGejalaSomatic" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MukaMerahGejalaSomaticItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MukaMerahGejalaSomaticKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2502,6 +2540,7 @@
                         <Property name="name" type="java.lang.String" value="MerasaLemah" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MerasaLemahItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MerasaLemahKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2524,6 +2563,7 @@
                         <Property name="name" type="java.lang.String" value="PerasaanDitusuk" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="PerasaanDitusukItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PerasaanDitusukKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2616,6 +2656,7 @@
                         <Property name="name" type="java.lang.String" value="Takhikardia" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TakhikardiaItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TakhikardiaKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2661,6 +2702,7 @@
                         <Property name="name" type="java.lang.String" value="Berdebar" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="BerdebarItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BerdebarKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2694,6 +2736,7 @@
                         <Property name="name" type="java.lang.String" value="NyeriDiDada" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="NyeriDiDadaItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NyeriDiDadaKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2727,6 +2770,7 @@
                         <Property name="name" type="java.lang.String" value="DenyutNadiMengeras" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="DenyutNadiMengerasItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DenyutNadiMengerasKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2749,6 +2793,7 @@
                         <Property name="name" type="java.lang.String" value="PerasaanLesu" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="PerasaanLesuItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PerasaanLesuKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2794,6 +2839,7 @@
                         <Property name="name" type="java.lang.String" value="DetakJantungMenghilang" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="DetakJantungMenghilangItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DetakJantungMenghilangKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2874,6 +2920,7 @@
                         <Property name="name" type="java.lang.String" value="MerasaTertekan" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MerasaTertekanItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MerasaTertekanKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2908,6 +2955,7 @@
                         <Property name="name" type="java.lang.String" value="NapasPendek" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="NapasPendekItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NapasPendekKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2953,6 +3001,7 @@
                         <Property name="name" type="java.lang.String" value="SeringMenarikNapas" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SeringMenarikNapasItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SeringMenarikNapasKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -2986,6 +3035,7 @@
                         <Property name="name" type="java.lang.String" value="PerasaanTercekik" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="PerasaanTercekikItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PerasaanTercekikKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3019,6 +3069,7 @@
                         <Property name="name" type="java.lang.String" value="BuluBerdiri" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="BuluBerdiriItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BuluBerdiriKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3099,6 +3150,7 @@
                         <Property name="name" type="java.lang.String" value="SulitMenelan" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SulitMenelanItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SulitMenelanKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3144,6 +3196,7 @@
                         <Property name="name" type="java.lang.String" value="PerutMelilit" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="PerutMelilitItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PerutMelilitKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3177,6 +3230,7 @@
                         <Property name="name" type="java.lang.String" value="GanguanPencernaan" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="GanguanPencernaanItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="GanguanPencernaanKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3210,6 +3264,7 @@
                         <Property name="name" type="java.lang.String" value="RasaKembung" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RasaKembungItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RasaKembungKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3232,6 +3287,7 @@
                         <Property name="name" type="java.lang.String" value="NyeriMakan" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="NyeriMakanItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NyeriMakanKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3277,6 +3333,7 @@
                         <Property name="name" type="java.lang.String" value="TerbakarPerut" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TerbakarPerutItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TerbakarPerutKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3310,6 +3367,7 @@
                         <Property name="name" type="java.lang.String" value="Mual" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MualItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MualKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3332,6 +3390,7 @@
                         <Property name="name" type="java.lang.String" value="Muntah" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MuntahItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MuntahKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3377,6 +3436,7 @@
                         <Property name="name" type="java.lang.String" value="BABLembek" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="BABLembekItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BABLembekKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3410,6 +3470,7 @@
                         <Property name="name" type="java.lang.String" value="KehilanganBB" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KehilanganBBItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KehilanganBBKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3443,6 +3504,7 @@
                         <Property name="name" type="java.lang.String" value="SukarBAB" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SukarBABItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SukarBABKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3523,6 +3585,7 @@
                         <Property name="name" type="java.lang.String" value="SeringBAK" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SeringBAKItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SeringBAKKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3568,6 +3631,7 @@
                         <Property name="name" type="java.lang.String" value="TidakBisaMenahanKencing" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TidakBisaMenahanKencingItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TidakBisaMenahanKencingKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3601,6 +3665,7 @@
                         <Property name="name" type="java.lang.String" value="MenjadiDingin" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MenjadiDinginItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MenjadiDinginKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3634,6 +3699,7 @@
                         <Property name="name" type="java.lang.String" value="Amenorrhoea" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="AmenorrhoeaItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AmenorrhoeaKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3656,6 +3722,7 @@
                         <Property name="name" type="java.lang.String" value="Manorrhagia" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ManorrhagiaItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ManorrhagiaKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3690,6 +3757,7 @@
                         <Property name="name" type="java.lang.String" value="EjakulasiPraecocks" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="EjakulasiPraecocksItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EjakulasiPraecocksKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3735,6 +3803,7 @@
                         <Property name="name" type="java.lang.String" value="EreksiHilang" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="EreksiHilangItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EreksiHilangKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3768,6 +3837,7 @@
                         <Property name="name" type="java.lang.String" value="Impotensi" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ImpotensiItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ImpotensiKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3848,6 +3918,7 @@
                         <Property name="name" type="java.lang.String" value="MulutKering" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MulutKeringItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MulutKeringKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3893,6 +3964,7 @@
                         <Property name="name" type="java.lang.String" value="MukaMerahGejalaOtonom" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MukaMerahGejalaOtonomItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MukaMerahGejalaOtonomKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3926,6 +3998,7 @@
                         <Property name="name" type="java.lang.String" value="MudahBerkeringat" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MudahBerkeringatItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MudahBerkeringatKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3959,6 +4032,7 @@
                         <Property name="name" type="java.lang.String" value="BuluBerdiriGejalaOtonom" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="BuluBerdiriGejalaOtonomItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BuluBerdiriGejalaOtonomKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -3981,6 +4055,7 @@
                         <Property name="name" type="java.lang.String" value="SakitKepala" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SakitKepalaItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SakitKepalaKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -4073,6 +4148,7 @@
                         <Property name="name" type="java.lang.String" value="GelisahWawancara" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="GelisahWawancaraItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="GelisahWawancaraKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -4118,6 +4194,7 @@
                         <Property name="name" type="java.lang.String" value="NapasPendekWawancara" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="NapasPendekWawancaraItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NapasPendekWawancaraKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -4151,6 +4228,7 @@
                         <Property name="name" type="java.lang.String" value="JariGemetar" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JariGemetarItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JariGemetarKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -4184,6 +4262,7 @@
                         <Property name="name" type="java.lang.String" value="KerutKening" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KerutKeningItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KerutKeningKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -4217,6 +4296,7 @@
                         <Property name="name" type="java.lang.String" value="MukaMerahWawancara" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MukaMerahWawancaraItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MukaMerahWawancaraKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -4239,6 +4319,7 @@
                         <Property name="name" type="java.lang.String" value="TidakTenang" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TidakTenangItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TidakTenangKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -4272,6 +4353,7 @@
                         <Property name="name" type="java.lang.String" value="TonusMeningkat" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TonusMeningkatItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TonusMeningkatKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -4305,6 +4387,7 @@
                         <Property name="name" type="java.lang.String" value="MukaTegang" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="MukaTegangItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MukaTegangKeyPressed"/>
                       </Events>
                       <Constraints>

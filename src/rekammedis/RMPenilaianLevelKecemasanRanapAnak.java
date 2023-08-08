@@ -665,7 +665,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -679,7 +679,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -828,7 +828,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-08-2023 19:06:34" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2023 06:18:12" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -905,6 +905,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         FirasatBuruk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         FirasatBuruk.setName("FirasatBuruk"); // NOI18N
+        FirasatBuruk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                FirasatBurukItemStateChanged(evt);
+            }
+        });
         FirasatBuruk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 FirasatBurukKeyPressed(evt);
@@ -915,6 +920,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPikiranSendiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPikiranSendiri.setName("TakutPikiranSendiri"); // NOI18N
+        TakutPikiranSendiri.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPikiranSendiriItemStateChanged(evt);
+            }
+        });
         TakutPikiranSendiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPikiranSendiriKeyPressed(evt);
@@ -956,6 +966,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MudahTersinggung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MudahTersinggung.setName("MudahTersinggung"); // NOI18N
+        MudahTersinggung.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MudahTersinggungItemStateChanged(evt);
+            }
+        });
         MudahTersinggung.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MudahTersinggungKeyPressed(evt);
@@ -986,6 +1001,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MerasaTegang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MerasaTegang.setName("MerasaTegang"); // NOI18N
+        MerasaTegang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MerasaTegangItemStateChanged(evt);
+            }
+        });
         MerasaTegang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MerasaTegangKeyPressed(evt);
@@ -1007,6 +1027,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakBisaIstirahatTenang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakBisaIstirahatTenang.setName("TakBisaIstirahatTenang"); // NOI18N
+        TakBisaIstirahatTenang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakBisaIstirahatTenangItemStateChanged(evt);
+            }
+        });
         TakBisaIstirahatTenang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakBisaIstirahatTenangKeyPressed(evt);
@@ -1022,6 +1047,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Lesu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Lesu.setName("Lesu"); // NOI18N
+        Lesu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LesuItemStateChanged(evt);
+            }
+        });
         Lesu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 LesuKeyPressed(evt);
@@ -1037,6 +1067,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MudahTerkejut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MudahTerkejut.setName("MudahTerkejut"); // NOI18N
+        MudahTerkejut.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MudahTerkejutItemStateChanged(evt);
+            }
+        });
         MudahTerkejut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MudahTerkejutKeyPressed(evt);
@@ -1047,6 +1082,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MudahMenangis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MudahMenangis.setName("MudahMenangis"); // NOI18N
+        MudahMenangis.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MudahMenangisItemStateChanged(evt);
+            }
+        });
         MudahMenangis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MudahMenangisKeyPressed(evt);
@@ -1068,6 +1108,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Gemetar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Gemetar.setName("Gemetar"); // NOI18N
+        Gemetar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GemetarItemStateChanged(evt);
+            }
+        });
         Gemetar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GemetarKeyPressed(evt);
@@ -1078,6 +1123,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaGelap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaGelap.setName("TakutPadaGelap"); // NOI18N
+        TakutPadaGelap.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaGelapItemStateChanged(evt);
+            }
+        });
         TakutPadaGelap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaGelapKeyPressed(evt);
@@ -1099,6 +1149,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Gelisah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Gelisah.setName("Gelisah"); // NOI18N
+        Gelisah.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GelisahItemStateChanged(evt);
+            }
+        });
         Gelisah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GelisahKeyPressed(evt);
@@ -1134,6 +1189,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaOrangAsing.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaOrangAsing.setName("TakutPadaOrangAsing"); // NOI18N
+        TakutPadaOrangAsing.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaOrangAsingItemStateChanged(evt);
+            }
+        });
         TakutPadaOrangAsing.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaOrangAsingKeyPressed(evt);
@@ -1149,6 +1209,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutDitinggalSendiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutDitinggalSendiri.setName("TakutDitinggalSendiri"); // NOI18N
+        TakutDitinggalSendiri.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutDitinggalSendiriItemStateChanged(evt);
+            }
+        });
         TakutDitinggalSendiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutDitinggalSendiriKeyPressed(evt);
@@ -1159,6 +1224,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaBinatangBesar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaBinatangBesar.setName("TakutPadaBinatangBesar"); // NOI18N
+        TakutPadaBinatangBesar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaBinatangBesarItemStateChanged(evt);
+            }
+        });
         TakutPadaBinatangBesar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaBinatangBesarKeyPressed(evt);
@@ -1180,6 +1250,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaKeramaianLaluLintas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaKeramaianLaluLintas.setName("TakutPadaKeramaianLaluLintas"); // NOI18N
+        TakutPadaKeramaianLaluLintas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaKeramaianLaluLintasItemStateChanged(evt);
+            }
+        });
         TakutPadaKeramaianLaluLintas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaKeramaianLaluLintasKeyPressed(evt);
@@ -1215,6 +1290,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaKerumunanBanyakOrang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaKerumunanBanyakOrang.setName("TakutPadaKerumunanBanyakOrang"); // NOI18N
+        TakutPadaKerumunanBanyakOrang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaKerumunanBanyakOrangItemStateChanged(evt);
+            }
+        });
         TakutPadaKerumunanBanyakOrang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaKerumunanBanyakOrangKeyPressed(evt);
@@ -1225,6 +1305,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SulitTidur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SulitTidur.setName("SulitTidur"); // NOI18N
+        SulitTidur.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SulitTidurItemStateChanged(evt);
+            }
+        });
         SulitTidur.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SulitTidurKeyPressed(evt);
@@ -1246,6 +1331,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TerbangunMalamHari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TerbangunMalamHari.setName("TerbangunMalamHari"); // NOI18N
+        TerbangunMalamHari.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TerbangunMalamHariItemStateChanged(evt);
+            }
+        });
         TerbangunMalamHari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TerbangunMalamHariKeyPressed(evt);
@@ -1261,6 +1351,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TidurTidakNyeyak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TidurTidakNyeyak.setName("TidurTidakNyeyak"); // NOI18N
+        TidurTidakNyeyak.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TidurTidakNyeyakItemStateChanged(evt);
+            }
+        });
         TidurTidakNyeyak.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TidurTidakNyeyakKeyPressed(evt);
@@ -1276,6 +1371,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MimpiBuruk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MimpiBuruk.setName("MimpiBuruk"); // NOI18N
+        MimpiBuruk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MimpiBurukItemStateChanged(evt);
+            }
+        });
         MimpiBuruk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MimpiBurukKeyPressed(evt);
@@ -1300,6 +1400,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BangunDenganLesu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BangunDenganLesu.setName("BangunDenganLesu"); // NOI18N
+        BangunDenganLesu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BangunDenganLesuItemStateChanged(evt);
+            }
+        });
         BangunDenganLesu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BangunDenganLesuKeyPressed(evt);
@@ -1327,6 +1432,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         DayaIngatBuruk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         DayaIngatBuruk.setName("DayaIngatBuruk"); // NOI18N
+        DayaIngatBuruk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DayaIngatBurukItemStateChanged(evt);
+            }
+        });
         DayaIngatBuruk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DayaIngatBurukKeyPressed(evt);
@@ -1342,6 +1452,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SulitKonsentrasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SulitKonsentrasi.setName("SulitKonsentrasi"); // NOI18N
+        SulitKonsentrasi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SulitKonsentrasiItemStateChanged(evt);
+            }
+        });
         SulitKonsentrasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SulitKonsentrasiKeyPressed(evt);
@@ -1352,6 +1467,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MimpiMenakutkan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MimpiMenakutkan.setName("MimpiMenakutkan"); // NOI18N
+        MimpiMenakutkan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MimpiMenakutkanItemStateChanged(evt);
+            }
+        });
         MimpiMenakutkan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MimpiMenakutkanKeyPressed(evt);
@@ -1373,6 +1493,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BanyakMengalamiMimpi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BanyakMengalamiMimpi.setName("BanyakMengalamiMimpi"); // NOI18N
+        BanyakMengalamiMimpi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BanyakMengalamiMimpiItemStateChanged(evt);
+            }
+        });
         BanyakMengalamiMimpi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BanyakMengalamiMimpiKeyPressed(evt);
@@ -1383,6 +1508,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         HilangnyaMinat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         HilangnyaMinat.setName("HilangnyaMinat"); // NOI18N
+        HilangnyaMinat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                HilangnyaMinatItemStateChanged(evt);
+            }
+        });
         HilangnyaMinat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HilangnyaMinatKeyPressed(evt);
@@ -1424,6 +1554,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BerkurangnyaKesenanganPadaHobi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BerkurangnyaKesenanganPadaHobi.setName("BerkurangnyaKesenanganPadaHobi"); // NOI18N
+        BerkurangnyaKesenanganPadaHobi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BerkurangnyaKesenanganPadaHobiItemStateChanged(evt);
+            }
+        });
         BerkurangnyaKesenanganPadaHobi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BerkurangnyaKesenanganPadaHobiKeyPressed(evt);
@@ -1439,6 +1574,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Sedih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Sedih.setName("Sedih"); // NOI18N
+        Sedih.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SedihItemStateChanged(evt);
+            }
+        });
         Sedih.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SedihKeyPressed(evt);
@@ -1469,6 +1609,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BangunDiniHari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BangunDiniHari.setName("BangunDiniHari"); // NOI18N
+        BangunDiniHari.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BangunDiniHariItemStateChanged(evt);
+            }
+        });
         BangunDiniHari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BangunDiniHariKeyPressed(evt);
@@ -1490,6 +1635,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PerasaanBerubah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PerasaanBerubah.setName("PerasaanBerubah"); // NOI18N
+        PerasaanBerubah.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerasaanBerubahItemStateChanged(evt);
+            }
+        });
         PerasaanBerubah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PerasaanBerubahKeyPressed(evt);
@@ -1505,6 +1655,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         KedutanOtot.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         KedutanOtot.setName("KedutanOtot"); // NOI18N
+        KedutanOtot.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KedutanOtotItemStateChanged(evt);
+            }
+        });
         KedutanOtot.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KedutanOtotKeyPressed(evt);
@@ -1515,6 +1670,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SakitNyeriDiOtot.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SakitNyeriDiOtot.setName("SakitNyeriDiOtot"); // NOI18N
+        SakitNyeriDiOtot.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SakitNyeriDiOtotItemStateChanged(evt);
+            }
+        });
         SakitNyeriDiOtot.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SakitNyeriDiOtotKeyPressed(evt);
@@ -1536,6 +1696,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Kaku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kaku.setName("Kaku"); // NOI18N
+        Kaku.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KakuItemStateChanged(evt);
+            }
+        });
         Kaku.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KakuKeyPressed(evt);
@@ -1551,6 +1716,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         GigiGemerutuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         GigiGemerutuk.setName("GigiGemerutuk"); // NOI18N
+        GigiGemerutuk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GigiGemerutukItemStateChanged(evt);
+            }
+        });
         GigiGemerutuk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GigiGemerutukKeyPressed(evt);
@@ -1561,6 +1731,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SuaraTidakStabil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SuaraTidakStabil.setName("SuaraTidakStabil"); // NOI18N
+        SuaraTidakStabil.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SuaraTidakStabilItemStateChanged(evt);
+            }
+        });
         SuaraTidakStabil.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SuaraTidakStabilKeyPressed(evt);
@@ -1577,6 +1752,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Tinnitus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Tinnitus.setName("Tinnitus"); // NOI18N
+        Tinnitus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TinnitusItemStateChanged(evt);
+            }
+        });
         Tinnitus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TinnitusKeyPressed(evt);
@@ -1618,6 +1798,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PenglihatanKabur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PenglihatanKabur.setName("PenglihatanKabur"); // NOI18N
+        PenglihatanKabur.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PenglihatanKaburItemStateChanged(evt);
+            }
+        });
         PenglihatanKabur.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PenglihatanKaburKeyPressed(evt);
@@ -1628,6 +1813,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MukaMerahGejalaSomatic.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MukaMerahGejalaSomatic.setName("MukaMerahGejalaSomatic"); // NOI18N
+        MukaMerahGejalaSomatic.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MukaMerahGejalaSomaticItemStateChanged(evt);
+            }
+        });
         MukaMerahGejalaSomatic.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MukaMerahGejalaSomaticKeyPressed(evt);
@@ -1648,6 +1838,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MerasaLemah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MerasaLemah.setName("MerasaLemah"); // NOI18N
+        MerasaLemah.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MerasaLemahItemStateChanged(evt);
+            }
+        });
         MerasaLemah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MerasaLemahKeyPressed(evt);
@@ -1658,6 +1853,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PerasaanDitusuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PerasaanDitusuk.setName("PerasaanDitusuk"); // NOI18N
+        PerasaanDitusuk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerasaanDitusukItemStateChanged(evt);
+            }
+        });
         PerasaanDitusuk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PerasaanDitusukKeyPressed(evt);
@@ -1694,6 +1894,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Takhikardia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Takhikardia.setName("Takhikardia"); // NOI18N
+        Takhikardia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakhikardiaItemStateChanged(evt);
+            }
+        });
         Takhikardia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakhikardiaKeyPressed(evt);
@@ -1715,6 +1920,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Berdebar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Berdebar.setName("Berdebar"); // NOI18N
+        Berdebar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BerdebarItemStateChanged(evt);
+            }
+        });
         Berdebar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BerdebarKeyPressed(evt);
@@ -1730,6 +1940,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         NyeriDiDada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         NyeriDiDada.setName("NyeriDiDada"); // NOI18N
+        NyeriDiDada.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NyeriDiDadaItemStateChanged(evt);
+            }
+        });
         NyeriDiDada.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NyeriDiDadaKeyPressed(evt);
@@ -1745,6 +1960,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         DenyutNadiMengeras.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         DenyutNadiMengeras.setName("DenyutNadiMengeras"); // NOI18N
+        DenyutNadiMengeras.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DenyutNadiMengerasItemStateChanged(evt);
+            }
+        });
         DenyutNadiMengeras.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DenyutNadiMengerasKeyPressed(evt);
@@ -1755,6 +1975,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PerasaanLesu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PerasaanLesu.setName("PerasaanLesu"); // NOI18N
+        PerasaanLesu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerasaanLesuItemStateChanged(evt);
+            }
+        });
         PerasaanLesu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PerasaanLesuKeyPressed(evt);
@@ -1776,6 +2001,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         DetakJantungMenghilang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         DetakJantungMenghilang.setName("DetakJantungMenghilang"); // NOI18N
+        DetakJantungMenghilang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DetakJantungMenghilangItemStateChanged(evt);
+            }
+        });
         DetakJantungMenghilang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DetakJantungMenghilangKeyPressed(evt);
@@ -1806,6 +2036,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MerasaTertekan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MerasaTertekan.setName("MerasaTertekan"); // NOI18N
+        MerasaTertekan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MerasaTertekanItemStateChanged(evt);
+            }
+        });
         MerasaTertekan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MerasaTertekanKeyPressed(evt);
@@ -1822,6 +2057,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         NapasPendek.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         NapasPendek.setName("NapasPendek"); // NOI18N
+        NapasPendek.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NapasPendekItemStateChanged(evt);
+            }
+        });
         NapasPendek.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NapasPendekKeyPressed(evt);
@@ -1843,6 +2083,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SeringMenarikNapas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SeringMenarikNapas.setName("SeringMenarikNapas"); // NOI18N
+        SeringMenarikNapas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SeringMenarikNapasItemStateChanged(evt);
+            }
+        });
         SeringMenarikNapas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SeringMenarikNapasKeyPressed(evt);
@@ -1858,6 +2103,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PerasaanTercekik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PerasaanTercekik.setName("PerasaanTercekik"); // NOI18N
+        PerasaanTercekik.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerasaanTercekikItemStateChanged(evt);
+            }
+        });
         PerasaanTercekik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PerasaanTercekikKeyPressed(evt);
@@ -1873,6 +2123,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BuluBerdiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BuluBerdiri.setName("BuluBerdiri"); // NOI18N
+        BuluBerdiri.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BuluBerdiriItemStateChanged(evt);
+            }
+        });
         BuluBerdiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BuluBerdiriKeyPressed(evt);
@@ -1903,6 +2158,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SulitMenelan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SulitMenelan.setName("SulitMenelan"); // NOI18N
+        SulitMenelan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SulitMenelanItemStateChanged(evt);
+            }
+        });
         SulitMenelan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SulitMenelanKeyPressed(evt);
@@ -1924,6 +2184,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PerutMelilit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PerutMelilit.setName("PerutMelilit"); // NOI18N
+        PerutMelilit.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerutMelilitItemStateChanged(evt);
+            }
+        });
         PerutMelilit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PerutMelilitKeyPressed(evt);
@@ -1939,6 +2204,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         GanguanPencernaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         GanguanPencernaan.setName("GanguanPencernaan"); // NOI18N
+        GanguanPencernaan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GanguanPencernaanItemStateChanged(evt);
+            }
+        });
         GanguanPencernaan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GanguanPencernaanKeyPressed(evt);
@@ -1954,6 +2224,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         RasaKembung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         RasaKembung.setName("RasaKembung"); // NOI18N
+        RasaKembung.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RasaKembungItemStateChanged(evt);
+            }
+        });
         RasaKembung.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RasaKembungKeyPressed(evt);
@@ -1964,6 +2239,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         NyeriMakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         NyeriMakan.setName("NyeriMakan"); // NOI18N
+        NyeriMakan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NyeriMakanItemStateChanged(evt);
+            }
+        });
         NyeriMakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NyeriMakanKeyPressed(evt);
@@ -1985,6 +2265,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TerbakarPerut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TerbakarPerut.setName("TerbakarPerut"); // NOI18N
+        TerbakarPerut.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TerbakarPerutItemStateChanged(evt);
+            }
+        });
         TerbakarPerut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TerbakarPerutKeyPressed(evt);
@@ -2000,6 +2285,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Mual.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Mual.setName("Mual"); // NOI18N
+        Mual.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MualItemStateChanged(evt);
+            }
+        });
         Mual.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MualKeyPressed(evt);
@@ -2010,6 +2300,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Muntah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Muntah.setName("Muntah"); // NOI18N
+        Muntah.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MuntahItemStateChanged(evt);
+            }
+        });
         Muntah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MuntahKeyPressed(evt);
@@ -2031,6 +2326,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BABLembek.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BABLembek.setName("BABLembek"); // NOI18N
+        BABLembek.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BABLembekItemStateChanged(evt);
+            }
+        });
         BABLembek.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BABLembekKeyPressed(evt);
@@ -2046,6 +2346,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         KehilanganBB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         KehilanganBB.setName("KehilanganBB"); // NOI18N
+        KehilanganBB.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KehilanganBBItemStateChanged(evt);
+            }
+        });
         KehilanganBB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KehilanganBBKeyPressed(evt);
@@ -2061,6 +2366,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SukarBAB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SukarBAB.setName("SukarBAB"); // NOI18N
+        SukarBAB.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SukarBABItemStateChanged(evt);
+            }
+        });
         SukarBAB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SukarBABKeyPressed(evt);
@@ -2091,6 +2401,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SeringBAK.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SeringBAK.setName("SeringBAK"); // NOI18N
+        SeringBAK.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SeringBAKItemStateChanged(evt);
+            }
+        });
         SeringBAK.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SeringBAKKeyPressed(evt);
@@ -2112,6 +2427,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TidakBisaMenahanKencing.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TidakBisaMenahanKencing.setName("TidakBisaMenahanKencing"); // NOI18N
+        TidakBisaMenahanKencing.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TidakBisaMenahanKencingItemStateChanged(evt);
+            }
+        });
         TidakBisaMenahanKencing.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TidakBisaMenahanKencingKeyPressed(evt);
@@ -2127,6 +2447,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MenjadiDingin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MenjadiDingin.setName("MenjadiDingin"); // NOI18N
+        MenjadiDingin.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MenjadiDinginItemStateChanged(evt);
+            }
+        });
         MenjadiDingin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MenjadiDinginKeyPressed(evt);
@@ -2142,6 +2467,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Amenorrhoea.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Amenorrhoea.setName("Amenorrhoea"); // NOI18N
+        Amenorrhoea.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AmenorrhoeaItemStateChanged(evt);
+            }
+        });
         Amenorrhoea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AmenorrhoeaKeyPressed(evt);
@@ -2152,6 +2482,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Manorrhagia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Manorrhagia.setName("Manorrhagia"); // NOI18N
+        Manorrhagia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ManorrhagiaItemStateChanged(evt);
+            }
+        });
         Manorrhagia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ManorrhagiaKeyPressed(evt);
@@ -2168,6 +2503,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         EjakulasiPraecocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         EjakulasiPraecocks.setName("EjakulasiPraecocks"); // NOI18N
+        EjakulasiPraecocks.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EjakulasiPraecocksItemStateChanged(evt);
+            }
+        });
         EjakulasiPraecocks.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 EjakulasiPraecocksKeyPressed(evt);
@@ -2189,6 +2529,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         EreksiHilang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         EreksiHilang.setName("EreksiHilang"); // NOI18N
+        EreksiHilang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EreksiHilangItemStateChanged(evt);
+            }
+        });
         EreksiHilang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 EreksiHilangKeyPressed(evt);
@@ -2204,6 +2549,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Impotensi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Impotensi.setName("Impotensi"); // NOI18N
+        Impotensi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ImpotensiItemStateChanged(evt);
+            }
+        });
         Impotensi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ImpotensiKeyPressed(evt);
@@ -2234,6 +2584,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MulutKering.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MulutKering.setName("MulutKering"); // NOI18N
+        MulutKering.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MulutKeringItemStateChanged(evt);
+            }
+        });
         MulutKering.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MulutKeringKeyPressed(evt);
@@ -2255,6 +2610,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MukaMerahGejalaOtonom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MukaMerahGejalaOtonom.setName("MukaMerahGejalaOtonom"); // NOI18N
+        MukaMerahGejalaOtonom.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MukaMerahGejalaOtonomItemStateChanged(evt);
+            }
+        });
         MukaMerahGejalaOtonom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MukaMerahGejalaOtonomKeyPressed(evt);
@@ -2270,6 +2630,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MudahBerkeringat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MudahBerkeringat.setName("MudahBerkeringat"); // NOI18N
+        MudahBerkeringat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MudahBerkeringatItemStateChanged(evt);
+            }
+        });
         MudahBerkeringat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MudahBerkeringatKeyPressed(evt);
@@ -2285,6 +2650,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BuluBerdiriGejalaOtonom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BuluBerdiriGejalaOtonom.setName("BuluBerdiriGejalaOtonom"); // NOI18N
+        BuluBerdiriGejalaOtonom.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BuluBerdiriGejalaOtonomItemStateChanged(evt);
+            }
+        });
         BuluBerdiriGejalaOtonom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BuluBerdiriGejalaOtonomKeyPressed(evt);
@@ -2295,6 +2665,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SakitKepala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SakitKepala.setName("SakitKepala"); // NOI18N
+        SakitKepala.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SakitKepalaItemStateChanged(evt);
+            }
+        });
         SakitKepala.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SakitKepalaKeyPressed(evt);
@@ -2331,6 +2706,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         GelisahWawancara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         GelisahWawancara.setName("GelisahWawancara"); // NOI18N
+        GelisahWawancara.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GelisahWawancaraItemStateChanged(evt);
+            }
+        });
         GelisahWawancara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GelisahWawancaraKeyPressed(evt);
@@ -2352,6 +2732,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         NapasPendekWawancara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         NapasPendekWawancara.setName("NapasPendekWawancara"); // NOI18N
+        NapasPendekWawancara.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NapasPendekWawancaraItemStateChanged(evt);
+            }
+        });
         NapasPendekWawancara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NapasPendekWawancaraKeyPressed(evt);
@@ -2367,6 +2752,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         JariGemetar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         JariGemetar.setName("JariGemetar"); // NOI18N
+        JariGemetar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JariGemetarItemStateChanged(evt);
+            }
+        });
         JariGemetar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JariGemetarKeyPressed(evt);
@@ -2382,6 +2772,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         KerutKening.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         KerutKening.setName("KerutKening"); // NOI18N
+        KerutKening.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KerutKeningItemStateChanged(evt);
+            }
+        });
         KerutKening.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KerutKeningKeyPressed(evt);
@@ -2397,6 +2792,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MukaMerahWawancara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MukaMerahWawancara.setName("MukaMerahWawancara"); // NOI18N
+        MukaMerahWawancara.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MukaMerahWawancaraItemStateChanged(evt);
+            }
+        });
         MukaMerahWawancara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MukaMerahWawancaraKeyPressed(evt);
@@ -2407,6 +2807,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TidakTenang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TidakTenang.setName("TidakTenang"); // NOI18N
+        TidakTenang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TidakTenangItemStateChanged(evt);
+            }
+        });
         TidakTenang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TidakTenangKeyPressed(evt);
@@ -2422,6 +2827,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TonusMeningkat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TonusMeningkat.setName("TonusMeningkat"); // NOI18N
+        TonusMeningkat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TonusMeningkatItemStateChanged(evt);
+            }
+        });
         TonusMeningkat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TonusMeningkatKeyPressed(evt);
@@ -2437,6 +2847,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MukaTegang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MukaTegang.setName("MukaTegang"); // NOI18N
+        MukaTegang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MukaTegangItemStateChanged(evt);
+            }
+        });
         MukaTegang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MukaTegangKeyPressed(evt);
@@ -3500,6 +3915,338 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         isTotalSkor();
     }//GEN-LAST:event_CemasItemStateChanged
 
+    private void FirasatBurukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FirasatBurukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_FirasatBurukItemStateChanged
+
+    private void TakutPikiranSendiriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPikiranSendiriItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPikiranSendiriItemStateChanged
+
+    private void MudahTersinggungItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MudahTersinggungItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MudahTersinggungItemStateChanged
+
+    private void MerasaTegangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MerasaTegangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MerasaTegangItemStateChanged
+
+    private void LesuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LesuItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_LesuItemStateChanged
+
+    private void TakBisaIstirahatTenangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakBisaIstirahatTenangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakBisaIstirahatTenangItemStateChanged
+
+    private void MudahTerkejutItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MudahTerkejutItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MudahTerkejutItemStateChanged
+
+    private void MudahMenangisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MudahMenangisItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MudahMenangisItemStateChanged
+
+    private void GemetarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GemetarItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GemetarItemStateChanged
+
+    private void GelisahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GelisahItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GelisahItemStateChanged
+
+    private void TakutPadaGelapItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaGelapItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaGelapItemStateChanged
+
+    private void TakutPadaOrangAsingItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaOrangAsingItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaOrangAsingItemStateChanged
+
+    private void TakutPadaKerumunanBanyakOrangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaKerumunanBanyakOrangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaKerumunanBanyakOrangItemStateChanged
+
+    private void TakutPadaBinatangBesarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaBinatangBesarItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaBinatangBesarItemStateChanged
+
+    private void TakutPadaKeramaianLaluLintasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaKeramaianLaluLintasItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaKeramaianLaluLintasItemStateChanged
+
+    private void TakutDitinggalSendiriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutDitinggalSendiriItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutDitinggalSendiriItemStateChanged
+
+    private void SulitTidurItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SulitTidurItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SulitTidurItemStateChanged
+
+    private void TerbangunMalamHariItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TerbangunMalamHariItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TerbangunMalamHariItemStateChanged
+
+    private void TidurTidakNyeyakItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TidurTidakNyeyakItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TidurTidakNyeyakItemStateChanged
+
+    private void MimpiBurukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MimpiBurukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MimpiBurukItemStateChanged
+
+    private void BangunDenganLesuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BangunDenganLesuItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BangunDenganLesuItemStateChanged
+
+    private void BanyakMengalamiMimpiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BanyakMengalamiMimpiItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BanyakMengalamiMimpiItemStateChanged
+
+    private void MimpiMenakutkanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MimpiMenakutkanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MimpiMenakutkanItemStateChanged
+
+    private void SulitKonsentrasiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SulitKonsentrasiItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SulitKonsentrasiItemStateChanged
+
+    private void DayaIngatBurukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DayaIngatBurukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_DayaIngatBurukItemStateChanged
+
+    private void HilangnyaMinatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HilangnyaMinatItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_HilangnyaMinatItemStateChanged
+
+    private void BerkurangnyaKesenanganPadaHobiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BerkurangnyaKesenanganPadaHobiItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BerkurangnyaKesenanganPadaHobiItemStateChanged
+
+    private void SedihItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SedihItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SedihItemStateChanged
+
+    private void BangunDiniHariItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BangunDiniHariItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BangunDiniHariItemStateChanged
+
+    private void PerasaanBerubahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerasaanBerubahItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerasaanBerubahItemStateChanged
+
+    private void SakitNyeriDiOtotItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SakitNyeriDiOtotItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SakitNyeriDiOtotItemStateChanged
+
+    private void KakuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KakuItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_KakuItemStateChanged
+
+    private void KedutanOtotItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KedutanOtotItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_KedutanOtotItemStateChanged
+
+    private void GigiGemerutukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GigiGemerutukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GigiGemerutukItemStateChanged
+
+    private void SuaraTidakStabilItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SuaraTidakStabilItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SuaraTidakStabilItemStateChanged
+
+    private void TinnitusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TinnitusItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TinnitusItemStateChanged
+
+    private void PenglihatanKaburItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PenglihatanKaburItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PenglihatanKaburItemStateChanged
+
+    private void MukaMerahGejalaSomaticItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MukaMerahGejalaSomaticItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MukaMerahGejalaSomaticItemStateChanged
+
+    private void MerasaLemahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MerasaLemahItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MerasaLemahItemStateChanged
+
+    private void PerasaanDitusukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerasaanDitusukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerasaanDitusukItemStateChanged
+
+    private void TakhikardiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakhikardiaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakhikardiaItemStateChanged
+
+    private void BerdebarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BerdebarItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BerdebarItemStateChanged
+
+    private void NyeriDiDadaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NyeriDiDadaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_NyeriDiDadaItemStateChanged
+
+    private void DenyutNadiMengerasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DenyutNadiMengerasItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_DenyutNadiMengerasItemStateChanged
+
+    private void PerasaanLesuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerasaanLesuItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerasaanLesuItemStateChanged
+
+    private void DetakJantungMenghilangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DetakJantungMenghilangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_DetakJantungMenghilangItemStateChanged
+
+    private void MerasaTertekanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MerasaTertekanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MerasaTertekanItemStateChanged
+
+    private void PerasaanTercekikItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerasaanTercekikItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerasaanTercekikItemStateChanged
+
+    private void SeringMenarikNapasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SeringMenarikNapasItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SeringMenarikNapasItemStateChanged
+
+    private void NapasPendekItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NapasPendekItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_NapasPendekItemStateChanged
+
+    private void BuluBerdiriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BuluBerdiriItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BuluBerdiriItemStateChanged
+
+    private void SulitMenelanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SulitMenelanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SulitMenelanItemStateChanged
+
+    private void PerutMelilitItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerutMelilitItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerutMelilitItemStateChanged
+
+    private void GanguanPencernaanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GanguanPencernaanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GanguanPencernaanItemStateChanged
+
+    private void RasaKembungItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RasaKembungItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_RasaKembungItemStateChanged
+
+    private void NyeriMakanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NyeriMakanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_NyeriMakanItemStateChanged
+
+    private void TerbakarPerutItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TerbakarPerutItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TerbakarPerutItemStateChanged
+
+    private void SukarBABItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SukarBABItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SukarBABItemStateChanged
+
+    private void MuntahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MuntahItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MuntahItemStateChanged
+
+    private void BABLembekItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BABLembekItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BABLembekItemStateChanged
+
+    private void KehilanganBBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KehilanganBBItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_KehilanganBBItemStateChanged
+
+    private void MualItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MualItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MualItemStateChanged
+
+    private void SeringBAKItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SeringBAKItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SeringBAKItemStateChanged
+
+    private void TidakBisaMenahanKencingItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TidakBisaMenahanKencingItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TidakBisaMenahanKencingItemStateChanged
+
+    private void MenjadiDinginItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MenjadiDinginItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MenjadiDinginItemStateChanged
+
+    private void ManorrhagiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ManorrhagiaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_ManorrhagiaItemStateChanged
+
+    private void AmenorrhoeaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AmenorrhoeaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_AmenorrhoeaItemStateChanged
+
+    private void EjakulasiPraecocksItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EjakulasiPraecocksItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_EjakulasiPraecocksItemStateChanged
+
+    private void EreksiHilangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EreksiHilangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_EreksiHilangItemStateChanged
+
+    private void ImpotensiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ImpotensiItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_ImpotensiItemStateChanged
+
+    private void MulutKeringItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MulutKeringItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MulutKeringItemStateChanged
+
+    private void MukaMerahGejalaOtonomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MukaMerahGejalaOtonomItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MukaMerahGejalaOtonomItemStateChanged
+
+    private void MudahBerkeringatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MudahBerkeringatItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MudahBerkeringatItemStateChanged
+
+    private void BuluBerdiriGejalaOtonomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BuluBerdiriGejalaOtonomItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BuluBerdiriGejalaOtonomItemStateChanged
+
+    private void SakitKepalaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SakitKepalaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SakitKepalaItemStateChanged
+
+    private void GelisahWawancaraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GelisahWawancaraItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GelisahWawancaraItemStateChanged
+
+    private void NapasPendekWawancaraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NapasPendekWawancaraItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_NapasPendekWawancaraItemStateChanged
+
+    private void JariGemetarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JariGemetarItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_JariGemetarItemStateChanged
+
+    private void KerutKeningItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KerutKeningItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_KerutKeningItemStateChanged
+
+    private void MukaTegangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MukaTegangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MukaTegangItemStateChanged
+
+    private void TonusMeningkatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TonusMeningkatItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TonusMeningkatItemStateChanged
+
+    private void TidakTenangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TidakTenangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TidakTenangItemStateChanged
+
+    private void MukaMerahWawancaraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MukaMerahWawancaraItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MukaMerahWawancaraItemStateChanged
+
     /**
     * @param args the command line arguments
     */
@@ -4031,8 +4778,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         TonusMeningkat.setSelectedIndex(0);
         TidakTenang.setSelectedIndex(0);
         MukaMerahWawancara.setSelectedIndex(0);
-        TotalSkor.setText("");
-        KeteranganSkor.setText("");
+        TotalSkor.setText("0");
+        KeteranganSkor.setText("Tidak Mengalami Kecemasan");
         Tanggal.setDate(new Date());
         Cemas.requestFocus();
     } 
