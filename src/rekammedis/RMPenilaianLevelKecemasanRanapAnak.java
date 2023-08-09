@@ -35,7 +35,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import kepegawaian.DlgCariPegawai;
+import kepegawaian.DlgCariPetugas;
 
 
 /**
@@ -50,7 +50,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;    
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
     private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
@@ -63,14 +63,19 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Pasca Operasi Dengan Gangguan Nafas Atau Hipotensi","Gagal Nafas","Gagal Jantung Dengan Tanda Bendungan Paru",
-            "Gangguan Asam Basa / Elektrolit","Gagal Ginjal Dengan Tanda Bendungan Paru","Syok Karena Perdarahan Anafilaksis","Pasca Operasi Besar","Kejang Berulang","Gangguan Kesadaran",
-            "Dehidrasi Berat","Gangguan Jalan Nafas","Arimia Jantung","Asma Akut Berat","Diabetes Yang Memerlukan Terapi Insulin Kontinyu","Penyakit Keganasan Dengan Metastasis",
-            "Pasien Geriatrik Dengan Fungsi Hidup Sebelumnya Minimal","Pasien Dengan GCS 3","Pasien Jantung, Penyakit Paru Terminal Disertai Komplikasi Penyakit Akut Berat","Nadi < 40 atau >150 (x/menit)",
-            "SBP < 80 mmHg Atau 20 mmHg Di Bawah SBP Pasien","MAP < 60 mmHg","DBP > 120 mmHg","R > 35 x/menit","Na < 110 meq/L Atau > 170 meq/L","Ca > 15 mg/dl","GDS > 800 mg/dl",
-            "K < 2 meq/L Atau 7meq/L","PaO2 < 50 mmHg","PH < 7,1 Atau 7,7","Perbedaan Cerebrovaskuler, SAH, Atau Contusion Dengan Gangguan Kesadaran Atau Neorologi",
-            "Ruptor Organ Dalam, Kandung Kemih, Hati, Varices Esophagus Atau Uterus Dengan Gangguan Hemodinamik","Pupil Anisokor","Obstruksi Jalan Nafas","Anuria","Kejang Berulang",
-            "Tamponade Jantung","Coma","Sianosis","Luka Bakar > 10 % BSA","NIP/Kode Dokter","DPJP/Dokter Jaga/IGD"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Cemas","Firasat Buruk","Takut Pikiran Sendiri","Mudah Tersinggung",
+            "Merasa Tegang","Lesu","Tak Bisa Istirahat Tenang","Mudah Terkejut","Mudah Menangis","Gemetar","Gelisah","Takut Pada Gelap",
+            "Takut Pada Orang Asing","Takut Pada Kerumunan Banyak Orang","Takut Pada Binatang Besar","Takut Pada Keramaian Lalu Lintas",
+            "Takut Ditinggal Sendiri","Sulit Tidur","Terbangun Malam Hari","Tidur Tidak Nyeyak","Mimpi Buruk","Bangun Dengan Lesu",
+            "Banyak Mengalami Mimpi","Mimpi Menakutkan","Sulit Konsentrasi","Daya Ingat Buruk","Hilangnya Minat","Berkurangnya Kesenangan Pada Hobi",
+            "Sedih","Bangun Dini Hari","Perasaan Berubah","Sakit Nyeri Di Otot","Kaku","Kedutan Otot","Gigi Gemerutuk","Suara Tidak Stabil",
+            "Tinnitus","Penglihatan Kabur","Muka Merah Gejala Somatic","Merasa Lemah","Perasaan Ditusuk","Takhikardia","Berdebar","Nyeri Di Dada",
+            "Denyut Nadi Mengeras","Perasaan Lesu","Detak Jantung Menghilang","Merasa Tertekan","Perasaan Tercekik","Sering Menarik Napas",
+            "Napas Pendek","Bulu Berdiri","Sulit Menelan","Perut Melilit","Ganguan Pencernaan","Rasa Kembung","Nyeri Makan","Terbakar Perut",
+            "Sukar BAB","Muntah","BAB Lembek","Kehilangan BB","Mual","Sering BAK","Tidak Bisa Menahan Kencing","Menjadi Dingin","Manorrhagia",
+            "Amenorrhoea","Ejakulasi Praecocks","Ereksi Hilang","Impotensi","Mulut Kering","Muka Merah Gejala Otonom","Mudah Berkeringat",
+            "Bulu Berdiri Gejala Otonom","Sakit Kepala","Gelisah Wawancara","Napas Pendek Wawancara","Jari Gemetar","Kerut Kening","Muka Tegang",
+            "Tonus Meningkat","Tidak Tenang","Muka Merah Wawancara","Total Skor","Keterangan Skor","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -80,7 +85,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 47; i++) {
+        for (i = 0; i < 94; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -94,11 +99,87 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 column.setPreferredWidth(25);
             }else if(i==5){
                 column.setPreferredWidth(115);
-            }else if(i==45){
+            }else if(i==6){
+                column.setPreferredWidth(42);
+            }else if(i==7){
+                column.setPreferredWidth(72);
+            }else if(i==8){
+                column.setPreferredWidth(109);
+            }else if(i==9){
+                column.setPreferredWidth(105);
+            }else if(i==10){
+                column.setPreferredWidth(85);
+            }else if(i==11){
+                column.setPreferredWidth(32);
+            }else if(i==12){
+                column.setPreferredWidth(132);
+            }else if(i==13){
+                column.setPreferredWidth(84);
+            }else if(i==14){
+                column.setPreferredWidth(89);
+            }else if(i==15){
+                column.setPreferredWidth(51);
+            }else if(i==16){
+                column.setPreferredWidth(45);
+            }else if(i==17){
+                column.setPreferredWidth(95);
+            }else if(i==18){
+                column.setPreferredWidth(127);
+            }else if(i==19){
+                column.setPreferredWidth(190);
+            }else if(i==20){
+                column.setPreferredWidth(140);
+            }else if(i==21){
+                column.setPreferredWidth(172);
+            }else if(i==22){
+                column.setPreferredWidth(120);
+            }else if(i==23){
+                column.setPreferredWidth(60);
+            }else if(i==24){
+                column.setPreferredWidth(120);
+            }else if(i==25){
+                column.setPreferredWidth(100);
+            }else if(i==26){
+                column.setPreferredWidth(69);
+            }else if(i==27){
+                column.setPreferredWidth(110);
+            }else if(i==28){
+                column.setPreferredWidth(130);
+            }else if(i==29){
+                column.setPreferredWidth(99);
+            }else if(i==30){
                 column.setPreferredWidth(90);
+            }else if(i==31){
+                column.setPreferredWidth(93);
+            }else if(i==32){
+                column.setPreferredWidth(87);
+            }else if(i==33){
+                column.setPreferredWidth(188);
+            }else if(i==34){
+                column.setPreferredWidth(36);
+            }else if(i==35){
+                column.setPreferredWidth(90);
+            }else if(i==36){
+                column.setPreferredWidth(97);
+            }else if(i==37){
+                column.setPreferredWidth(99);
+            }else if(i==38){
+                column.setPreferredWidth(33);
+            }else if(i==39){
+                column.setPreferredWidth(74);
+            }else if(i==40){
+                column.setPreferredWidth(85);
+            }else if(i==41){
+                column.setPreferredWidth(98);
+            }else if(i==42){
+                column.setPreferredWidth(47);
+            }else if(i==43){
+                column.setPreferredWidth(99);
+            }else if(i==44){
+                column.setPreferredWidth(142);
+            }else if(i==45){
+                column.setPreferredWidth(86);
             }else if(i==46){
-                column.setPreferredWidth(150);
-            }else{
                 column.setPreferredWidth(100);
             }
         }
@@ -130,16 +211,16 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             });
         }
         
-        pegawai.addWindowListener(new WindowListener() {
+        petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){  
-                    KodePetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
-                    NamaPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
+                if(petugas.getTable().getSelectedRow()!= -1){  
+                    KodePetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
                     btnPetugas.requestFocus();
                 }  
                     
@@ -308,10 +389,10 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         jSeparator13 = new javax.swing.JSeparator();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel104 = new widget.Label();
-        Kinis1 = new widget.ComboBox();
+        BangunDiniHari = new widget.ComboBox();
         jLabel105 = new widget.Label();
         jLabel107 = new widget.Label();
-        Kinis2 = new widget.ComboBox();
+        PerasaanBerubah = new widget.ComboBox();
         jLabel108 = new widget.Label();
         KedutanOtot = new widget.ComboBox();
         SakitNyeriDiOtot = new widget.ComboBox();
@@ -470,8 +551,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         jSeparator29 = new javax.swing.JSeparator();
         jSeparator30 = new javax.swing.JSeparator();
         jLabel24 = new widget.Label();
-        KodePetugas1 = new widget.TextBox();
-        KodePetugas2 = new widget.TextBox();
+        KeteranganSkor = new widget.TextBox();
+        TotalSkor = new widget.TextBox();
         jLabel184 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -666,7 +747,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -680,7 +761,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -829,7 +910,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2023 21:52:40" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-08-2023 06:18:12" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -841,21 +922,21 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(Tanggal);
         Tanggal.setBounds(79, 40, 130, 23);
 
-        jLabel23.setText("DPJP / Dokter Jaga / IGD :");
+        jLabel23.setText("Petugas :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(221, 40, 160, 23);
+        jLabel23.setBounds(221, 40, 140, 23);
 
         KodePetugas.setEditable(false);
         KodePetugas.setHighlighter(null);
         KodePetugas.setName("KodePetugas"); // NOI18N
         FormInput.add(KodePetugas);
-        KodePetugas.setBounds(385, 40, 127, 23);
+        KodePetugas.setBounds(365, 40, 127, 23);
 
         NamaPetugas.setEditable(false);
         NamaPetugas.setName("NamaPetugas"); // NOI18N
         FormInput.add(NamaPetugas);
-        NamaPetugas.setBounds(514, 40, 245, 23);
+        NamaPetugas.setBounds(494, 40, 265, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -906,6 +987,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         FirasatBuruk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         FirasatBuruk.setName("FirasatBuruk"); // NOI18N
+        FirasatBuruk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                FirasatBurukItemStateChanged(evt);
+            }
+        });
         FirasatBuruk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 FirasatBurukKeyPressed(evt);
@@ -916,6 +1002,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPikiranSendiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPikiranSendiri.setName("TakutPikiranSendiri"); // NOI18N
+        TakutPikiranSendiri.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPikiranSendiriItemStateChanged(evt);
+            }
+        });
         TakutPikiranSendiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPikiranSendiriKeyPressed(evt);
@@ -931,6 +1022,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Cemas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Cemas.setName("Cemas"); // NOI18N
+        Cemas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CemasItemStateChanged(evt);
+            }
+        });
         Cemas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CemasKeyPressed(evt);
@@ -952,6 +1048,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MudahTersinggung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MudahTersinggung.setName("MudahTersinggung"); // NOI18N
+        MudahTersinggung.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MudahTersinggungItemStateChanged(evt);
+            }
+        });
         MudahTersinggung.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MudahTersinggungKeyPressed(evt);
@@ -982,6 +1083,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MerasaTegang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MerasaTegang.setName("MerasaTegang"); // NOI18N
+        MerasaTegang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MerasaTegangItemStateChanged(evt);
+            }
+        });
         MerasaTegang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MerasaTegangKeyPressed(evt);
@@ -1003,6 +1109,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakBisaIstirahatTenang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakBisaIstirahatTenang.setName("TakBisaIstirahatTenang"); // NOI18N
+        TakBisaIstirahatTenang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakBisaIstirahatTenangItemStateChanged(evt);
+            }
+        });
         TakBisaIstirahatTenang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakBisaIstirahatTenangKeyPressed(evt);
@@ -1018,6 +1129,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Lesu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Lesu.setName("Lesu"); // NOI18N
+        Lesu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LesuItemStateChanged(evt);
+            }
+        });
         Lesu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 LesuKeyPressed(evt);
@@ -1033,6 +1149,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MudahTerkejut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MudahTerkejut.setName("MudahTerkejut"); // NOI18N
+        MudahTerkejut.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MudahTerkejutItemStateChanged(evt);
+            }
+        });
         MudahTerkejut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MudahTerkejutKeyPressed(evt);
@@ -1043,6 +1164,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MudahMenangis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MudahMenangis.setName("MudahMenangis"); // NOI18N
+        MudahMenangis.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MudahMenangisItemStateChanged(evt);
+            }
+        });
         MudahMenangis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MudahMenangisKeyPressed(evt);
@@ -1064,6 +1190,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Gemetar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Gemetar.setName("Gemetar"); // NOI18N
+        Gemetar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GemetarItemStateChanged(evt);
+            }
+        });
         Gemetar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GemetarKeyPressed(evt);
@@ -1074,6 +1205,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaGelap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaGelap.setName("TakutPadaGelap"); // NOI18N
+        TakutPadaGelap.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaGelapItemStateChanged(evt);
+            }
+        });
         TakutPadaGelap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaGelapKeyPressed(evt);
@@ -1095,6 +1231,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Gelisah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Gelisah.setName("Gelisah"); // NOI18N
+        Gelisah.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GelisahItemStateChanged(evt);
+            }
+        });
         Gelisah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GelisahKeyPressed(evt);
@@ -1130,6 +1271,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaOrangAsing.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaOrangAsing.setName("TakutPadaOrangAsing"); // NOI18N
+        TakutPadaOrangAsing.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaOrangAsingItemStateChanged(evt);
+            }
+        });
         TakutPadaOrangAsing.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaOrangAsingKeyPressed(evt);
@@ -1145,6 +1291,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutDitinggalSendiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutDitinggalSendiri.setName("TakutDitinggalSendiri"); // NOI18N
+        TakutDitinggalSendiri.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutDitinggalSendiriItemStateChanged(evt);
+            }
+        });
         TakutDitinggalSendiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutDitinggalSendiriKeyPressed(evt);
@@ -1155,6 +1306,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaBinatangBesar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaBinatangBesar.setName("TakutPadaBinatangBesar"); // NOI18N
+        TakutPadaBinatangBesar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaBinatangBesarItemStateChanged(evt);
+            }
+        });
         TakutPadaBinatangBesar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaBinatangBesarKeyPressed(evt);
@@ -1176,6 +1332,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaKeramaianLaluLintas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaKeramaianLaluLintas.setName("TakutPadaKeramaianLaluLintas"); // NOI18N
+        TakutPadaKeramaianLaluLintas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaKeramaianLaluLintasItemStateChanged(evt);
+            }
+        });
         TakutPadaKeramaianLaluLintas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaKeramaianLaluLintasKeyPressed(evt);
@@ -1211,6 +1372,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TakutPadaKerumunanBanyakOrang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TakutPadaKerumunanBanyakOrang.setName("TakutPadaKerumunanBanyakOrang"); // NOI18N
+        TakutPadaKerumunanBanyakOrang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakutPadaKerumunanBanyakOrangItemStateChanged(evt);
+            }
+        });
         TakutPadaKerumunanBanyakOrang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakutPadaKerumunanBanyakOrangKeyPressed(evt);
@@ -1221,6 +1387,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SulitTidur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SulitTidur.setName("SulitTidur"); // NOI18N
+        SulitTidur.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SulitTidurItemStateChanged(evt);
+            }
+        });
         SulitTidur.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SulitTidurKeyPressed(evt);
@@ -1242,6 +1413,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TerbangunMalamHari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TerbangunMalamHari.setName("TerbangunMalamHari"); // NOI18N
+        TerbangunMalamHari.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TerbangunMalamHariItemStateChanged(evt);
+            }
+        });
         TerbangunMalamHari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TerbangunMalamHariKeyPressed(evt);
@@ -1257,6 +1433,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TidurTidakNyeyak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TidurTidakNyeyak.setName("TidurTidakNyeyak"); // NOI18N
+        TidurTidakNyeyak.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TidurTidakNyeyakItemStateChanged(evt);
+            }
+        });
         TidurTidakNyeyak.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TidurTidakNyeyakKeyPressed(evt);
@@ -1272,6 +1453,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MimpiBuruk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MimpiBuruk.setName("MimpiBuruk"); // NOI18N
+        MimpiBuruk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MimpiBurukItemStateChanged(evt);
+            }
+        });
         MimpiBuruk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MimpiBurukKeyPressed(evt);
@@ -1296,6 +1482,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BangunDenganLesu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BangunDenganLesu.setName("BangunDenganLesu"); // NOI18N
+        BangunDenganLesu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BangunDenganLesuItemStateChanged(evt);
+            }
+        });
         BangunDenganLesu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BangunDenganLesuKeyPressed(evt);
@@ -1323,6 +1514,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         DayaIngatBuruk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         DayaIngatBuruk.setName("DayaIngatBuruk"); // NOI18N
+        DayaIngatBuruk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DayaIngatBurukItemStateChanged(evt);
+            }
+        });
         DayaIngatBuruk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DayaIngatBurukKeyPressed(evt);
@@ -1338,6 +1534,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SulitKonsentrasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SulitKonsentrasi.setName("SulitKonsentrasi"); // NOI18N
+        SulitKonsentrasi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SulitKonsentrasiItemStateChanged(evt);
+            }
+        });
         SulitKonsentrasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SulitKonsentrasiKeyPressed(evt);
@@ -1348,6 +1549,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MimpiMenakutkan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MimpiMenakutkan.setName("MimpiMenakutkan"); // NOI18N
+        MimpiMenakutkan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MimpiMenakutkanItemStateChanged(evt);
+            }
+        });
         MimpiMenakutkan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MimpiMenakutkanKeyPressed(evt);
@@ -1369,6 +1575,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BanyakMengalamiMimpi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BanyakMengalamiMimpi.setName("BanyakMengalamiMimpi"); // NOI18N
+        BanyakMengalamiMimpi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BanyakMengalamiMimpiItemStateChanged(evt);
+            }
+        });
         BanyakMengalamiMimpi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BanyakMengalamiMimpiKeyPressed(evt);
@@ -1379,6 +1590,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         HilangnyaMinat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         HilangnyaMinat.setName("HilangnyaMinat"); // NOI18N
+        HilangnyaMinat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                HilangnyaMinatItemStateChanged(evt);
+            }
+        });
         HilangnyaMinat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HilangnyaMinatKeyPressed(evt);
@@ -1420,6 +1636,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BerkurangnyaKesenanganPadaHobi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BerkurangnyaKesenanganPadaHobi.setName("BerkurangnyaKesenanganPadaHobi"); // NOI18N
+        BerkurangnyaKesenanganPadaHobi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BerkurangnyaKesenanganPadaHobiItemStateChanged(evt);
+            }
+        });
         BerkurangnyaKesenanganPadaHobi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BerkurangnyaKesenanganPadaHobiKeyPressed(evt);
@@ -1435,6 +1656,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Sedih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Sedih.setName("Sedih"); // NOI18N
+        Sedih.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SedihItemStateChanged(evt);
+            }
+        });
         Sedih.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SedihKeyPressed(evt);
@@ -1463,15 +1689,20 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel104);
         jLabel104.setBounds(10, 490, 180, 23);
 
-        Kinis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
-        Kinis1.setName("Kinis1"); // NOI18N
-        Kinis1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kinis1KeyPressed(evt);
+        BangunDiniHari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
+        BangunDiniHari.setName("BangunDiniHari"); // NOI18N
+        BangunDiniHari.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BangunDiniHariItemStateChanged(evt);
             }
         });
-        FormInput.add(Kinis1);
-        Kinis1.setBounds(136, 460, 60, 23);
+        BangunDiniHari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BangunDiniHariKeyPressed(evt);
+            }
+        });
+        FormInput.add(BangunDiniHari);
+        BangunDiniHari.setBounds(136, 460, 60, 23);
 
         jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel105.setText("Bangun Dini Hari");
@@ -1484,15 +1715,20 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel107);
         jLabel107.setBounds(256, 460, 245, 23);
 
-        Kinis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
-        Kinis2.setName("Kinis2"); // NOI18N
-        Kinis2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kinis2KeyPressed(evt);
+        PerasaanBerubah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
+        PerasaanBerubah.setName("PerasaanBerubah"); // NOI18N
+        PerasaanBerubah.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerasaanBerubahItemStateChanged(evt);
             }
         });
-        FormInput.add(Kinis2);
-        Kinis2.setBounds(505, 460, 60, 23);
+        PerasaanBerubah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PerasaanBerubahKeyPressed(evt);
+            }
+        });
+        FormInput.add(PerasaanBerubah);
+        PerasaanBerubah.setBounds(505, 460, 60, 23);
 
         jLabel108.setText("Kedutan Otot :");
         jLabel108.setName("jLabel108"); // NOI18N
@@ -1501,6 +1737,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         KedutanOtot.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         KedutanOtot.setName("KedutanOtot"); // NOI18N
+        KedutanOtot.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KedutanOtotItemStateChanged(evt);
+            }
+        });
         KedutanOtot.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KedutanOtotKeyPressed(evt);
@@ -1511,6 +1752,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SakitNyeriDiOtot.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SakitNyeriDiOtot.setName("SakitNyeriDiOtot"); // NOI18N
+        SakitNyeriDiOtot.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SakitNyeriDiOtotItemStateChanged(evt);
+            }
+        });
         SakitNyeriDiOtot.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SakitNyeriDiOtotKeyPressed(evt);
@@ -1532,6 +1778,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Kaku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Kaku.setName("Kaku"); // NOI18N
+        Kaku.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KakuItemStateChanged(evt);
+            }
+        });
         Kaku.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KakuKeyPressed(evt);
@@ -1547,6 +1798,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         GigiGemerutuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         GigiGemerutuk.setName("GigiGemerutuk"); // NOI18N
+        GigiGemerutuk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GigiGemerutukItemStateChanged(evt);
+            }
+        });
         GigiGemerutuk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GigiGemerutukKeyPressed(evt);
@@ -1557,6 +1813,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SuaraTidakStabil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SuaraTidakStabil.setName("SuaraTidakStabil"); // NOI18N
+        SuaraTidakStabil.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SuaraTidakStabilItemStateChanged(evt);
+            }
+        });
         SuaraTidakStabil.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SuaraTidakStabilKeyPressed(evt);
@@ -1573,6 +1834,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Tinnitus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Tinnitus.setName("Tinnitus"); // NOI18N
+        Tinnitus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TinnitusItemStateChanged(evt);
+            }
+        });
         Tinnitus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TinnitusKeyPressed(evt);
@@ -1614,6 +1880,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PenglihatanKabur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PenglihatanKabur.setName("PenglihatanKabur"); // NOI18N
+        PenglihatanKabur.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PenglihatanKaburItemStateChanged(evt);
+            }
+        });
         PenglihatanKabur.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PenglihatanKaburKeyPressed(evt);
@@ -1624,6 +1895,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MukaMerahGejalaSomatic.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MukaMerahGejalaSomatic.setName("MukaMerahGejalaSomatic"); // NOI18N
+        MukaMerahGejalaSomatic.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MukaMerahGejalaSomaticItemStateChanged(evt);
+            }
+        });
         MukaMerahGejalaSomatic.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MukaMerahGejalaSomaticKeyPressed(evt);
@@ -1644,6 +1920,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MerasaLemah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MerasaLemah.setName("MerasaLemah"); // NOI18N
+        MerasaLemah.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MerasaLemahItemStateChanged(evt);
+            }
+        });
         MerasaLemah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MerasaLemahKeyPressed(evt);
@@ -1654,6 +1935,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PerasaanDitusuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PerasaanDitusuk.setName("PerasaanDitusuk"); // NOI18N
+        PerasaanDitusuk.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerasaanDitusukItemStateChanged(evt);
+            }
+        });
         PerasaanDitusuk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PerasaanDitusukKeyPressed(evt);
@@ -1690,6 +1976,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Takhikardia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Takhikardia.setName("Takhikardia"); // NOI18N
+        Takhikardia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TakhikardiaItemStateChanged(evt);
+            }
+        });
         Takhikardia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TakhikardiaKeyPressed(evt);
@@ -1711,6 +2002,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Berdebar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Berdebar.setName("Berdebar"); // NOI18N
+        Berdebar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BerdebarItemStateChanged(evt);
+            }
+        });
         Berdebar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BerdebarKeyPressed(evt);
@@ -1726,6 +2022,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         NyeriDiDada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         NyeriDiDada.setName("NyeriDiDada"); // NOI18N
+        NyeriDiDada.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NyeriDiDadaItemStateChanged(evt);
+            }
+        });
         NyeriDiDada.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NyeriDiDadaKeyPressed(evt);
@@ -1741,6 +2042,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         DenyutNadiMengeras.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         DenyutNadiMengeras.setName("DenyutNadiMengeras"); // NOI18N
+        DenyutNadiMengeras.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DenyutNadiMengerasItemStateChanged(evt);
+            }
+        });
         DenyutNadiMengeras.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DenyutNadiMengerasKeyPressed(evt);
@@ -1751,6 +2057,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PerasaanLesu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PerasaanLesu.setName("PerasaanLesu"); // NOI18N
+        PerasaanLesu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerasaanLesuItemStateChanged(evt);
+            }
+        });
         PerasaanLesu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PerasaanLesuKeyPressed(evt);
@@ -1772,6 +2083,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         DetakJantungMenghilang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         DetakJantungMenghilang.setName("DetakJantungMenghilang"); // NOI18N
+        DetakJantungMenghilang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DetakJantungMenghilangItemStateChanged(evt);
+            }
+        });
         DetakJantungMenghilang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DetakJantungMenghilangKeyPressed(evt);
@@ -1802,6 +2118,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MerasaTertekan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MerasaTertekan.setName("MerasaTertekan"); // NOI18N
+        MerasaTertekan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MerasaTertekanItemStateChanged(evt);
+            }
+        });
         MerasaTertekan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MerasaTertekanKeyPressed(evt);
@@ -1818,6 +2139,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         NapasPendek.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         NapasPendek.setName("NapasPendek"); // NOI18N
+        NapasPendek.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NapasPendekItemStateChanged(evt);
+            }
+        });
         NapasPendek.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NapasPendekKeyPressed(evt);
@@ -1839,6 +2165,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SeringMenarikNapas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SeringMenarikNapas.setName("SeringMenarikNapas"); // NOI18N
+        SeringMenarikNapas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SeringMenarikNapasItemStateChanged(evt);
+            }
+        });
         SeringMenarikNapas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SeringMenarikNapasKeyPressed(evt);
@@ -1854,6 +2185,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PerasaanTercekik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PerasaanTercekik.setName("PerasaanTercekik"); // NOI18N
+        PerasaanTercekik.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerasaanTercekikItemStateChanged(evt);
+            }
+        });
         PerasaanTercekik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PerasaanTercekikKeyPressed(evt);
@@ -1869,6 +2205,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BuluBerdiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BuluBerdiri.setName("BuluBerdiri"); // NOI18N
+        BuluBerdiri.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BuluBerdiriItemStateChanged(evt);
+            }
+        });
         BuluBerdiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BuluBerdiriKeyPressed(evt);
@@ -1899,6 +2240,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SulitMenelan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SulitMenelan.setName("SulitMenelan"); // NOI18N
+        SulitMenelan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SulitMenelanItemStateChanged(evt);
+            }
+        });
         SulitMenelan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SulitMenelanKeyPressed(evt);
@@ -1920,6 +2266,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         PerutMelilit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         PerutMelilit.setName("PerutMelilit"); // NOI18N
+        PerutMelilit.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PerutMelilitItemStateChanged(evt);
+            }
+        });
         PerutMelilit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PerutMelilitKeyPressed(evt);
@@ -1928,20 +2279,25 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(PerutMelilit);
         PerutMelilit.setBounds(293, 830, 60, 23);
 
-        jLabel134.setText("Ganguan Pencernaan :");
+        jLabel134.setText("Gangguan Pencernaan :");
         jLabel134.setName("jLabel134"); // NOI18N
         FormInput.add(jLabel134);
-        jLabel134.setBounds(370, 830, 130, 23);
+        jLabel134.setBounds(375, 830, 130, 23);
 
         GanguanPencernaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         GanguanPencernaan.setName("GanguanPencernaan"); // NOI18N
+        GanguanPencernaan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GanguanPencernaanItemStateChanged(evt);
+            }
+        });
         GanguanPencernaan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GanguanPencernaanKeyPressed(evt);
             }
         });
         FormInput.add(GanguanPencernaan);
-        GanguanPencernaan.setBounds(504, 830, 60, 23);
+        GanguanPencernaan.setBounds(509, 830, 60, 23);
 
         jLabel135.setText("Rasa Penuh & Kembung :");
         jLabel135.setName("jLabel135"); // NOI18N
@@ -1950,6 +2306,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         RasaKembung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         RasaKembung.setName("RasaKembung"); // NOI18N
+        RasaKembung.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RasaKembungItemStateChanged(evt);
+            }
+        });
         RasaKembung.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RasaKembungKeyPressed(evt);
@@ -1960,6 +2321,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         NyeriMakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         NyeriMakan.setName("NyeriMakan"); // NOI18N
+        NyeriMakan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NyeriMakanItemStateChanged(evt);
+            }
+        });
         NyeriMakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NyeriMakanKeyPressed(evt);
@@ -1981,6 +2347,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TerbakarPerut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TerbakarPerut.setName("TerbakarPerut"); // NOI18N
+        TerbakarPerut.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TerbakarPerutItemStateChanged(evt);
+            }
+        });
         TerbakarPerut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TerbakarPerutKeyPressed(evt);
@@ -1996,6 +2367,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Mual.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Mual.setName("Mual"); // NOI18N
+        Mual.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MualItemStateChanged(evt);
+            }
+        });
         Mual.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MualKeyPressed(evt);
@@ -2006,6 +2382,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Muntah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Muntah.setName("Muntah"); // NOI18N
+        Muntah.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MuntahItemStateChanged(evt);
+            }
+        });
         Muntah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MuntahKeyPressed(evt);
@@ -2027,6 +2408,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BABLembek.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BABLembek.setName("BABLembek"); // NOI18N
+        BABLembek.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BABLembekItemStateChanged(evt);
+            }
+        });
         BABLembek.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BABLembekKeyPressed(evt);
@@ -2042,6 +2428,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         KehilanganBB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         KehilanganBB.setName("KehilanganBB"); // NOI18N
+        KehilanganBB.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KehilanganBBItemStateChanged(evt);
+            }
+        });
         KehilanganBB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KehilanganBBKeyPressed(evt);
@@ -2057,6 +2448,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SukarBAB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SukarBAB.setName("SukarBAB"); // NOI18N
+        SukarBAB.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SukarBABItemStateChanged(evt);
+            }
+        });
         SukarBAB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SukarBABKeyPressed(evt);
@@ -2087,6 +2483,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SeringBAK.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SeringBAK.setName("SeringBAK"); // NOI18N
+        SeringBAK.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SeringBAKItemStateChanged(evt);
+            }
+        });
         SeringBAK.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SeringBAKKeyPressed(evt);
@@ -2108,6 +2509,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TidakBisaMenahanKencing.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TidakBisaMenahanKencing.setName("TidakBisaMenahanKencing"); // NOI18N
+        TidakBisaMenahanKencing.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TidakBisaMenahanKencingItemStateChanged(evt);
+            }
+        });
         TidakBisaMenahanKencing.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TidakBisaMenahanKencingKeyPressed(evt);
@@ -2123,6 +2529,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MenjadiDingin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MenjadiDingin.setName("MenjadiDingin"); // NOI18N
+        MenjadiDingin.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MenjadiDinginItemStateChanged(evt);
+            }
+        });
         MenjadiDingin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MenjadiDinginKeyPressed(evt);
@@ -2138,6 +2549,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Amenorrhoea.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Amenorrhoea.setName("Amenorrhoea"); // NOI18N
+        Amenorrhoea.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AmenorrhoeaItemStateChanged(evt);
+            }
+        });
         Amenorrhoea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AmenorrhoeaKeyPressed(evt);
@@ -2148,6 +2564,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Manorrhagia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Manorrhagia.setName("Manorrhagia"); // NOI18N
+        Manorrhagia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ManorrhagiaItemStateChanged(evt);
+            }
+        });
         Manorrhagia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ManorrhagiaKeyPressed(evt);
@@ -2164,6 +2585,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         EjakulasiPraecocks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         EjakulasiPraecocks.setName("EjakulasiPraecocks"); // NOI18N
+        EjakulasiPraecocks.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EjakulasiPraecocksItemStateChanged(evt);
+            }
+        });
         EjakulasiPraecocks.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 EjakulasiPraecocksKeyPressed(evt);
@@ -2185,6 +2611,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         EreksiHilang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         EreksiHilang.setName("EreksiHilang"); // NOI18N
+        EreksiHilang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EreksiHilangItemStateChanged(evt);
+            }
+        });
         EreksiHilang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 EreksiHilangKeyPressed(evt);
@@ -2200,6 +2631,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         Impotensi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         Impotensi.setName("Impotensi"); // NOI18N
+        Impotensi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ImpotensiItemStateChanged(evt);
+            }
+        });
         Impotensi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ImpotensiKeyPressed(evt);
@@ -2230,6 +2666,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MulutKering.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MulutKering.setName("MulutKering"); // NOI18N
+        MulutKering.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MulutKeringItemStateChanged(evt);
+            }
+        });
         MulutKering.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MulutKeringKeyPressed(evt);
@@ -2251,6 +2692,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MukaMerahGejalaOtonom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MukaMerahGejalaOtonom.setName("MukaMerahGejalaOtonom"); // NOI18N
+        MukaMerahGejalaOtonom.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MukaMerahGejalaOtonomItemStateChanged(evt);
+            }
+        });
         MukaMerahGejalaOtonom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MukaMerahGejalaOtonomKeyPressed(evt);
@@ -2266,6 +2712,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MudahBerkeringat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MudahBerkeringat.setName("MudahBerkeringat"); // NOI18N
+        MudahBerkeringat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MudahBerkeringatItemStateChanged(evt);
+            }
+        });
         MudahBerkeringat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MudahBerkeringatKeyPressed(evt);
@@ -2281,6 +2732,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         BuluBerdiriGejalaOtonom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         BuluBerdiriGejalaOtonom.setName("BuluBerdiriGejalaOtonom"); // NOI18N
+        BuluBerdiriGejalaOtonom.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BuluBerdiriGejalaOtonomItemStateChanged(evt);
+            }
+        });
         BuluBerdiriGejalaOtonom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BuluBerdiriGejalaOtonomKeyPressed(evt);
@@ -2291,6 +2747,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         SakitKepala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         SakitKepala.setName("SakitKepala"); // NOI18N
+        SakitKepala.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SakitKepalaItemStateChanged(evt);
+            }
+        });
         SakitKepala.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SakitKepalaKeyPressed(evt);
@@ -2327,6 +2788,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         GelisahWawancara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         GelisahWawancara.setName("GelisahWawancara"); // NOI18N
+        GelisahWawancara.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GelisahWawancaraItemStateChanged(evt);
+            }
+        });
         GelisahWawancara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GelisahWawancaraKeyPressed(evt);
@@ -2348,6 +2814,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         NapasPendekWawancara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         NapasPendekWawancara.setName("NapasPendekWawancara"); // NOI18N
+        NapasPendekWawancara.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NapasPendekWawancaraItemStateChanged(evt);
+            }
+        });
         NapasPendekWawancara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NapasPendekWawancaraKeyPressed(evt);
@@ -2363,6 +2834,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         JariGemetar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         JariGemetar.setName("JariGemetar"); // NOI18N
+        JariGemetar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JariGemetarItemStateChanged(evt);
+            }
+        });
         JariGemetar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JariGemetarKeyPressed(evt);
@@ -2378,6 +2854,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         KerutKening.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         KerutKening.setName("KerutKening"); // NOI18N
+        KerutKening.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KerutKeningItemStateChanged(evt);
+            }
+        });
         KerutKening.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KerutKeningKeyPressed(evt);
@@ -2393,6 +2874,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MukaMerahWawancara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MukaMerahWawancara.setName("MukaMerahWawancara"); // NOI18N
+        MukaMerahWawancara.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MukaMerahWawancaraItemStateChanged(evt);
+            }
+        });
         MukaMerahWawancara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MukaMerahWawancaraKeyPressed(evt);
@@ -2403,6 +2889,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TidakTenang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TidakTenang.setName("TidakTenang"); // NOI18N
+        TidakTenang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TidakTenangItemStateChanged(evt);
+            }
+        });
         TidakTenang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TidakTenangKeyPressed(evt);
@@ -2418,6 +2909,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         TonusMeningkat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         TonusMeningkat.setName("TonusMeningkat"); // NOI18N
+        TonusMeningkat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TonusMeningkatItemStateChanged(evt);
+            }
+        });
         TonusMeningkat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TonusMeningkatKeyPressed(evt);
@@ -2433,6 +2929,11 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         MukaTegang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MukaTegang.setName("MukaTegang"); // NOI18N
+        MukaTegang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MukaTegangItemStateChanged(evt);
+            }
+        });
         MukaTegang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MukaTegangKeyPressed(evt);
@@ -2607,17 +3108,17 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         FormInput.add(jLabel24);
         jLabel24.setBounds(10, 1200, 130, 23);
 
-        KodePetugas1.setEditable(false);
-        KodePetugas1.setHighlighter(null);
-        KodePetugas1.setName("KodePetugas1"); // NOI18N
-        FormInput.add(KodePetugas1);
-        KodePetugas1.setBounds(180, 1200, 609, 23);
+        KeteranganSkor.setEditable(false);
+        KeteranganSkor.setHighlighter(null);
+        KeteranganSkor.setName("KeteranganSkor"); // NOI18N
+        FormInput.add(KeteranganSkor);
+        KeteranganSkor.setBounds(180, 1200, 609, 23);
 
-        KodePetugas2.setEditable(false);
-        KodePetugas2.setHighlighter(null);
-        KodePetugas2.setName("KodePetugas2"); // NOI18N
-        FormInput.add(KodePetugas2);
-        KodePetugas2.setBounds(128, 1200, 50, 23);
+        TotalSkor.setEditable(false);
+        TotalSkor.setHighlighter(null);
+        TotalSkor.setName("TotalSkor"); // NOI18N
+        FormInput.add(TotalSkor);
+        TotalSkor.setBounds(128, 1200, 50, 23);
 
         jLabel184.setText(":");
         jLabel184.setName("jLabel184"); // NOI18N
@@ -2651,31 +3152,39 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnPetugas,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnPetugas,"Petugas");
         }else{
-            if(Sequel.menyimpantf("checklist_kriteria_masuk_icu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",42,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Cemas.getSelectedItem().toString(),
-                FirasatBuruk.getSelectedItem().toString(),TakutPikiranSendiri.getSelectedItem().toString(),MudahTersinggung.getSelectedItem().toString(),PenglihatanKabur.getSelectedItem().toString(),
-                MukaMerahGejalaSomatic.getSelectedItem().toString(),MerasaTegang.getSelectedItem().toString(),Lesu.getSelectedItem().toString(),TakBisaIstirahatTenang.getSelectedItem().toString(),
-                MudahTerkejut.getSelectedItem().toString(),MudahMenangis.getSelectedItem().toString(),Gemetar.getSelectedItem().toString(),Gelisah.getSelectedItem().toString(),
-                TakutPadaGelap.getSelectedItem().toString(),TakutPadaOrangAsing.getSelectedItem().toString(),TakutDitinggalSendiri.getSelectedItem().toString(),TakutPadaBinatangBesar.getSelectedItem().toString(),
-                TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),SulitTidur.getSelectedItem().toString(),TerbangunMalamHari.getSelectedItem().toString(),
-                TidurTidakNyeyak.getSelectedItem().toString(),MimpiBuruk.getSelectedItem().toString(),BangunDenganLesu.getSelectedItem().toString(),BanyakMengalamiMimpi.getSelectedItem().toString(),
-                MimpiMenakutkan.getSelectedItem().toString(),SulitKonsentrasi.getSelectedItem().toString(),DayaIngatBuruk.getSelectedItem().toString(),HilangnyaMinat.getSelectedItem().toString(),
-                BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),Sedih.getSelectedItem().toString(),Kinis1.getSelectedItem().toString(),Kinis2.getSelectedItem().toString(),
-                KedutanOtot.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),GigiGemerutuk.getSelectedItem().toString(),SuaraTidakStabil.getSelectedItem().toString(),
-                Tinnitus.getSelectedItem().toString(),KodePetugas.getText()
+            if(Sequel.menyimpantf("penilaian_level_kecemasan_ranap_anak","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",89,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Cemas.getSelectedItem().toString(),FirasatBuruk.getSelectedItem().toString(),TakutPikiranSendiri.getSelectedItem().toString(),MudahTersinggung.getSelectedItem().toString(),
+                MerasaTegang.getSelectedItem().toString(),Lesu.getSelectedItem().toString(),TakBisaIstirahatTenang.getSelectedItem().toString(),MudahTerkejut.getSelectedItem().toString(),MudahMenangis.getSelectedItem().toString(),Gemetar.getSelectedItem().toString(),Gelisah.getSelectedItem().toString(),
+                TakutPadaGelap.getSelectedItem().toString(),TakutPadaOrangAsing.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),TakutPadaBinatangBesar.getSelectedItem().toString(),TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),
+                TakutDitinggalSendiri.getSelectedItem().toString(),SulitTidur.getSelectedItem().toString(),TerbangunMalamHari.getSelectedItem().toString(),TidurTidakNyeyak.getSelectedItem().toString(),MimpiBuruk.getSelectedItem().toString(),BangunDenganLesu.getSelectedItem().toString(),
+                BanyakMengalamiMimpi.getSelectedItem().toString(),MimpiMenakutkan.getSelectedItem().toString(),SulitKonsentrasi.getSelectedItem().toString(),DayaIngatBuruk.getSelectedItem().toString(),HilangnyaMinat.getSelectedItem().toString(),BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),
+                Sedih.getSelectedItem().toString(),BangunDiniHari.getSelectedItem().toString(),PerasaanBerubah.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),KedutanOtot.getSelectedItem().toString(),GigiGemerutuk.getSelectedItem().toString(),
+                SuaraTidakStabil.getSelectedItem().toString(),Tinnitus.getSelectedItem().toString(),PenglihatanKabur.getSelectedItem().toString(),MukaMerahGejalaSomatic.getSelectedItem().toString(),MerasaLemah.getSelectedItem().toString(),PerasaanDitusuk.getSelectedItem().toString(),
+                Takhikardia.getSelectedItem().toString(),Berdebar.getSelectedItem().toString(),NyeriDiDada.getSelectedItem().toString(),DenyutNadiMengeras.getSelectedItem().toString(),PerasaanLesu.getSelectedItem().toString(),DetakJantungMenghilang.getSelectedItem().toString(),
+                MerasaTertekan.getSelectedItem().toString(),PerasaanTercekik.getSelectedItem().toString(),SeringMenarikNapas.getSelectedItem().toString(),NapasPendek.getSelectedItem().toString(),BuluBerdiri.getSelectedItem().toString(),SulitMenelan.getSelectedItem().toString(),
+                PerutMelilit.getSelectedItem().toString(),GanguanPencernaan.getSelectedItem().toString(),RasaKembung.getSelectedItem().toString(),NyeriMakan.getSelectedItem().toString(),TerbakarPerut.getSelectedItem().toString(),SukarBAB.getSelectedItem().toString(),Muntah.getSelectedItem().toString(),
+                BABLembek.getSelectedItem().toString(),KehilanganBB.getSelectedItem().toString(),Mual.getSelectedItem().toString(),SeringBAK.getSelectedItem().toString(),TidakBisaMenahanKencing.getSelectedItem().toString(),MenjadiDingin.getSelectedItem().toString(),Manorrhagia.getSelectedItem().toString(),
+                Amenorrhoea.getSelectedItem().toString(),EjakulasiPraecocks.getSelectedItem().toString(),EreksiHilang.getSelectedItem().toString(),Impotensi.getSelectedItem().toString(),MulutKering.getSelectedItem().toString(),MukaMerahGejalaOtonom.getSelectedItem().toString(),
+                MudahBerkeringat.getSelectedItem().toString(),BuluBerdiriGejalaOtonom.getSelectedItem().toString(),SakitKepala.getSelectedItem().toString(),GelisahWawancara.getSelectedItem().toString(),NapasPendekWawancara.getSelectedItem().toString(),JariGemetar.getSelectedItem().toString(),
+                KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KodePetugas.getText()
             })==true){
                 tabMode.addRow(new String[]{
-                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    Cemas.getSelectedItem().toString(),FirasatBuruk.getSelectedItem().toString(),TakutPikiranSendiri.getSelectedItem().toString(),MudahTersinggung.getSelectedItem().toString(),PenglihatanKabur.getSelectedItem().toString(),
-                    MukaMerahGejalaSomatic.getSelectedItem().toString(),MerasaTegang.getSelectedItem().toString(),Lesu.getSelectedItem().toString(),TakBisaIstirahatTenang.getSelectedItem().toString(),MudahTerkejut.getSelectedItem().toString(),
-                    MudahMenangis.getSelectedItem().toString(),Gemetar.getSelectedItem().toString(),Gelisah.getSelectedItem().toString(),TakutPadaGelap.getSelectedItem().toString(),TakutPadaOrangAsing.getSelectedItem().toString(),
-                    TakutDitinggalSendiri.getSelectedItem().toString(),TakutPadaBinatangBesar.getSelectedItem().toString(),TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),SulitTidur.getSelectedItem().toString(),
-                    TerbangunMalamHari.getSelectedItem().toString(),TidurTidakNyeyak.getSelectedItem().toString(),MimpiBuruk.getSelectedItem().toString(),BangunDenganLesu.getSelectedItem().toString(),BanyakMengalamiMimpi.getSelectedItem().toString(),
-                    MimpiMenakutkan.getSelectedItem().toString(),SulitKonsentrasi.getSelectedItem().toString(),DayaIngatBuruk.getSelectedItem().toString(),HilangnyaMinat.getSelectedItem().toString(),BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),
-                    Sedih.getSelectedItem().toString(),Kinis1.getSelectedItem().toString(),Kinis2.getSelectedItem().toString(),KedutanOtot.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),
-                    GigiGemerutuk.getSelectedItem().toString(),SuaraTidakStabil.getSelectedItem().toString(),Tinnitus.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Cemas.getSelectedItem().toString(),FirasatBuruk.getSelectedItem().toString(),TakutPikiranSendiri.getSelectedItem().toString(),MudahTersinggung.getSelectedItem().toString(),
+                    MerasaTegang.getSelectedItem().toString(),Lesu.getSelectedItem().toString(),TakBisaIstirahatTenang.getSelectedItem().toString(),MudahTerkejut.getSelectedItem().toString(),MudahMenangis.getSelectedItem().toString(),Gemetar.getSelectedItem().toString(),Gelisah.getSelectedItem().toString(),
+                    TakutPadaGelap.getSelectedItem().toString(),TakutPadaOrangAsing.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),TakutPadaBinatangBesar.getSelectedItem().toString(),TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),
+                    TakutDitinggalSendiri.getSelectedItem().toString(),SulitTidur.getSelectedItem().toString(),TerbangunMalamHari.getSelectedItem().toString(),TidurTidakNyeyak.getSelectedItem().toString(),MimpiBuruk.getSelectedItem().toString(),BangunDenganLesu.getSelectedItem().toString(),
+                    BanyakMengalamiMimpi.getSelectedItem().toString(),MimpiMenakutkan.getSelectedItem().toString(),SulitKonsentrasi.getSelectedItem().toString(),DayaIngatBuruk.getSelectedItem().toString(),HilangnyaMinat.getSelectedItem().toString(),BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),
+                    Sedih.getSelectedItem().toString(),BangunDiniHari.getSelectedItem().toString(),PerasaanBerubah.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),KedutanOtot.getSelectedItem().toString(),GigiGemerutuk.getSelectedItem().toString(),
+                    SuaraTidakStabil.getSelectedItem().toString(),Tinnitus.getSelectedItem().toString(),PenglihatanKabur.getSelectedItem().toString(),MukaMerahGejalaSomatic.getSelectedItem().toString(),MerasaLemah.getSelectedItem().toString(),PerasaanDitusuk.getSelectedItem().toString(),
+                    Takhikardia.getSelectedItem().toString(),Berdebar.getSelectedItem().toString(),NyeriDiDada.getSelectedItem().toString(),DenyutNadiMengeras.getSelectedItem().toString(),PerasaanLesu.getSelectedItem().toString(),DetakJantungMenghilang.getSelectedItem().toString(),
+                    MerasaTertekan.getSelectedItem().toString(),PerasaanTercekik.getSelectedItem().toString(),SeringMenarikNapas.getSelectedItem().toString(),NapasPendek.getSelectedItem().toString(),BuluBerdiri.getSelectedItem().toString(),SulitMenelan.getSelectedItem().toString(),
+                    PerutMelilit.getSelectedItem().toString(),GanguanPencernaan.getSelectedItem().toString(),RasaKembung.getSelectedItem().toString(),NyeriMakan.getSelectedItem().toString(),TerbakarPerut.getSelectedItem().toString(),SukarBAB.getSelectedItem().toString(),Muntah.getSelectedItem().toString(),
+                    BABLembek.getSelectedItem().toString(),KehilanganBB.getSelectedItem().toString(),Mual.getSelectedItem().toString(),SeringBAK.getSelectedItem().toString(),TidakBisaMenahanKencing.getSelectedItem().toString(),MenjadiDingin.getSelectedItem().toString(),Manorrhagia.getSelectedItem().toString(),
+                    Amenorrhoea.getSelectedItem().toString(),EjakulasiPraecocks.getSelectedItem().toString(),EreksiHilang.getSelectedItem().toString(),Impotensi.getSelectedItem().toString(),MulutKering.getSelectedItem().toString(),MukaMerahGejalaOtonom.getSelectedItem().toString(),
+                    MudahBerkeringat.getSelectedItem().toString(),BuluBerdiriGejalaOtonom.getSelectedItem().toString(),SakitKepala.getSelectedItem().toString(),GelisahWawancara.getSelectedItem().toString(),NapasPendekWawancara.getSelectedItem().toString(),JariGemetar.getSelectedItem().toString(),
+                    KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KodePetugas.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -2687,7 +3196,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Infeksi,BtnBatal);
+            Valid.pindah(evt,MukaMerahWawancara,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -2708,7 +3217,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else {
-                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString())){
+                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),92).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
@@ -2731,13 +3240,13 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(btnPetugas,"DPJP/Dokter Jaga/IGD");
+            Valid.textKosong(btnPetugas,"Petugas");
         }else{  
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString())){
+                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),92).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
@@ -2758,7 +3267,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        pegawai.dispose();
+        petugas.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -2784,47 +3293,94 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Operasi Dengan Gangguan Nafas Atau Hipotensi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Jantung Dengan Tanda Bendungan Paru</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Asam Basa / Elektrolit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Ginjal Dengan Tanda Bendungan Paru</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Syok Karena Perdarahan Anafilaksis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Operasi Besar</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang Berulang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Kesadaran</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dehidrasi Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Jalan Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Arimia Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asma Akut Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diabetes Yang Memerlukan Terapi Insulin Kontinyu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyakit Keganasan Dengan Metastasis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Geriatrik Dengan Fungsi Hidup Sebelumnya Minimal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Dengan GCS 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Jantung, Penyakit Paru Terminal Disertai Komplikasi Penyakit Akut Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi < 40 atau >150 (x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SBP < 80 mmHg Atau 20 mmHg Di Bawah SBP Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MAP < 60 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DBP > 120 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>R > 35 x/menit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Na < 110 meq/L Atau > 170 meq/L</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ca > 15 mg/dl</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GDS > 800 mg/dl</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>K < 2 meq/L Atau 7meq/L</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PaO2 < 50 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PH < 7,1 Atau 7,7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perbedaan Cerebrovaskuler, SAH, Atau Contusion Dengan Gangguan Kesadaran Atau Neorologi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ruptor Organ Dalam, Kandung Kemih, Hati, Varices Esophagus Atau Uterus Dengan Gangguan Hemodinamik</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pupil Anisokor</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Obstruksi Jalan Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anuria</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang Berulang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tamponade Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Coma</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sianosis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Luka Bakar > 10 % BSA</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP/Kode Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/IGD</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cemas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Firasat Buruk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pikiran Sendiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mudah Tersinggung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merasa Tegang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lesu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tak Bisa Istirahat Tenang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mudah Terkejut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mudah Menangis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gemetar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gelisah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada Gelap</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada OrangAsing</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada Kerumunan Banyak Orang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada Binatang Besar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Pada Keramaian Lalu Lintas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takut Ditinggal Sendiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sulit Tidur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Terbangun Malam Hari</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidur Tidak Nyeyak</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mimpi Buruk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bangun Dengan Lesu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Banyak Mengalami Mimpi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mimpi Menakutkan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sulit Konsentrasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Daya Ingat Buruk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hilangnya Minat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berkurangnya Kesenangan Pada Hobi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sedih</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bangun Dini Hari</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perasaan Berubah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sakit Nyeri Di Otot</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kaku</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kedutan Otot</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gigi Gemerutuk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suara Tidak Stabil</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tinnitus</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penglihatan Kabur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muka Merah Gejala Somatic</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merasa Lemah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perasaan Ditusuk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Takhikardia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berdebar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Di Dada</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Denyut Nadi Mengeras</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perasaan Lesu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Detak Jantung Menghilang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merasa Tertekan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perasaan Tercekik</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sering Menarik Napas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Napas Pendek</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bulu Berdiri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sulit Menelan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perut Melilit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ganguan Pencernaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rasa Kembung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Makan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Terbakar Perut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sukar BAB</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muntah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BAB Lembek</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kehilangan BB</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mual</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sering BAK</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Bisa Menahan Kencing</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Menjadi Dingin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Manorrhagia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Amenorrhoea</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ejakulasi Praecocks</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ereksi Hilang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Impotensi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mulut Kering</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muka Merah Gejala Otonom</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mudah Berkeringat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bulu Berdiri Gejala Otonom</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sakit Kepala</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gelisah Wawancara</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Napas Pendek Wawancara</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jari Gemetar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kerut Kening</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muka Tegang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tonus Meningkat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Tenang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muka Merah Wawancara</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Skor</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                     "</tr>"
                 );
                 
@@ -2878,12 +3434,59 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                             "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,49).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,50).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,51).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,52).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,53).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,54).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,55).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,56).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,57).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,58).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,59).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,60).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,61).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,62).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,63).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,64).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,65).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,66).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,67).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,68).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,69).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,70).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,71).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,72).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,73).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,74).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,75).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,76).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,77).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,78).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,79).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,80).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,81).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,82).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,83).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,84).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,85).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,86).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,87).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,88).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,89).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,90).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,91).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,92).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,93).toString()+"</td>"+
                         "</tr>");
                 }
                 
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='5100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='7100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -2904,17 +3507,17 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 );
                 bg.close();
 
-                File f = new File("DataChecklistKriteriaMasukICU.html");            
+                File f = new File("DataPenilaianevelKecemasanRanapAnak.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='5100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='7100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA MASUK ICU<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN LEVEL KECEMASAN PASIEN RAWAT INAP ANAK<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -3007,31 +3610,31 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),46).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),45).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join petugas on petugas.id=sidikjari.id where petugas.nip=?",tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),46).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),45).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirChecklistKriteriaMasukICU.jasper","report","::[ Formulir Check List Kriteria Masuk ICU ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_icu.tanggal,"+
-                    "checklist_kriteria_masuk_icu.prioritas1_1,checklist_kriteria_masuk_icu.prioritas1_2,checklist_kriteria_masuk_icu.prioritas1_3,"+
-                    "checklist_kriteria_masuk_icu.prioritas1_4,checklist_kriteria_masuk_icu.prioritas1_5,checklist_kriteria_masuk_icu.prioritas1_6,"+
-                    "checklist_kriteria_masuk_icu.prioritas2_1,checklist_kriteria_masuk_icu.prioritas2_2,checklist_kriteria_masuk_icu.prioritas2_3,"+
-                    "checklist_kriteria_masuk_icu.prioritas2_4,checklist_kriteria_masuk_icu.prioritas2_5,checklist_kriteria_masuk_icu.prioritas2_6,"+
-                    "checklist_kriteria_masuk_icu.prioritas2_7,checklist_kriteria_masuk_icu.prioritas2_8,checklist_kriteria_masuk_icu.prioritas3_1,"+
-                    "checklist_kriteria_masuk_icu.prioritas3_2,checklist_kriteria_masuk_icu.prioritas3_3,checklist_kriteria_masuk_icu.prioritas3_4,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_1,checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_2,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_3,checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_4,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_5,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_1,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_3,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_4,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_5,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_6,checklist_kriteria_masuk_icu.kriteria_fisiologis_radiologi_1,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_radiologi_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_1,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_3,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_4,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_5,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_6,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_7,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_8,checklist_kriteria_masuk_icu.nik,pegawai.nama "+
-                    "from checklist_kriteria_masuk_icu inner join reg_periksa on checklist_kriteria_masuk_icu.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_level_kecemasan_ranap_anak.tanggal,"+
+                    "penilaian_level_kecemasan_ranap_anak.prioritas1_1,penilaian_level_kecemasan_ranap_anak.prioritas1_2,penilaian_level_kecemasan_ranap_anak.prioritas1_3,"+
+                    "penilaian_level_kecemasan_ranap_anak.prioritas1_4,penilaian_level_kecemasan_ranap_anak.prioritas1_5,penilaian_level_kecemasan_ranap_anak.prioritas1_6,"+
+                    "penilaian_level_kecemasan_ranap_anak.prioritas2_1,penilaian_level_kecemasan_ranap_anak.prioritas2_2,penilaian_level_kecemasan_ranap_anak.prioritas2_3,"+
+                    "penilaian_level_kecemasan_ranap_anak.prioritas2_4,penilaian_level_kecemasan_ranap_anak.prioritas2_5,penilaian_level_kecemasan_ranap_anak.prioritas2_6,"+
+                    "penilaian_level_kecemasan_ranap_anak.prioritas2_7,penilaian_level_kecemasan_ranap_anak.prioritas2_8,penilaian_level_kecemasan_ranap_anak.prioritas3_1,"+
+                    "penilaian_level_kecemasan_ranap_anak.prioritas3_2,penilaian_level_kecemasan_ranap_anak.prioritas3_3,penilaian_level_kecemasan_ranap_anak.prioritas3_4,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_1,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_2,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_3,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_4,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_5,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_1,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_2,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_3,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_4,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_5,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_6,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_radiologi_1,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_radiologi_2,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_1,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_2,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_3,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_4,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_5,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_6,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_7,"+
+                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_8,penilaian_level_kecemasan_ranap_anak.nip,petugas.nama "+
+                    "from penilaian_level_kecemasan_ranap_anak inner join reg_periksa on penilaian_level_kecemasan_ranap_anak.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_icu.nik "+
-                    "where checklist_kriteria_masuk_icu.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_masuk_icu.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
+                    "inner join petugas on petugas.nip=penilaian_level_kecemasan_ranap_anak.nip "+
+                    "where penilaian_level_kecemasan_ranap_anak.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and penilaian_level_kecemasan_ranap_anak.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
     }//GEN-LAST:event_MnKriteriaMasukICUActionPerformed
 
@@ -3044,10 +3647,10 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        pegawai.emptTeks();
-        pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        pegawai.setLocationRelativeTo(internalFrame1);
-        pegawai.setVisible(true);
+        petugas.emptTeks();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
@@ -3067,328 +3670,664 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }//GEN-LAST:event_CemasKeyPressed
 
     private void MudahTersinggungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahTersinggungKeyPressed
-        Valid.pindah(evt,TakutPikiranSendiri,PenglihatanKabur);
+        Valid.pindah(evt,TakutPikiranSendiri,MerasaTegang);
     }//GEN-LAST:event_MudahTersinggungKeyPressed
 
     private void MerasaTegangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerasaTegangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MudahTersinggung,Lesu);
     }//GEN-LAST:event_MerasaTegangKeyPressed
 
     private void TakBisaIstirahatTenangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakBisaIstirahatTenangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Lesu,MudahTerkejut);
     }//GEN-LAST:event_TakBisaIstirahatTenangKeyPressed
 
     private void LesuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LesuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MerasaTegang,TakBisaIstirahatTenang);
     }//GEN-LAST:event_LesuKeyPressed
 
     private void MudahTerkejutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahTerkejutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakBisaIstirahatTenang,MudahMenangis);
     }//GEN-LAST:event_MudahTerkejutKeyPressed
 
     private void MudahMenangisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahMenangisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MudahTerkejut,Gemetar);
     }//GEN-LAST:event_MudahMenangisKeyPressed
 
     private void GemetarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GemetarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MudahMenangis,Gelisah);
     }//GEN-LAST:event_GemetarKeyPressed
 
     private void TakutPadaGelapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaGelapKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Gelisah,TakutPadaOrangAsing);
     }//GEN-LAST:event_TakutPadaGelapKeyPressed
 
     private void GelisahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GelisahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Gemetar,TakutPadaGelap);
     }//GEN-LAST:event_GelisahKeyPressed
 
     private void TakutPadaOrangAsingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaOrangAsingKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaGelap,TakutPadaKerumunanBanyakOrang);
     }//GEN-LAST:event_TakutPadaOrangAsingKeyPressed
 
     private void TakutDitinggalSendiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutDitinggalSendiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaKeramaianLaluLintas,SulitTidur);
     }//GEN-LAST:event_TakutDitinggalSendiriKeyPressed
 
     private void TakutPadaBinatangBesarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaBinatangBesarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaKerumunanBanyakOrang,TakutPadaKeramaianLaluLintas);
     }//GEN-LAST:event_TakutPadaBinatangBesarKeyPressed
 
     private void TakutPadaKeramaianLaluLintasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaKeramaianLaluLintasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaBinatangBesar,TakutDitinggalSendiri);
     }//GEN-LAST:event_TakutPadaKeramaianLaluLintasKeyPressed
 
     private void TakutPadaKerumunanBanyakOrangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakutPadaKerumunanBanyakOrangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutPadaOrangAsing,TakutPadaBinatangBesar);
     }//GEN-LAST:event_TakutPadaKerumunanBanyakOrangKeyPressed
 
     private void SulitTidurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SulitTidurKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TakutDitinggalSendiri,TerbangunMalamHari);
     }//GEN-LAST:event_SulitTidurKeyPressed
 
     private void TerbangunMalamHariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerbangunMalamHariKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SulitTidur,TidurTidakNyeyak);
     }//GEN-LAST:event_TerbangunMalamHariKeyPressed
 
     private void TidurTidakNyeyakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TidurTidakNyeyakKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TerbangunMalamHari,MimpiBuruk);
     }//GEN-LAST:event_TidurTidakNyeyakKeyPressed
 
     private void MimpiBurukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MimpiBurukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TidurTidakNyeyak,BangunDenganLesu);
     }//GEN-LAST:event_MimpiBurukKeyPressed
 
     private void BangunDenganLesuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BangunDenganLesuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MimpiBuruk,BanyakMengalamiMimpi);
     }//GEN-LAST:event_BangunDenganLesuKeyPressed
 
     private void DayaIngatBurukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DayaIngatBurukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SulitKonsentrasi,HilangnyaMinat);
     }//GEN-LAST:event_DayaIngatBurukKeyPressed
 
     private void MimpiMenakutkanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MimpiMenakutkanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BanyakMengalamiMimpi,SulitKonsentrasi);
     }//GEN-LAST:event_MimpiMenakutkanKeyPressed
 
     private void SulitKonsentrasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SulitKonsentrasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MimpiMenakutkan,DayaIngatBuruk);
     }//GEN-LAST:event_SulitKonsentrasiKeyPressed
 
     private void BanyakMengalamiMimpiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BanyakMengalamiMimpiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BangunDenganLesu,MimpiMenakutkan);
     }//GEN-LAST:event_BanyakMengalamiMimpiKeyPressed
 
     private void HilangnyaMinatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HilangnyaMinatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DayaIngatBuruk,BerkurangnyaKesenanganPadaHobi);
     }//GEN-LAST:event_HilangnyaMinatKeyPressed
 
     private void BerkurangnyaKesenanganPadaHobiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BerkurangnyaKesenanganPadaHobiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HilangnyaMinat,Sedih);
     }//GEN-LAST:event_BerkurangnyaKesenanganPadaHobiKeyPressed
 
     private void SedihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SedihKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BerkurangnyaKesenanganPadaHobi,BangunDiniHari);
     }//GEN-LAST:event_SedihKeyPressed
 
-    private void Kinis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kinis1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Kinis1KeyPressed
+    private void BangunDiniHariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BangunDiniHariKeyPressed
+        Valid.pindah(evt,Sedih,PerasaanBerubah);
+    }//GEN-LAST:event_BangunDiniHariKeyPressed
 
-    private void Kinis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kinis2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Kinis2KeyPressed
+    private void PerasaanBerubahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerasaanBerubahKeyPressed
+        Valid.pindah(evt,BangunDiniHari,SakitNyeriDiOtot);
+    }//GEN-LAST:event_PerasaanBerubahKeyPressed
 
     private void KedutanOtotKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KedutanOtotKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kaku,GigiGemerutuk);
     }//GEN-LAST:event_KedutanOtotKeyPressed
 
     private void SakitNyeriDiOtotKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SakitNyeriDiOtotKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerasaanBerubah,Kaku);
     }//GEN-LAST:event_SakitNyeriDiOtotKeyPressed
 
     private void KakuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KakuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SakitNyeriDiOtot,KedutanOtot);
     }//GEN-LAST:event_KakuKeyPressed
 
     private void GigiGemerutukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GigiGemerutukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KedutanOtot,SuaraTidakStabil);
     }//GEN-LAST:event_GigiGemerutukKeyPressed
 
     private void SuaraTidakStabilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuaraTidakStabilKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GigiGemerutuk,Tinnitus);
     }//GEN-LAST:event_SuaraTidakStabilKeyPressed
 
     private void TinnitusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TinnitusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SuaraTidakStabil,PenglihatanKabur);
     }//GEN-LAST:event_TinnitusKeyPressed
 
     private void PenglihatanKaburKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenglihatanKaburKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tinnitus,MukaMerahGejalaSomatic);
     }//GEN-LAST:event_PenglihatanKaburKeyPressed
 
     private void MukaMerahGejalaSomaticKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MukaMerahGejalaSomaticKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PenglihatanKabur,MerasaLemah);
     }//GEN-LAST:event_MukaMerahGejalaSomaticKeyPressed
 
     private void MerasaLemahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerasaLemahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MukaMerahGejalaSomatic,PerasaanDitusuk);
     }//GEN-LAST:event_MerasaLemahKeyPressed
 
     private void PerasaanDitusukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerasaanDitusukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MerasaLemah,Takhikardia);
     }//GEN-LAST:event_PerasaanDitusukKeyPressed
 
     private void TakhikardiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TakhikardiaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerasaanDitusuk,Berdebar);
     }//GEN-LAST:event_TakhikardiaKeyPressed
 
     private void BerdebarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BerdebarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Takhikardia,NyeriDiDada);
     }//GEN-LAST:event_BerdebarKeyPressed
 
     private void NyeriDiDadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriDiDadaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Berdebar,DenyutNadiMengeras);
     }//GEN-LAST:event_NyeriDiDadaKeyPressed
 
     private void DenyutNadiMengerasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DenyutNadiMengerasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NyeriDiDada,PerasaanLesu);
     }//GEN-LAST:event_DenyutNadiMengerasKeyPressed
 
     private void PerasaanLesuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerasaanLesuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DenyutNadiMengeras,DetakJantungMenghilang);
     }//GEN-LAST:event_PerasaanLesuKeyPressed
 
     private void DetakJantungMenghilangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetakJantungMenghilangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerasaanLesu,MerasaTertekan);
     }//GEN-LAST:event_DetakJantungMenghilangKeyPressed
 
     private void MerasaTertekanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MerasaTertekanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DetakJantungMenghilang,PerasaanTercekik);
     }//GEN-LAST:event_MerasaTertekanKeyPressed
 
     private void NapasPendekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NapasPendekKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SeringMenarikNapas,BuluBerdiri);
     }//GEN-LAST:event_NapasPendekKeyPressed
 
     private void SeringMenarikNapasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeringMenarikNapasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerasaanTercekik,NapasPendek);
     }//GEN-LAST:event_SeringMenarikNapasKeyPressed
 
     private void PerasaanTercekikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerasaanTercekikKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MerasaTertekan,SeringMenarikNapas);
     }//GEN-LAST:event_PerasaanTercekikKeyPressed
 
     private void BuluBerdiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuluBerdiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NapasPendek,SulitMenelan);
     }//GEN-LAST:event_BuluBerdiriKeyPressed
 
     private void SulitMenelanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SulitMenelanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BuluBerdiri,PerutMelilit);
     }//GEN-LAST:event_SulitMenelanKeyPressed
 
     private void PerutMelilitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerutMelilitKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SulitMenelan,GanguanPencernaan);
     }//GEN-LAST:event_PerutMelilitKeyPressed
 
     private void GanguanPencernaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GanguanPencernaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PerutMelilit,RasaKembung);
     }//GEN-LAST:event_GanguanPencernaanKeyPressed
 
     private void RasaKembungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RasaKembungKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GanguanPencernaan,NyeriMakan);
     }//GEN-LAST:event_RasaKembungKeyPressed
 
     private void NyeriMakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriMakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RasaKembung,TerbakarPerut);
     }//GEN-LAST:event_NyeriMakanKeyPressed
 
     private void TerbakarPerutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerbakarPerutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NyeriMakan,SukarBAB);
     }//GEN-LAST:event_TerbakarPerutKeyPressed
 
     private void MualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MualKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KehilanganBB,SeringBAK);
     }//GEN-LAST:event_MualKeyPressed
 
     private void MuntahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MuntahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SukarBAB,BABLembek);
     }//GEN-LAST:event_MuntahKeyPressed
 
     private void BABLembekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BABLembekKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Muntah,KehilanganBB);
     }//GEN-LAST:event_BABLembekKeyPressed
 
     private void KehilanganBBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KehilanganBBKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BABLembek,Mual);
     }//GEN-LAST:event_KehilanganBBKeyPressed
 
     private void SukarBABKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SukarBABKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TerbakarPerut,Muntah);
     }//GEN-LAST:event_SukarBABKeyPressed
 
     private void SeringBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeringBAKKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Mual,TidakBisaMenahanKencing);
     }//GEN-LAST:event_SeringBAKKeyPressed
 
     private void TidakBisaMenahanKencingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TidakBisaMenahanKencingKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SeringBAK,MenjadiDingin);
     }//GEN-LAST:event_TidakBisaMenahanKencingKeyPressed
 
     private void MenjadiDinginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenjadiDinginKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TidakBisaMenahanKencing,Manorrhagia);
     }//GEN-LAST:event_MenjadiDinginKeyPressed
 
     private void AmenorrhoeaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AmenorrhoeaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Manorrhagia,EjakulasiPraecocks);
     }//GEN-LAST:event_AmenorrhoeaKeyPressed
 
     private void ManorrhagiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ManorrhagiaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MenjadiDingin,Amenorrhoea);
     }//GEN-LAST:event_ManorrhagiaKeyPressed
 
     private void EjakulasiPraecocksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EjakulasiPraecocksKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Amenorrhoea,EreksiHilang);
     }//GEN-LAST:event_EjakulasiPraecocksKeyPressed
 
     private void EreksiHilangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EreksiHilangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EjakulasiPraecocks,Impotensi);
     }//GEN-LAST:event_EreksiHilangKeyPressed
 
     private void ImpotensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ImpotensiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EreksiHilang,MulutKering);
     }//GEN-LAST:event_ImpotensiKeyPressed
 
     private void MulutKeringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MulutKeringKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Impotensi,MukaMerahGejalaOtonom);
     }//GEN-LAST:event_MulutKeringKeyPressed
 
     private void MukaMerahGejalaOtonomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MukaMerahGejalaOtonomKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MulutKering,MudahBerkeringat);
     }//GEN-LAST:event_MukaMerahGejalaOtonomKeyPressed
 
     private void MudahBerkeringatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahBerkeringatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MukaMerahGejalaOtonom,BuluBerdiriGejalaOtonom);
     }//GEN-LAST:event_MudahBerkeringatKeyPressed
 
     private void BuluBerdiriGejalaOtonomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuluBerdiriGejalaOtonomKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MudahBerkeringat,SakitKepala);
     }//GEN-LAST:event_BuluBerdiriGejalaOtonomKeyPressed
 
     private void SakitKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SakitKepalaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BangunDenganLesu,GelisahWawancara);
     }//GEN-LAST:event_SakitKepalaKeyPressed
 
     private void GelisahWawancaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GelisahWawancaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SakitKepala,NapasPendekWawancara);
     }//GEN-LAST:event_GelisahWawancaraKeyPressed
 
     private void NapasPendekWawancaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NapasPendekWawancaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GelisahWawancara,JariGemetar);
     }//GEN-LAST:event_NapasPendekWawancaraKeyPressed
 
     private void JariGemetarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JariGemetarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NapasPendek,KerutKening);
     }//GEN-LAST:event_JariGemetarKeyPressed
 
     private void KerutKeningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KerutKeningKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,JariGemetar,MukaTegang);
     }//GEN-LAST:event_KerutKeningKeyPressed
 
     private void MukaMerahWawancaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MukaMerahWawancaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TidakTenang,BtnSimpan);
     }//GEN-LAST:event_MukaMerahWawancaraKeyPressed
 
     private void TidakTenangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TidakTenangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TonusMeningkat,MukaMerahWawancara);
     }//GEN-LAST:event_TidakTenangKeyPressed
 
     private void TonusMeningkatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TonusMeningkatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MukaTegang,TidakTenang);
     }//GEN-LAST:event_TonusMeningkatKeyPressed
 
     private void MukaTegangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MukaTegangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KerutKening,TonusMeningkat);
     }//GEN-LAST:event_MukaTegangKeyPressed
+
+    private void CemasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CemasItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_CemasItemStateChanged
+
+    private void FirasatBurukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FirasatBurukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_FirasatBurukItemStateChanged
+
+    private void TakutPikiranSendiriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPikiranSendiriItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPikiranSendiriItemStateChanged
+
+    private void MudahTersinggungItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MudahTersinggungItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MudahTersinggungItemStateChanged
+
+    private void MerasaTegangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MerasaTegangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MerasaTegangItemStateChanged
+
+    private void LesuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LesuItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_LesuItemStateChanged
+
+    private void TakBisaIstirahatTenangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakBisaIstirahatTenangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakBisaIstirahatTenangItemStateChanged
+
+    private void MudahTerkejutItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MudahTerkejutItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MudahTerkejutItemStateChanged
+
+    private void MudahMenangisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MudahMenangisItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MudahMenangisItemStateChanged
+
+    private void GemetarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GemetarItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GemetarItemStateChanged
+
+    private void GelisahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GelisahItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GelisahItemStateChanged
+
+    private void TakutPadaGelapItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaGelapItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaGelapItemStateChanged
+
+    private void TakutPadaOrangAsingItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaOrangAsingItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaOrangAsingItemStateChanged
+
+    private void TakutPadaKerumunanBanyakOrangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaKerumunanBanyakOrangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaKerumunanBanyakOrangItemStateChanged
+
+    private void TakutPadaBinatangBesarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaBinatangBesarItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaBinatangBesarItemStateChanged
+
+    private void TakutPadaKeramaianLaluLintasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutPadaKeramaianLaluLintasItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutPadaKeramaianLaluLintasItemStateChanged
+
+    private void TakutDitinggalSendiriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakutDitinggalSendiriItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakutDitinggalSendiriItemStateChanged
+
+    private void SulitTidurItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SulitTidurItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SulitTidurItemStateChanged
+
+    private void TerbangunMalamHariItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TerbangunMalamHariItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TerbangunMalamHariItemStateChanged
+
+    private void TidurTidakNyeyakItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TidurTidakNyeyakItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TidurTidakNyeyakItemStateChanged
+
+    private void MimpiBurukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MimpiBurukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MimpiBurukItemStateChanged
+
+    private void BangunDenganLesuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BangunDenganLesuItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BangunDenganLesuItemStateChanged
+
+    private void BanyakMengalamiMimpiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BanyakMengalamiMimpiItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BanyakMengalamiMimpiItemStateChanged
+
+    private void MimpiMenakutkanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MimpiMenakutkanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MimpiMenakutkanItemStateChanged
+
+    private void SulitKonsentrasiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SulitKonsentrasiItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SulitKonsentrasiItemStateChanged
+
+    private void DayaIngatBurukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DayaIngatBurukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_DayaIngatBurukItemStateChanged
+
+    private void HilangnyaMinatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HilangnyaMinatItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_HilangnyaMinatItemStateChanged
+
+    private void BerkurangnyaKesenanganPadaHobiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BerkurangnyaKesenanganPadaHobiItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BerkurangnyaKesenanganPadaHobiItemStateChanged
+
+    private void SedihItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SedihItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SedihItemStateChanged
+
+    private void BangunDiniHariItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BangunDiniHariItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BangunDiniHariItemStateChanged
+
+    private void PerasaanBerubahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerasaanBerubahItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerasaanBerubahItemStateChanged
+
+    private void SakitNyeriDiOtotItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SakitNyeriDiOtotItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SakitNyeriDiOtotItemStateChanged
+
+    private void KakuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KakuItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_KakuItemStateChanged
+
+    private void KedutanOtotItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KedutanOtotItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_KedutanOtotItemStateChanged
+
+    private void GigiGemerutukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GigiGemerutukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GigiGemerutukItemStateChanged
+
+    private void SuaraTidakStabilItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SuaraTidakStabilItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SuaraTidakStabilItemStateChanged
+
+    private void TinnitusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TinnitusItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TinnitusItemStateChanged
+
+    private void PenglihatanKaburItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PenglihatanKaburItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PenglihatanKaburItemStateChanged
+
+    private void MukaMerahGejalaSomaticItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MukaMerahGejalaSomaticItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MukaMerahGejalaSomaticItemStateChanged
+
+    private void MerasaLemahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MerasaLemahItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MerasaLemahItemStateChanged
+
+    private void PerasaanDitusukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerasaanDitusukItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerasaanDitusukItemStateChanged
+
+    private void TakhikardiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TakhikardiaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TakhikardiaItemStateChanged
+
+    private void BerdebarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BerdebarItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BerdebarItemStateChanged
+
+    private void NyeriDiDadaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NyeriDiDadaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_NyeriDiDadaItemStateChanged
+
+    private void DenyutNadiMengerasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DenyutNadiMengerasItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_DenyutNadiMengerasItemStateChanged
+
+    private void PerasaanLesuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerasaanLesuItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerasaanLesuItemStateChanged
+
+    private void DetakJantungMenghilangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DetakJantungMenghilangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_DetakJantungMenghilangItemStateChanged
+
+    private void MerasaTertekanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MerasaTertekanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MerasaTertekanItemStateChanged
+
+    private void PerasaanTercekikItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerasaanTercekikItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerasaanTercekikItemStateChanged
+
+    private void SeringMenarikNapasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SeringMenarikNapasItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SeringMenarikNapasItemStateChanged
+
+    private void NapasPendekItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NapasPendekItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_NapasPendekItemStateChanged
+
+    private void BuluBerdiriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BuluBerdiriItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BuluBerdiriItemStateChanged
+
+    private void SulitMenelanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SulitMenelanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SulitMenelanItemStateChanged
+
+    private void PerutMelilitItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PerutMelilitItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_PerutMelilitItemStateChanged
+
+    private void GanguanPencernaanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GanguanPencernaanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GanguanPencernaanItemStateChanged
+
+    private void RasaKembungItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RasaKembungItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_RasaKembungItemStateChanged
+
+    private void NyeriMakanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NyeriMakanItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_NyeriMakanItemStateChanged
+
+    private void TerbakarPerutItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TerbakarPerutItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TerbakarPerutItemStateChanged
+
+    private void SukarBABItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SukarBABItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SukarBABItemStateChanged
+
+    private void MuntahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MuntahItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MuntahItemStateChanged
+
+    private void BABLembekItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BABLembekItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BABLembekItemStateChanged
+
+    private void KehilanganBBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KehilanganBBItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_KehilanganBBItemStateChanged
+
+    private void MualItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MualItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MualItemStateChanged
+
+    private void SeringBAKItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SeringBAKItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SeringBAKItemStateChanged
+
+    private void TidakBisaMenahanKencingItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TidakBisaMenahanKencingItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TidakBisaMenahanKencingItemStateChanged
+
+    private void MenjadiDinginItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MenjadiDinginItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MenjadiDinginItemStateChanged
+
+    private void ManorrhagiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ManorrhagiaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_ManorrhagiaItemStateChanged
+
+    private void AmenorrhoeaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AmenorrhoeaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_AmenorrhoeaItemStateChanged
+
+    private void EjakulasiPraecocksItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EjakulasiPraecocksItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_EjakulasiPraecocksItemStateChanged
+
+    private void EreksiHilangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EreksiHilangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_EreksiHilangItemStateChanged
+
+    private void ImpotensiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ImpotensiItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_ImpotensiItemStateChanged
+
+    private void MulutKeringItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MulutKeringItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MulutKeringItemStateChanged
+
+    private void MukaMerahGejalaOtonomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MukaMerahGejalaOtonomItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MukaMerahGejalaOtonomItemStateChanged
+
+    private void MudahBerkeringatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MudahBerkeringatItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MudahBerkeringatItemStateChanged
+
+    private void BuluBerdiriGejalaOtonomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BuluBerdiriGejalaOtonomItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_BuluBerdiriGejalaOtonomItemStateChanged
+
+    private void SakitKepalaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SakitKepalaItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_SakitKepalaItemStateChanged
+
+    private void GelisahWawancaraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GelisahWawancaraItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_GelisahWawancaraItemStateChanged
+
+    private void NapasPendekWawancaraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NapasPendekWawancaraItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_NapasPendekWawancaraItemStateChanged
+
+    private void JariGemetarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JariGemetarItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_JariGemetarItemStateChanged
+
+    private void KerutKeningItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KerutKeningItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_KerutKeningItemStateChanged
+
+    private void MukaTegangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MukaTegangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MukaTegangItemStateChanged
+
+    private void TonusMeningkatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TonusMeningkatItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TonusMeningkatItemStateChanged
+
+    private void TidakTenangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TidakTenangItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_TidakTenangItemStateChanged
+
+    private void MukaMerahWawancaraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MukaMerahWawancaraItemStateChanged
+        isTotalSkor();
+    }//GEN-LAST:event_MukaMerahWawancaraItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -3410,6 +4349,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox Amenorrhoea;
     private widget.ComboBox BABLembek;
     private widget.ComboBox BangunDenganLesu;
+    private widget.ComboBox BangunDiniHari;
     private widget.ComboBox BanyakMengalamiMimpi;
     private widget.ComboBox Berdebar;
     private widget.ComboBox BerkurangnyaKesenanganPadaHobi;
@@ -3447,11 +4387,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox KedutanOtot;
     private widget.ComboBox KehilanganBB;
     private widget.ComboBox KerutKening;
-    private widget.ComboBox Kinis1;
-    private widget.ComboBox Kinis2;
+    private widget.TextBox KeteranganSkor;
     private widget.TextBox KodePetugas;
-    private widget.TextBox KodePetugas1;
-    private widget.TextBox KodePetugas2;
     private widget.Label LCount;
     private widget.ComboBox Lesu;
     private widget.editorpane LoadHTML;
@@ -3481,6 +4418,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox NyeriMakan;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PenglihatanKabur;
+    private widget.ComboBox PerasaanBerubah;
     private widget.ComboBox PerasaanDitusuk;
     private widget.ComboBox PerasaanLesu;
     private widget.ComboBox PerasaanTercekik;
@@ -3519,6 +4457,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox TidurTidakNyeyak;
     private widget.ComboBox Tinnitus;
     private widget.ComboBox TonusMeningkat;
+    private widget.TextBox TotalSkor;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel100;
@@ -3701,53 +4640,79 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_icu.tanggal,"+
-                    "checklist_kriteria_masuk_icu.prioritas1_1,checklist_kriteria_masuk_icu.prioritas1_2,checklist_kriteria_masuk_icu.prioritas1_3,"+
-                    "checklist_kriteria_masuk_icu.prioritas1_4,checklist_kriteria_masuk_icu.prioritas1_5,checklist_kriteria_masuk_icu.prioritas1_6,"+
-                    "checklist_kriteria_masuk_icu.prioritas2_1,checklist_kriteria_masuk_icu.prioritas2_2,checklist_kriteria_masuk_icu.prioritas2_3,"+
-                    "checklist_kriteria_masuk_icu.prioritas2_4,checklist_kriteria_masuk_icu.prioritas2_5,checklist_kriteria_masuk_icu.prioritas2_6,"+
-                    "checklist_kriteria_masuk_icu.prioritas2_7,checklist_kriteria_masuk_icu.prioritas2_8,checklist_kriteria_masuk_icu.prioritas3_1,"+
-                    "checklist_kriteria_masuk_icu.prioritas3_2,checklist_kriteria_masuk_icu.prioritas3_3,checklist_kriteria_masuk_icu.prioritas3_4,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_1,checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_2,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_3,checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_4,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_5,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_1,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_3,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_4,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_5,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_6,checklist_kriteria_masuk_icu.kriteria_fisiologis_radiologi_1,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_radiologi_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_1,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_3,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_4,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_5,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_6,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_7,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_8,checklist_kriteria_masuk_icu.nik,pegawai.nama "+
-                    "from checklist_kriteria_masuk_icu inner join reg_periksa on checklist_kriteria_masuk_icu.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_level_kecemasan_ranap_anak.tanggal,"+
+                    "penilaian_level_kecemasan_ranap_anak.cemas,penilaian_level_kecemasan_ranap_anak.firasat_buruk,penilaian_level_kecemasan_ranap_anak.takut_pikiran_sendiri,"+
+                    "penilaian_level_kecemasan_ranap_anak.mudah_tersinggung,penilaian_level_kecemasan_ranap_anak.merasa_tegang,penilaian_level_kecemasan_ranap_anak.lesu,"+
+                    "penilaian_level_kecemasan_ranap_anak.tak_bisa_istirahat_tenang,penilaian_level_kecemasan_ranap_anak.mudah_terkejut,penilaian_level_kecemasan_ranap_anak.mudah_menangis,"+
+                    "penilaian_level_kecemasan_ranap_anak.gemetar,penilaian_level_kecemasan_ranap_anak.gelisah,penilaian_level_kecemasan_ranap_anak.takut_pada_gelap,"+
+                    "penilaian_level_kecemasan_ranap_anak.takut_pada_orangasing,penilaian_level_kecemasan_ranap_anak.takut_pada_kerumunan_banyak_orang,"+
+                    "penilaian_level_kecemasan_ranap_anak.takut_pada_binatang_besar,penilaian_level_kecemasan_ranap_anak.takut_pada_keramaian_lalu_lintas,"+
+                    "penilaian_level_kecemasan_ranap_anak.takut_ditinggal_sendiri,penilaian_level_kecemasan_ranap_anak.sulit_tidur,penilaian_level_kecemasan_ranap_anak.terbangun_malam_hari,"+
+                    "penilaian_level_kecemasan_ranap_anak.tidur_tidak_nyeyak,penilaian_level_kecemasan_ranap_anak.mimpi_buruk,penilaian_level_kecemasan_ranap_anak.bangun_dengan_lesu,"+
+                    "penilaian_level_kecemasan_ranap_anak.banyak_mengalami_mimpi,penilaian_level_kecemasan_ranap_anak.mimpi_menakutkan,penilaian_level_kecemasan_ranap_anak.sulit_konsentrasi,"+
+                    "penilaian_level_kecemasan_ranap_anak.daya_ingat_buruk,penilaian_level_kecemasan_ranap_anak.hilangnya_minat,penilaian_level_kecemasan_ranap_anak.berkurangnya_kesenangan_pada_hobi,"+
+                    "penilaian_level_kecemasan_ranap_anak.sedih,penilaian_level_kecemasan_ranap_anak.bangun_dini_hari,penilaian_level_kecemasan_ranap_anak.perasaan_berubah,"+
+                    "penilaian_level_kecemasan_ranap_anak.sakit_nyeri_di_otot,penilaian_level_kecemasan_ranap_anak.kaku,penilaian_level_kecemasan_ranap_anak.kedutan_otot,"+
+                    "penilaian_level_kecemasan_ranap_anak.gigi_gemerutuk,penilaian_level_kecemasan_ranap_anak.suara_tidak_stabil,penilaian_level_kecemasan_ranap_anak.tinnitus,"+
+                    "penilaian_level_kecemasan_ranap_anak.penglihatan_kabur,penilaian_level_kecemasan_ranap_anak.muka_merah_gejala_somatic,penilaian_level_kecemasan_ranap_anak.merasa_lemah,"+
+                    "penilaian_level_kecemasan_ranap_anak.perasaan_ditusuk,penilaian_level_kecemasan_ranap_anak.takhikardia,penilaian_level_kecemasan_ranap_anak.berdebar,"+
+                    "penilaian_level_kecemasan_ranap_anak.nyeri_di_dada,penilaian_level_kecemasan_ranap_anak.denyut_nadi_mengeras,penilaian_level_kecemasan_ranap_anak.perasaan_lesu,"+
+                    "penilaian_level_kecemasan_ranap_anak.detak_jantung_menghilang,penilaian_level_kecemasan_ranap_anak.merasa_tertekan,penilaian_level_kecemasan_ranap_anak.perasaan_tercekik,"+
+                    "penilaian_level_kecemasan_ranap_anak.sering_menarik_napas,penilaian_level_kecemasan_ranap_anak.napas_pendek,penilaian_level_kecemasan_ranap_anak.bulu_berdiri,"+
+                    "penilaian_level_kecemasan_ranap_anak.sulit_menelan,penilaian_level_kecemasan_ranap_anak.perut_melilit,penilaian_level_kecemasan_ranap_anak.ganguan_pencernaan,"+
+                    "penilaian_level_kecemasan_ranap_anak.rasa_kembung,penilaian_level_kecemasan_ranap_anak.nyeri_makan,penilaian_level_kecemasan_ranap_anak.terbakar_perut,"+
+                    "penilaian_level_kecemasan_ranap_anak.sukar_bab,penilaian_level_kecemasan_ranap_anak.muntah,penilaian_level_kecemasan_ranap_anak.bab_lembek,"+
+                    "penilaian_level_kecemasan_ranap_anak.kehilangan_bb,penilaian_level_kecemasan_ranap_anak.mual,penilaian_level_kecemasan_ranap_anak.sering_bak,"+
+                    "penilaian_level_kecemasan_ranap_anak.tidak_bisa_menahan_kencing,penilaian_level_kecemasan_ranap_anak.menjadi_dingin,penilaian_level_kecemasan_ranap_anak.manorrhagia,"+
+                    "penilaian_level_kecemasan_ranap_anak.amenorrhoea,penilaian_level_kecemasan_ranap_anak.ejakulasi_praecocks,penilaian_level_kecemasan_ranap_anak.ereksi_hilang,"+
+                    "penilaian_level_kecemasan_ranap_anak.impotensi,penilaian_level_kecemasan_ranap_anak.mulut_kering,penilaian_level_kecemasan_ranap_anak.muka_merah_gejala_otonom,"+
+                    "penilaian_level_kecemasan_ranap_anak.mudah_berkeringat,penilaian_level_kecemasan_ranap_anak.bulu_berdiri_gejala_otonom,penilaian_level_kecemasan_ranap_anak.sakit_kepala,"+
+                    "penilaian_level_kecemasan_ranap_anak.gelisah_wawancara,penilaian_level_kecemasan_ranap_anak.napas_pendek_wawancara,penilaian_level_kecemasan_ranap_anak.jari_gemetar,"+
+                    "penilaian_level_kecemasan_ranap_anak.kerut_kening,penilaian_level_kecemasan_ranap_anak.muka_tegang,penilaian_level_kecemasan_ranap_anak.tonus_meningkat,"+
+                    "penilaian_level_kecemasan_ranap_anak.tidak_tenang,penilaian_level_kecemasan_ranap_anak.muka_merah_wawancara,penilaian_level_kecemasan_ranap_anak.total_skor,"+
+                    "penilaian_level_kecemasan_ranap_anak.keterangan_skor,penilaian_level_kecemasan_ranap_anak.nip,petugas.nama "+
+                    "from penilaian_level_kecemasan_ranap_anak inner join reg_periksa on penilaian_level_kecemasan_ranap_anak.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_icu.nik "+
-                    "where checklist_kriteria_masuk_icu.tanggal between ? and ? order by checklist_kriteria_masuk_icu.tanggal ");
+                    "inner join petugas on petugas.nip=penilaian_level_kecemasan_ranap_anak.nip "+
+                    "where penilaian_level_kecemasan_ranap_anak.tanggal between ? and ? order by penilaian_level_kecemasan_ranap_anak.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_icu.tanggal,"+
-                    "checklist_kriteria_masuk_icu.prioritas1_1,checklist_kriteria_masuk_icu.prioritas1_2,checklist_kriteria_masuk_icu.prioritas1_3,"+
-                    "checklist_kriteria_masuk_icu.prioritas1_4,checklist_kriteria_masuk_icu.prioritas1_5,checklist_kriteria_masuk_icu.prioritas1_6,"+
-                    "checklist_kriteria_masuk_icu.prioritas2_1,checklist_kriteria_masuk_icu.prioritas2_2,checklist_kriteria_masuk_icu.prioritas2_3,"+
-                    "checklist_kriteria_masuk_icu.prioritas2_4,checklist_kriteria_masuk_icu.prioritas2_5,checklist_kriteria_masuk_icu.prioritas2_6,"+
-                    "checklist_kriteria_masuk_icu.prioritas2_7,checklist_kriteria_masuk_icu.prioritas2_8,checklist_kriteria_masuk_icu.prioritas3_1,"+
-                    "checklist_kriteria_masuk_icu.prioritas3_2,checklist_kriteria_masuk_icu.prioritas3_3,checklist_kriteria_masuk_icu.prioritas3_4,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_1,checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_2,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_3,checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_4,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_tanda_vital_5,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_1,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_3,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_4,checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_5,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_laborat_6,checklist_kriteria_masuk_icu.kriteria_fisiologis_radiologi_1,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_radiologi_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_1,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_2,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_3,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_4,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_5,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_6,checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_7,"+
-                    "checklist_kriteria_masuk_icu.kriteria_fisiologis_klinis_8,checklist_kriteria_masuk_icu.nik,pegawai.nama "+
-                    "from checklist_kriteria_masuk_icu inner join reg_periksa on checklist_kriteria_masuk_icu.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_level_kecemasan_ranap_anak.tanggal,"+
+                    "penilaian_level_kecemasan_ranap_anak.cemas,penilaian_level_kecemasan_ranap_anak.firasat_buruk,penilaian_level_kecemasan_ranap_anak.takut_pikiran_sendiri,"+
+                    "penilaian_level_kecemasan_ranap_anak.mudah_tersinggung,penilaian_level_kecemasan_ranap_anak.merasa_tegang,penilaian_level_kecemasan_ranap_anak.lesu,"+
+                    "penilaian_level_kecemasan_ranap_anak.tak_bisa_istirahat_tenang,penilaian_level_kecemasan_ranap_anak.mudah_terkejut,penilaian_level_kecemasan_ranap_anak.mudah_menangis,"+
+                    "penilaian_level_kecemasan_ranap_anak.gemetar,penilaian_level_kecemasan_ranap_anak.gelisah,penilaian_level_kecemasan_ranap_anak.takut_pada_gelap,"+
+                    "penilaian_level_kecemasan_ranap_anak.takut_pada_orangasing,penilaian_level_kecemasan_ranap_anak.takut_pada_kerumunan_banyak_orang,"+
+                    "penilaian_level_kecemasan_ranap_anak.takut_pada_binatang_besar,penilaian_level_kecemasan_ranap_anak.takut_pada_keramaian_lalu_lintas,"+
+                    "penilaian_level_kecemasan_ranap_anak.takut_ditinggal_sendiri,penilaian_level_kecemasan_ranap_anak.sulit_tidur,penilaian_level_kecemasan_ranap_anak.terbangun_malam_hari,"+
+                    "penilaian_level_kecemasan_ranap_anak.tidur_tidak_nyeyak,penilaian_level_kecemasan_ranap_anak.mimpi_buruk,penilaian_level_kecemasan_ranap_anak.bangun_dengan_lesu,"+
+                    "penilaian_level_kecemasan_ranap_anak.banyak_mengalami_mimpi,penilaian_level_kecemasan_ranap_anak.mimpi_menakutkan,penilaian_level_kecemasan_ranap_anak.sulit_konsentrasi,"+
+                    "penilaian_level_kecemasan_ranap_anak.daya_ingat_buruk,penilaian_level_kecemasan_ranap_anak.hilangnya_minat,penilaian_level_kecemasan_ranap_anak.berkurangnya_kesenangan_pada_hobi,"+
+                    "penilaian_level_kecemasan_ranap_anak.sedih,penilaian_level_kecemasan_ranap_anak.bangun_dini_hari,penilaian_level_kecemasan_ranap_anak.perasaan_berubah,"+
+                    "penilaian_level_kecemasan_ranap_anak.sakit_nyeri_di_otot,penilaian_level_kecemasan_ranap_anak.kaku,penilaian_level_kecemasan_ranap_anak.kedutan_otot,"+
+                    "penilaian_level_kecemasan_ranap_anak.gigi_gemerutuk,penilaian_level_kecemasan_ranap_anak.suara_tidak_stabil,penilaian_level_kecemasan_ranap_anak.tinnitus,"+
+                    "penilaian_level_kecemasan_ranap_anak.penglihatan_kabur,penilaian_level_kecemasan_ranap_anak.muka_merah_gejala_somatic,penilaian_level_kecemasan_ranap_anak.merasa_lemah,"+
+                    "penilaian_level_kecemasan_ranap_anak.perasaan_ditusuk,penilaian_level_kecemasan_ranap_anak.takhikardia,penilaian_level_kecemasan_ranap_anak.berdebar,"+
+                    "penilaian_level_kecemasan_ranap_anak.nyeri_di_dada,penilaian_level_kecemasan_ranap_anak.denyut_nadi_mengeras,penilaian_level_kecemasan_ranap_anak.perasaan_lesu,"+
+                    "penilaian_level_kecemasan_ranap_anak.detak_jantung_menghilang,penilaian_level_kecemasan_ranap_anak.merasa_tertekan,penilaian_level_kecemasan_ranap_anak.perasaan_tercekik,"+
+                    "penilaian_level_kecemasan_ranap_anak.sering_menarik_napas,penilaian_level_kecemasan_ranap_anak.napas_pendek,penilaian_level_kecemasan_ranap_anak.bulu_berdiri,"+
+                    "penilaian_level_kecemasan_ranap_anak.sulit_menelan,penilaian_level_kecemasan_ranap_anak.perut_melilit,penilaian_level_kecemasan_ranap_anak.ganguan_pencernaan,"+
+                    "penilaian_level_kecemasan_ranap_anak.rasa_kembung,penilaian_level_kecemasan_ranap_anak.nyeri_makan,penilaian_level_kecemasan_ranap_anak.terbakar_perut,"+
+                    "penilaian_level_kecemasan_ranap_anak.sukar_bab,penilaian_level_kecemasan_ranap_anak.muntah,penilaian_level_kecemasan_ranap_anak.bab_lembek,"+
+                    "penilaian_level_kecemasan_ranap_anak.kehilangan_bb,penilaian_level_kecemasan_ranap_anak.mual,penilaian_level_kecemasan_ranap_anak.sering_bak,"+
+                    "penilaian_level_kecemasan_ranap_anak.tidak_bisa_menahan_kencing,penilaian_level_kecemasan_ranap_anak.menjadi_dingin,penilaian_level_kecemasan_ranap_anak.manorrhagia,"+
+                    "penilaian_level_kecemasan_ranap_anak.amenorrhoea,penilaian_level_kecemasan_ranap_anak.ejakulasi_praecocks,penilaian_level_kecemasan_ranap_anak.ereksi_hilang,"+
+                    "penilaian_level_kecemasan_ranap_anak.impotensi,penilaian_level_kecemasan_ranap_anak.mulut_kering,penilaian_level_kecemasan_ranap_anak.muka_merah_gejala_otonom,"+
+                    "penilaian_level_kecemasan_ranap_anak.mudah_berkeringat,penilaian_level_kecemasan_ranap_anak.bulu_berdiri_gejala_otonom,penilaian_level_kecemasan_ranap_anak.sakit_kepala,"+
+                    "penilaian_level_kecemasan_ranap_anak.gelisah_wawancara,penilaian_level_kecemasan_ranap_anak.napas_pendek_wawancara,penilaian_level_kecemasan_ranap_anak.jari_gemetar,"+
+                    "penilaian_level_kecemasan_ranap_anak.kerut_kening,penilaian_level_kecemasan_ranap_anak.muka_tegang,penilaian_level_kecemasan_ranap_anak.tonus_meningkat,"+
+                    "penilaian_level_kecemasan_ranap_anak.tidak_tenang,penilaian_level_kecemasan_ranap_anak.muka_merah_wawancara,penilaian_level_kecemasan_ranap_anak.total_skor,"+
+                    "penilaian_level_kecemasan_ranap_anak.keterangan_skor,penilaian_level_kecemasan_ranap_anak.nip,petugas.nama "+
+                    "from penilaian_level_kecemasan_ranap_anak inner join reg_periksa on penilaian_level_kecemasan_ranap_anak.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_icu.nik "+
-                    "where checklist_kriteria_masuk_icu.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or pegawai.nama like ? or checklist_kriteria_masuk_icu.nik like ?) order by checklist_kriteria_masuk_icu.tanggal ");
+                    "inner join petugas on petugas.nip=penilaian_level_kecemasan_ranap_anak.nip "+
+                    "where penilaian_level_kecemasan_ranap_anak.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or petugas.nama like ? or penilaian_level_kecemasan_ranap_anak.nip like ?) order by penilaian_level_kecemasan_ranap_anak.tanggal ");
             }
                 
             try {
@@ -3768,17 +4733,30 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
-                        rs.getString("tanggal"),rs.getString("prioritas1_1"),rs.getString("prioritas1_2"),rs.getString("prioritas1_3"),rs.getString("prioritas1_4"),
-                        rs.getString("prioritas1_5"),rs.getString("prioritas1_6"),rs.getString("prioritas2_1"),rs.getString("prioritas2_2"),rs.getString("prioritas2_3"),
-                        rs.getString("prioritas2_4"),rs.getString("prioritas2_5"),rs.getString("prioritas2_6"),rs.getString("prioritas2_7"),rs.getString("prioritas2_8"),
-                        rs.getString("prioritas3_1"),rs.getString("prioritas3_2"),rs.getString("prioritas3_3"),rs.getString("prioritas3_4"),rs.getString("kriteria_fisiologis_tanda_vital_1"),
-                        rs.getString("kriteria_fisiologis_tanda_vital_2"),rs.getString("kriteria_fisiologis_tanda_vital_3"),rs.getString("kriteria_fisiologis_tanda_vital_4"),
-                        rs.getString("kriteria_fisiologis_tanda_vital_5"),rs.getString("kriteria_fisiologis_laborat_1"),rs.getString("kriteria_fisiologis_laborat_2"),
-                        rs.getString("kriteria_fisiologis_laborat_3"),rs.getString("kriteria_fisiologis_laborat_4"),rs.getString("kriteria_fisiologis_laborat_5"),
-                        rs.getString("kriteria_fisiologis_laborat_6"),rs.getString("kriteria_fisiologis_radiologi_1"),rs.getString("kriteria_fisiologis_radiologi_2"),
-                        rs.getString("kriteria_fisiologis_klinis_1"),rs.getString("kriteria_fisiologis_klinis_2"),rs.getString("kriteria_fisiologis_klinis_3"),
-                        rs.getString("kriteria_fisiologis_klinis_4"),rs.getString("kriteria_fisiologis_klinis_5"),rs.getString("kriteria_fisiologis_klinis_6"),
-                        rs.getString("kriteria_fisiologis_klinis_7"),rs.getString("kriteria_fisiologis_klinis_8"),rs.getString("nik"),rs.getString("nama")
+                        rs.getString("tanggal"),rs.getString("cemas"),rs.getString("firasat_buruk"),rs.getString("takut_pikiran_sendiri"),
+                        rs.getString("mudah_tersinggung"),rs.getString("merasa_tegang"),rs.getString("lesu"),rs.getString("tak_bisa_istirahat_tenang"),
+                        rs.getString("mudah_terkejut"),rs.getString("mudah_menangis"),rs.getString("gemetar"),rs.getString("gelisah"),
+                        rs.getString("takut_pada_gelap"),rs.getString("takut_pada_orangasing"),rs.getString("takut_pada_kerumunan_banyak_orang"),
+                        rs.getString("takut_pada_binatang_besar"),rs.getString("takut_pada_keramaian_lalu_lintas"),rs.getString("takut_ditinggal_sendiri"),
+                        rs.getString("sulit_tidur"),rs.getString("terbangun_malam_hari"),rs.getString("tidur_tidak_nyeyak"),rs.getString("mimpi_buruk"),
+                        rs.getString("bangun_dengan_lesu"),rs.getString("banyak_mengalami_mimpi"),rs.getString("mimpi_menakutkan"),
+                        rs.getString("sulit_konsentrasi"),rs.getString("daya_ingat_buruk"),rs.getString("hilangnya_minat"),
+                        rs.getString("berkurangnya_kesenangan_pada_hobi"),rs.getString("sedih"),rs.getString("bangun_dini_hari"),
+                        rs.getString("perasaan_berubah"),rs.getString("sakit_nyeri_di_otot"),rs.getString("kaku"),rs.getString("kedutan_otot"),
+                        rs.getString("gigi_gemerutuk"),rs.getString("suara_tidak_stabil"),rs.getString("tinnitus"),rs.getString("penglihatan_kabur"),
+                        rs.getString("muka_merah_gejala_somatic"),rs.getString("merasa_lemah"),rs.getString("perasaan_ditusuk"),rs.getString("takhikardia"),
+                        rs.getString("berdebar"),rs.getString("nyeri_di_dada"),rs.getString("denyut_nadi_mengeras"),rs.getString("perasaan_lesu"),
+                        rs.getString("detak_jantung_menghilang"),rs.getString("merasa_tertekan"),rs.getString("perasaan_tercekik"),
+                        rs.getString("sering_menarik_napas"),rs.getString("napas_pendek"),rs.getString("bulu_berdiri"),rs.getString("sulit_menelan"),
+                        rs.getString("perut_melilit"),rs.getString("ganguan_pencernaan"),rs.getString("rasa_kembung"),rs.getString("nyeri_makan"),
+                        rs.getString("terbakar_perut"),rs.getString("sukar_bab"),rs.getString("muntah"),rs.getString("bab_lembek"),
+                        rs.getString("kehilangan_bb"),rs.getString("mual"),rs.getString("sering_bak"),rs.getString("tidak_bisa_menahan_kencing"),
+                        rs.getString("menjadi_dingin"),rs.getString("manorrhagia"),rs.getString("amenorrhoea"),rs.getString("ejakulasi_praecocks"),
+                        rs.getString("ereksi_hilang"),rs.getString("impotensi"),rs.getString("mulut_kering"),rs.getString("muka_merah_gejala_otonom"),
+                        rs.getString("mudah_berkeringat"),rs.getString("bulu_berdiri_gejala_otonom"),rs.getString("sakit_kepala"),
+                        rs.getString("gelisah_wawancara"),rs.getString("napas_pendek_wawancara"),rs.getString("jari_gemetar"),rs.getString("kerut_kening"),
+                        rs.getString("muka_tegang"),rs.getString("tonus_meningkat"),rs.getString("tidak_tenang"),rs.getString("muka_merah_wawancara"),
+                        rs.getString("total_skor"),rs.getString("keterangan_skor"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -3798,45 +4776,92 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }
     
     public void emptTeks() {
-        Cemas.setSelectedIndex(1);
-        FirasatBuruk.setSelectedIndex(1);
-        TakutPikiranSendiri.setSelectedIndex(1);
-        MudahTersinggung.setSelectedIndex(1);
-        PenglihatanKabur.setSelectedIndex(1);
-        MukaMerahGejalaSomatic.setSelectedIndex(1);
-        MerasaTegang.setSelectedIndex(1);
-        Lesu.setSelectedIndex(1);
-        TakBisaIstirahatTenang.setSelectedIndex(1);
-        MudahTerkejut.setSelectedIndex(1);
-        MudahMenangis.setSelectedIndex(1);
-        Gemetar.setSelectedIndex(1);
-        Gelisah.setSelectedIndex(1);
-        TakutPadaGelap.setSelectedIndex(1);
-        TakutPadaOrangAsing.setSelectedIndex(1);
-        TakutDitinggalSendiri.setSelectedIndex(1);
-        TakutPadaBinatangBesar.setSelectedIndex(1);
-        TakutPadaKeramaianLaluLintas.setSelectedIndex(1);
-        TakutPadaKerumunanBanyakOrang.setSelectedIndex(1);
-        SulitTidur.setSelectedIndex(1);
-        TerbangunMalamHari.setSelectedIndex(1);
-        TidurTidakNyeyak.setSelectedIndex(1);
-        MimpiBuruk.setSelectedIndex(1);
-        BangunDenganLesu.setSelectedIndex(1);
-        BanyakMengalamiMimpi.setSelectedIndex(1);
-        MimpiMenakutkan.setSelectedIndex(1);
-        SulitKonsentrasi.setSelectedIndex(1);
-        DayaIngatBuruk.setSelectedIndex(1);
-        HilangnyaMinat.setSelectedIndex(1);
-        BerkurangnyaKesenanganPadaHobi.setSelectedIndex(1);
-        Sedih.setSelectedIndex(1);
-        Kinis1.setSelectedIndex(1);
-        Kinis2.setSelectedIndex(1);
-        KedutanOtot.setSelectedIndex(1);
-        SakitNyeriDiOtot.setSelectedIndex(1);
-        Kaku.setSelectedIndex(1);
-        GigiGemerutuk.setSelectedIndex(1);
-        SuaraTidakStabil.setSelectedIndex(1);
-        Tinnitus.setSelectedIndex(1);
+        Cemas.setSelectedIndex(0);
+        FirasatBuruk.setSelectedIndex(0);
+        TakutPikiranSendiri.setSelectedIndex(0);
+        MudahTersinggung.setSelectedIndex(0);
+        MerasaTegang.setSelectedIndex(0);
+        Lesu.setSelectedIndex(0);
+        TakBisaIstirahatTenang.setSelectedIndex(0);
+        MudahTerkejut.setSelectedIndex(0);
+        MudahMenangis.setSelectedIndex(0);
+        Gemetar.setSelectedIndex(0);
+        Gelisah.setSelectedIndex(0);
+        TakutPadaGelap.setSelectedIndex(0);
+        TakutPadaOrangAsing.setSelectedIndex(0);
+        TakutPadaKerumunanBanyakOrang.setSelectedIndex(0);
+        TakutPadaBinatangBesar.setSelectedIndex(0);
+        TakutPadaKeramaianLaluLintas.setSelectedIndex(0);
+        TakutDitinggalSendiri.setSelectedIndex(0);
+        SulitTidur.setSelectedIndex(0);
+        TerbangunMalamHari.setSelectedIndex(0);
+        TidurTidakNyeyak.setSelectedIndex(0);
+        MimpiBuruk.setSelectedIndex(0);
+        BangunDenganLesu.setSelectedIndex(0);
+        BanyakMengalamiMimpi.setSelectedIndex(0);
+        MimpiMenakutkan.setSelectedIndex(0);
+        SulitKonsentrasi.setSelectedIndex(0);
+        DayaIngatBuruk.setSelectedIndex(0);
+        HilangnyaMinat.setSelectedIndex(0);
+        BerkurangnyaKesenanganPadaHobi.setSelectedIndex(0);
+        Sedih.setSelectedIndex(0);
+        BangunDiniHari.setSelectedIndex(0);
+        PerasaanBerubah.setSelectedIndex(0);
+        SakitNyeriDiOtot.setSelectedIndex(0);
+        Kaku.setSelectedIndex(0);
+        KedutanOtot.setSelectedIndex(0);
+        GigiGemerutuk.setSelectedIndex(0);
+        SuaraTidakStabil.setSelectedIndex(0);
+        Tinnitus.setSelectedIndex(0);
+        PenglihatanKabur.setSelectedIndex(0);
+        MukaMerahGejalaSomatic.setSelectedIndex(0);
+        MerasaLemah.setSelectedIndex(0);
+        PerasaanDitusuk.setSelectedIndex(0);
+        Takhikardia.setSelectedIndex(0);
+        Berdebar.setSelectedIndex(0);
+        NyeriDiDada.setSelectedIndex(0);
+        DenyutNadiMengeras.setSelectedIndex(0);
+        PerasaanLesu.setSelectedIndex(0);
+        DetakJantungMenghilang.setSelectedIndex(0);
+        MerasaTertekan.setSelectedIndex(0);
+        PerasaanTercekik.setSelectedIndex(0);
+        SeringMenarikNapas.setSelectedIndex(0);
+        NapasPendek.setSelectedIndex(0);
+        BuluBerdiri.setSelectedIndex(0);
+        SulitMenelan.setSelectedIndex(0);
+        PerutMelilit.setSelectedIndex(0);
+        GanguanPencernaan.setSelectedIndex(0);
+        RasaKembung.setSelectedIndex(0);
+        NyeriMakan.setSelectedIndex(0);
+        TerbakarPerut.setSelectedIndex(0);
+        SukarBAB.setSelectedIndex(0);
+        Muntah.setSelectedIndex(0);
+        BABLembek.setSelectedIndex(0);
+        KehilanganBB.setSelectedIndex(0);
+        Mual.setSelectedIndex(0);
+        SeringBAK.setSelectedIndex(0);
+        TidakBisaMenahanKencing.setSelectedIndex(0);
+        MenjadiDingin.setSelectedIndex(0);
+        Manorrhagia.setSelectedIndex(0);
+        Amenorrhoea.setSelectedIndex(0);
+        EjakulasiPraecocks.setSelectedIndex(0);
+        EreksiHilang.setSelectedIndex(0);
+        Impotensi.setSelectedIndex(0);
+        MulutKering.setSelectedIndex(0);
+        MukaMerahGejalaOtonom.setSelectedIndex(0);
+        MudahBerkeringat.setSelectedIndex(0);
+        BuluBerdiriGejalaOtonom.setSelectedIndex(0);
+        SakitKepala.setSelectedIndex(0);
+        GelisahWawancara.setSelectedIndex(0);
+        NapasPendekWawancara.setSelectedIndex(0);
+        JariGemetar.setSelectedIndex(0);
+        KerutKening.setSelectedIndex(0);
+        MukaTegang.setSelectedIndex(0);
+        TonusMeningkat.setSelectedIndex(0);
+        TidakTenang.setSelectedIndex(0);
+        MukaMerahWawancara.setSelectedIndex(0);
+        TotalSkor.setText("0");
+        KeteranganSkor.setText("Tidak Mengalami Kecemasan");
         Tanggal.setDate(new Date());
         Cemas.requestFocus();
     } 
@@ -3852,41 +4877,88 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             FirasatBuruk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             TakutPikiranSendiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             MudahTersinggung.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            PenglihatanKabur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            MukaMerahGejalaSomatic.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            MerasaTegang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Lesu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            TakBisaIstirahatTenang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            MudahTerkejut.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            MudahMenangis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Gemetar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Gelisah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            TakutPadaGelap.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            TakutPadaOrangAsing.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            TakutDitinggalSendiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            TakutPadaBinatangBesar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            TakutPadaKeramaianLaluLintas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            TakutPadaKerumunanBanyakOrang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            SulitTidur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            TerbangunMalamHari.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            TidurTidakNyeyak.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
-            MimpiBuruk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
-            BangunDenganLesu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
-            BanyakMengalamiMimpi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
-            MimpiMenakutkan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            SulitKonsentrasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
-            DayaIngatBuruk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            HilangnyaMinat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
-            BerkurangnyaKesenanganPadaHobi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
-            Sedih.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
-            Kinis1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
-            Kinis2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+            MerasaTegang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Lesu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            TakBisaIstirahatTenang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            MudahTerkejut.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            MudahMenangis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Gemetar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Gelisah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            TakutPadaGelap.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            TakutPadaOrangAsing.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            TakutPadaKerumunanBanyakOrang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            TakutPadaBinatangBesar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            TakutPadaKeramaianLaluLintas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            TakutDitinggalSendiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            SulitTidur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            TerbangunMalamHari.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            TidurTidakNyeyak.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            MimpiBuruk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            BangunDenganLesu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            BanyakMengalamiMimpi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            MimpiMenakutkan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            SulitKonsentrasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            DayaIngatBuruk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            HilangnyaMinat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            BerkurangnyaKesenanganPadaHobi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            Sedih.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            BangunDiniHari.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            PerasaanBerubah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            SakitNyeriDiOtot.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            Kaku.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
             KedutanOtot.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
-            SakitNyeriDiOtot.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
-            Kaku.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
-            GigiGemerutuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
-            SuaraTidakStabil.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
-            Tinnitus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
+            GigiGemerutuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
+            SuaraTidakStabil.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
+            Tinnitus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            PenglihatanKabur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
+            MukaMerahGejalaSomatic.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
+            MerasaLemah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            PerasaanDitusuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
+            Takhikardia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
+            Berdebar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString());
+            NyeriDiDada.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString());
+            DenyutNadiMengeras.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString());
+            PerasaanLesu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString());
+            DetakJantungMenghilang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),52).toString());
+            MerasaTertekan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),53).toString());
+            PerasaanTercekik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),54).toString());
+            SeringMenarikNapas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),55).toString());
+            NapasPendek.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),56).toString());
+            BuluBerdiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),57).toString());
+            SulitMenelan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),58).toString());
+            PerutMelilit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),59).toString());
+            GanguanPencernaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
+            RasaKembung.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
+            NyeriMakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
+            TerbakarPerut.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
+            SukarBAB.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString());
+            Muntah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),65).toString());
+            BABLembek.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),66).toString());
+            KehilanganBB.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
+            Mual.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString());
+            SeringBAK.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),69).toString());
+            TidakBisaMenahanKencing.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString());
+            MenjadiDingin.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
+            Manorrhagia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),72).toString());
+            Amenorrhoea.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),73).toString());
+            EjakulasiPraecocks.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),74).toString());
+            EreksiHilang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),75).toString());
+            Impotensi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),76).toString());
+            MulutKering.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),77).toString());
+            MukaMerahGejalaOtonom.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString());
+            MudahBerkeringat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),79).toString());
+            BuluBerdiriGejalaOtonom.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),80).toString());
+            SakitKepala.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),81).toString());
+            GelisahWawancara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),82).toString());
+            NapasPendekWawancara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),83).toString());
+            JariGemetar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),84).toString());
+            KerutKening.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),85).toString());
+            MukaTegang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),86).toString());
+            TonusMeningkat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),87).toString());
+            TidakTenang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),88).toString());
+            MukaMerahWawancara.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),89).toString());
+            TotalSkor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),90).toString());
+            KeteranganSkor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),91).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
@@ -3946,35 +5018,43 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getchecklist_kriteria_masuk_icu());
-        BtnHapus.setEnabled(akses.getchecklist_kriteria_masuk_icu());
-        BtnEdit.setEnabled(akses.getchecklist_kriteria_masuk_icu());
-        BtnPrint.setEnabled(akses.getchecklist_kriteria_masuk_icu()); 
+        BtnSimpan.setEnabled(akses.getpenilaian_level_kecemasan_ranap_anak());
+        BtnHapus.setEnabled(akses.getpenilaian_level_kecemasan_ranap_anak());
+        BtnEdit.setEnabled(akses.getpenilaian_level_kecemasan_ranap_anak());
         if(akses.getjml2()>=1){
+            KodePetugas.setEditable(false);
             btnPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
-            NamaPetugas.setText(pegawai.tampil3(akses.getkode()));
-        }
+            NamaPetugas.setText(petugas.tampil3(KodePetugas.getText()));
+            if(NamaPetugas.getText().equals("")){
+                KodePetugas.setText("");
+                JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
+            }
+        } 
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("checklist_kriteria_masuk_icu","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,prioritas1_1=?,prioritas1_2=?,prioritas1_3=?,prioritas1_4=?,prioritas1_5=?,prioritas1_6=?,"+
-                "prioritas2_1=?,prioritas2_2=?,prioritas2_3=?,prioritas2_4=?,prioritas2_5=?,prioritas2_6=?,prioritas2_7=?,prioritas2_8=?,prioritas3_1=?,prioritas3_2=?,prioritas3_3=?,prioritas3_4=?,"+
-                "kriteria_fisiologis_tanda_vital_1=?,kriteria_fisiologis_tanda_vital_2=?,kriteria_fisiologis_tanda_vital_3=?,kriteria_fisiologis_tanda_vital_4=?,kriteria_fisiologis_tanda_vital_5=?,"+
-                "kriteria_fisiologis_laborat_1=?,kriteria_fisiologis_laborat_2=?,kriteria_fisiologis_laborat_3=?,kriteria_fisiologis_laborat_4=?,kriteria_fisiologis_laborat_5=?,kriteria_fisiologis_laborat_6=?,"+
-                "kriteria_fisiologis_radiologi_1=?,kriteria_fisiologis_radiologi_2=?,kriteria_fisiologis_klinis_1=?,kriteria_fisiologis_klinis_2=?,kriteria_fisiologis_klinis_3=?,kriteria_fisiologis_klinis_4=?,"+
-                "kriteria_fisiologis_klinis_5=?,kriteria_fisiologis_klinis_6=?,kriteria_fisiologis_klinis_7=?,kriteria_fisiologis_klinis_8=?,nik=?",44,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Cemas.getSelectedItem().toString(),
-                FirasatBuruk.getSelectedItem().toString(),TakutPikiranSendiri.getSelectedItem().toString(),MudahTersinggung.getSelectedItem().toString(),PenglihatanKabur.getSelectedItem().toString(),
-                MukaMerahGejalaSomatic.getSelectedItem().toString(),MerasaTegang.getSelectedItem().toString(),Lesu.getSelectedItem().toString(),TakBisaIstirahatTenang.getSelectedItem().toString(),
-                MudahTerkejut.getSelectedItem().toString(),MudahMenangis.getSelectedItem().toString(),Gemetar.getSelectedItem().toString(),Gelisah.getSelectedItem().toString(),
-                TakutPadaGelap.getSelectedItem().toString(),TakutPadaOrangAsing.getSelectedItem().toString(),TakutDitinggalSendiri.getSelectedItem().toString(),TakutPadaBinatangBesar.getSelectedItem().toString(),
-                TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),SulitTidur.getSelectedItem().toString(),TerbangunMalamHari.getSelectedItem().toString(),
-                TidurTidakNyeyak.getSelectedItem().toString(),MimpiBuruk.getSelectedItem().toString(),BangunDenganLesu.getSelectedItem().toString(),BanyakMengalamiMimpi.getSelectedItem().toString(),
-                MimpiMenakutkan.getSelectedItem().toString(),SulitKonsentrasi.getSelectedItem().toString(),DayaIngatBuruk.getSelectedItem().toString(),HilangnyaMinat.getSelectedItem().toString(),
-                BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),Sedih.getSelectedItem().toString(),Kinis1.getSelectedItem().toString(),Kinis2.getSelectedItem().toString(),
-                KedutanOtot.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),GigiGemerutuk.getSelectedItem().toString(),SuaraTidakStabil.getSelectedItem().toString(),
-                Tinnitus.getSelectedItem().toString(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
+        if(Sequel.mengedittf("penilaian_level_kecemasan_ranap_anak","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,cemas=?,firasat_buruk=?,takut_pikiran_sendiri=?,mudah_tersinggung=?,merasa_tegang=?,lesu=?,tak_bisa_istirahat_tenang=?,mudah_terkejut=?,mudah_menangis=?,gemetar=?,gelisah=?,takut_pada_gelap=?,"+
+                "takut_pada_orangasing=?,takut_pada_kerumunan_banyak_orang=?,takut_pada_binatang_besar=?,takut_pada_keramaian_lalu_lintas=?,takut_ditinggal_sendiri=?,sulit_tidur=?,terbangun_malam_hari=?,tidur_tidak_nyeyak=?,mimpi_buruk=?,bangun_dengan_lesu=?,banyak_mengalami_mimpi=?,mimpi_menakutkan=?,"+
+                "sulit_konsentrasi=?,daya_ingat_buruk=?,hilangnya_minat=?,berkurangnya_kesenangan_pada_hobi=?,sedih=?,bangun_dini_hari=?,perasaan_berubah=?,sakit_nyeri_di_otot=?,kaku=?,kedutan_otot=?,gigi_gemerutuk=?,suara_tidak_stabil=?,tinnitus=?,penglihatan_kabur=?,muka_merah_gejala_somatic=?,merasa_lemah=?,"+
+                "perasaan_ditusuk=?,takhikardia=?,berdebar=?,nyeri_di_dada=?,denyut_nadi_mengeras=?,perasaan_lesu=?,detak_jantung_menghilang=?,merasa_tertekan=?,perasaan_tercekik=?,sering_menarik_napas=?,napas_pendek=?,bulu_berdiri=?,sulit_menelan=?,perut_melilit=?,ganguan_pencernaan=?,rasa_kembung=?,nyeri_makan=?,"+
+                "terbakar_perut=?,sukar_bab=?,muntah=?,bab_lembek=?,kehilangan_bb=?,mual=?,sering_bak=?,tidak_bisa_menahan_kencing=?,menjadi_dingin=?,manorrhagia=?,amenorrhoea=?,ejakulasi_praecocks=?,ereksi_hilang=?,impotensi=?,mulut_kering=?,muka_merah_gejala_otonom=?,mudah_berkeringat=?,bulu_berdiri_gejala_otonom=?,"+
+                "sakit_kepala=?,gelisah_wawancara=?,napas_pendek_wawancara=?,jari_gemetar=?,kerut_kening=?,muka_tegang=?,tonus_meningkat=?,tidak_tenang=?,muka_merah_wawancara=?,total_skor=?,keterangan_skor=?,nip=?",91,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Cemas.getSelectedItem().toString(),FirasatBuruk.getSelectedItem().toString(),TakutPikiranSendiri.getSelectedItem().toString(),MudahTersinggung.getSelectedItem().toString(),
+                MerasaTegang.getSelectedItem().toString(),Lesu.getSelectedItem().toString(),TakBisaIstirahatTenang.getSelectedItem().toString(),MudahTerkejut.getSelectedItem().toString(),MudahMenangis.getSelectedItem().toString(),Gemetar.getSelectedItem().toString(),Gelisah.getSelectedItem().toString(),
+                TakutPadaGelap.getSelectedItem().toString(),TakutPadaOrangAsing.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),TakutPadaBinatangBesar.getSelectedItem().toString(),TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),
+                TakutDitinggalSendiri.getSelectedItem().toString(),SulitTidur.getSelectedItem().toString(),TerbangunMalamHari.getSelectedItem().toString(),TidurTidakNyeyak.getSelectedItem().toString(),MimpiBuruk.getSelectedItem().toString(),BangunDenganLesu.getSelectedItem().toString(),
+                BanyakMengalamiMimpi.getSelectedItem().toString(),MimpiMenakutkan.getSelectedItem().toString(),SulitKonsentrasi.getSelectedItem().toString(),DayaIngatBuruk.getSelectedItem().toString(),HilangnyaMinat.getSelectedItem().toString(),BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),
+                Sedih.getSelectedItem().toString(),BangunDiniHari.getSelectedItem().toString(),PerasaanBerubah.getSelectedItem().toString(),SakitNyeriDiOtot.getSelectedItem().toString(),Kaku.getSelectedItem().toString(),KedutanOtot.getSelectedItem().toString(),GigiGemerutuk.getSelectedItem().toString(),
+                SuaraTidakStabil.getSelectedItem().toString(),Tinnitus.getSelectedItem().toString(),PenglihatanKabur.getSelectedItem().toString(),MukaMerahGejalaSomatic.getSelectedItem().toString(),MerasaLemah.getSelectedItem().toString(),PerasaanDitusuk.getSelectedItem().toString(),
+                Takhikardia.getSelectedItem().toString(),Berdebar.getSelectedItem().toString(),NyeriDiDada.getSelectedItem().toString(),DenyutNadiMengeras.getSelectedItem().toString(),PerasaanLesu.getSelectedItem().toString(),DetakJantungMenghilang.getSelectedItem().toString(),
+                MerasaTertekan.getSelectedItem().toString(),PerasaanTercekik.getSelectedItem().toString(),SeringMenarikNapas.getSelectedItem().toString(),NapasPendek.getSelectedItem().toString(),BuluBerdiri.getSelectedItem().toString(),SulitMenelan.getSelectedItem().toString(),
+                PerutMelilit.getSelectedItem().toString(),GanguanPencernaan.getSelectedItem().toString(),RasaKembung.getSelectedItem().toString(),NyeriMakan.getSelectedItem().toString(),TerbakarPerut.getSelectedItem().toString(),SukarBAB.getSelectedItem().toString(),Muntah.getSelectedItem().toString(),
+                BABLembek.getSelectedItem().toString(),KehilanganBB.getSelectedItem().toString(),Mual.getSelectedItem().toString(),SeringBAK.getSelectedItem().toString(),TidakBisaMenahanKencing.getSelectedItem().toString(),MenjadiDingin.getSelectedItem().toString(),Manorrhagia.getSelectedItem().toString(),
+                Amenorrhoea.getSelectedItem().toString(),EjakulasiPraecocks.getSelectedItem().toString(),EreksiHilang.getSelectedItem().toString(),Impotensi.getSelectedItem().toString(),MulutKering.getSelectedItem().toString(),MukaMerahGejalaOtonom.getSelectedItem().toString(),
+                MudahBerkeringat.getSelectedItem().toString(),BuluBerdiriGejalaOtonom.getSelectedItem().toString(),SakitKepala.getSelectedItem().toString(),GelisahWawancara.getSelectedItem().toString(),NapasPendekWawancara.getSelectedItem().toString(),JariGemetar.getSelectedItem().toString(),
+                KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KodePetugas.getText(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -3986,49 +5066,96 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             tbObat.setValueAt(FirasatBuruk.getSelectedItem().toString(),tbObat.getSelectedRow(),7);
             tbObat.setValueAt(TakutPikiranSendiri.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
             tbObat.setValueAt(MudahTersinggung.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(PenglihatanKabur.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(MukaMerahGejalaSomatic.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(MerasaTegang.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(Lesu.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(TakBisaIstirahatTenang.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(MudahTerkejut.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(MudahMenangis.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(Gemetar.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(Gelisah.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-            tbObat.setValueAt(TakutPadaGelap.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-            tbObat.setValueAt(TakutPadaOrangAsing.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(TakutDitinggalSendiri.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
-            tbObat.setValueAt(TakutPadaBinatangBesar.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-            tbObat.setValueAt(TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
-            tbObat.setValueAt(TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(SulitTidur.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(TerbangunMalamHari.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
-            tbObat.setValueAt(TidurTidakNyeyak.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
-            tbObat.setValueAt(MimpiBuruk.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
-            tbObat.setValueAt(BangunDenganLesu.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
-            tbObat.setValueAt(BanyakMengalamiMimpi.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
-            tbObat.setValueAt(MimpiMenakutkan.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
-            tbObat.setValueAt(SulitKonsentrasi.getSelectedItem().toString(),tbObat.getSelectedRow(),32);
-            tbObat.setValueAt(DayaIngatBuruk.getSelectedItem().toString(),tbObat.getSelectedRow(),33);
-            tbObat.setValueAt(HilangnyaMinat.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
-            tbObat.setValueAt(BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),tbObat.getSelectedRow(),35);
-            tbObat.setValueAt(Sedih.getSelectedItem().toString(),tbObat.getSelectedRow(),36);
-            tbObat.setValueAt(Kinis1.getSelectedItem().toString(),tbObat.getSelectedRow(),37);
-            tbObat.setValueAt(Kinis2.getSelectedItem().toString(),tbObat.getSelectedRow(),38);
+            tbObat.setValueAt(MerasaTegang.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(Lesu.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(TakBisaIstirahatTenang.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(MudahTerkejut.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(MudahMenangis.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(Gemetar.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(Gelisah.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(TakutPadaGelap.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(TakutPadaOrangAsing.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+            tbObat.setValueAt(TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(TakutPadaBinatangBesar.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(TakutDitinggalSendiri.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(SulitTidur.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
+            tbObat.setValueAt(TerbangunMalamHari.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(TidurTidakNyeyak.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
+            tbObat.setValueAt(MimpiBuruk.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
+            tbObat.setValueAt(BangunDenganLesu.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
+            tbObat.setValueAt(BanyakMengalamiMimpi.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
+            tbObat.setValueAt(MimpiMenakutkan.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
+            tbObat.setValueAt(SulitKonsentrasi.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
+            tbObat.setValueAt(DayaIngatBuruk.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
+            tbObat.setValueAt(HilangnyaMinat.getSelectedItem().toString(),tbObat.getSelectedRow(),32);
+            tbObat.setValueAt(BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString(),tbObat.getSelectedRow(),33);
+            tbObat.setValueAt(Sedih.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
+            tbObat.setValueAt(BangunDiniHari.getSelectedItem().toString(),tbObat.getSelectedRow(),35);
+            tbObat.setValueAt(PerasaanBerubah.getSelectedItem().toString(),tbObat.getSelectedRow(),36);
+            tbObat.setValueAt(SakitNyeriDiOtot.getSelectedItem().toString(),tbObat.getSelectedRow(),37);
+            tbObat.setValueAt(Kaku.getSelectedItem().toString(),tbObat.getSelectedRow(),38);
             tbObat.setValueAt(KedutanOtot.getSelectedItem().toString(),tbObat.getSelectedRow(),39);
-            tbObat.setValueAt(SakitNyeriDiOtot.getSelectedItem().toString(),tbObat.getSelectedRow(),40);
-            tbObat.setValueAt(Kaku.getSelectedItem().toString(),tbObat.getSelectedRow(),41);
-            tbObat.setValueAt(GigiGemerutuk.getSelectedItem().toString(),tbObat.getSelectedRow(),42);
-            tbObat.setValueAt(SuaraTidakStabil.getSelectedItem().toString(),tbObat.getSelectedRow(),43);
-            tbObat.setValueAt(Tinnitus.getSelectedItem().toString(),tbObat.getSelectedRow(),44);
-            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),45);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),46);
+            tbObat.setValueAt(GigiGemerutuk.getSelectedItem().toString(),tbObat.getSelectedRow(),40);
+            tbObat.setValueAt(SuaraTidakStabil.getSelectedItem().toString(),tbObat.getSelectedRow(),41);
+            tbObat.setValueAt(Tinnitus.getSelectedItem().toString(),tbObat.getSelectedRow(),42);
+            tbObat.setValueAt(PenglihatanKabur.getSelectedItem().toString(),tbObat.getSelectedRow(),43);
+            tbObat.setValueAt(MukaMerahGejalaSomatic.getSelectedItem().toString(),tbObat.getSelectedRow(),44);
+            tbObat.setValueAt(MerasaLemah.getSelectedItem().toString(),tbObat.getSelectedRow(),45);
+            tbObat.setValueAt(PerasaanDitusuk.getSelectedItem().toString(),tbObat.getSelectedRow(),46);
+            tbObat.setValueAt(Takhikardia.getSelectedItem().toString(),tbObat.getSelectedRow(),47);
+            tbObat.setValueAt(Berdebar.getSelectedItem().toString(),tbObat.getSelectedRow(),48);
+            tbObat.setValueAt(NyeriDiDada.getSelectedItem().toString(),tbObat.getSelectedRow(),49);
+            tbObat.setValueAt(DenyutNadiMengeras.getSelectedItem().toString(),tbObat.getSelectedRow(),50);
+            tbObat.setValueAt(PerasaanLesu.getSelectedItem().toString(),tbObat.getSelectedRow(),51);
+            tbObat.setValueAt(DetakJantungMenghilang.getSelectedItem().toString(),tbObat.getSelectedRow(),52);
+            tbObat.setValueAt(MerasaTertekan.getSelectedItem().toString(),tbObat.getSelectedRow(),53);
+            tbObat.setValueAt(PerasaanTercekik.getSelectedItem().toString(),tbObat.getSelectedRow(),54);
+            tbObat.setValueAt(SeringMenarikNapas.getSelectedItem().toString(),tbObat.getSelectedRow(),55);
+            tbObat.setValueAt(NapasPendek.getSelectedItem().toString(),tbObat.getSelectedRow(),56);
+            tbObat.setValueAt(BuluBerdiri.getSelectedItem().toString(),tbObat.getSelectedRow(),57);
+            tbObat.setValueAt(SulitMenelan.getSelectedItem().toString(),tbObat.getSelectedRow(),58);
+            tbObat.setValueAt(PerutMelilit.getSelectedItem().toString(),tbObat.getSelectedRow(),59);
+            tbObat.setValueAt(GanguanPencernaan.getSelectedItem().toString(),tbObat.getSelectedRow(),60);
+            tbObat.setValueAt(RasaKembung.getSelectedItem().toString(),tbObat.getSelectedRow(),61);
+            tbObat.setValueAt(NyeriMakan.getSelectedItem().toString(),tbObat.getSelectedRow(),62);
+            tbObat.setValueAt(TerbakarPerut.getSelectedItem().toString(),tbObat.getSelectedRow(),63);
+            tbObat.setValueAt(SukarBAB.getSelectedItem().toString(),tbObat.getSelectedRow(),64);
+            tbObat.setValueAt(Muntah.getSelectedItem().toString(),tbObat.getSelectedRow(),65);
+            tbObat.setValueAt(BABLembek.getSelectedItem().toString(),tbObat.getSelectedRow(),66);
+            tbObat.setValueAt(KehilanganBB.getSelectedItem().toString(),tbObat.getSelectedRow(),67);
+            tbObat.setValueAt(Mual.getSelectedItem().toString(),tbObat.getSelectedRow(),68);
+            tbObat.setValueAt(SeringBAK.getSelectedItem().toString(),tbObat.getSelectedRow(),69);
+            tbObat.setValueAt(TidakBisaMenahanKencing.getSelectedItem().toString(),tbObat.getSelectedRow(),70);
+            tbObat.setValueAt(MenjadiDingin.getSelectedItem().toString(),tbObat.getSelectedRow(),71);
+            tbObat.setValueAt(Manorrhagia.getSelectedItem().toString(),tbObat.getSelectedRow(),72);
+            tbObat.setValueAt(Amenorrhoea.getSelectedItem().toString(),tbObat.getSelectedRow(),73);
+            tbObat.setValueAt(EjakulasiPraecocks.getSelectedItem().toString(),tbObat.getSelectedRow(),74);
+            tbObat.setValueAt(EreksiHilang.getSelectedItem().toString(),tbObat.getSelectedRow(),75);
+            tbObat.setValueAt(Impotensi.getSelectedItem().toString(),tbObat.getSelectedRow(),76);
+            tbObat.setValueAt(MulutKering.getSelectedItem().toString(),tbObat.getSelectedRow(),77);
+            tbObat.setValueAt(MukaMerahGejalaOtonom.getSelectedItem().toString(),tbObat.getSelectedRow(),78);
+            tbObat.setValueAt(MudahBerkeringat.getSelectedItem().toString(),tbObat.getSelectedRow(),79);
+            tbObat.setValueAt(BuluBerdiriGejalaOtonom.getSelectedItem().toString(),tbObat.getSelectedRow(),80);
+            tbObat.setValueAt(SakitKepala.getSelectedItem().toString(),tbObat.getSelectedRow(),81);
+            tbObat.setValueAt(GelisahWawancara.getSelectedItem().toString(),tbObat.getSelectedRow(),82);
+            tbObat.setValueAt(NapasPendekWawancara.getSelectedItem().toString(),tbObat.getSelectedRow(),83);
+            tbObat.setValueAt(JariGemetar.getSelectedItem().toString(),tbObat.getSelectedRow(),84);
+            tbObat.setValueAt(KerutKening.getSelectedItem().toString(),tbObat.getSelectedRow(),85);
+            tbObat.setValueAt(MukaTegang.getSelectedItem().toString(),tbObat.getSelectedRow(),86);
+            tbObat.setValueAt(TonusMeningkat.getSelectedItem().toString(),tbObat.getSelectedRow(),87);
+            tbObat.setValueAt(TidakTenang.getSelectedItem().toString(),tbObat.getSelectedRow(),88);
+            tbObat.setValueAt(MukaMerahWawancara.getSelectedItem().toString(),tbObat.getSelectedRow(),89);
+            tbObat.setValueAt(TotalSkor.getText(),tbObat.getSelectedRow(),90);
+            tbObat.setValueAt(KeteranganSkor.getText(),tbObat.getSelectedRow(),91);
+            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),92);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),93);
             emptTeks();
         }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from checklist_kriteria_masuk_icu where no_rawat=? and tanggal=?",2,new String[]{
+        if(Sequel.queryu2tf("delete from penilaian_level_kecemasan_ranap_anak where no_rawat=? and tanggal=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -4036,6 +5163,68 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             emptTeks();
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        }
+    }
+
+    private void isTotalSkor() {
+        try {
+            TotalSkor.setText(
+                    (Integer.parseInt(Cemas.getSelectedItem().toString())+Integer.parseInt(FirasatBuruk.getSelectedItem().toString())+
+                     Integer.parseInt(TakutPikiranSendiri.getSelectedItem().toString())+Integer.parseInt(MudahTersinggung.getSelectedItem().toString())+
+                     Integer.parseInt(MerasaTegang.getSelectedItem().toString())+Integer.parseInt(Lesu.getSelectedItem().toString())+
+                     Integer.parseInt(TakBisaIstirahatTenang.getSelectedItem().toString())+Integer.parseInt(MudahTerkejut.getSelectedItem().toString())+
+                     Integer.parseInt(MudahMenangis.getSelectedItem().toString())+Integer.parseInt(Gemetar.getSelectedItem().toString())+
+                     Integer.parseInt(Gelisah.getSelectedItem().toString())+Integer.parseInt(TakutPadaGelap.getSelectedItem().toString())+
+                     Integer.parseInt(TakutPadaOrangAsing.getSelectedItem().toString())+Integer.parseInt(TakutPadaKerumunanBanyakOrang.getSelectedItem().toString())+
+                     Integer.parseInt(TakutPadaBinatangBesar.getSelectedItem().toString())+Integer.parseInt(TakutPadaKeramaianLaluLintas.getSelectedItem().toString())+
+                     Integer.parseInt(TakutDitinggalSendiri.getSelectedItem().toString())+Integer.parseInt(SulitTidur.getSelectedItem().toString())+
+                     Integer.parseInt(TerbangunMalamHari.getSelectedItem().toString())+Integer.parseInt(TidurTidakNyeyak.getSelectedItem().toString())+
+                     Integer.parseInt(MimpiBuruk.getSelectedItem().toString())+Integer.parseInt(BangunDenganLesu.getSelectedItem().toString())+
+                     Integer.parseInt(BanyakMengalamiMimpi.getSelectedItem().toString())+Integer.parseInt(MimpiMenakutkan.getSelectedItem().toString())+
+                     Integer.parseInt(SulitKonsentrasi.getSelectedItem().toString())+Integer.parseInt(DayaIngatBuruk.getSelectedItem().toString())+
+                     Integer.parseInt(HilangnyaMinat.getSelectedItem().toString())+Integer.parseInt(BerkurangnyaKesenanganPadaHobi.getSelectedItem().toString())+
+                     Integer.parseInt(Sedih.getSelectedItem().toString())+Integer.parseInt(BangunDiniHari.getSelectedItem().toString())+
+                     Integer.parseInt(PerasaanBerubah.getSelectedItem().toString())+Integer.parseInt(SakitNyeriDiOtot.getSelectedItem().toString())+
+                     Integer.parseInt(Kaku.getSelectedItem().toString())+Integer.parseInt(KedutanOtot.getSelectedItem().toString())+
+                     Integer.parseInt(GigiGemerutuk.getSelectedItem().toString())+Integer.parseInt(SuaraTidakStabil.getSelectedItem().toString())+
+                     Integer.parseInt(Tinnitus.getSelectedItem().toString())+Integer.parseInt(PenglihatanKabur.getSelectedItem().toString())+
+                     Integer.parseInt(MukaMerahGejalaSomatic.getSelectedItem().toString())+Integer.parseInt(MerasaLemah.getSelectedItem().toString())+
+                     Integer.parseInt(PerasaanDitusuk.getSelectedItem().toString())+Integer.parseInt(Takhikardia.getSelectedItem().toString())+
+                     Integer.parseInt(Berdebar.getSelectedItem().toString())+Integer.parseInt(NyeriDiDada.getSelectedItem().toString())+
+                     Integer.parseInt(DenyutNadiMengeras.getSelectedItem().toString())+Integer.parseInt(PerasaanLesu.getSelectedItem().toString())+
+                     Integer.parseInt(DetakJantungMenghilang.getSelectedItem().toString())+Integer.parseInt(MerasaTertekan.getSelectedItem().toString())+
+                     Integer.parseInt(PerasaanTercekik.getSelectedItem().toString())+Integer.parseInt(SeringMenarikNapas.getSelectedItem().toString())+
+                     Integer.parseInt(NapasPendek.getSelectedItem().toString())+Integer.parseInt(BuluBerdiri.getSelectedItem().toString())+
+                     Integer.parseInt(SulitMenelan.getSelectedItem().toString())+Integer.parseInt(PerutMelilit.getSelectedItem().toString())+
+                     Integer.parseInt(GanguanPencernaan.getSelectedItem().toString())+Integer.parseInt(RasaKembung.getSelectedItem().toString())+
+                     Integer.parseInt(NyeriMakan.getSelectedItem().toString())+Integer.parseInt(TerbakarPerut.getSelectedItem().toString())+
+                     Integer.parseInt(SukarBAB.getSelectedItem().toString())+Integer.parseInt(Muntah.getSelectedItem().toString())+
+                     Integer.parseInt(BABLembek.getSelectedItem().toString())+Integer.parseInt(KehilanganBB.getSelectedItem().toString())+
+                     Integer.parseInt(Mual.getSelectedItem().toString())+Integer.parseInt(SeringBAK.getSelectedItem().toString())+
+                     Integer.parseInt(TidakBisaMenahanKencing.getSelectedItem().toString())+Integer.parseInt(MenjadiDingin.getSelectedItem().toString())+
+                     Integer.parseInt(Manorrhagia.getSelectedItem().toString())+Integer.parseInt(Amenorrhoea.getSelectedItem().toString())+
+                     Integer.parseInt(EjakulasiPraecocks.getSelectedItem().toString())+Integer.parseInt(EreksiHilang.getSelectedItem().toString())+
+                     Integer.parseInt(Impotensi.getSelectedItem().toString())+Integer.parseInt(MulutKering.getSelectedItem().toString())+
+                     Integer.parseInt(MukaMerahGejalaOtonom.getSelectedItem().toString())+Integer.parseInt(MudahBerkeringat.getSelectedItem().toString())+
+                     Integer.parseInt(BuluBerdiriGejalaOtonom.getSelectedItem().toString())+Integer.parseInt(SakitKepala.getSelectedItem().toString())+
+                     Integer.parseInt(GelisahWawancara.getSelectedItem().toString())+Integer.parseInt(NapasPendekWawancara.getSelectedItem().toString())+
+                     Integer.parseInt(JariGemetar.getSelectedItem().toString())+Integer.parseInt(KerutKening.getSelectedItem().toString())+
+                     Integer.parseInt(MukaTegang.getSelectedItem().toString())+Integer.parseInt(TonusMeningkat.getSelectedItem().toString())+
+                     Integer.parseInt(TidakTenang.getSelectedItem().toString())+Integer.parseInt(MukaMerahWawancara.getSelectedItem().toString()))+"");
+            if(Integer.parseInt(TotalSkor.getText())<14){
+                KeteranganSkor.setText("Tidak Mengalami Kecemasan");
+            }else if(Integer.parseInt(TotalSkor.getText())<=20){
+                KeteranganSkor.setText("Kecemasan Ringan");
+            }else if(Integer.parseInt(TotalSkor.getText())<=27){
+                KeteranganSkor.setText("Kecemasan Sedang");
+            }else if(Integer.parseInt(TotalSkor.getText())<=41){
+                KeteranganSkor.setText("Kecemasan Berat");
+            }else if(Integer.parseInt(TotalSkor.getText())>41){
+                KeteranganSkor.setText("Kecemasan Sangat Berat");
+            }
+        }catch (Exception e) {
+            TotalSkor.setText("0");
+            KeteranganSkor.setText("Tidak Mengalami Kecemasan");
         }
     }
 }
