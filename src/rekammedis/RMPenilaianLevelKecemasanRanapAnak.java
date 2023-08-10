@@ -170,17 +170,79 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }else if(i==40){
                 column.setPreferredWidth(85);
             }else if(i==41){
-                column.setPreferredWidth(98);
+                column.setPreferredWidth(97);
             }else if(i==42){
                 column.setPreferredWidth(47);
             }else if(i==43){
-                column.setPreferredWidth(99);
+                column.setPreferredWidth(98);
             }else if(i==44){
                 column.setPreferredWidth(142);
             }else if(i==45){
-                column.setPreferredWidth(86);
+                column.setPreferredWidth(79);
             }else if(i==46){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(93);
+            }else if(i==47){
+                column.setPreferredWidth(65);
+            }else if(i==48){
+                column.setPreferredWidth(53);
+            }else if(i==49){
+                column.setPreferredWidth(75);
+            }else if(i==50){
+                column.setPreferredWidth(118);
+            }else if(i==51){
+                column.setPreferredWidth(79);
+            }else if(i==52){
+                column.setPreferredWidth(137);
+            }else if(i==53){
+                column.setPreferredWidth(90);
+            }else if(i==54){
+                column.setPreferredWidth(98);
+            }else if(i==55){
+                column.setPreferredWidth(114);
+            }else if(i==56){
+                column.setPreferredWidth(78);
+            }else if(i==57){
+                column.setPreferredWidth(65);
+            }else if(i==58){
+                column.setPreferredWidth(75);
+            }else if(i==59){
+                column.setPreferredWidth(67);
+            }else if(i==60){
+                column.setPreferredWidth(113);
+            }else if(i==61){
+                column.setPreferredWidth(80);
+            }else if(i==62){
+                column.setPreferredWidth(68);
+            }else if(i==63){
+                column.setPreferredWidth(80);
+            }else if(i==64){
+                column.setPreferredWidth(57);
+            }else if(i==65){
+                column.setPreferredWidth(45);
+            }else if(i==66){
+                column.setPreferredWidth(68);
+            }else if(i==67){
+                column.setPreferredWidth(78);
+            }else if(i==68){
+                column.setPreferredWidth(32);
+            }else if(i==69){
+                column.setPreferredWidth(62);
+            }else if(i==70){
+                column.setPreferredWidth(147);
+            }else if(i==71){
+                column.setPreferredWidth(81);
+            }else if(i==72){
+                column.setPreferredWidth(70);
+            }else if(i==73){
+                column.setPreferredWidth(75);
+            }else if(i==74){
+                column.setPreferredWidth(105);
+            }else if(i==75){
+                column.setPreferredWidth(72);
+            }else if(i==76){
+                column.setPreferredWidth(60);
+            }else if(i==77){
+                column.setPreferredWidth(70);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
