@@ -1543,7 +1543,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         jLabel90.setText("Mimpi Buruk :");
         jLabel90.setName("jLabel90"); // NOI18N
         FormInput.add(jLabel90);
-        jLabel90.setBounds(585, 300, 140, 23);
+        jLabel90.setBounds(625, 300, 100, 23);
 
         MimpiBuruk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4" }));
         MimpiBuruk.setName("MimpiBuruk"); // NOI18N
