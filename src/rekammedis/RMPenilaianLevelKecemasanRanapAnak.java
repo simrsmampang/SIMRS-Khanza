@@ -73,8 +73,8 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             "Denyut Nadi Mengeras","Perasaan Lesu","Detak Jantung Menghilang","Merasa Tertekan","Perasaan Tercekik","Sering Menarik Napas",
             "Napas Pendek","Bulu Berdiri","Sulit Menelan","Perut Melilit","Ganguan Pencernaan","Rasa Kembung","Nyeri Makan","Terbakar Perut",
             "Sukar BAB","Muntah","BAB Lembek","Kehilangan BB","Mual","Sering BAK","Tidak Bisa Menahan Kencing","Menjadi Dingin","Manorrhagia",
-            "Amenorrhoea","Ejakulasi Praecocks","Ereksi Hilang","Impotensi","Mulut Kering","Muka Merah Gejala Otonom","Mudah Berkeringat",
-            "Bulu Berdiri Gejala Otonom","Sakit Kepala","Gelisah Wawancara","Napas Pendek Wawancara","Jari Gemetar","Kerut Kening","Muka Tegang",
+            "Amenorrhoea","Ejakulasi Praecocks","Ereksi Hilang","Impotensi","Mulut Kering","Gejala Otonom Muka Merah","Mudah Berkeringat",
+            "Gejala Otonom Bulu Berdiri","Sakit Kepala","Gelisah Wawancara","Napas Pendek Wawancara","Jari Gemetar","Kerut Kening","Muka Tegang",
             "Tonus Meningkat","Tidak Tenang","Muka Merah Wawancara","Total Skor","Keterangan Skor","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -236,13 +236,45 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             }else if(i==73){
                 column.setPreferredWidth(75);
             }else if(i==74){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(104);
             }else if(i==75){
                 column.setPreferredWidth(72);
             }else if(i==76){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(58);
             }else if(i==77){
                 column.setPreferredWidth(70);
+            }else if(i==78){
+                column.setPreferredWidth(143);
+            }else if(i==79){
+                column.setPreferredWidth(100);
+            }else if(i==80){
+                column.setPreferredWidth(141);
+            }else if(i==81){
+                column.setPreferredWidth(69);
+            }else if(i==82){
+                column.setPreferredWidth(105);
+            }else if(i==83){
+                column.setPreferredWidth(137);
+            }else if(i==84){
+                column.setPreferredWidth(71);
+            }else if(i==85){
+                column.setPreferredWidth(70);
+            }else if(i==86){
+                column.setPreferredWidth(72);
+            }else if(i==87){
+                column.setPreferredWidth(90);
+            }else if(i==88){
+                column.setPreferredWidth(74);
+            }else if(i==89){
+                column.setPreferredWidth(126);
+            }else if(i==90){
+                column.setPreferredWidth(60);
+            }else if(i==91){
+                column.setPreferredWidth(150);
+            }else if(i==92){
+                column.setPreferredWidth(90);
+            }else if(i==93){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -330,7 +362,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaMasukICU = new javax.swing.JMenuItem();
+        MnLevelKecemasan = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -619,19 +651,19 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnKriteriaMasukICU.setBackground(new java.awt.Color(255, 255, 254));
-        MnKriteriaMasukICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKriteriaMasukICU.setForeground(new java.awt.Color(50, 50, 50));
-        MnKriteriaMasukICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaMasukICU.setText("Formulir Checklist Kriteria Masuk ICU");
-        MnKriteriaMasukICU.setName("MnKriteriaMasukICU"); // NOI18N
-        MnKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnKriteriaMasukICU.addActionListener(new java.awt.event.ActionListener() {
+        MnLevelKecemasan.setBackground(new java.awt.Color(255, 255, 254));
+        MnLevelKecemasan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLevelKecemasan.setForeground(new java.awt.Color(50, 50, 50));
+        MnLevelKecemasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnLevelKecemasan.setText("Formulir Level Kecemasan Ranap Anak");
+        MnLevelKecemasan.setName("MnLevelKecemasan"); // NOI18N
+        MnLevelKecemasan.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnLevelKecemasan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnKriteriaMasukICUActionPerformed(evt);
+                MnLevelKecemasanActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnKriteriaMasukICU);
+        jPopupMenu1.add(MnLevelKecemasan);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -3548,7 +3580,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='7100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='8000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -3573,7 +3605,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='7100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='8000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -3662,7 +3694,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnKriteriaMasukICUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaMasukICUActionPerformed
+    private void MnLevelKecemasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLevelKecemasanActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -3672,33 +3704,46 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join petugas on petugas.id=sidikjari.id where petugas.nip=?",tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronip oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),46).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),45).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukICU.jasper","report","::[ Formulir Check List Kriteria Masuk ICU ]::",
+            Valid.MyReportqry("rptFormulirLevelKecemasanRanapAnak.jasper","report","::[ Formulir Level Kecemasan Rawat Inap Anak ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,penilaian_level_kecemasan_ranap_anak.tanggal,"+
-                    "penilaian_level_kecemasan_ranap_anak.prioritas1_1,penilaian_level_kecemasan_ranap_anak.prioritas1_2,penilaian_level_kecemasan_ranap_anak.prioritas1_3,"+
-                    "penilaian_level_kecemasan_ranap_anak.prioritas1_4,penilaian_level_kecemasan_ranap_anak.prioritas1_5,penilaian_level_kecemasan_ranap_anak.prioritas1_6,"+
-                    "penilaian_level_kecemasan_ranap_anak.prioritas2_1,penilaian_level_kecemasan_ranap_anak.prioritas2_2,penilaian_level_kecemasan_ranap_anak.prioritas2_3,"+
-                    "penilaian_level_kecemasan_ranap_anak.prioritas2_4,penilaian_level_kecemasan_ranap_anak.prioritas2_5,penilaian_level_kecemasan_ranap_anak.prioritas2_6,"+
-                    "penilaian_level_kecemasan_ranap_anak.prioritas2_7,penilaian_level_kecemasan_ranap_anak.prioritas2_8,penilaian_level_kecemasan_ranap_anak.prioritas3_1,"+
-                    "penilaian_level_kecemasan_ranap_anak.prioritas3_2,penilaian_level_kecemasan_ranap_anak.prioritas3_3,penilaian_level_kecemasan_ranap_anak.prioritas3_4,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_1,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_2,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_3,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_4,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_tanda_vital_5,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_1,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_2,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_3,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_4,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_5,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_laborat_6,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_radiologi_1,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_radiologi_2,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_1,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_2,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_3,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_4,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_5,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_6,penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_7,"+
-                    "penilaian_level_kecemasan_ranap_anak.kriteria_fisiologis_klinis_8,penilaian_level_kecemasan_ranap_anak.nip,petugas.nama "+
+                    "penilaian_level_kecemasan_ranap_anak.cemas,penilaian_level_kecemasan_ranap_anak.firasat_buruk,penilaian_level_kecemasan_ranap_anak.takut_pikiran_sendiri,"+
+                    "penilaian_level_kecemasan_ranap_anak.mudah_tersinggung,penilaian_level_kecemasan_ranap_anak.merasa_tegang,penilaian_level_kecemasan_ranap_anak.lesu,"+
+                    "penilaian_level_kecemasan_ranap_anak.tak_bisa_istirahat_tenang,penilaian_level_kecemasan_ranap_anak.mudah_terkejut,penilaian_level_kecemasan_ranap_anak.mudah_menangis,"+
+                    "penilaian_level_kecemasan_ranap_anak.gemetar,penilaian_level_kecemasan_ranap_anak.gelisah,penilaian_level_kecemasan_ranap_anak.takut_pada_gelap,"+
+                    "penilaian_level_kecemasan_ranap_anak.takut_pada_orangasing,penilaian_level_kecemasan_ranap_anak.takut_pada_kerumunan_banyak_orang,"+
+                    "penilaian_level_kecemasan_ranap_anak.takut_pada_binatang_besar,penilaian_level_kecemasan_ranap_anak.takut_pada_keramaian_lalu_lintas,"+
+                    "penilaian_level_kecemasan_ranap_anak.takut_ditinggal_sendiri,penilaian_level_kecemasan_ranap_anak.sulit_tidur,penilaian_level_kecemasan_ranap_anak.terbangun_malam_hari,"+
+                    "penilaian_level_kecemasan_ranap_anak.tidur_tidak_nyeyak,penilaian_level_kecemasan_ranap_anak.mimpi_buruk,penilaian_level_kecemasan_ranap_anak.bangun_dengan_lesu,"+
+                    "penilaian_level_kecemasan_ranap_anak.banyak_mengalami_mimpi,penilaian_level_kecemasan_ranap_anak.mimpi_menakutkan,penilaian_level_kecemasan_ranap_anak.sulit_konsentrasi,"+
+                    "penilaian_level_kecemasan_ranap_anak.daya_ingat_buruk,penilaian_level_kecemasan_ranap_anak.hilangnya_minat,penilaian_level_kecemasan_ranap_anak.berkurangnya_kesenangan_pada_hobi,"+
+                    "penilaian_level_kecemasan_ranap_anak.sedih,penilaian_level_kecemasan_ranap_anak.bangun_dini_hari,penilaian_level_kecemasan_ranap_anak.perasaan_berubah,"+
+                    "penilaian_level_kecemasan_ranap_anak.sakit_nyeri_di_otot,penilaian_level_kecemasan_ranap_anak.kaku,penilaian_level_kecemasan_ranap_anak.kedutan_otot,"+
+                    "penilaian_level_kecemasan_ranap_anak.gigi_gemerutuk,penilaian_level_kecemasan_ranap_anak.suara_tidak_stabil,penilaian_level_kecemasan_ranap_anak.tinnitus,"+
+                    "penilaian_level_kecemasan_ranap_anak.penglihatan_kabur,penilaian_level_kecemasan_ranap_anak.muka_merah_gejala_somatic,penilaian_level_kecemasan_ranap_anak.merasa_lemah,"+
+                    "penilaian_level_kecemasan_ranap_anak.perasaan_ditusuk,penilaian_level_kecemasan_ranap_anak.takhikardia,penilaian_level_kecemasan_ranap_anak.berdebar,"+
+                    "penilaian_level_kecemasan_ranap_anak.nyeri_di_dada,penilaian_level_kecemasan_ranap_anak.denyut_nadi_mengeras,penilaian_level_kecemasan_ranap_anak.perasaan_lesu,"+
+                    "penilaian_level_kecemasan_ranap_anak.detak_jantung_menghilang,penilaian_level_kecemasan_ranap_anak.merasa_tertekan,penilaian_level_kecemasan_ranap_anak.perasaan_tercekik,"+
+                    "penilaian_level_kecemasan_ranap_anak.sering_menarik_napas,penilaian_level_kecemasan_ranap_anak.napas_pendek,penilaian_level_kecemasan_ranap_anak.bulu_berdiri,"+
+                    "penilaian_level_kecemasan_ranap_anak.sulit_menelan,penilaian_level_kecemasan_ranap_anak.perut_melilit,penilaian_level_kecemasan_ranap_anak.ganguan_pencernaan,"+
+                    "penilaian_level_kecemasan_ranap_anak.rasa_kembung,penilaian_level_kecemasan_ranap_anak.nyeri_makan,penilaian_level_kecemasan_ranap_anak.terbakar_perut,"+
+                    "penilaian_level_kecemasan_ranap_anak.sukar_bab,penilaian_level_kecemasan_ranap_anak.muntah,penilaian_level_kecemasan_ranap_anak.bab_lembek,"+
+                    "penilaian_level_kecemasan_ranap_anak.kehilangan_bb,penilaian_level_kecemasan_ranap_anak.mual,penilaian_level_kecemasan_ranap_anak.sering_bak,"+
+                    "penilaian_level_kecemasan_ranap_anak.tidak_bisa_menahan_kencing,penilaian_level_kecemasan_ranap_anak.menjadi_dingin,penilaian_level_kecemasan_ranap_anak.manorrhagia,"+
+                    "penilaian_level_kecemasan_ranap_anak.amenorrhoea,penilaian_level_kecemasan_ranap_anak.ejakulasi_praecocks,penilaian_level_kecemasan_ranap_anak.ereksi_hilang,"+
+                    "penilaian_level_kecemasan_ranap_anak.impotensi,penilaian_level_kecemasan_ranap_anak.mulut_kering,penilaian_level_kecemasan_ranap_anak.muka_merah_gejala_otonom,"+
+                    "penilaian_level_kecemasan_ranap_anak.mudah_berkeringat,penilaian_level_kecemasan_ranap_anak.bulu_berdiri_gejala_otonom,penilaian_level_kecemasan_ranap_anak.sakit_kepala,"+
+                    "penilaian_level_kecemasan_ranap_anak.gelisah_wawancara,penilaian_level_kecemasan_ranap_anak.napas_pendek_wawancara,penilaian_level_kecemasan_ranap_anak.jari_gemetar,"+
+                    "penilaian_level_kecemasan_ranap_anak.kerut_kening,penilaian_level_kecemasan_ranap_anak.muka_tegang,penilaian_level_kecemasan_ranap_anak.tonus_meningkat,"+
+                    "penilaian_level_kecemasan_ranap_anak.tidak_tenang,penilaian_level_kecemasan_ranap_anak.muka_merah_wawancara,penilaian_level_kecemasan_ranap_anak.total_skor,"+
+                    "penilaian_level_kecemasan_ranap_anak.keterangan_skor,penilaian_level_kecemasan_ranap_anak.nip,petugas.nama "+
                     "from penilaian_level_kecemasan_ranap_anak inner join reg_periksa on penilaian_level_kecemasan_ranap_anak.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on petugas.nip=penilaian_level_kecemasan_ranap_anak.nip "+
                     "where penilaian_level_kecemasan_ranap_anak.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and penilaian_level_kecemasan_ranap_anak.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnKriteriaMasukICUActionPerformed
+    }//GEN-LAST:event_MnLevelKecemasanActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -4461,7 +4506,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
     private widget.ComboBox MerasaTertekan;
     private widget.ComboBox MimpiBuruk;
     private widget.ComboBox MimpiMenakutkan;
-    private javax.swing.JMenuItem MnKriteriaMasukICU;
+    private javax.swing.JMenuItem MnLevelKecemasan;
     private widget.ComboBox Mual;
     private widget.ComboBox MudahBerkeringat;
     private widget.ComboBox MudahMenangis;
