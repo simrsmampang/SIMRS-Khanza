@@ -1802,7 +1802,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
         jLabel105.setText("Bangun Dini Hari");
         jLabel105.setName("jLabel105"); // NOI18N
         FormInput.add(jLabel105);
-        jLabel105.setBounds(44, 460, 120, 23);
+        jLabel105.setBounds(44, 460, 110, 23);
 
         jLabel107.setText("Perasaan Berubah-ubah Sepanjang Hari :");
         jLabel107.setName("jLabel107"); // NOI18N
