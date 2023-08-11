@@ -19843,503 +19843,503 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center' bgcolor='#FFFAF8'></td>"+
-                                              "<td width='76%' valign='top' align='center' bgcolor='#FFFAF8'>KRITERIA PENILAIAN</td>"+
-                                              "<td width='20%' valign='top' align='center' bgcolor='#FFFAF8'>SKOR</td>"+
+                                              "<td width='86%' valign='top' align='center' bgcolor='#FFFAF8'>KRITERIA PENILAIAN</td>"+
+                                              "<td width='10%' valign='top' align='center' bgcolor='#FFFAF8'>SKOR</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>I.</td>"+
-                                              "<td width='76%' valign='top'>PERASAAN ANSIETES (CEMAS)</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>PERASAAN ANSIETES (CEMAS)</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Cemas</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("cemas")+"</td>"+
+                                              "<td width='86%' valign='top'>Cemas</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("cemas")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Firasat Buruk</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("firasat_buruk")+"</td>"+
+                                              "<td width='86%' valign='top'>Firasat Buruk</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("firasat_buruk")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Takut Akan Pikiran Sendiri</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("takut_pikiran_sendiri")+"</td>"+
+                                              "<td width='86%' valign='top'>Takut Akan Pikiran Sendiri</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("takut_pikiran_sendiri")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Mudah Tersinggung</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("mudah_tersinggung")+"</td>"+
+                                              "<td width='86%' valign='top'>Mudah Tersinggung</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("mudah_tersinggung")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>II.</td>"+
-                                              "<td width='76%' valign='top'>KETEGANGAN</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>KETEGANGAN</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Merasa Tegang</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("merasa_tegang")+"</td>"+
+                                              "<td width='86%' valign='top'>Merasa Tegang</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("merasa_tegang")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Lesu</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("lesu")+"</td>"+
+                                              "<td width='86%' valign='top'>Lesu</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("lesu")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Tak Bisa Istirahat Tenang</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("tak_bisa_istirahat_tenang")+"</td>"+
+                                              "<td width='86%' valign='top'>Tak Bisa Istirahat Tenang</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("tak_bisa_istirahat_tenang")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Mudah Terkejut</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("mudah_terkejut")+"</td>"+
+                                              "<td width='86%' valign='top'>Mudah Terkejut</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("mudah_terkejut")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Mudah Menangis</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("mudah_menangis")+"</td>"+
+                                              "<td width='86%' valign='top'>Mudah Menangis</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("mudah_menangis")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>6</td>"+
-                                              "<td width='76%' valign='top'>Gemetar</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("gemetar")+"</td>"+
+                                              "<td width='86%' valign='top'>Gemetar</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("gemetar")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>7</td>"+
-                                              "<td width='76%' valign='top'>Gelisah</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("gelisah")+"</td>"+
+                                              "<td width='86%' valign='top'>Gelisah</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("gelisah")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>III.</td>"+
-                                              "<td width='76%' valign='top'>KETAKUTAN</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>KETAKUTAN</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Takut Pada Gelap</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("takut_pada_gelap")+"</td>"+
+                                              "<td width='86%' valign='top'>Takut Pada Gelap</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("takut_pada_gelap")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Takut Pada Orang Asing</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("takut_pada_orangasing")+"</td>"+
+                                              "<td width='86%' valign='top'>Takut Pada Orang Asing</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("takut_pada_orangasing")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Takut Pada Kerumunan Banyak Orang</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("takut_pada_kerumunan_banyak_orang")+"</td>"+
+                                              "<td width='86%' valign='top'>Takut Pada Kerumunan Banyak Orang</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("takut_pada_kerumunan_banyak_orang")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Takut Pada Binatang Besar</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("takut_pada_binatang_besar")+"</td>"+
+                                              "<td width='86%' valign='top'>Takut Pada Binatang Besar</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("takut_pada_binatang_besar")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Takut Pada Keramaian Lalu Lintas</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("takut_pada_keramaian_lalu_lintas")+"</td>"+
+                                              "<td width='86%' valign='top'>Takut Pada Keramaian Lalu Lintas</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("takut_pada_keramaian_lalu_lintas")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>6</td>"+
-                                              "<td width='76%' valign='top'>Takut Ditinggal Sendiri</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("takut_ditinggal_sendiri")+"</td>"+
+                                              "<td width='86%' valign='top'>Takut Ditinggal Sendiri</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("takut_ditinggal_sendiri")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>IV.</td>"+
-                                              "<td width='76%' valign='top'>GANGGUAN TIDUR</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>GANGGUAN TIDUR</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Sulit Tidur</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("sulit_tidur")+"</td>"+
+                                              "<td width='86%' valign='top'>Sulit Tidur</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("sulit_tidur")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Terbangun Malam Hari</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("terbangun_malam_hari")+"</td>"+
+                                              "<td width='86%' valign='top'>Terbangun Malam Hari</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("terbangun_malam_hari")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Tidur Tidak Nyenyak</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("tidur_tidak_nyeyak")+"</td>"+
+                                              "<td width='86%' valign='top'>Tidur Tidak Nyenyak</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("tidur_tidak_nyeyak")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Mimpi Buruk</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("mimpi_buruk")+"</td>"+
+                                              "<td width='86%' valign='top'>Mimpi Buruk</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("mimpi_buruk")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Bangun Dengan Lesu</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("bangun_dengan_lesu")+"</td>"+
+                                              "<td width='86%' valign='top'>Bangun Dengan Lesu</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("bangun_dengan_lesu")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>6</td>"+
-                                              "<td width='76%' valign='top'>Banyak Mengalami Mimpi-mimpi</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("banyak_mengalami_mimpi")+"</td>"+
+                                              "<td width='86%' valign='top'>Banyak Mengalami Mimpi-mimpi</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("banyak_mengalami_mimpi")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>7</td>"+
-                                              "<td width='76%' valign='top'>Mimpi Menakutkan</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("mimpi_menakutkan")+"</td>"+
+                                              "<td width='86%' valign='top'>Mimpi Menakutkan</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("mimpi_menakutkan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>V.</td>"+
-                                              "<td width='76%' valign='top'>GANGGUAN KECERDASAN</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>GANGGUAN KECERDASAN</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Sulit Konsentrasi</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("sulit_konsentrasi")+"</td>"+
+                                              "<td width='86%' valign='top'>Sulit Konsentrasi</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("sulit_konsentrasi")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Daya Ingat Buruk</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("daya_ingat_buruk")+"</td>"+
+                                              "<td width='86%' valign='top'>Daya Ingat Buruk</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("daya_ingat_buruk")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>VI.</td>"+
-                                              "<td width='76%' valign='top'>PERASAAN DEPRESI</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>PERASAAN DEPRESI</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Hilangnya Minat</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("hilangnya_minat")+"</td>"+
+                                              "<td width='86%' valign='top'>Hilangnya Minat</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("hilangnya_minat")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Berkurangnya Kesenangan Pada Hobi</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("berkurangnya_kesenangan_pada_hobi")+"</td>"+
+                                              "<td width='86%' valign='top'>Berkurangnya Kesenangan Pada Hobi</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("berkurangnya_kesenangan_pada_hobi")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Sedih</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("sedih")+"</td>"+
+                                              "<td width='86%' valign='top'>Sedih</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("sedih")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Bangun Dini Hari</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("bangun_dini_hari")+"</td>"+
+                                              "<td width='86%' valign='top'>Bangun Dini Hari</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("bangun_dini_hari")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Perasaan Berubah-ubah Sepanjang Hari</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("perasaan_berubah")+"</td>"+
+                                              "<td width='86%' valign='top'>Perasaan Berubah-ubah Sepanjang Hari</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("perasaan_berubah")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>VII.</td>"+
-                                                "<td width='76%' valign='top'>GEJALA SOMATIC (OTOT)</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>GEJALA SOMATIC (OTOT)</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Sakit & Nyeri Di Otot-otot</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("sakit_nyeri_di_otot")+"</td>"+
+                                              "<td width='86%' valign='top'>Sakit & Nyeri Di Otot-otot</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("sakit_nyeri_di_otot")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Kaku</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kaku")+"</td>"+
+                                              "<td width='86%' valign='top'>Kaku</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("kaku")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Kedutan Otot</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kedutan_otot")+"</td>"+
+                                              "<td width='86%' valign='top'>Kedutan Otot</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("kedutan_otot")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Gigi Gemerutuk</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("gigi_gemerutuk")+"</td>"+
+                                              "<td width='86%' valign='top'>Gigi Gemerutuk</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("gigi_gemerutuk")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Suara Tidak Stabil</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("suara_tidak_stabil")+"</td>"+
+                                              "<td width='86%' valign='top'>Suara Tidak Stabil</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("suara_tidak_stabil")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>VIII.</td>"+
-                                                "<td width='76%' valign='top'>GEJALA SOMATIC (SENSORIK)</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>GEJALA SOMATIC (SENSORIK)</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Tinnitus</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("tinnitus")+"</td>"+
+                                              "<td width='86%' valign='top'>Tinnitus</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("tinnitus")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Penglihatan Kabur</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("penglihatan_kabur")+"</td>"+
+                                              "<td width='86%' valign='top'>Penglihatan Kabur</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("penglihatan_kabur")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Muka Merah/Pucat</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("muka_merah_gejala_somatic")+"</td>"+
+                                              "<td width='86%' valign='top'>Muka Merah/Pucat</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("muka_merah_gejala_somatic")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Merasa Lemah</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("merasa_lemah")+"</td>"+
+                                              "<td width='86%' valign='top'>Merasa Lemah</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("merasa_lemah")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Perasaan Ditusuk-tusuk</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("perasaan_ditusuk")+"</td>"+
+                                              "<td width='86%' valign='top'>Perasaan Ditusuk-tusuk</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("perasaan_ditusuk")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>IX.</td>"+
-                                                "<td width='76%' valign='top'>GEJALA KARDIOVASKULAR</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>GEJALA KARDIOVASKULAR</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Takhikardia</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("takhikardia")+"</td>"+
+                                              "<td width='86%' valign='top'>Takhikardia</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("takhikardia")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Berdebar</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("berdebar")+"</td>"+
+                                              "<td width='86%' valign='top'>Berdebar</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("berdebar")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Nyeri Di Dada</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("nyeri_di_dada")+"</td>"+
+                                              "<td width='86%' valign='top'>Nyeri Di Dada</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("nyeri_di_dada")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Denyut Nadi Mengeras</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("denyut_nadi_mengeras")+"</td>"+
+                                              "<td width='86%' valign='top'>Denyut Nadi Mengeras</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("denyut_nadi_mengeras")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Perasaan Lesu/Lemas Seperti Akan Pingsan</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("perasaan_lesu")+"</td>"+
+                                              "<td width='86%' valign='top'>Perasaan Lesu/Lemas Seperti Akan Pingsan</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("perasaan_lesu")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>6</td>"+
-                                              "<td width='76%' valign='top'>Detak Jantung Menghilang (Berhenti Sekejap)</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("detak_jantung_menghilang")+"</td>"+
+                                              "<td width='86%' valign='top'>Detak Jantung Menghilang (Berhenti Sekejap)</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("detak_jantung_menghilang")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>X.</td>"+
-                                                "<td width='76%' valign='top'>GEJALA RESPIRATORI</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>GEJALA RESPIRATORI</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Merasa Tertekan/Sempit Di Dada</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("merasa_tertekan")+"</td>"+
+                                              "<td width='86%' valign='top'>Merasa Tertekan/Sempit Di Dada</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("merasa_tertekan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Perasaan Tercekik</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("perasaan_tercekik")+"</td>"+
+                                              "<td width='86%' valign='top'>Perasaan Tercekik</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("perasaan_tercekik")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Sering Menarik Napas</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("sering_menarik_napas")+"</td>"+
+                                              "<td width='86%' valign='top'>Sering Menarik Napas</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("sering_menarik_napas")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Napas Pendek/Sesak</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("napas_pendek")+"</td>"+
+                                              "<td width='86%' valign='top'>Napas Pendek/Sesak</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("napas_pendek")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Bulu-bulu Berdiri</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("bulu_berdiri")+"</td>"+
+                                              "<td width='86%' valign='top'>Bulu-bulu Berdiri</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("bulu_berdiri")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>XI.</td>"+
-                                                "<td width='76%' valign='top'>GEJALA PENCERNAAN</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>GEJALA PENCERNAAN</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Sulit Menelan</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("sulit_menelan")+"</td>"+
+                                              "<td width='86%' valign='top'>Sulit Menelan</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("sulit_menelan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Perut Melilit</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("perut_melilit")+"</td>"+
+                                              "<td width='86%' valign='top'>Perut Melilit</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("perut_melilit")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Gangguan Pencernaan</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("ganguan_pencernaan")+"</td>"+
+                                              "<td width='86%' valign='top'>Gangguan Pencernaan</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("ganguan_pencernaan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Rasa Penuh & Kembung</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("rasa_kembung")+"</td>"+
+                                              "<td width='86%' valign='top'>Rasa Penuh & Kembung</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("rasa_kembung")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Nyeri Sebelum & Sesudah Makan</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("nyeri_makan")+"</td>"+
+                                              "<td width='86%' valign='top'>Nyeri Sebelum & Sesudah Makan</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("nyeri_makan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>6</td>"+
-                                              "<td width='76%' valign='top'>Perasaan Terbakar Diperut</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("terbakar_perut")+"</td>"+
+                                              "<td width='86%' valign='top'>Perasaan Terbakar Diperut</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("terbakar_perut")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>7</td>"+
-                                              "<td width='76%' valign='top'>Sukar Buang Air Besar</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("sukar_bab")+"</td>"+
+                                              "<td width='86%' valign='top'>Sukar Buang Air Besar</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("sukar_bab")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>8</td>"+
-                                              "<td width='76%' valign='top'>Muntah</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("muntah")+"</td>"+
+                                              "<td width='86%' valign='top'>Muntah</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("muntah")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>9</td>"+
-                                              "<td width='76%' valign='top'>Buang Air Besar Lembek</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("bab_lembek")+"</td>"+
+                                              "<td width='86%' valign='top'>Buang Air Besar Lembek</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("bab_lembek")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>10</td>"+
-                                              "<td width='76%' valign='top'>Kehilangan Berat Badan</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kehilangan_bb")+"</td>"+
+                                              "<td width='86%' valign='top'>Kehilangan Berat Badan</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("kehilangan_bb")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>11</td>"+
-                                              "<td width='76%' valign='top'>Mual</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("mual")+"</td>"+
+                                              "<td width='86%' valign='top'>Mual</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("mual")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>XII.</td>"+
-                                                "<td width='76%' valign='top'>GEJALA UROGENITAL</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>GEJALA UROGENITAL</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Sering Buang Air Kecil</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("sering_bak")+"</td>"+
+                                              "<td width='86%' valign='top'>Sering Buang Air Kecil</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("sering_bak")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Tidak Dapat Menahan Air Seni</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("tidak_bisa_menahan_kencing")+"</td>"+
+                                              "<td width='86%' valign='top'>Tidak Dapat Menahan Air Seni</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("tidak_bisa_menahan_kencing")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Menjadi Dingin (Frigid)</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("menjadi_dingin")+"</td>"+
+                                              "<td width='86%' valign='top'>Menjadi Dingin (Frigid)</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("menjadi_dingin")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Menorrhagia (Keluar Darah Banyak Ketika Menstruasi)</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("manorrhagia")+"</td>"+
+                                              "<td width='86%' valign='top'>Menorrhagia (Keluar Darah Banyak Ketika Menstruasi)</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("manorrhagia")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Amenorrhoea (Tidak Menstruasi Pada Perempuan)</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("amenorrhoea")+"</td>"+
+                                              "<td width='86%' valign='top'>Amenorrhoea (Tidak Menstruasi Pada Perempuan)</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("amenorrhoea")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>6</td>"+
-                                              "<td width='76%' valign='top'>Ejakulasi Praecocks</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("ejakulasi_praecocks")+"</td>"+
+                                              "<td width='86%' valign='top'>Ejakulasi Praecocks</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("ejakulasi_praecocks")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>7</td>"+
-                                              "<td width='76%' valign='top'>Ereksi Hilang</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("ereksi_hilang")+"</td>"+
+                                              "<td width='86%' valign='top'>Ereksi Hilang</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("ereksi_hilang")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>8</td>"+
-                                              "<td width='76%' valign='top'>Impotensi</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("impotensi")+"</td>"+
+                                              "<td width='86%' valign='top'>Impotensi</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("impotensi")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>XIII.</td>"+
-                                                "<td width='76%' valign='top'>GEJALA OTONOM</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>GEJALA OTONOM</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Mulut Kering</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("mulut_kering")+"</td>"+
+                                              "<td width='86%' valign='top'>Mulut Kering</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("mulut_kering")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Muka Merah</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("muka_merah_gejala_otonom")+"</td>"+
+                                              "<td width='86%' valign='top'>Muka Merah</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("muka_merah_gejala_otonom")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Mudah Berkeringat</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("mudah_berkeringat")+"</td>"+
+                                              "<td width='86%' valign='top'>Mudah Berkeringat</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("mudah_berkeringat")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Bulu Bulu Berdiri</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("bulu_berdiri_gejala_otonom")+"</td>"+
+                                              "<td width='86%' valign='top'>Bulu Bulu Berdiri</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("bulu_berdiri_gejala_otonom")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Pusing, Sakit Kepala</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("sakit_kepala")+"</td>"+
+                                              "<td width='86%' valign='top'>Pusing, Sakit Kepala</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("sakit_kepala")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>XIV.</td>"+
-                                                "<td width='76%' valign='top'>TINGKAH LAKU PADA WAWANCARA</td>"+
-                                              "<td width='20%' valign='top' align='center'></td>"+
+                                              "<td width='86%' valign='top'>TINGKAH LAKU PADA WAWANCARA</td>"+
+                                              "<td width='10%' valign='top' align='center'></td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>1</td>"+
-                                              "<td width='76%' valign='top'>Gelisah</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("gelisah_wawancara")+"</td>"+
+                                              "<td width='86%' valign='top'>Gelisah</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("gelisah_wawancara")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>2</td>"+
-                                              "<td width='76%' valign='top'>Napas Pendek & Cepat</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("napas_pendek_wawancara")+"</td>"+
+                                              "<td width='86%' valign='top'>Napas Pendek & Cepat</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("napas_pendek_wawancara")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>3</td>"+
-                                              "<td width='76%' valign='top'>Jari Gemetar</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("jari_gemetar")+"</td>"+
+                                              "<td width='86%' valign='top'>Jari Gemetar</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("jari_gemetar")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>4</td>"+
-                                              "<td width='76%' valign='top'>Kerut Kening</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("kerut_kening")+"</td>"+
+                                              "<td width='86%' valign='top'>Kerut Kening</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("kerut_kening")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>5</td>"+
-                                              "<td width='76%' valign='top'>Muka Tegang</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("muka_tegang")+"</td>"+
+                                              "<td width='86%' valign='top'>Muka Tegang</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("muka_tegang")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>6</td>"+
-                                              "<td width='76%' valign='top'>Tonus Otot Meningkat</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("tonus_meningkat")+"</td>"+
+                                              "<td width='86%' valign='top'>Tonus Otot Meningkat</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("tonus_meningkat")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>7</td>"+
-                                              "<td width='76%' valign='top'>Tidak Tenang</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("tidak_tenang")+"</td>"+
+                                              "<td width='86%' valign='top'>Tidak Tenang</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("tidak_tenang")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'>8</td>"+
-                                              "<td width='76%' valign='top'>Muka Merah</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("muka_merah_wawancara")+"</td>"+
+                                              "<td width='86%' valign='top'>Muka Merah</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("muka_merah_wawancara")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td width='4%' valign='top' align='center'></td>"+
-                                              "<td width='76%' valign='top'>Total Skor & Level Kecemasan : "+rs2.getString("keterangan_skor")+"</td>"+
-                                              "<td width='20%' valign='top' align='center'>"+rs2.getString("total_skor")+"</td>"+
+                                              "<td width='86%' valign='top'>Total Skor & Level Kecemasan : "+rs2.getString("keterangan_skor")+"</td>"+
+                                              "<td width='10%' valign='top' align='center'>"+rs2.getString("total_skor")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
