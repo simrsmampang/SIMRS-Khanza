@@ -474,7 +474,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel9">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Riwayat Alergi obat :"/>
+                            <Property name="text" type="java.lang.String" value="Riwayat Alergi Obat :"/>
                             <Property name="name" type="java.lang.String" value="jLabel9" noResource="true"/>
                           </Properties>
                           <Constraints>
