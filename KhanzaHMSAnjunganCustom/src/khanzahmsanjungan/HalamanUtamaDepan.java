@@ -74,7 +74,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(252, 255, 248));
 
         PanelWall.setBackground(new java.awt.Color(238, 238, 255));
-        PanelWall.setBackgroundImage(new javax.swing.ImageIcon("D:\\Projects\\php\\smc-sisro\\public\\img\\icon-128x128.png")); // NOI18N
+        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/icon-128x128.png"))); // NOI18N
         PanelWall.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
         PanelWall.setForeground(new java.awt.Color(238, 238, 255));
         PanelWall.setPreferredSize(new java.awt.Dimension(150, 150));
