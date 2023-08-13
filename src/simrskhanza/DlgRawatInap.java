@@ -6896,7 +6896,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{
-                if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",TNoRw.getText())>0){
+                if(Sequel.cariInteger("select count(stok_obat_pasien.no_rawat) from stok_obat_pasien where stok_obat_pasien.no_rawat=? ",TNoRw.getText())>0){
                     DlgCariObat3 dlgobt=new DlgCariObat3(null,false);
                     dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),DTPTgl.getDate());
                     dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
@@ -8194,7 +8194,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
-            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate(),"Rawat Inap");
             form.emptTeks();
             this.setCursor(Cursor.getDefaultCursor());
         }
