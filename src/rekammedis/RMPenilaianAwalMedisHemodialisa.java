@@ -65,7 +65,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             "Skala Nyeri","Status Nutrisi","Hipertensi","Keterangan Hipertensi","Diabetes","Keterangan Diabetes","Batu Saluran Kemih","Keterangan Batu Saluran Kemih",
             "Operasi Saluran Kemih","Keterangan Operasi Saluran Kemih","Infeksi Saluran Kemih","Keterangan Infeksi Saluran Kemih","Bengkak Seluruh Tubuh",
             "Keterangan Bengkak Seluruh Tubuh","Urin Berdarah","Keterangan Urin Berdarah","Penyakit Ginjal Laom","Keterangan Penyakit Ginjal Laom","Penyakit Lain",
-            "Keterangan Penyakit Lain","Konsumsi Obat Nefro","Keterangan Konsumsi Obat Nefro","Dialisis_pertama","Pernah CPAD","Tgl.CPAD","Pernah Transplantasi",
+            "Keterangan Penyakit Lain","Konsumsi Obat Nefro","Keterangan Konsumsi Obat Nefro","Dialisis Pertama","Pernah CPAD","Tgl.CPAD","Pernah Transplantasi",
             "Tgl.Transplantasi","Keadaan Umum","Kesadaran","Nadi(x/menit)","BB(Kg)","TD(mmHg)","Suhu(°C)","Napas(x/menit)","TB(Cm)","Hepatomegali","Splenomegali",
             "Ascites","Edema","Whezzing","Ronchi","Ikterik","Tekanan Vena","Anemia","Kardiomegali","Bising","Thorax","Tgl.Thorax","EKG","Tgl.EKG","BNO","Tgl.BNO",
             "USG","Tgl.USG","Renogram","Tgl.Renogram","Biopsi","Tgl.Biopsi","CT Scan","Tgl.CT Scan","Arteriografi","Tgl.Arteriografi","Kultur Urin","Tgl.Kultur Urin",
@@ -110,9 +110,165 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             }else if(i==13){
                 column.setPreferredWidth(150);
             }else if(i==14){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(59);
             }else if(i==15){
+                column.setPreferredWidth(130);
+            }else if(i==16){
+                column.setPreferredWidth(53);
+            }else if(i==17){
                 column.setPreferredWidth(120);
+            }else if(i==18){
+                column.setPreferredWidth(105);
+            }else if(i==19){
+                column.setPreferredWidth(162);
+            }else if(i==20){
+                column.setPreferredWidth(120);
+            }else if(i==21){
+                column.setPreferredWidth(180);
+            }else if(i==22){
+                column.setPreferredWidth(116);
+            }else if(i==23){
+                column.setPreferredWidth(175);
+            }else if(i==24){
+                column.setPreferredWidth(121);
+            }else if(i==25){
+                column.setPreferredWidth(180);
+            }else if(i==26){
+                column.setPreferredWidth(75);
+            }else if(i==27){
+                column.setPreferredWidth(135);
+            }else if(i==28){
+                column.setPreferredWidth(110);
+            }else if(i==29){
+                column.setPreferredWidth(169);
+            }else if(i==30){
+                column.setPreferredWidth(72);
+            }else if(i==31){
+                column.setPreferredWidth(132);
+            }else if(i==32){
+                column.setPreferredWidth(111);
+            }else if(i==33){
+                column.setPreferredWidth(170);
+            }else if(i==34){
+                column.setPreferredWidth(86);
+            }else if(i==35){
+                column.setPreferredWidth(72);
+            }else if(i==36){
+                column.setPreferredWidth(65);
+            }else if(i==37){
+                column.setPreferredWidth(111);
+            }else if(i==38){
+                column.setPreferredWidth(93);
+            }else if(i==39){
+                column.setPreferredWidth(86);
+            }else if(i==40){
+                column.setPreferredWidth(82);
+            }else if(i==41){
+                column.setPreferredWidth(76);
+            }else if(i==42){
+                column.setPreferredWidth(40);
+            }else if(i==43){
+                column.setPreferredWidth(61);
+            }else if(i==44){
+                column.setPreferredWidth(51);
+            }else if(i==45){
+                column.setPreferredWidth(84);
+            }else if(i==46){
+                column.setPreferredWidth(45);
+            }else if(i==47){
+                column.setPreferredWidth(77);
+            }else if(i==48){
+                column.setPreferredWidth(75);
+            }else if(i==49){
+                column.setPreferredWidth(45);
+            }else if(i==50){
+                column.setPreferredWidth(43);
+            }else if(i==51){
+                column.setPreferredWidth(55);
+            }else if(i==52){
+                column.setPreferredWidth(42);
+            }else if(i==53){
+                column.setPreferredWidth(42);
+            }else if(i==54){
+                column.setPreferredWidth(79);
+            }else if(i==55){
+                column.setPreferredWidth(47);
+            }else if(i==56){
+                column.setPreferredWidth(73);
+            }else if(i==57){
+                column.setPreferredWidth(39);
+            }else if(i==58){
+                column.setPreferredWidth(42);
+            }else if(i==59){
+                column.setPreferredWidth(65);
+            }else if(i==60){
+                column.setPreferredWidth(42);
+            }else if(i==61){
+                column.setPreferredWidth(65);
+            }else if(i==62){
+                column.setPreferredWidth(42);
+            }else if(i==63){
+                column.setPreferredWidth(65);
+            }else if(i==64){
+                column.setPreferredWidth(42);
+            }else if(i==65){
+                column.setPreferredWidth(65);
+            }else if(i==66){
+                column.setPreferredWidth(59);
+            }else if(i==67){
+                column.setPreferredWidth(77);
+            }else if(i==68){
+                column.setPreferredWidth(42);
+            }else if(i==69){
+                column.setPreferredWidth(65);
+            }else if(i==70){
+                column.setPreferredWidth(46);
+            }else if(i==71){
+                column.setPreferredWidth(65);
+            }else if(i==72){
+                column.setPreferredWidth(65);
+            }else if(i==73){
+                column.setPreferredWidth(85);
+            }else if(i==74){
+                column.setPreferredWidth(62);
+            }else if(i==75){
+                column.setPreferredWidth(79);
+            }else if(i==76){
+                column.setPreferredWidth(46);
+            }else if(i==77){
+                column.setPreferredWidth(65);
+            }else if(i==78){
+                column.setPreferredWidth(70);
+            }else if(i==79){
+                column.setPreferredWidth(70);
+            }else if(i==80){
+                column.setPreferredWidth(70);
+            }else if(i==81){
+                column.setPreferredWidth(70);
+            }else if(i==82){
+                column.setPreferredWidth(70);
+            }else if(i==83){
+                column.setPreferredWidth(70);
+            }else if(i==84){
+                column.setPreferredWidth(73);
+            }else if(i==85){
+                column.setPreferredWidth(65);
+            }else if(i==86){
+                column.setPreferredWidth(65);
+            }else if(i==87){
+                column.setPreferredWidth(65);
+            }else if(i==88){
+                column.setPreferredWidth(65);
+            }else if(i==89){
+                column.setPreferredWidth(65);
+            }else if(i==90){
+                column.setPreferredWidth(65);
+            }else if(i==91){
+                column.setPreferredWidth(65);
+            }else if(i==92){
+                column.setPreferredWidth(65);
+            }else if(i==93){
+                column.setPreferredWidth(250);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2455,258 +2611,244 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             try{
-                if(TCari.getText().trim().equals("")){
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_hemodialisa.tanggal,"+
-                        "penilaian_medis_ralan_hemodialisa.kd_dokter,penilaian_medis_ralan_hemodialisa.anamnesis,penilaian_medis_ralan_hemodialisa.hubungan,penilaian_medis_ralan_hemodialisa.rajal,penilaian_medis_ralan_hemodialisa.ranap,penilaian_medis_ralan_hemodialisa.alergi,penilaian_medis_ralan_hemodialisa.nyeri,"+
-                        "penilaian_medis_ralan_hemodialisa.status,penilaian_medis_ralan_hemodialisa.hipertensi,penilaian_medis_ralan_hemodialisa.dm,penilaian_medis_ralan_hemodialisa.bsk,penilaian_medis_ralan_hemodialisa.osk,penilaian_medis_ralan_hemodialisa.isk,penilaian_medis_ralan_hemodialisa.bst,penilaian_medis_ralan_hemodialisa.ub,penilaian_medis_ralan_hemodialisa.pgl,penilaian_medis_ralan_hemodialisa.pl,"+
-                        "penilaian_medis_ralan_hemodialisa.kon,penilaian_medis_ralan_hemodialisa.dialisis,penilaian_medis_ralan_hemodialisa.capd,penilaian_medis_ralan_hemodialisa.transplantasi,penilaian_medis_ralan_hemodialisa.keadaan,penilaian_medis_ralan_hemodialisa.kesadaran,penilaian_medis_ralan_hemodialisa.bb,penilaian_medis_ralan_hemodialisa.tb,penilaian_medis_ralan_hemodialisa.suhu,penilaian_medis_ralan_hemodialisa.nadi,penilaian_medis_ralan_hemodialisa.td,penilaian_medis_ralan_hemodialisa.napas,"+
-                        "penilaian_medis_ralan_hemodialisa.sklera,penilaian_medis_ralan_hemodialisa.konjungtiva,penilaian_medis_ralan_hemodialisa.jvp,penilaian_medis_ralan_hemodialisa.kardiomegali,penilaian_medis_ralan_hemodialisa.bising,penilaian_medis_ralan_hemodialisa.whezzing,penilaian_medis_ralan_hemodialisa.ronchi,penilaian_medis_ralan_hemodialisa.hepatomegali,penilaian_medis_ralan_hemodialisa.splenomegali,penilaian_medis_ralan_hemodialisa.ascites,"+
-                        "penilaian_medis_ralan_hemodialisa.edema,penilaian_medis_ralan_hemodialisa.thorax,penilaian_medis_ralan_hemodialisa.ekg,penilaian_medis_ralan_hemodialisa.bno,penilaian_medis_ralan_hemodialisa.usg,penilaian_medis_ralan_hemodialisa.renogram,penilaian_medis_ralan_hemodialisa.biopsi,penilaian_medis_ralan_hemodialisa.ctscan,penilaian_medis_ralan_hemodialisa.arteriografi,penilaian_medis_ralan_hemodialisa.kultur,penilaian_medis_ralan_hemodialisa.lab,penilaian_medis_ralan_hemodialisa.hematokrit,"+
-                        "penilaian_medis_ralan_hemodialisa.hemoglobin,penilaian_medis_ralan_hemodialisa.leukosit,penilaian_medis_ralan_hemodialisa.trombosit,penilaian_medis_ralan_hemodialisa.hitung,penilaian_medis_ralan_hemodialisa.ureum,penilaian_medis_ralan_hemodialisa.kreatinin,penilaian_medis_ralan_hemodialisa.asamurat,penilaian_medis_ralan_hemodialisa.sgot,penilaian_medis_ralan_hemodialisa.sgpt,penilaian_medis_ralan_hemodialisa.hbsag,penilaian_medis_ralan_hemodialisa.ct,penilaian_medis_ralan_hemodialisa.urin,"+
-                        "penilaian_medis_ralan_hemodialisa.cct,penilaian_medis_ralan_hemodialisa.antihcv,penilaian_medis_ralan_hemodialisa.edukasi,dokter.nm_dokter "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_medis_ralan_hemodialisa on reg_periksa.no_rawat=penilaian_medis_ralan_hemodialisa.no_rawat "+
-                        "inner join dokter on penilaian_medis_ralan_hemodialisa.kd_dokter=dokter.kd_dokter where "+
-                        "penilaian_medis_ralan_hemodialisa.tanggal between ? and ? order by penilaian_medis_ralan_hemodialisa.tanggal");
-                }else{
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_hemodialisa.tanggal,"+
-                        "penilaian_medis_ralan_hemodialisa.kd_dokter,penilaian_medis_ralan_hemodialisa.anamnesis,penilaian_medis_ralan_hemodialisa.hubungan,penilaian_medis_ralan_hemodialisa.rajal,penilaian_medis_ralan_hemodialisa.ranap,penilaian_medis_ralan_hemodialisa.alergi,penilaian_medis_ralan_hemodialisa.nyeri,"+
-                        "penilaian_medis_ralan_hemodialisa.status,penilaian_medis_ralan_hemodialisa.hipertensi,penilaian_medis_ralan_hemodialisa.dm,penilaian_medis_ralan_hemodialisa.bsk,penilaian_medis_ralan_hemodialisa.osk,penilaian_medis_ralan_hemodialisa.isk,penilaian_medis_ralan_hemodialisa.bst,penilaian_medis_ralan_hemodialisa.ub,penilaian_medis_ralan_hemodialisa.pgl,penilaian_medis_ralan_hemodialisa.pl,"+
-                        "penilaian_medis_ralan_hemodialisa.kon,penilaian_medis_ralan_hemodialisa.dialisis,penilaian_medis_ralan_hemodialisa.capd,penilaian_medis_ralan_hemodialisa.transplantasi,penilaian_medis_ralan_hemodialisa.keadaan,penilaian_medis_ralan_hemodialisa.kesadaran,penilaian_medis_ralan_hemodialisa.bb,penilaian_medis_ralan_hemodialisa.tb,penilaian_medis_ralan_hemodialisa.suhu,penilaian_medis_ralan_hemodialisa.nadi,penilaian_medis_ralan_hemodialisa.td,penilaian_medis_ralan_hemodialisa.napas,"+
-                        "penilaian_medis_ralan_hemodialisa.sklera,penilaian_medis_ralan_hemodialisa.konjungtiva,penilaian_medis_ralan_hemodialisa.jvp,penilaian_medis_ralan_hemodialisa.kardiomegali,penilaian_medis_ralan_hemodialisa.bising,penilaian_medis_ralan_hemodialisa.whezzing,penilaian_medis_ralan_hemodialisa.ronchi,penilaian_medis_ralan_hemodialisa.hepatomegali,penilaian_medis_ralan_hemodialisa.splenomegali,penilaian_medis_ralan_hemodialisa.ascites,"+
-                        "penilaian_medis_ralan_hemodialisa.edema,penilaian_medis_ralan_hemodialisa.thorax,penilaian_medis_ralan_hemodialisa.ekg,penilaian_medis_ralan_hemodialisa.bno,penilaian_medis_ralan_hemodialisa.usg,penilaian_medis_ralan_hemodialisa.renogram,penilaian_medis_ralan_hemodialisa.biopsi,penilaian_medis_ralan_hemodialisa.ctscan,penilaian_medis_ralan_hemodialisa.arteriografi,penilaian_medis_ralan_hemodialisa.kultur,penilaian_medis_ralan_hemodialisa.lab,penilaian_medis_ralan_hemodialisa.hematokrit,"+
-                        "penilaian_medis_ralan_hemodialisa.hemoglobin,penilaian_medis_ralan_hemodialisa.leukosit,penilaian_medis_ralan_hemodialisa.trombosit,penilaian_medis_ralan_hemodialisa.hitung,penilaian_medis_ralan_hemodialisa.ureum,penilaian_medis_ralan_hemodialisa.kreatinin,penilaian_medis_ralan_hemodialisa.asamurat,penilaian_medis_ralan_hemodialisa.sgot,penilaian_medis_ralan_hemodialisa.sgpt,penilaian_medis_ralan_hemodialisa.hbsag,penilaian_medis_ralan_hemodialisa.ct,penilaian_medis_ralan_hemodialisa.urin,"+
-                        "penilaian_medis_ralan_hemodialisa.cct,penilaian_medis_ralan_hemodialisa.antihcv,penilaian_medis_ralan_hemodialisa.edukasi,dokter.nm_dokter "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_medis_ralan_hemodialisa on reg_periksa.no_rawat=penilaian_medis_ralan_hemodialisa.no_rawat "+
-                        "inner join dokter on penilaian_medis_ralan_hemodialisa.kd_dokter=dokter.kd_dokter where "+
-                        "penilaian_medis_ralan_hemodialisa.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_medis_ralan_hemodialisa.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_medis_ralan_hemodialisa.tanggal");
-                }
-
-                try {
-                    if(TCari.getText().trim().equals("")){
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    }else{
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        ps.setString(3,"%"+TCari.getText()+"%");
-                        ps.setString(4,"%"+TCari.getText()+"%");
-                        ps.setString(5,"%"+TCari.getText()+"%");
-                        ps.setString(6,"%"+TCari.getText()+"%");
-                        ps.setString(7,"%"+TCari.getText()+"%");
-                    }  
-                    rs=ps.executeQuery();
-                    htmlContent = new StringBuilder();
-                    htmlContent.append(                             
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hubungan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asal Poli/Ruangan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Alergi Obat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Nyeri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Status Nutrisi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hipertensi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Hipertensi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diabetes</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Diabetes</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Batu Saluran Kemih</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Batu Saluran Kemih</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Operasi Saluran Kemih</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Operasi Saluran Kemih</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Infeksi Saluran Kemih</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Infeksi Saluran Kemih</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Bengkak Seluruh Tubuh</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Bengkak Seluruh Tubuh</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Urin Berdarah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Urin Berdarah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penyakit Ginjal Laom</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Penyakit Ginjal Laom</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penyakit Lain</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Penyakit Lain</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Konsumsi Obat Nefro</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Konsumsi Obat Nefro</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dialisis Pertama</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pernah CPAD</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.CPAD</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pernah Transplantasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Transplantasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keadaan Umum</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesadaran</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nadi(x/menit)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BB(Kg)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TD(mmHg)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suhu(°C)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Napas(x/menit)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>TB(Cm)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hepatomegali</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Splenomegali</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ascites</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Edema</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Whezzing</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ronchi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ikterik</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tekanan Vena</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anemia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kardiomegali</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Bising</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Thorax</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Thorax</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>EKG</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.EKG</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>BNO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.BNO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>USG</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.USG</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Renogram</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Renogram</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Biopsi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Biopsi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>CT Scan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.CT Scan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Arteriografi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Arteriografi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kultur Urin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Kultur Urin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Laborat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Laborat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hematokrit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hemoglobin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Leukosit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Trombosit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hitung Jenis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ureum</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Urin Lengkap</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kreatinin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>CCT</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SGOT</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SGPT</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>CT/BT</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Asam Urat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>HbsAg</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anti HCV</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Edukasi</b></td>"+
+                    "</tr>"
+                );
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Dokter</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Anamnesis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'><b>Hubungan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Rajal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Ranap</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Alergi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='120px'><b>Nyeri</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Status</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Hipertensi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Diabetes Melitus</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Batu Saluran Kemih</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'><b>Operasi Saluran Kemih</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Infeksi Saluran Kemih</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='67px'><b>Bengkak Seluruh Tubuh</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px'><b>Urin Berdarah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Penyakit Ginjal Laom</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Penyakit Lain</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Konsumsi Obt Nefroktosis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Dialisis pertama</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Pernah CAPD</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Pernah Transplantasi Ginjal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Keadaan Umum</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kesadaran</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>BB</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>TB</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Suhu</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Nadi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>td</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px'><b>Napas</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Ikterik</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Konjungtiva</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Tekanan vena jugularis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Jantung Kardiomegali</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Jantung Bising</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Paru Whezzing</b></td>"+
-			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Paru Ronchi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Abdomen Hepatomegali</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Abdomen Splenomegali</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Abdomen Ascites</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Ekstremitas Edema</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Foto Thoraks</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>EKG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>BNO</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>USG</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Renogram</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>PA Biopsi Ginjal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>CT Scan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Arteriografi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Kultur Urin</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Laboratorium</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Hematokrit</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Hemoglobin</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Leukosit</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Trombosit</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Hitung Jenis</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Ureum</b></td>"+
-			    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='300px'><b>Kreatinin</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>Asam Urat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'><b>SGOT</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>SGPT</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>HbsAg</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>CT</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Urin Lengkap</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>CCT</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>Anti HCV</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Edukasi</b></td>"+
-                        "</tr>"
-                    );
-                    while(rs.next()){
-                        htmlContent.append(
-                            "<tr class='isi'>"+
-                               "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
-                               "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kd_dokter")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_dokter")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("anamnesis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hubungan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("rajal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ranap")+"</td>"+
-                               "<td valign='top'>"+rs.getString("alergi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nyeri")+"</td>"+
-                               "<td valign='top'>"+rs.getString("status")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hipertensi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dm")+"</td>"+
-                               "<td valign='top'>"+rs.getString("bsk")+"</td>"+
-                               "<td valign='top'>"+rs.getString("osk")+"</td>"+
-                               "<td valign='top'>"+rs.getString("isk")+"</td>"+
-                               "<td valign='top'>"+rs.getString("bst")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ub")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pgl")+"</td>"+
-                               "<td valign='top'>"+rs.getString("pl")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kon")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dialisis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("capd")+"</td>"+
-                               "<td valign='top'>"+rs.getString("transplantasi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("keadaan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kesadaran")+"</td>"+
-                               "<td valign='top'>"+rs.getString("bb")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tb")+"</td>"+
-                               "<td valign='top'>"+rs.getString("suhu")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nadi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("td")+"</td>"+
-                               "<td valign='top'>"+rs.getString("napas")+"</td>"+
-                               "<td valign='top'>"+rs.getString("sklera")+"</td>"+
-                               "<td valign='top'>"+rs.getString("konjungtiva")+"</td>"+
-                               "<td valign='top'>"+rs.getString("jvp")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kardiomegali")+"</td>"+
-                               "<td valign='top'>"+rs.getString("bising")+"</td>"+
-                               "<td valign='top'>"+rs.getString("whezzing")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ronchi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hepatomegali")+"</td>"+
-                               "<td valign='top'>"+rs.getString("splenomegali")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ascites")+"</td>"+
-                               "<td valign='top'>"+rs.getString("edema")+"</td>"+
-                               "<td valign='top'>"+rs.getString("thorax")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ekg")+"</td>"+
-                               "<td valign='top'>"+rs.getString("bno")+"</td>"+
-                               "<td valign='top'>"+rs.getString("usg")+"</td>"+
-                               "<td valign='top'>"+rs.getString("renogram")+"</td>"+
-                               "<td valign='top'>"+rs.getString("biopsi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ctscan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("arteriografi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kultur")+"</td>"+
-                               "<td valign='top'>"+rs.getString("lab")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hematokrit")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hemoglobin")+"</td>"+
-                               "<td valign='top'>"+rs.getString("leukosit")+"</td>"+
-                               "<td valign='top'>"+rs.getString("trombosit")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hitung")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ureum")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kreatinin")+"</td>"+
-                               "<td valign='top'>"+rs.getString("asamurat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("sgot")+"</td>"+
-                               "<td valign='top'>"+rs.getString("sgpt")+"</td>"+
-                               "<td valign='top'>"+rs.getString("hbsag")+"</td>"+
-                               "<td valign='top'>"+rs.getString("ct")+"</td>"+
-                               "<td valign='top'>"+rs.getString("urin")+"</td>"+
-                               "<td valign='top'>"+rs.getString("cct")+"</td>"+
-                               "<td valign='top'>"+rs.getString("antihcv")+"</td>"+
-                               "<td valign='top'>"+rs.getString("edukasi")+"</td>"+
-                            "</tr>");
-                    }
-                    LoadHTML.setText(
-                        "<html>"+
-                          "<table width='4400px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>"
-                    );
-
-                    File g = new File("file2.css");            
-                    BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                    bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
-                    );
-                    bg.close();
-
-                    File f = new File("DataPenilaianAwalMedisRalan.html");            
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                                "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='4400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                        "<td valign='top' align='center'>"+
-                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL MEDIS RAWAT JALAN<br><br></font>"+        
-                                        "</td>"+
-                                   "</tr>"+
-                                "</table>")
-                    );
-                    bw.close();                         
-                    Desktop.getDesktop().browse(f.toURI());
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+                            "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,35).toString().equals("Ya")?tbObat.getValueAt(i,36).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,37).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,37).toString().equals("Ya")?tbObat.getValueAt(i,38).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,41).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,42).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,43).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,49).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,50).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,51).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,52).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,53).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,54).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,55).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,56).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,57).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,58).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,58).toString().equals("Ya")?tbObat.getValueAt(i,59).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,60).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,60).toString().equals("Ya")?tbObat.getValueAt(i,61).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,62).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,62).toString().equals("Ya")?tbObat.getValueAt(i,63).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,64).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,64).toString().equals("Ya")?tbObat.getValueAt(i,65).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,66).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,66).toString().equals("Ya")?tbObat.getValueAt(i,67).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,68).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,68).toString().equals("Ya")?tbObat.getValueAt(i,69).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,70).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,70).toString().equals("Ya")?tbObat.getValueAt(i,71).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,72).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,72).toString().equals("Ya")?tbObat.getValueAt(i,73).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,74).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,74).toString().equals("Ya")?tbObat.getValueAt(i,75).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,76).toString()+"</td>"+
+                            "<td valign='top'>"+(tbObat.getValueAt(i,76).toString().equals("Ya")?tbObat.getValueAt(i,77).toString():"")+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,78).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,79).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,80).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,81).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,82).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,83).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,84).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,85).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,86).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,87).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,88).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,89).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,90).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,91).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,92).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,93).toString()+"</td>"+
+                        "</tr>");
                 }
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='7500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
 
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("PenilaianAwalMdisHemodialisa.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='7500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL HEMODIALISA<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }
@@ -2809,16 +2951,33 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanHemodialisa.jasper","report","::[ Laporan Penilaian Awal Medis Rawat Jalan Hemodialisa]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_hemodialisa.tanggal,"+
-                        "penilaian_medis_ralan_hemodialisa.kd_dokter,penilaian_medis_ralan_hemodialisa.anamnesis,penilaian_medis_ralan_hemodialisa.hubungan,penilaian_medis_ralan_hemodialisa.rajal,penilaian_medis_ralan_hemodialisa.ranap,penilaian_medis_ralan_hemodialisa.alergi,penilaian_medis_ralan_hemodialisa.nyeri,"+
-                        "penilaian_medis_ralan_hemodialisa.status,penilaian_medis_ralan_hemodialisa.hipertensi,penilaian_medis_ralan_hemodialisa.dm,penilaian_medis_ralan_hemodialisa.bsk,penilaian_medis_ralan_hemodialisa.osk,penilaian_medis_ralan_hemodialisa.isk,penilaian_medis_ralan_hemodialisa.bst,penilaian_medis_ralan_hemodialisa.ub,penilaian_medis_ralan_hemodialisa.pgl,penilaian_medis_ralan_hemodialisa.pl,"+
-                        "penilaian_medis_ralan_hemodialisa.kon,penilaian_medis_ralan_hemodialisa.dialisis,penilaian_medis_ralan_hemodialisa.capd,penilaian_medis_ralan_hemodialisa.transplantasi,penilaian_medis_ralan_hemodialisa.keadaan,penilaian_medis_ralan_hemodialisa.kesadaran,penilaian_medis_ralan_hemodialisa.bb,penilaian_medis_ralan_hemodialisa.td,penilaian_medis_ralan_hemodialisa.suhu,penilaian_medis_ralan_hemodialisa.konjungtiva,penilaian_medis_ralan_hemodialisa.tb,"+
-                        "penilaian_medis_ralan_hemodialisa.nadi,penilaian_medis_ralan_hemodialisa.napas,penilaian_medis_ralan_hemodialisa.sklera,penilaian_medis_ralan_hemodialisa.jvp,penilaian_medis_ralan_hemodialisa.kardiomegali,penilaian_medis_ralan_hemodialisa.bising,penilaian_medis_ralan_hemodialisa.whezzing,penilaian_medis_ralan_hemodialisa.ronchi,penilaian_medis_ralan_hemodialisa.hepatomegali,penilaian_medis_ralan_hemodialisa.splenomegali,penilaian_medis_ralan_hemodialisa.ascites,"+
-                        "penilaian_medis_ralan_hemodialisa.edema,penilaian_medis_ralan_hemodialisa.thorax,penilaian_medis_ralan_hemodialisa.ekg,penilaian_medis_ralan_hemodialisa.bno,penilaian_medis_ralan_hemodialisa.usg,penilaian_medis_ralan_hemodialisa.renogram,penilaian_medis_ralan_hemodialisa.biopsi,penilaian_medis_ralan_hemodialisa.ctscan,penilaian_medis_ralan_hemodialisa.arteriografi,penilaian_medis_ralan_hemodialisa.kultur,penilaian_medis_ralan_hemodialisa.lab,penilaian_medis_ralan_hemodialisa.hematokrit,"+
-                        "penilaian_medis_ralan_hemodialisa.hemoglobin,penilaian_medis_ralan_hemodialisa.leukosit,penilaian_medis_ralan_hemodialisa.trombosit,penilaian_medis_ralan_hemodialisa.hitung,penilaian_medis_ralan_hemodialisa.ureum,penilaian_medis_ralan_hemodialisa.kreatinin,penilaian_medis_ralan_hemodialisa.asamurat,penilaian_medis_ralan_hemodialisa.sgot,penilaian_medis_ralan_hemodialisa.sgpt,penilaian_medis_ralan_hemodialisa.hbsag,penilaian_medis_ralan_hemodialisa.ct,penilaian_medis_ralan_hemodialisa.urin,"+
-                        "penilaian_medis_ralan_hemodialisa.cct,penilaian_medis_ralan_hemodialisa.antihcv,penilaian_medis_ralan_hemodialisa.edukasi,dokter.nm_dokter "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_medis_ralan_hemodialisa on reg_periksa.no_rawat=penilaian_medis_ralan_hemodialisa.no_rawat "+
-                        "inner join dokter on penilaian_medis_ralan_hemodialisa.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_hemodialisa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "penilaian_medis_ralan_hemodialisa.kd_dokter,penilaian_medis_ralan_hemodialisa.anamnesis,penilaian_medis_ralan_hemodialisa.hubungan,penilaian_medis_ralan_hemodialisa.ruangan,"+
+                "penilaian_medis_ralan_hemodialisa.alergi,penilaian_medis_ralan_hemodialisa.nyeri,penilaian_medis_ralan_hemodialisa.status_nutrisi,penilaian_medis_ralan_hemodialisa.hipertensi,"+
+                "penilaian_medis_ralan_hemodialisa.keterangan_hipertensi,penilaian_medis_ralan_hemodialisa.diabetes,penilaian_medis_ralan_hemodialisa.keterangan_diabetes,"+
+                "penilaian_medis_ralan_hemodialisa.batu_saluran_kemih,penilaian_medis_ralan_hemodialisa.keterangan_batu_saluran_kemih,penilaian_medis_ralan_hemodialisa.operasi_saluran_kemih,"+
+                "penilaian_medis_ralan_hemodialisa.keterangan_operasi_saluran_kemih,penilaian_medis_ralan_hemodialisa.infeksi_saluran_kemih,penilaian_medis_ralan_hemodialisa.keterangan_infeksi_saluran_kemih,"+
+                "penilaian_medis_ralan_hemodialisa.bengkak_seluruh_tubuh,penilaian_medis_ralan_hemodialisa.keterangan_bengkak_seluruh_tubuh,penilaian_medis_ralan_hemodialisa.urin_berdarah,"+
+                "penilaian_medis_ralan_hemodialisa.keterangan_urin_berdarah,penilaian_medis_ralan_hemodialisa.penyakit_ginjal_laom,penilaian_medis_ralan_hemodialisa.keterangan_penyakit_ginjal_laom,"+
+                "penilaian_medis_ralan_hemodialisa.penyakit_lain,penilaian_medis_ralan_hemodialisa.keterangan_penyakit_lain,penilaian_medis_ralan_hemodialisa.konsumsi_obat_nefro,"+
+                "penilaian_medis_ralan_hemodialisa.keterangan_konsumsi_obat_nefro,penilaian_medis_ralan_hemodialisa.dialisis_pertama,penilaian_medis_ralan_hemodialisa.pernah_cpad,"+
+                "penilaian_medis_ralan_hemodialisa.tanggal_cpad,penilaian_medis_ralan_hemodialisa.pernah_transplantasi,penilaian_medis_ralan_hemodialisa.tanggal_transplantasi,"+
+                "penilaian_medis_ralan_hemodialisa.keadaan_umum,penilaian_medis_ralan_hemodialisa.kesadaran,penilaian_medis_ralan_hemodialisa.nadi,penilaian_medis_ralan_hemodialisa.bb,"+
+                "penilaian_medis_ralan_hemodialisa.td,penilaian_medis_ralan_hemodialisa.suhu,penilaian_medis_ralan_hemodialisa.napas,penilaian_medis_ralan_hemodialisa.tb,"+
+                "penilaian_medis_ralan_hemodialisa.hepatomegali,penilaian_medis_ralan_hemodialisa.splenomegali,penilaian_medis_ralan_hemodialisa.ascites,penilaian_medis_ralan_hemodialisa.edema,"+
+                "penilaian_medis_ralan_hemodialisa.whezzing,penilaian_medis_ralan_hemodialisa.ronchi,penilaian_medis_ralan_hemodialisa.ikterik,penilaian_medis_ralan_hemodialisa.tekanan_vena,"+
+                "penilaian_medis_ralan_hemodialisa.anemia,penilaian_medis_ralan_hemodialisa.kardiomegali,penilaian_medis_ralan_hemodialisa.bising,penilaian_medis_ralan_hemodialisa.thorax,"+
+                "penilaian_medis_ralan_hemodialisa.tanggal_thorax,penilaian_medis_ralan_hemodialisa.ekg,penilaian_medis_ralan_hemodialisa.tanggal_ekg,penilaian_medis_ralan_hemodialisa.bno,"+
+                "penilaian_medis_ralan_hemodialisa.tanggal_bno,penilaian_medis_ralan_hemodialisa.usg,penilaian_medis_ralan_hemodialisa.tanggal_usg,penilaian_medis_ralan_hemodialisa.renogram,"+
+                "penilaian_medis_ralan_hemodialisa.tanggal_renogram,penilaian_medis_ralan_hemodialisa.biopsi,penilaian_medis_ralan_hemodialisa.tanggal_biopsi,penilaian_medis_ralan_hemodialisa.ctscan,"+
+                "penilaian_medis_ralan_hemodialisa.tanggal_ctscan,penilaian_medis_ralan_hemodialisa.arteriografi,penilaian_medis_ralan_hemodialisa.tanggal_arteriografi,"+
+                "penilaian_medis_ralan_hemodialisa.kultur_urin,penilaian_medis_ralan_hemodialisa.tanggal_kultur_urin,penilaian_medis_ralan_hemodialisa.laborat,penilaian_medis_ralan_hemodialisa.tanggal_laborat,"+
+                "penilaian_medis_ralan_hemodialisa.hematokrit,penilaian_medis_ralan_hemodialisa.hemoglobin,penilaian_medis_ralan_hemodialisa.leukosit,penilaian_medis_ralan_hemodialisa.trombosit,"+
+                "penilaian_medis_ralan_hemodialisa.hitung_jenis,penilaian_medis_ralan_hemodialisa.ureum,penilaian_medis_ralan_hemodialisa.urin_lengkap,penilaian_medis_ralan_hemodialisa.kreatinin,"+
+                "penilaian_medis_ralan_hemodialisa.cct,penilaian_medis_ralan_hemodialisa.sgot,penilaian_medis_ralan_hemodialisa.sgpt,penilaian_medis_ralan_hemodialisa.ct,penilaian_medis_ralan_hemodialisa.asam_urat,"+
+                "penilaian_medis_ralan_hemodialisa.hbsag,penilaian_medis_ralan_hemodialisa.anti_hcv,penilaian_medis_ralan_hemodialisa.edukasi,dokter.nm_dokter "+
+                "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join penilaian_medis_ralan_hemodialisa on reg_periksa.no_rawat=penilaian_medis_ralan_hemodialisa.no_rawat "+
+                "inner join dokter on penilaian_medis_ralan_hemodialisa.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_hemodialisa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
@@ -3702,6 +3861,7 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
         HbsAg.setSelectedIndex(0);
         AntiHCV.setSelectedIndex(0);
         Edukasi.setText("");
+        TabRawat.setSelectedIndex(0);
         Anamnesis.requestFocus();
     } 
 
