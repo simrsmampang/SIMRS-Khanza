@@ -592,7 +592,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         });
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-06-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -652,7 +652,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jLabel20.setBounds(660, 130, 70, 30);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-06-2023" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2023" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -673,7 +673,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jLabel22.setBounds(650, 160, 80, 30);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-06-2023" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2023" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -959,7 +959,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jLabel38.setBounds(650, 280, 80, 30);
 
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-06-2023" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2023" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -983,6 +983,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         KdDPJP.setEditable(false);
         KdDPJP.setBackground(new java.awt.Color(255, 255, 153));
         KdDPJP.setHighlighter(null);
+        KdDPJP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KdDPJPActionPerformed(evt);
+            }
+        });
         jPanel2.add(KdDPJP);
         KdDPJP.setBounds(230, 220, 75, 30);
 
@@ -1764,6 +1769,10 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDiagnosaAwal2KeyPressed
 
+    private void KdDPJPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KdDPJPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdDPJPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2082,7 +2091,29 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='" + norawat + "' ", param);
         System.out.println(norawat);
         this.setCursor(Cursor.getDefaultCursor());
-
+    }
+    
+    private void MnCetakRegisterActionPerformed(String norawat, String nosep) {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Map<String, Object> param = new HashMap<>();
+        param.put("namars",akses.getnamars());
+        param.put("alamatrs",akses.getalamatrs());
+        param.put("kotars",akses.getkabupatenrs());
+        param.put("propinsirs",akses.getpropinsirs());
+        param.put("kontakrs",akses.getkontakrs());
+        param.put("norawat",TNoRw.getText());
+        param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?", nosep));
+        param.put("dokter",Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText()));
+        param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?", norawat));
+        param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
+        param.put("parameter",nosep);
+        if(JenisPelayanan.getSelectedIndex()==0){
+            Valid.MyReport("rptBridgingSEP7.jasper","report","::[ Cetak SEP ]::",param);
+        }else{
+            Valid.MyReport("rptBridgingSEP8.jasper","report","::[ Cetak SEP ]::",param);
+        }  
+        System.out.println(norawat);
+        this.setCursor(Cursor.getDefaultCursor());
     }
 
     private void insertSEP() {
@@ -2254,7 +2285,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                             TNoRM.getText(), Valid.SetTgl(TanggalSEP.getSelectedItem().toString()), kodedokterreg, kodepolireg
                         });
                     }
-                    MnCetakRegisterActionPerformed(TNoRw.getText());
+                    MnCetakRegisterActionPerformed(TNoRw.getText(), response.asText());
 
                     emptTeks();
                     dispose();

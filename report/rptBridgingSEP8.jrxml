@@ -1233,7 +1233,7 @@ $P{namars}]]></textFieldExpression>
 				<textElement>
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
-				<text><![CDATA[Tindakan]]></text>
+				<text><![CDATA[Laboratorium]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="120" y="469" width="12" height="16" uuid="d471b15f-9123-4739-8059-3d4a8dd67a50"/>
@@ -1270,7 +1270,7 @@ $P{namars}]]></textFieldExpression>
 				<textElement>
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
-				<text><![CDATA[Tindakan]]></text>
+				<text><![CDATA[Radiologi]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="120" y="546" width="12" height="16" uuid="1e610211-38ac-4a51-96ad-5f7cdcb7a5f2"/>
