@@ -196,7 +196,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private SimpleDateFormat dateformat2 = new SimpleDateFormat("dd-MM-yyyy");
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
-    private String now=dateFormat.format(date),kmr="",key="",tglmasuk,jammasuk,kd_pj,
+    private String now=dateFormat.format(date),kmr="",key="",tglmasuk,jammasuk,kd_pj,KUNCIDOKTERRANAP="",
             hariawal="",pilihancetak="",aktifkan_hapus_data_salah="",terbitsep="",namadokter="";
     private PreparedStatement ps,pssetjam,pscaripiutang,psdiagnosa,psibu,psanak,pstarif,psdpjp,pscariumur,pspulang;
     private ResultSet rs,rs2,rssetjam,rspulang;
@@ -763,6 +763,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             diagnosaakhir.setEditable(false);
+        }
+        
+        try {
+            KUNCIDOKTERRANAP=koneksiDB.KUNCIDOKTERRANAP();
+        } catch (Exception e) {
+            KUNCIDOKTERRANAP="no";
         }
     }
 
@@ -6284,6 +6290,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
         order="order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk";
         terbitsep="";
         namadokter="";
+        if((!akses.getkode().equals("Admin Utama"))){
+            if(KUNCIDOKTERRANAP.equals("yes")){
+                if(!billing.rawatinap.perawatan.dokter.tampil3(akses.getkode()).equals("")){
+                    namadokter=akses.getkode();
+                }
+            } 
+        }       
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -18071,6 +18084,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanObservasiCHBP.setEnabled(akses.getcatatan_observasi_chbp());
         
         if(akses.getkode().equals("Admin Utama")){
+            MnFilterDPJP.setEnabled(true);
             MnHapusDataSalah.setEnabled(true);
             Rganti1.setEnabled(true);
             Rganti2.setEnabled(true);
@@ -18083,7 +18097,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 MnHapusDataSalah.setEnabled(true);
             }else{
                 MnHapusDataSalah.setEnabled(false);
-            }                
+            }   
+            if(KUNCIDOKTERRANAP.equals("yes")){
+                if(!billing.rawatinap.perawatan.dokter.tampil3(akses.getkode()).equals("")){
+                    namadokter=akses.getkode();
+                }
+                MnFilterDPJP.setEnabled(false);
+            }else{
+                MnFilterDPJP.setEnabled(true);
+            }
         } 
    }
     
