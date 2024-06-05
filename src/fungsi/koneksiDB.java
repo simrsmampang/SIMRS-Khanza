@@ -76,6 +76,15 @@ public class koneksiDB {
             return null;
         }
     }
+
+    public static boolean GUNAKANDIAGNOSAEKLAIM() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            return prop.getProperty("GUNAKANDIAGNOSAEKLAIM").equalsIgnoreCase("yes");
+        } catch (Exception e) {
+            return false;
+        }
+    }
     
     public static boolean VALIDASIULANGPINDAHKAMAR() {
         try {
@@ -85,7 +94,7 @@ public class koneksiDB {
             return false;
         }
     }
-    
+
     public static boolean VALIDASIULANGHASILPERMINTAAN(String kategori) {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
