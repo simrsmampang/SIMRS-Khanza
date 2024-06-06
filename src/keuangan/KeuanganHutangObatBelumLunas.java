@@ -1235,13 +1235,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     }else{
                                         Sequel.mengedit("pemesanan","no_faktur='"+tabMode.getValueAt(i,1).toString()+"'","status='Belum Lunas'");
                                     } 
-                                    Sequel.queryu("delete from tampjurnal");
-                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                        Bayar_Pemesanan_Obat,"HUTANG USAHA",tabMode.getValueAt(i,11).toString(),"0"
-                                    });                     
-                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                        koderekening,AkunBayar.getSelectedItem().toString(),"0",tabMode.getValueAt(i,11).toString()
-                                    });    
+                                    Sequel.deleteTampJurnal();
+                                    Sequel.insertTampJurnal(Bayar_Pemesanan_Obat, "HUTANG USAHA", tabMode.getValueAt(i, 11).toString(), "0");
+                                    Sequel.insertTampJurnal(koderekening, AkunBayar.getSelectedItem().toString(), "0", tabMode.getValueAt(i, 11).toString());
                                     if(jur.simpanJurnal(NoBukti.getText(),"U","BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+tabMode.getValueAt(i,1).toString()+", OLEH "+akses.getkode())==false){
                                         sukses=false;
                                     }                            

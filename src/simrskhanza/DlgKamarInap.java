@@ -16926,15 +16926,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
     }
     
-    private void MnFilterDPJPActionPerformed(java.awt.event.ActionEvent evt) {      
-        i=2;
-        akses.setform("DlgKamarInap");
-        billing.rawatinap.perawatan.dokter.isCek();
-        billing.rawatinap.perawatan.dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        billing.rawatinap.perawatan.dokter.setLocationRelativeTo(internalFrame1);
-        billing.rawatinap.perawatan.dokter.setVisible(true);
-    }
-    
     private void MnPenilaianPasienImunitasRendahActionPerformed(java.awt.event.ActionEvent evt) {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
@@ -18084,7 +18075,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanObservasiCHBP.setEnabled(akses.getcatatan_observasi_chbp());
         
         if(akses.getkode().equals("Admin Utama")){
-            MnFilterDPJP.setEnabled(true);
             MnHapusDataSalah.setEnabled(true);
             Rganti1.setEnabled(true);
             Rganti2.setEnabled(true);
@@ -18102,9 +18092,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 if(!billing.rawatinap.perawatan.dokter.tampil3(akses.getkode()).equals("")){
                     namadokter=akses.getkode();
                 }
-                MnFilterDPJP.setEnabled(false);
-            }else{
-                MnFilterDPJP.setEnabled(true);
             }
         } 
    }
