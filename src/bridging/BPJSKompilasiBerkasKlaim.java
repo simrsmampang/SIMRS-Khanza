@@ -3553,7 +3553,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
         exportBilling("007");
         exportHasilLab("008");
         exportHasilRadiologi("009");
-         exportBerkasDigitalPerawatan("010");
+        exportBerkasDigitalPerawatan("010");
         // exportSKDP("009");
         // exportSPRI("010");
         if (exportSukses) {
