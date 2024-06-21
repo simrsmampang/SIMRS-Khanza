@@ -1758,7 +1758,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
             return;
         }
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        resume.setNoRMKompilasi(tbKompilasi.getValueAt(tbKompilasi.getSelectedRow(), 0).toString(), tbKompilasi.getValueAt(tbKompilasi.getSelectedRow(), 2).toString());
+        resume.setNoRMKompilasi(lblNoRawat.getText(), lblNoRM.getText());
         resume.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         resume.setLocationRelativeTo(internalFrame1);
         resume.setVisible(true);
@@ -2252,7 +2252,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
             "case when reg_periksa.status_lanjut = 'Ranap' then concat(kamar_inap.kd_kamar, ' ', bangsal.nm_bangsal) when reg_periksa.status_lanjut = 'Ralan' then poliklinik.nm_poli end as ruangan, diagnosa_pasien.kd_penyakit, " +
             "exists(select * from inacbg_cetak_klaim where inacbg_cetak_klaim.no_sep = bridging_sep.no_sep) as inacbg_terkirim from reg_periksa join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
             "join bridging_sep on reg_periksa.no_rawat = bridging_sep.no_rawat and (if (reg_periksa.status_lanjut = 'Ranap', '1', '2')) = bridging_sep.jnspelayanan join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli " +
-            "join diagnosa_pasien on reg_periksa.no_rawat = diagnosa_pasien.no_rawat and reg_periksa.status_lanjut = diagnosa_pasien.status and diagnosa_pasien.prioritas = '1' " +
+            "left join diagnosa_pasien on reg_periksa.no_rawat = diagnosa_pasien.no_rawat and reg_periksa.status_lanjut = diagnosa_pasien.status and diagnosa_pasien.prioritas = '1' " +
             "left join kamar_inap on reg_periksa.no_rawat = kamar_inap.no_rawat and kamar_inap.stts_pulang != 'Pindah Kamar' left join kamar on kamar_inap.kd_kamar = kamar.kd_kamar left join bangsal on kamar.kd_bangsal = bangsal.kd_bangsal " +
             "where reg_periksa.status_bayar = 'Sudah Bayar' and reg_periksa.kd_pj = (select password_asuransi.kd_pj from password_asuransi limit 1) and reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut like ? " +
             "and (reg_periksa.no_rawat like ? or bridging_sep.no_sep like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or poliklinik.nm_poli like ? or concat(kamar_inap.kd_kamar, ' ', bangsal.nm_bangsal) like ?) " +
@@ -3506,13 +3506,13 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
     }
     
     private void exportBerkasDigitalPerawatan(String urutan) {
-        if (! Sequel.cariBooleanSmc("select * from berkas_digital_perawatan where no_rawat = ?", lblNoRawat.getText())) return;
+        if (! Sequel.cariBooleanSmc("select * from berkas_digital_perawatan where no_rawat = ? and lokasi_file like '%.pdf'", lblNoRawat.getText())) return;
         
         int i = 1;
         String filename = "";
         HttpURLConnection http;
         String url = "http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/" + koneksiDB.HYBRIDWEB() + "/berkasrawat/";
-        try (PreparedStatement ps = koneksi.prepareStatement("select lokasi_file from berkas_digital_perawatan where no_rawat = ?")) {
+        try (PreparedStatement ps = koneksi.prepareStatement("select lokasi_file from berkas_digital_perawatan where no_rawat = ? and lokasi_file like '%.pdf'")) {
             ps.setString(1, lblNoRawat.getText());
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -3528,9 +3528,6 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
                             } else {
                                 System.out.println("File not found : " + url + rs.getString("lokasi_file"));
                             }
-                        } finally {
-                            System.out.println("Skipping entry : " + url + rs.getString("lokasi_file"));
-                            continue;
                         }
                     }
                 }
