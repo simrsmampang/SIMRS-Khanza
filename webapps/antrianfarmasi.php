@@ -62,7 +62,7 @@
             <div class="nav-wrapper">
                 <ul class="center hide-on-med-and-down" id="nv">
                     <li>
-                        <a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">local_hospital</i> Antrian Apotek/Farmasi</a>
+                        <a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">local_hospital</i> Antrian Apotek/Farmasi Rawat Jalan</a>
                     </li>
                     <li class="right" style="margin-right: 10px;">
                         <i class="material-icons">perm_contact_calendar</i>
@@ -87,12 +87,16 @@
     
     <main>
         <div class="container-fluid">
-            <div class="two-column">
-                <div id="pengerjaan">
-                </div>
-                <div id="penyerahan">
-                </div>
-            </div>
+            <table>
+                <tr>
+                    <td style="vertical-align: top">
+                        <div id="pengerjaan"></div>
+                    </td>
+                    <td style="vertical-align: top">
+                        <div id="penyerahan"></div>
+                    </td>
+                </tr>
+            </table>
         </div>
     </main>
     
