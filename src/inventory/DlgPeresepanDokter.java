@@ -1174,11 +1174,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 "0000-00-00",
                                 "00:00:00",
                                 textTemplateResep.getText()
-                            }) == false && coba < maxCoba) {
-                            emptTeksobat();
-                            coba++;
+                            }) == false && coba++ < maxCoba) {
+                            autonomor(coba + 1);
+                            sukses = coba < maxCoba;
                         }
-                        simpandata();
+                        if (sukses == true) {
+                            simpandata();
+                        }
                     } else {
                         while (Sequel.menyimpantfSmc(
                             "resep_obat",
@@ -1194,11 +1196,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 status,
                                 "0000-00-00",
                                 "00:00:00"
-                            }) == false && coba < maxCoba) {
-                            emptTeksobat();
-                            coba++;
+                            }) == false && coba++ < maxCoba) {
+                            autonomor(coba + 1);
+                            sukses = coba < maxCoba;
                         }
-                        simpandata();
+                        if (sukses == true) {
+                            simpandata();
+                        }
                     }
                 }else if(ubah==true){
                     if (Sequel.cariBooleanSmc("select * from resep_obat where no_resep = ? and tgl_perawatan = '0000-00-00'", NoResep.getText())) {
@@ -1316,8 +1320,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     Valid.tabelKosong(tabModeDetailResepRacikan);
                     dispose();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                 }
                 Sequel.AutoComitTrue();
                 ChkJln.setSelected(true);
@@ -1957,8 +1961,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     public void emptTeksobat() {
         if(ChkRM.isSelected()==true){
-            Valid.autoNomorSmc(NoResep, null, "resep_obat", "no_resep", 4, "0", DTPBeri.getSelectedItem());
+            autonomor(1);
         } 
+    }
+    
+    public void autonomor(int next) {
+        Valid.autoNomorSmc(NoResep, "", "resep_obat", "no_resep", 4, "0", DTPBeri, next);
     }
 
     public JTable getTable(){
