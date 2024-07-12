@@ -166,6 +166,14 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
+        JumlahRokok.setDocument(new batasInput((byte)4).getKata(JumlahRokok));
+        UsiaMulaiMerokok.setDocument(new batasInput((byte)3).getKata(UsiaMulaiMerokok));
+        KeteranganAlasanUtamaMerokok.setDocument(new batasInput((byte)40).getKata(KeteranganAlasanUtamaMerokok));
+        LamaMerokok.setDocument(new batasInput((byte)5).getKata(LamaMerokok));
+        KeteranganCaraMendapatkanRokok.setDocument(new batasInput((byte)40).getKata(KeteranganCaraMendapatkanRokok));
+        KeteranganAlasanUtamaBerhentiMerokok.setDocument(new batasInput((byte)40).getKata(KeteranganAlasanUtamaBerhentiMerokok));
+        KeteranganYangPalingSeringMerokokDiSekolah.setDocument(new batasInput((byte)40).getKata(KeteranganYangPalingSeringMerokokDiSekolah));
+        HasilPemeriksaanCO.setDocument(new batasInput((byte)5).getKata(HasilPemeriksaanCO));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -1420,7 +1428,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         jLabel113.setBounds(44, 660, 20, 23);
 
         jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel114.setText("Apakah dilakukan pemeriksaan kadar CO pernapasan?");
+        jLabel114.setText("Apakah dilakukan pemeriksaan kadar CO pernapasan ?");
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
         jLabel114.setBounds(57, 660, 480, 23);
