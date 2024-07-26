@@ -101,47 +101,47 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(75);
             }else if(i==9){
                 column.setPreferredWidth(45);
             }else if(i==10){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(78);
             }else if(i==11){
                 column.setPreferredWidth(45);
             }else if(i==12){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(165);
             }else if(i==13){
                 column.setPreferredWidth(45);
             }else if(i==14){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(115);
             }else if(i==15){
                 column.setPreferredWidth(45);
             }else if(i==16){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(210);
             }else if(i==17){
                 column.setPreferredWidth(45);
             }else if(i==18){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(152);
             }else if(i==19){
                 column.setPreferredWidth(45);
             }else if(i==20){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(155);
             }else if(i==21){
                 column.setPreferredWidth(45);
             }else if(i==22){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(121);
             }else if(i==23){
                 column.setPreferredWidth(45);
             }else if(i==24){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(195);
             }else if(i==25){
                 column.setPreferredWidth(45);
             }else if(i==26){
                 column.setPreferredWidth(60);
             }else if(i==27){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(80);
             }else if(i==28){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -237,7 +237,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningKekerasanPadaPerempuan = new javax.swing.JMenuItem();
+        MnSkriningRisikoKankerParu = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
@@ -347,19 +347,19 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningKekerasanPadaPerempuan.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningKekerasanPadaPerempuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningKekerasanPadaPerempuan.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningKekerasanPadaPerempuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningKekerasanPadaPerempuan.setText("Formulir Skrining Kekerasan Pada Perempuan");
-        MnSkriningKekerasanPadaPerempuan.setName("MnSkriningKekerasanPadaPerempuan"); // NOI18N
-        MnSkriningKekerasanPadaPerempuan.setPreferredSize(new java.awt.Dimension(280, 26));
-        MnSkriningKekerasanPadaPerempuan.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningRisikoKankerParu.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningRisikoKankerParu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningRisikoKankerParu.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningRisikoKankerParu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningRisikoKankerParu.setText("Formulir Skrining Risiko Kanker Paru");
+        MnSkriningRisikoKankerParu.setName("MnSkriningRisikoKankerParu"); // NOI18N
+        MnSkriningRisikoKankerParu.setPreferredSize(new java.awt.Dimension(280, 26));
+        MnSkriningRisikoKankerParu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningKekerasanPadaPerempuanActionPerformed(evt);
+                MnSkriningRisikoKankerParuActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningKekerasanPadaPerempuan);
+        jPopupMenu1.add(MnSkriningRisikoKankerParu);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -541,7 +541,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -555,7 +555,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -676,7 +676,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -804,7 +804,6 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel92.setBounds(690, 90, 50, 23);
 
         Usia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "> 65 Tahun", "45 - 65 Tahun", "< 45 Tahun" }));
-        Usia.setSelectedIndex(2);
         Usia.setName("Usia"); // NOI18N
         Usia.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1394,24 +1393,27 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Secara umum, bagaimana Anda<br>menggambarkan hubungan Anda ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.A.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Seperti apa saat Anda<br>dan pasangan berdebat ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.A.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pertengkaran pernah membuat Anda merasa<br>sedih atau buruk tentang diri sendiri ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pertengkaran pernah menghasilkan<br>pukulan, tendangan, atau dorongan ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah Anda pernah merasa takut dengan apa<br>yang pasangan Anda katakan atau lakukan ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pasangan Anda pernah<br>melecehkan Anda secara fisik ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernahkah pasangan Anda melecehkan<br>Anda secara emosional ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apakah pasangan Anda pernah<br>melecehkan Anda secara seksual ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.L.6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Kelamin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usia/Umur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Didiagnosis Kanker</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ada Keluarga Kanker</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Bekerja Karsinogenik</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lingkungan Tinggal Berpolusi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rumah Tidak Sehat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Paru Kronis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.9</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1443,6 +1445,9 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1468,7 +1473,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataSkriningKekerasanPadaPerempuan.html");            
+                File f = new File("DataSkriningRisikoKankerParu.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1478,7 +1483,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING KEKERASAN PADA PEREMPUAN<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA SEKRINING RISIKO KANKER PARU<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1585,7 +1590,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         Valid.pindah(evt,TCari,JenisKelamin);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningKekerasanPadaPerempuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningKekerasanPadaPerempuanActionPerformed
+    private void MnSkriningRisikoKankerParuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningRisikoKankerParuActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1597,21 +1602,19 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningKekerasanPadaPerempuan.jasper","report","::[ Formulir Skrining Kekerasan Pada Perempuan ]::",
+            Valid.MyReportqry("rptFormulirSkriningRisikoKankerParu.jasper","report","::[ Formulir Skrining Risiko Kanker Paru ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_paru.nip,"+
-                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.menggambarkan_hubungan,skrining_risiko_kanker_paru.skor_menggambarkan_hubungan,"+
-                    "skrining_risiko_kanker_paru.berdebat_dengan_pasangan,skrining_risiko_kanker_paru.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_paru.pertengkaran_membuat_sedih,"+
-                    "skrining_risiko_kanker_paru.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_paru.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_risiko_kanker_paru.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_paru.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_risiko_kanker_paru.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_paru.totalskor,skrining_risiko_kanker_paru.hasil_skrining "+
+                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.jenis_kelamin,skrining_risiko_kanker_paru.nilai_jenis_kelamin,skrining_risiko_kanker_paru.umur,"+
+                    "skrining_risiko_kanker_paru.nilai_umur,skrining_risiko_kanker_paru.pernah_kanker,skrining_risiko_kanker_paru.nilai_pernah_kanker,skrining_risiko_kanker_paru.ada_keluarga_kanker,"+
+                    "skrining_risiko_kanker_paru.nilai_ada_keluarga_kanker,skrining_risiko_kanker_paru.riwayat_rokok,skrining_risiko_kanker_paru.nilai_riwayat_rokok,skrining_risiko_kanker_paru.riwayat_bekerja_mengandung_karsinogen,"+
+                    "skrining_risiko_kanker_paru.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_risiko_kanker_paru.lingkungan_tinggal_polusi_tinggi,skrining_risiko_kanker_paru.nilai_lingkungan_tinggal_polusi_tinggi,"+
+                    "skrining_risiko_kanker_paru.lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.nilai_lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.pernah_paru_kronik,"+
+                    "skrining_risiko_kanker_paru.nilai_pernah_paru_kronik,skrining_risiko_kanker_paru.total_skor,skrining_risiko_kanker_paru.hasil_skrining,skrining_risiko_kanker_paru.keterangan "+
                     "from skrining_risiko_kanker_paru inner join reg_periksa on skrining_risiko_kanker_paru.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_paru.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningKekerasanPadaPerempuanActionPerformed
+    }//GEN-LAST:event_MnSkriningRisikoKankerParuActionPerformed
 
     private void JenisKelaminItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JenisKelaminItemStateChanged
         if(JenisKelamin.getSelectedIndex()==0){
@@ -1752,7 +1755,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private widget.ComboBox LingkunganTinggal;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningKekerasanPadaPerempuan;
+    private javax.swing.JMenuItem MnSkriningRisikoKankerParu;
     private widget.TextBox NilaiDalamRumah;
     private widget.TextBox NilaiJenisKelamin;
     private widget.TextBox NilaiKeluargaKanker;
@@ -1843,28 +1846,24 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_paru.nip,"+
-                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.menggambarkan_hubungan,skrining_risiko_kanker_paru.skor_menggambarkan_hubungan,"+
-                    "skrining_risiko_kanker_paru.berdebat_dengan_pasangan,skrining_risiko_kanker_paru.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_paru.pertengkaran_membuat_sedih,"+
-                    "skrining_risiko_kanker_paru.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_paru.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_risiko_kanker_paru.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_paru.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_risiko_kanker_paru.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_paru.totalskor,skrining_risiko_kanker_paru.hasil_skrining "+
+                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.jenis_kelamin,skrining_risiko_kanker_paru.nilai_jenis_kelamin,skrining_risiko_kanker_paru.umur,"+
+                    "skrining_risiko_kanker_paru.nilai_umur,skrining_risiko_kanker_paru.pernah_kanker,skrining_risiko_kanker_paru.nilai_pernah_kanker,skrining_risiko_kanker_paru.ada_keluarga_kanker,"+
+                    "skrining_risiko_kanker_paru.nilai_ada_keluarga_kanker,skrining_risiko_kanker_paru.riwayat_rokok,skrining_risiko_kanker_paru.nilai_riwayat_rokok,skrining_risiko_kanker_paru.riwayat_bekerja_mengandung_karsinogen,"+
+                    "skrining_risiko_kanker_paru.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_risiko_kanker_paru.lingkungan_tinggal_polusi_tinggi,skrining_risiko_kanker_paru.nilai_lingkungan_tinggal_polusi_tinggi,"+
+                    "skrining_risiko_kanker_paru.lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.nilai_lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.pernah_paru_kronik,"+
+                    "skrining_risiko_kanker_paru.nilai_pernah_paru_kronik,skrining_risiko_kanker_paru.total_skor,skrining_risiko_kanker_paru.hasil_skrining,skrining_risiko_kanker_paru.keterangan "+
                     "from skrining_risiko_kanker_paru inner join reg_periksa on skrining_risiko_kanker_paru.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_paru.nip=petugas.nip "+
                     "where skrining_risiko_kanker_paru.tanggal between ? and ? order by skrining_risiko_kanker_paru.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_paru.nip,"+
-                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.menggambarkan_hubungan,skrining_risiko_kanker_paru.skor_menggambarkan_hubungan,"+
-                    "skrining_risiko_kanker_paru.berdebat_dengan_pasangan,skrining_risiko_kanker_paru.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_paru.pertengkaran_membuat_sedih,"+
-                    "skrining_risiko_kanker_paru.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_paru.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_risiko_kanker_paru.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_paru.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_risiko_kanker_paru.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_paru.totalskor,skrining_risiko_kanker_paru.hasil_skrining "+
+                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.jenis_kelamin,skrining_risiko_kanker_paru.nilai_jenis_kelamin,skrining_risiko_kanker_paru.umur,"+
+                    "skrining_risiko_kanker_paru.nilai_umur,skrining_risiko_kanker_paru.pernah_kanker,skrining_risiko_kanker_paru.nilai_pernah_kanker,skrining_risiko_kanker_paru.ada_keluarga_kanker,"+
+                    "skrining_risiko_kanker_paru.nilai_ada_keluarga_kanker,skrining_risiko_kanker_paru.riwayat_rokok,skrining_risiko_kanker_paru.nilai_riwayat_rokok,skrining_risiko_kanker_paru.riwayat_bekerja_mengandung_karsinogen,"+
+                    "skrining_risiko_kanker_paru.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_risiko_kanker_paru.lingkungan_tinggal_polusi_tinggi,skrining_risiko_kanker_paru.nilai_lingkungan_tinggal_polusi_tinggi,"+
+                    "skrining_risiko_kanker_paru.lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.nilai_lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.pernah_paru_kronik,"+
+                    "skrining_risiko_kanker_paru.nilai_pernah_paru_kronik,skrining_risiko_kanker_paru.total_skor,skrining_risiko_kanker_paru.hasil_skrining,skrining_risiko_kanker_paru.keterangan "+
                     "from skrining_risiko_kanker_paru inner join reg_periksa on skrining_risiko_kanker_paru.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_paru.nip=petugas.nip "+
                     "where skrining_risiko_kanker_paru.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
@@ -1890,12 +1889,12 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("menggambarkan_hubungan"),rs.getString("skor_menggambarkan_hubungan"),rs.getString("berdebat_dengan_pasangan"),
-                        rs.getString("skor_berdebat_dengan_pasangan"),rs.getString("pertengkaran_membuat_sedih"),rs.getString("skor_pertengkaran_membuat_sedih"),rs.getString("pertengkaran_menghasilkan_pukulan"),
-                        rs.getString("skor_pertengkaran_menghasilkan_pukulan"),rs.getString("pernah_merasa_takut_dengan_pasangan"),rs.getString("skor_pernah_merasa_takut_dengan_pasangan"),
-                        rs.getString("pasangan_melecehkan_secara_fisik"),rs.getString("skor_pasangan_melecehkan_secara_fisik"),rs.getString("pasangan_melecehkan_secara_imosional"),
-                        rs.getString("skor_pasangan_melecehkan_secara_imosional"),rs.getString("pasangan_melecehkan_secara_seksual"),rs.getString("skor_pasangan_melecehkan_secara_seksual"),
-                        rs.getString("totalskor"),rs.getString("hasil_skrining")
+                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("jenis_kelamin"),rs.getString("nilai_jenis_kelamin"),rs.getString("umur"),rs.getString("nilai_umur"),
+                        rs.getString("pernah_kanker"),rs.getString("nilai_pernah_kanker"),rs.getString("ada_keluarga_kanker"),rs.getString("nilai_ada_keluarga_kanker"),rs.getString("riwayat_rokok"),
+                        rs.getString("nilai_riwayat_rokok"),rs.getString("riwayat_bekerja_mengandung_karsinogen"),rs.getString("nilai_riwayat_bekerja_mengandung_karsinogen"),
+                        rs.getString("lingkungan_tinggal_polusi_tinggi"),rs.getString("nilai_lingkungan_tinggal_polusi_tinggi"),rs.getString("lingkungan_rumah_tidak_sehat"),
+                        rs.getString("nilai_lingkungan_rumah_tidak_sehat"),rs.getString("pernah_paru_kronik"),rs.getString("nilai_pernah_paru_kronik"),rs.getString("total_skor"),
+                        rs.getString("hasil_skrining"),rs.getString("keterangan")
                     });
                 }
             } catch (Exception e) {
@@ -1965,8 +1964,11 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             NilaiLingkunganTinggal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
             DalamRumah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             NilaiDalamRumah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            PernahParu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            NilaiPernahParu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
@@ -1974,7 +1976,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,"+
                     "reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.no_rawat=?");
@@ -1988,6 +1990,19 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
                     Umur.setText(rs.getString("umurdaftar")+" "+rs.getString("sttsumur"));
+                    if(rs.getString("jk").equals("L")){
+                        JenisKelamin.setSelectedIndex(0);
+                    }else{
+                        JenisKelamin.setSelectedIndex(1);
+                    }
+                    
+                    if(rs.getInt("umurdaftar")>65){
+                        Usia.setSelectedIndex(0);
+                    }else if((rs.getInt("umurdaftar")>44)&&(rs.getInt("umurdaftar")<=65)){
+                        Usia.setSelectedIndex(1);
+                    }else if(rs.getInt("umurdaftar")<45){
+                        Usia.setSelectedIndex(2);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -2116,16 +2131,17 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_risiko_kanker_paru","no_rawat=?","no_rawat=?,tanggal=?,menggambarkan_hubungan=?,skor_menggambarkan_hubungan=?,berdebat_dengan_pasangan=?,skor_berdebat_dengan_pasangan=?,pertengkaran_membuat_sedih=?,"+
-                "skor_pertengkaran_membuat_sedih=?,pertengkaran_menghasilkan_pukulan=?,skor_pertengkaran_menghasilkan_pukulan=?,pernah_merasa_takut_dengan_pasangan=?,skor_pernah_merasa_takut_dengan_pasangan=?,pasangan_melecehkan_secara_fisik=?,"+
-                "skor_pasangan_melecehkan_secara_fisik=?,pasangan_melecehkan_secara_imosional=?,skor_pasangan_melecehkan_secara_imosional=?,pasangan_melecehkan_secara_seksual=?,skor_pasangan_melecehkan_secara_seksual=?,totalskor=?,hasil_skrining=?,"+
-                "nip=?",22,new String[]{
+        if(Sequel.mengedittf("skrining_risiko_kanker_paru","no_rawat=?","no_rawat=?,tanggal=?,jenis_kelamin=?,nilai_jenis_kelamin=?,umur=?,nilai_umur=?,pernah_kanker=?,nilai_pernah_kanker=?,"+
+                "ada_keluarga_kanker=?,nilai_ada_keluarga_kanker=?,riwayat_rokok=?,nilai_riwayat_rokok=?,riwayat_bekerja_mengandung_karsinogen=?,nilai_riwayat_bekerja_mengandung_karsinogen=?,"+
+                "lingkungan_tinggal_polusi_tinggi=?,nilai_lingkungan_tinggal_polusi_tinggi=?,lingkungan_rumah_tidak_sehat=?,nilai_lingkungan_rumah_tidak_sehat=?,pernah_paru_kronik=?,"+
+                "nilai_pernah_paru_kronik=?,total_skor=?,hasil_skrining=?,keterangan=?,nip=?",25,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                JenisKelamin.getSelectedItem().toString(),NilaiJenisKelamin.getText(),Usia.getSelectedItem().toString(),NilaiUsia.getText(), 
-                PernahMenderitaKanker.getSelectedItem().toString(),NilaiPernahMenderitaKanker.getText(),KeluargaKanker.getSelectedItem().toString(),NilaiKeluargaKanker.getText(), 
-                RiwayatMerokok.getSelectedItem().toString(),NilaiRiwayatMerokok.getText(),RiwayatBekerja.getSelectedItem().toString(),NilaiRiwayatBekerja.getText(), 
-                LingkunganTinggal.getSelectedItem().toString(),NilaiLingkunganTinggal.getText(),DalamRumah.getSelectedItem().toString(),NilaiDalamRumah.getText(), 
-                TotalHasil.getText(),HasilSkrining.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            JenisKelamin.getSelectedItem().toString(),NilaiJenisKelamin.getText(),Usia.getSelectedItem().toString(),NilaiUsia.getText(), 
+            PernahMenderitaKanker.getSelectedItem().toString(),NilaiPernahMenderitaKanker.getText(),KeluargaKanker.getSelectedItem().toString(),NilaiKeluargaKanker.getText(), 
+            RiwayatMerokok.getSelectedItem().toString(),NilaiRiwayatMerokok.getText(),RiwayatBekerja.getSelectedItem().toString(),NilaiRiwayatBekerja.getText(), 
+            LingkunganTinggal.getSelectedItem().toString(),NilaiLingkunganTinggal.getText(),DalamRumah.getSelectedItem().toString(),NilaiDalamRumah.getText(), 
+            PernahParu.getSelectedItem().toString(),NilaiPernahParu.getText(),TotalHasil.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText(),
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2151,8 +2167,11 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
                tbObat.setValueAt(NilaiLingkunganTinggal.getText(),tbObat.getSelectedRow(),21);
                tbObat.setValueAt(DalamRumah.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
                tbObat.setValueAt(NilaiDalamRumah.getText(),tbObat.getSelectedRow(),23);
-               tbObat.setValueAt(TotalHasil.getText(),tbObat.getSelectedRow(),24);
-               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(PernahParu.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(NilaiPernahParu.getText(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(TotalHasil.getText(),tbObat.getSelectedRow(),26);
+               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),27);
+               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),28);
                emptTeks();
         }
     }
@@ -2172,10 +2191,10 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private void isTotal() {
         try {
             TotalHasil.setText(""+(Integer.parseInt(NilaiJenisKelamin.getText())+Integer.parseInt(NilaiUsia.getText())+Integer.parseInt(NilaiPernahMenderitaKanker.getText())+Integer.parseInt(NilaiKeluargaKanker.getText())+Integer.parseInt(NilaiRiwayatMerokok.getText())+Integer.parseInt(NilaiRiwayatBekerja.getText())+Integer.parseInt(NilaiLingkunganTinggal.getText())+Integer.parseInt(NilaiDalamRumah.getText())+Integer.parseInt(NilaiPernahParu.getText())));
-            if(Integer.parseInt(TotalHasil.getText())>11){
-                HasilSkrining.setText("Risiko Sedang");
-            }else if(Integer.parseInt(TotalHasil.getText())>16){
+            if(Integer.parseInt(TotalHasil.getText())>16){
                 HasilSkrining.setText("Risiko Berat");
+            }else if(Integer.parseInt(TotalHasil.getText())>11){
+                HasilSkrining.setText("Risiko Sedang");
             }else{
                 HasilSkrining.setText("Risiko Ringan");
             }
