@@ -56,6 +56,8 @@ ALTER TABLE `detail_penagihan_piutang` ADD COLUMN IF NOT EXISTS `diskon` double 
 
 ALTER TABLE `dokter` MODIFY COLUMN IF EXISTS `almt_tgl` varchar(100) NULL DEFAULT NULL AFTER `agama`;
 
+ALTER TABLE `dokter` MODIFY COLUMN IF EXISTS `nm_dokter` varchar(80) NULL DEFAULT NULL AFTER `kd_dokter`;
+
 CREATE TABLE IF NOT EXISTS `eklaim_icd10`  (
   `code` varchar(7) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -102,6 +104,8 @@ CREATE TRIGGER IF NOT EXISTS `set_password_user`
     '',
     AES_ENCRYPT(DATE_FORMAT(NEW.tgl_lahir, '%d%m%Y'), 'windi')
   );
+
+ALTER TABLE `pegawai` MODIFY COLUMN IF EXISTS `nama` varchar(100) NOT NULL AFTER `nik`;
 
 ALTER TABLE `pegawai` MODIFY COLUMN IF EXISTS `alamat` varchar(150) NOT NULL AFTER `tgl_lahir`;
 
