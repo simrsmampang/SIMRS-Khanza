@@ -107,7 +107,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private String kdptg,nmptg,status="",signa1="1",signa2="1",kdObatSK="",kodesarana="",terapiobat="",terapinonobat="",bmhp="";
     private String[] arrSplit;
     private int day;
-    private Calendar cal = Calendar.getInstance();
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     private LocalDate date;
     private DayOfWeek dow;
@@ -9420,7 +9419,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 while(rs.next()){
                     date = LocalDate.parse(TanggalDaftar.getSelectedItem().toString(), formatter);
                     dow = date.getDayOfWeek();
-                    day=cal.get(dow.getValue());
+                    day=dow.getValue();
                     switch (day) {
                         case 1:
                             hari="AKHAD";
