@@ -33,7 +33,7 @@
         <?php endif; ?>
     <?php else: ?>
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype="multipart/form-data">
-            <div class="entry">        
+            <div class="entry">
                 <?php
                     $action         = isset($_GET['action']) ? validTeks($_GET['action']) : null;
                     $sukses         = isset($_GET['sukses']) ? validTeks($_GET['sukses']) : null;
