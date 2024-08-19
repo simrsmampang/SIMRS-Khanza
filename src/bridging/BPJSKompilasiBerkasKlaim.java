@@ -1240,8 +1240,8 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Maaf, silahkan pilih pasien terlebih dahulu");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            gabung();
             getData();
+            gabung();
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnValidasiQRActionPerformed
@@ -2665,6 +2665,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
         } catch (Exception e) {
             exportSukses = false;
             System.out.println("Notif : " + e);
+            e.printStackTrace();
         }
     }
 
@@ -2681,11 +2682,10 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
                 JasperFillManager.fillReport("./report/" + reportName, reportParams, new JRResultSetDataSource(ps.executeQuery())),
                 "./berkaspdf/" + tanggalExport + "/" + lblNoSEP.getText() + "_" + savedFileName.replaceAll(".pdf", "") + ".pdf"
             );
-        } catch (JRException e) {
+        } catch (Exception e) {
             exportSukses = false;
             System.out.println("Notif : " + e);
-        } catch (Exception e) {
-            System.out.println("Notif : " + e);
+            e.printStackTrace();
         }
     }
 
@@ -2729,6 +2729,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
             } catch (Exception e) {
                 exportSukses = false;
                 System.out.println("Notif : " + e);
+                e.printStackTrace();
             }
         }
     }
@@ -2810,6 +2811,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
         } catch (Exception e) {
             exportSukses = false;
             System.out.println("Notif : " + e);
+            e.printStackTrace();
             cleanupSingleFile(lblNoSEP.getText() + "_" + urutan + "_Billing.pdf");
         }
     }
@@ -3164,6 +3166,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
         } catch (Exception e) {
             exportSukses = false;
             System.out.println("Notif : " + e);
+            e.printStackTrace();
         }
     }
     
@@ -3346,6 +3349,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
         } catch (Exception e) {
             exportSukses = false;
             System.out.println("Notif : " + e);
+            e.printStackTrace();
         }
     }
 
@@ -3523,6 +3527,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Notif : " + e);
+            e.printStackTrace();
         }
     }
 
@@ -3601,6 +3606,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Notif : " + e);
+            e.printStackTrace();
         }
     }
 
@@ -3688,6 +3694,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
         } catch (Exception e) {
             exportSukses = false;
             System.out.println("Notif : " + e);
+            e.printStackTrace();
             cleanupSingleFile(lblNoSEP.getText() + "_" + urutan + "_BerkasDigital");
         }
     }
