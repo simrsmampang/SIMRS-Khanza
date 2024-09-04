@@ -913,7 +913,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                             + "where referensi_mobilejkn_bpjs_taskid_response2.kodebooking = ? "
                                                             + "and referensi_mobilejkn_bpjs_taskid_response2.jenispasien = 'Onsite' "
                                                             + "and referensi_mobilejkn_bpjs_taskid_response2.taskid = 'addantrean' "
-                                                            + "and referensi_mobilejkn_bpjs_taskid_response2 in ('200', '208')",
+                                                            + "and referensi_mobilejkn_bpjs_taskid_response2.code in ('200', '208')",
                                                             rs.getString("no_rawat"))
                                                         ) {
                                                         headers = new HttpHeaders();
