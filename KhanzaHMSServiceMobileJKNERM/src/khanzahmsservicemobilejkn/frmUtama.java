@@ -312,9 +312,9 @@ public class frmUtama extends javax.swing.JFrame {
                                     URL = link+"/antrean/add";	
                                     System.out.println("URL : "+URL);
                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                    System.out.println("Response : " + root.asText());
+                                    System.out.println("Response : " + root.toString());
                                     nameNode = root.path("metadata");
-                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), rs.getString("dt_ed"));
+                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), rs.getString("dt_ed"));
                                     if(nameNode.path("code").asText().equals("200")||nameNode.path("code").asText().equals("208")||nameNode.path("message").asText().equals("Ok")){
                                         Sequel.queryu2("update referensi_mobilejkn_bpjs set statuskirim='Sudah' where nobooking='"+rs.getString("nobooking")+"'");
                                     }   
@@ -360,9 +360,9 @@ public class frmUtama extends javax.swing.JFrame {
                                     URL = link+"/antrean/batal";	
                                     System.out.println("URL : "+URL);
                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                    System.out.println("Response : " + root.asText());
+                                    System.out.println("Response : " + root.toString());
                                     nameNode = root.path("metadata");
-                                    Sequel.logTaskid(rs.getString("no_rawat_batal"), rs.getString("nobooking"), "MobileJKN", "batalantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), rs.getString("tanggalbatal"));
+                                    Sequel.logTaskid(rs.getString("no_rawat_batal"), rs.getString("nobooking"), "MobileJKN", "batalantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), rs.getString("tanggalbatal"));
                                     if(nameNode.path("code").asText().equals("200")){
                                         Sequel.queryu2("update referensi_mobilejkn_bpjs_batal set statuskirim='Sudah' where nomorreferensi='"+rs.getString("nomorreferensi")+"'");
                                         // Per 14 Juni 2024, taskid 99 tidak perlu dikirim untuk WS batal antrean mobileJKN
@@ -390,9 +390,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     URL = link+"/antrean/updatewaktu";	
                                                     System.out.println("URL : "+URL);
                                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                    System.out.println("Response : " + root.asText());
+                                                    System.out.println("Response : " + root.toString());
                                                     nameNode = root.path("metadata");
-                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "99", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "99", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                     if (!nameNode.path("code").asText().equals("200")) {
                                                         Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='99' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                         task99 = "";
@@ -471,9 +471,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                 URL = link+"/antrean/updatewaktu";	
                                                 System.out.println("URL : "+URL);
                                                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                System.out.println("Response : " + root.asText());
+                                                System.out.println("Response : " + root.toString());
                                                 nameNode = root.path("metadata");
-                                                Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "99", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "99", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                 if (nameNode.path("code").asText().equals("200")) {
                                                     Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "status = 'Batal'", "nobooking = ?", rs.getString("nobooking"));
                                                 } else {
@@ -515,9 +515,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     URL = link+"/antrean/updatewaktu";	
                                                     System.out.println("URL : "+URL);
                                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                    System.out.println("Response : " + root.asText());
+                                                    System.out.println("Response : " + root.toString());
                                                     nameNode = root.path("metadata");
-                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "3", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "3", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                     if(!nameNode.path("code").asText().equals("200")){
                                                         Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='3' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                         task3 = "";
@@ -559,9 +559,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     URL = link+"/antrean/updatewaktu";	
                                                     System.out.println("URL : "+URL);
                                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                    System.out.println("Response : " + root.asText());
+                                                    System.out.println("Response : " + root.toString());
                                                     nameNode = root.path("metadata");
-                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "4", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "4", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                     if(!nameNode.path("code").asText().equals("200")){
                                                         Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='4' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                         task4 = "";
@@ -603,9 +603,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     URL = link+"/antrean/updatewaktu";	
                                                     System.out.println("URL : "+URL);
                                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                    System.out.println("Response : " + root.asText());
+                                                    System.out.println("Response : " + root.toString());
                                                     nameNode = root.path("metadata");
-                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "5", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "5", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                     if(!nameNode.path("code").asText().equals("200")){
                                                         Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='5' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                         task5 = "";
@@ -642,9 +642,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                 URL = link+"/antrean/farmasi/add";	
                                                 System.out.println("URL : "+URL);
                                                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                System.out.println("Response : " + root.asText());
+                                                System.out.println("Response : " + root.toString());
                                                 nameNode = root.path("metadata");
-                                                Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "addantreanfarmasi", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), null);
+                                                Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "addantreanfarmasi", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), null);
                                                 TeksArea.append("respon WS BPJS : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                                             }catch (Exception ex) {
                                                 System.out.println("Notifikasi Bridging : "+ex);
@@ -675,9 +675,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     URL = link+"/antrean/updatewaktu";	
                                                     System.out.println("URL : "+URL);
                                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                    System.out.println("Response : " + root.asText());
+                                                    System.out.println("Response : " + root.toString());
                                                     nameNode = root.path("metadata");
-                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "6", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "6", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                     if(!nameNode.path("code").asText().equals("200")){
                                                         Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='6' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                         task6 = "";
@@ -716,9 +716,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                     URL = link+"/antrean/updatewaktu";	
                                                     System.out.println("URL : "+URL);
                                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                    System.out.println("Response : " + root.asText());
+                                                    System.out.println("Response : " + root.toString());
                                                     nameNode = root.path("metadata");
-                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "7", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                    Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("nobooking"), "MobileJKN", "7", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                     if(!nameNode.path("code").asText().equals("200")){
                                                         Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='7' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                         task7 = "";
@@ -748,7 +748,7 @@ public class frmUtama extends javax.swing.JFrame {
                         TeksArea.append("Menjalankan WS tambah antrian Mobile JKN Pasien Non BPJS/BJS Onsite\n");
                         ps=koneksi.prepareStatement(
                             "select reg_periksa.no_reg, reg_periksa.no_rawat, reg_periksa.tgl_registrasi, reg_periksa.kd_dokter, dokter.nm_dokter, maping_dokter_dpjpvclaim.kd_dokter_bpjs, maping_dokter_dpjpvclaim.nm_dokter_bpjs, " +
-                            "reg_periksa.kd_poli, poliklinik.nm_poli, maping_poli_bpjs.kd_poli_bpjs, maping_poli_bpjs.nm_poli_bpjs, reg_periksa.stts_daftar, reg_periksa.no_rkm_medis, reg_periksa.kd_pj dayofweek(reg_periksa.tgl_registrasi) as hari,, " +
+                            "reg_periksa.kd_poli, poliklinik.nm_poli, maping_poli_bpjs.kd_poli_bpjs, maping_poli_bpjs.nm_poli_bpjs, reg_periksa.stts_daftar, reg_periksa.no_rkm_medis, reg_periksa.kd_pj dayofweek(reg_periksa.tgl_registrasi) as hari, " +
                             "if(exists(select * from referensi_mobilejkn_bpjs_taskid where referensi_mobilejkn_bpjs_taskid.no_rawat = reg_periksa.no_rawat and referensi_mobilejkn_bpjs_taskid.taskid = '1'), 'Sudah', '') as ada_task1, " +
                             "if(exists(select * from referensi_mobilejkn_bpjs_taskid where referensi_mobilejkn_bpjs_taskid.no_rawat = reg_periksa.no_rawat and referensi_mobilejkn_bpjs_taskid.taskid = '2'), 'Sudah', '') as ada_task2, " +
                             "if(exists(select * from referensi_mobilejkn_bpjs_taskid where referensi_mobilejkn_bpjs_taskid.no_rawat = reg_periksa.no_rawat and referensi_mobilejkn_bpjs_taskid.taskid = '3'), 'Sudah', '') as ada_task3, " +
@@ -805,9 +805,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                         URL = link+"/antrean/updatewaktu";	
                                                         System.out.println("URL : "+URL);
                                                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                        System.out.println("Response : " + root.asText());
+                                                        System.out.println("Response : " + root.toString());
                                                         nameNode = root.path("metadata");
-                                                        Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "99", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                        Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "99", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                         if(!nameNode.path("code").asText().equals("200")){
                                                             Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='99' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                             task99 = "";
@@ -847,9 +847,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                             URL = link+"/antrean/updatewaktu";	
                                                             System.out.println("URL : "+URL);
                                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                            System.out.println("Response : " + root.asText());
+                                                            System.out.println("Response : " + root.toString());
                                                             nameNode = root.path("metadata");
-                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "1", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "1", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                             if(!nameNode.path("code").asText().equals("200")){
                                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='1' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                                 task1 = "";
@@ -888,9 +888,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                             URL = link+"/antrean/updatewaktu";	
                                                             System.out.println("URL : "+URL);
                                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                            System.out.println("Response : " + root.asText());
+                                                            System.out.println("Response : " + root.toString());
                                                             nameNode = root.path("metadata");
-                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "2", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "2", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                             if(!nameNode.path("code").asText().equals("200")){
                                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='2' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                                 task2 = "";
@@ -953,10 +953,10 @@ public class frmUtama extends javax.swing.JFrame {
                                                         URL = link+"/antrean/add";	
                                                         System.out.println("URL : "+URL);
                                                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                        System.out.println("Response : " + root.asText());
+                                                        System.out.println("Response : " + root.toString());
                                                         nameNode = root.path("metadata");  
                                                         TeksArea.append("respon WS BPJS : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
-                                                        Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                        Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                     }
                                                 }catch (Exception ex) {
                                                     System.out.println("Notifikasi Bridging : "+ex);
@@ -986,9 +986,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                             URL = link+"/antrean/updatewaktu";	
                                                             System.out.println("URL : "+URL);
                                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                            System.out.println("Response : " + root.asText());
+                                                            System.out.println("Response : " + root.toString());
                                                             nameNode = root.path("metadata");
-                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "3", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "3", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                             if(!nameNode.path("code").asText().equals("200")){
                                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='3' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                                 task3 = "";
@@ -1030,9 +1030,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                             URL = link+"/antrean/updatewaktu";	
                                                             System.out.println("URL : "+URL);
                                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                            System.out.println("Response : " + root.asText());
+                                                            System.out.println("Response : " + root.toString());
                                                             nameNode = root.path("metadata");
-                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "4", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "4", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                             if(!nameNode.path("code").asText().equals("200")){
                                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='4' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                                 task4 = "";
@@ -1074,9 +1074,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                             URL = link+"/antrean/updatewaktu";	
                                                             System.out.println("URL : "+URL);
                                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                            System.out.println("Response : " + root.asText());
+                                                            System.out.println("Response : " + root.toString());
                                                             nameNode = root.path("metadata");
-                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "5", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "5", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                             if(!nameNode.path("code").asText().equals("200")){
                                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='5' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                                 task5 = "";
@@ -1113,9 +1113,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                         URL = link+"/antrean/farmasi/add";	
                                                         System.out.println("URL : "+URL);
                                                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                        System.out.println("Response : " + root.asText());
+                                                        System.out.println("Response : " + root.toString());
                                                         nameNode = root.path("metadata");
-                                                        Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "addantreanfarmasi", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), null);
+                                                        Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "addantreanfarmasi", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), null);
                                                         TeksArea.append("respon WS BPJS : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                                                     }catch (Exception ex) {
                                                         System.out.println("Notifikasi Bridging : "+ex);
@@ -1146,9 +1146,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                             URL = link+"/antrean/updatewaktu";	
                                                             System.out.println("URL : "+URL);
                                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                            System.out.println("Response : " + root.asText());
+                                                            System.out.println("Response : " + root.toString());
                                                             nameNode = root.path("metadata");
-                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "6", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "6", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                             if(!nameNode.path("code").asText().equals("200")){
                                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='6' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                                 task6 = "";
@@ -1187,9 +1187,9 @@ public class frmUtama extends javax.swing.JFrame {
                                                             URL = link+"/antrean/updatewaktu";	
                                                             System.out.println("URL : "+URL);
                                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                                            System.out.println("Response : " + root.asText());
+                                                            System.out.println("Response : " + root.toString());
                                                             nameNode = root.path("metadata");
-                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "7", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                                                            Sequel.logTaskid(rs.getString("no_rawat"), rs.getString("no_rawat"), "Onsite", "7", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                                                             if(!nameNode.path("code").asText().equals("200")){
                                                                 Sequel.queryu2("delete from referensi_mobilejkn_bpjs_taskid where taskid='7' and no_rawat='"+rs.getString("no_rawat")+"'");
                                                                 task7 = "";
