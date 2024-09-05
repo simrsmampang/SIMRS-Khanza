@@ -75,24 +75,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP Pengkaji 1","Nama Pengkaji 1","NIP Pengkaji 2","Nama Pengkaji 2","Kode DPJP","Nama DPJP",
-            "Tgl.Asuhan","Macam Kasus","Anamnesis","Tiba Di Ruang Rawat","Cara Masuk","Riwayat Penyakit Saat Ini","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga",
-            "Riwayat Penggunaan Obat","Riwayat Pembedahan","Riwayat Dirawat Di RS","Alat Bantu Yang Dipakai","Dalam Keadaan Hamil/Sedang Menyusui","Riwayat Transfusi Darah",
-            "Riwayat Alergi","Merokok","Batang/Hari","Alkohol","Gelas/Hari","Obat Tidur","Olah Raga","Kesadaran Mental","Keadaan Umum","GCS(E,V,M)","TD(mmHg)",
-            "Nadi(x/menit)","RR(x/menit)","Suhu(°C)","SpO2(%)","BB(Kg)","TB(cm)","Kepala","Wajah","Leher","Kejang","Sensorik","Pulsasi","Sirkulasi","Denyut Nadi",
-            "Retraksi","Pola Nafas","Suara Nafas","Batuk & Sekresi","Volume","Jenis Pernafasaan","Irama","Mulut","Lidah","Gigi","Tenggorokan","Abdomen","Peistatik Usus",
-            "Anus","Sensorik","Penglihatan","Alat Bantu Penglihatan","Motorik","Pendengaran","Bicara","Otot","Kulit","Warna Kulit","Turgor","Resiko Decubitas",
-            "Oedema","Pergerakan Sendi","Kekuatan Otot","Fraktur","Nyeri Sendi","Frekuensi BAB","x/","Konsistensi BAB","Warna BAB","Frekuensi BAK","x/","Warna BAK",
-            "Lain-lain BAK","Mandi","Makan/Minum","Berpakaian","Eliminasi","Berpindah","Porsi Makan","Frekuensi Makan","Jenis Makanan","Lama Tidur","Gangguan Tidur",
-            "a. Aktifitas Sehari-hari","b. Berjalan","c. Aktifitas","d. Alat Ambulasi","e. Ekstremitas Atas","f. Ekstremitas Bawah","g. Kemampuan Menggenggam",
-            "h. Kemampuan Koordinasi","i. Kesimpulan Gangguan Fungsi","a. Kondisi Psikologis","b. Adakah Perilaku","c. Gangguan Jiwa di Masa Lalu","d. Hubungan Pasien",
-            "e. Agama","f. Tinggal Dengan","g. Pekerjaan","h. Pembayaran","i. Nilai-nilai Kepercayaan","j. Bahasa Sehari-hari","k. Pendidikan Pasien","l. Pendidikan P.J.",
-            "m. Edukasi Diberikan Kepada","Nyeri","Penyebab Nyeri","Kualitas Nyeri","Lokasi Nyeri","Nyeri Menyebar","Skala Nyeri","Waktu / Durasi","Nyeri Hilang Bila",
-            "Diberitahukan Pada Dokter","Skala Morse 1","N.M. 1","Skala Morse 2","N.M. 2","Skala Morse 3","N.M. 3","Skala Morse 4","N.M. 4","Skala Morse 5","N.M. 5",
-            "Skala Morse 6","N.M. 6","T.M.","Skala Sydney 1","N.S. 1","Skala Sydney 2","N.S. 2","Skala Sydney 3","N.S. 3","Skala Sydney 4","N.S. 4",
-            "Skala Sydney 5","N.S. 5","Skala Sydney 6","N.S. 6","Skala Sydney 7","N.S. 7","Skala Sydney 8","N.S. 8","Skala Sydney 9","N.S. 9","Skala Sydney 10","N.S. 10",
-            "Skala Sydney 11","N.S. 11","T.S.","1. Apakah ada penurunan BB yang tidak diinginkan selama 6 bulan terakhir ?","Skor 1","2. Apakah asupan makan berkurang karena tidak nafsu makan ?",
-            "Skor 2","Total Skor","Pasien dengan diagnosis khusus","Keterangan Diagnosa Khusus","Sudah dibaca dan diketahui oleh Dietisen","Jam Dibaca Dietisen",
-            "Rencana Keperawatan Lainnya"
+            "Tgl.Asuhan","Anamnesa","Keterangan Anamnesa","Kondisi Tiba Di Ruang Rawat","Riwayat Penyakit Saat Ini","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga",
+            "Riwayat Penggunaan Obat","Riwayat Alergi","tumbuh_kembang_tengkurap","tumbuh_kembang_duduk","tumbuh_kembang_berdiri","tumbuh_kembang_gigi_pertama","tumbuh_kembang_berjalan","tumbuh_kembang_bicara","tumbuh_kembang_membaca","tumbuh_kembang_menulis","tumbuh_kembang_gangguan_emosi","persalinan_anakke","persalinan_darisaudara","persalinan_kelahiran","persalinan_kelahiran_keterangan","persalinan_umur_kelahiran","persalinan_kelainan_bawaan","persalinan_kelainan_bawaan_keterangan","persalinan_bb_lahir","persalinan_pb_lahir","persalinan_lainnya","fisik_kesadaran","fisik_gcs","fisik_td","fisik_rr","fisik_suhu","fisik_nadi","fisik_bb","fisik_tb","fisik_lp","fisik_lk","fisik_ld","saraf_pusat_kepala","saraf_pusat_kepala_keterangan","saraf_pusat_wajah","saraf_pusat_wajah_keterangan","saraf_pusat_leher","saraf_pusat_kejang","saraf_pusat_kejang_keterangan","saraf_pusat_sensorik","kardiovaskuler_pulsasi","kardiovaskuler_sirkulasi","kardiovaskuler_sirkulasi_keterangan","kardiovaskuler_denyut_nadi","respirasi_retraksi","respirasi_pola_nafas","respirasi_suara_nafas","respirasi_batuk","respirasi_volume","respirasi_jenis_pernapasan","respirasi_jenis_pernapasan_keterangan","respirasi_irama","gastro_mulut","gastro_mulut_keterangan","gastro_tenggorakan","gastro_tenggorakan_keterangan","gastro_lidah","gastro_lidah_keterangan","gastro_abdomen","gastro_abdomen_keterangan","gastro_gigi","gastro_gigi_keterangan","gastro_usus","gastro_anus","neurologi_sensorik","neurologi_pengilihatan","neurologi_pengilihatan_keterangan","neurologi_alat_bantu_penglihatan","neurologi_motorik","neurologi_pendengaran","neurologi_bicara","neurologi_bicara_keterangan","neurologi_otot","inte_kulit","inte_warna_kulit","inte_tugor","inte_decubi","musku_odema","musku_odema_keterangan","musku_pegerakansendi","musku_otot","musku_fraktur","musku_fraktur_keterangan","musku_nyerisendi","musku_nyerisendi_keterangan","eliminasi_bab_frekuensi","eliminasi_bab_frekuensi_per","eliminasi_bab_konsistesi","eliminasi_bab_warna","eliminasi_bak_frekuensi","eliminasi_bak_frekuensi_per","eliminasi_bak_warna","eliminasi_bak_lainlain","psiko_kondisi","psiko_perilaku","psiko_perilaku_keterangan","psiko_gangguan_jiwa","psiko_hubungan_pasien","psiko_tinggal_dengan","psiko_tinggal_dengan_keterangan","psiko_pekerjaan_pj","psiko_nilai_kepercayaan","psiko_nilai_kepercayaan_keterangan","psiko_pendidikan_pj","psiko_edukasi","psiko_edukasi_keterangan","edukasi_bahasa","edukasi_baca_tulis","edukasi_penerjemah","edukasi_penerjemah_keterangan","edukasi_terdapat_hambatan","edukasi_hambatan_belajar","edukasi_hambatan_belajar_keterangan","edukasi_hambatan_bicara","edukasi_bahasa_isyarat","edukasi_cara_belajar","edukasi_menerima_informasi","edukasi_menerima_informasi_keterangan","edukasi_nutrisi","edukasi_penyakit","edukasi_pengobatan","edukasi_perawatan","skrining_gizi1","nilai_gizi1","skrining_gizi2","nilai_gizi2","skrining_gizi3","nilai_gizi3","skrining_gizi4","nilai_gizi4","total_nilai","keterangan_skrining_gizi","penilaian_humptydumpty_skala1","penilaian_humptydumpty_nilai1","penilaian_humptydumpty_skala2","penilaian_humptydumpty_nilai2","penilaian_humptydumpty_skala3","penilaian_humptydumpty_nilai3","penilaian_humptydumpty_skala4","penilaian_humptydumpty_nilai4","penilaian_humptydumpty_skala5","penilaian_humptydumpty_nilai5","penilaian_humptydumpty_skala6","penilaian_humptydumpty_nilai6","penilaian_humptydumpty_skala7","penilaian_humptydumpty_nilai7","penilaian_humptydumpty_totalnilai","hasil_skrining_penilaian_humptydumpty","nyeri_wajah","nyeri_nilai_wajah","nyeri_kaki","nyeri_nilai_kaki","nyeri_aktifitas","nyeri_nilai_aktifitas","nyeri_menangis","nyeri_nilai_menangis","nyeri_bersuara","nyeri_nilai_bersuara","nyeri_nilai_total","nyeri_kondisi","nyeri_lokasi","nyeri_durasi","nyeri_frekuensi","nyeri_hilang","nyeri_hilang_keterangan","nyeri_diberitahukan_pada_dokter","nyeri_diberitahukan_pada_dokter_keterangan","informasi_perencanaan_pulang","lama_ratarata","perencanaan_pulang","kondisi_klinis_pulang","perawatan_lanjutan_dirumah","cara_transportasi_pulang","transportasi_digunakan","Rencana Keperawatan Lainnya"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -1079,7 +1063,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         TinggalDengan = new widget.ComboBox();
         KeteranganTinggalDengan = new widget.TextBox();
         jLabel196 = new widget.Label();
-        PekerjaanPasien = new widget.TextBox();
+        PekerjaanPJ = new widget.TextBox();
         jLabel197 = new widget.Label();
         CaraBayar = new widget.TextBox();
         jLabel286 = new widget.Label();
@@ -1219,10 +1203,10 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NyeriHilang = new widget.ComboBox();
         KetNyeri = new widget.TextBox();
         jLabel86 = new widget.Label();
-        PadaDokter = new widget.ComboBox();
+        NyeriPadaDokter = new widget.ComboBox();
         jLabel84 = new widget.Label();
         jLabel87 = new widget.Label();
-        KetDokter = new widget.TextBox();
+        NyeriKetDokter = new widget.TextBox();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel90 = new widget.Label();
         jLabel91 = new widget.Label();
@@ -1665,7 +1649,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Anamnesis.setBounds(74, 100, 130, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2024 10:53:33" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024 09:55:16" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -3799,10 +3783,15 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(jLabel196);
         jLabel196.setBounds(397, 1390, 83, 23);
 
-        PekerjaanPasien.setFocusTraversalPolicyProvider(true);
-        PekerjaanPasien.setName("PekerjaanPasien"); // NOI18N
-        FormInput.add(PekerjaanPasien);
-        PekerjaanPasien.setBounds(484, 1390, 130, 23);
+        PekerjaanPJ.setFocusTraversalPolicyProvider(true);
+        PekerjaanPJ.setName("PekerjaanPJ"); // NOI18N
+        PekerjaanPJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PekerjaanPJKeyPressed(evt);
+            }
+        });
+        FormInput.add(PekerjaanPJ);
+        PekerjaanPJ.setBounds(484, 1390, 130, 23);
 
         jLabel197.setText("Pembayaran :");
         jLabel197.setName("jLabel197"); // NOI18N
@@ -4896,15 +4885,15 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(jLabel86);
         jLabel86.setBounds(381, 2305, 190, 23);
 
-        PadaDokter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PadaDokter.setName("PadaDokter"); // NOI18N
-        PadaDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+        NyeriPadaDokter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        NyeriPadaDokter.setName("NyeriPadaDokter"); // NOI18N
+        NyeriPadaDokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PadaDokterKeyPressed(evt);
+                NyeriPadaDokterKeyPressed(evt);
             }
         });
-        FormInput.add(PadaDokter);
-        PadaDokter.setBounds(575, 2305, 80, 23);
+        FormInput.add(NyeriPadaDokter);
+        NyeriPadaDokter.setBounds(575, 2305, 80, 23);
 
         jLabel84.setText("Jam diberitahukan :");
         jLabel84.setName("jLabel84"); // NOI18N
@@ -4917,15 +4906,15 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(jLabel87);
         jLabel87.setBounds(375, 2245, 45, 23);
 
-        KetDokter.setFocusTraversalPolicyProvider(true);
-        KetDokter.setName("KetDokter"); // NOI18N
-        KetDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+        NyeriKetDokter.setFocusTraversalPolicyProvider(true);
+        NyeriKetDokter.setName("NyeriKetDokter"); // NOI18N
+        NyeriKetDokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KetDokterKeyPressed(evt);
+                NyeriKetDokterKeyPressed(evt);
             }
         });
-        FormInput.add(KetDokter);
-        KetDokter.setBounds(774, 2305, 80, 23);
+        FormInput.add(NyeriKetDokter);
+        NyeriKetDokter.setBounds(774, 2305, 80, 23);
 
         jSeparator14.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator14.setForeground(new java.awt.Color(239, 244, 234));
@@ -4978,7 +4967,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         label29.setBounds(630, 2355, 130, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2024" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -5130,7 +5119,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -5144,7 +5133,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -6636,7 +6625,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
     private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
-        //Valid.pindah(evt,MacamKasus,KetAnamnesis);
+        Valid.pindah(evt,TibadiRuang,KetAnamnesis);
     }//GEN-LAST:event_AnamnesisKeyPressed
 
     private void BtnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasKeyPressed
@@ -6949,7 +6938,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_KelainanBawaanKeyPressed
 
     private void KetKelainanBawaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetKelainanBawaanKeyPressed
-        Valid.pindah(evt,KelainanBawaan,UsiaTengkurap);
+        Valid.pindah(evt,KelainanBawaan,BBLahir);
     }//GEN-LAST:event_KetKelainanBawaanKeyPressed
 
     private void UmurKelahiranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UmurKelahiranKeyPressed
@@ -6957,7 +6946,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_UmurKelahiranKeyPressed
 
     private void BBLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBLahirKeyPressed
-        Valid.pindah(evt,GCS,PBLahir);
+        Valid.pindah(evt,KetKelainanBawaan,PBLahir);
     }//GEN-LAST:event_BBLahirKeyPressed
 
     private void PBLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PBLahirKeyPressed
@@ -7281,11 +7270,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_TinggalDenganKeyPressed
 
     private void KeteranganTinggalDenganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTinggalDenganKeyPressed
-        Valid.pindah(evt,TinggalDengan,NilaiKepercayaan);
+        Valid.pindah(evt,TinggalDengan,PekerjaanPJ);
     }//GEN-LAST:event_KeteranganTinggalDenganKeyPressed
 
     private void NilaiKepercayaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiKepercayaanKeyPressed
-        Valid.pindah(evt,KeteranganTinggalDengan,KeteranganNilaiKepercayaan);
+        Valid.pindah(evt,PekerjaanPJ,KeteranganNilaiKepercayaan);
     }//GEN-LAST:event_NilaiKepercayaanKeyPressed
 
     private void KeteranganNilaiKepercayaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganNilaiKepercayaanKeyPressed
@@ -7583,19 +7572,19 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_NyeriHilangKeyPressed
 
     private void KetNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetNyeriKeyPressed
-        Valid.pindah(evt,NyeriHilang,PadaDokter);
+        Valid.pindah(evt,NyeriHilang,NyeriPadaDokter);
     }//GEN-LAST:event_KetNyeriKeyPressed
 
-    private void PadaDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PadaDokterKeyPressed
-        Valid.pindah(evt,KetNyeri,KetDokter);
-    }//GEN-LAST:event_PadaDokterKeyPressed
+    private void NyeriPadaDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriPadaDokterKeyPressed
+        Valid.pindah(evt,KetNyeri,NyeriKetDokter);
+    }//GEN-LAST:event_NyeriPadaDokterKeyPressed
 
-    private void KetDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetDokterKeyPressed
-        Valid.pindah(evt,PadaDokter,InformasiPerencanaanPulang);
-    }//GEN-LAST:event_KetDokterKeyPressed
+    private void NyeriKetDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKetDokterKeyPressed
+        Valid.pindah(evt,NyeriPadaDokter,InformasiPerencanaanPulang);
+    }//GEN-LAST:event_NyeriKetDokterKeyPressed
 
     private void InformasiPerencanaanPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiPerencanaanPulangKeyPressed
-        Valid.pindah(evt,KetDokter,LamaRatarata);
+        Valid.pindah(evt,NyeriKetDokter,LamaRatarata);
     }//GEN-LAST:event_InformasiPerencanaanPulangKeyPressed
 
     private void TanggalPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalPulangKeyPressed
@@ -7665,6 +7654,10 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         DlgRiwayatImunisasi.dispose();
         tampilImunisasi();
     }//GEN-LAST:event_BtnHapusImunisasiActionPerformed
+
+    private void PekerjaanPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PekerjaanPJKeyPressed
+        Valid.pindah(evt,KeteranganTinggalDengan,NilaiKepercayaan);
+    }//GEN-LAST:event_PekerjaanPJKeyPressed
 
     /**
     * @param args the command line arguments
@@ -7770,7 +7763,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.ComboBox KesediaanMenerimaInformasi;
     private widget.TextBox KetAnamnesis;
     private widget.TextBox KetCaraKelahiran;
-    private widget.TextBox KetDokter;
     private widget.TextBox KetGastrointestinalAbdomen;
     private widget.TextBox KetGastrointestinalGigi;
     private widget.TextBox KetGastrointestinalLidah;
@@ -7843,11 +7835,12 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.TextBox NmPetugas2;
     private widget.ComboBox Nyeri;
     private widget.ComboBox NyeriHilang;
+    private widget.TextBox NyeriKetDokter;
+    private widget.ComboBox NyeriPadaDokter;
     private widget.TextBox PBLahir;
-    private widget.ComboBox PadaDokter;
     private widget.PanelBiasa PanelAccor;
     private usu.widget.glass.PanelGlass PanelWall;
-    private widget.TextBox PekerjaanPasien;
+    private widget.TextBox PekerjaanPJ;
     private widget.ComboBox PemahamanNutrisi;
     private widget.ComboBox PemahamanPengobatan;
     private widget.ComboBox PemahamanPenyakit;
@@ -8361,12 +8354,182 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         UsiaTengkurap.setText("");
         UsiaDuduk.setText("");
         UsiaBerdiri.setText("");
+        UsiaGigi.setText("");
+        UsiaBerjalan.setText("");
+        UsiaBicara.setText("");
+        UsiaMembaca.setText("");
+        UsiaMenulis.setText("");
+        GangguanEmosi.setText("");
+        Anakke.setText("");
+        DariSaudara.setText("");
+        CaraKelahiran.setSelectedIndex(0);
+        KetCaraKelahiran.setText("");
+        UmurKelahiran.setSelectedIndex(0);
+        KelainanBawaan.setSelectedIndex(0);
+        KetKelainanBawaan.setText("");
+        BBLahir.setText("");
+        PBLahir.setText("");
+        RiwayatPersalinanLainnya.setText("");
+        Kesadaran.setSelectedIndex(0);
+        GCS.setText("");
+        TD.setText("");
+        RR.setText("");
+        Suhu.setText("");
+        Nadi.setText("");
+        BB.setText("");
+        TB.setText("");
+        LP.setText("");
+        LK.setText("");
+        LD.setText("");
+        SistemSarafKepala.setSelectedIndex(0);
+        KetSistemSarafKepala.setText("");
+        SistemSarafWajah.setSelectedIndex(0);
+        KetSistemSarafWajah.setText("");
+        SistemSarafLeher.setSelectedIndex(0);
+        SistemSarafKejang.setSelectedIndex(0);
+        KetSistemSarafKejang.setText("");
+        SistemSarafSensorik.setSelectedIndex(0);
+        KardiovaskularPulsasi.setSelectedIndex(0);
+        KardiovaskularSirkulasi.setSelectedIndex(0);
+        KetKardiovaskularSirkulasi.setText("");
+        KardiovaskularDenyutNadi.setSelectedIndex(0);
+        RespirasiRetraksi.setSelectedIndex(0);
+        RespirasiPolaNafas.setSelectedIndex(0);
+        RespirasiSuaraNafas.setSelectedIndex(0);
+        RespirasiBatuk.setSelectedIndex(0);
+        RespirasiVolume.setSelectedIndex(0);
+        RespirasiJenisPernafasan.setSelectedIndex(0);
+        KetRespirasiJenisPernafasan.setText("");
+        RespirasiIrama.setSelectedIndex(0);
+        GastrointestinalMulut.setSelectedIndex(0);
+        KetGastrointestinalMulut.setText("");
+        GastrointestinalTenggorakan.setSelectedIndex(0);
+        KetGastrointestinalTenggorakan.setText("");
+        GastrointestinalLidah.setSelectedIndex(0);
+        KetGastrointestinalLidah.setText("");
+        GastrointestinalAbdomen.setSelectedIndex(0);
+        KetGastrointestinalAbdomen.setText("");
+        GastrointestinalGigi.setSelectedIndex(0);
+        KetGastrointestinalGigi.setText("");
+        GastrointestinalUsus.setSelectedIndex(0);
+        GastrointestinalAnus.setSelectedIndex(0);
+        NeurologiSensorik.setSelectedIndex(0);
+        NeurologiPenglihatan.setSelectedIndex(0);
+        KetNeurologiPenglihatan.setText("");
+        NeurologiAlatBantuPenglihatan.setSelectedIndex(0);
+        NeurologiMotorik.setSelectedIndex(0);
+        NeurologiPendengaran.setSelectedIndex(0);
+        NeurologiBicara.setSelectedIndex(0);
+        KetNeurologiBicara.setText("");
+        NeurologiOtot.setSelectedIndex(0);
+        IntegumentKulit.setSelectedIndex(0);
+        IntegumentWarnaKulit.setSelectedIndex(0);
+        IntegumentTurgor.setSelectedIndex(0);
+        IntegumentDecubitus.setSelectedIndex(0);
+        MuskuloskletalOedema.setSelectedIndex(0);
+        KetMuskuloskletalOedema.setText("");
+        MuskuloskletalPegerakanSendi.setSelectedIndex(0);
+        MuskuloskletalKekuatanOtot.setSelectedIndex(0);
+        MuskuloskletalFraktur.setSelectedIndex(0);
+        KetMuskuloskletalFraktur.setText("");
+        MuskuloskletalNyeriSendi.setSelectedIndex(0);
+        KetMuskuloskletalNyeriSendi.setText("");
+        BAB.setText("");
+        XBAB.setText("");
+        KBAB.setText("");
+        WBAB.setText("");
+        BAK.setText("");
+        XBAK.setText("");
+        WBAK.setText("");
+        LBAK.setText("");
+        KondisiPsikologis.setSelectedIndex(0);
+        AdakahPerilaku.setSelectedIndex(0);
+        KeteranganAdakahPerilaku.setText("");
+        GangguanJiwa.setSelectedIndex(0);
+        HubunganAnggotaKeluarga.setSelectedIndex(0);
+        TinggalDengan.setSelectedIndex(0);
+        KeteranganTinggalDengan.setText("");
+        PekerjaanPJ.setText("");
+        NilaiKepercayaan.setSelectedIndex(0);
+        KeteranganNilaiKepercayaan.setText("");
+        PendidikanPJ.setSelectedIndex(0);
+        EdukasiPsikolgis.setSelectedIndex(0);
+        KeteranganEdukasiPsikologis.setText("");
+        BahasaSehari.setText("");
+        KemampuanBacaTulis.setSelectedIndex(0);
+        ButuhPenerjemah.setSelectedIndex(0);
+        KeteranganButuhPenerjemah.setText("");
+        TerdapatHambatanBelajar.setSelectedIndex(0);
+        HambatanBelajar.setSelectedIndex(0);
+        KeteranganHambatanBelajar.setText("");
+        HambatanCaraBicara.setSelectedIndex(0);
+        HambatanBahasaIsyarat.setSelectedIndex(0);
+        CaraBelajarDisukai.setSelectedIndex(0);
+        KesediaanMenerimaInformasi.setSelectedIndex(0);
+        KeteranganKesediaanMenerimaInformasi.setText("");
+        PemahamanNutrisi.setSelectedIndex(0);
+        PemahamanPenyakit.setSelectedIndex(0);
+        PemahamanPengobatan.setSelectedIndex(0);
+        PemahamanPerawatan.setSelectedIndex(0);
+        SG1.setSelectedIndex(0);
+        NilaiGizi1.setText("0");
+        SG2.setSelectedIndex(0);
+        NilaiGizi2.setText("0");
+        SG3.setSelectedIndex(0);
+        NilaiGizi3.setText("0");
+        SG4.setSelectedIndex(0);
+        NilaiGizi4.setText("0");
+        TotalNilaiGizi.setText("0");
+        KeteranganSkriningGizi.setText("");
+        SkalaResiko1.setSelectedIndex(3);
+        NilaiResiko1.setText("1");
+        SkalaResiko2.setSelectedIndex(1);
+        NilaiResiko2.setText("1");
+        SkalaResiko3.setSelectedIndex(3);
+        NilaiResiko3.setText("1");
+        SkalaResiko4.setSelectedIndex(2);
+        NilaiResiko4.setText("1");
+        SkalaResiko5.setSelectedIndex(3);
+        NilaiResiko5.setText("1");
+        SkalaResiko6.setSelectedIndex(2);
+        NilaiResiko6.setText("1");
+        SkalaResiko7.setSelectedIndex(2);
+        NilaiResiko7.setText("1");
+        NilaiResikoTotal.setText("7");
+        KeteranganTingkatRisiko.setText("Risiko Rendah 7 - 11");
+        SkalaWajah.setSelectedIndex(0);
+        NilaiWajah.setText("0");
+        SkalaKaki.setSelectedIndex(0);
+        NilaiKaki.setText("0");
+        SkalaAktifitas.setSelectedIndex(0);
+        NilaiAktifitas.setText("0");
+        SkalaMenangis.setSelectedIndex(0);
+        NilaiMenangis.setText("0");
+        SkalaBersuara.setSelectedIndex(0);
+        NilaiBersuara.setText("0");
+        SkalaNyeri.setText("0");
+        Nyeri.setSelectedIndex(0);
+        Lokasi.setText("");
+        Durasi.setText("");
+        Frekuensi.setText("");
+        NyeriHilang.setSelectedIndex(0);
+        KetNyeri.setText("");
+        NyeriPadaDokter.setSelectedIndex(0);
+        NyeriKetDokter.setText("");
+        InformasiPerencanaanPulang.setSelectedIndex(0);
+        LamaRatarata.setText("");
+        TanggalPulang.setDate(new Date());
+        KondisiPulang.setText("");
+        PerawatanLanjutan.setText("");
+        CaraTransportasiPulang.setSelectedIndex(0);
+        TransportasiYangDigunakan.setSelectedIndex(0);
         Rencana.setText("");
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
             tabModeMasalah.setValueAt(false,i,0);
         }
         Valid.tabelKosong(tabModeRencana);
         TabRawat.setSelectedIndex(0);
+        TibadiRuang.requestFocus();
     } 
 
     private void getData() {
