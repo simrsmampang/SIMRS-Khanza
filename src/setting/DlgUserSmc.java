@@ -500,7 +500,7 @@ public class DlgUserSmc extends javax.swing.JDialog {
         } else {
             if (Sequel.executeRawSmc("insert into user (id_user, password) values (aes_encrypt(?, 'nur'), aes_encrypt(?, 'windi'))", TKd.getText(), TPass.getText())) {
                 tabMode.addRow(new Object[] {
-                    TKd.getText(), TNmUser.getText(), Jabatan.getText(), TPass.getText()
+                    TKd.getText(), TNmUser.getText(), Jabatan.getText(), "**********", TPass.getText()
                 });
                 emptTeks();
                 LCount.setText(String.valueOf(tabMode.getRowCount()));
@@ -730,56 +730,54 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void tbUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUserMouseClicked
         if (tabMode.getRowCount() != 0) {
-            try {
-                getData();
-            } catch (java.lang.NullPointerException e) {
-            }
-
-            if (evt.getClickCount() == 1) {
-                if (copyhakakses.equals("copy")) {
-                    if (userdicopy.equals(TKd.getText())) {
-                        JOptionPane.showMessageDialog(null, "Copy hak akses gagal karena user dicopy dan user tujuan yang dipilih sama..!!");
-                        userdicopy = "";
-                        copyhakakses = "";
-                    } else {
-                        int reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah bener belum data copy hak aksesnya..??", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-                        if (reply == JOptionPane.YES_OPTION) {
-                            String sqlupdate = "";
-                            try (PreparedStatement ps = koneksi.prepareStatement("select * from user where aes_decrypt(id_user, 'nur') = ?")) {
-                                ps.setString(1, userdicopy);
-                                try (ResultSet rs = ps.executeQuery()) {
-                                    if (rs.next()) {
-                                        try (PreparedStatement ps2 = koneksi.prepareStatement("select column_name as `column_name` from information_schema.columns where table_schema = ? and table_name = 'user' and column_name not in ('id_user', 'password')")) {
-                                            ps2.setString(1, koneksiDB.DATABASE());
-                                            try (ResultSet rs2 = ps2.executeQuery()) {
-                                                while (rs2.next()) {
-                                                    rs.getString(rs2.getString("column_name"));
-                                                    if (rs.wasNull()) {
-                                                        sqlupdate = sqlupdate + rs2.getString("column_name") + " = null, ";
-                                                    } else {
-                                                        sqlupdate = sqlupdate + rs2.getString("column_name") + " = '" + rs.getString(rs2.getString("column_name")) + "', ";
-                                                    }
+            if (copyhakakses.equals("copy")) {
+                if (userdicopy.equals(TKd.getText())) {
+                    JOptionPane.showMessageDialog(null, "Copy hak akses gagal karena user dicopy dan user tujuan yang dipilih sama..!!");
+                    userdicopy = "";
+                    copyhakakses = "";
+                } else {
+                    int reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah bener belum data copy hak aksesnya..??", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+                    if (reply == JOptionPane.YES_OPTION) {
+                        String sqlupdate = "";
+                        try (PreparedStatement ps = koneksi.prepareStatement("select * from user where aes_decrypt(id_user, 'nur') = ?")) {
+                            ps.setString(1, userdicopy);
+                            try (ResultSet rs = ps.executeQuery()) {
+                                if (rs.next()) {
+                                    try (PreparedStatement ps2 = koneksi.prepareStatement("select column_name as `column_name` from information_schema.columns where table_schema = ? and table_name = 'user' and column_name not in ('id_user', 'password')")) {
+                                        ps2.setString(1, koneksiDB.DATABASE());
+                                        try (ResultSet rs2 = ps2.executeQuery()) {
+                                            while (rs2.next()) {
+                                                rs.getString(rs2.getString("column_name"));
+                                                if (rs.wasNull()) {
+                                                    sqlupdate = sqlupdate + rs2.getString("column_name") + " = null, ";
+                                                } else {
+                                                    sqlupdate = sqlupdate + rs2.getString("column_name") + " = '" + rs.getString(rs2.getString("column_name")) + "', ";
                                                 }
                                             }
-                                        } catch (Exception e) {
-                                            System.out.println("Notif : " + e);
                                         }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : " + e);
                                     }
                                 }
-                            } catch (Exception e) {
-                                System.out.println("Notif : " + e);
                             }
-                            sqlupdate = sqlupdate.substring(0, sqlupdate.length() - 2);
-                            if (Sequel.mengupdatetfSmc("user", sqlupdate, "aes_decrypt(id_user, 'nur') = ?", tbUser.getValueAt(tbUser.getSelectedRow(), 0).toString())) {
-                                JOptionPane.showMessageDialog(null, "Copy hak akses user berhasil!");
-                                userdicopy = "";
-                                copyhakakses = "";
-                            }
-                        } else {
+                        } catch (Exception e) {
+                            System.out.println("Notif : " + e);
+                        }
+                        sqlupdate = sqlupdate.substring(0, sqlupdate.length() - 2);
+                        if (Sequel.mengupdatetfSmc("user", sqlupdate, "aes_decrypt(id_user, 'nur') = ?", tbUser.getValueAt(tbUser.getSelectedRow(), 0).toString())) {
+                            JOptionPane.showMessageDialog(null, "Copy hak akses user berhasil!");
                             userdicopy = "";
                             copyhakakses = "";
                         }
+                    } else {
+                        userdicopy = "";
+                        copyhakakses = "";
                     }
+                }
+            } else {
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
                 }
             }
         }
