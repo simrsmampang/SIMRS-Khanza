@@ -57,7 +57,7 @@ public class DlgUserSmc extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row = {"User ID", "Nama User", "Jabatan", "Password"};
+        Object[] row = {"User ID", "Nama User", "Jabatan", "Password", "pw"};
 
         tabMode = new DefaultTableModel(null, row) {
             @Override
@@ -78,6 +78,8 @@ public class DlgUserSmc extends javax.swing.JDialog {
         tbUser.getColumnModel().getColumn(1).setPreferredWidth(200);
         tbUser.getColumnModel().getColumn(2).setPreferredWidth(120);
         tbUser.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tbUser.getColumnModel().getColumn(4).setMinWidth(0);
+        tbUser.getColumnModel().getColumn(4).setMaxWidth(0);
         tbUser.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte) 30).getKata(TKd));
@@ -501,7 +503,7 @@ public class DlgUserSmc extends javax.swing.JDialog {
                     TKd.getText(), TNmUser.getText(), Jabatan.getText(), TPass.getText()
                 });
                 emptTeks();
-                LCount.setText("" + tabMode.getRowCount());
+                LCount.setText(String.valueOf(tabMode.getRowCount()));
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -525,7 +527,7 @@ public class DlgUserSmc extends javax.swing.JDialog {
                 if (Sequel.executeRawSmc("delete from user where id_user = aes_encrypt(?, 'nur') and password = aes_encrypt(?, 'windi')", TKd.getText(), TPass.getText())) {
                     tabMode.removeRow(tbUser.getSelectedRow());
                     emptTeks();
-                    LCount.setText("" + tabMode.getRowCount());
+                    LCount.setText(String.valueOf(tabMode.getRowCount()));
                 }
             }
         }
@@ -547,10 +549,10 @@ public class DlgUserSmc extends javax.swing.JDialog {
         } else {
             if (tbUser.getSelectedRow() != -1) {
                 if (Sequel.executeRawSmc("update user set id_user = aes_encrypt(?, 'nur'), password = aes_encrypt(?, 'windi') where id_user = aes_encrypt(?, 'nur') and password = aes_encrypt(?, 'windi')",
-                    TKd.getText(), TPass.getText(), tbUser.getValueAt(tbUser.getSelectedRow(), 0).toString(), tbUser.getValueAt(tbUser.getSelectedRow(), 3).toString()
+                    TKd.getText(), TPass.getText(), tbUser.getValueAt(tbUser.getSelectedRow(), 0).toString(), tbUser.getValueAt(tbUser.getSelectedRow(), 4).toString()
                 )) {
                     tabMode.setValueAt(TKd.getText(), tbUser.getSelectedRow(), 0);
-                    tabMode.setValueAt(TPass.getText(), tbUser.getSelectedRow(), 3);
+                    tabMode.setValueAt(TPass.getText(), tbUser.getSelectedRow(), 4);
                     emptTeks();
                 }
             }
@@ -872,7 +874,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             }
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    tabMode.addRow(new Object[] {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)});
+                    tabMode.addRow(new Object[] {rs.getString(1), rs.getString(2), rs.getString(3), "**********", rs.getString(4)});
                 }
             }
             LCount.setText(String.valueOf(tabMode.getRowCount()));
@@ -893,7 +895,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if (tbUser.getSelectedRow() != -1) {
             TKd.setText(tbUser.getValueAt(tbUser.getSelectedRow(), 0).toString());
             TNmUser.setText(tbUser.getValueAt(tbUser.getSelectedRow(), 1).toString());
-            TPass.setText(tbUser.getValueAt(tbUser.getSelectedRow(), 3).toString());
+            TPass.setText(tbUser.getValueAt(tbUser.getSelectedRow(), 4).toString());
         }
     }
 }
