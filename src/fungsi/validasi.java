@@ -110,6 +110,10 @@ public final class validasi {
         return getTglSmc(tgl) + " " + getWaktuSmc(jam, menit, detik);
     }
     
+    public String getTglJamSmc(Tanggal tgljam) {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tgljam.getDate());
+    }
+    
     public String setTglJamSmc(Date tgljam) {
         return new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(tgljam);
     }
