@@ -426,10 +426,10 @@ public final class BPJSAntreanPerKodebooking extends javax.swing.JDialog {
                                 dtf.format(new Date(list.path("createdtime").asLong()))
                             });
                         }
-                        if (list.has("Status")) {
+                        if (list.has("status")) {
                             tabMode.addRow(new Object[] {
                                 "Status", ":",
-                                list.path("Status").asText()
+                                list.path("status").asText()
                             });
                         }
                         tabMode.addRow(new Object[] {"", "", ""});
