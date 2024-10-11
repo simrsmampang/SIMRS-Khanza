@@ -873,6 +873,7 @@ import rekammedis.RMDataCatatanObservasiRanap;
 import rekammedis.RMDataCatatanObservasiRanapKebidanan;
 import rekammedis.RMDataCatatanObservasiRanapPostPartum;
 import rekammedis.RMDataCatatanObservasiRestrainNonFarmakologi;
+import rekammedis.RMDataCatatanObservasiVentilator;
 import rekammedis.RMDataFollowUpDBD;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
@@ -21953,6 +21954,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnCatatanObservasiVentilatorActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataCatatanObservasiVentilator form=new RMDataCatatanObservasiVentilator(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22652,7 +22665,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnReferensiPoliMobileJKNFKTP,btnReferensiDokterMobileJKNFKTP,btnSKPPenilaianPegawai,btnMandiriMetodePembayaran,btnMandiriBankTujuanTRansfer,btnPembayaranPihakKe3BankMandiri,
             btnMandiriKodeTransaksiTujuanTRansfer,btnSKPRekapitulasiPenilaian,btnPCareReferensiAlergi,btnPCareReferensiPrognosa,btnKonsultasiMedik,btnDataSasaranUsiaProduktif,
             btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan,btnSkriningObesitas,btnSkriningRisikoKankerPayudara,btnSkriningRisikoKankerParu,
-            btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnBPJSAntreanPerKodebookingMobileJKN,btnCatatanObservasiRestrainNonFramakologi;
+            btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnBPJSAntreanPerKodebookingMobileJKN,btnCatatanObservasiRestrainNonFramakologi,
+            btnCatatanObservasiVentilator;
     
     public void isWall(){
         try{            
@@ -26519,6 +26533,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getcatatan_observasi_restrain_nonfarma()==true){
                 Panelmenu.add(btnCatatanObservasiRestrainNonFramakologi);
+                jmlmenu++;
+            }
+            
+            if(akses.getcatatan_observasi_ventilator()==true){
+                Panelmenu.add(btnCatatanObservasiVentilator);
                 jmlmenu++;
             }
             
@@ -31773,6 +31792,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getcatatan_observasi_restrain_nonfarma()==true){
             Panelmenu.add(btnCatatanObservasiRestrainNonFramakologi);
+            jmlmenu++;
+        }
+        
+        if(akses.getcatatan_observasi_ventilator()==true){
+            Panelmenu.add(btnCatatanObservasiVentilator);
             jmlmenu++;
         }
         
@@ -38530,6 +38554,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getcatatan_observasi_ventilator()==true){
+            if(btnCatatanObservasiVentilator.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCatatanObservasiVentilator);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getbalance_cairan()==true){
             if(btnCatatanKeseimbanganCairan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCatatanKeseimbanganCairan);
@@ -45237,6 +45268,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCatatanObservasiRestrainNonFramakologi.setName("btnCatatanObservasiRestrainNonFramakologi"); 
         btnCatatanObservasiRestrainNonFramakologi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnCatatanObservasiRestrainNonFramakologi.addActionListener(this::btnCatatanObservasiRestrainNonFramakologiActionPerformed);
+        
+        btnCatatanObservasiVentilator = new widget.ButtonBig();
+        btnCatatanObservasiVentilator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088631_bed_hospital_icu_medical_treatment_icon.png"))); 
+        btnCatatanObservasiVentilator.setText("Catatan Observasi Ventilator");
+        btnCatatanObservasiVentilator.setIconTextGap(0);
+        btnCatatanObservasiVentilator.setName("btnCatatanObservasiVentilator"); 
+        btnCatatanObservasiVentilator.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCatatanObservasiVentilator.addActionListener(this::btnCatatanObservasiVentilatorActionPerformed);
         
         btnSKPKategoriPenilaian = new widget.ButtonBig();
         btnSKPKategoriPenilaian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5986210_clothing_equipment_protection_protective_safety_icon.png"))); 
