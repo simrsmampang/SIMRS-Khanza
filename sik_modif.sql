@@ -293,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `satu_sehat_referensi_route`  (
   `code` varchar(30) NOT NULL,
   `display` varchar(100) NULL DEFAULT NULL,
   `keterangan` text NULL DEFAULT NULL,
-  `system` varchar(100) NOT NULL
+  `system` varchar(100) NOT NULL,
   PRIMARY KEY (`code`, `system`) USING BTREE,
   INDEX `satu_sehat_referensi_route_display_ibfk_1`(`display`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
