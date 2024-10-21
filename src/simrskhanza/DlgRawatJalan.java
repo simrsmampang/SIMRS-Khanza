@@ -203,6 +203,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private boolean sukses=false;
     private double ttljmdokter=0,ttljmperawat=0,ttlkso=0,ttljasasarana=0,ttlbhp=0,ttlmenejemen=0,ttlpendapatan=0;
     private Jurnal jur=new Jurnal();
+    private widget.TextBox TanggalRegistrasi;
 
     /** Creates new form DlgPerawatan
      * @param parent
