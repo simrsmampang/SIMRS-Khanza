@@ -4781,6 +4781,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         if(!NoSEP.getText().equals("")){
             if (TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")) {
                 Valid.textKosong(TNoRw, "Pasien");
+            } else if (!NoSEP.getText().startsWith(Sequel.cariIsiSmc("select kode_ppk from setting"))) {
+                JOptionPane.showMessageDialog(null, "Format No. SEP tidak sesuai...!!");
+            } else if (NoSEP.getText().trim().length() != 19) {
+                JOptionPane.showMessageDialog(null, "No. SEP tidak sesuai...!!");
             }else if (NoKartu.getText().trim().equals("")) {
                 Valid.textKosong(NoKartu, "Nomor Kartu");
             }else{ 
