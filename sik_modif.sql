@@ -398,6 +398,10 @@ ALTER TABLE `user` ADD COLUMN IF NOT EXISTS `edit_hapus_spo_nonmedis` enum('true
 
 ALTER TABLE `user` ADD COLUMN IF NOT EXISTS `bpjs_kompilasi_berkas_klaim` enum('true','false') NULL DEFAULT NULL AFTER `satu_sehat_kirim_specimen_radiologi`;
 
+ALTER TABLE `user` ADD COLUMN IF NOT EXISTS `paket_mcu` enum('true','false') NULL DEFAULT NULL AFTER `catatan_anestesi_sedasi`;
+
+ALTER TABLE `user` ADD COLUMN IF NOT EXISTS `master_paket_mcu` enum('true','false') NULL DEFAULT NULL AFTER `paket_mcu`;
+
 ALTER TABLE `user` MODIFY COLUMN IF EXISTS `penyakit` enum('true','false') NULL DEFAULT NULL AFTER `password`;
 
 ALTER TABLE `user` MODIFY COLUMN IF EXISTS `obat_penyakit` enum('true','false') NULL DEFAULT NULL AFTER `penyakit`;
