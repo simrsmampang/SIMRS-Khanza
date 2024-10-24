@@ -35,6 +35,7 @@ import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 
 
 /**
@@ -50,6 +51,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
     private String finger="";
     private String TANGGALMUNDUR="yes";
@@ -78,7 +80,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 45; i++) {
+        for (i = 0; i < 70; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -89,10 +91,122 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(25);
             }else if(i==5){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(110);
             }else if(i==6){
+                column.setPreferredWidth(150);
+            }else if(i==7){
+                column.setPreferredWidth(110);
+            }else if(i==8){
+                column.setPreferredWidth(150);
+            }else if(i==9){
+                column.setPreferredWidth(100);
+            }else if(i==10){
+                column.setPreferredWidth(150);
+            }else if(i==11){
+                column.setPreferredWidth(100);
+            }else if(i==12){
+                column.setPreferredWidth(150);
+            }else if(i==13){
+                column.setPreferredWidth(115);
+            }else if(i==14){
+                column.setPreferredWidth(150);
+            }else if(i==15){
+                column.setPreferredWidth(150);
+            }else if(i==16){
+                column.setPreferredWidth(150);
+            }else if(i==17){
+                column.setPreferredWidth(55);
+            }else if(i==18){
+                column.setPreferredWidth(80);
+            }else if(i==19){
+                column.setPreferredWidth(60);
+            }else if(i==20){
+                column.setPreferredWidth(55);
+            }else if(i==21){
+                column.setPreferredWidth(50);
+            }else if(i==22){
+                column.setPreferredWidth(50);
+            }else if(i==23){
+                column.setPreferredWidth(65);
+            }else if(i==24){
+                column.setPreferredWidth(45);
+            }else if(i==25){
+                column.setPreferredWidth(40);
+            }else if(i==26){
+                column.setPreferredWidth(32);
+            }else if(i==27){
+                column.setPreferredWidth(45);
+            }else if(i==28){
+                column.setPreferredWidth(50);
+            }else if(i==29){
+                column.setPreferredWidth(45);
+            }else if(i==30){
+                column.setPreferredWidth(47);
+            }else if(i==31){
+                column.setPreferredWidth(60);
+            }else if(i==32){
+                column.setPreferredWidth(60);
+            }else if(i==33){
+                column.setPreferredWidth(65);
+            }else if(i==34){
+                column.setPreferredWidth(150);
+            }else if(i==35){
+                column.setPreferredWidth(60);
+            }else if(i==36){
+                column.setPreferredWidth(45);
+            }else if(i==37){
+                column.setPreferredWidth(45);
+            }else if(i==38){
+                column.setPreferredWidth(60);
+            }else if(i==39){
+                column.setPreferredWidth(70);
+            }else if(i==40){
+                column.setPreferredWidth(60);
+            }else if(i==41){
+                column.setPreferredWidth(45);
+            }else if(i==42){
+                column.setPreferredWidth(100);
+            }else if(i==43){
+                column.setPreferredWidth(150);
+            }else if(i==44){
+                column.setPreferredWidth(40);
+            }else if(i==45){
+                column.setPreferredWidth(130);
+            }else if(i==46){
+                column.setPreferredWidth(60);
+            }else if(i==47){
+                column.setPreferredWidth(130);
+            }else if(i==48){
+                column.setPreferredWidth(40);
+            }else if(i==49){
+                column.setPreferredWidth(130);
+            }else if(i==50){
+                column.setPreferredWidth(45);
+            }else if(i==51){
+                column.setPreferredWidth(60);
+            }else if(i==52){
+                column.setPreferredWidth(40);
+            }else if(i==53){
+                column.setPreferredWidth(40);
+            }else if(i==54){
+                column.setPreferredWidth(40);
+            }else if(i==55){
+                column.setPreferredWidth(77);
+            }else if(i==56){
+                column.setPreferredWidth(40);
+            }else if(i==57){
+                column.setPreferredWidth(77);
+            }else if(i==58){
+                column.setPreferredWidth(45);
+            }else if(i==59){
+                column.setPreferredWidth(150);
+            }else if(i==60){
+                column.setPreferredWidth(40);
+            }else if(i==61){
+                column.setPreferredWidth(55);
+            }else if(i==62){
                 column.setPreferredWidth(150);
             }
         }
@@ -161,9 +275,44 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(dokter.getTable().getSelectedRow()!= -1){
-                    KdDokterAnestesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    NmDokterAnastesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    KdDokterAnestesi.requestFocus();
+                    if(i==1){
+                        KdDokterAnestesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        NmDokterAnastesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                        BtnDokterAnestesi.requestFocus();
+                    }else if(i==2){
+                        KdDokterBedah.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        NmDokterBedah.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                        BtnDokterBedah.requestFocus();
+                    }
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        petugas.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(petugas.getTable().getSelectedRow()!= -1){
+                    if(i==1){
+                        KdPetugasAnastesi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugasAnastesi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        BtnPetugasAnastesi.requestFocus();
+                    }else if(i==2){
+                        KdPetugasBedah.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugasBedah.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        BtnPetugasBedah.requestFocus();
+                    }
                 }
             }
             @Override
@@ -2061,7 +2210,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-           //Valid.pindah(evt,CatatanKhusus,BtnBatal);
+           Valid.pindah(evt,BatalTindakanKeterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -2386,6 +2535,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatKeyPressed
 
     private void BtnDokterAnestesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterAnestesiActionPerformed
+        i=1;
         dokter.isCek();
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
@@ -2442,11 +2592,16 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_TindakanKeyPressed
 
     private void DiagnosaPaskaBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaPaskaBedahKeyPressed
-        Valid.pindah(evt,Tindakan,BtnDokterBedah);
+        Valid.pindah(evt,Tindakan,BtnDokterAnestesi);
     }//GEN-LAST:event_DiagnosaPaskaBedahKeyPressed
 
     private void BtnDokterBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterBedahActionPerformed
-        // TODO add your handling code here:
+        i=2;
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setAlwaysOnTop(false);
+        dokter.setVisible(true);
     }//GEN-LAST:event_BtnDokterBedahActionPerformed
 
     private void BtnDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterBedahKeyPressed
@@ -2454,7 +2609,12 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterBedahKeyPressed
 
     private void BtnPetugasAnastesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasAnastesiActionPerformed
-        // TODO add your handling code here:
+        i=1;
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setAlwaysOnTop(false);
+        petugas.setVisible(true);
     }//GEN-LAST:event_BtnPetugasAnastesiActionPerformed
 
     private void BtnPetugasAnastesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasAnastesiKeyPressed
@@ -2462,7 +2622,12 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPetugasAnastesiKeyPressed
 
     private void BtnPetugasBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasBedahActionPerformed
-        // TODO add your handling code here:
+        i=2;
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setAlwaysOnTop(false);
+        petugas.setVisible(true);
     }//GEN-LAST:event_BtnPetugasBedahActionPerformed
 
     private void BtnPetugasBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasBedahKeyPressed
@@ -2510,191 +2675,191 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_RhesusKeyPressed
 
     private void HBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HBKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Rhesus,HT);
     }//GEN-LAST:event_HBKeyPressed
 
     private void HTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HTKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HB,Leko);
     }//GEN-LAST:event_HTKeyPressed
 
     private void LekoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LekoKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HT,Trombo);
     }//GEN-LAST:event_LekoKeyPressed
 
     private void TromboKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TromboKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Leko,BTCT);
     }//GEN-LAST:event_TromboKeyPressed
 
     private void BTCTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BTCTKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Trombo,GDS);
     }//GEN-LAST:event_BTCTKeyPressed
 
     private void GDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GDSKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BTCT,LainLainPrInduksi);
     }//GEN-LAST:event_GDSKeyPressed
 
     private void LainLainPrInduksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLainPrInduksiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GDS,TCI);
     }//GEN-LAST:event_LainLainPrInduksiKeyPressed
 
     private void TCIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCIKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LainLainPrInduksi,Glidescope);
     }//GEN-LAST:event_TCIKeyPressed
 
     private void GlidescopeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GlidescopeKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TCI,StimulatorSaraf);
     }//GEN-LAST:event_GlidescopeKeyPressed
 
     private void StimulatorSarafKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StimulatorSarafKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Glidescope,CPB);
     }//GEN-LAST:event_StimulatorSarafKeyPressed
 
     private void CPBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CPBKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,StimulatorSaraf,USG);
     }//GEN-LAST:event_CPBKeyPressed
 
     private void USGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USGKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CPB,Ventilator);
     }//GEN-LAST:event_USGKeyPressed
 
     private void VentilatorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VentilatorKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,USG,Broncoskopy);
     }//GEN-LAST:event_VentilatorKeyPressed
 
     private void BroncoskopyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BroncoskopyKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Ventilator,Hiopotensi);
     }//GEN-LAST:event_BroncoskopyKeyPressed
 
     private void HiopotensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HiopotensiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Broncoskopy,TeknikAlatLainnya);
     }//GEN-LAST:event_HiopotensiKeyPressed
 
     private void TeknikAlatLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TeknikAlatLainnyaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Hiopotensi,Etco2);
     }//GEN-LAST:event_TeknikAlatLainnyaKeyPressed
 
     private void Etco2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Etco2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TeknikAlatLainnya,Stetoskop);
     }//GEN-LAST:event_Etco2KeyPressed
 
     private void SpO2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpO2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NGT,NIBP);
     }//GEN-LAST:event_SpO2KeyPressed
 
     private void StetoskopKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StetoskopKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Etco2,CathAPulmo);
     }//GEN-LAST:event_StetoskopKeyPressed
 
     private void NIBPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIBPKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SpO2,KateterUrine);
     }//GEN-LAST:event_NIBPKeyPressed
 
     private void CathAPulmoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CathAPulmoKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Stetoskop,NGT);
     }//GEN-LAST:event_CathAPulmoKeyPressed
 
     private void KateterUrineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KateterUrineKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NIBP,BIS);
     }//GEN-LAST:event_KateterUrineKeyPressed
 
     private void NGTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NGTKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CathAPulmo,SpO2);
     }//GEN-LAST:event_NGTKeyPressed
 
     private void BISKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BISKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KateterUrine,CVP);
     }//GEN-LAST:event_BISKeyPressed
 
     private void CVPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CVPKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BIS,CVPKeterangan);
     }//GEN-LAST:event_CVPKeyPressed
 
     private void CVPKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CVPKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CVP,ArteriLine);
     }//GEN-LAST:event_CVPKeteranganKeyPressed
 
     private void ArteriLineKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ArteriLineKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ArteriLine,Temp);
     }//GEN-LAST:event_ArteriLineKeteranganKeyPressed
 
     private void ArteriLineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ArteriLineKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CVPKeterangan,ArteriLineKeterangan);
     }//GEN-LAST:event_ArteriLineKeyPressed
 
     private void TempKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TempKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ArteriLineKeterangan,EKGLead);
     }//GEN-LAST:event_TempKeyPressed
 
     private void EKGLeadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EKGLeadKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Temp,EKGLeadKeterangan);
     }//GEN-LAST:event_EKGLeadKeyPressed
 
     private void EKGLeadKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EKGLeadKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EKGLead,MonitoringLainLain);
     }//GEN-LAST:event_EKGLeadKeteranganKeyPressed
 
     private void MonitoringLainLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MonitoringLainLainKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EKGLeadKeterangan,AngkaAsa);
     }//GEN-LAST:event_MonitoringLainLainKeyPressed
 
     private void AngkaAsaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AngkaAsaKeyPressed
-        //Valid.pindah(evt,RencanaAnestesi,RencanaPerawatan);
+        Valid.pindah(evt,MonitoringLainLain,Alergi);
     }//GEN-LAST:event_AngkaAsaKeyPressed
 
     private void PenyulitPraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyulitPraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AlergiKeterangan,LanjutTindakan);
     }//GEN-LAST:event_PenyulitPraKeyPressed
 
     private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AngkaAsa,AlergiKeterangan);
     }//GEN-LAST:event_AlergiKeyPressed
 
     private void AlergiKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Alergi,PenyulitPra);
     }//GEN-LAST:event_AlergiKeteranganKeyPressed
 
     private void LanjutTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LanjutTindakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PenyulitPra,Sedasi);
     }//GEN-LAST:event_LanjutTindakanKeyPressed
 
     private void SedasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SedasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LanjutTindakan,SedasiKeterangan);
     }//GEN-LAST:event_SedasiKeyPressed
 
     private void SedasiKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SedasiKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sedasi,Epidural);
     }//GEN-LAST:event_SedasiKeteranganKeyPressed
 
     private void SpinalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpinalKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Epidural,AnastesiUmum);
     }//GEN-LAST:event_SpinalKeyPressed
 
     private void EpiduralKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EpiduralKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SedasiKeterangan,Spinal);
     }//GEN-LAST:event_EpiduralKeyPressed
 
     private void AnastesiUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnastesiUmumKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Spinal,AnastesiUmumKeterangan);
     }//GEN-LAST:event_AnastesiUmumKeyPressed
 
     private void AnastesiUmumKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnastesiUmumKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AnastesiUmum,BlokPerifer);
     }//GEN-LAST:event_AnastesiUmumKeteranganKeyPressed
 
     private void BlokPeriferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BlokPeriferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AnastesiUmumKeterangan,BlokPeriferKeterangan);
     }//GEN-LAST:event_BlokPeriferKeyPressed
 
     private void BlokPeriferKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BlokPeriferKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BlokPerifer,BatalTindakan);
     }//GEN-LAST:event_BlokPeriferKeteranganKeyPressed
 
     private void BatalTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BatalTindakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BlokPeriferKeterangan,BatalTindakanKeterangan);
     }//GEN-LAST:event_BatalTindakanKeyPressed
 
     private void BatalTindakanKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BatalTindakanKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BatalTindakan,BtnSimpan);
     }//GEN-LAST:event_BatalTindakanKeteranganKeyPressed
 
     private void LanjutTindakanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LanjutTindakanItemStateChanged
@@ -2984,7 +3149,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                         "catatan_anestesi_sedasi.perencanaan_lanjut_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut_sedasi_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_spinal,"+
                         "catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum,catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer,"+
                         "catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_epidural,catatan_anestesi_sedasi.perencanaan_batal,"+
-                        "catatan_anestesi_sedasi.perencanaan_batal_alasan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "catatan_anestesi_sedasi.perencanaan_batal_alasan,catatan_anestesi_sedasi.tanggal,pasien.gol_darah from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join catatan_anestesi_sedasi on reg_periksa.no_rawat=catatan_anestesi_sedasi.no_rawat "+
                         "inner join dokter as dokteranestesi on catatan_anestesi_sedasi.kd_dokter_anestesi=dokteranestesi.kd_dokter "+
                         "inner join dokter as dokterbedah on catatan_anestesi_sedasi.kd_dokter_bedah=dokterbedah.kd_dokter "+
@@ -3011,7 +3176,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                         "catatan_anestesi_sedasi.perencanaan_lanjut_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut_sedasi_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_spinal,"+
                         "catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum,catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer,"+
                         "catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_epidural,catatan_anestesi_sedasi.perencanaan_batal,"+
-                        "catatan_anestesi_sedasi.perencanaan_batal_alasan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "catatan_anestesi_sedasi.perencanaan_batal_alasan,catatan_anestesi_sedasi.tanggal,pasien.gol_darah from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join catatan_anestesi_sedasi on reg_periksa.no_rawat=catatan_anestesi_sedasi.no_rawat "+
                         "inner join dokter as dokteranestesi on catatan_anestesi_sedasi.kd_dokter_anestesi=dokteranestesi.kd_dokter "+
                         "inner join dokter as dokterbedah on catatan_anestesi_sedasi.kd_dokter_bedah=dokterbedah.kd_dokter "+
@@ -3036,10 +3201,20 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
+                    /*
+                    "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode DPJP Anastesi","Nama DPJP Anastesi","NIP Petugas Anastesi","Nama Petugas Anastesi",
+                    "Kode DPJP Bedah","Nama DPJP Bedah","NIP Petugas Bedah","Nama Petugas Bedah","Tanggal","Diagnosa Pra Bedah","Tindakan/Jenis Pembedahan",
+                    "Diagnosa Pasca Bedah","Jam","Kesadaran","TD(mmHg)","Nadi(x/m)","RR(x/m)","Suhu(°C)","Saturasi O2","TB(Cm)","BB(Kg)","GD","Rhesus","HB(gr/dl)",
+                    "HT(%)","Leko(ul)","Trombo(ul)","BTCT(mnt)","GDS(MG/dl)","Pre Induksi Lainnya","Hiopotensi","TCI","CPB","Ventilator","Broncoskopy","Glidescope",
+                    "USG","Stimulator Syaraf","Teknik & Alat Khusus Lainnya","EKG","Keterangan EKG","Arteri Line","Keterangan Arteri Line","CVP","Keterangan CVP",
+                    "EtCO2","Stetoskop","NIBP","NGT","BIS","Cath A Pulmo","SpO2","Kateter Urine","Temp.","Monitoring Lainnya","ASA","Alergi","Keterangan Alergi",
+                    "Penyulit Pra Anastesi/Sedasi","Lanjut Tindakan","Sedasi","Keterangan Sedasi","Spinal","Anestesi Umum","Keterangan Anestesi Umum","Blok Perifer",
+                    "Keterangan Blok Perifer","Epidural","Batal Tindakan","Alasan/Keterangan Batal Tindakan"
+                    */
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("nip_perawat_anestesi"),rs.getString("petugasanestesi"),
-                        rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),rs.getString("nip_perawat_ok"),rs.getString("petugasbedah"),rs.getString("diagnosa_pre_bedah"),rs.getString("tindakan_jenis_pembedahan"),rs.getString("diagnosa_pasca_bedah"),rs.getString("pre_induksi_jam"),
-                        rs.getString("pre_induksi_kesadaran"),rs.getString("pre_induksi_td"),rs.getString("pre_induksi_nadi"),rs.getString("pre_induksi_rr"),rs.getString("pre_induksi_suhu"),rs.getString("pre_induksi_o2"),rs.getString("pre_induksi_tb"),rs.getString("pre_induksi_bb"),
+                        rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),rs.getString("nip_perawat_ok"),rs.getString("petugasbedah"),rs.getString("tanggal"),rs.getString("diagnosa_pre_bedah"),rs.getString("tindakan_jenis_pembedahan"),rs.getString("diagnosa_pasca_bedah"),rs.getString("pre_induksi_jam"),
+                        rs.getString("pre_induksi_kesadaran"),rs.getString("pre_induksi_td"),rs.getString("pre_induksi_nadi"),rs.getString("pre_induksi_rr"),rs.getString("pre_induksi_suhu"),rs.getString("pre_induksi_o2"),rs.getString("pre_induksi_tb"),rs.getString("pre_induksi_bb"),rs.getString("gol_darah"),
                         rs.getString("pre_induksi_rhesus"),rs.getString("pre_induksi_hb"),rs.getString("pre_induksi_ht"),rs.getString("pre_induksi_leko"),rs.getString("pre_induksi_trombo"),rs.getString("pre_induksi_btct"),rs.getString("pre_induksi_gds"),rs.getString("pre_induksi_lainlain"),
                         rs.getString("teknik_alat_hiopotensi"),rs.getString("teknik_alat_tci"),rs.getString("teknik_alat_cpb"),rs.getString("teknik_alat_ventilasi"),rs.getString("teknik_alat_broncoskopy"),rs.getString("teknik_alat_glidescopi"),rs.getString("teknik_alat_usg"),
                         rs.getString("teknik_alat_stimulator_saraf"),rs.getString("teknik_alat_lainlain"),rs.getString("monitoring_ekg"),rs.getString("monitoring_ekg_keterangan"),rs.getString("monitoring_arteri"),rs.getString("monitoring_arteri_keterangan"),rs.getString("monitoring_cvp"),

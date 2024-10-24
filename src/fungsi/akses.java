@@ -233,7 +233,7 @@ public final class akses {
             pcare_cek_alergi=false,pcare_cek_prognosa=false,data_sasaran_usiaproduktif=false,data_sasaran_usialansia=false,skrining_perilaku_merokok_sekolah_remaja=false,
             skrining_kekerasan_pada_perempuan=false,skrining_obesitas=false,skrining_risiko_kanker_payudara=false,skrining_risiko_kanker_paru=false,skrining_tbc=false,
             skrining_kesehatan_gigi_mulut_remaja=false,penilaian_awal_keperawatan_ranap_bayi=false,booking_mcu_perusahaan=false,catatan_observasi_restrain_nonfarma=false,
-            catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,paket_mcu=false,master_paket_mcu=false;
+            catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,paket_mcu=false,master_paket_mcu=false,skrining_puma=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1324,6 +1324,7 @@ public final class akses {
                         akses.catatan_anestesi_sedasi=true;
                         akses.paket_mcu=true;
                         akses.master_paket_mcu=true;
+                        akses.skrining_puma=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2398,6 +2399,7 @@ public final class akses {
                         akses.catatan_anestesi_sedasi=rs2.getBoolean("catatan_anestesi_sedasi");
                         akses.paket_mcu=rs2.getBoolean("paket_mcu");
                         akses.master_paket_mcu=rs2.getBoolean("master_paket_mcu");
+                        akses.skrining_puma=rs2.getBoolean("skrining_puma");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3470,6 +3472,7 @@ public final class akses {
                         akses.catatan_anestesi_sedasi=false;
                         akses.paket_mcu=false;
                         akses.master_paket_mcu=false;
+                        akses.skrining_puma=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4565,6 +4568,7 @@ public final class akses {
         akses.catatan_anestesi_sedasi=false;
         akses.paket_mcu=false;
         akses.master_paket_mcu=false;
+        akses.skrining_puma=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5676,4 +5680,5 @@ public final class akses {
     public static boolean getcatatan_anestesi_sedasi(){return akses.catatan_anestesi_sedasi;}
     public static boolean getpaket_mcu(){return akses.paket_mcu;}
     public static boolean getmaster_paket_mcu(){return akses.master_paket_mcu;}
+    public static boolean getskrining_puma(){return akses.skrining_puma;}
 }   
