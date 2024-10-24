@@ -93,7 +93,7 @@ public final class sekuel {
             tgl = new Date();
         }
         
-        if ((tgl.getTime() - tglRegist.getTime()) < 0) {
+        if ((tgl.getTime() - tglRegist.getTime()) / 1000 < 0) {
             JOptionPane.showMessageDialog(null, "Maaf, jam input data / perubahan data minimal di jam " + sdf.format(tglRegist) + " !");
             return false;
         }
@@ -116,7 +116,7 @@ public final class sekuel {
             }
         }
         
-        if ((tglKegiatan.getTime() - tglRegist.getTime()) < 0) {
+        if ((tglKegiatan.getTime() - tglRegist.getTime()) / 1000 < 0) {
             JOptionPane.showMessageDialog(null, "Maaf, jam input data / perubahan data minimal di jam " + sdf.format(tglRegist) + " !");
             return false;
         }
@@ -507,6 +507,39 @@ public final class sekuel {
         return output;
     }
     
+    public boolean menyimpantfNotifSmc(String judulOnDuplicate, String table, String columns, String... values) {
+        boolean output = false;
+        
+        String sql = "insert into " + table + " (" + columns + ") values (";
+        if (columns == null || columns.isBlank()) {
+            sql = "insert into " + table + " values(";
+        }
+        
+        String track = sql;
+        
+        for (String value : values) {
+            sql = sql.concat("?, ");
+            track = track.concat("'" + value + "', ");
+        }
+        sql = sql.substring(0, sql.length() - 2).concat(")");
+        track = track.substring(0, track.length() - 2).concat(")");
+        
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            ps.executeUpdate();
+            SimpanTrack(track);
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+            output = false;
+            if (judulOnDuplicate != null && !judulOnDuplicate.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Tidak bisa menyimpan data, kemungkinan ada " + judulOnDuplicate + " yang sama dimasukkan sebelumnya.");
+            }
+        }
+        return output;
+    }
+    
     public void mengupdateSmc(String table, String columns, String conditions, String... values)
     {
         String query = "update " + table + " set " + columns + " where " + conditions;
@@ -585,6 +618,10 @@ public final class sekuel {
         } catch (Exception e) {
             System.out.println("Notif : " + e);
         }
+    }
+    
+    public void menghapusSmc(String table) {
+        menghapusSmc(table, null);
     }
 
     public boolean menghapustfSmc(String table, String wheres, String... values) {

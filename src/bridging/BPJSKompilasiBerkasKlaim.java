@@ -64,6 +64,8 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.jsoup.Jsoup;
@@ -2784,6 +2786,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
         try (FileOutputStream os = new FileOutputStream("./berkaspdf/" + tanggalExport + "/" + lblNoSEP.getText() + "_" + urutan + "_Billing.pdf")) {
             URL url = new URL(link);
             org.jsoup.nodes.Document jsoupDoc = Jsoup.parse(url, 30000);
+            jsoupDoc.head().appendElement("style").appendText("body { font-family: Arial, sans-serif }");
             org.w3c.dom.Document w3cDoc = new W3CDom().fromJsoup(jsoupDoc);
             PdfRendererBuilder builder = new PdfRendererBuilder();
             builder.withW3cDocument(w3cDoc, link);
@@ -3305,12 +3308,26 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
                     }
                 }
             }
+            
+            GetMethod get = new GetMethod("http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/" + koneksiDB.HYBRIDWEB() + "/penggajian/generateqrcode.php?kodedokter=" + Sequel.cariIsiSmc("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat = ?", lblNoRawat.getText()).replace(" ", "_"));
+            HttpClient http = new HttpClient();
+            http.executeMethod(get);
 
             htmlContent
                 .append("</tbody>")
                 .append("</table>")
                 .append("</td>")
                 .append("</tr>")
+                .append("<tr class=\"isi\">")
+                .append("<td valign=\"top\" width=\"2%\"></td>")
+                .append("<td valign=\"middle\" width=\"18%\"> Tanda Tangan/Verifikasi </td>")
+                .append("<td valign=\"middle\" width=\"1%\" align=\"center\"> : </td>")
+                .append("<td valign=\"middle\" width=\"79%\" align=\"center\">")
+                .append("Dokter Poli")
+                .append("<br><img width=\"90\" height=\"90\" src=\"" + "http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/" + koneksiDB.HYBRIDWEB() + "/penggajian/temp/" + Sequel.cariIsiSmc("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat = ?", lblNoRawat.getText()).replace(" ", "_") + ".png\"><br>")
+                .append(Sequel.cariIsiSmc("select dokter.nm_dokter from reg_periksa join dokter on reg_periksa.kd_dokter = dokter.kd_dokter where reg_periksa.no_rawat = ?", lblNoRawat.getText()))
+                .append("</tr>")
+                .append("<tr class=\"isi\"><td></td><td colspan=\"3\" align=\"right\">&#160;</td></tr>")
                 .append("</body>")
                 .append("</html>");
 
@@ -3728,7 +3745,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
                     }
                 }
                 pdfMerger.setDestinationFileName("./berkaspdf/" + tanggalExport + "/" + lblNoSEP.getText() + ".pdf");
-                pdfMerger.mergeDocuments(MemoryUsageSetting.setupTempFileOnly(80 * 1_000_000));
+                pdfMerger.mergeDocuments(MemoryUsageSetting.setupTempFileOnly(120 * 1_000_000));
                 System.out.println("PDFs merged successfully!");
                 File f = new File("./berkaspdf/" + tanggalExport + "/" + lblNoSEP.getText() + ".pdf");
                 Desktop.getDesktop().open(f);
