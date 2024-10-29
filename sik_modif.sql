@@ -389,6 +389,12 @@ CREATE TABLE IF NOT EXISTS `satu_sehat_referensi_route`  (
 
 ALTER TABLE `set_validasi_registrasi` MODIFY COLUMN IF EXISTS `wajib_closing_kasir` enum('Yes','Peringatan di hari yang sama','No') NULL DEFAULT NULL FIRST;
 
+CREATE TABLE IF NOT EXISTS `set_poli_mcu`  (
+  `kd_poli_mcu` char(5) NOT NULL,
+  PRIMARY KEY (`kd_poli_mcu`),
+  CONSTRAINT `kd_poli_mcu_ibfk_1` FOREIGN KEY (`kd_poli_mcu`) REFERENCES `poliklinik` (`kd_poli`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Fixed;
+
 ALTER TABLE `setting` ADD COLUMN IF NOT EXISTS `pemberlakuan_2x24_jam` enum('Yes','No') NULL DEFAULT NULL AFTER `logo`;
 
 ALTER TABLE `surat_keterangan_rawat_inap` ADD COLUMN IF NOT EXISTS `kd_dokter` varchar(20) NOT NULL AFTER `tanggalakhir`;
