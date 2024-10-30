@@ -1817,19 +1817,19 @@ public final class MasterCariTemplatePaketMCU extends javax.swing.JDialog {
     private widget.ScrollPane scrollPane6;
     private widget.ScrollPane scrollPane7;
     private widget.ScrollPane scrollPane8;
-    public widget.Table tbDetailMB;
-    public widget.Table tbDetailObatRacikan;
-    public widget.Table tbDetailPK;
-    public widget.Table tbDiagnosa;
+    private widget.Table tbDetailMB;
+    private widget.Table tbDetailObatRacikan;
+    private widget.Table tbDetailPK;
+    private widget.Table tbDiagnosa;
     private widget.Table tbDokter;
-    public widget.Table tbObatNonRacikan;
-    public widget.Table tbObatRacikan;
-    public widget.Table tbPermintaanMB;
-    public widget.Table tbPermintaanPA;
-    public widget.Table tbPermintaanPK;
-    public widget.Table tbPermintaanRadiologi;
-    public widget.Table tbProsedur;
-    public widget.Table tbTindakan;
+    private widget.Table tbObatNonRacikan;
+    private widget.Table tbObatRacikan;
+    private widget.Table tbPermintaanMB;
+    private widget.Table tbPermintaanPA;
+    private widget.Table tbPermintaanPK;
+    private widget.Table tbPermintaanRadiologi;
+    private widget.Table tbProsedur;
+    private widget.Table tbTindakan;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {

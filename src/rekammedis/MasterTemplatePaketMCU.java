@@ -571,7 +571,7 @@ public class MasterTemplatePaketMCU extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Template Paket MCU ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Template MCU ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1151,7 +1151,7 @@ public class MasterTemplatePaketMCU extends javax.swing.JDialog {
         PanelAccor.add(ChkAccor, java.awt.BorderLayout.WEST);
 
         FormDetail.setBackground(new java.awt.Color(255, 255, 255));
-        FormDetail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Detail Template Pemeriksaan : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormDetail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Detail Template : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormDetail.setName("FormDetail"); // NOI18N
         FormDetail.setPreferredSize(new java.awt.Dimension(115, 73));
         FormDetail.setLayout(new java.awt.BorderLayout());
@@ -2469,6 +2469,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 Valid.tabelKosong(tabModePA);
                 Valid.tabelKosong(tabModeMB);
                 Valid.tabelKosong(tabModeDetailMB);
+                Valid.tabelKosong(TabModeTindakan);
                 htmlContent = new StringBuilder();
                 // RADIOLOGI
                 try (PreparedStatement ps = koneksi.prepareStatement(
@@ -2602,21 +2603,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"20%\">Kode Periksa</td>")
                                 .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"80%\">Nama Pemeriksaan</td>")
                                 .append("</tr>");
-                        }
-                        while (rs.next()) {
+                            while (rs.next()) {
+                                htmlContent
+                                    .append("<tr class=\"isi\">")
+                                    .append("<td align=\"center\">" + rs.getString("kd_jenis_prw") + "</td>")
+                                    .append("<td>" + rs.getString("nm_perawatan") + "</td>")
+                                    .append("</tr>");
+                                tabModePA.addRow(new Object[] {
+                                    true, rs.getString("kd_jenis_prw"), rs.getString("nm_perawatan")
+                                });
+                            }
                             htmlContent
-                                .append("<tr class=\"isi\">")
-                                .append("<td align=\"center\">" + rs.getString("kd_jenis_prw") + "</td>")
-                                .append("<td>" + rs.getString("nm_perawatan") + "</td>")
+                                .append("</table>")
+                                .append("</td>")
                                 .append("</tr>");
-                            tabModePA.addRow(new Object[] {
-                                true, rs.getString("kd_jenis_prw"), rs.getString("nm_perawatan")
-                            });
                         }
-                        htmlContent
-                            .append("</table>")
-                            .append("</td>")
-                            .append("</tr>");
                     }
                 }
 
@@ -2639,61 +2640,61 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"20%\">Kode Periksa</td>")
                                 .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"80%\">Nama Pemeriksaan</td>")
                                 .append("</tr>");
-                        }
-                        while (rs.next()) {
-                            htmlContent
-                                .append("<tr class=\"isi\">")
-                                .append("<td align=\"center\">" + rs.getString("kd_jenis_prw") + "</td>")
-                                .append("<td>" + rs.getString("nm_perawatan") + "</td>")
-                                .append("</tr>");
-                            tabModeMB.addRow(new Object[] {
-                                true, rs.getString("kd_jenis_prw"), rs.getString("nm_perawatan")
-                            });
-                            try (PreparedStatement ps2 = koneksi.prepareStatement(
-                                "select paket_mcu_detail_permintaan_lab.id_template, template_laboratorium.Pemeriksaan, template_laboratorium.satuan, "
-                                + "concat_ws(', ', concat('LD : ', template_laboratorium.nilai_rujukan_ld), concat('LA : ', template_laboratorium.nilai_rujukan_la), "
-                                + "concat('PD : ', template_laboratorium.nilai_rujukan_pd), concat('PA : ', template_laboratorium.nilai_rujukan_pa)) as nilai_rujukan "
-                                + "from paket_mcu_detail_permintaan_lab join template_laboratorium on paket_mcu_detail_permintaan_lab.id_template = template_laboratorium.id_template "
-                                + "where paket_mcu_detail_permintaan_lab.kode_paket = ? and paket_mcu_detail_permintaan_lab.kd_jenis_prw = ? order by template_laboratorium.urut"
-                            )) {
-                                ps2.setString(1, tabMode.getValueAt(tbDokter.getSelectedRow(), 0).toString());
-                                ps2.setString(2, rs.getString("kd_jenis_prw"));
-                                try (ResultSet rs2 = ps2.executeQuery()) {
-                                    if (rs2.isBeforeFirst()) {
-                                        htmlContent
-                                            .append("<tr class=\"isi\">")
-                                            .append("<td align=\"center\" width=\"15%\">&nbsp;</td>")
-                                            .append("<td width=\"85%\">")
-                                            .append("<table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"3px\" cellspacing=\"0\" class=\"tbl_form\">")
-                                            .append("<tr class=\"isi\">")
-                                            .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"40%\">Pemeriksaan</td>")
-                                            .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"20%\">Satuan</td>")
-                                            .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"40%\">Nilai Rujukan</td>")
-                                            .append("</tr>");
-                                        while (rs2.next()) {
+                            while (rs.next()) {
+                                htmlContent
+                                    .append("<tr class=\"isi\">")
+                                    .append("<td align=\"center\">" + rs.getString("kd_jenis_prw") + "</td>")
+                                    .append("<td>" + rs.getString("nm_perawatan") + "</td>")
+                                    .append("</tr>");
+                                tabModeMB.addRow(new Object[] {
+                                    true, rs.getString("kd_jenis_prw"), rs.getString("nm_perawatan")
+                                });
+                                try (PreparedStatement ps2 = koneksi.prepareStatement(
+                                    "select paket_mcu_detail_permintaan_lab.id_template, template_laboratorium.Pemeriksaan, template_laboratorium.satuan, "
+                                    + "concat_ws(', ', concat('LD : ', template_laboratorium.nilai_rujukan_ld), concat('LA : ', template_laboratorium.nilai_rujukan_la), "
+                                    + "concat('PD : ', template_laboratorium.nilai_rujukan_pd), concat('PA : ', template_laboratorium.nilai_rujukan_pa)) as nilai_rujukan "
+                                    + "from paket_mcu_detail_permintaan_lab join template_laboratorium on paket_mcu_detail_permintaan_lab.id_template = template_laboratorium.id_template "
+                                    + "where paket_mcu_detail_permintaan_lab.kode_paket = ? and paket_mcu_detail_permintaan_lab.kd_jenis_prw = ? order by template_laboratorium.urut"
+                                )) {
+                                    ps2.setString(1, tabMode.getValueAt(tbDokter.getSelectedRow(), 0).toString());
+                                    ps2.setString(2, rs.getString("kd_jenis_prw"));
+                                    try (ResultSet rs2 = ps2.executeQuery()) {
+                                        if (rs2.isBeforeFirst()) {
                                             htmlContent
                                                 .append("<tr class=\"isi\">")
-                                                .append("<td>" + rs2.getString("Pemeriksaan") + "</td>")
-                                                .append("<td align=\"center\">" + rs2.getString("satuan") + "</td>")
-                                                .append("<td>" + rs2.getString("nilai_rujukan") + "</td>")
+                                                .append("<td align=\"center\" width=\"15%\">&nbsp;</td>")
+                                                .append("<td width=\"85%\">")
+                                                .append("<table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"3px\" cellspacing=\"0\" class=\"tbl_form\">")
+                                                .append("<tr class=\"isi\">")
+                                                .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"40%\">Pemeriksaan</td>")
+                                                .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"20%\">Satuan</td>")
+                                                .append("<td valign=\"middle\" bgcolor=\"#FFFAF8\" align=\"center\" width=\"40%\">Nilai Rujukan</td>")
                                                 .append("</tr>");
-                                            tabModeDetailMB.addRow(new Object[] {
-                                                true, "   " + rs2.getString("Pemeriksaan"), rs2.getString("satuan"),
-                                                rs2.getString("nilai_rujukan"), rs2.getString("id_template"), rs.getString("kd_jenis_prw")
-                                            });
+                                            while (rs2.next()) {
+                                                htmlContent
+                                                    .append("<tr class=\"isi\">")
+                                                    .append("<td>" + rs2.getString("Pemeriksaan") + "</td>")
+                                                    .append("<td align=\"center\">" + rs2.getString("satuan") + "</td>")
+                                                    .append("<td>" + rs2.getString("nilai_rujukan") + "</td>")
+                                                    .append("</tr>");
+                                                tabModeDetailMB.addRow(new Object[] {
+                                                    true, "   " + rs2.getString("Pemeriksaan"), rs2.getString("satuan"),
+                                                    rs2.getString("nilai_rujukan"), rs2.getString("id_template"), rs.getString("kd_jenis_prw")
+                                                });
+                                            }
+                                            htmlContent
+                                                .append("</table>")
+                                                .append("</td>")
+                                                .append("</tr>");
                                         }
-                                        htmlContent
-                                            .append("</table>")
-                                            .append("</td>")
-                                            .append("</tr>");
                                     }
                                 }
                             }
+                            htmlContent
+                                .append("</table>")
+                                .append("</td>")
+                                .append("</tr>");
                         }
-                        htmlContent
-                            .append("</table>")
-                            .append("</td>")
-                            .append("</tr>");
                     }
                 }
 
@@ -2750,7 +2751,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void ganti() {
         if (Sequel.menghapustfSmc("paket_mcu", "kode_paket = ?", tbDokter.getValueAt(tbDokter.getSelectedRow(), 0).toString())) {
-            if (Sequel.menyimpantfSmc("paket_mcu", null, tbDokter.getValueAt(tbDokter.getSelectedRow(), 0).toString(), "-", tbDokter.getValueAt(tbDokter.getSelectedRow(), 1).toString(), tbDokter.getValueAt(tbDokter.getSelectedRow(), 2).toString())) {
+            if (Sequel.menyimpantfSmc("paket_mcu", "kode_paket, kd_pj, nama_paket, keterangan", tbDokter.getValueAt(tbDokter.getSelectedRow(), 0).toString(), KdPj.getText(), NamaPaket.getText(), Keterangan.getText())) {
                 index = 1;
                 for (i = 0; i < tbPermintaanRadiologi.getRowCount(); i++) {
                     if (tbPermintaanRadiologi.getValueAt(i, 0).toString().equals("true")) {
