@@ -318,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `satu_sehat_referensi_patient`  (
 CREATE TABLE IF NOT EXISTS `satu_sehat_referensi_practitioneer`  (
   `no_ktp` varchar(20) NOT NULL,
   `practition_his_number` varchar(20) NOT NULL,
-  PRIMARY KEY (`nik`, `practition_his_number`) USING BTREE
+  PRIMARY KEY (`no_ktp`, `practition_his_number`) USING BTREE
 ) ENGINE = MyISAM CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 CREATE TABLE IF NOT EXISTS `satu_sehat_referensi_radiologi_loinc`  (
