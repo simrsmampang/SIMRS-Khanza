@@ -1457,6 +1457,7 @@ public final class SatuSehatKirimMedicationRequest extends javax.swing.JDialog {
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_medicationrequest());
+        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_medicationrequest());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_medicationrequest());
     }
     
