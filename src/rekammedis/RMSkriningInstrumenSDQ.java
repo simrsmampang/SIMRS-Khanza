@@ -68,16 +68,15 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         setSize(628,674);
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal",
-            "SDQ1","Nilai","SDQ2","Nilai","SDQ3","Nilai","SDQ4","Nilai","SDQ5","Nilai",
-            "SDQ6","Nilai","SDQ7","Nilai","SDQ8","Nilai","SDQ9","Nilai","SDQ10","Nilai",
-            "SDQ11","Nilai","SDQ12","Nilai","SDQ13","Nilai","SDQ14","Nilai","SDQ15","Nilai",
-            "SDQ16","Nilai","SDQ17","Nilai","SDQ18","Nilai","SDQ19","Nilai","SDQ20","Nilai",
-            "SDQ21","Nilai","SDQ22","Nilai","SDQ23","Nilai","SDQ24","Nilai","SDQ25","Nilai",
-            "Total Hasil SDQ","Skor Gejala (E)","Penilaian Gejala (E)","Skor Gejala (C)","Penilaian Gejala (C)","Skor Gejala (H)","Penilaian Gejala (H)",
-            "Skor Gejala (P)","Penilaian Gejala (P)","Skor Gejala (Pr)","Penilaian Gejala (Pr)","Skor Kesulitan","Penilaian Skor Kesulitan",
-            "NIP","Petugas"
-        }){
+                "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","NIP","Petugas","Tanggal",
+                "SDQ1","N.SDQ1","SDQ2","N.SDQ2","SDQ3","N.SDQ3","SDQ4","N.SDQ4","SDQ5","N.SDQ5",
+                "SDQ6","N.SDQ6","SDQ7","N.SDQ7","SDQ8","N.SDQ8","SDQ9","N.SDQ9","SDQ10","N.SDQ10",
+                "SDQ11","N.SDQ11","SDQ12","N.SDQ12","SDQ13","N.SDQ13","SDQ14","N.SDQ14","SDQ15","N.SDQ15",
+                "SDQ16","N.SDQ16","SDQ17","N.SDQ17","SDQ18","N.SDQ18","SDQ19","N.SDQ19","SDQ20","N.SDQ20",
+                "SDQ21","N.SDQ21","SDQ22","N.SDQ22","SDQ23","N.SDQ23","SDQ24","N.SDQ24","SDQ25","N.SDQ25",
+                "Nilai Total SDQ","Gejala Emosional (E)","N.GE","Masalah Perilaku (C)","N.MP","Hiperaktivitas (H)","N.H",
+                "Teman Sebaya (P)","N.TS","Kekuatan(Pr)","N.KPr","Kesulitan","N.K","Keterangan"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbObat.setModel(tabMode);
@@ -86,7 +85,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 71; i++) {
+        for (i = 0; i < 72; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -99,143 +98,146 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(25);
             }else if(i==5){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(85);
-            }else if(i==7){
-                column.setPreferredWidth(40);
-            }else if(i==8){
-                column.setPreferredWidth(85);
-            }else if(i==9){
-                column.setPreferredWidth(40);
-            }else if(i==10){
-                column.setPreferredWidth(85);
-            }else if(i==11){
-                column.setPreferredWidth(40);
-            }else if(i==12){
-                column.setPreferredWidth(85);
-            }else if(i==13){
-                column.setPreferredWidth(40);
-            }else if(i==14){
-                column.setPreferredWidth(85);
-            }else if(i==15){
-                column.setPreferredWidth(40);
-            }else if(i==16){
-                column.setPreferredWidth(85);
-            }else if(i==17){
-                column.setPreferredWidth(40);
-            }else if(i==18){
-                column.setPreferredWidth(85);
-            }else if(i==19){
-                column.setPreferredWidth(40);
-            }else if(i==20){
-                column.setPreferredWidth(85);
-            }else if(i==21){
-                column.setPreferredWidth(40);
-            }else if(i==22){
-                column.setPreferredWidth(85);
-            }else if(i==23){
-                column.setPreferredWidth(40);
-            }else if(i==24){
-                column.setPreferredWidth(85);
-            }else if(i==25){
-                column.setPreferredWidth(40);
-            }else if(i==26){
-                column.setPreferredWidth(40);
-            }else if(i==27){
-                column.setPreferredWidth(85);
-            }else if(i==28){
                 column.setPreferredWidth(150);
-            }else if(i==29){
-                column.setPreferredWidth(65);
-            }else if(i==30){
-                column.setPreferredWidth(160);
-            }else if(i==31){
-                column.setPreferredWidth(65);
-            }else if(i==32){
-                column.setPreferredWidth(25);
-            }else if(i==33){
+            }else if(i==7){
                 column.setPreferredWidth(115);
+            }else if(i==8){
+                column.setPreferredWidth(80);
+            }else if(i==9){
+                column.setPreferredWidth(50);
+            }else if(i==10){
+                column.setPreferredWidth(80);
+            }else if(i==11){
+                column.setPreferredWidth(50);
+            }else if(i==12){
+                column.setPreferredWidth(80);
+            }else if(i==13){
+                column.setPreferredWidth(50);
+            }else if(i==14){
+                column.setPreferredWidth(80);
+            }else if(i==15){
+                column.setPreferredWidth(50);
+            }else if(i==16){
+                column.setPreferredWidth(80);
+            }else if(i==17){
+                column.setPreferredWidth(50);
+            }else if(i==18){
+                column.setPreferredWidth(80);
+            }else if(i==19){
+                column.setPreferredWidth(50);
+            }else if(i==20){
+                column.setPreferredWidth(80);
+            }else if(i==21){
+                column.setPreferredWidth(50);
+            }else if(i==22){
+                column.setPreferredWidth(80);
+            }else if(i==23){
+                column.setPreferredWidth(50);
+            }else if(i==24){
+                column.setPreferredWidth(80);
+            }else if(i==25){
+                column.setPreferredWidth(50);
+            }else if(i==26){
+                column.setPreferredWidth(80);
+            }else if(i==27){
+                column.setPreferredWidth(50);
+            }else if(i==28){
+                column.setPreferredWidth(80);
+            }else if(i==29){
+                column.setPreferredWidth(50);
+            }else if(i==30){
+                column.setPreferredWidth(80);
+            }else if(i==31){
+                column.setPreferredWidth(50);
+            }else if(i==32){
+                column.setPreferredWidth(80);
+            }else if(i==33){
+                column.setPreferredWidth(50);
             }else if(i==34){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==35){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==36){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==37){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==38){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==39){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==40){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==41){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==42){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==43){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==44){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==45){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==46){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==47){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==48){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==49){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==50){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==51){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==52){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==53){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==54){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==55){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==56){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(80);
             }else if(i==57){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(50);
             }else if(i==58){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(82);
             }else if(i==59){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==60){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(45);
             }else if(i==61){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==62){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(45);
             }else if(i==63){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==64){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(45);
             }else if(i==65){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==66){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(45);
             }else if(i==67){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==68){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(45);
             }else if(i==69){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(120);
             }else if(i==70){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(45);
+            }else if(i==71){
+                column.setPreferredWidth(250);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
+        Keterangan.setDocument(new batasInput((int)200).getKata(Keterangan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -473,46 +475,62 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel271 = new widget.Label();
         NilaiSDQ25 = new widget.TextBox();
         jLabel272 = new widget.Label();
-        Kesimpulan = new widget.TextBox();
+        KesimpulanKesulitan = new widget.TextBox();
         jLabel273 = new widget.Label();
         jLabel274 = new widget.Label();
         jLabel275 = new widget.Label();
         TotalNilai = new widget.TextBox();
         jLabel276 = new widget.Label();
-        jLabel277 = new widget.Label();
-        SkorE = new widget.TextBox();
+        NilaiKesimpulanSkorE = new widget.TextBox();
         jLabel278 = new widget.Label();
-        jLabel279 = new widget.Label();
-        SkorC = new widget.TextBox();
+        NilaiKesimpulanSkorC = new widget.TextBox();
         jLabel280 = new widget.Label();
-        jLabel281 = new widget.Label();
-        SkorH = new widget.TextBox();
+        NilaiKesimpulanSkorH = new widget.TextBox();
         jLabel282 = new widget.Label();
-        jLabel283 = new widget.Label();
-        SkorP = new widget.TextBox();
+        NilaiKesimpulanSkorP = new widget.TextBox();
         jLabel284 = new widget.Label();
-        jLabel285 = new widget.Label();
-        SkorPr = new widget.TextBox();
+        NilaiKesimpulanSkorPr = new widget.TextBox();
         jLabel286 = new widget.Label();
-        jLabel287 = new widget.Label();
-        SkorKesulitan = new widget.TextBox();
+        NilaiKesimpulanKesulitan = new widget.TextBox();
         jLabel288 = new widget.Label();
         KesimpulanSkorE = new widget.TextBox();
         jLabel59 = new widget.Label();
-        jLabel289 = new widget.Label();
-        jLabel290 = new widget.Label();
         jLabel291 = new widget.Label();
-        jLabel292 = new widget.Label();
         KesimpulanSkorC = new widget.TextBox();
         jLabel293 = new widget.Label();
-        jLabel294 = new widget.Label();
         KesimpulanSkorH = new widget.TextBox();
         jLabel295 = new widget.Label();
-        jLabel296 = new widget.Label();
         KesimpulanSkorP = new widget.TextBox();
         jLabel297 = new widget.Label();
-        jLabel298 = new widget.Label();
         KesimpulanSkorPr = new widget.TextBox();
+        jLabel299 = new widget.Label();
+        jLabel300 = new widget.Label();
+        jLabel301 = new widget.Label();
+        jLabel302 = new widget.Label();
+        jLabel303 = new widget.Label();
+        jLabel304 = new widget.Label();
+        jLabel305 = new widget.Label();
+        jLabel306 = new widget.Label();
+        jLabel307 = new widget.Label();
+        jLabel308 = new widget.Label();
+        jLabel309 = new widget.Label();
+        jLabel310 = new widget.Label();
+        jLabel311 = new widget.Label();
+        jLabel312 = new widget.Label();
+        jLabel313 = new widget.Label();
+        jLabel314 = new widget.Label();
+        jLabel315 = new widget.Label();
+        jLabel316 = new widget.Label();
+        jLabel317 = new widget.Label();
+        jLabel318 = new widget.Label();
+        jLabel227 = new widget.Label();
+        jLabel224 = new widget.Label();
+        jLabel221 = new widget.Label();
+        jLabel319 = new widget.Label();
+        jSeparator3 = new javax.swing.JSeparator();
+        Keterangan = new widget.TextBox();
+        jLabel277 = new widget.Label();
+        jLabel279 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -710,7 +728,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -724,7 +742,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -816,7 +834,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 1050));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 1103));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -846,7 +864,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -964,18 +982,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ1ItemStateChanged(evt);
             }
         });
-        SDQ1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ1ActionPerformed(evt);
-            }
-        });
         SDQ1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ1KeyPressed(evt);
             }
         });
         FormInput.add(SDQ1);
-        SDQ1.setBounds(595, 90, 115, 23);
+        SDQ1.setBounds(590, 90, 115, 23);
 
         jLabel218.setText("Nilai :");
         jLabel218.setName("jLabel218"); // NOI18N
@@ -989,10 +1002,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         NilaiSDQ1.setBounds(749, 90, 40, 23);
 
         jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel220.setText("2. Saya gelisah. saya tidak dapat diam untuk waktu lama");
+        jLabel220.setText("2.");
         jLabel220.setName("jLabel220"); // NOI18N
         FormInput.add(jLabel220);
-        jLabel220.setBounds(44, 120, 300, 23);
+        jLabel220.setBounds(44, 120, 25, 23);
 
         jLabel222.setText("Nilai :");
         jLabel222.setName("jLabel222"); // NOI18N
@@ -1000,10 +1013,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel222.setBounds(695, 120, 50, 23);
 
         jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel223.setText("3. Saya sering sakit kepala, sakit perut atau macam-macam sakit lainnya");
+        jLabel223.setText("3");
         jLabel223.setName("jLabel223"); // NOI18N
         FormInput.add(jLabel223);
-        jLabel223.setBounds(44, 150, 560, 23);
+        jLabel223.setBounds(44, 150, 25, 23);
 
         jLabel225.setText("Nilai :");
         jLabel225.setName("jLabel225"); // NOI18N
@@ -1011,10 +1024,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel225.setBounds(695, 150, 50, 23);
 
         jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel226.setText("4. Kalau saya memiliki mainan, CD, atau makanan, Saya biasanya berbagi dengan orang lain");
+        jLabel226.setText("4.");
         jLabel226.setName("jLabel226"); // NOI18N
         FormInput.add(jLabel226);
-        jLabel226.setBounds(44, 180, 560, 23);
+        jLabel226.setBounds(44, 180, 25, 23);
 
         jLabel228.setText("Nilai :");
         jLabel228.setName("jLabel228"); // NOI18N
@@ -1022,10 +1035,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel228.setBounds(695, 180, 50, 23);
 
         jLabel229.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel229.setText("10. Bila sedang gelisah atau cemas badan saya sering bergerak  –  gerak tanpa saya sadari");
+        jLabel229.setText("10.");
         jLabel229.setName("jLabel229"); // NOI18N
         FormInput.add(jLabel229);
-        jLabel229.setBounds(44, 360, 520, 23);
+        jLabel229.setBounds(44, 360, 25, 23);
 
         jLabel231.setText("Nilai :");
         jLabel231.setName("jLabel231"); // NOI18N
@@ -1045,16 +1058,16 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jSeparator2.setBounds(0, 70, 810, 1);
 
         jLabel232.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel232.setText("5. Saya menjadi sangat marah dan sering tidak dapat mengendalikan kemarahan saya");
+        jLabel232.setText("5.");
         jLabel232.setName("jLabel232"); // NOI18N
         FormInput.add(jLabel232);
-        jLabel232.setBounds(44, 210, 510, 23);
+        jLabel232.setBounds(44, 210, 25, 23);
 
         jLabel236.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel236.setText("1. Saya berusaha baik kepada orang lain. Saya peduli dengan perasaan mereka");
+        jLabel236.setText("1.");
         jLabel236.setName("jLabel236"); // NOI18N
         FormInput.add(jLabel236);
-        jLabel236.setBounds(44, 90, 550, 23);
+        jLabel236.setBounds(44, 90, 25, 23);
 
         jLabel239.setText("Nilai :");
         jLabel239.setName("jLabel239"); // NOI18N
@@ -1077,124 +1090,124 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel242.setBounds(695, 360, 50, 23);
 
         jLabel230.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel230.setText("6. Saya lebih suka sendiri daripada bersama dengan orang yang seusiaku");
+        jLabel230.setText("6.");
         jLabel230.setName("jLabel230"); // NOI18N
         FormInput.add(jLabel230);
-        jLabel230.setBounds(44, 240, 480, 23);
+        jLabel230.setBounds(44, 240, 25, 23);
 
         jLabel233.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel233.setText("7. Saya biasanya melakukan apa yang diperintahkan oleh orang lain");
+        jLabel233.setText("7.");
         jLabel233.setName("jLabel233"); // NOI18N
         FormInput.add(jLabel233);
-        jLabel233.setBounds(44, 270, 490, 23);
+        jLabel233.setBounds(44, 270, 25, 23);
 
         jLabel243.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel243.setText("8. Saya banyak merasa cemas atau khawatir terhadap apapun");
+        jLabel243.setText("8.");
         jLabel243.setName("jLabel243"); // NOI18N
         FormInput.add(jLabel243);
-        jLabel243.setBounds(44, 300, 440, 23);
+        jLabel243.setBounds(44, 300, 25, 23);
 
         jLabel244.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel244.setText("9. Saya selalu siap menolong jika seseorang terluka, kecewa atau merasa sakit");
+        jLabel244.setText("9.");
         jLabel244.setName("jLabel244"); // NOI18N
         FormInput.add(jLabel244);
-        jLabel244.setBounds(44, 330, 530, 23);
+        jLabel244.setBounds(44, 330, 25, 23);
 
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel58.setText("I. DETEKSI DINI MASALAH EMOSI DAN PERILAKU MENGGUNAKAN KUISIONER KEKUATAN DAN KELEMAHAN (SDQ) :");
+        jLabel58.setText("I. DETEKSI DINI MASALAH EMOSI DAN PERILAKU MENGGUNAKAN KUISIONER KEKUATAN DAN KELEMAHAN (SDQ)");
         jLabel58.setName("jLabel58"); // NOI18N
         FormInput.add(jLabel58);
         jLabel58.setBounds(11, 70, 580, 23);
 
         jLabel235.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel235.setText("11. Saya mempunyai satu orang teman baik atau lebih");
+        jLabel235.setText("11.");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
-        jLabel235.setBounds(44, 390, 520, 23);
+        jLabel235.setBounds(44, 390, 25, 23);
 
         jLabel237.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel237.setText("12. Saya sering bertengkar dengan orang lain. Saya dapat memaksa orang lain melakukan yang saya inginkan");
+        jLabel237.setText("12.");
         jLabel237.setName("jLabel237"); // NOI18N
         FormInput.add(jLabel237);
-        jLabel237.setBounds(44, 420, 550, 23);
+        jLabel237.setBounds(44, 420, 25, 23);
 
         jLabel238.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel238.setText("13. Saya sering merasa tidak bahagia, sedih atau menangis");
+        jLabel238.setText("13.");
         jLabel238.setName("jLabel238"); // NOI18N
         FormInput.add(jLabel238);
-        jLabel238.setBounds(44, 450, 520, 23);
+        jLabel238.setBounds(44, 450, 25, 23);
 
         jLabel245.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel245.setText("14. Orang lain seusia saya umumnya menyukai saya");
+        jLabel245.setText("14.");
         jLabel245.setName("jLabel245"); // NOI18N
         FormInput.add(jLabel245);
-        jLabel245.setBounds(44, 480, 520, 23);
+        jLabel245.setBounds(44, 480, 25, 23);
 
         jLabel246.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel246.setText("15. Perhatian saya mudah teralih, saya sulit untuk memusatkan perhatian pada apapun");
+        jLabel246.setText("15.");
         jLabel246.setName("jLabel246"); // NOI18N
         FormInput.add(jLabel246);
-        jLabel246.setBounds(44, 510, 520, 23);
+        jLabel246.setBounds(44, 510, 25, 23);
 
         jLabel247.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel247.setText("16. Saya merasa gugup dalam situasi baru, saya mudah kehilangan rasa percaya Diri");
+        jLabel247.setText("16.");
         jLabel247.setName("jLabel247"); // NOI18N
         FormInput.add(jLabel247);
-        jLabel247.setBounds(44, 540, 520, 23);
+        jLabel247.setBounds(44, 540, 25, 23);
 
         jLabel248.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel248.setText("17. Saya bersikap baik terhadap anak-anak yang lebih muda dari saya");
+        jLabel248.setText("17.");
         jLabel248.setName("jLabel248"); // NOI18N
         FormInput.add(jLabel248);
-        jLabel248.setBounds(44, 570, 520, 23);
+        jLabel248.setBounds(44, 570, 25, 23);
 
         jLabel249.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel249.setText("18. Saya sering dituduh berbohong atau berbuat curang");
+        jLabel249.setText("18.");
         jLabel249.setName("jLabel249"); // NOI18N
         FormInput.add(jLabel249);
-        jLabel249.setBounds(44, 600, 520, 23);
+        jLabel249.setBounds(44, 600, 25, 23);
 
         jLabel250.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel250.setText("19. Saya sering diganggu atau dipermainkan oleh anak-anak atau remaja lainnya");
+        jLabel250.setText("19.");
         jLabel250.setName("jLabel250"); // NOI18N
         FormInput.add(jLabel250);
-        jLabel250.setBounds(44, 630, 520, 23);
+        jLabel250.setBounds(44, 630, 25, 23);
 
         jLabel251.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel251.setText("20. Saya sering menawarkan diri untuk membantu orang lain (orang tua, guru, anak-anak)");
+        jLabel251.setText("20.");
         jLabel251.setName("jLabel251"); // NOI18N
         FormInput.add(jLabel251);
-        jLabel251.setBounds(44, 660, 520, 23);
+        jLabel251.setBounds(44, 660, 25, 23);
 
         jLabel252.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel252.setText("21. Saya berpikir terlebih dulu akibat yang akan terjadi, sebelum berbuat atau melakukan sesuatu");
+        jLabel252.setText("21.");
         jLabel252.setName("jLabel252"); // NOI18N
         FormInput.add(jLabel252);
-        jLabel252.setBounds(44, 690, 520, 23);
+        jLabel252.setBounds(44, 690, 25, 23);
 
         jLabel253.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel253.setText("22. Saya mengambil barang yang bukan milik saya dari rumah, sekolah atau dari mana saja");
+        jLabel253.setText("22.");
         jLabel253.setName("jLabel253"); // NOI18N
         FormInput.add(jLabel253);
-        jLabel253.setBounds(44, 720, 520, 23);
+        jLabel253.setBounds(44, 720, 25, 23);
 
         jLabel254.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel254.setText("23. Saya lebih mudah berteman dengan orang dewasa daripada dengan orang seusia   Saya");
+        jLabel254.setText("23.");
         jLabel254.setName("jLabel254"); // NOI18N
         FormInput.add(jLabel254);
-        jLabel254.setBounds(44, 750, 520, 23);
+        jLabel254.setBounds(44, 750, 25, 23);
 
         jLabel255.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel255.setText("24. Banyak yang saya takuti, saya mudah menjadi takut");
+        jLabel255.setText("24.");
         jLabel255.setName("jLabel255"); // NOI18N
         FormInput.add(jLabel255);
-        jLabel255.setBounds(44, 780, 520, 23);
+        jLabel255.setBounds(44, 780, 25, 23);
 
         jLabel256.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel256.setText("Memiliki perhatian yang baik terhadap apapun, mampu menyelesaikan tugas ");
+        jLabel256.setText("Memiliki perhatian yang baik terhadap apapun, mampu menyelesaikan tugas atau pekerjaan ");
         jLabel256.setName("jLabel256"); // NOI18N
         FormInput.add(jLabel256);
-        jLabel256.setBounds(63, 810, 480, 23);
+        jLabel256.setBounds(63, 805, 480, 23);
 
         SDQ2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ2.setName("SDQ2"); // NOI18N
@@ -1203,18 +1216,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ2ItemStateChanged(evt);
             }
         });
-        SDQ2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ2ActionPerformed(evt);
-            }
-        });
         SDQ2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ2KeyPressed(evt);
             }
         });
         FormInput.add(SDQ2);
-        SDQ2.setBounds(595, 120, 115, 23);
+        SDQ2.setBounds(590, 120, 115, 23);
 
         SDQ3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ3.setName("SDQ3"); // NOI18N
@@ -1223,18 +1231,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ3ItemStateChanged(evt);
             }
         });
-        SDQ3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ3ActionPerformed(evt);
-            }
-        });
         SDQ3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ3KeyPressed(evt);
             }
         });
         FormInput.add(SDQ3);
-        SDQ3.setBounds(595, 150, 115, 23);
+        SDQ3.setBounds(590, 150, 115, 23);
 
         SDQ4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ4.setName("SDQ4"); // NOI18N
@@ -1243,18 +1246,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ4ItemStateChanged(evt);
             }
         });
-        SDQ4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ4ActionPerformed(evt);
-            }
-        });
         SDQ4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ4KeyPressed(evt);
             }
         });
         FormInput.add(SDQ4);
-        SDQ4.setBounds(595, 180, 115, 23);
+        SDQ4.setBounds(590, 180, 115, 23);
 
         SDQ5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ5.setName("SDQ5"); // NOI18N
@@ -1263,18 +1261,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ5ItemStateChanged(evt);
             }
         });
-        SDQ5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ5ActionPerformed(evt);
-            }
-        });
         SDQ5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ5KeyPressed(evt);
             }
         });
         FormInput.add(SDQ5);
-        SDQ5.setBounds(595, 210, 115, 23);
+        SDQ5.setBounds(590, 210, 115, 23);
 
         SDQ6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ6.setName("SDQ6"); // NOI18N
@@ -1283,18 +1276,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ6ItemStateChanged(evt);
             }
         });
-        SDQ6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ6ActionPerformed(evt);
-            }
-        });
         SDQ6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ6KeyPressed(evt);
             }
         });
         FormInput.add(SDQ6);
-        SDQ6.setBounds(595, 240, 115, 23);
+        SDQ6.setBounds(590, 240, 115, 23);
 
         SDQ7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ7.setName("SDQ7"); // NOI18N
@@ -1303,18 +1291,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ7ItemStateChanged(evt);
             }
         });
-        SDQ7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ7ActionPerformed(evt);
-            }
-        });
         SDQ7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ7KeyPressed(evt);
             }
         });
         FormInput.add(SDQ7);
-        SDQ7.setBounds(595, 270, 115, 23);
+        SDQ7.setBounds(590, 270, 115, 23);
 
         SDQ8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ8.setName("SDQ8"); // NOI18N
@@ -1323,18 +1306,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ8ItemStateChanged(evt);
             }
         });
-        SDQ8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ8ActionPerformed(evt);
-            }
-        });
         SDQ8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ8KeyPressed(evt);
             }
         });
         FormInput.add(SDQ8);
-        SDQ8.setBounds(595, 300, 115, 23);
+        SDQ8.setBounds(590, 300, 115, 23);
 
         SDQ9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ9.setName("SDQ9"); // NOI18N
@@ -1343,18 +1321,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ9ItemStateChanged(evt);
             }
         });
-        SDQ9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ9ActionPerformed(evt);
-            }
-        });
         SDQ9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ9KeyPressed(evt);
             }
         });
         FormInput.add(SDQ9);
-        SDQ9.setBounds(595, 330, 115, 23);
+        SDQ9.setBounds(590, 330, 115, 23);
 
         SDQ10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ10.setName("SDQ10"); // NOI18N
@@ -1363,18 +1336,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ10ItemStateChanged(evt);
             }
         });
-        SDQ10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ10ActionPerformed(evt);
-            }
-        });
         SDQ10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ10KeyPressed(evt);
             }
         });
         FormInput.add(SDQ10);
-        SDQ10.setBounds(595, 360, 115, 23);
+        SDQ10.setBounds(590, 360, 115, 23);
 
         SDQ11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ11.setName("SDQ11"); // NOI18N
@@ -1383,18 +1351,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ11ItemStateChanged(evt);
             }
         });
-        SDQ11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ11ActionPerformed(evt);
-            }
-        });
         SDQ11.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ11KeyPressed(evt);
             }
         });
         FormInput.add(SDQ11);
-        SDQ11.setBounds(595, 390, 115, 23);
+        SDQ11.setBounds(590, 390, 115, 23);
 
         SDQ12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ12.setName("SDQ12"); // NOI18N
@@ -1403,18 +1366,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ12ItemStateChanged(evt);
             }
         });
-        SDQ12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ12ActionPerformed(evt);
-            }
-        });
         SDQ12.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ12KeyPressed(evt);
             }
         });
         FormInput.add(SDQ12);
-        SDQ12.setBounds(595, 420, 115, 23);
+        SDQ12.setBounds(590, 420, 115, 23);
 
         SDQ13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ13.setName("SDQ13"); // NOI18N
@@ -1423,18 +1381,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ13ItemStateChanged(evt);
             }
         });
-        SDQ13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ13ActionPerformed(evt);
-            }
-        });
         SDQ13.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ13KeyPressed(evt);
             }
         });
         FormInput.add(SDQ13);
-        SDQ13.setBounds(595, 450, 115, 23);
+        SDQ13.setBounds(590, 450, 115, 23);
 
         SDQ14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ14.setName("SDQ14"); // NOI18N
@@ -1443,18 +1396,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ14ItemStateChanged(evt);
             }
         });
-        SDQ14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ14ActionPerformed(evt);
-            }
-        });
         SDQ14.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ14KeyPressed(evt);
             }
         });
         FormInput.add(SDQ14);
-        SDQ14.setBounds(595, 480, 115, 23);
+        SDQ14.setBounds(590, 480, 115, 23);
 
         SDQ15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ15.setName("SDQ15"); // NOI18N
@@ -1463,18 +1411,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ15ItemStateChanged(evt);
             }
         });
-        SDQ15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ15ActionPerformed(evt);
-            }
-        });
         SDQ15.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ15KeyPressed(evt);
             }
         });
         FormInput.add(SDQ15);
-        SDQ15.setBounds(595, 510, 115, 23);
+        SDQ15.setBounds(590, 510, 115, 23);
 
         SDQ16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ16.setName("SDQ16"); // NOI18N
@@ -1483,18 +1426,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ16ItemStateChanged(evt);
             }
         });
-        SDQ16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ16ActionPerformed(evt);
-            }
-        });
         SDQ16.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ16KeyPressed(evt);
             }
         });
         FormInput.add(SDQ16);
-        SDQ16.setBounds(595, 540, 115, 23);
+        SDQ16.setBounds(590, 540, 115, 23);
 
         SDQ17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ17.setName("SDQ17"); // NOI18N
@@ -1503,18 +1441,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ17ItemStateChanged(evt);
             }
         });
-        SDQ17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ17ActionPerformed(evt);
-            }
-        });
         SDQ17.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ17KeyPressed(evt);
             }
         });
         FormInput.add(SDQ17);
-        SDQ17.setBounds(595, 570, 115, 23);
+        SDQ17.setBounds(590, 570, 115, 23);
 
         SDQ18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ18.setName("SDQ18"); // NOI18N
@@ -1523,18 +1456,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ18ItemStateChanged(evt);
             }
         });
-        SDQ18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ18ActionPerformed(evt);
-            }
-        });
         SDQ18.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ18KeyPressed(evt);
             }
         });
         FormInput.add(SDQ18);
-        SDQ18.setBounds(595, 600, 115, 23);
+        SDQ18.setBounds(590, 600, 115, 23);
 
         SDQ19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ19.setName("SDQ19"); // NOI18N
@@ -1543,18 +1471,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ19ItemStateChanged(evt);
             }
         });
-        SDQ19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ19ActionPerformed(evt);
-            }
-        });
         SDQ19.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ19KeyPressed(evt);
             }
         });
         FormInput.add(SDQ19);
-        SDQ19.setBounds(595, 630, 115, 23);
+        SDQ19.setBounds(590, 630, 115, 23);
 
         SDQ20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ20.setName("SDQ20"); // NOI18N
@@ -1563,18 +1486,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ20ItemStateChanged(evt);
             }
         });
-        SDQ20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ20ActionPerformed(evt);
-            }
-        });
         SDQ20.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ20KeyPressed(evt);
             }
         });
         FormInput.add(SDQ20);
-        SDQ20.setBounds(595, 660, 115, 23);
+        SDQ20.setBounds(590, 660, 115, 23);
 
         SDQ21.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ21.setName("SDQ21"); // NOI18N
@@ -1583,18 +1501,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ21ItemStateChanged(evt);
             }
         });
-        SDQ21.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ21ActionPerformed(evt);
-            }
-        });
         SDQ21.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ21KeyPressed(evt);
             }
         });
         FormInput.add(SDQ21);
-        SDQ21.setBounds(595, 690, 115, 23);
+        SDQ21.setBounds(590, 690, 115, 23);
 
         SDQ22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ22.setName("SDQ22"); // NOI18N
@@ -1603,18 +1516,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ22ItemStateChanged(evt);
             }
         });
-        SDQ22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ22ActionPerformed(evt);
-            }
-        });
         SDQ22.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ22KeyPressed(evt);
             }
         });
         FormInput.add(SDQ22);
-        SDQ22.setBounds(595, 720, 115, 23);
+        SDQ22.setBounds(590, 720, 115, 23);
 
         SDQ23.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ23.setName("SDQ23"); // NOI18N
@@ -1623,18 +1531,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ23ItemStateChanged(evt);
             }
         });
-        SDQ23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ23ActionPerformed(evt);
-            }
-        });
         SDQ23.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ23KeyPressed(evt);
             }
         });
         FormInput.add(SDQ23);
-        SDQ23.setBounds(595, 750, 115, 23);
+        SDQ23.setBounds(590, 750, 115, 23);
 
         SDQ24.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ24.setName("SDQ24"); // NOI18N
@@ -1643,18 +1546,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ24ItemStateChanged(evt);
             }
         });
-        SDQ24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ24ActionPerformed(evt);
-            }
-        });
         SDQ24.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ24KeyPressed(evt);
             }
         });
         FormInput.add(SDQ24);
-        SDQ24.setBounds(595, 780, 115, 23);
+        SDQ24.setBounds(590, 780, 115, 23);
 
         SDQ25.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ25.setName("SDQ25"); // NOI18N
@@ -1663,18 +1561,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ25ItemStateChanged(evt);
             }
         });
-        SDQ25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SDQ25ActionPerformed(evt);
-            }
-        });
         SDQ25.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SDQ25KeyPressed(evt);
             }
         });
         FormInput.add(SDQ25);
-        SDQ25.setBounds(595, 810, 115, 23);
+        SDQ25.setBounds(590, 810, 115, 23);
 
         NilaiSDQ2.setEditable(false);
         NilaiSDQ2.setFocusTraversalPolicyProvider(true);
@@ -1899,31 +1792,30 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel272.setText("F. Penilaian Skor Kesulitan ");
         jLabel272.setName("jLabel272"); // NOI18N
         FormInput.add(jLabel272);
-        jLabel272.setBounds(44, 1020, 160, 23);
+        jLabel272.setBounds(44, 1040, 160, 23);
 
-        Kesimpulan.setEditable(false);
-        Kesimpulan.setFocusTraversalPolicyProvider(true);
-        Kesimpulan.setName("Kesimpulan"); // NOI18N
-        FormInput.add(Kesimpulan);
-        Kesimpulan.setBounds(220, 1020, 220, 23);
+        KesimpulanKesulitan.setEditable(false);
+        KesimpulanKesulitan.setFocusTraversalPolicyProvider(true);
+        KesimpulanKesulitan.setName("KesimpulanKesulitan"); // NOI18N
+        FormInput.add(KesimpulanKesulitan);
+        KesimpulanKesulitan.setBounds(210, 1040, 240, 23);
 
         jLabel273.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel273.setText(" atau pekerjaan rumah sampai selesai");
+        jLabel273.setText("rumah sampai selesai.");
         jLabel273.setName("jLabel273"); // NOI18N
         FormInput.add(jLabel273);
-        jLabel273.setBounds(61, 823, 400, 23);
+        jLabel273.setBounds(63, 817, 400, 23);
 
         jLabel274.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel274.setText("25.");
         jLabel274.setName("jLabel274"); // NOI18N
         FormInput.add(jLabel274);
-        jLabel274.setBounds(44, 815, 20, 23);
+        jLabel274.setBounds(44, 810, 20, 23);
 
-        jLabel275.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel275.setText("Total Nilai :");
         jLabel275.setName("jLabel275"); // NOI18N
         FormInput.add(jLabel275);
-        jLabel275.setBounds(685, 840, 60, 23);
+        jLabel275.setBounds(615, 840, 130, 23);
 
         TotalNilai.setEditable(false);
         TotalNilai.setFocusTraversalPolicyProvider(true);
@@ -1931,209 +1823,309 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         FormInput.add(TotalNilai);
         TotalNilai.setBounds(749, 840, 40, 23);
 
-        jLabel276.setText("Skor Gejala Emosional ( E )");
+        jLabel276.setText("Skor Gejala Emosional (E) :");
         jLabel276.setName("jLabel276"); // NOI18N
         FormInput.add(jLabel276);
-        jLabel276.setBounds(595, 870, 140, 23);
+        jLabel276.setBounds(565, 890, 180, 23);
 
-        jLabel277.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel277.setText(" :");
-        jLabel277.setName("jLabel277"); // NOI18N
-        FormInput.add(jLabel277);
-        jLabel277.setBounds(735, 870, 10, 23);
+        NilaiKesimpulanSkorE.setEditable(false);
+        NilaiKesimpulanSkorE.setFocusTraversalPolicyProvider(true);
+        NilaiKesimpulanSkorE.setName("NilaiKesimpulanSkorE"); // NOI18N
+        FormInput.add(NilaiKesimpulanSkorE);
+        NilaiKesimpulanSkorE.setBounds(749, 890, 40, 23);
 
-        SkorE.setEditable(false);
-        SkorE.setFocusTraversalPolicyProvider(true);
-        SkorE.setName("SkorE"); // NOI18N
-        FormInput.add(SkorE);
-        SkorE.setBounds(749, 870, 40, 23);
-
-        jLabel278.setText("Skor Masalah Perilaku ( C )");
+        jLabel278.setText("Skor Masalah Perilaku (C) :");
         jLabel278.setName("jLabel278"); // NOI18N
         FormInput.add(jLabel278);
-        jLabel278.setBounds(595, 900, 140, 23);
+        jLabel278.setBounds(565, 920, 180, 23);
 
-        jLabel279.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel279.setText(" :");
-        jLabel279.setName("jLabel279"); // NOI18N
-        FormInput.add(jLabel279);
-        jLabel279.setBounds(735, 900, 10, 23);
+        NilaiKesimpulanSkorC.setEditable(false);
+        NilaiKesimpulanSkorC.setFocusTraversalPolicyProvider(true);
+        NilaiKesimpulanSkorC.setName("NilaiKesimpulanSkorC"); // NOI18N
+        FormInput.add(NilaiKesimpulanSkorC);
+        NilaiKesimpulanSkorC.setBounds(749, 920, 40, 23);
 
-        SkorC.setEditable(false);
-        SkorC.setFocusTraversalPolicyProvider(true);
-        SkorC.setName("SkorC"); // NOI18N
-        FormInput.add(SkorC);
-        SkorC.setBounds(749, 900, 40, 23);
-
-        jLabel280.setText("Skor Hiperaktivitas ( H )");
+        jLabel280.setText("Skor Hiperaktivitas (H) :");
         jLabel280.setName("jLabel280"); // NOI18N
         FormInput.add(jLabel280);
-        jLabel280.setBounds(595, 930, 140, 23);
+        jLabel280.setBounds(565, 950, 180, 23);
 
-        jLabel281.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel281.setText(" :");
-        jLabel281.setName("jLabel281"); // NOI18N
-        FormInput.add(jLabel281);
-        jLabel281.setBounds(735, 930, 10, 23);
+        NilaiKesimpulanSkorH.setEditable(false);
+        NilaiKesimpulanSkorH.setFocusTraversalPolicyProvider(true);
+        NilaiKesimpulanSkorH.setName("NilaiKesimpulanSkorH"); // NOI18N
+        FormInput.add(NilaiKesimpulanSkorH);
+        NilaiKesimpulanSkorH.setBounds(749, 950, 40, 23);
 
-        SkorH.setEditable(false);
-        SkorH.setFocusTraversalPolicyProvider(true);
-        SkorH.setName("SkorH"); // NOI18N
-        FormInput.add(SkorH);
-        SkorH.setBounds(749, 930, 40, 23);
-
-        jLabel282.setText("Skor Masalah Teman Sebaya ( P )");
+        jLabel282.setText("Skor Masalah Teman Sebaya (P) :");
         jLabel282.setName("jLabel282"); // NOI18N
         FormInput.add(jLabel282);
-        jLabel282.setBounds(565, 960, 170, 23);
+        jLabel282.setBounds(565, 980, 180, 23);
 
-        jLabel283.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel283.setText(" :");
-        jLabel283.setName("jLabel283"); // NOI18N
-        FormInput.add(jLabel283);
-        jLabel283.setBounds(735, 960, 10, 23);
+        NilaiKesimpulanSkorP.setEditable(false);
+        NilaiKesimpulanSkorP.setFocusTraversalPolicyProvider(true);
+        NilaiKesimpulanSkorP.setName("NilaiKesimpulanSkorP"); // NOI18N
+        FormInput.add(NilaiKesimpulanSkorP);
+        NilaiKesimpulanSkorP.setBounds(749, 980, 40, 23);
 
-        SkorP.setEditable(false);
-        SkorP.setFocusTraversalPolicyProvider(true);
-        SkorP.setName("SkorP"); // NOI18N
-        FormInput.add(SkorP);
-        SkorP.setBounds(749, 960, 40, 23);
-
-        jLabel284.setText("Skor Kekuatan Proporsional ( Pr )");
+        jLabel284.setText("Skor Kekuatan Proporsional (Pr) :");
         jLabel284.setName("jLabel284"); // NOI18N
         FormInput.add(jLabel284);
-        jLabel284.setBounds(565, 990, 170, 23);
+        jLabel284.setBounds(565, 1010, 180, 23);
 
-        jLabel285.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel285.setText(" :");
-        jLabel285.setName("jLabel285"); // NOI18N
-        FormInput.add(jLabel285);
-        jLabel285.setBounds(735, 990, 10, 23);
+        NilaiKesimpulanSkorPr.setEditable(false);
+        NilaiKesimpulanSkorPr.setFocusTraversalPolicyProvider(true);
+        NilaiKesimpulanSkorPr.setName("NilaiKesimpulanSkorPr"); // NOI18N
+        FormInput.add(NilaiKesimpulanSkorPr);
+        NilaiKesimpulanSkorPr.setBounds(749, 1010, 40, 23);
 
-        SkorPr.setEditable(false);
-        SkorPr.setFocusTraversalPolicyProvider(true);
-        SkorPr.setName("SkorPr"); // NOI18N
-        FormInput.add(SkorPr);
-        SkorPr.setBounds(749, 990, 40, 23);
-
-        jLabel286.setText("Skor Total Kesulitan");
+        jLabel286.setText("Skor Total Kesulitan :");
         jLabel286.setName("jLabel286"); // NOI18N
         FormInput.add(jLabel286);
-        jLabel286.setBounds(595, 1020, 140, 23);
+        jLabel286.setBounds(565, 1040, 180, 23);
 
-        jLabel287.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel287.setText(" :");
-        jLabel287.setName("jLabel287"); // NOI18N
-        FormInput.add(jLabel287);
-        jLabel287.setBounds(735, 1020, 10, 23);
-
-        SkorKesulitan.setEditable(false);
-        SkorKesulitan.setFocusTraversalPolicyProvider(true);
-        SkorKesulitan.setName("SkorKesulitan"); // NOI18N
-        FormInput.add(SkorKesulitan);
-        SkorKesulitan.setBounds(749, 1020, 40, 23);
+        NilaiKesimpulanKesulitan.setEditable(false);
+        NilaiKesimpulanKesulitan.setFocusTraversalPolicyProvider(true);
+        NilaiKesimpulanKesulitan.setName("NilaiKesimpulanKesulitan"); // NOI18N
+        FormInput.add(NilaiKesimpulanKesulitan);
+        NilaiKesimpulanKesulitan.setBounds(749, 1040, 40, 23);
 
         jLabel288.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel288.setText("A. Penilaian Gejala Emosional ( E )");
+        jLabel288.setText("A. Penilaian Gejala Emosional (E)");
         jLabel288.setName("jLabel288"); // NOI18N
         FormInput.add(jLabel288);
-        jLabel288.setBounds(44, 870, 170, 23);
+        jLabel288.setBounds(44, 890, 170, 23);
 
         KesimpulanSkorE.setEditable(false);
         KesimpulanSkorE.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorE.setName("KesimpulanSkorE"); // NOI18N
         FormInput.add(KesimpulanSkorE);
-        KesimpulanSkorE.setBounds(220, 870, 220, 23);
+        KesimpulanSkorE.setBounds(210, 890, 240, 23);
 
         jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel59.setText("II. INTEPRETASI DAN KESIMPULAN HASIL PEMERIKSAAN (SDQ) :");
         jLabel59.setName("jLabel59"); // NOI18N
         FormInput.add(jLabel59);
-        jLabel59.setBounds(11, 843, 550, 23);
-
-        jLabel289.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel289.setText(" :");
-        jLabel289.setName("jLabel289"); // NOI18N
-        FormInput.add(jLabel289);
-        jLabel289.setBounds(210, 1020, 10, 23);
-
-        jLabel290.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel290.setText(" :");
-        jLabel290.setName("jLabel290"); // NOI18N
-        FormInput.add(jLabel290);
-        jLabel290.setBounds(210, 870, 10, 23);
+        jLabel59.setBounds(11, 873, 550, 23);
 
         jLabel291.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel291.setText("B. Penilaian Masalah Perilaku ( C )");
+        jLabel291.setText("B. Penilaian Masalah Perilaku (C)");
         jLabel291.setName("jLabel291"); // NOI18N
         FormInput.add(jLabel291);
-        jLabel291.setBounds(44, 900, 170, 23);
-
-        jLabel292.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel292.setText(" :");
-        jLabel292.setName("jLabel292"); // NOI18N
-        FormInput.add(jLabel292);
-        jLabel292.setBounds(210, 900, 10, 23);
+        jLabel291.setBounds(44, 920, 170, 23);
 
         KesimpulanSkorC.setEditable(false);
         KesimpulanSkorC.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorC.setName("KesimpulanSkorC"); // NOI18N
         FormInput.add(KesimpulanSkorC);
-        KesimpulanSkorC.setBounds(220, 900, 220, 23);
+        KesimpulanSkorC.setBounds(210, 920, 240, 23);
 
         jLabel293.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel293.setText("C. Penilaian Hiperaktivitas ( H )");
+        jLabel293.setText("C. Penilaian Hiperaktivitas (H)");
         jLabel293.setName("jLabel293"); // NOI18N
         FormInput.add(jLabel293);
-        jLabel293.setBounds(44, 930, 170, 23);
-
-        jLabel294.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel294.setText(" :");
-        jLabel294.setName("jLabel294"); // NOI18N
-        FormInput.add(jLabel294);
-        jLabel294.setBounds(210, 930, 10, 23);
+        jLabel293.setBounds(44, 950, 170, 23);
 
         KesimpulanSkorH.setEditable(false);
         KesimpulanSkorH.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorH.setName("KesimpulanSkorH"); // NOI18N
         FormInput.add(KesimpulanSkorH);
-        KesimpulanSkorH.setBounds(220, 930, 220, 23);
+        KesimpulanSkorH.setBounds(210, 950, 240, 23);
 
         jLabel295.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel295.setText("D. Masalah Teman Sebaya ( P )");
+        jLabel295.setText("D. Masalah Teman Sebaya (P)");
         jLabel295.setName("jLabel295"); // NOI18N
         FormInput.add(jLabel295);
-        jLabel295.setBounds(44, 960, 160, 23);
-
-        jLabel296.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel296.setText(" :");
-        jLabel296.setName("jLabel296"); // NOI18N
-        FormInput.add(jLabel296);
-        jLabel296.setBounds(210, 960, 10, 23);
+        jLabel295.setBounds(44, 980, 160, 23);
 
         KesimpulanSkorP.setEditable(false);
         KesimpulanSkorP.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorP.setName("KesimpulanSkorP"); // NOI18N
         FormInput.add(KesimpulanSkorP);
-        KesimpulanSkorP.setBounds(220, 960, 220, 23);
+        KesimpulanSkorP.setBounds(210, 980, 240, 23);
 
         jLabel297.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel297.setText("E. Penilaian Skor Kekuatan ( Pr )");
+        jLabel297.setText("E. Penilaian Skor Kekuatan (Pr)");
         jLabel297.setName("jLabel297"); // NOI18N
         FormInput.add(jLabel297);
-        jLabel297.setBounds(44, 990, 170, 23);
-
-        jLabel298.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel298.setText(" :");
-        jLabel298.setName("jLabel298"); // NOI18N
-        FormInput.add(jLabel298);
-        jLabel298.setBounds(210, 990, 10, 23);
+        jLabel297.setBounds(44, 1010, 170, 23);
 
         KesimpulanSkorPr.setEditable(false);
         KesimpulanSkorPr.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorPr.setName("KesimpulanSkorPr"); // NOI18N
         FormInput.add(KesimpulanSkorPr);
-        KesimpulanSkorPr.setBounds(220, 990, 220, 23);
+        KesimpulanSkorPr.setBounds(210, 1010, 240, 23);
+
+        jLabel299.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel299.setText("Banyak yang Saya takuti, Saya mudah menjadi takut.");
+        jLabel299.setName("jLabel299"); // NOI18N
+        FormInput.add(jLabel299);
+        jLabel299.setBounds(63, 780, 520, 23);
+
+        jLabel300.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel300.setText("Saya lebih mudah berteman dengan orang dewasa daripada dengan orang seusia Saya.");
+        jLabel300.setName("jLabel300"); // NOI18N
+        FormInput.add(jLabel300);
+        jLabel300.setBounds(63, 750, 520, 23);
+
+        jLabel301.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel301.setText("Saya mengambil barang yang bukan milik Saya dari rumah, sekolah atau dari mana saja.");
+        jLabel301.setName("jLabel301"); // NOI18N
+        FormInput.add(jLabel301);
+        jLabel301.setBounds(63, 720, 520, 23);
+
+        jLabel302.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel302.setText("Saya berpikir terlebih dulu akibat yang akan terjadi, sebelum berbuat atau melakukan sesuatu.");
+        jLabel302.setName("jLabel302"); // NOI18N
+        FormInput.add(jLabel302);
+        jLabel302.setBounds(63, 690, 520, 23);
+
+        jLabel303.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel303.setText("Saya sering menawarkan diri untuk membantu orang lain (orang tua, guru, anak-anak).");
+        jLabel303.setName("jLabel303"); // NOI18N
+        FormInput.add(jLabel303);
+        jLabel303.setBounds(63, 660, 520, 23);
+
+        jLabel304.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel304.setText("Saya sering diganggu atau dipermainkan oleh anak-anak atau remaja lainnya.");
+        jLabel304.setName("jLabel304"); // NOI18N
+        FormInput.add(jLabel304);
+        jLabel304.setBounds(63, 630, 520, 23);
+
+        jLabel305.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel305.setText("Saya sering dituduh berbohong atau berbuat curang.");
+        jLabel305.setName("jLabel305"); // NOI18N
+        FormInput.add(jLabel305);
+        jLabel305.setBounds(63, 600, 520, 23);
+
+        jLabel306.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel306.setText("Saya bersikap baik terhadap anak-anak yang lebih muda dari Saya.");
+        jLabel306.setName("jLabel306"); // NOI18N
+        FormInput.add(jLabel306);
+        jLabel306.setBounds(63, 570, 520, 23);
+
+        jLabel307.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel307.setText("Saya merasa gugup dalam situasi baru, Saya mudah kehilangan rasa percaya diri.");
+        jLabel307.setName("jLabel307"); // NOI18N
+        FormInput.add(jLabel307);
+        jLabel307.setBounds(63, 540, 520, 23);
+
+        jLabel308.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel308.setText("Perhatian Saya mudah teralih, Saya sulit untuk memusatkan perhatian pada apapun.");
+        jLabel308.setName("jLabel308"); // NOI18N
+        FormInput.add(jLabel308);
+        jLabel308.setBounds(63, 510, 520, 23);
+
+        jLabel309.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel309.setText("Orang lain seusia Saya umumnya menyukai Saya.");
+        jLabel309.setName("jLabel309"); // NOI18N
+        FormInput.add(jLabel309);
+        jLabel309.setBounds(63, 480, 520, 23);
+
+        jLabel310.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel310.setText("Saya sering merasa tidak bahagia, sedih atau menangis.");
+        jLabel310.setName("jLabel310"); // NOI18N
+        FormInput.add(jLabel310);
+        jLabel310.setBounds(63, 450, 520, 23);
+
+        jLabel311.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel311.setText("Saya sering bertengkar dengan orang lain. Saya dapat memaksa orang lain melakukan yang Saya inginkan.");
+        jLabel311.setName("jLabel311"); // NOI18N
+        FormInput.add(jLabel311);
+        jLabel311.setBounds(63, 420, 550, 23);
+
+        jLabel312.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel312.setText("Saya mempunyai satu orang teman baik atau lebih.");
+        jLabel312.setName("jLabel312"); // NOI18N
+        FormInput.add(jLabel312);
+        jLabel312.setBounds(63, 390, 520, 23);
+
+        jLabel313.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel313.setText("Bila sedang gelisah atau cemas badan Saya sering bergerak–gerak tanpa Saya sadari.");
+        jLabel313.setName("jLabel313"); // NOI18N
+        FormInput.add(jLabel313);
+        jLabel313.setBounds(63, 360, 520, 23);
+
+        jLabel314.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel314.setText("Saya selalu siap menolong jika seseorang terluka, kecewa atau merasa sakit.");
+        jLabel314.setName("jLabel314"); // NOI18N
+        FormInput.add(jLabel314);
+        jLabel314.setBounds(63, 330, 530, 23);
+
+        jLabel315.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel315.setText("Saya banyak merasa cemas atau khawatir terhadap apapun");
+        jLabel315.setName("jLabel315"); // NOI18N
+        FormInput.add(jLabel315);
+        jLabel315.setBounds(63, 300, 440, 23);
+
+        jLabel316.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel316.setText(" Saya biasanya melakukan apa yang diperintahkan oleh orang lain.");
+        jLabel316.setName("jLabel316"); // NOI18N
+        FormInput.add(jLabel316);
+        jLabel316.setBounds(63, 270, 490, 23);
+
+        jLabel317.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel317.setText("Saya lebih suka sendiri daripada bersama dengan orang yang seusiaku.");
+        jLabel317.setName("jLabel317"); // NOI18N
+        FormInput.add(jLabel317);
+        jLabel317.setBounds(63, 240, 480, 23);
+
+        jLabel318.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel318.setText("Saya menjadi sangat marah dan sering tidak dapat mengendalikan kemarahan Saya.");
+        jLabel318.setName("jLabel318"); // NOI18N
+        FormInput.add(jLabel318);
+        jLabel318.setBounds(63, 210, 510, 23);
+
+        jLabel227.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel227.setText("Kalau Saya memiliki mainan, CD, atau makanan, Saya biasanya berbagi dengan orang lain.");
+        jLabel227.setName("jLabel227"); // NOI18N
+        FormInput.add(jLabel227);
+        jLabel227.setBounds(63, 180, 530, 23);
+
+        jLabel224.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel224.setText("Saya sering sakit kepala, sakit perut atau macam-macam sakit lainnya.");
+        jLabel224.setName("jLabel224"); // NOI18N
+        FormInput.add(jLabel224);
+        jLabel224.setBounds(63, 150, 530, 23);
+
+        jLabel221.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel221.setText("Saya gelisah. Saya tidak dapat diam untuk waktu lama.");
+        jLabel221.setName("jLabel221"); // NOI18N
+        FormInput.add(jLabel221);
+        jLabel221.setBounds(63, 120, 390, 23);
+
+        jLabel319.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel319.setText("Saya berusaha baik kepada orang lain. Saya peduli dengan perasaan mereka.");
+        jLabel319.setName("jLabel319"); // NOI18N
+        FormInput.add(jLabel319);
+        jLabel319.setBounds(63, 90, 520, 23);
+
+        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        FormInput.add(jSeparator3);
+        jSeparator3.setBounds(0, 870, 810, 1);
+
+        Keterangan.setFocusTraversalPolicyProvider(true);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(111, 1070, 678, 23);
+
+        jLabel277.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel277.setText("Keterangan");
+        jLabel277.setName("jLabel277"); // NOI18N
+        FormInput.add(jLabel277);
+        jLabel277.setBounds(44, 1070, 80, 23);
+
+        jLabel279.setText(":");
+        jLabel279.setName("jLabel279"); // NOI18N
+        FormInput.add(jLabel279);
+        jLabel279.setBounds(0, 1070, 107, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2164,68 +2156,16 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
         }else{
-            if(Sequel.menyimpantf("penilaian_skrining_instrumen_sdq","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",24,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),
-                SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(), 
-                SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(), 
-                SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(), 
-                SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),
-                SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),
-                SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),
-                SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(),
-                SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),
-                SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),
-                SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),
-                SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),
-                SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),
-                SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),
-                SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),
-                SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),
-                SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),
-                SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),
-                SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),
-                SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
-                SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),
-                SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),
-                SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),
-                SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
-                SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),
-                Kesimpulan.getText()
-            })==true){
-                tabMode.addRow(new String[]{
-                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                    SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),
-                    SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),
-                    SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),
-                    SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(),
-                    SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),
-                    SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),
-                    SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),
-                    SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(),
-                    SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),
-                    SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),
-                    SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),
-                    SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),
-                    SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),
-                    SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),
-                    SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),
-                    SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),
-                    SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),
-                    SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),
-                    SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),
-                    SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
-                    SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),
-                    SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),
-                    SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),
-                    SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
-                    SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),
-                    
-                    
-                });
-                emptTeks();
-                LCount.setText(""+tabMode.getRowCount());
-            }  
+            if(akses.getkode().equals("Admin Utama")){
+                simpan();
+            }else{
+                if(TanggalRegistrasi.getText().equals("")){
+                    TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+                }
+                if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem())==true){
+                    simpan();
+                }
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -2254,8 +2194,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString())){
-                    hapus();
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+                    if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
+                        hapus();
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
                 }
@@ -2283,8 +2225,15 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString())){
-                        ganti();
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
+                            if(TanggalRegistrasi.getText().equals("")){
+                                TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+                            }
+                            if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem())==true){
+                                ganti();
+                            }
+                        }
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
                     }
@@ -2329,30 +2278,73 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>JK</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Skala Barthel 10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.B. 10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Total</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ9</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ9</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ10</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ10</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ11</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ11</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ12</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ12</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ13</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ13</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ14</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ14</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ15</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ15</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ16</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ16</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ17</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ17</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ18</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ18</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ19</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ19</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ20</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ20</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ21</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ21</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ22</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ22</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ23</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ23</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ24</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ24</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SDQ25</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.SDQ25</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nilai Total SDQ</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Gejala Emosional (E)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.GE</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Masalah Perilaku (C)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.MP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hiperaktivitas (H)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.H</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Teman Sebaya (P)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.TS</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kekuatan(Pr)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.KPr</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesulitan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>N.K</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -2387,11 +2379,54 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,36).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,37).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,38).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,41).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,42).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,43).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,49).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,50).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,51).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,52).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,53).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,54).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,55).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,56).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,57).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,58).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,59).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,60).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,61).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,62).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,63).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,64).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,65).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,66).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,67).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,68).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,69).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,70).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,71).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='5000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -2412,17 +2447,17 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("PenilaianSkriningFungsional.html");            
+                File f = new File("PenilaianSkriningInstrumenSDQ.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='5000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN LANJUTAN SKRINING FUNGSIONAL<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA SKRINING INSTRUMEN SDQ<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -2550,22 +2585,22 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),28).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),27).toString():finger)+"\n"+Tanggal.getSelectedItem());
             Valid.MyReportqry("rptFormulirPenilaianLanjutanSkriningFungsional.jasper","report","::[ Formulir Penilaian Lanjutan Risiko Jatuh Psikiatri ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_skrining_fungsional.tanggal,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala1,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai1,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala2,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai2,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala3,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai3,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala4,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai4,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala5,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai5,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala6,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai6,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala7,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai7,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala8,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai8,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala9,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai9,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala10,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai10,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_totalnilai,"+
-                    "penilaian_lanjutan_skrining_fungsional.nip,petugas.nama "+
-                    "from penilaian_lanjutan_skrining_fungsional inner join reg_periksa on penilaian_lanjutan_skrining_fungsional.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skrining_instrumen_sdq.tanggal,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala1,skrining_instrumen_sdq.penilaian_skrining_nilai1,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala2,skrining_instrumen_sdq.penilaian_skrining_nilai2,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala3,skrining_instrumen_sdq.penilaian_skrining_nilai3,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala4,skrining_instrumen_sdq.penilaian_skrining_nilai4,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala5,skrining_instrumen_sdq.penilaian_skrining_nilai5,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala6,skrining_instrumen_sdq.penilaian_skrining_nilai6,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala7,skrining_instrumen_sdq.penilaian_skrining_nilai7,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala8,skrining_instrumen_sdq.penilaian_skrining_nilai8,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala9,skrining_instrumen_sdq.penilaian_skrining_nilai9,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_skala10,skrining_instrumen_sdq.penilaian_skrining_nilai10,"+
+                    "skrining_instrumen_sdq.penilaian_skrining_totalnilai,"+
+                    "skrining_instrumen_sdq.nip,petugas.nama "+
+                    "from skrining_instrumen_sdq inner join reg_periksa on skrining_instrumen_sdq.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_skrining_fungsional.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on skrining_instrumen_sdq.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianLanjutanRisikoJatuhActionPerformed
 
@@ -2591,10 +2626,6 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         Valid.pindah(evt,btnPetugas,SDQ2);
     }//GEN-LAST:event_SDQ1KeyPressed
 
-    private void SDQ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ1ActionPerformed
-
     private void SDQ2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ2ItemStateChanged
         switch (SDQ2.getSelectedItem().toString()) {
             case "Tidak Benar":
@@ -2613,12 +2644,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorH();
     }//GEN-LAST:event_SDQ2ItemStateChanged
 
-    private void SDQ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ2ActionPerformed
-
     private void SDQ2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ1,SDQ3);
     }//GEN-LAST:event_SDQ2KeyPressed
 
     private void SDQ3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ3ItemStateChanged
@@ -2639,12 +2666,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorE();
     }//GEN-LAST:event_SDQ3ItemStateChanged
 
-    private void SDQ3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ3ActionPerformed
-
     private void SDQ3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ2,SDQ4);
     }//GEN-LAST:event_SDQ3KeyPressed
 
     private void SDQ4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ4ItemStateChanged
@@ -2665,12 +2688,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorPr();
     }//GEN-LAST:event_SDQ4ItemStateChanged
 
-    private void SDQ4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ4ActionPerformed
-
     private void SDQ4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ3,SDQ5);
     }//GEN-LAST:event_SDQ4KeyPressed
 
     private void SDQ5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ5ItemStateChanged
@@ -2691,12 +2710,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorC();
     }//GEN-LAST:event_SDQ5ItemStateChanged
 
-    private void SDQ5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ5ActionPerformed
-
     private void SDQ5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ4,SDQ6);
     }//GEN-LAST:event_SDQ5KeyPressed
 
     private void SDQ6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ6ItemStateChanged
@@ -2717,12 +2732,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorP();
     }//GEN-LAST:event_SDQ6ItemStateChanged
 
-    private void SDQ6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ6ActionPerformed
-
     private void SDQ6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ6KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ5,SDQ7);
     }//GEN-LAST:event_SDQ6KeyPressed
 
     private void SDQ7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ7ItemStateChanged
@@ -2743,12 +2754,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorC();
     }//GEN-LAST:event_SDQ7ItemStateChanged
 
-    private void SDQ7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ7ActionPerformed
-
     private void SDQ7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ7KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ6,SDQ8);
     }//GEN-LAST:event_SDQ7KeyPressed
 
     private void SDQ8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ8ItemStateChanged
@@ -2769,12 +2776,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorE();
     }//GEN-LAST:event_SDQ8ItemStateChanged
 
-    private void SDQ8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ8ActionPerformed
-
     private void SDQ8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ8KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ7,SDQ9);
     }//GEN-LAST:event_SDQ8KeyPressed
 
     private void SDQ9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ9ItemStateChanged
@@ -2795,12 +2798,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorPr();
     }//GEN-LAST:event_SDQ9ItemStateChanged
 
-    private void SDQ9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ9ActionPerformed
-
     private void SDQ9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ9KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ8,SDQ10);
     }//GEN-LAST:event_SDQ9KeyPressed
 
     private void SDQ10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ10ItemStateChanged
@@ -2821,12 +2820,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorH();
     }//GEN-LAST:event_SDQ10ItemStateChanged
 
-    private void SDQ10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ10ActionPerformed
-
     private void SDQ10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ10KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ9,SDQ11);
     }//GEN-LAST:event_SDQ10KeyPressed
 
     private void SDQ11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ11ItemStateChanged
@@ -2847,12 +2842,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorP();
     }//GEN-LAST:event_SDQ11ItemStateChanged
 
-    private void SDQ11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ11ActionPerformed
-
     private void SDQ11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ11KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ10,SDQ12);
     }//GEN-LAST:event_SDQ11KeyPressed
 
     private void SDQ12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ12ItemStateChanged
@@ -2873,12 +2864,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorC();
     }//GEN-LAST:event_SDQ12ItemStateChanged
 
-    private void SDQ12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ12ActionPerformed
-
     private void SDQ12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ12KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ11,SDQ13);
     }//GEN-LAST:event_SDQ12KeyPressed
 
     private void SDQ13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ13ItemStateChanged
@@ -2899,12 +2886,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorE();
     }//GEN-LAST:event_SDQ13ItemStateChanged
 
-    private void SDQ13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ13ActionPerformed
-
     private void SDQ13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ13KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ12,SDQ14);
     }//GEN-LAST:event_SDQ13KeyPressed
 
     private void SDQ14ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ14ItemStateChanged
@@ -2925,12 +2908,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorP();
     }//GEN-LAST:event_SDQ14ItemStateChanged
 
-    private void SDQ14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ14ActionPerformed
-
     private void SDQ14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ14KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ13,SDQ15);
     }//GEN-LAST:event_SDQ14KeyPressed
 
     private void SDQ15ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ15ItemStateChanged
@@ -2951,12 +2930,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorH();
     }//GEN-LAST:event_SDQ15ItemStateChanged
 
-    private void SDQ15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ15ActionPerformed
-
     private void SDQ15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ15KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ16,SDQ17);
     }//GEN-LAST:event_SDQ15KeyPressed
 
     private void SDQ16ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ16ItemStateChanged
@@ -2977,12 +2952,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorE();
     }//GEN-LAST:event_SDQ16ItemStateChanged
 
-    private void SDQ16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ16ActionPerformed
-
     private void SDQ16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ16KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ15,SDQ17);
     }//GEN-LAST:event_SDQ16KeyPressed
 
     private void SDQ17ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ17ItemStateChanged
@@ -3003,12 +2974,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorPr();
     }//GEN-LAST:event_SDQ17ItemStateChanged
 
-    private void SDQ17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ17ActionPerformed
-
     private void SDQ17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ17KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ16,SDQ18);
     }//GEN-LAST:event_SDQ17KeyPressed
 
     private void SDQ18ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ18ItemStateChanged
@@ -3029,12 +2996,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
        SkorC();
     }//GEN-LAST:event_SDQ18ItemStateChanged
 
-    private void SDQ18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ18ActionPerformed
-
     private void SDQ18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ18KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ17,SDQ19);
     }//GEN-LAST:event_SDQ18KeyPressed
 
     private void SDQ19ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ19ItemStateChanged
@@ -3055,12 +3018,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorP();
     }//GEN-LAST:event_SDQ19ItemStateChanged
 
-    private void SDQ19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ19ActionPerformed
-
     private void SDQ19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ19KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ18,SDQ20);
     }//GEN-LAST:event_SDQ19KeyPressed
 
     private void SDQ20ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ20ItemStateChanged
@@ -3081,12 +3040,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorPr();
     }//GEN-LAST:event_SDQ20ItemStateChanged
 
-    private void SDQ20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ20ActionPerformed
-
     private void SDQ20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ20KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ19,SDQ21);
     }//GEN-LAST:event_SDQ20KeyPressed
 
     private void SDQ21ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ21ItemStateChanged
@@ -3107,12 +3062,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorH();
     }//GEN-LAST:event_SDQ21ItemStateChanged
 
-    private void SDQ21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ21ActionPerformed
-
     private void SDQ21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ21KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ20,SDQ22);
     }//GEN-LAST:event_SDQ21KeyPressed
 
     private void SDQ22ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ22ItemStateChanged
@@ -3133,12 +3084,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorC();
     }//GEN-LAST:event_SDQ22ItemStateChanged
 
-    private void SDQ22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ22ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ22ActionPerformed
-
     private void SDQ22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ22KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ21,SDQ23);
     }//GEN-LAST:event_SDQ22KeyPressed
 
     private void SDQ23ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ23ItemStateChanged
@@ -3159,12 +3106,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorP();
     }//GEN-LAST:event_SDQ23ItemStateChanged
 
-    private void SDQ23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ23ActionPerformed
-
     private void SDQ23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ23KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ22,SDQ24);
     }//GEN-LAST:event_SDQ23KeyPressed
 
     private void SDQ24ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ24ItemStateChanged
@@ -3185,12 +3128,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorE();
     }//GEN-LAST:event_SDQ24ItemStateChanged
 
-    private void SDQ24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ24ActionPerformed
-
     private void SDQ24KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ24KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ23,SDQ25);
     }//GEN-LAST:event_SDQ24KeyPressed
 
     private void SDQ25ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SDQ25ItemStateChanged
@@ -3211,13 +3150,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SkorH();
     }//GEN-LAST:event_SDQ25ItemStateChanged
 
-    private void SDQ25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDQ25ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SDQ25ActionPerformed
-
     private void SDQ25KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SDQ25KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SDQ24,Keterangan);
     }//GEN-LAST:event_SDQ25KeyPressed
+
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        Valid.pindah(evt,SDQ25,BtnSimpan);
+    }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
     * @param args the command line arguments
@@ -3252,18 +3191,25 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.ComboBox Jam;
     private widget.TextBox Jk;
-    private widget.TextBox Kesimpulan;
+    private widget.TextBox KesimpulanKesulitan;
     private widget.TextBox KesimpulanSkorC;
     private widget.TextBox KesimpulanSkorE;
     private widget.TextBox KesimpulanSkorH;
     private widget.TextBox KesimpulanSkorP;
     private widget.TextBox KesimpulanSkorPr;
+    private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnPenilaianLanjutanRisikoJatuh;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
+    private widget.TextBox NilaiKesimpulanKesulitan;
+    private widget.TextBox NilaiKesimpulanSkorC;
+    private widget.TextBox NilaiKesimpulanSkorE;
+    private widget.TextBox NilaiKesimpulanSkorH;
+    private widget.TextBox NilaiKesimpulanSkorP;
+    private widget.TextBox NilaiKesimpulanSkorPr;
     private widget.TextBox NilaiSDQ1;
     private widget.TextBox NilaiSDQ10;
     private widget.TextBox NilaiSDQ11;
@@ -3316,12 +3262,6 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.ComboBox SDQ8;
     private widget.ComboBox SDQ9;
     private widget.ScrollPane Scroll;
-    private widget.TextBox SkorC;
-    private widget.TextBox SkorE;
-    private widget.TextBox SkorH;
-    private widget.TextBox SkorKesulitan;
-    private widget.TextBox SkorP;
-    private widget.TextBox SkorPr;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -3338,10 +3278,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.Label jLabel21;
     private widget.Label jLabel218;
     private widget.Label jLabel220;
+    private widget.Label jLabel221;
     private widget.Label jLabel222;
     private widget.Label jLabel223;
+    private widget.Label jLabel224;
     private widget.Label jLabel225;
     private widget.Label jLabel226;
+    private widget.Label jLabel227;
     private widget.Label jLabel228;
     private widget.Label jLabel229;
     private widget.Label jLabel230;
@@ -3395,24 +3338,35 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.Label jLabel278;
     private widget.Label jLabel279;
     private widget.Label jLabel280;
-    private widget.Label jLabel281;
     private widget.Label jLabel282;
-    private widget.Label jLabel283;
     private widget.Label jLabel284;
-    private widget.Label jLabel285;
     private widget.Label jLabel286;
-    private widget.Label jLabel287;
     private widget.Label jLabel288;
-    private widget.Label jLabel289;
-    private widget.Label jLabel290;
     private widget.Label jLabel291;
-    private widget.Label jLabel292;
     private widget.Label jLabel293;
-    private widget.Label jLabel294;
     private widget.Label jLabel295;
-    private widget.Label jLabel296;
     private widget.Label jLabel297;
-    private widget.Label jLabel298;
+    private widget.Label jLabel299;
+    private widget.Label jLabel300;
+    private widget.Label jLabel301;
+    private widget.Label jLabel302;
+    private widget.Label jLabel303;
+    private widget.Label jLabel304;
+    private widget.Label jLabel305;
+    private widget.Label jLabel306;
+    private widget.Label jLabel307;
+    private widget.Label jLabel308;
+    private widget.Label jLabel309;
+    private widget.Label jLabel310;
+    private widget.Label jLabel311;
+    private widget.Label jLabel312;
+    private widget.Label jLabel313;
+    private widget.Label jLabel314;
+    private widget.Label jLabel315;
+    private widget.Label jLabel316;
+    private widget.Label jLabel317;
+    private widget.Label jLabel318;
+    private widget.Label jLabel319;
     private widget.Label jLabel4;
     private widget.Label jLabel58;
     private widget.Label jLabel59;
@@ -3422,6 +3376,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -3433,43 +3388,49 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_skrining_fungsional.tanggal,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala1,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai1,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala2,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai2,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala3,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai3,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala4,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai4,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala5,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai5,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala6,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai6,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala7,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai7,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala8,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai8,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala9,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai9,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala10,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai10,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_totalnilai,"+
-                    "penilaian_lanjutan_skrining_fungsional.nip,petugas.nama "+
-                    "from penilaian_lanjutan_skrining_fungsional inner join reg_periksa on penilaian_lanjutan_skrining_fungsional.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_skrining_fungsional.nip=petugas.nip where "+
-                    "penilaian_lanjutan_skrining_fungsional.tanggal between ? and ? order by penilaian_lanjutan_skrining_fungsional.tanggal");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skrining_instrumen_sdq.tanggal,"+
+                    "skrining_instrumen_sdq.pernyataansdq1,skrining_instrumen_sdq.nilai_sdq1,skrining_instrumen_sdq.pernyataansdq2,skrining_instrumen_sdq.nilai_sdq2,"+
+                    "skrining_instrumen_sdq.pernyataansdq3,skrining_instrumen_sdq.nilai_sdq3,skrining_instrumen_sdq.pernyataansdq4,skrining_instrumen_sdq.nilai_sdq4,"+
+                    "skrining_instrumen_sdq.pernyataansdq5,skrining_instrumen_sdq.nilai_sdq5,skrining_instrumen_sdq.pernyataansdq6,skrining_instrumen_sdq.nilai_sdq6,"+
+                    "skrining_instrumen_sdq.pernyataansdq7,skrining_instrumen_sdq.nilai_sdq7,skrining_instrumen_sdq.pernyataansdq8,skrining_instrumen_sdq.nilai_sdq8,"+
+                    "skrining_instrumen_sdq.pernyataansdq9,skrining_instrumen_sdq.nilai_sdq9,skrining_instrumen_sdq.pernyataansdq10,skrining_instrumen_sdq.nilai_sdq10,"+
+                    "skrining_instrumen_sdq.pernyataansdq11,skrining_instrumen_sdq.nilai_sdq11,skrining_instrumen_sdq.pernyataansdq12,skrining_instrumen_sdq.nilai_sdq12,"+
+                    "skrining_instrumen_sdq.pernyataansdq13,skrining_instrumen_sdq.nilai_sdq13,skrining_instrumen_sdq.pernyataansdq14,skrining_instrumen_sdq.nilai_sdq14,"+
+                    "skrining_instrumen_sdq.pernyataansdq15,skrining_instrumen_sdq.nilai_sdq15,skrining_instrumen_sdq.pernyataansdq16,skrining_instrumen_sdq.nilai_sdq16,"+
+                    "skrining_instrumen_sdq.pernyataansdq17,skrining_instrumen_sdq.nilai_sdq17,skrining_instrumen_sdq.pernyataansdq18,skrining_instrumen_sdq.nilai_sdq18,"+
+                    "skrining_instrumen_sdq.pernyataansdq19,skrining_instrumen_sdq.nilai_sdq19,skrining_instrumen_sdq.pernyataansdq20,skrining_instrumen_sdq.nilai_sdq20,"+
+                    "skrining_instrumen_sdq.pernyataansdq21,skrining_instrumen_sdq.nilai_sdq21,skrining_instrumen_sdq.pernyataansdq22,skrining_instrumen_sdq.nilai_sdq22,"+
+                    "skrining_instrumen_sdq.pernyataansdq23,skrining_instrumen_sdq.nilai_sdq23,skrining_instrumen_sdq.pernyataansdq24,skrining_instrumen_sdq.nilai_sdq24,"+
+                    "skrining_instrumen_sdq.pernyataansdq25,skrining_instrumen_sdq.nilai_sdq25,skrining_instrumen_sdq.nilai_total_sdq,skrining_instrumen_sdq.gejala_emosional,"+
+                    "skrining_instrumen_sdq.nilai_gejala_emosional,skrining_instrumen_sdq.masalah_perilaku,skrining_instrumen_sdq.nilai_masalah_perilaku,skrining_instrumen_sdq.hiperaktivitas,"+
+                    "skrining_instrumen_sdq.nilai_hiperaktivitas,skrining_instrumen_sdq.teman_sebaya,skrining_instrumen_sdq.nilai_teman_sebaya,skrining_instrumen_sdq.kekuatan,"+
+                    "skrining_instrumen_sdq.nilai_kekuatan,skrining_instrumen_sdq.kesulitan,skrining_instrumen_sdq.nilai_kesulitan,skrining_instrumen_sdq.keterangan,"+
+                    "skrining_instrumen_sdq.nip,petugas.nama from skrining_instrumen_sdq inner join reg_periksa on skrining_instrumen_sdq.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_sdq.nip=petugas.nip where "+
+                    "skrining_instrumen_sdq.tanggal between ? and ? order by skrining_instrumen_sdq.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_skrining_fungsional.tanggal,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala1,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai1,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala2,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai2,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala3,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai3,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala4,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai4,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala5,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai5,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala6,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai6,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala7,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai7,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala8,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai8,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala9,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai9,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_skala10,penilaian_lanjutan_skrining_fungsional.penilaian_skrining_nilai10,"+
-                    "penilaian_lanjutan_skrining_fungsional.penilaian_skrining_totalnilai,"+
-                    "penilaian_lanjutan_skrining_fungsional.nip,petugas.nama "+
-                    "from penilaian_lanjutan_skrining_fungsional inner join reg_periksa on penilaian_lanjutan_skrining_fungsional.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on penilaian_lanjutan_skrining_fungsional.nip=petugas.nip where "+
-                    "penilaian_lanjutan_skrining_fungsional.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_lanjutan_skrining_fungsional.nip like ? or petugas.nama like ?) "+
-                    "order by penilaian_lanjutan_skrining_fungsional.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skrining_instrumen_sdq.tanggal,"+
+                    "skrining_instrumen_sdq.pernyataansdq1,skrining_instrumen_sdq.nilai_sdq1,skrining_instrumen_sdq.pernyataansdq2,skrining_instrumen_sdq.nilai_sdq2,"+
+                    "skrining_instrumen_sdq.pernyataansdq3,skrining_instrumen_sdq.nilai_sdq3,skrining_instrumen_sdq.pernyataansdq4,skrining_instrumen_sdq.nilai_sdq4,"+
+                    "skrining_instrumen_sdq.pernyataansdq5,skrining_instrumen_sdq.nilai_sdq5,skrining_instrumen_sdq.pernyataansdq6,skrining_instrumen_sdq.nilai_sdq6,"+
+                    "skrining_instrumen_sdq.pernyataansdq7,skrining_instrumen_sdq.nilai_sdq7,skrining_instrumen_sdq.pernyataansdq8,skrining_instrumen_sdq.nilai_sdq8,"+
+                    "skrining_instrumen_sdq.pernyataansdq9,skrining_instrumen_sdq.nilai_sdq9,skrining_instrumen_sdq.pernyataansdq10,skrining_instrumen_sdq.nilai_sdq10,"+
+                    "skrining_instrumen_sdq.pernyataansdq11,skrining_instrumen_sdq.nilai_sdq11,skrining_instrumen_sdq.pernyataansdq12,skrining_instrumen_sdq.nilai_sdq12,"+
+                    "skrining_instrumen_sdq.pernyataansdq13,skrining_instrumen_sdq.nilai_sdq13,skrining_instrumen_sdq.pernyataansdq14,skrining_instrumen_sdq.nilai_sdq14,"+
+                    "skrining_instrumen_sdq.pernyataansdq15,skrining_instrumen_sdq.nilai_sdq15,skrining_instrumen_sdq.pernyataansdq16,skrining_instrumen_sdq.nilai_sdq16,"+
+                    "skrining_instrumen_sdq.pernyataansdq17,skrining_instrumen_sdq.nilai_sdq17,skrining_instrumen_sdq.pernyataansdq18,skrining_instrumen_sdq.nilai_sdq18,"+
+                    "skrining_instrumen_sdq.pernyataansdq19,skrining_instrumen_sdq.nilai_sdq19,skrining_instrumen_sdq.pernyataansdq20,skrining_instrumen_sdq.nilai_sdq20,"+
+                    "skrining_instrumen_sdq.pernyataansdq21,skrining_instrumen_sdq.nilai_sdq21,skrining_instrumen_sdq.pernyataansdq22,skrining_instrumen_sdq.nilai_sdq22,"+
+                    "skrining_instrumen_sdq.pernyataansdq23,skrining_instrumen_sdq.nilai_sdq23,skrining_instrumen_sdq.pernyataansdq24,skrining_instrumen_sdq.nilai_sdq24,"+
+                    "skrining_instrumen_sdq.pernyataansdq25,skrining_instrumen_sdq.nilai_sdq25,skrining_instrumen_sdq.nilai_total_sdq,skrining_instrumen_sdq.gejala_emosional,"+
+                    "skrining_instrumen_sdq.nilai_gejala_emosional,skrining_instrumen_sdq.masalah_perilaku,skrining_instrumen_sdq.nilai_masalah_perilaku,skrining_instrumen_sdq.hiperaktivitas,"+
+                    "skrining_instrumen_sdq.nilai_hiperaktivitas,skrining_instrumen_sdq.teman_sebaya,skrining_instrumen_sdq.nilai_teman_sebaya,skrining_instrumen_sdq.kekuatan,"+
+                    "skrining_instrumen_sdq.nilai_kekuatan,skrining_instrumen_sdq.kesulitan,skrining_instrumen_sdq.nilai_kesulitan,skrining_instrumen_sdq.keterangan,"+
+                    "skrining_instrumen_sdq.nip,petugas.nama from skrining_instrumen_sdq inner join reg_periksa on skrining_instrumen_sdq.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_sdq.nip=petugas.nip where "+
+                    "skrining_instrumen_sdq.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or skrining_instrumen_sdq.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_instrumen_sdq.tanggal ");
             }
                 
             try {
@@ -3489,13 +3450,17 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("penilaian_skrining_skala1"),rs.getString("penilaian_skrining_nilai1"),rs.getString("penilaian_skrining_skala2"),rs.getString("penilaian_skrining_nilai2"),
-                        rs.getString("penilaian_skrining_skala3"),rs.getString("penilaian_skrining_nilai3"),rs.getString("penilaian_skrining_skala4"),rs.getString("penilaian_skrining_nilai4"),
-                        rs.getString("penilaian_skrining_skala5"),rs.getString("penilaian_skrining_nilai5"),rs.getString("penilaian_skrining_skala6"),rs.getString("penilaian_skrining_nilai6"),
-                        rs.getString("penilaian_skrining_skala7"),rs.getString("penilaian_skrining_nilai7"),rs.getString("penilaian_skrining_skala8"),rs.getString("penilaian_skrining_nilai8"),
-                        rs.getString("penilaian_skrining_skala9"),rs.getString("penilaian_skrining_nilai9"),rs.getString("penilaian_skrining_skala10"),rs.getString("penilaian_skrining_nilai10"),
-                        rs.getString("penilaian_skrining_totalnilai"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("pernyataansdq1"),rs.getString("nilai_sdq1"),rs.getString("pernyataansdq2"),rs.getString("nilai_sdq2"),rs.getString("pernyataansdq3"),rs.getString("nilai_sdq3"),rs.getString("pernyataansdq4"),
+                        rs.getString("nilai_sdq4"),rs.getString("pernyataansdq5"),rs.getString("nilai_sdq5"),rs.getString("pernyataansdq6"),rs.getString("nilai_sdq6"),rs.getString("pernyataansdq7"),rs.getString("nilai_sdq7"),
+                        rs.getString("pernyataansdq8"),rs.getString("nilai_sdq8"),rs.getString("pernyataansdq9"),rs.getString("nilai_sdq9"),rs.getString("pernyataansdq10"),rs.getString("nilai_sdq10"),rs.getString("pernyataansdq11"),
+                        rs.getString("nilai_sdq11"),rs.getString("pernyataansdq12"),rs.getString("nilai_sdq12"),rs.getString("pernyataansdq13"),rs.getString("nilai_sdq13"),rs.getString("pernyataansdq14"),rs.getString("nilai_sdq14"),
+                        rs.getString("pernyataansdq15"),rs.getString("nilai_sdq15"),rs.getString("pernyataansdq16"),rs.getString("nilai_sdq16"),rs.getString("pernyataansdq17"),rs.getString("nilai_sdq17"),rs.getString("pernyataansdq18"),
+                        rs.getString("nilai_sdq18"),rs.getString("pernyataansdq19"),rs.getString("nilai_sdq19"),rs.getString("pernyataansdq20"),rs.getString("nilai_sdq20"),rs.getString("pernyataansdq21"),rs.getString("nilai_sdq21"),
+                        rs.getString("pernyataansdq22"),rs.getString("nilai_sdq22"),rs.getString("pernyataansdq23"),rs.getString("nilai_sdq23"),rs.getString("pernyataansdq24"),rs.getString("nilai_sdq24"),rs.getString("pernyataansdq25"),
+                        rs.getString("nilai_sdq25"),rs.getString("nilai_total_sdq"),rs.getString("gejala_emosional"),rs.getString("nilai_gejala_emosional"),rs.getString("masalah_perilaku"),rs.getString("nilai_masalah_perilaku"),
+                        rs.getString("hiperaktivitas"),rs.getString("nilai_hiperaktivitas"),rs.getString("teman_sebaya"),rs.getString("nilai_teman_sebaya"),rs.getString("kekuatan"),rs.getString("nilai_kekuatan"),rs.getString("kesulitan"),
+                        rs.getString("nilai_kesulitan"),rs.getString("keterangan")
                     });
                 }
             } catch (Exception e) {
@@ -3567,84 +3532,98 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SDQ25.setSelectedIndex(0);
         NilaiSDQ25.setText("0");
         TotalNilai.setText("0");
-        SkorE.setText("0");
-        SkorC.setText("0");
-        SkorH.setText("0");
-        SkorP.setText("0");
-        SkorPr.setText("0");
-        SkorKesulitan.setText("0");
+        NilaiKesimpulanSkorE.setText("0");
+        NilaiKesimpulanSkorC.setText("0");
+        NilaiKesimpulanSkorH.setText("0");
+        NilaiKesimpulanSkorP.setText("0");
+        NilaiKesimpulanSkorPr.setText("0");
+        NilaiKesimpulanKesulitan.setText("0");
         KesimpulanSkorE.setText("Normal");
         KesimpulanSkorC.setText("Normal");
         KesimpulanSkorH.setText("Normal");
         KesimpulanSkorP.setText("Normal");
         KesimpulanSkorPr.setText("Normal");
-        Kesimpulan.setText("Normal");
+        KesimpulanKesulitan.setText("Normal");
+        Keterangan.setText("");
         SDQ1.requestFocus();
     } 
     
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
+            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            SDQ1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            NilaiSDQ1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            SDQ2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            NilaiSDQ2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            SDQ3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            NilaiSDQ3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            SDQ4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            NilaiSDQ4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            SDQ5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            NilaiSDQ5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            SDQ6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            NilaiSDQ6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            SDQ7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            NilaiSDQ7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            SDQ8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            NilaiSDQ8.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            SDQ9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            NilaiSDQ9.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            SDQ10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ10.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ11.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ12.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ12.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ13.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ13.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ14.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ14.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ15.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ15.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ16.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ16.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ17.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ17.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ18.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ18.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ19.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ19.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ20.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ20.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ21.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ21.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ22.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ22.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ23.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ23.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ24.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ24.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ25.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ25.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            
-            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
-            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
-            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            SDQ1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            NilaiSDQ1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            SDQ2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            NilaiSDQ2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            SDQ3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            NilaiSDQ3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            SDQ4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            NilaiSDQ4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+             SDQ5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            NilaiSDQ5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            SDQ6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            NilaiSDQ6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            SDQ7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            NilaiSDQ7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            SDQ8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            NilaiSDQ8.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            SDQ9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            NilaiSDQ9.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            SDQ10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            NilaiSDQ10.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            SDQ11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            NilaiSDQ11.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            SDQ12.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            NilaiSDQ12.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            SDQ13.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            NilaiSDQ13.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            SDQ14.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            NilaiSDQ14.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            SDQ15.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            NilaiSDQ15.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            SDQ16.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+            NilaiSDQ16.setText(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
+            SDQ17.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
+            NilaiSDQ17.setText(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
+            SDQ18.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            NilaiSDQ18.setText(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
+            SDQ19.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
+            NilaiSDQ19.setText(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            SDQ20.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
+            NilaiSDQ20.setText(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
+            SDQ21.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString());
+            NilaiSDQ21.setText(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString());
+            SDQ22.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString());
+            NilaiSDQ22.setText(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString());
+            SDQ23.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),52).toString());
+            NilaiSDQ23.setText(tbObat.getValueAt(tbObat.getSelectedRow(),53).toString());
+            SDQ24.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),54).toString());
+            NilaiSDQ24.setText(tbObat.getValueAt(tbObat.getSelectedRow(),55).toString());
+            SDQ25.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),56).toString());
+            NilaiSDQ25.setText(tbObat.getValueAt(tbObat.getSelectedRow(),57).toString());
+            TotalNilai.setText(tbObat.getValueAt(tbObat.getSelectedRow(),58).toString());
+            KesimpulanSkorE.setText(tbObat.getValueAt(tbObat.getSelectedRow(),59).toString());
+            NilaiKesimpulanSkorE.setText(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
+            KesimpulanSkorC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
+            NilaiKesimpulanSkorC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
+            KesimpulanSkorH.setText(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
+            NilaiKesimpulanSkorH.setText(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString());
+            KesimpulanSkorP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),65).toString());
+            NilaiKesimpulanSkorP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),66).toString());
+            KesimpulanSkorPr.setText(tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
+            NilaiKesimpulanSkorPr.setText(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString());
+            KesimpulanKesulitan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),69).toString());
+            NilaiKesimpulanKesulitan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
+            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
+            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,16));
+            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
+            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
     
@@ -3705,10 +3684,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_lanjutan_skrining_fungsional());
-        BtnHapus.setEnabled(akses.getpenilaian_lanjutan_skrining_fungsional());
-        BtnEdit.setEnabled(akses.getpenilaian_lanjutan_skrining_fungsional());
-        BtnPrint.setEnabled(akses.getpenilaian_lanjutan_skrining_fungsional()); 
+        BtnSimpan.setEnabled(akses.getskrining_instrumen_sdq());
+        BtnHapus.setEnabled(akses.getskrining_instrumen_sdq());
+        BtnEdit.setEnabled(akses.getskrining_instrumen_sdq());
+        BtnPrint.setEnabled(akses.getskrining_instrumen_sdq()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -3718,7 +3697,18 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 NIP.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
-        }            
+        } 
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                Tanggal.setEditable(false);
+                Tanggal.setEnabled(false);
+                ChkKejadian.setEnabled(false);
+                Jam.setEnabled(false);
+                Menit.setEnabled(false);
+                Detik.setEnabled(false);
+            }
+        }
     }
 
     private void jam(){
@@ -3775,39 +3765,22 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_lanjutan_skrining_fungsional","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,penilaian_skrining_skala1=?,penilaian_skrining_nilai1=?,"+
-                "penilaian_skrining_skala2=?,penilaian_skrining_nilai2=?,penilaian_skrining_skala3=?,penilaian_skrining_nilai3=?,penilaian_skrining_skala4=?,"+
-                "penilaian_skrining_nilai4=?,penilaian_skrining_skala5=?,penilaian_skrining_nilai5=?,penilaian_skrining_skala6=?,penilaian_skrining_nilai6=?,"+
-                "penilaian_skrining_skala7=?,penilaian_skrining_nilai7=?,penilaian_skrining_skala8=?,penilaian_skrining_nilai8=?,"+
-                "penilaian_skrining_skala9=?,penilaian_skrining_nilai9=?,penilaian_skrining_skala10=?,penilaian_skrining_nilai10=?,"+
-                "penilaian_skrining_totalnilai=?,nip=?",26,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),
-                SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(), 
-                SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(), 
-                SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(), 
-                SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),
-                SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),
-                SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),
-                SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(),
-                SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),
-                SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),
-                SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),
-                SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),
-                SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),
-                SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),
-                SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),
-                SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),
-                SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),
-                SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),
-                SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),
-                SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
-                SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),
-                SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),
-                SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),
-                SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
-                SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),
-                NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
+        if(Sequel.mengedittf("skrining_instrumen_sdq","no_rawat=?","no_rawat=?,tanggal=?,nip=?,pernyataansdq1=?,nilai_sdq1=?,pernyataansdq2=?,nilai_sdq2=?,pernyataansdq3=?,nilai_sdq3=?,"+
+                "pernyataansdq4=?,nilai_sdq4=?,pernyataansdq5=?,nilai_sdq5=?,pernyataansdq6=?,nilai_sdq6=?,pernyataansdq7=?,nilai_sdq7=?,pernyataansdq8=?,nilai_sdq8=?,pernyataansdq9=?,"+
+                "nilai_sdq9=?,pernyataansdq10=?,nilai_sdq10=?,pernyataansdq11=?,nilai_sdq11=?,pernyataansdq12=?,nilai_sdq12=?,pernyataansdq13=?,nilai_sdq13=?,pernyataansdq14=?,nilai_sdq14=?,"+
+                "pernyataansdq15=?,nilai_sdq15=?,pernyataansdq16=?,nilai_sdq16=?,pernyataansdq17=?,nilai_sdq17=?,pernyataansdq18=?,nilai_sdq18=?,pernyataansdq19=?,nilai_sdq19=?,pernyataansdq20=?,"+
+                "nilai_sdq20=?,pernyataansdq21=?,nilai_sdq21=?,pernyataansdq22=?,nilai_sdq22=?,pernyataansdq23=?,nilai_sdq23=?,pernyataansdq24=?,nilai_sdq24=?,pernyataansdq25=?,nilai_sdq25=?,"+
+                "nilai_total_sdq=?,gejala_emosional=?,nilai_gejala_emosional=?,masalah_perilaku=?,nilai_masalah_perilaku=?,hiperaktivitas=?,nilai_hiperaktivitas=?,teman_sebaya=?,nilai_teman_sebaya=?,"+
+                "kekuatan=?,nilai_kekuatan=?,kesulitan=?,nilai_kesulitan=?,keterangan=?",68,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(),
+                SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(), 
+                SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(), 
+                SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),
+                SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),
+                SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
+                SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
+                SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),TotalNilai.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),
+                NilaiKesimpulanSkorH.getText(),KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -3815,65 +3788,79 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
             tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),4);
-            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),5);
-            tbObat.setValueAt(SDQ1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(NilaiSDQ1.getText(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(SDQ2.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(NilaiSDQ2.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(SDQ3.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(NilaiSDQ3.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(SDQ4.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(NilaiSDQ4.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(SDQ5.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(NilaiSDQ5.getText(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(SDQ6.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(NilaiSDQ6.getText(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(SDQ7.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-            tbObat.setValueAt(NilaiSDQ7.getText(),tbObat.getSelectedRow(),19);
-            tbObat.setValueAt(SDQ8.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(NilaiSDQ8.getText(),tbObat.getSelectedRow(),21);
-            tbObat.setValueAt(SDQ9.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-            tbObat.setValueAt(NilaiSDQ9.getText(),tbObat.getSelectedRow(),23);
-            tbObat.setValueAt(SDQ10.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ10.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ11.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ11.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ12.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ12.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ13.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ13.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ14.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ14.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ15.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ15.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ16.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ16.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ17.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ17.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ18.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ18.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ19.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ19.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ20.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ20.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ21.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ21.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ22.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ22.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ23.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ23.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ24.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ24.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(SDQ25.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(NilaiSDQ25.getText(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),27);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),28);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),5);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(SDQ1.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(NilaiSDQ1.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(SDQ2.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(NilaiSDQ2.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(SDQ3.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(NilaiSDQ3.getText(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(SDQ4.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(NilaiSDQ4.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt( SDQ5.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(NilaiSDQ5.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(SDQ6.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+            tbObat.setValueAt(NilaiSDQ6.getText(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(SDQ7.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(NilaiSDQ7.getText(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(SDQ8.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(NilaiSDQ8.getText(),tbObat.getSelectedRow(),23);
+            tbObat.setValueAt(SDQ9.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(NilaiSDQ9.getText(),tbObat.getSelectedRow(),25);
+            tbObat.setValueAt(SDQ10.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
+            tbObat.setValueAt(NilaiSDQ10.getText(),tbObat.getSelectedRow(),27);
+            tbObat.setValueAt(SDQ11.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
+            tbObat.setValueAt(NilaiSDQ11.getText(),tbObat.getSelectedRow(),29);
+            tbObat.setValueAt(SDQ12.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
+            tbObat.setValueAt(NilaiSDQ12.getText(),tbObat.getSelectedRow(),31);
+            tbObat.setValueAt(SDQ13.getSelectedItem().toString(),tbObat.getSelectedRow(),32);
+            tbObat.setValueAt(NilaiSDQ13.getText(),tbObat.getSelectedRow(),33);
+            tbObat.setValueAt(SDQ14.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
+            tbObat.setValueAt(NilaiSDQ14.getText(),tbObat.getSelectedRow(),35);
+            tbObat.setValueAt(SDQ15.getSelectedItem().toString(),tbObat.getSelectedRow(),36);
+            tbObat.setValueAt(NilaiSDQ15.getText(),tbObat.getSelectedRow(),37);
+            tbObat.setValueAt(SDQ16.getSelectedItem().toString(),tbObat.getSelectedRow(),38);
+            tbObat.setValueAt(NilaiSDQ16.getText(),tbObat.getSelectedRow(),39);
+            tbObat.setValueAt(SDQ17.getSelectedItem().toString(),tbObat.getSelectedRow(),40);
+            tbObat.setValueAt(NilaiSDQ17.getText(),tbObat.getSelectedRow(),41);
+            tbObat.setValueAt(SDQ18.getSelectedItem().toString(),tbObat.getSelectedRow(),42);
+            tbObat.setValueAt(NilaiSDQ18.getText(),tbObat.getSelectedRow(),43);
+            tbObat.setValueAt(SDQ19.getSelectedItem().toString(),tbObat.getSelectedRow(),44);
+            tbObat.setValueAt(NilaiSDQ19.getText(),tbObat.getSelectedRow(),45);
+            tbObat.setValueAt(SDQ20.getSelectedItem().toString(),tbObat.getSelectedRow(),46);
+            tbObat.setValueAt(NilaiSDQ20.getText(),tbObat.getSelectedRow(),47);
+            tbObat.setValueAt(SDQ21.getSelectedItem().toString(),tbObat.getSelectedRow(),48);
+            tbObat.setValueAt(NilaiSDQ21.getText(),tbObat.getSelectedRow(),49);
+            tbObat.setValueAt(SDQ22.getSelectedItem().toString(),tbObat.getSelectedRow(),50);
+            tbObat.setValueAt(NilaiSDQ22.getText(),tbObat.getSelectedRow(),51);
+            tbObat.setValueAt(SDQ23.getSelectedItem().toString(),tbObat.getSelectedRow(),52);
+            tbObat.setValueAt(NilaiSDQ23.getText(),tbObat.getSelectedRow(),53);
+            tbObat.setValueAt(SDQ24.getSelectedItem().toString(),tbObat.getSelectedRow(),54);
+            tbObat.setValueAt(NilaiSDQ24.getText(),tbObat.getSelectedRow(),55);
+            tbObat.setValueAt(SDQ25.getSelectedItem().toString(),tbObat.getSelectedRow(),56);
+            tbObat.setValueAt(NilaiSDQ25.getText(),tbObat.getSelectedRow(),57);
+            tbObat.setValueAt(TotalNilai.getText(),tbObat.getSelectedRow(),58);
+            tbObat.setValueAt(KesimpulanSkorE.getText(),tbObat.getSelectedRow(),59);
+            tbObat.setValueAt(NilaiKesimpulanSkorE.getText(),tbObat.getSelectedRow(),60);
+            tbObat.setValueAt(KesimpulanSkorC.getText(),tbObat.getSelectedRow(),61);
+            tbObat.setValueAt(NilaiKesimpulanSkorC.getText(),tbObat.getSelectedRow(),62);
+            tbObat.setValueAt(KesimpulanSkorH.getText(),tbObat.getSelectedRow(),63);
+            tbObat.setValueAt(NilaiKesimpulanSkorH.getText(),tbObat.getSelectedRow(),64);
+            tbObat.setValueAt(KesimpulanSkorP.getText(),tbObat.getSelectedRow(),65);
+            tbObat.setValueAt(NilaiKesimpulanSkorP.getText(),tbObat.getSelectedRow(),66);
+            tbObat.setValueAt(KesimpulanSkorPr.getText(),tbObat.getSelectedRow(),67);
+            tbObat.setValueAt(NilaiKesimpulanSkorPr.getText(),tbObat.getSelectedRow(),68);
+            tbObat.setValueAt(KesimpulanKesulitan.getText(),tbObat.getSelectedRow(),69);
+            tbObat.setValueAt(NilaiKesimpulanKesulitan.getText(),tbObat.getSelectedRow(),70);
+            tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),71);
             emptTeks();
         }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_lanjutan_skrining_fungsional where tanggal=? and no_rawat=?",2,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_instrumen_sdq where tanggal=? and no_rawat=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -3885,96 +3872,101 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     }
     
     private void isTotal() {
-            TotalNilai.setText(""+(
-                    Integer.parseInt(NilaiSDQ1.getText())+Integer.parseInt(NilaiSDQ2.getText())+Integer.parseInt(NilaiSDQ3.getText())+Integer.parseInt(NilaiSDQ4.getText())+Integer.parseInt(NilaiSDQ5.getText())+
-                    Integer.parseInt(NilaiSDQ6.getText())+Integer.parseInt(NilaiSDQ7.getText())+Integer.parseInt(NilaiSDQ8.getText())+Integer.parseInt(NilaiSDQ9.getText())+Integer.parseInt(NilaiSDQ10.getText())+
-                    Integer.parseInt(NilaiSDQ11.getText())+Integer.parseInt(NilaiSDQ12.getText())+Integer.parseInt(NilaiSDQ13.getText())+Integer.parseInt(NilaiSDQ14.getText())+Integer.parseInt(NilaiSDQ15.getText())+
-                    Integer.parseInt(NilaiSDQ16.getText())+Integer.parseInt(NilaiSDQ17.getText())+Integer.parseInt(NilaiSDQ18.getText())+Integer.parseInt(NilaiSDQ19.getText())+Integer.parseInt(NilaiSDQ20.getText())+
-                    Integer.parseInt(NilaiSDQ21.getText())+Integer.parseInt(NilaiSDQ22.getText())+Integer.parseInt(NilaiSDQ23.getText())+Integer.parseInt(NilaiSDQ24.getText())+Integer.parseInt(NilaiSDQ25.getText())
-            ));
+        TotalNilai.setText(""+(
+            Integer.parseInt(NilaiSDQ1.getText())+Integer.parseInt(NilaiSDQ2.getText())+Integer.parseInt(NilaiSDQ3.getText())+Integer.parseInt(NilaiSDQ4.getText())+Integer.parseInt(NilaiSDQ5.getText())+
+            Integer.parseInt(NilaiSDQ6.getText())+Integer.parseInt(NilaiSDQ7.getText())+Integer.parseInt(NilaiSDQ8.getText())+Integer.parseInt(NilaiSDQ9.getText())+Integer.parseInt(NilaiSDQ10.getText())+
+            Integer.parseInt(NilaiSDQ11.getText())+Integer.parseInt(NilaiSDQ12.getText())+Integer.parseInt(NilaiSDQ13.getText())+Integer.parseInt(NilaiSDQ14.getText())+Integer.parseInt(NilaiSDQ15.getText())+
+            Integer.parseInt(NilaiSDQ16.getText())+Integer.parseInt(NilaiSDQ17.getText())+Integer.parseInt(NilaiSDQ18.getText())+Integer.parseInt(NilaiSDQ19.getText())+Integer.parseInt(NilaiSDQ20.getText())+
+            Integer.parseInt(NilaiSDQ21.getText())+Integer.parseInt(NilaiSDQ22.getText())+Integer.parseInt(NilaiSDQ23.getText())+Integer.parseInt(NilaiSDQ24.getText())+Integer.parseInt(NilaiSDQ25.getText())
+        ));
     }
+    
     private void SkorE() {
         try {
-            SkorE.setText(""+(
-                    Integer.parseInt(NilaiSDQ3.getText())+Integer.parseInt(NilaiSDQ8.getText())+Integer.parseInt(NilaiSDQ13.getText())+Integer.parseInt(NilaiSDQ16.getText())+Integer.parseInt(NilaiSDQ24.getText())
-                    
+            NilaiKesimpulanSkorE.setText(""+(
+                Integer.parseInt(NilaiSDQ3.getText())+Integer.parseInt(NilaiSDQ8.getText())+Integer.parseInt(NilaiSDQ13.getText())+Integer.parseInt(NilaiSDQ16.getText())+Integer.parseInt(NilaiSDQ24.getText())
             ));
-            if(Integer.parseInt(SkorE.getText())>7){
+            
+            if(Integer.parseInt(NilaiKesimpulanSkorE.getText())>7){
                 KesimpulanSkorE.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>6){
-                KesimpulanSkorE.setText("Ambang / Boderline");
+                KesimpulanSkorE.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorE.setText("Normal");
             }
         } catch (Exception e) {
             KesimpulanSkorE.setText("Normal");
         }
-            SkorKesulitan();
+        SkorKesulitan();
     }
-     private void SkorC() {
+    
+    private void SkorC() {
          try {
-            SkorC.setText(""+(
-                    Integer.parseInt(NilaiSDQ5.getText())+Integer.parseInt(NilaiSDQ7.getText())+Integer.parseInt(NilaiSDQ12.getText())+Integer.parseInt(NilaiSDQ18.getText())+Integer.parseInt(NilaiSDQ22.getText())
-                    
+            NilaiKesimpulanSkorC.setText(""+(
+                Integer.parseInt(NilaiSDQ5.getText())+Integer.parseInt(NilaiSDQ7.getText())+Integer.parseInt(NilaiSDQ12.getText())+Integer.parseInt(NilaiSDQ18.getText())+Integer.parseInt(NilaiSDQ22.getText())
             ));
-            if(Integer.parseInt(SkorC.getText())>6){
+            
+            if(Integer.parseInt(NilaiKesimpulanSkorC.getText())>6){
                 KesimpulanSkorC.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>4){
-                KesimpulanSkorC.setText("Ambang / Boderline");
+                KesimpulanSkorC.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorE.setText("Normal");
             }
         } catch (Exception e) {
             KesimpulanSkorC.setText("Normal");
         }
-            SkorKesulitan();
+        SkorKesulitan();
     }
-     private void SkorH() {
+    
+    private void SkorH() {
          try {
-            SkorH.setText(""+(
-                    Integer.parseInt(NilaiSDQ2.getText())+Integer.parseInt(NilaiSDQ10.getText())+Integer.parseInt(NilaiSDQ15.getText())+Integer.parseInt(NilaiSDQ21.getText())+Integer.parseInt(NilaiSDQ25.getText())
-                    
+            NilaiKesimpulanSkorH.setText(""+(
+                Integer.parseInt(NilaiSDQ2.getText())+Integer.parseInt(NilaiSDQ10.getText())+Integer.parseInt(NilaiSDQ15.getText())+Integer.parseInt(NilaiSDQ21.getText())+Integer.parseInt(NilaiSDQ25.getText())
             ));
-            if(Integer.parseInt(SkorH.getText())>7){
+            
+            if(Integer.parseInt(NilaiKesimpulanSkorH.getText())>7){
                 KesimpulanSkorH.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>6){
-                KesimpulanSkorH.setText("Ambang / Boderline");
+                KesimpulanSkorH.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorH.setText("Normal");
             }
         } catch (Exception e) {
             KesimpulanSkorH.setText("Normal");
         }
-            SkorKesulitan();
+        SkorKesulitan();
     }
+    
     private void SkorP() {
         try {
-            SkorP.setText(""+(
+            NilaiKesimpulanSkorP.setText(""+(
                     Integer.parseInt(NilaiSDQ6.getText())+Integer.parseInt(NilaiSDQ11.getText())+Integer.parseInt(NilaiSDQ14.getText())+Integer.parseInt(NilaiSDQ19.getText())+Integer.parseInt(NilaiSDQ23.getText())
-                    
             ));
-            if(Integer.parseInt(SkorP.getText())>6){
+            
+            if(Integer.parseInt(NilaiKesimpulanSkorP.getText())>6){
                 KesimpulanSkorP.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>4){
-                KesimpulanSkorP.setText("Ambang / Boderline");
+                KesimpulanSkorP.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorP.setText("Normal");
             }
         } catch (Exception e) {
             KesimpulanSkorP.setText("Normal");
         }
-            SkorKesulitan();
+        SkorKesulitan();
     }
+    
     private void SkorPr() {
         try {
-            SkorPr.setText(""+(
-                    Integer.parseInt(NilaiSDQ1.getText())+Integer.parseInt(NilaiSDQ4.getText())+Integer.parseInt(NilaiSDQ9.getText())+Integer.parseInt(NilaiSDQ17.getText())+Integer.parseInt(NilaiSDQ20.getText())
-                    
+            NilaiKesimpulanSkorPr.setText(""+(
+                Integer.parseInt(NilaiSDQ1.getText())+Integer.parseInt(NilaiSDQ4.getText())+Integer.parseInt(NilaiSDQ9.getText())+Integer.parseInt(NilaiSDQ17.getText())+Integer.parseInt(NilaiSDQ20.getText())
             ));
-            if(Integer.parseInt(SkorPr.getText())<4){
+            
+            if(Integer.parseInt(NilaiKesimpulanSkorPr.getText())<4){
                 KesimpulanSkorPr.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())<5){
-                KesimpulanSkorPr.setText("Ambang / Boderline");
+                KesimpulanSkorPr.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorPr.setText("Normal");
             }
@@ -3982,21 +3974,50 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             KesimpulanSkorPr.setText("Normal");
         }
     }
+    
     private void SkorKesulitan() {
         try {
-            SkorKesulitan.setText(""+(
-                    Integer.parseInt(SkorE.getText())+Integer.parseInt(SkorC.getText())+Integer.parseInt(SkorH.getText())+Integer.parseInt(SkorP.getText())
-                    
+            NilaiKesimpulanKesulitan.setText(""+(
+                Integer.parseInt(NilaiKesimpulanSkorE.getText())+Integer.parseInt(NilaiKesimpulanSkorC.getText())+Integer.parseInt(NilaiKesimpulanSkorH.getText())+Integer.parseInt(NilaiKesimpulanSkorP.getText())
             ));
-            if(Integer.parseInt(SkorKesulitan.getText())>20){
-                Kesimpulan.setText("Abnormal");
+            
+            if(Integer.parseInt(NilaiKesimpulanKesulitan.getText())>20){
+                KesimpulanKesulitan.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>16){
-                Kesimpulan.setText("Ambang / Boderline");
+                KesimpulanKesulitan.setText("Ambang/Boderline");
             }else{
-                Kesimpulan.setText("Normal");
+                KesimpulanKesulitan.setText("Normal");
             }
         } catch (Exception e) {
-            Kesimpulan.setText("Normal");
+            KesimpulanKesulitan.setText("Normal");
         }
+    }
+
+    private void simpan() {
+        if(Sequel.menyimpantf("skrining_instrumen_sdq","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",67,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(), 
+            SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(), 
+            SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(), 
+            SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),
+            SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),
+            SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
+            SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
+            SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),TotalNilai.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),
+            NilaiKesimpulanSkorH.getText(),KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
+        })==true){
+            tabMode.addRow(new String[]{
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),NIP.getText(),NamaPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(), 
+                SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(), 
+                SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),
+                SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),
+                SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
+                SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
+                SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),TotalNilai.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),
+                NilaiKesimpulanSkorH.getText(),KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
+            });
+            emptTeks();
+            LCount.setText(""+tabMode.getRowCount());
+        } 
     }
 }
