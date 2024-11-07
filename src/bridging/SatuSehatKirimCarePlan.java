@@ -190,6 +190,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppPilihSemua = new javax.swing.JMenuItem();
+        ppPilihBelumDikirim = new javax.swing.JMenuItem();
         ppBersihkan = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
@@ -230,6 +231,22 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppPilihSemua);
+
+        ppPilihBelumDikirim.setBackground(new java.awt.Color(255, 255, 254));
+        ppPilihBelumDikirim.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPilihBelumDikirim.setForeground(new java.awt.Color(50, 50, 50));
+        ppPilihBelumDikirim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPilihBelumDikirim.setText("Pilih Belum Dikirim");
+        ppPilihBelumDikirim.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPilihBelumDikirim.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPilihBelumDikirim.setName("ppPilihBelumDikirim"); // NOI18N
+        ppPilihBelumDikirim.setPreferredSize(new java.awt.Dimension(150, 26));
+        ppPilihBelumDikirim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppPilihBelumDikirimActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppPilihBelumDikirim);
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -738,6 +755,14 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
+    private void ppPilihBelumDikirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihBelumDikirimActionPerformed
+        for (i = 0; i < tbObat.getRowCount(); i++) {
+            if (tbObat.getValueAt(i, 11).toString().isBlank()) {
+                tbObat.setValueAt(true, i, 0);
+            }
+        }
+    }//GEN-LAST:event_ppPilihBelumDikirimActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -777,6 +802,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppPilihBelumDikirim;
     private javax.swing.JMenuItem ppPilihSemua;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
@@ -814,7 +840,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("no_ktp"),rs.getString("id_encounter"),rs.getString("rtl"),rs.getString("nama"),rs.getString("ktppraktisi"),
+                        rs.getString("no_ktp"),rs.getString("id_encounter"),rs.getString("rtl").trim().replaceAll("(\r\n|\r|\n|\n\r)","<br>"),rs.getString("nama"),rs.getString("ktppraktisi"),
                         rs.getString("tgl_perawatan")+" "+rs.getString("jam_rawat"),rs.getString("satu_sehat_careplan"),"Ralan"
                     });
                 }
@@ -859,7 +885,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("no_ktp"),rs.getString("id_encounter"),rs.getString("rtl"),rs.getString("nama"),rs.getString("ktppraktisi"),
+                        rs.getString("no_ktp"),rs.getString("id_encounter"),rs.getString("rtl").trim().replaceAll("(\r\n|\r|\n|\n\r)","<br>"),rs.getString("nama"),rs.getString("ktppraktisi"),
                         rs.getString("tgl_perawatan")+" "+rs.getString("jam_rawat"),rs.getString("satu_sehat_careplan"),"Ranap"
                     });
                 }
