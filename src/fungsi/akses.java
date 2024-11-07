@@ -3,6 +3,7 @@ package fungsi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 
 
 /**
@@ -19,6 +20,8 @@ public final class akses {
     private static PreparedStatement ps,ps2;
     private static ResultSet rs,rs2;
     
+    private static boolean edit = false;
+    private static long tglSelesai = -1;
     private static String kode="",kdbangsal="",alamatip="",namars="",alamatrs="",kabupatenrs="",propinsirs="",kontakrs="",emailrs="",form="",namauser="",kode_ppk=""; 
     private static int jml1=0,jml2=0,lebar=0,tinggi=0;
     private static boolean aktif=false,admin=false,user=false,vakum=false,aplikasi=false,penyakit=false,obat_penyakit=false,dokter=false,jadwal_praktek=false,petugas=false,pasien=false,registrasi=false,
@@ -233,7 +236,8 @@ public final class akses {
             pcare_cek_alergi=false,pcare_cek_prognosa=false,data_sasaran_usiaproduktif=false,data_sasaran_usialansia=false,skrining_perilaku_merokok_sekolah_remaja=false,
             skrining_kekerasan_pada_perempuan=false,skrining_obesitas=false,skrining_risiko_kanker_payudara=false,skrining_risiko_kanker_paru=false,skrining_tbc=false,
             skrining_kesehatan_gigi_mulut_remaja=false,penilaian_awal_keperawatan_ranap_bayi=false,booking_mcu_perusahaan=false,catatan_observasi_restrain_nonfarma=false,
-            catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,skrining_puma=false;
+            catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,skrining_puma=false,satu_sehat_kirim_careplan=false,satu_sehat_kirim_medicationstatement=false,
+            skrining_adiksi_nikotin=false,skrining_thalassemia=false,skrining_instrumen_sdq=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1323,6 +1327,11 @@ public final class akses {
                         akses.catatan_observasi_ventilator=true;
                         akses.catatan_anestesi_sedasi=true;
                         akses.skrining_puma=true;
+                        akses.satu_sehat_kirim_careplan=true;
+                        akses.satu_sehat_kirim_medicationstatement=true;
+                        akses.skrining_adiksi_nikotin=true;
+                        akses.skrining_thalassemia=true;
+                        akses.skrining_instrumen_sdq=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2396,6 +2405,11 @@ public final class akses {
                         akses.catatan_observasi_ventilator=rs2.getBoolean("catatan_observasi_ventilator");
                         akses.catatan_anestesi_sedasi=rs2.getBoolean("catatan_anestesi_sedasi");
                         akses.skrining_puma=rs2.getBoolean("skrining_puma");
+                        akses.satu_sehat_kirim_careplan=rs2.getBoolean("satu_sehat_kirim_careplan");
+                        akses.satu_sehat_kirim_medicationstatement=rs2.getBoolean("satu_sehat_kirim_medicationstatement");
+                        akses.skrining_adiksi_nikotin=rs2.getBoolean("skrining_adiksi_nikotin");
+                        akses.skrining_thalassemia=rs2.getBoolean("skrining_thalassemia");
+                        akses.skrining_instrumen_sdq=rs2.getBoolean("skrining_instrumen_sdq");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3467,6 +3481,13 @@ public final class akses {
                         akses.catatan_observasi_ventilator=false;
                         akses.catatan_anestesi_sedasi=false;
                         akses.skrining_puma=false;
+                        akses.satu_sehat_kirim_careplan=false;
+                        akses.satu_sehat_kirim_medicationstatement=false;
+                        akses.skrining_adiksi_nikotin=false;
+                        akses.skrining_thalassemia=false;
+                        akses.skrining_instrumen_sdq=false;
+                        akses.edit=false;
+                        akses.tglSelesai=-1;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -3487,7 +3508,24 @@ public final class akses {
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
             }
-
+        
+        if (akses.jml2 > 0) {
+            try (PreparedStatement psx = koneksi.prepareStatement("select * from set_akses_edit_sementara where id_user = ?")) {
+                psx.setString(1, user);
+                try (ResultSet rsx = psx.executeQuery()) {
+                    if (rsx.next()) {
+                        akses.tglSelesai = rsx.getTimestamp("tgl_selesai").getTime();
+                        akses.edit = ((System.currentTimeMillis() - akses.tglSelesai) / 1000) < 0;
+                    } else {
+                        akses.tglSelesai = -1;
+                        akses.edit = false;
+                    }
+                }
+            } catch (Exception e) {
+                akses.tglSelesai = -1;
+                akses.edit = false;
+            }
+        }
     }
     
     public static void setLogOut(){
@@ -4561,6 +4599,13 @@ public final class akses {
         akses.catatan_observasi_ventilator=false;
         akses.catatan_anestesi_sedasi=false;
         akses.skrining_puma=false;
+        akses.satu_sehat_kirim_careplan=false;
+        akses.satu_sehat_kirim_medicationstatement=false;
+        akses.skrining_adiksi_nikotin=false;
+        akses.skrining_thalassemia=false;
+        akses.skrining_instrumen_sdq=false;
+        akses.edit=false;
+        akses.tglSelesai=-1;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5671,4 +5716,20 @@ public final class akses {
     public static boolean getcatatan_observasi_ventilator(){return akses.catatan_observasi_ventilator;}
     public static boolean getcatatan_anestesi_sedasi(){return akses.catatan_anestesi_sedasi;}
     public static boolean getskrining_puma(){return akses.skrining_puma;}
+    public static boolean getsatu_sehat_kirim_careplan(){return akses.satu_sehat_kirim_careplan;}
+    public static boolean getsatu_sehat_kirim_medicationstatement(){return akses.satu_sehat_kirim_medicationstatement;}
+    public static boolean getskrining_adiksi_nikotin(){return akses.skrining_adiksi_nikotin;}
+    public static boolean getskrining_thalassemia(){return akses.skrining_thalassemia;}
+    public static boolean getskrining_instrumen_sdq(){return akses.skrining_instrumen_sdq;}
+    
+    public static boolean getakses_edit_sementara() {akses.setEdit();return akses.edit;}
+    private static void setEdit() {
+        if (! akses.edit) {
+            return;
+        }
+        
+        if (((new sekuel().cariTglSmc("select now()").getTime() - akses.tglSelesai) / 1000) > 0) {
+            akses.edit = false;
+        }
+    }
 }   

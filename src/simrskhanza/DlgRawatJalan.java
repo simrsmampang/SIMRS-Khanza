@@ -157,6 +157,8 @@ import rekammedis.RMRekonsiliasiObat;
 import rekammedis.RMRiwayatPerawatan;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
+import rekammedis.RMSkriningAdiksiNikotin;
+import rekammedis.RMSkriningInstrumenSDQ;
 import rekammedis.RMSkriningKekerasanPadaPerempuan;
 import rekammedis.RMSkriningKesehatanGigiMulutRemaja;
 import rekammedis.RMSkriningMerokokUsiaSekolahRemaja;
@@ -168,6 +170,7 @@ import rekammedis.RMSkriningPUMA;
 import rekammedis.RMSkriningRisikoKankerParu;
 import rekammedis.RMSkriningRisikoKankerPayudara;
 import rekammedis.RMSkriningTBC;
+import rekammedis.RMSkriningTalasemia;
 import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMTriaseIGD;
@@ -9709,6 +9712,60 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnSkriningAdiksiNikotinActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMSkriningAdiksiNikotin form=new RMSkriningAdiksiNikotin(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
+    private void BtnSkriningThalassemiaActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMSkriningTalasemia form=new RMSkriningTalasemia(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
+    private void BtnSkriningInstrumenSDQActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMSkriningInstrumenSDQ form=new RMSkriningInstrumenSDQ(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -10071,7 +10128,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnHasilEndoskopiFaringLaring,
                           BtnHasilEndoskopiHidung,BtnHasilEndoskopiTelinga,BtnPenilaianPasienImunitasRendah,BtnCatatanKeseimbanganCairan,BtnCatatanObservasiCHBP,
                           BtnCatatanObservasiInduksiPersalinan,BtnPermintaanKonsultasiMedik,BtnSkriningMerokokUsiaRemaja,BtnSkriningKekerasanPadaWanita,BtnSkriningObesitas,BtnSkriningRisikoKankerPayudara,BtnSkriningRisikoKankerParu,
-                          BtnSkriningKesehatanGigiMulutremaja,BtnSkriningTBC,BtnCatatanAnastesiSedasi,BtnSkriningPUMA;    
+                          BtnSkriningKesehatanGigiMulutremaja,BtnSkriningTBC,BtnCatatanAnastesiSedasi,BtnSkriningPUMA,BtnSkriningAdiksiNikotin,BtnSkriningThalassemia,BtnSkriningInstrumenSDQ;    
     private void tampilDr() {
         Valid.tabelKosong(tabModeDr);
         try{
@@ -10857,6 +10914,18 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnSkriningPUMA.setVisible(akses.getskrining_puma());   
         if(akses.getskrining_puma()==true){
+            tinggi=tinggi+24;
+        }
+        BtnSkriningAdiksiNikotin.setVisible(akses.getskrining_adiksi_nikotin());   
+        if(akses.getskrining_adiksi_nikotin()==true){
+            tinggi=tinggi+24;
+        }
+        BtnSkriningThalassemia.setVisible(akses.getskrining_thalassemia());   
+        if(akses.getskrining_thalassemia()==true){
+            tinggi=tinggi+24;
+        }
+        BtnSkriningInstrumenSDQ.setVisible(akses.getskrining_instrumen_sdq());   
+        if(akses.getskrining_instrumen_sdq()==true){
             tinggi=tinggi+24;
         }
         BtnCatatanAnastesiSedasi.setVisible(akses.getcatatan_anestesi_sedasi());   
@@ -12412,6 +12481,45 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnSkriningPUMA.setRoundRect(false);
         BtnSkriningPUMA.addActionListener(this::BtnSkriningPUMAActionPerformed);
         
+        BtnSkriningAdiksiNikotin = new widget.Button();
+        BtnSkriningAdiksiNikotin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnSkriningAdiksiNikotin.setText("Skrining Adiksi Nikotin");
+        BtnSkriningAdiksiNikotin.setFocusPainted(false);
+        BtnSkriningAdiksiNikotin.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnSkriningAdiksiNikotin.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnSkriningAdiksiNikotin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnSkriningAdiksiNikotin.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnSkriningAdiksiNikotin.setName("BtnSkriningAdiksiNikotin"); 
+        BtnSkriningAdiksiNikotin.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnSkriningAdiksiNikotin.setRoundRect(false);
+        BtnSkriningAdiksiNikotin.addActionListener(this::BtnSkriningAdiksiNikotinActionPerformed);
+        
+        BtnSkriningThalassemia = new widget.Button();
+        BtnSkriningThalassemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnSkriningThalassemia.setText("Skrining Thalassemia");
+        BtnSkriningThalassemia.setFocusPainted(false);
+        BtnSkriningThalassemia.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnSkriningThalassemia.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnSkriningThalassemia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnSkriningThalassemia.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnSkriningThalassemia.setName("BtnSkriningThalassemia"); 
+        BtnSkriningThalassemia.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnSkriningThalassemia.setRoundRect(false);
+        BtnSkriningThalassemia.addActionListener(this::BtnSkriningThalassemiaActionPerformed);
+        
+        BtnSkriningInstrumenSDQ = new widget.Button();
+        BtnSkriningInstrumenSDQ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnSkriningInstrumenSDQ.setText("Skrining Instrumen SDQ");
+        BtnSkriningInstrumenSDQ.setFocusPainted(false);
+        BtnSkriningInstrumenSDQ.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnSkriningInstrumenSDQ.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnSkriningInstrumenSDQ.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnSkriningInstrumenSDQ.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnSkriningInstrumenSDQ.setName("BtnSkriningInstrumenSDQ"); 
+        BtnSkriningInstrumenSDQ.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnSkriningInstrumenSDQ.setRoundRect(false);
+        BtnSkriningInstrumenSDQ.addActionListener(this::BtnSkriningInstrumenSDQActionPerformed);
+        
         BtnCatatanAnastesiSedasi = new widget.Button();
         BtnCatatanAnastesiSedasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
         BtnCatatanAnastesiSedasi.setText("Catatan Anestesi-Sedasi");
@@ -12529,6 +12637,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnSkriningKesehatanGigiMulutremaja);
         FormMenu.add(BtnSkriningTBC);
         FormMenu.add(BtnSkriningPUMA);
+        FormMenu.add(BtnSkriningAdiksiNikotin);
+        FormMenu.add(BtnSkriningThalassemia);
+        FormMenu.add(BtnSkriningInstrumenSDQ);
         FormMenu.add(BtnSkriningNutrisiDewasa);
         FormMenu.add(BtnSkriningNutrisiLansia);
         FormMenu.add(BtnSkriningNutrisiAnak);
