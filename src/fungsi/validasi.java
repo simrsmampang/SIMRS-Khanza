@@ -127,6 +127,14 @@ public final class validasi {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tgljam.getDate());
     }
     
+    public String setTglSmc(Date tgl) {
+        return new SimpleDateFormat("dd-MM-yyyy").format(tgl);
+    }
+    
+    public String setTglSmc(String tgl) {
+        return tgl.substring(8, 10) + "-" + tgl.substring(5, 7) + "-" + tgl.substring(0, 4);
+    }
+    
     public String setTglJamSmc(Date tgljam) {
         return new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(tgljam);
     }

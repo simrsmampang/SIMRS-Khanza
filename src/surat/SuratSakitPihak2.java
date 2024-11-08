@@ -1076,14 +1076,14 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
     }//GEN-LAST:event_TglLahirKeyPressed
 
     private void MnCetakSuratSakit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratSakit2ActionPerformed
-        if (TPasien.getText().trim().equals("")) {
+        if (tbObat.getSelectedRow() < 0) {
             JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("hari", tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString());
-            param.put("TanggalAwal", tbObat.getValueAt(tbObat.getSelectedRow(), 4).toString());
-            param.put("TanggalAkhir", tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
+            param.put("TanggalAwal", Valid.setTglSmc(tbObat.getValueAt(tbObat.getSelectedRow(), 4).toString()));
+            param.put("TanggalAkhir", Valid.setTglSmc(tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString()));
             param.put("nosakit", tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
             param.put("namars", akses.getnamars());
             param.put("alamatrs", akses.getalamatrs());
@@ -1105,7 +1105,6 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
                 }
             } else {
                 kodedokter = Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
-                System.out.println("Ralan : " + kodedokter);
             }
             param.put("namadokter", Sequel.cariIsiSmc("select dokter.nm_dokter from dokter where dokter.kd_dokter = ?", kodedokter));
             param.put("finger", Valid.fingerSmc(kodedokter, Sequel.cariIsiSmc("select date_format(reg_periksa.tgl_registrasi, '%d-%m-%Y') from reg_periksa where reg_periksa.no_rawat = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString())));
