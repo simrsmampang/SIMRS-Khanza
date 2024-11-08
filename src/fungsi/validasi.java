@@ -88,6 +88,13 @@ public final class validasi {
         super();
     };
     
+    public String fingerSmc(String kodedokter, String tanggal) {
+        String finger = sek.cariIsiSmc("select sha1(sidikjari.sidikjari) from sidikjari join pegawai on pegawai.id = sidikjari.id where pegawai.nik = ?", kodedokter);
+        
+        return "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " +
+            sek.cariIsiSmc("select dokter.nm_dokter from dokter where dokter.kd_dokter = ?", kodedokter) + "\nID " + (finger.isBlank() ? kodedokter : finger) + "\n" + tanggal;
+    }
+    
     public void autoNomorSmc(JTextField component, String prefix, String table, String kolom, int panjang, String pad, String tanggal) {
         component.setText(sek.autoNomorSmc(prefix, table, kolom, panjang, pad, tanggal));
     }

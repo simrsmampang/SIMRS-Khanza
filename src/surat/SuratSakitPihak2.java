@@ -1077,39 +1077,41 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
     }//GEN-LAST:event_TglLahirKeyPressed
 
     private void MnCetakSuratSakit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratSakit2ActionPerformed
-       if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-        }else{
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Map<String, Object> param = new HashMap<>();
-                param.put("hari",LamaSakit.getText());
-                param.put("TanggalAwal",TglLahir.getSelectedItem().toString());
-                param.put("TanggalAkhir",TanggalAkhir.getSelectedItem().toString());
-                param.put("nosakit",NoSurat.getText());
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());  
-                param.put("penyakit",Sequel.cariIsi("select concat(diagnosa_pasien.kd_penyakit,' ',penyakit.nm_penyakit) from diagnosa_pasien inner join reg_periksa inner join penyakit "+
-                    "on diagnosa_pasien.no_rawat=reg_periksa.no_rawat and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
-                    "where diagnosa_pasien.no_rawat=? and diagnosa_pasien.prioritas='1'",TNoRw.getText()));
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                kodedokter=Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText());
-                namadokter=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kodedokter);
-                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",kodedokter);
-                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+namadokter+"\nID "+(finger.equals("")?kodedokter:finger)+"\n"+Sequel.cariIsi("select DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y') from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));  
-                Valid.MyReportqry("rptSuratSakitPihakKe2.jasper","report","::[ Surat Sakit Pihak Ke 2 ]::",
-                              " select suratsakitpihak2.no_surat,DATE_FORMAT(suratsakitpihak2.tanggalawal,'%d-%m-%Y')as tanggalawal,DATE_FORMAT(suratsakitpihak2.tanggalakhir,'%d-%m-%Y')as tanggalakhir,suratsakitpihak2.lamasakit,suratsakitpihak2.nama2,"+
-                              " DATE_FORMAT(suratsakitpihak2.tgl_lahir,'%d-%m-%Y')as tgl_lahirpj,(suratsakitpihak2.umur)as umurpj,(suratsakitpihak2.jk)as jkpj,"+
-                              " (suratsakitpihak2.alamat)as alamatpj,suratsakitpihak2.hubungan,(suratsakitpihak2.pekerjaan)as pekerjaanpj,suratsakitpihak2.instansi,perusahaan_pasien.nama_perusahaan,dokter.nm_dokter,pasien.tgl_lahir," +
-                              " DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y')as tgl_registrasi,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat" +
-                              " from suratsakitpihak2 inner join perusahaan_pasien inner join reg_periksa inner join pasien inner join dokter inner join kelurahan inner join kecamatan inner join kabupaten" +
-                              " on pasien.perusahaan_pasien=perusahaan_pasien.kode_perusahaan and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_dokter=dokter.kd_dokter and pasien.kd_kel=kelurahan.kd_kel "+
-                              " and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
-                              " where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
-                this.setCursor(Cursor.getDefaultCursor());     
+        if (TPasien.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+        } else {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("hari", tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString());
+            param.put("TanggalAwal", tbObat.getValueAt(tbObat.getSelectedRow(), 4).toString());
+            param.put("TanggalAkhir", tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
+            param.put("nosakit", tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("penyakit", Sequel.cariIsiSmc("select concat(diagnosa_pasien.kd_penyakit, ' ', penyakit.nm_penyakit) from diagnosa_pasien " +
+                "join reg_periksa on diagnosa_pasien.no_rawat = reg_periksa.no_rawat join penyakit on diagnosa_pasien.kd_penyakit = penyakit.kd_penyakit " +
+                "where diagnosa_pasien.no_rawat = ? and diagnosa_pasien.prioritas = '1'", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString()));
+            param.put("logo", Sequel.cariGambar("select setting.logo from setting"));
+            if (Sequel.cariBooleanSmc("select * from reg_periksa where reg_periksa.no_rawat = ? and reg_periksa.status_lanjut = 'Ranap'", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString())) {
+                kodedokter = Sequel.cariIsiSmc("select resume_pasien_ranap.kd_dokter from resume_pasien_ranap where resume_pasien_ranap.no_rawat = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
+                if (kodedokter.isBlank()) {
+                    kodedokter = Sequel.cariIsiSmc("select maping_dokter_dpjpvclaim.kd_dokter from bridging_sep join maping_dokter_dpjpvclaim on bridging_sep.kddpjp = maping_dokter_dpjpvclaim.kd_dokter_bpjs where bridging_sep.no_rawat = ? and bridging_sep.jnspelayanan = '1'", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
+                    if (kodedokter.isBlank()) {
+                        kodedokter = Sequel.cariIsiSmc("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
+                    }
+                }
+            } else {
+                kodedokter = Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
+                System.out.println("Ralan : " + kodedokter);
+            }
+            param.put("namadokter", Sequel.cariIsiSmc("select dokter.nm_dokter from dokter where dokter.kd_dokter = ?", kodedokter));
+            param.put("finger", Valid.fingerSmc(kodedokter, Sequel.cariIsiSmc("select date_format(reg_periksa.tgl_registrasi, '%d-%m-%Y') from reg_periksa where reg_periksa.no_rawat = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString())));
+            Valid.reportSmc("rptSuratSakitPihakKe2.jasper", "report", "::[ Surat Sakit Pihak Ke 2 ]::", param);
+            this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnCetakSuratSakit2ActionPerformed
 
@@ -1356,7 +1358,6 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
  
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            NoSurat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
@@ -1370,6 +1371,7 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
             Valid.SetTgl(TanggalAwal,tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             Valid.SetTgl(TanggalAkhir,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             Valid.SetTgl(TglLahir,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            NoSurat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
         }
     }
 
