@@ -1088,6 +1088,7 @@ public class DlgPermintaanKonsultasiMedik extends javax.swing.JDialog {
         }else if(UraianKonsultasi.getText().trim().equals("")){
             Valid.textKosong(UraianKonsultasi,"Uraian Konsultasi");
         }else{
+            autoNomor();
             if(Sequel.menyimpantf("konsultasi_medik","?,?,?,?,?,?,?,?","No.Permintaan",8,new String[]{
                 NoPermintaan.getText(),NoRw.getText(),Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"")+" "+TanggalPermintaan.getSelectedItem().toString().substring(11,19),
                 Permintaan.getSelectedItem().toString(),KdDokter.getText(),KdDokterDikonsuli.getText(),DiagnosaKerja.getText(),UraianKonsultasi.getText()
