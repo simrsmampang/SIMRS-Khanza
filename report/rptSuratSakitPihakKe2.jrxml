@@ -4,7 +4,7 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="372"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIK LOCALHOST UPD"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
@@ -17,126 +17,115 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<parameter name="penyakit" class="java.lang.String"/>
 	<parameter name="finger" class="java.lang.String"/>
+	<parameter name="nosakit" class="java.lang.String"/>
+	<parameter name="namadokter" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select suratsakitpihak2.no_surat,DATE_FORMAT(suratsakitpihak2.tanggalawal,'%d-%m-%Y')as tanggalawal,DATE_FORMAT(suratsakitpihak2.tanggalakhir,'%d-%m-%Y')as 
-tanggalakhir,suratsakitpihak2.lamasakit,suratsakitpihak2.nama2,
- DATE_FORMAT(suratsakitpihak2.tgl_lahir,'%d-%m-%Y')as tgl_lahirpj,(suratsakitpihak2.umur)as umurpj,(suratsakitpihak2.jk)as jkpj,
- (suratsakitpihak2.alamat)as alamatpj,suratsakitpihak2.hubungan,(suratsakitpihak2.pekerjaan)as pekerjaanpj,suratsakitpihak2.instansi,perusahaan_pasien.nama_perusahaan,
- dokter.nm_dokter,pasien.tgl_lahir,
-DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y')as tgl_registrasi,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,
-pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat
-from suratsakitpihak2 inner join perusahaan_pasien inner join reg_periksa inner join pasien inner join dokter inner join kelurahan inner join kecamatan inner join kabupaten
-on pasien.perusahaan_pasien=perusahaan_pasien.kode_perusahaan and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and 
-reg_periksa.kd_dokter=dokter.kd_dokter and pasien.kd_kel=kelurahan.kd_kel 
-and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
+		<![CDATA[select
+	suratsakitpihak2.no_surat,
+    date_format(suratsakitpihak2.tanggalawal, '%d-%m-%Y') as tanggalawal,
+    date_format(suratsakitpihak2.tanggalakhir, '%d-%m-%Y') as tanggalakhir,
+    suratsakitpihak2.lamasakit,
+    suratsakitpihak2.nama2 as namapj,
+    suratsakitpihak2.umur as umurpj,
+    suratsakitpihak2.alamat as alamatpj,
+    suratsakitpihak2.pekerjaan as pekerjaanpj,
+    suratsakitpihak2.instansi as instansipj,
+    suratsakitpihak2.hubungan,
+    pasien.nm_pasien as namapasien,
+    concat(reg_periksa.umurdaftar, ' ', reg_periksa.sttsumur) as umurpasien,
+    pasien.jk as jkpasien,
+    concat_ws(', ', pasien.alamat, kelurahan.nm_kel, kecamatan.nm_kec, kabupaten.nm_kab) as alamatpasien,
+    pasien.pekerjaan as pekerjaanpasien,
+    perusahaan_pasien.nama_perusahaan as instansipasien,
+    pasien.tgl_lahir,
+    date_format(reg_periksa.tgl_registrasi, '%d-%m-%Y') as tgl_registrasi
+from suratsakitpihak2
+join reg_periksa on suratsakitpihak2.no_rawat = reg_periksa.no_rawat
+join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis
+join kelurahan on pasien.kd_kel = kelurahan.kd_kel
+join kecamatan on pasien.kd_kec = kecamatan.kd_kec
+join kabupaten on pasien.kd_kab = kabupaten.kd_kab
+join perusahaan_pasien on pasien.perusahaan_pasien = perusahaan_pasien.kode_perusahaan
+where suratsakitpihak2.no_surat = $P{nosakit}]]>
 	</queryString>
 	<field name="no_surat" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="no_surat"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_surat"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
+		<property name="com.jaspersoft.studio.field.name" value="no_surat"/>
 	</field>
 	<field name="tanggalawal" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="tanggalawal"/>
 		<property name="com.jaspersoft.studio.field.label" value="tanggalawal"/>
+		<property name="com.jaspersoft.studio.field.name" value="tanggalawal"/>
 	</field>
 	<field name="tanggalakhir" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="tanggalakhir"/>
 		<property name="com.jaspersoft.studio.field.label" value="tanggalakhir"/>
+		<property name="com.jaspersoft.studio.field.name" value="tanggalakhir"/>
 	</field>
 	<field name="lamasakit" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="lamasakit"/>
 		<property name="com.jaspersoft.studio.field.label" value="lamasakit"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
+		<property name="com.jaspersoft.studio.field.name" value="lamasakit"/>
 	</field>
-	<field name="nama2" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nama2"/>
-		<property name="com.jaspersoft.studio.field.label" value="nama2"/>
+	<field name="namapj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="namapj"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="tgl_lahirpj" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="tgl_lahirpj"/>
-		<property name="com.jaspersoft.studio.field.label" value="tgl_lahirpj"/>
 	</field>
 	<field name="umurpj" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="umur"/>
 		<property name="com.jaspersoft.studio.field.label" value="umurpj"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
-	</field>
-	<field name="jkpj" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="jk"/>
-		<property name="com.jaspersoft.studio.field.label" value="jkpj"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
+		<property name="com.jaspersoft.studio.field.name" value="umur"/>
 	</field>
 	<field name="alamatpj" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
 		<property name="com.jaspersoft.studio.field.label" value="alamatpj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
+		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
+	</field>
+	<field name="pekerjaanpj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pekerjaanpj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
+		<property name="com.jaspersoft.studio.field.name" value="pekerjaan"/>
+	</field>
+	<field name="instansipj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="instansipj"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
 	</field>
 	<field name="hubungan" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="hubungan"/>
 		<property name="com.jaspersoft.studio.field.label" value="hubungan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
+		<property name="com.jaspersoft.studio.field.name" value="hubungan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="pekerjaanpj" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="pekerjaan"/>
-		<property name="com.jaspersoft.studio.field.label" value="pekerjaanpj"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
+	<field name="namapasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="namapasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
-	<field name="instansi" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="instansi"/>
-		<property name="com.jaspersoft.studio.field.label" value="instansi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
+	<field name="umurpasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="umurpasien"/>
 	</field>
-	<field name="nama_perusahaan" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nama_perusahaan"/>
-		<property name="com.jaspersoft.studio.field.label" value="nama_perusahaan"/>
+	<field name="jkpasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jkpasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="alamatpasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="alamatpasien"/>
+	</field>
+	<field name="pekerjaanpasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pekerjaanpasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="instansipasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="instansipasien"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="perusahaan_pasien"/>
 	</field>
-	<field name="nm_dokter" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nm_dokter"/>
-		<property name="com.jaspersoft.studio.field.label" value="nm_dokter"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="tgl_lahir" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.name" value="tgl_lahir"/>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<property name="com.jaspersoft.studio.field.name" value="tgl_lahir"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tgl_registrasi" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="tgl_registrasi"/>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_registrasi"/>
-	</field>
-	<field name="nm_pasien" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
-		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="jk" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="jk"/>
-		<property name="com.jaspersoft.studio.field.label" value="jk"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="umur" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="umur"/>
-		<property name="com.jaspersoft.studio.field.label" value="umur"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="pekerjaan" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="pekerjaan"/>
-		<property name="com.jaspersoft.studio.field.label" value="pekerjaan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="alamat" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
-		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
+		<property name="com.jaspersoft.studio.field.name" value="tgl_registrasi"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -255,7 +244,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{namapasien}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="32" y="216" width="79" height="14" uuid="a92a8167-175f-4854-9bdc-501c53cced0f">
@@ -285,7 +274,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{jk}.equals("L")? "Laki-Laki":"Perempuan"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jkpasien}.equals("L")? "Laki-Laki":"Perempuan"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="402" y="204" width="151" height="14" uuid="934f6d78-9100-47a2-abdc-32cfb19f65d9">
@@ -295,7 +284,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pekerjaan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pekerjaanpasien}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="122" y="246" width="261" height="14" uuid="dc4d4891-b28e-46d4-8b7e-a392584ee479">
@@ -305,7 +294,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{alamatpasien}]]></textFieldExpression>
 			</textField>
 			<image scaleImage="FillFrame" onErrorType="Blank">
 				<reportElement x="0" y="0" width="70" height="70" uuid="142c268b-d926-4b16-8e4c-96100c96f48b"/>
@@ -325,7 +314,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{umur}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{umurpasien}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="74" y="39" width="480" height="12" uuid="74394004-1023-4b3d-905f-83a3eb1ec641"/>
@@ -411,7 +400,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Mendampingi pasien selama " + $F{lamasakit} + " karena sakit terhitung dari tanggal " + $F{tanggalawal} + " sampai dengan " + $F{tanggalakhir}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Mendampingi pasien selama " + $F{lamasakit} + " hari karena sakit terhitung dari tanggal " + $F{tanggalawal} + " sampai dengan " + $F{tanggalakhir}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="309" width="379" height="14" uuid="9c12cf67-af7a-45bc-b414-f493db08ccc5">
@@ -479,7 +468,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{namadokter}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="382" y="324" width="172" height="20" uuid="74e2bec5-d348-492e-8e42-e5b4d00bd8c2">
@@ -508,7 +497,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 				<textElement>
 					<font fontName="Tahoma"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nama2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{namapj}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="403" y="134" width="150" height="14" uuid="8e1ded16-fccf-4500-b4e9-9331c308c3b7">
@@ -574,7 +563,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 				<textElement>
 					<font fontName="Tahoma"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nama_perusahaan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{instansipasien}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="314" y="149" width="70" height="14" uuid="e769ee61-6f1d-4f4a-89a6-d46c9c1cf90c">
@@ -632,7 +621,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 				<textElement>
 					<font fontName="Tahoma"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{instansi}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{instansipj}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="2" y="183" width="381" height="14" uuid="e089be81-4457-4857-ab86-ac99ed50e814">

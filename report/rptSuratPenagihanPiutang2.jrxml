@@ -30,6 +30,7 @@
 	<parameter name="tempo" class="java.lang.String"/>
 	<parameter name="diskon" class="java.lang.String"/>
 	<parameter name="subtotal" class="java.lang.String"/>
+	<parameter name="catatan" class="java.lang.String" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc]]>
 	</queryString>

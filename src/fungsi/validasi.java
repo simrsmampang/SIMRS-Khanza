@@ -88,6 +88,13 @@ public final class validasi {
         super();
     };
     
+    public String fingerSmc(String kodedokter, String tanggal) {
+        String finger = sek.cariIsiSmc("select sha1(sidikjari.sidikjari) from sidikjari join pegawai on pegawai.id = sidikjari.id where pegawai.nik = ?", kodedokter);
+        
+        return "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " +
+            sek.cariIsiSmc("select dokter.nm_dokter from dokter where dokter.kd_dokter = ?", kodedokter) + "\nID " + (finger.isBlank() ? kodedokter : finger) + "\n" + tanggal;
+    }
+    
     public void autoNomorSmc(JTextField component, String prefix, String table, String kolom, int panjang, String pad, String tanggal) {
         component.setText(sek.autoNomorSmc(prefix, table, kolom, panjang, pad, tanggal));
     }
@@ -118,6 +125,14 @@ public final class validasi {
     
     public String getTglJamSmc(Tanggal tgljam) {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tgljam.getDate());
+    }
+    
+    public String setTglSmc(Date tgl) {
+        return new SimpleDateFormat("dd-MM-yyyy").format(tgl);
+    }
+    
+    public String setTglSmc(String tgl) {
+        return tgl.substring(8, 10) + "-" + tgl.substring(5, 7) + "-" + tgl.substring(0, 4);
     }
     
     public String setTglJamSmc(Date tgljam) {
