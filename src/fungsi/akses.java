@@ -237,7 +237,7 @@ public final class akses {
             skrining_kekerasan_pada_perempuan=false,skrining_obesitas=false,skrining_risiko_kanker_payudara=false,skrining_risiko_kanker_paru=false,skrining_tbc=false,
             skrining_kesehatan_gigi_mulut_remaja=false,penilaian_awal_keperawatan_ranap_bayi=false,booking_mcu_perusahaan=false,catatan_observasi_restrain_nonfarma=false,
             catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,skrining_puma=false,satu_sehat_kirim_careplan=false,satu_sehat_kirim_medicationstatement=false,
-            skrining_adiksi_nikotin=false,skrining_thalassemia=false,skrining_instrumen_sdq=false;
+            skrining_adiksi_nikotin=false,skrining_thalassemia=false,skrining_instrumen_sdq=false,skrining_instrumen_srq=false,checklist_pemberian_fibrinolitik=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1332,6 +1332,8 @@ public final class akses {
                         akses.skrining_adiksi_nikotin=true;
                         akses.skrining_thalassemia=true;
                         akses.skrining_instrumen_sdq=true;
+                        akses.skrining_instrumen_srq=true;
+                        akses.checklist_pemberian_fibrinolitik=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2410,6 +2412,8 @@ public final class akses {
                         akses.skrining_adiksi_nikotin=rs2.getBoolean("skrining_adiksi_nikotin");
                         akses.skrining_thalassemia=rs2.getBoolean("skrining_thalassemia");
                         akses.skrining_instrumen_sdq=rs2.getBoolean("skrining_instrumen_sdq");
+                        akses.skrining_instrumen_srq=rs2.getBoolean("skrining_instrumen_srq");
+                        akses.checklist_pemberian_fibrinolitik=rs2.getBoolean("checklist_pemberian_fibrinolitik");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3486,6 +3490,8 @@ public final class akses {
                         akses.skrining_adiksi_nikotin=false;
                         akses.skrining_thalassemia=false;
                         akses.skrining_instrumen_sdq=false;
+                        akses.skrining_instrumen_srq=false;
+                        akses.checklist_pemberian_fibrinolitik=false;
                         akses.edit=false;
                         akses.tglSelesai=-1;
                     }
@@ -4604,6 +4610,8 @@ public final class akses {
         akses.skrining_adiksi_nikotin=false;
         akses.skrining_thalassemia=false;
         akses.skrining_instrumen_sdq=false;
+        akses.skrining_instrumen_srq=false;
+        akses.checklist_pemberian_fibrinolitik=false;
         akses.edit=false;
         akses.tglSelesai=-1;
     }
@@ -5721,6 +5729,8 @@ public final class akses {
     public static boolean getskrining_adiksi_nikotin(){return akses.skrining_adiksi_nikotin;}
     public static boolean getskrining_thalassemia(){return akses.skrining_thalassemia;}
     public static boolean getskrining_instrumen_sdq(){return akses.skrining_instrumen_sdq;}
+    public static boolean getskrining_instrumen_srq(){return akses.skrining_instrumen_srq;}
+    public static boolean getchecklist_pemberian_fibrinolitik(){return akses.checklist_pemberian_fibrinolitik;}
     
     public static boolean getakses_edit_sementara() {akses.setEdit();return akses.edit;}
     private static void setEdit() {
