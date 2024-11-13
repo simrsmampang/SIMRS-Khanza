@@ -20,6 +20,7 @@
 	<parameter name="nosakit" class="java.lang.String"/>
 	<parameter name="finger" class="java.lang.String"/>
 	<parameter name="no_rawat" class="java.lang.String"/>
+	<parameter name="namadokter" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select date_format(reg_periksa.tgl_registrasi, '%d-%m-%Y') as tgl_registrasi, perusahaan_pasien.nama_perusahaan,
 dokter.nm_dokter, pasien.keluarga, pasien.namakeluarga, pasien.tgl_lahir, pasien.jk, pasien.nm_pasien, pasien.jk,
@@ -270,7 +271,7 @@ where reg_periksa.no_rawat = $P{no_rawat}]]>
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{namadokter}]]></textFieldExpression>
 			</textField>
 			<line direction="BottomUp">
 				<reportElement x="0" y="73" width="552" height="1" uuid="0c2ad32c-da6e-473a-b249-d13e51c24fa7"/>
