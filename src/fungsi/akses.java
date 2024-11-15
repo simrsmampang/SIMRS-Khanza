@@ -238,7 +238,7 @@ public final class akses {
             skrining_kesehatan_gigi_mulut_remaja=false,penilaian_awal_keperawatan_ranap_bayi=false,booking_mcu_perusahaan=false,catatan_observasi_restrain_nonfarma=false,
             catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,skrining_puma=false,satu_sehat_kirim_careplan=false,satu_sehat_kirim_medicationstatement=false,
             skrining_adiksi_nikotin=false,skrining_thalassemia=false,skrining_instrumen_sdq=false,skrining_instrumen_srq=false,checklist_pemberian_fibrinolitik=false,
-            skrining_kanker_kolorektal=false;
+            skrining_kanker_kolorektal=false,dapur_pemesanan=false,bayar_pesan_dapur=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1336,6 +1336,8 @@ public final class akses {
                         akses.skrining_instrumen_srq=true;
                         akses.checklist_pemberian_fibrinolitik=true;
                         akses.skrining_kanker_kolorektal=true;
+                        akses.dapur_pemesanan=true;
+                        akses.bayar_pesan_dapur=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2417,6 +2419,8 @@ public final class akses {
                         akses.skrining_instrumen_srq=rs2.getBoolean("skrining_instrumen_srq");
                         akses.checklist_pemberian_fibrinolitik=rs2.getBoolean("checklist_pemberian_fibrinolitik");
                         akses.skrining_kanker_kolorektal=rs2.getBoolean("skrining_kanker_kolorektal");
+                        akses.dapur_pemesanan=rs2.getBoolean("dapur_pemesanan");
+                        akses.bayar_pesan_dapur=rs2.getBoolean("bayar_pesan_dapur");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3496,6 +3500,8 @@ public final class akses {
                         akses.skrining_instrumen_srq=false;
                         akses.checklist_pemberian_fibrinolitik=false;
                         akses.skrining_kanker_kolorektal=false;
+                        akses.dapur_pemesanan=false;
+                        akses.bayar_pesan_dapur=false;
                         akses.edit=false;
                         akses.tglSelesai=-1;
                     }
@@ -4617,6 +4623,8 @@ public final class akses {
         akses.skrining_instrumen_srq=false;
         akses.checklist_pemberian_fibrinolitik=false;
         akses.skrining_kanker_kolorektal=false;
+        akses.dapur_pemesanan=false;
+        akses.bayar_pesan_dapur=false;
         akses.edit=false;
         akses.tglSelesai=-1;
     }
@@ -5737,6 +5745,8 @@ public final class akses {
     public static boolean getskrining_instrumen_srq(){return akses.skrining_instrumen_srq;}
     public static boolean getchecklist_pemberian_fibrinolitik(){return akses.checklist_pemberian_fibrinolitik;}
     public static boolean getskrining_kanker_kolorektal(){return akses.skrining_kanker_kolorektal;}
+    public static boolean getdapur_pemesanan(){return akses.dapur_pemesanan;}
+    public static boolean getbayar_pesan_dapur(){return akses.bayar_pesan_dapur;}
     
     public static boolean getakses_edit_sementara() {akses.setEdit();return akses.edit;}
     private static void setEdit() {
