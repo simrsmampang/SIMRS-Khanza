@@ -240,7 +240,7 @@ public final class akses {
             skrining_adiksi_nikotin=false,skrining_thalassemia=false,skrining_instrumen_sdq=false,skrining_instrumen_srq=false,checklist_pemberian_fibrinolitik=false,
             skrining_kanker_kolorektal=false,dapur_pemesanan=false,bayar_pesan_dapur=false,hutang_dapur=false,titip_faktur_dapur=false,validasi_tagihan_dapur=false,
             surat_pemesanan_dapur=false,pengajuan_barang_dapur=false,dapur_returbeli=false,hibah_dapur=false,ringkasan_penerimaan_dapur=false,ringkasan_pengajuan_dapur=false,
-            ringkasan_pemesanan_dapur=false,ringkasan_returbeli_dapur=false;
+            ringkasan_pemesanan_dapur=false,ringkasan_returbeli_dapur=false,ringkasan_stokkeluar_dapur=false,dapur_stokkeluar_pertanggal=false,sirkulasi_dapur=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1351,6 +1351,9 @@ public final class akses {
                         akses.ringkasan_pengajuan_dapur=true;
                         akses.ringkasan_pemesanan_dapur=true;
                         akses.ringkasan_returbeli_dapur=true;
+                        akses.ringkasan_stokkeluar_dapur=true;
+                        akses.dapur_stokkeluar_pertanggal=true;
+                        akses.sirkulasi_dapur=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2445,6 +2448,9 @@ public final class akses {
                         akses.ringkasan_pengajuan_dapur=rs2.getBoolean("ringkasan_pengajuan_dapur");
                         akses.ringkasan_pemesanan_dapur=rs2.getBoolean("ringkasan_pemesanan_dapur");
                         akses.ringkasan_returbeli_dapur=rs2.getBoolean("ringkasan_returbeli_dapur");
+                        akses.ringkasan_stokkeluar_dapur=rs2.getBoolean("ringkasan_stokkeluar_dapur");
+                        akses.dapur_stokkeluar_pertanggal=rs2.getBoolean("dapur_stokkeluar_pertanggal");
+                        akses.sirkulasi_dapur=rs2.getBoolean("sirkulasi_dapur");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3537,6 +3543,9 @@ public final class akses {
                         akses.ringkasan_pengajuan_dapur=false;
                         akses.ringkasan_pemesanan_dapur=false;
                         akses.ringkasan_returbeli_dapur=false;
+                        akses.ringkasan_stokkeluar_dapur=false;
+                        akses.dapur_stokkeluar_pertanggal=false;
+                        akses.sirkulasi_dapur=false;
                         akses.edit=false;
                         akses.tglSelesai=-1;
                     }
@@ -4671,6 +4680,9 @@ public final class akses {
         akses.ringkasan_pengajuan_dapur=false;
         akses.ringkasan_pemesanan_dapur=false;
         akses.ringkasan_returbeli_dapur=false;
+        akses.ringkasan_stokkeluar_dapur=false;
+        akses.dapur_stokkeluar_pertanggal=false;
+        akses.sirkulasi_dapur=false;
         akses.edit=false;
         akses.tglSelesai=-1;
     }
@@ -5804,6 +5816,9 @@ public final class akses {
     public static boolean getringkasan_pengajuan_dapur(){return akses.ringkasan_pengajuan_dapur;}
     public static boolean getringkasan_pemesanan_dapur(){return akses.ringkasan_pemesanan_dapur;}
     public static boolean getringkasan_returbeli_dapur(){return akses.ringkasan_returbeli_dapur;}
+    public static boolean getringkasan_stokkeluar_dapur(){return akses.ringkasan_stokkeluar_dapur;}
+    public static boolean getdapur_stokkeluar_pertanggal(){return akses.dapur_stokkeluar_pertanggal;}
+    public static boolean getsirkulasi_dapur(){return akses.sirkulasi_dapur;}
     
     public static boolean getakses_edit_sementara() {akses.setEdit();return akses.edit;}
     private static void setEdit() {

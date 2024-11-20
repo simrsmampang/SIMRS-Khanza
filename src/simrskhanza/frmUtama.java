@@ -650,7 +650,10 @@ import dapur.DapurRingkasanPenerimaanBarang;
 import dapur.DapurRingkasanPengadaanBarang;
 import dapur.DapurRingkasanPengajuanBarang;
 import dapur.DapurRingkasanReturBeliBarang;
+import dapur.DapurRingkasanStokKeluarBarang;
 import dapur.DapurRiwayatBarang;
+import dapur.DapurSirkulasiBarang;
+import dapur.DapurStokKeluarBarangPerTanggal;
 import dapur.DapurSuratPemesanan;
 import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
 import grafikanalisa.GrafikKeslingLimbahB3CairPertanggal;
@@ -22281,6 +22284,37 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnRingkasanStokKeluarDapurActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurRingkasanStokKeluarBarang aplikasi=new DapurRingkasanStokKeluarBarang(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnStokKeluarDapurPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {                                                             
+        isTutup();
+        DapurStokKeluarBarangPerTanggal form=new DapurStokKeluarBarangPerTanggal(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
+    private void btnSirkulasiDapurActionPerformed(java.awt.event.ActionEvent evt) {                                                             
+        isTutup();
+        DapurSirkulasiBarang form=new DapurSirkulasiBarang(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
             
     /**
     * @param args the command line arguments
@@ -22984,7 +23018,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
             btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik,btnSkriningKankerKolorektal,btnPenerimaanBarangDapur,btnBayarPesanDapur,
             btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur,btnSuratPemesananDapur,btnPengajuanBarangDapur,btnReturBarangDapur,btnHibahDapur,btnRingkasanPenerimaanDapur,
-            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur;
+            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur,btnRingkasanStokKeluarDapur,btnStokKeluarDapurPerTanggal,btnSirkulasiDapur;
     
     public void isWall(){
         try{            
@@ -24180,6 +24214,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getringkasan_stokkeluar_dapur()==true){
+                Panelmenu.add(btnRingkasanStokKeluarDapur);
+                jmlmenu++;
+            }
+            
             if(akses.getdapur_returbeli()==true){
                 Panelmenu.add(btnReturBarangDapur);
                 jmlmenu++;
@@ -24207,6 +24246,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getrekap_pengadaan_dapur()==true){
                 Panelmenu.add(btnRekapPengadaanDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getdapur_stokkeluar_pertanggal()==true){
+                Panelmenu.add(btnStokKeluarDapurPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.getsirkulasi_dapur()==true){
+                Panelmenu.add(btnSirkulasiDapur);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -29586,6 +29635,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getringkasan_stokkeluar_dapur()==true){
+            Panelmenu.add(btnRingkasanStokKeluarDapur);
+            jmlmenu++;
+        }
+        
         if(akses.getdapur_returbeli()==true){
             Panelmenu.add(btnReturBarangDapur);
             jmlmenu++;
@@ -29613,6 +29667,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getrekap_pengadaan_dapur()==true){
             Panelmenu.add(btnRekapPengadaanDapur);
+            jmlmenu++;
+        }
+        
+        if(akses.getdapur_stokkeluar_pertanggal()==true){
+            Panelmenu.add(btnStokKeluarDapurPerTanggal);
+            jmlmenu++;
+        }
+        
+        if(akses.getsirkulasi_dapur()==true){
+            Panelmenu.add(btnSirkulasiDapur);
             jmlmenu++;
         }
 
@@ -35395,6 +35459,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getringkasan_stokkeluar_dapur()==true){
+            if(btnRingkasanStokKeluarDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanStokKeluarDapur);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getdapur_returbeli()==true){
             if(btnReturBarangDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReturBarangDapur);
@@ -35433,6 +35504,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getrekap_pengadaan_dapur()==true){
             if(btnRekapPengadaanDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPengadaanDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdapur_stokkeluar_pertanggal()==true){
+            if(btnStokKeluarDapurPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnStokKeluarDapurPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsirkulasi_dapur()==true){
+            if(btnSirkulasiDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSirkulasiDapur);
                 jmlmenu++;
             }                
         }
@@ -41208,7 +41293,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
-        
+    }
+    
+    private void isCariIsi2() {
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -41397,9 +41484,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
-    }
-    
-    private void isCariIsi2() {
+        
         if(akses.getjam_diet_pasien()==true){
             if(btnJamDietPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJamDietPasien);
@@ -46397,7 +46482,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPemesananDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanPemesananDapur.addActionListener(this::btnRingkasanPemesananDapurActionPerformed);
         
-        
         btnRingkasanReturBeliDapur = new widget.ButtonBig();
         btnRingkasanReturBeliDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanReturBeliDapur.setText("Ringkasan Retur Suplier Dapur");
@@ -46405,5 +46489,29 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanReturBeliDapur.setName("btnRingkasanReturBeliDapur");
         btnRingkasanReturBeliDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanReturBeliDapur.addActionListener(this::btnRingkasanReturBeliDapurActionPerformed);
+        
+        btnRingkasanStokKeluarDapur = new widget.ButtonBig();
+        btnRingkasanStokKeluarDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
+        btnRingkasanStokKeluarDapur.setText("Ringkasan Stok Keluar Dapur");
+        btnRingkasanStokKeluarDapur.setIconTextGap(0);
+        btnRingkasanStokKeluarDapur.setName("btnRingkasanStokKeluarDapur");
+        btnRingkasanStokKeluarDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRingkasanStokKeluarDapur.addActionListener(this::btnRingkasanStokKeluarDapurActionPerformed);
+        
+        btnStokKeluarDapurPerTanggal = new widget.ButtonBig();
+        btnStokKeluarDapurPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8822952_bar_chart_negative_descending_icon.png"))); 
+        btnStokKeluarDapurPerTanggal.setText("Stok Keluar Dapur Per Tanggal");
+        btnStokKeluarDapurPerTanggal.setIconTextGap(0);
+        btnStokKeluarDapurPerTanggal.setName("btnStokKeluarDapurPerTanggal");
+        btnStokKeluarDapurPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnStokKeluarDapurPerTanggal.addActionListener(this::btnStokKeluarDapurPerTanggalActionPerformed);
+        
+        btnSirkulasiDapur = new widget.ButtonBig();
+        btnSirkulasiDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); 
+        btnSirkulasiDapur.setText("Sirkulasi Barang Dapur");
+        btnSirkulasiDapur.setIconTextGap(0);
+        btnSirkulasiDapur.setName("btnSirkulasiDapur");
+        btnSirkulasiDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiDapur.addActionListener(this::btnSirkulasiDapurActionPerformed);
     }
 }
