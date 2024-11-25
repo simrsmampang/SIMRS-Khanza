@@ -433,7 +433,7 @@ where no_sep = $P{parameter}]]>
 				<text><![CDATA[Poli Perujuk]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement mode="Transparent" x="380" y="178" width="153" height="33" uuid="cf268293-131a-489d-86c6-f1399b424446">
+				<reportElement mode="Transparent" x="380" y="178" width="153" height="33" isPrintWhenDetailOverflows="true" uuid="cf268293-131a-489d-86c6-f1399b424446">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Top">
@@ -640,8 +640,7 @@ where no_sep = $P{parameter}]]>
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{klsnaik}.replaceAll("1","VVIP").replaceAll("2","VIP").
-                        replaceAll("3","Kelas I").replaceAll("4","Kelas II").replaceAll("5","Kelas III").replaceAll("6","ICCU").replaceAll("7","ICU")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{klsnaik}.replaceAll("1","VVIP").replaceAll("2","VIP").replaceAll("3","Kelas I").replaceAll("4","Kelas II").replaceAll("5","Kelas III").replaceAll("6","ICCU").replaceAll("7","ICU").replaceAll("8", "Diatas Kelas 1")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="61" y="106" width="5" height="11" uuid="14e6dd71-f6a5-46e4-b482-b3e8d9f6bdb4">
