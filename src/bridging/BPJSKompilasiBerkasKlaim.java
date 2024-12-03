@@ -87,14 +87,14 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
     private final JFXPanel jfxPanelicare = new JFXPanel();
     private final JFXPanel jfxinvoices = new JFXPanel();
     private final DlgCariCaraBayar penjab = new DlgCariCaraBayar(null, false);
-    private WebEngine engine;
-    private String finger = "", tanggalExport = "";
-    private boolean exportSukses = true;
-    private String KOMPILASIBERKASGUNAKANTANGGALEXPORT = koneksiDB.KOMPILASIBERKASGUNAKANTANGGALEXPORT(),
-                   KOMPILASIBERKASAPLIKASIPDF = koneksiDB.KOMPILASIBERKASAPLIKASIPDF();
+    private final RMRiwayatPerawatan resume = new RMRiwayatPerawatan(null, true);
     private final String KOMPILASIBERKASGUNAKANRIWAYATPASIEN = koneksiDB.KOMPILASIBERKASGUNAKANRIWAYATPASIEN();
+    private WebEngine engine;
+    private String finger = "", tanggalExport = "",
+                   KOMPILASIBERKASGUNAKANTANGGALEXPORT = koneksiDB.KOMPILASIBERKASGUNAKANTANGGALEXPORT(),
+                   KOMPILASIBERKASAPLIKASIPDF = koneksiDB.KOMPILASIBERKASAPLIKASIPDF();
+    private boolean exportSukses = true;
     private long KOMPILASIBERKASMAXMEMORY = koneksiDB.KOMPILASIBERKASMAXMEMORY();
-    private RMRiwayatPerawatan resume = null;
 
     public BPJSKompilasiBerkasKlaim(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -2063,9 +2063,6 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
             TCari.requestFocus();
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if (resume == null) {
-                resume = new RMRiwayatPerawatan(null, true);
-            }
             resume.setNoRMKompilasi(tbKompilasi.getValueAt(tbKompilasi.getSelectedRow(), 0).toString(), tbKompilasi.getValueAt(tbKompilasi.getSelectedRow(), 2).toString());
             resume.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
             resume.setLocationRelativeTo(internalFrame1);
@@ -2076,6 +2073,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
 
     private void btnRiwayatPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatPasienActionPerformed
         if (lblNoRawat.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Maaf, silahkan pilih data pasien terlebih dahulu..!!");
             return;
         }
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
