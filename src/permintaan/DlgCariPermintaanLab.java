@@ -589,7 +589,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2024 09:16:46" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2024 12:41:13" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -1027,7 +1027,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         TabRawatJalan.addTab("Item Permintaan", scrollPane2);
 
-        internalFrame2.add(TabRawatJalan, java.awt.BorderLayout.PAGE_START);
+        internalFrame2.add(TabRawatJalan, java.awt.BorderLayout.CENTER);
 
         TabPilihRawat.addTab("Rawat Jalan", internalFrame2);
 
