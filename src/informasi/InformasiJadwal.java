@@ -10,16 +10,19 @@
  */
 
 package informasi;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -31,9 +34,10 @@ import javax.swing.table.TableColumn;
  */
 public class InformasiJadwal extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private Connection koneksi=koneksiDB.condb();
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
+    private final ObjectMapper map = new ObjectMapper();
+    private final Connection koneksi=koneksiDB.condb();
+    private final validasi Valid=new validasi();
+    private JsonNode root;
 
     /** Creates new form DlgJadwal
      * @param parent
@@ -77,19 +81,19 @@ public class InformasiJadwal extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        tampil2();
                     }
                 }
             });
@@ -236,18 +240,7 @@ public class InformasiJadwal extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        String sql=" jadwal.kd_dokter=dokter.kd_dokter "+
-                "and jadwal.kd_poli=poliklinik.kd_poli ";
-        prosesCari("select jadwal.kd_dokter,nm_dokter,hari_kerja, "+
-                "jam_mulai,jam_selesai,nm_poli from jadwal,poliklinik,dokter "+
-                "where "+
-                sql+"and jadwal.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and hari_kerja like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and jam_mulai like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and jam_selesai like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and nm_poli like '%"+TCari.getText().trim()+"%' "+
-                "order by jadwal.kd_dokter ");
+        tampil2();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -259,21 +252,21 @@ public class InformasiJadwal extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        tampil();
         TCari.setText("");
+        tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
             TCari.setText("");
+            tampil();
         }else{
             Valid.pindah(evt, BtnCari,BtnKeluar);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        tampil2();
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
@@ -315,32 +308,68 @@ public class InformasiJadwal extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        String sql="select nm_dokter,hari_kerja, "+
-                "jam_mulai,jam_selesai,nm_poli from jadwal,poliklinik,dokter "+
-                "where jadwal.kd_dokter=dokter.kd_dokter "+
-                "and jadwal.kd_poli=poliklinik.kd_poli "+
-                " order by jadwal.kd_dokter";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
         Valid.tabelKosong(tabMode);
-        try{
-            ResultSet rs=koneksi.prepareStatement(sql).executeQuery();
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5)};
-                tabMode.addRow(data);
+        try (ResultSet rs = koneksi.createStatement().executeQuery(
+            "select dokter.nm_dokter, jadwal.hari_kerja, jadwal.jam_mulai, jadwal.jam_selesai, poliklinik.nm_poli " +
+            "from jadwal, poliklinik, dokter where jadwal.kd_dokter = dokter.kd_dokter and jadwal.kd_poli = poliklinik.kd_poli " +
+            "order by jadwal.kd_dokter, poliklinik.nm_poli, field(jadwal.hari_kerja, 'SENIN', 'SELASA', 'RABU', 'KAMIS', 'JUMAT', 'SABTU', 'AKHAD')"
+        )) {
+            String iyem = "";
+            File f = new File("./cache/informasijadwal.iyem");
+            f.createNewFile();
+            try (FileWriter fw = new FileWriter(f)) {
+                while (rs.next()) {
+                    tabMode.addRow(new String[] {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)});
+                    iyem = iyem + "{\"namaDokter\":\""+rs.getString(1)+"\",\"hariKerja\":\""+rs.getString(2)+"\",\"jamMulai\":\""+rs.getString(3)+"\",\"jamSelesai\":\""+rs.getString(4)+"\",\"namaPoli\":\""+rs.getString(5)+"\"},";
+                }
+                fw.write("{\"data\":[" + iyem.substring(0, iyem.length() - 1) + "]}");
             }
-        }catch(SQLException e){
-            System.out.println("Notifikasi : "+e);
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        
+        LCount.setText(tabMode.getRowCount() + "");
     }
-
-
     
+    private void tampil2() {
+        if (Valid.daysOld("./cache/informasijadwal.iyem") > 7) {
+            tampil();
+        }
+        
+        Valid.tabelKosong(tabMode);
+        try (FileReader fr = new FileReader("./cache/informasijadwal.iyem")) {
+            root = map.readTree(fr).path("data");
+            if (root.isArray()) {
+                if (TCari.getText().isBlank()) {
+                    for (JsonNode leaf : root) {
+                        tabMode.addRow(new String[] {
+                            leaf.path("namaDokter").asText(),
+                            leaf.path("hariKerja").asText(),
+                            leaf.path("jamMulai").asText(),
+                            leaf.path("jamSelesai").asText(),
+                            leaf.path("namaPoli").asText(),
+                        });
+                    }
+                } else {
+                    for (JsonNode leaf : root) {
+                        if (leaf.path("namaDokter").asText().toLowerCase().contains(TCari.getText().toLowerCase())
+                            || leaf.path("hariKerja").asText().toLowerCase().contains(TCari.getText().toLowerCase())
+                            || leaf.path("namaPoli").asText().toLowerCase().contains(TCari.getText().toLowerCase())
+                            ) {
+                            tabMode.addRow(new String[] {
+                                leaf.path("namaDokter").asText(),
+                                leaf.path("hariKerja").asText(),
+                                leaf.path("jamMulai").asText(),
+                                leaf.path("jamSelesai").asText(),
+                                leaf.path("namaPoli").asText(),
+                            });
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        LCount.setText(tabMode.getRowCount() + "");
+    }
 }
