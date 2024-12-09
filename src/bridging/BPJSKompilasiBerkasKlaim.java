@@ -4213,80 +4213,73 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
                 JsonNode root = new ObjectMapper().readTree(fr).path("pengaturan");
                 if (root.hasNonNull("aplikasipdf")) {
                     KOMPILASIBERKASAPLIKASIPDF = root.path("aplikasipdf").asText();
-                    switch (root.path("aplikasipdf").asText()) {
-                        case "":
-                            TPathAplikasiPDF.setText("");
-                            TPathAplikasiPDF.setEditable(false);
-                            BtnPilihAplikasiPDF.setEnabled(false);
-                            CmbPilihanAplikasiPDF.setSelectedIndex(0);
-                            break;
-                        case "chrome":
-                            TPathAplikasiPDF.setText("");
-                            TPathAplikasiPDF.setEditable(false);
-                            BtnPilihAplikasiPDF.setEnabled(false);
-                            CmbPilihanAplikasiPDF.setSelectedIndex(1);
-                            break;
-                        case "firefox":
-                            TPathAplikasiPDF.setText("");
-                            TPathAplikasiPDF.setEditable(false);
-                            BtnPilihAplikasiPDF.setEnabled(false);
-                            CmbPilihanAplikasiPDF.setSelectedIndex(2);
-                            break;
-                        case "msedge":
-                            TPathAplikasiPDF.setText("");
-                            TPathAplikasiPDF.setEditable(false);
-                            BtnPilihAplikasiPDF.setEnabled(false);
-                            CmbPilihanAplikasiPDF.setSelectedIndex(3);
-                            break;
-                        case "disable":
-                            TPathAplikasiPDF.setText("");
-                            TPathAplikasiPDF.setEditable(false);
-                            BtnPilihAplikasiPDF.setEnabled(false);
-                            CmbPilihanAplikasiPDF.setSelectedIndex(5);
-                            break;
-                        default:
-                            TPathAplikasiPDF.setText(root.path("aplikasipdf").asText());
-                            TPathAplikasiPDF.setEditable(true);
-                            BtnPilihAplikasiPDF.setEnabled(true);
-                            CmbPilihanAplikasiPDF.setSelectedIndex(4);
-                            break;
-                    }
                 }
+                
                 if (root.hasNonNull("tanggalexport")) {
                     KOMPILASIBERKASGUNAKANTANGGALEXPORT = root.path("tanggalexport").asText();
-                    if (KOMPILASIBERKASGUNAKANTANGGALEXPORT.equalsIgnoreCase("sep")) {
-                        CmbPilihanTanggalExport.setSelectedIndex(1);
-                    } else {
-                        CmbPilihanTanggalExport.setSelectedIndex(0);
-                    }
                 }
+                
                 if (root.hasNonNull("maxmemory")) {
                     KOMPILASIBERKASMAXMEMORY = root.path("maxmemory").asLong();
-                    TMaxMemory.setText(root.path("maxmemory").asText());
                 }
             } catch (Exception e) {
                 System.out.println("Notif : Tidak bisa membaca pengaturan kompilasi! Menggunakan pengaturan default...");
                 System.out.println("Notif : " + e);
+                KOMPILASIBERKASAPLIKASIPDF = koneksiDB.KOMPILASIBERKASAPLIKASIPDF();
+                KOMPILASIBERKASGUNAKANTANGGALEXPORT = koneksiDB.KOMPILASIBERKASGUNAKANTANGGALEXPORT();
+                KOMPILASIBERKASMAXMEMORY = koneksiDB.KOMPILASIBERKASMAXMEMORY();
+            }
+        } else {
+            KOMPILASIBERKASAPLIKASIPDF = koneksiDB.KOMPILASIBERKASAPLIKASIPDF();
+            KOMPILASIBERKASGUNAKANTANGGALEXPORT = koneksiDB.KOMPILASIBERKASGUNAKANTANGGALEXPORT();
+            KOMPILASIBERKASMAXMEMORY = koneksiDB.KOMPILASIBERKASMAXMEMORY();
+        }
+        
+        switch (KOMPILASIBERKASAPLIKASIPDF) {
+            case "":
                 TPathAplikasiPDF.setText("");
                 TPathAplikasiPDF.setEditable(false);
                 BtnPilihAplikasiPDF.setEnabled(false);
                 CmbPilihanAplikasiPDF.setSelectedIndex(0);
-                KOMPILASIBERKASAPLIKASIPDF = koneksiDB.KOMPILASIBERKASAPLIKASIPDF();
-                CmbPilihanTanggalExport.setSelectedIndex(0);
-                KOMPILASIBERKASGUNAKANTANGGALEXPORT = koneksiDB.KOMPILASIBERKASGUNAKANTANGGALEXPORT();
-                TMaxMemory.setText(String.valueOf(koneksiDB.KOMPILASIBERKASMAXMEMORY()));
-                KOMPILASIBERKASMAXMEMORY = koneksiDB.KOMPILASIBERKASMAXMEMORY();
-            }
-        } else {
-            TPathAplikasiPDF.setText("");
-            TPathAplikasiPDF.setEditable(false);
-            BtnPilihAplikasiPDF.setEnabled(false);
-            CmbPilihanAplikasiPDF.setSelectedIndex(0);
-            KOMPILASIBERKASAPLIKASIPDF = koneksiDB.KOMPILASIBERKASAPLIKASIPDF();
-            CmbPilihanTanggalExport.setSelectedIndex(0);
-            KOMPILASIBERKASGUNAKANTANGGALEXPORT = koneksiDB.KOMPILASIBERKASGUNAKANTANGGALEXPORT();
-            TMaxMemory.setText(String.valueOf(koneksiDB.KOMPILASIBERKASMAXMEMORY()));
-            KOMPILASIBERKASMAXMEMORY = koneksiDB.KOMPILASIBERKASMAXMEMORY();
+                break;
+            case "chrome":
+                TPathAplikasiPDF.setText("");
+                TPathAplikasiPDF.setEditable(false);
+                BtnPilihAplikasiPDF.setEnabled(false);
+                CmbPilihanAplikasiPDF.setSelectedIndex(1);
+                break;
+            case "firefox":
+                TPathAplikasiPDF.setText("");
+                TPathAplikasiPDF.setEditable(false);
+                BtnPilihAplikasiPDF.setEnabled(false);
+                CmbPilihanAplikasiPDF.setSelectedIndex(2);
+                break;
+            case "msedge":
+                TPathAplikasiPDF.setText("");
+                TPathAplikasiPDF.setEditable(false);
+                BtnPilihAplikasiPDF.setEnabled(false);
+                CmbPilihanAplikasiPDF.setSelectedIndex(3);
+                break;
+            case "disable":
+                TPathAplikasiPDF.setText("");
+                TPathAplikasiPDF.setEditable(false);
+                BtnPilihAplikasiPDF.setEnabled(false);
+                CmbPilihanAplikasiPDF.setSelectedIndex(5);
+                break;
+            default:
+                TPathAplikasiPDF.setText(KOMPILASIBERKASAPLIKASIPDF);
+                TPathAplikasiPDF.setEditable(true);
+                BtnPilihAplikasiPDF.setEnabled(true);
+                CmbPilihanAplikasiPDF.setSelectedIndex(4);
+                break;
         }
+        
+        if (KOMPILASIBERKASGUNAKANTANGGALEXPORT.equalsIgnoreCase("sep")) {
+            CmbPilihanTanggalExport.setSelectedIndex(1);
+        } else {
+            CmbPilihanTanggalExport.setSelectedIndex(0);
+        }
+        
+        TMaxMemory.setText(String.valueOf(KOMPILASIBERKASMAXMEMORY));
     }
 }
