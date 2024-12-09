@@ -33,6 +33,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 
 /**
  *
@@ -614,7 +616,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                                         "],"
                                     )+
                                     "\"intent\" : \"plan\"," +
-                                    "\"description\" : \""+tbObat.getValueAt(i,7).toString()+"\"," +
+                                    "\"description\" : \""+tbObat.getValueAt(i,7).toString().replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"," +
                                     "\"subject\" : {" +
                                         "\"reference\" : \"Patient/"+idpasien+"\"," +
                                         "\"display\" : \""+tbObat.getValueAt(i,4).toString()+"\"" +
@@ -644,6 +646,8 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                                 tbObat.setValueAt(false,i,0);
                             }
                         }
+                    } catch (HttpClientErrorException | HttpServerErrorException e) {
+                        System.out.println("ERROR JSON : " + e.getResponseBodyAsString());
                     }catch(Exception e){
                         System.out.println("Notifikasi Bridging : "+e);
                     }
@@ -710,7 +714,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                                         "],"
                                     )+
                                     "\"intent\" : \"plan\"," +
-                                    "\"description\" : \""+tbObat.getValueAt(i,7).toString()+"\"," +
+                                    "\"description\" : \""+tbObat.getValueAt(i,7).toString().replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"," +
                                     "\"subject\" : {" +
                                         "\"reference\" : \"Patient/"+idpasien+"\"," +
                                         "\"display\" : \""+tbObat.getValueAt(i,4).toString()+"\"" +
@@ -731,6 +735,8 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                         json=api.getRest().exchange(link+"/CarePlan/"+tbObat.getValueAt(i,11).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
                         tbObat.setValueAt(false,i,0);
+                    } catch (HttpClientErrorException | HttpServerErrorException e) {
+                        System.out.println("ERROR JSON : " + e.getResponseBodyAsString());
                     }catch(Exception e){
                         System.out.println("Notifikasi Bridging : "+e);
                     }

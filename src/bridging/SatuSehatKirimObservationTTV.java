@@ -2168,7 +2168,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
                                         "}," +
                                         "\"effectiveDateTime\": \""+tbSuhu.getValueAt(i,13).toString()+"T"+tbSuhu.getValueAt(i,14).toString()+"+07:00\"," +
                                         "\"valueQuantity\": {" +
-                                            "\"value\": "+tbSuhu.getValueAt(i,10).toString().replaceAll(",",".")+"," +
+                                            "\"value\": "+tbSuhu.getValueAt(i,10).toString().replaceAll(",",".").replaceAll("-", "0")+"," +
                                             "\"unit\": \"degree Celsius\"," +
                                             "\"system\": \"http://unitsofmeasure.org\"," +
                                             "\"code\": \"Cel\"" +
