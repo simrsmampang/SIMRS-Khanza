@@ -2,6 +2,8 @@
 /build
 /dist
 /lib
+/setting/database*.xml
+/setting/database*.ini
 **/*.DS_Store
 **/.DS_Store
 **/*.html_files
@@ -17,5 +19,11 @@
 **/*.csv
 **/*.wps
 **/*.log
-!*.sql
+**/*.sql
 **/*.[*]~
+!sik_bridging_lab.sql
+!sik_bridging_radiologi.sql
+!sik_eklaim_icd10.sql
+!sik_modif.sql
+!sik_satu_sehat_referensi.sql
+!sik.sql

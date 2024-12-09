@@ -100,8 +100,8 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         KdAsuransi.setDocument(new batasInput((byte)3).getKata(KdAsuransi));
-        NmAsuransi.setDocument(new batasInput((byte)30).getKata(NmAsuransi));
-        Perusahaan.setDocument(new batasInput((int)60).getKata(Perusahaan));
+        NmAsuransi.setDocument(new batasInput((byte)50).getKata(NmAsuransi));
+        Perusahaan.setDocument(new batasInput((int)100).getKata(Perusahaan));
         Attn.setDocument(new batasInput((int)60).getKata(Attn));
         AlamatAsuransi.setDocument(new batasInput((int)130).getKata(AlamatAsuransi));
         NoTelp.setDocument(new batasInput((byte)40).getKata(NoTelp));
