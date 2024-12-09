@@ -6,6 +6,7 @@
 package fungsi;
 
 
+import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
@@ -16,6 +17,15 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URISyntaxException;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CharsetEncoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,6 +47,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -214,6 +225,61 @@ public final class validasi {
         }
         
         return "";
+    }
+    
+    public void panggilUrlSmc(String app, String url) {
+        if (app == null || app.isBlank()) {
+            panggilUrl2(url);
+        } else if (app.equalsIgnoreCase("disable")) {
+            //
+        } else {
+            String os = System.getProperty("os.name").toLowerCase();
+            String realpath = "";
+            try {
+                if (os.contains("windows")) {
+                    if (app.equalsIgnoreCase("chrome")) {
+                        realpath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+                    } else if (app.equalsIgnoreCase("firefox")) {
+                        realpath = "C:\\Program Files\\Mozilla Firefox\\firefox.exe";
+                    } else if (app.equalsIgnoreCase("msedge")) {
+                        realpath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
+                    } else {
+                        realpath = app;
+                    }
+                    if (realpath.contains(".lnk")) {
+                        ProcessBuilder pb = new ProcessBuilder(new String[]{"cmd", "/c", realpath, url});
+                        pb.start();
+                    } else {
+                        Runtime.getRuntime().exec(realpath + " " + url);
+                    }
+                } else if (os.contains("mac") || os.contains("nix") || os.contains("nux")) {
+                    System.out.println("Notif : Sistem operasi belum disupport, menggunakan proses default...");
+                    panggilUrl2(url);
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : " + e);
+            }
+        }
+    }
+    
+    public void cleanupTextSmc(JTextComponent txt) {
+        try {
+            CharsetEncoder latin1Encoder = Charset.forName("ISO-8859-1").newEncoder();
+            CharsetDecoder latin1Decoder = Charset.forName("ISO-8859-1").newDecoder();
+            latin1Encoder.onMalformedInput(CodingErrorAction.REPLACE);
+            latin1Encoder.onUnmappableCharacter(CodingErrorAction.REPLACE);
+            latin1Encoder.replaceWith(" ".getBytes());
+            
+            ByteBuffer input = latin1Encoder.encode(CharBuffer.wrap(txt.getText()));
+            
+            CharBuffer cb = latin1Decoder.decode(input);
+            txt.setText(cb.toString().trim());
+            
+            latin1Encoder.flush(input);
+            latin1Decoder.flush(cb);
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
     }
     
     public void autoNomer(DefaultTableModel tabMode,String strAwal,Integer pnj,javax.swing.JTextField teks){        

@@ -436,6 +436,8 @@ ALTER TABLE `surat_keterangan_rawat_inap` ADD INDEX IF NOT EXISTS `surat_keteran
 
 ALTER TABLE `suratsakitpihak2` ADD PRIMARY KEY IF NOT EXISTS (`no_surat`) USING BTREE;
 
+ALTER TABLE `suratsakitpihak2` MODIFY COLUMN IF EXISTS `no_surat` varchar(20) NOT NULL FIRST;
+
 ALTER TABLE `suratsakitpihak2` MODIFY COLUMN IF EXISTS `hubungan` enum('Suami','Istri','Anak','Ayah','Ibu','Saudara','Keponakan') NOT NULL AFTER `alamat`;
 
 CREATE TABLE IF NOT EXISTS `tampjurnal_rvpbpjs`  (
