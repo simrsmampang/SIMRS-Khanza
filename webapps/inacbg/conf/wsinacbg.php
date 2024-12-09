@@ -15,7 +15,7 @@
     }
 
     function getUrlWS() {
-        $UrlWS = "https://eklaim.rsml.app/E-Klaim/ws.php";
+        $UrlWS = "http://36.89.103.114:7474/E-Klaim/ws.php";
         return $UrlWS;
     }
     
