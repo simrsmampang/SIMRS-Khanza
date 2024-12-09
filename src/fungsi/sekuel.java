@@ -411,6 +411,40 @@ public final class sekuel {
         
         return date;
     }
+
+    public Blob cariBlobSmc(String sql, String... values) {
+        Blob output = null;
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    output = rs.getBlob(1);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+            output = null;
+        }
+        return output;
+    }
+
+    public ByteArrayInputStream cariGambarSmc(String sql, String... values) {
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new ByteArrayInputStream(rs.getBytes(1));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return null;
+    }
     
     public void menyimpanSmc(String table, String kolom, String... values)
     {

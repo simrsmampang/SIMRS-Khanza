@@ -4126,6 +4126,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
+                param.put("cetakanke", 1);
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReport("rptBridgingSEP.jasper","report","::[ Cetak SEP ]::",param);
                 }else{
@@ -4654,6 +4655,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
+                param.put("cetakanke", 1);
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReport("rptBridgingSEP3.jasper","report","::[ Cetak SEP ]::",param);
                 }else{
@@ -4708,6 +4710,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
+                param.put("cetakanke", 1);
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReport("rptBridgingSEP5.jasper","report","::[ Cetak SEP ]::",param);
                 }else{
@@ -4765,6 +4768,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
+                param.put("cetakanke", 1);
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReport("rptBridgingSEP7.jasper","report","::[ Cetak SEP ]::",param);
                 }else{
@@ -5083,6 +5087,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
+                param.put("cetakanke", 1);
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReportPDF("rptBridgingSEP.jasper","report","::[ Cetak SEP ]::",param);
                 }else{
@@ -5134,6 +5139,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("prb",Sequel.cariIsi("select bpjs_prb.prb from bpjs_prb where bpjs_prb.no_sep=?",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString()));
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
+                param.put("cetakanke", 1);
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReportPDF("rptBridgingSEP3.jasper","report","::[ Cetak SEP ]::",param);
                 }else{
@@ -5187,6 +5193,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
+                param.put("cetakanke", 1);
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReportPDF("rptBridgingSEP5.jasper","report","::[ Cetak SEP ]::",param);
                 }else{
@@ -5244,6 +5251,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select gambar.bpjs from gambar")); 
                 param.put("parameter",tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),0).toString());
+                param.put("cetakanke", 1);
                 if(JenisPelayanan.getSelectedIndex()==0){
                     Valid.MyReportPDF("rptBridgingSEP7.jasper","report","::[ Cetak SEP ]::",param);
                 }else{
@@ -6556,6 +6564,14 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
       
     public void setNoRm3(String norwt, Date tgl1) {
         TCari.setText(norwt);
+        DTPCari1.setDate(tgl1);
+        DTPCari2.setDate(tgl1);
+        TabRawat.setSelectedIndex(1);
+    }
+    
+    public void setNoRm3(String norwt, String norm, Date tgl1) {
+        TCari.setText(norwt);
+        TNoRM.setText(norm);
         DTPCari1.setDate(tgl1);
         DTPCari2.setDate(tgl1);
         TabRawat.setSelectedIndex(1);
