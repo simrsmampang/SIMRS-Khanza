@@ -96,15 +96,14 @@ $jam = date("H:i");
                                 <script>
                                     const synth = window.speechSynthesis;
                                     let voices = [];
-                                    let suaraDipilih = null;
 
-                                    function pilihSuara() {
+                                    synth.addEventListener("voiceschanged", () => {
                                         voices = synth.getVoices().sort(function (a, b) {
                                             const aname = a.name.toUpperCase();
                                             const bname = b.name.toUpperCase();
 
                                             if (aname < bname) {
-                                                return 1;
+                                                return -1;
                                             } else if (aname == bname) {
                                                 return 0;
                                             } else {
@@ -112,30 +111,23 @@ $jam = date("H:i");
                                             }
                                         });
 
+                                        let suaraDipilih = null;
                                         for (let i = 0; i < voices.length; i++) {
-                                            if (voices[i].name.toLowerCase().includes("google")) {
+                                            if (voices[i].name.includes("Google")) {
                                                 if (voices[i].lang.includes("id-ID")) {
                                                     suaraDipilih = voices[i];
-                                                    console.log({suaraDipilih});
-                                                    break;
                                                 }
-                                            } else if (voices[i].name.toLowerCase().includes("microsoft")) {
-                                                if (voices[i].lang.includes("id-ID")) {
+                                            } else if (voices[i].name.includes("Microsoft")) {
+                                                if (voices[i].name.toLowerCase().includes("gadis") && voices[i].lang.includes("id-ID")) {
                                                     suaraDipilih = voices[i];
-                                                    console.log({suaraDipilih});
                                                 }
-                                                continue;
-                                            } else {
-                                                suaraDipilih = voices[i];
                                             }
                                         }
-                                    }
 
-                                    function callPasien() {
                                         let noAntrian = '<?= strtolower(getOne("select concat(reg_periksa.no_reg, ', ', pasien.nm_pasien) from reg_periksa join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis where reg_periksa.no_rawat = '{$data['no_rawat']}'")); ?>'
                                         let poli = '<?= strtolower(getOne("select nm_poli from poliklinik where kd_poli = '{$kd_poli}'")); ?>'
                                         let textAntrian = `Nomor antrian ${noAntrian}, ${poli}`;
-                                        
+
                                         if (synth.speaking) {
                                             console.error("speechSynthesis.speaking");
                                             return;
@@ -154,18 +146,9 @@ $jam = date("H:i");
                                         utterThis.voice = suaraDipilih;
                                         utterThis.pitch = 1.0;
                                         utterThis.rate = 0.9;
+                                        console.log(utterThis);
                                         synth.speak(utterThis);
-                                    }
-
-                                    if (document.readyState !== 'loading') {
-                                        console.log('Document has been ready, calling function...')
-                                        callPasien()
-                                    } else {
-                                        document.addEventListener('DOMContentLoaded', e => {
-                                            pilihSuara();
-                                            callPasien();
-                                        })
-                                    }
+                                    });
                                 </script>
                                 <?php bukaquery2("update antripoli set antripoli.status = '0' where antripoli.kd_poli = '{$kd_poli}' and antripoli.kd_dokter = '{$kd_dokter}'"); ?>
                             <?php endif; ?>
