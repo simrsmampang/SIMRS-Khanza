@@ -103,7 +103,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
         initComponents();
         tabMode = new DefaultTableModel(null, new Object[] {
             "No. Rawat", "No. SEP", "No. RM", "Nama Pasien", "Status",
-            "Tgl. Registrasi", "Tgl. Pulang", "Stts. Pulang", "Ruangan", "DPJP",
+            "Tgl. SEP", "Tgl. Pulang", "Stts. Pulang", "Ruangan", "DPJP",
             "Diagnosa", "Status INACBG", "KirimINACBG"
         }) {
             @Override
