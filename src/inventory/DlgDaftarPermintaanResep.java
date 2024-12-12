@@ -487,6 +487,12 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        WindowJamPenyerahan = new javax.swing.JDialog();
+        internalFrame5 = new widget.InternalFrame();
+        BtnCloseIn4 = new widget.Button();
+        BtnSimpan4 = new widget.Button();
+        jLabel26 = new widget.Label();
+        TglSelesai = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
         panelisi2 = new widget.panelisi();
@@ -559,6 +565,56 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         BtnSEPBPJS = new widget.Button();
         BtnObat23HariBPJS = new widget.Button();
 
+        WindowJamPenyerahan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowJamPenyerahan.setName("WindowJamPenyerahan"); // NOI18N
+        WindowJamPenyerahan.setUndecorated(true);
+        WindowJamPenyerahan.setResizable(false);
+
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Waktu Penyerahan Resep ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setName("internalFrame5"); // NOI18N
+        internalFrame5.setLayout(null);
+
+        BtnCloseIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseIn4.setMnemonic('U');
+        BtnCloseIn4.setText("Tutup");
+        BtnCloseIn4.setToolTipText("Alt+U");
+        BtnCloseIn4.setName("BtnCloseIn4"); // NOI18N
+        BtnCloseIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseIn4ActionPerformed(evt);
+            }
+        });
+        internalFrame5.add(BtnCloseIn4);
+        BtnCloseIn4.setBounds(410, 30, 100, 30);
+
+        BtnSimpan4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan4.setMnemonic('S');
+        BtnSimpan4.setText("Simpan");
+        BtnSimpan4.setToolTipText("Alt+S");
+        BtnSimpan4.setName("BtnSimpan4"); // NOI18N
+        BtnSimpan4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan4ActionPerformed(evt);
+            }
+        });
+        internalFrame5.add(BtnSimpan4);
+        BtnSimpan4.setBounds(305, 30, 100, 30);
+
+        jLabel26.setText("Tanggal & Jam :");
+        jLabel26.setName("jLabel26"); // NOI18N
+        internalFrame5.add(jLabel26);
+        jLabel26.setBounds(6, 32, 100, 23);
+
+        TglSelesai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024 15:07:42" }));
+        TglSelesai.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
+        TglSelesai.setName("TglSelesai"); // NOI18N
+        TglSelesai.setOpaque(false);
+        TglSelesai.setPreferredSize(new java.awt.Dimension(95, 23));
+        internalFrame5.add(TglSelesai);
+        TglSelesai.setBounds(110, 32, 150, 23);
+
+        WindowJamPenyerahan.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -594,7 +650,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel20);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -608,7 +664,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3105,6 +3161,50 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnResepAwalActionPerformed
 
+    private void BtnCloseIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn4ActionPerformed
+        WindowJamPenyerahan.dispose();
+    }//GEN-LAST:event_BtnCloseIn4ActionPerformed
+
+    private void BtnSimpan4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan4ActionPerformed
+        if (TabPilihRawat.getSelectedIndex() == 0) {
+            if (TabRawatJalan.getSelectedIndex() == 0) {
+                if (akses.getberi_obat()) {
+                    if (tabMode.getRowCount() == 0) {
+                        JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!");
+                        WindowJamPenyerahan.dispose();
+                        TCari.requestFocus();
+                    } else if (NoRawat.isBlank()) {
+                        JOptionPane.showMessageDialog(null, "Maaf, silahkan pilih data resep yang mau diserahkan...!!!");
+                    } else {
+                        if (Sequel.mengupdatetfSmc(
+                            "resep_obat", "tgl_penyerahan = ?, jam_penyerahan = ?", "no_resep = ?",
+                            Valid.getTglSmc(TglSelesai), Valid.getWaktuSmc(TglSelesai), NoResep)
+                        ) {
+                            String pilihan = (String) JOptionPane.showInputDialog(null, 
+                                "Waktu selesai obat berhasil disimpan, silahkan pilih aksi selanjutnya..?", "Konfirmasi", 
+                                JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Tidak Ada", "Penyerahan Obat"}, "Tidak Ada");
+                            if (pilihan == null) return;
+                            
+                            switch (pilihan) {
+                                case "Tidak ada":
+                                    WindowJamPenyerahan.dispose();
+                                case "Penyerahan Obat":
+                                    WindowJamPenyerahan.dispose();
+                                    Sequel.menghapusSmc("antriapotek3");
+                                    Sequel.menyimpanSmc("antriapotek3", "", NoResep, "1", NoRawat);
+                                    Sequel.menghapusSmc("bukti_penyerahan_resep_obat", "no_resep = ?", NoResep);
+                            }
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Maaf, anda tidak punya hak akses untuk melakukan penyelesaian obat...!!!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Maaf, silahkan masuk ke tab rawat jalan dahulu...!!!");
+            }
+        }
+    }//GEN-LAST:event_BtnSimpan4ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3124,6 +3224,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
+    private widget.Button BtnCloseIn4;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnInformasiObat;
@@ -3143,6 +3244,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnSeek4;
     private widget.Button BtnSeek5;
     private widget.Button BtnSeek6;
+    private widget.Button BtnSimpan4;
     private widget.Button BtnTambah;
     private widget.CekBox ChkAccor;
     private widget.TextBox CrDokter;
@@ -3159,10 +3261,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private javax.swing.JTabbedPane TabPilihRawat;
     private javax.swing.JTabbedPane TabRawatInap;
     private javax.swing.JTabbedPane TabRawatJalan;
+    private widget.Tanggal TglSelesai;
+    private javax.swing.JDialog WindowJamPenyerahan;
     private widget.ComboBox cmbStatus;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
+    private widget.InternalFrame internalFrame5;
     private widget.Label jLabel12;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
@@ -3170,6 +3275,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label jLabel17;
     private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel26;
     private javax.swing.JPanel jPanel2;
     private widget.Label label10;
     private widget.Label label9;
