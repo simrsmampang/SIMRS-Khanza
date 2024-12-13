@@ -39,7 +39,7 @@ import simrskhanza.DlgInputResepPulang;
 
 public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6,tabMode7,tabMode8;
-    private final String templateWA = "Kepada %s\n%s %s\nResep obat anda telah selesai. " +
+    private final String templateWA = "Kepada %s\nPasien %s %s\nResep obat anda telah selesai. " +
                                       "Harap segera mengambil obat anda di loket Instalasi Farmasi Rawat Jalan." +
                                       "\n\nTerima kasih, semoga lekas sembuh.";
     private sekuel Sequel=new sekuel();
