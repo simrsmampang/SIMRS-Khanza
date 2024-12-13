@@ -7,65 +7,70 @@ package bridging;
 import AESsecurity.EnkripsiAES;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author USER
  */
 public final class KoneksiDBWA {
-    private Connection koneksi = null;
-    private final Properties prop = new Properties();
-    private final MysqlDataSource ds = new MysqlDataSource();
+    private static Connection koneksi = null;
+    private static final Properties prop = new Properties();
+    private static final MysqlDataSource ds = new MysqlDataSource();
     
     private KoneksiDBWA() {}
     
-    public Connection condb() throws SQLException {
-        try (FileInputStream fs = new FileInputStream("setting/database.xml")) {
-            prop.loadFromXML(fs);
-            String HOST = EnkripsiAES.decrypt(prop.getProperty("WAHOST")),
-                   PORT = EnkripsiAES.decrypt(prop.getProperty("WAPORT")),
-                   NAME = EnkripsiAES.decrypt(prop.getProperty("WADATABASE")),
-                   USER = EnkripsiAES.decrypt(prop.getProperty("WAUSER")),
-                   PASS = EnkripsiAES.decrypt(prop.getProperty("WAPASS"));
-            
-            ds.setURL(String.format("jdbc:mysql://%s:%s/%s?zeroDateTimeBehavior=convertToNull&useCompression=true", HOST, PORT, NAME));
-            ds.setUser(USER);
-            ds.setPassword(PASS);
-            koneksi = ds.getConnection();
-            return koneksi;
-        } catch (SQLException e) {
-            throw e;
-        } catch (Exception e) {
-            System.out.println("Notif : " + e);
+    public static Connection condb() {
+        if (koneksi == null) {
+            try {
+                prop.loadFromXML(new FileInputStream("setting/database.xml"));
+                ds.setURL("jdbc:mysql://" + EnkripsiAES.decrypt(prop.getProperty("WAHOST")) + ":" + EnkripsiAES.decrypt(prop.getProperty("WAPORT")) + "/" + EnkripsiAES.decrypt(prop.getProperty("WANAME")) + "?autoReconnect=true&zeroDateTimeBehavior=convertToNull&useCompression=true");
+                ds.setUser(EnkripsiAES.decrypt(prop.getProperty("WAUSER")));
+                ds.setPassword(EnkripsiAES.decrypt(prop.getProperty("WAPASS")));
+                koneksi = ds.getConnection();
+            } catch (Exception e) {
+                System.out.println("Notif : " + e);
+                try {
+                    if (koneksi.isClosed()) {
+                        prop.loadFromXML(new FileInputStream("setting/database.xml"));
+                        ds.setURL("jdbc:mysql://" + EnkripsiAES.decrypt(prop.getProperty("WAHOST")) + ":" + EnkripsiAES.decrypt(prop.getProperty("WAPORT")) + "/" + EnkripsiAES.decrypt(prop.getProperty("WANAME")) + "?autoReconnect=true&zeroDateTimeBehavior=convertToNull&useCompression=true");
+                        ds.setUser(EnkripsiAES.decrypt(prop.getProperty("WAUSER")));
+                        ds.setPassword(EnkripsiAES.decrypt(prop.getProperty("WAPASS")));
+                        
+                        koneksi = ds.getConnection();
+                    }
+                } catch (Exception ex) {
+                    System.out.println("Notif : " + ex);
+                }
+            }
         }
-        return null;
+        return koneksi;
     }
     
-    public boolean kirimPesanWA(String nomor, String pesan, Date tanggal, String asal) {
-        try (PreparedStatement ps = koneksi.prepareStatement(
-            "insert into wa_gateway (NOWA, PESAN, TANGGAL_JAM, STATUS, SOURCE, SENDER, TYPE) values (?, ?, ?, ?, ?, ?, ?)"
+    public static boolean kirimPesanWA(String nomor, String pesan, String tanggal, String asal) {
+        try (PreparedStatement ps = condb().prepareStatement(
+            "insert into wa_outbox (NOWA, PESAN, TANGGAL_JAM, STATUS, SOURCE, SENDER, TYPE) values (?, ?, date_add(?, interval ? second), 'ANTRIAN', ?, 'NODEJS', 'TEXT')"
         )) {
             ps.setString(1, nomor);
             ps.setString(2, pesan);
-            ps.setTimestamp(3, (Timestamp) tanggal);
-            ps.setString(4, "ANTRIAN");
+            ps.setString(3, tanggal);
+            ps.setInt(4, new Random().nextInt(360) + 15);
             ps.setString(5, asal);
-            ps.setString(6, "NODEJS");
-            ps.setString(7, "TEXT");
             
             ps.executeUpdate();
+            System.out.println(ps.toString());
             return true;
         } catch (Exception e) {
             System.out.println("Notif : " + e);
         }
         return false;
     }
-    
-    public boolean kirimUlangPesanWA(String nomor, )
 }

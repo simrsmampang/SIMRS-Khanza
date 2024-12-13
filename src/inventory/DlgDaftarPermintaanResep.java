@@ -1,5 +1,6 @@
 package inventory;
 import bridging.BPJSDataSEP;
+import bridging.KoneksiDBWA;
 import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -38,6 +39,9 @@ import simrskhanza.DlgInputResepPulang;
 
 public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6,tabMode7,tabMode8;
+    private final String templateWA = "Kepada %s\n%s %s\nResep obat anda telah selesai. " +
+                                      "Harap segera mengambil obat anda di loket Instalasi Farmasi Rawat Jalan." +
+                                      "\n\nTerima kasih, semoga lekas sembuh.";
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -605,7 +609,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TglSelesai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024 15:07:42" }));
+        TglSelesai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024 09:24:57" }));
         TglSelesai.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglSelesai.setName("TglSelesai"); // NOI18N
         TglSelesai.setOpaque(false);
@@ -650,7 +654,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel20);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -664,7 +668,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2260,9 +2264,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else if(NoRawat.equals("")){
                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau diserahkan..!!");
                     }else{
-                        Sequel.queryu("delete from antriapotek3");
-                        Sequel.queryu("insert into antriapotek3 values('"+NoResep+"','1','"+NoRawat+"')");
-                        Sequel.queryu("delete from bukti_penyerahan_resep_obat where no_resep='"+NoResep+"'");
+                        WindowJamPenyerahan.setSize(542, 88);
+                        WindowJamPenyerahan.setLocationRelativeTo(internalFrame1);
+                        TglSelesai.setDate(new Date());
+                        WindowJamPenyerahan.setVisible(true);
                     }
                 }else{
                     JOptionPane.showMessageDialog(null,"Maaf, Anda tidak punya hak akses untuk mengvalidasi...!!!!");
@@ -3182,17 +3187,26 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ) {
                             String pilihan = (String) JOptionPane.showInputDialog(null, 
                                 "Waktu selesai obat berhasil disimpan, silahkan pilih aksi selanjutnya..?", "Konfirmasi", 
-                                JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Tidak Ada", "Penyerahan Obat"}, "Tidak Ada");
+                                JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Kirim Pesan WA", "Penyerahan Obat"}, "Kirim Pesan WA");
                             if (pilihan == null) return;
                             
                             switch (pilihan) {
-                                case "Tidak ada":
-                                    WindowJamPenyerahan.dispose();
+                                case "Kirim Pesan WA":
+                                    if (KoneksiDBWA.kirimPesanWA(
+                                        "6285250456976-1483399601@g.us",
+                                        String.format(templateWA, Pasien, Ruang, DokterPeresep),
+                                        Valid.getTglJamSmc(TglSelesai), "Farmasi"
+                                    )) {
+                                        JOptionPane.showMessageDialog(null, "Kirim WA selesai!");
+                                        WindowJamPenyerahan.dispose();
+                                    }
+                                    break;
                                 case "Penyerahan Obat":
                                     WindowJamPenyerahan.dispose();
                                     Sequel.menghapusSmc("antriapotek3");
                                     Sequel.menyimpanSmc("antriapotek3", "", NoResep, "1", NoRawat);
                                     Sequel.menghapusSmc("bukti_penyerahan_resep_obat", "no_resep = ?", NoResep);
+                                    break;
                             }
                         }
                     }
