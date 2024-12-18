@@ -3190,7 +3190,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ) {
                             String pilihan = (String) JOptionPane.showInputDialog(null, 
                                 "Waktu selesai obat berhasil disimpan, silahkan pilih aksi selanjutnya..?", "Konfirmasi", 
-                                JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Tidak ada", "Kirim Pesan WA"}, "Kirim Pesan WA");
+                                JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Tidak ada", "Kirim Pesan WA"}, "Tidak ada");
                             
                             if (pilihan == null || pilihan.equals("Tidak ada")) {
                                 WindowJamPenyerahan.dispose();

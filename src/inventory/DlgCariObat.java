@@ -63,8 +63,8 @@ import widget.Button;
 public final class DlgCariObat extends javax.swing.JDialog {
     private final DefaultTableModel tabModeobat,tabModeObatRacikan,tabModeDetailObatRacikan;
     private final String templateValidasiWA = "Kepada %s\nPasien %s %s %s" +
-                                              "\n*RESEP OBAT TELAH MASUK ANTRIAN PENGERJAAN %s* di Instalasi Farmasi Rawat Jalan. " +
-                                              "\nMohon untuk *MENUNGGU*. Estimasi pengerjaan Resep %s. Kami akan mengirimkan pesan apabila resep anda telah selesai." +
+                                              "\n*RESEP OBAT SEDANG DALAMA PROSES PENGERJAAN %s* di Instalasi Farmasi Rawat Jalan. " +
+                                              "\nMohon untuk *MENUNGGU*. Estimasi pengerjaan resep *%s*. Kami akan mengirimkan pesan apabila resep anda telah selesai." +
                                               "\n\nTerima kasih, semoga lekas sembuh.";
     private final DlgKirimWA kirimWA = new DlgKirimWA(null, false);
     private sekuel Sequel=new sekuel();
@@ -1770,25 +1770,27 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ChkJln.setSelected(true);
                     
                     if(sukses==true){
-                        String pilihan = (String) JOptionPane.showInputDialog(null, 
-                            "Validasi obat selesai, silahkan pilih aksi selanjutnya..?", "Konfirmasi", 
-                            JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Tidak ada", "Kirim Pesan WA"}, "Tidak ada");
-                        
-                        if (pilihan != null && pilihan.equals("Kirim Pesan WA")) {
-                            kirimWA.setSize(514, 350);
-                            kirimWA.setLocationRelativeTo(internalFrame1);
-                            
-                            kirimWA.setRM(TNoRM.getText(), TPasien.getText(), Sequel.cariIsiSmc("select pasien.no_tlp from pasien where pasien.no_rkm_medis = ?", TNoRM.getText()),
-                                String.format(templateValidasiWA, TPasien.getText(), 
-                                    Sequel.cariIsiSmc("select poliklinik.nm_poli from reg_periksa join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli where reg_periksa.no_rawat = ?", TNoRw.getText()),
-                                    noresep.isBlank()
-                                        ? Sequel.cariIsiSmc("select dokter.nm_dokter from reg_periksa.join dokter on reg_periksa.kd_dokter = dokter.kd_dokter where reg_periksa.no_rawat = ?", TNoRw.getText())
-                                        : Sequel.cariIsiSmc("select dokter.nm_dokter from resep_obat join dokter on resep_obat.kd_dokter = dokter.kd_dokter where resep_obat.no_resep = ?", noresep),
-                                    akses.getnamars(),
-                                    adaRacikan ? "OBAT RACIKAN" : "OBAT",
-                                    adaRacikan ? "60 MENIT" : "30 MENIT"
-                            ), "FARMASI");
-                            kirimWA.setVisible(true);
+                        if (!noresep.isBlank()) {
+                            String pilihan = (String) JOptionPane.showInputDialog(null, 
+                                "Validasi obat selesai, silahkan pilih aksi selanjutnya..?", "Konfirmasi", 
+                                JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Tidak ada", "Kirim Pesan WA"}, "Tidak ada");
+
+                            if (pilihan != null && pilihan.equals("Kirim Pesan WA")) {
+                                kirimWA.setSize(514, 350);
+                                kirimWA.setLocationRelativeTo(internalFrame1);
+
+                                kirimWA.setRM(TNoRM.getText(), TPasien.getText(), Sequel.cariIsiSmc("select pasien.no_tlp from pasien where pasien.no_rkm_medis = ?", TNoRM.getText()),
+                                    String.format(templateValidasiWA, TPasien.getText(), 
+                                        Sequel.cariIsiSmc("select poliklinik.nm_poli from reg_periksa join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli where reg_periksa.no_rawat = ?", TNoRw.getText()),
+                                        noresep.isBlank()
+                                            ? Sequel.cariIsiSmc("select dokter.nm_dokter from reg_periksa.join dokter on reg_periksa.kd_dokter = dokter.kd_dokter where reg_periksa.no_rawat = ?", TNoRw.getText())
+                                            : Sequel.cariIsiSmc("select dokter.nm_dokter from resep_obat join dokter on resep_obat.kd_dokter = dokter.kd_dokter where resep_obat.no_resep = ?", noresep),
+                                        akses.getnamars(),
+                                        adaRacikan ? "RACIKAN" : "NON RACIKAN",
+                                        adaRacikan ? "60 MENIT" : "30 MENIT"
+                                ), "FARMASI");
+                                kirimWA.setVisible(true);
+                            }
                         }
                         
                         if(ChkNoResep.isSelected()==true){
