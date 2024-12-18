@@ -1,6 +1,6 @@
 package inventory;
 import bridging.BPJSDataSEP;
-import bridging.KoneksiDBWA;
+import support.kirimwa.KoneksiDBWA;
 import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -36,12 +36,15 @@ import rekammedis.RMRiwayatPerawatan;
 import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgInputResepPulang;
+import support.kirimwa.DlgKirimWA;
 
 public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6,tabMode7,tabMode8;
-    private final String templateWA = "Kepada %s\nPasien %s %s\nResep obat anda telah selesai. " +
-                                      "Harap segera mengambil obat anda di loket Instalasi Farmasi Rawat Jalan." +
+    private final String templatePenyerahanWA = "Kepada %s\nPasien %s %s %s" +
+                                      "\n*RESEP OBAT ANDA TELAH SELESAI*. Harap segera mengambil obat anda di loket Instalasi Farmasi Rawat Jalan." +
+                                      "\n*Jika obat ditinggal, pengambilan obat dapat dilakukan pada hari kerja mulai jam 08:00 - 10:00 WITA dan 15:00 - 17:00 WITA*." +
                                       "\n\nTerima kasih, semoga lekas sembuh.";
+    private final DlgKirimWA kirimWA = new DlgKirimWA(null, false);
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -609,7 +612,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TglSelesai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024 09:24:57" }));
+        TglSelesai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2024 10:13:52" }));
         TglSelesai.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglSelesai.setName("TglSelesai"); // NOI18N
         TglSelesai.setOpaque(false);
@@ -654,7 +657,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel20);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -668,7 +671,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3187,26 +3190,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ) {
                             String pilihan = (String) JOptionPane.showInputDialog(null, 
                                 "Waktu selesai obat berhasil disimpan, silahkan pilih aksi selanjutnya..?", "Konfirmasi", 
-                                JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Kirim Pesan WA", "Penyerahan Obat"}, "Kirim Pesan WA");
-                            if (pilihan == null) return;
+                                JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Tidak ada", "Kirim Pesan WA"}, "Kirim Pesan WA");
                             
-                            switch (pilihan) {
-                                case "Kirim Pesan WA":
-                                    if (KoneksiDBWA.kirimPesanWA(
-                                        "6285250456976-1483399601@g.us",
-                                        String.format(templateWA, Pasien, Ruang, DokterPeresep),
-                                        Valid.getTglJamSmc(TglSelesai), "Farmasi"
-                                    )) {
-                                        JOptionPane.showMessageDialog(null, "Kirim WA selesai!");
+                            if (pilihan == null || pilihan.equals("Tidak ada")) {
+                                WindowJamPenyerahan.dispose();
+                                Sequel.menghapusSmc("antriapotek3");
+                                Sequel.menyimpanSmc("antriapotek3", "", NoResep, "1", NoRawat);
+                                Sequel.menghapusSmc("bukti_penyerahan_resep_obat", "no_resep = ?", NoResep);
+                            } else {
+                                switch (pilihan) {
+                                    case "Kirim Pesan WA":
+                                        kirimWA.setSize(514, 350);
+                                        kirimWA.setLocationRelativeTo(internalFrame1);
+                                        kirimWA.setRM(NoRM, Pasien, Sequel.cariIsiSmc("select pasien.no_tlp from pasien where pasien.no_rkm_medis = ?", NoRM),
+                                            String.format(templatePenyerahanWA, Pasien, Ruang, DokterPeresep, akses.getnamars()), "FARMASI");
+                                        kirimWA.setVisible(true);
                                         WindowJamPenyerahan.dispose();
-                                    }
-                                    break;
-                                case "Penyerahan Obat":
-                                    WindowJamPenyerahan.dispose();
-                                    Sequel.menghapusSmc("antriapotek3");
-                                    Sequel.menyimpanSmc("antriapotek3", "", NoResep, "1", NoRawat);
-                                    Sequel.menghapusSmc("bukti_penyerahan_resep_obat", "no_resep = ?", NoResep);
-                                    break;
+                                        break;
+                                }
                             }
                         }
                     }

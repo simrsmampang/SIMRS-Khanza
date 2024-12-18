@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package bridging;
+package support.kirimwa;
 
 import AESsecurity.EnkripsiAES;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
@@ -59,15 +59,19 @@ public final class KoneksiDBWA {
         try (PreparedStatement ps = condb().prepareStatement(
             "insert into wa_outbox (NOWA, PESAN, TANGGAL_JAM, STATUS, SOURCE, SENDER, TYPE) values (?, ?, date_add(?, interval ? second), 'ANTRIAN', ?, 'NODEJS', 'TEXT')"
         )) {
+            
+            if (nomor.startsWith("0")) {
+                nomor = "62" + nomor.substring(1, nomor.length()) + "@c.us";
+            } else if (nomor.startsWith("+")) {
+                nomor = nomor.substring(1, nomor.length()) + "@c.us";
+            }
+
             ps.setString(1, nomor);
             ps.setString(2, pesan);
             ps.setString(3, tanggal);
-            ps.setInt(4, new Random().nextInt(360) + 15);
+            ps.setInt(4, new Random().nextInt(120) + 15);
             ps.setString(5, asal);
-            
-            ps.executeUpdate();
-            System.out.println(ps.toString());
-            return true;
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             System.out.println("Notif : " + e);
         }
