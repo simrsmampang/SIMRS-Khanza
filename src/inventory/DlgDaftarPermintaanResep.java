@@ -40,10 +40,6 @@ import support.kirimwa.DlgKirimWA;
 
 public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6,tabMode7,tabMode8;
-    private final String templatePenyerahanWA = "Kepada %s\nPasien %s %s %s" +
-                                      "\n*RESEP OBAT ANDA TELAH SELESAI*. Harap segera mengambil obat anda di loket Instalasi Farmasi Rawat Jalan." +
-                                      "\n*Jika obat ditinggal, pengambilan obat dapat dilakukan pada hari kerja mulai jam 08:00 - 10:00 WITA dan 15:00 - 17:00 WITA*." +
-                                      "\n\nTerima kasih, semoga lekas sembuh.";
     private final DlgKirimWA kirimWA = new DlgKirimWA(null, false);
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -571,6 +567,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         BtnInformasiObat = new widget.Button();
         BtnSEPBPJS = new widget.Button();
         BtnObat23HariBPJS = new widget.Button();
+        BtnKirimWAPengerjaan = new widget.Button();
+        BtnKirimWASelesai = new widget.Button();
 
         WindowJamPenyerahan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowJamPenyerahan.setName("WindowJamPenyerahan"); // NOI18N
@@ -612,7 +610,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TglSelesai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2024 10:13:52" }));
+        TglSelesai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2024 11:03:57" }));
         TglSelesai.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglSelesai.setName("TglSelesai"); // NOI18N
         TglSelesai.setOpaque(false);
@@ -657,7 +655,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel20);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -671,7 +669,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1418,6 +1416,40 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnObat23HariBPJS);
+
+        BtnKirimWAPengerjaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnKirimWAPengerjaan.setText("Kirim WA Pengerjaan");
+        BtnKirimWAPengerjaan.setFocusPainted(false);
+        BtnKirimWAPengerjaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnKirimWAPengerjaan.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnKirimWAPengerjaan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnKirimWAPengerjaan.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnKirimWAPengerjaan.setName("BtnKirimWAPengerjaan"); // NOI18N
+        BtnKirimWAPengerjaan.setPreferredSize(new java.awt.Dimension(135, 23));
+        BtnKirimWAPengerjaan.setRoundRect(false);
+        BtnKirimWAPengerjaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKirimWAPengerjaanActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnKirimWAPengerjaan);
+
+        BtnKirimWASelesai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnKirimWASelesai.setText("Kirim WA Selesai");
+        BtnKirimWASelesai.setFocusPainted(false);
+        BtnKirimWASelesai.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnKirimWASelesai.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnKirimWASelesai.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnKirimWASelesai.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnKirimWASelesai.setName("BtnKirimWASelesai"); // NOI18N
+        BtnKirimWASelesai.setPreferredSize(new java.awt.Dimension(135, 23));
+        BtnKirimWASelesai.setRoundRect(false);
+        BtnKirimWASelesai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKirimWASelesaiActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnKirimWASelesai);
 
         ScrollMenu.setViewportView(FormMenu);
 
@@ -3200,12 +3232,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             } else {
                                 switch (pilihan) {
                                     case "Kirim Pesan WA":
-                                        kirimWA.setSize(514, 350);
-                                        kirimWA.setLocationRelativeTo(internalFrame1);
-                                        kirimWA.setRM(NoRM, Pasien, Sequel.cariIsiSmc("select pasien.no_tlp from pasien where pasien.no_rkm_medis = ?", NoRM),
-                                            String.format(templatePenyerahanWA, Pasien, Ruang, DokterPeresep, akses.getnamars()), "FARMASI");
-                                        kirimWA.setVisible(true);
-                                        WindowJamPenyerahan.dispose();
+                                        kirimWASelesai();
                                         break;
                                 }
                             }
@@ -3219,6 +3246,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
         }
     }//GEN-LAST:event_BtnSimpan4ActionPerformed
+
+    private void BtnKirimWAPengerjaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimWAPengerjaanActionPerformed
+        kirimWAPengerjaan();
+    }//GEN-LAST:event_BtnKirimWAPengerjaanActionPerformed
+
+    private void BtnKirimWASelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKirimWASelesaiActionPerformed
+        kirimWASelesai();
+    }//GEN-LAST:event_BtnKirimWASelesaiActionPerformed
 
     /**
     * @param args the command line arguments
@@ -3244,6 +3279,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnHapus;
     private widget.Button BtnInformasiObat;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKirimWAPengerjaan;
+    private widget.Button BtnKirimWASelesai;
     private widget.Button BtnKonselingFarmasi;
     private widget.Button BtnObat23HariBPJS;
     private widget.Button BtnPemberianObat;
@@ -5306,5 +5343,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             FormMenu.setVisible(false);    
             ChkAccor.setVisible(true);
         }
+    }
+    
+    private void kirimWAPengerjaan() {
+        String templateValidasiWA = "Kepada %s\nPasien %s %s %s" +
+                                    "\n*RESEP OBAT SEDANG DALAMA PROSES PENGERJAAN %s* di Instalasi Farmasi Rawat Jalan. " +
+                                    "\nMohon untuk *MENUNGGU*. Estimasi pengerjaan resep *%s*. Kami akan mengirimkan pesan apabila resep anda telah selesai." +
+                                    "\n\nTerima kasih, semoga lekas sembuh.";
+        
+        boolean adaRacikan = Sequel.cariBooleanSmc("select * from resep_dokter_racikan where resep_dokter_racikan.no_resep = ?", NoResep);
+        kirimWA.setSize(514, 350);
+        kirimWA.setLocationRelativeTo(internalFrame1);
+        kirimWA.setRM(NoRM, Pasien, Sequel.cariIsiSmc("select pasien.no_tlp from pasien where pasien.no_rkm_medis = ?", NoRM),
+            String.format(templateValidasiWA, Pasien, Ruang, DokterPeresep, akses.getnamars(), 
+                adaRacikan ? "RACIKAN" : "NON RACIKAN",
+                adaRacikan ? "60 MENIT" : "30 MENIT"
+        ), "FARMASI");
+        kirimWA.setVisible(true);
+    }
+    
+    private void kirimWASelesai() {
+        String templatePenyerahanWA = "Kepada %s\nPasien %s %s %s" +
+                                      "\n*RESEP OBAT ANDA TELAH SELESAI*. Harap segera mengambil obat anda di loket Instalasi Farmasi Rawat Jalan." +
+                                      "\n*Jika obat ditinggal, pengambilan obat dapat dilakukan pada hari kerja mulai jam 08:00 - 10:00 WITA dan 15:00 - 17:00 WITA*." +
+                                      "\n\nTerima kasih, semoga lekas sembuh.";
+        
+        kirimWA.setSize(514, 350);
+        kirimWA.setLocationRelativeTo(internalFrame1);
+        kirimWA.setRM(NoRM, Pasien, Sequel.cariIsiSmc("select pasien.no_tlp from pasien where pasien.no_rkm_medis = ?", NoRM),
+            String.format(templatePenyerahanWA, Pasien, Ruang, DokterPeresep, akses.getnamars()), "FARMASI");
+        kirimWA.setVisible(true);
     }
 }

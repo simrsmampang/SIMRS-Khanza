@@ -7,15 +7,10 @@ package support.kirimwa;
 import AESsecurity.EnkripsiAES;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
-import javax.swing.JOptionPane;
 
 /**
  *
