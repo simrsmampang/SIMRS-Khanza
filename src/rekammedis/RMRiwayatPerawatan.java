@@ -28,7 +28,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -86,23 +85,26 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import org.apache.commons.io.FileUtils;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.http.converter.ByteArrayHttpMessageConverter;
-import org.springframework.http.converter.ResourceHttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.core.io.Resource;
 import org.springframework.web.client.RestTemplate;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.nio.file.Files;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
+import org.springframework.http.converter.ResourceHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 /**
  *
@@ -141,6 +143,8 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private SecretKeySpec secretKey;
     private Scheme scheme;
     private HttpComponentsClientHttpRequestFactory factory;
+    private RestTemplate restTemplate;
+    private MappingJackson2HttpMessageConverter converter;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -416,6 +420,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanTerapiWicara = new widget.CekBox();
         chkPenatalaksanaanTerapiOkupasi = new widget.CekBox();
         chkAsuhanPsikolog = new widget.CekBox();
+        chkAsuhanPsikologiKlinis = new widget.CekBox();
         chkAsuhanKeperawatanRanap = new widget.CekBox();
         chkAsuhanKeperawatanRanapKandungan = new widget.CekBox();
         chkAsuhanKeperawatanRanapNeonatus = new widget.CekBox();
@@ -920,7 +925,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3635));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3660));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1041,12 +1046,20 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.add(chkPenatalaksanaanTerapiOkupasi);
 
         chkAsuhanPsikolog.setSelected(true);
-        chkAsuhanPsikolog.setText("Penilaian Psikolog");
+        chkAsuhanPsikolog.setText("Penilaian Psikologi");
         chkAsuhanPsikolog.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkAsuhanPsikolog.setName("chkAsuhanPsikolog"); // NOI18N
         chkAsuhanPsikolog.setOpaque(false);
         chkAsuhanPsikolog.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanPsikolog);
+
+        chkAsuhanPsikologiKlinis.setSelected(true);
+        chkAsuhanPsikologiKlinis.setText("Penilaian Psikologi Klinis");
+        chkAsuhanPsikologiKlinis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanPsikologiKlinis.setName("chkAsuhanPsikologiKlinis"); // NOI18N
+        chkAsuhanPsikologiKlinis.setOpaque(false);
+        chkAsuhanPsikologiKlinis.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanPsikologiKlinis);
 
         chkAsuhanKeperawatanRanap.setSelected(true);
         chkAsuhanKeperawatanRanap.setText("Awal Keperawatan Ranap Umum");
@@ -2788,6 +2801,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningInstrumenSRQ.setSelected(true);
             chkChecklistPemberianFibrinolitik.setSelected(true);
             chkSkriningKankerKolorektal.setSelected(true);
+            chkAsuhanPsikologiKlinis.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2946,6 +2960,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningInstrumenSRQ.setSelected(false);
             chkChecklistPemberianFibrinolitik.setSelected(false);
             chkSkriningKankerKolorektal.setSelected(false);
+            chkAsuhanPsikologiKlinis.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3219,52 +3234,81 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     );
                                     System.out.println("Membuat ulang File RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf untuk dikirim ke server");
                                     File f = new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");   
-                                    sftpChannel.put("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf","RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                    try {
+                                    /*try {
                                         authStr = koneksiDB.USERNAMEAPIESIGN()+":"+koneksiDB.PASSAPIESIGN();
+                                        base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
+                                        headers = new HttpHeaders();
+                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                        headers.add("Authorization", "Basic " + base64Creds);
+                                        requestJson="{"+
+                                                        "\"nik\":\""+Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode())+"\"," +
+                                                        "\"passphrase\":\""+Phrase.getText()+"\"," +
+                                                        "\"signatureProperties\": [{" +
+                                                            "\"tampilan\": \"VISIBLE\"," +
+                                                            "\"tag_koordinat\": \"#\"," +
+                                                            "\"imageBase64\": \""+Base64.getEncoder().encodeToString(Sequel.cariGambar("select setting.logo from setting").readAllBytes())+"\"," +
+                                                            "\"width\": 90," +
+                                                            "\"height\": 90" +
+                                                        "}],"+
+                                                        "\"file\":\""+Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(f))+"\"" +
+                                                    "}";
+                                        System.out.println("JSON : "+requestJson);
+                                        requestEntity = new HttpEntity(requestJson,headers);
+                                        System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
+                                        requestJson = getRest().exchange(koneksiDB.URLAPIESIGN(), HttpMethod.POST, requestEntity, String.class).getBody();
+                                        System.out.println("JSON : "+requestJson);
+                                    }catch (Exception ex) {
+                                        //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
+                                        System.out.println("Notifikasi Bridging : "+ex);
+                                    }*/
+                                    try {
+                                        authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         headers = new HttpHeaders();
                                         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
                                         headers.add("Authorization", "Basic " + base64Creds);
-                                        map= new LinkedMultiValueMap<>();
-                                        /*try (FileInputStream imageInFile = new FileInputStream(f)) {
-                                            byte fileData[] = new byte[(int) f.length()];
-                                            imageInFile.read(fileData);
-                                            file=Base64.getEncoder().encodeToString(fileData);
-                                        } catch (FileNotFoundException e) {
-                                            System.out.println("File tidak ketemu : " + e);
-                                        } catch (IOException ioe) {
-                                            System.out.println("Error " + ioe);
-                                        }*/
-                                        //FileSystemResource resource = new FileSystemResource(f.getAbsoluteFile());
-                                        map.add("file",koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        map.add("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode()));
-                                        map.add("passphrase",Phrase.getText());
-                                        map.add("tampilan","visible");
-                                        map.add("image","false");
-                                        map.add("linkQR",koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        map.add("width","90");
-                                        map.add("height","90");
-                                        map.add("tag_koordinat","#");
-                                        requestEntity = new HttpEntity<>(map, headers);
-                                        System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
-                                        System.out.println("linkQR : "+koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        RestTemplate rest=getRest();
-                                        rest.getMessageConverters().add(new ByteArrayHttpMessageConverter());
-                                        rest.getMessageConverters().add(new StringHttpMessageConverter());
-                                        rest.getMessageConverters().add(new ResourceHttpMessageConverter());
-                                        ResponseEntity<byte[]> respon;
-                                        respon=rest.exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST,requestEntity,byte[].class);
-                                        if (respon.getStatusCode().equals(HttpStatus.OK)) {
 
-                                        }
-                                        //ResponseEntity<byte[]> result = getRest().exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST, requestEntity, byte[].class);
-                                        //f.delete();
-                                        //FileOutputStream fileOutputStream = new FileOutputStream("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        //org.apache.commons.io.IOUtils.write(result.getBody(), fileOutputStream);
-                                    }catch (Exception ex) {
-                                        //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        System.out.println("Notifikasi Bridging : "+ex);
+                                        byte[] fileBytes = Files.readAllBytes(f.toPath());
+                                        ByteArrayResource fileAsResource = new ByteArrayResource(fileBytes) {
+                                            @Override
+                                            public String getFilename() {
+                                                return f.getName();
+                                            }
+                                        };
+
+                                        System.out.println("Resource class: " + fileAsResource.getClass().getName());
+                                        
+                                        map = new LinkedMultiValueMap<>();
+                                        map.add("file", fileAsResource);
+                                        map.add("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()));
+                                        map.add("passphrase", Phrase.getText());
+                                        map.add("tampilan", "visible");
+                                        map.add("image", "false");
+                                        map.add("linkQR", koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf");
+                                        map.add("width", "90");
+                                        map.add("height", "90");
+                                        map.add("tag_koordinat", "#");
+
+                                        requestEntity = new HttpEntity<>(map, headers);
+
+                                        System.out.println("URL E-Sign : " + koneksiDB.URLAPIESIGN());
+                                        System.out.println("linkQR : " + koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf");
+
+                                        //json = mapper.readTree(getRest().postForEntity(koneksiDB.URLAPIESIGN(), requestEntity, String.class).getBody()).toString();
+                                        ResponseEntity<Resource> response = getRest().exchange(
+                                            koneksiDB.URLAPIESIGN(),HttpMethod.POST,requestEntity,Resource.class
+                                        );
+                                        try (InputStream inputStream = response.getBody().getInputStream();
+                                            FileOutputStream outputStream = new FileOutputStream("downloadedFile.pdf")) {
+                                            byte[] buffer = new byte[1024];
+                                            int bytesRead;
+                                            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                                               outputStream.write(buffer, 0, bytesRead);
+                                            }
+                                            System.out.println("File downloaded successfully.");
+                                       }
+                                    } catch (Exception ex) {
+                                        System.out.println("Notifikasi Bridging : " + ex);
                                     }
                                 }
                             }
@@ -3367,52 +3411,82 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     );
                                     System.out.println("Membuat File RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf untuk dikirim ke server");
                                     File f = new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");   
-                                    sftpChannel.put("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf","RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                    try {
+                                    //sftpChannel.put("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf","RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
+                                    /*try {
                                         authStr = koneksiDB.USERNAMEAPIESIGN()+":"+koneksiDB.PASSAPIESIGN();
+                                        base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
+                                        headers = new HttpHeaders();
+                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                        headers.add("Authorization", "Basic " + base64Creds);
+                                        requestJson="{"+
+                                                        "\"nik\":\""+Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode())+"\"," +
+                                                        "\"passphrase\":\""+Phrase.getText()+"\"," +
+                                                        "\"signatureProperties\": [{" +
+                                                            "\"tampilan\": \"VISIBLE\"," +
+                                                            "\"tag_koordinat\": \"#\"," +
+                                                            "\"imageBase64\": \""+Base64.getEncoder().encodeToString(Sequel.cariGambar("select setting.logo from setting").readAllBytes())+"\"," +
+                                                            "\"width\": 90," +
+                                                            "\"height\": 90" +
+                                                        "}],"+
+                                                        "\"file\":\""+Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(f))+"\"" +
+                                                    "}";
+                                        System.out.println("JSON : "+requestJson);
+                                        requestEntity = new HttpEntity(requestJson,headers);
+                                        System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
+                                        requestJson = getRest().exchange(koneksiDB.URLAPIESIGN(), HttpMethod.POST, requestEntity, String.class).getBody();
+                                        System.out.println("JSON : "+requestJson);
+                                    }catch (Exception ex) {
+                                        //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
+                                        System.out.println("Notifikasi Bridging : "+ex);
+                                    }*/
+                                    try {
+                                        authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         headers = new HttpHeaders();
                                         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
                                         headers.add("Authorization", "Basic " + base64Creds);
-                                        map= new LinkedMultiValueMap<>();
-                                        /*try (FileInputStream imageInFile = new FileInputStream(f)) {
-                                            byte fileData[] = new byte[(int) f.length()];
-                                            imageInFile.read(fileData);
-                                            file=Base64.getEncoder().encodeToString(fileData);
-                                        } catch (FileNotFoundException e) {
-                                            System.out.println("File tidak ketemu : " + e);
-                                        } catch (IOException ioe) {
-                                            System.out.println("Error " + ioe);
-                                        }*/
-                                        //FileSystemResource resource = new FileSystemResource(f.getAbsoluteFile());
-                                        map.add("file",koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        map.add("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode()));
-                                        map.add("passphrase",Phrase.getText());
-                                        map.add("tampilan","visible");
-                                        map.add("image","false");
-                                        map.add("linkQR",koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        map.add("width","90");
-                                        map.add("height","90");
-                                        map.add("tag_koordinat","#");
-                                        requestEntity = new HttpEntity<>(map, headers);
-                                        System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
-                                        System.out.println("linkQR : "+koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        RestTemplate rest=getRest();
-                                        rest.getMessageConverters().add(new ByteArrayHttpMessageConverter());
-                                        rest.getMessageConverters().add(new StringHttpMessageConverter());
-                                        rest.getMessageConverters().add(new ResourceHttpMessageConverter());
-                                        ResponseEntity<byte[]> respon;
-                                        respon=rest.exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST,requestEntity,byte[].class);
-                                        if (respon.getStatusCode().equals(HttpStatus.OK)) {
 
-                                        }
-                                        //ResponseEntity<byte[]> result = getRest().exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST, requestEntity, byte[].class);
-                                        //f.delete();
-                                        //FileOutputStream fileOutputStream = new FileOutputStream("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        //org.apache.commons.io.IOUtils.write(result.getBody(), fileOutputStream);
-                                    }catch (Exception ex) {
-                                        //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        System.out.println("Notifikasi Bridging : "+ex);
+                                        byte[] fileBytes = Files.readAllBytes(f.toPath());
+                                        ByteArrayResource fileAsResource = new ByteArrayResource(fileBytes) {
+                                            @Override
+                                            public String getFilename() {
+                                                return f.getName();
+                                            }
+                                        };
+
+                                        System.out.println("Resource class: " + fileAsResource.getClass().getName());
+                                        
+                                        map = new LinkedMultiValueMap<>();
+                                        map.add("file", fileAsResource);
+                                        map.add("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()));
+                                        map.add("passphrase", Phrase.getText());
+                                        map.add("tampilan", "visible");
+                                        map.add("image", "false");
+                                        map.add("linkQR", koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf");
+                                        map.add("width", "90");
+                                        map.add("height", "90");
+                                        map.add("tag_koordinat", "#");
+
+                                        requestEntity = new HttpEntity<>(map, headers);
+
+                                        System.out.println("URL E-Sign : " + koneksiDB.URLAPIESIGN());
+                                        System.out.println("linkQR : " + koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf");
+
+                                        //json = mapper.readTree(getRest().postForEntity(koneksiDB.URLAPIESIGN(), requestEntity, String.class).getBody()).toString();
+                                        ResponseEntity<Resource> response = getRest().exchange(
+                                            koneksiDB.URLAPIESIGN(),HttpMethod.POST,requestEntity,Resource.class
+                                        );
+                                        try (InputStream inputStream = response.getBody().getInputStream();
+                                            FileOutputStream outputStream = new FileOutputStream("downloadedFile.pdf")) {
+                                            byte[] buffer = new byte[1024];
+                                            int bytesRead;
+                                            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                                               outputStream.write(buffer, 0, bytesRead);
+                                            }
+                                            System.out.println("File downloaded successfully.");
+                                       }
+                                    } catch (Exception ex) {
+                                        System.out.println("Notifikasi Bridging : " + ex);
                                     }
                                 }
                             }
@@ -3551,6 +3625,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanPreInduksi;
     private widget.CekBox chkAsuhanPreOperasi;
     private widget.CekBox chkAsuhanPsikolog;
+    private widget.CekBox chkAsuhanPsikologiKlinis;
     private widget.CekBox chkAsuhanRisikoDekubitus;
     private widget.CekBox chkAsuhanTambahanBunuhDiri;
     private widget.CekBox chkAsuhanTambahanGeriatri;
@@ -4326,6 +4401,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanPenatalaksanaanTerapiOkupasi(rs.getString("no_rawat"));
                     //menampilkan asuhan psikolog
                     menampilkanAsuhanPsikolog(rs.getString("no_rawat"));
+                    //menampilkan asuhan psikologi klinis
+                    menampilkanAsuhanPsikologiKlinis(rs.getString("no_rawat"));
                     //menampilkan asuhan awal medis IGD
                     menampilkanAsuhanMedisIGD(rs.getString("no_rawat"));
                     //menampilkan asuhan awal medis IGD Psikiatri
@@ -11967,7 +12044,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     rs2=koneksi.prepareStatement(
                             "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit, diagnosa_pasien.status "+
                             "from diagnosa_pasien inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
-                            "where diagnosa_pasien.no_rawat='"+norawat+"'").executeQuery();
+                            "where diagnosa_pasien.no_rawat='"+norawat+"' order by diagnosa_pasien.prioritas").executeQuery();
                     if(rs2.next()){
                         htmlContent.append(
                           "<tr class='isi'>"+ 
@@ -31205,6 +31282,281 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
+    private void menampilkanAsuhanPsikologiKlinis(String norawat) {
+        try {
+            if(chkAsuhanPsikologiKlinis.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select penilaian_psikologi_klinis.tanggal,penilaian_psikologi_klinis.nip,penilaian_psikologi_klinis.anamnesis,penilaian_psikologi_klinis.dikirim_dari,penilaian_psikologi_klinis.tujuan_pemeriksaan,"+
+                            "penilaian_psikologi_klinis.ket_anamnesis,penilaian_psikologi_klinis.keluhan_utama,penilaian_psikologi_klinis.riwayat_penyakit,penilaian_psikologi_klinis.riwayat_keluhan,penilaian_psikologi_klinis.permasalahan_saat_ini,"+
+                            "penilaian_psikologi_klinis.permasalahan_alasan,penilaian_psikologi_klinis.permasalahan_ekspektasi,penilaian_psikologi_klinis.riwayat_hidup_singkat,penilaian_psikologi_klinis.kondisi_psikologis_penampilan,"+
+                            "penilaian_psikologi_klinis.kondisi_psikologis_ekspresi_wajah,penilaian_psikologi_klinis.kondisi_psikologis_suasana_hati,penilaian_psikologi_klinis.kondisi_psikologis_tingkah_laku,"+
+                            "penilaian_psikologi_klinis.kondisi_psikologis_fungsi_umum,penilaian_psikologi_klinis.kondisi_psikologis_fungsi_intelektual,penilaian_psikologi_klinis.kondisi_psikologis_pengalaman,"+
+                            "penilaian_psikologi_klinis.kondisi_psikologis_lainnya,penilaian_psikologi_klinis.kondisi_patologis_delusi,penilaian_psikologi_klinis.kondisi_patologis_proses_pikiran,"+
+                            "penilaian_psikologi_klinis.kondisi_patologis_halusinasi,penilaian_psikologi_klinis.kondisi_patologis_afek,penilaian_psikologi_klinis.kondisi_patologis_insight,"+
+                            "penilaian_psikologi_klinis.kondisi_patologis_kesadaran,penilaian_psikologi_klinis.kondisi_patologis_orientasi,penilaian_psikologi_klinis.kondisi_patologis_atensi,"+
+                            "penilaian_psikologi_klinis.kondisi_patologis_kontrol_impuls,penilaian_psikologi_klinis.psikotes_tanggal_pelaksanaan,penilaian_psikologi_klinis.psikotes_nama_tes,penilaian_psikologi_klinis.psikotes_hasil,"+
+                            "penilaian_psikologi_klinis.dinamika_psikologis,penilaian_psikologi_klinis.diagnosa_psikologis,penilaian_psikologi_klinis.manifestasi_fungsi_psikologis,penilaian_psikologi_klinis.rencana_intervensi,"+
+                            "penilaian_psikologi_klinis.tahapan_intervensi1,penilaian_psikologi_klinis.target_terapi1,penilaian_psikologi_klinis.tahapan_intervensi2,penilaian_psikologi_klinis.target_terapi2,"+
+                            "penilaian_psikologi_klinis.tahapan_intervensi3,penilaian_psikologi_klinis.target_terapi3,penilaian_psikologi_klinis.tahapan_intervensi4,penilaian_psikologi_klinis.target_terapi4,"+
+                            "penilaian_psikologi_klinis.tahapan_intervensi5,penilaian_psikologi_klinis.target_terapi5,penilaian_psikologi_klinis.tahapan_intervensi6,penilaian_psikologi_klinis.target_terapi6,"+
+                            "penilaian_psikologi_klinis.tahapan_intervensi7,penilaian_psikologi_klinis.target_terapi7,penilaian_psikologi_klinis.evaluasi,petugas.nama "+
+                            "from penilaian_psikologi_klinis inner join petugas on penilaian_psikologi_klinis.nip=petugas.nip "+
+                            "where penilaian_psikologi_klinis.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Psikologi Klinis</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='21%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='35%' border='0'>Psikolog : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                              "<td width='22%' border='0'>Tujuan Pemeriksaan : "+rs2.getString("tujuan_pemeriksaan")+"</td>"+
+                                              "<td width='22%' border='0'>Dikirim Dari : "+rs2.getString("dikirim_dari")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='21%' border='0'>Anamnesis : "+rs2.getString("anamnesis")+"</td>"+
+                                              "<td width='79%' border='0' colspan='3'>Keterangan Anamnesis : "+rs2.getString("ket_anamnesis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "I. PEMERIKSAAN PSIKOLOGIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Keluhan Utama : "+rs2.getString("keluhan_utama").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Riwayat Penyakit : "+rs2.getString("riwayat_penyakit").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Riwayat Keluhan : "+rs2.getString("riwayat_keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Permasalah Saat Ini : "+rs2.getString("permasalahan_saat_ini")+"&nbsp;&nbsp;&nbsp;&nbsp;Alasan : "+rs2.getString("permasalahan_alasan")+"&nbsp;&nbsp;&nbsp;&nbsp;Ekspektasi : "+rs2.getString("permasalahan_ekspektasi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Riwayat Hidup Singkat : "+rs2.getString("riwayat_hidup_singkat").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                  "Observasi :"+
+                                                  "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                       "<tr>"+
+                                                           "<td width='100%'>"+
+                                                                "Kondisi Psikologis :"+
+                                                                "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Penampilan : "+rs2.getString("kondisi_psikologis_penampilan")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Ekspresi Wajah : "+rs2.getString("kondisi_psikologis_ekspresi_wajah")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Suasana Hati : "+rs2.getString("kondisi_psikologis_suasana_hati")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Tingkah Laku : "+rs2.getString("kondisi_psikologis_tingkah_laku")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Fungsi Umum : "+rs2.getString("kondisi_psikologis_fungsi_umum")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Fungsi Intelektual : "+rs2.getString("kondisi_psikologis_fungsi_intelektual")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Pengalaman : "+rs2.getString("kondisi_psikologis_pengalaman")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Lainnya : "+rs2.getString("kondisi_psikologis_lainnya")+"</td>"+
+                                                                    "</tr>"+
+                                                                "</table>"+
+                                                           "</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td width='100%'>"+
+                                                                "Kondisi Patologis :"+
+                                                                "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Delusi/Waham : "+rs2.getString("kondisi_patologis_delusi")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Proses Pikiran : "+rs2.getString("kondisi_patologis_proses_pikiran")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Halusinasi : "+rs2.getString("kondisi_patologis_halusinasi")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Afek : "+rs2.getString("kondisi_patologis_afek")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Insight : "+rs2.getString("kondisi_patologis_insight")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Kesadaran : "+rs2.getString("kondisi_patologis_kesadaran")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Orientasi Ruang/Waktu/Tempat : "+rs2.getString("kondisi_patologis_orientasi")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Atensi : "+rs2.getString("kondisi_patologis_atensi")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Kontrol Impuls : "+rs2.getString("kondisi_patologis_kontrol_impuls")+"</td>"+
+                                                                    "</tr>"+
+                                                                "</table>"+
+                                                           "</td>"+
+                                                       "</tr>"+
+                                                  "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                  "Psikotes :"+
+                                                  "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                       "<tr>"+
+                                                           "<td width='30%'>Tanggal Pelaksanaan : "+rs2.getString("psikotes_tanggal_pelaksanaan")+"</td>"+
+                                                           "<td width='70%'>Nama Tes : "+rs2.getString("psikotes_nama_tes")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td width='100%' colspan='2'>Hasil : "+rs2.getString("psikotes_hasil")+"</td>"+
+                                                       "</tr>"+
+                                                  "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "II. DINAMIKA PSIKOLOGIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("dinamika_psikologis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. DIAGNOSA PSIKOLOGIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("diagnosa_psikologis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "IV. MANIFESTASI FUNGSI PSIKOLOGIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("manifestasi_fungsi_psikologis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "V. RENCANA INTERVENSI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("rencana_intervensi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "VI. PELAKSANAAN INTERVENSI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' bgcolor='#FFFAF8' align='center'>Sesi</td>"+
+                                              "<td valign='top' width='47%' bgcolor='#FFFAF8' align='center'>Tahapan Intervensi</td>"+
+                                              "<td valign='top' width='47%' bgcolor='#FFFAF8' align='center'>Target Terapi</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>1.</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi1")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>2.</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi2")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>3.</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi3")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>4.</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi4")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>5.</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi5")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>6.</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi6")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>7.</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi7")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi7")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "VII. EVALUASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            );   
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Asuhan Fisioterapi : "+e);
+        }
+    }
+    
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         sslContext = SSLContext.getInstance("SSL");
         TrustManager[] trustManagers= {
@@ -31215,10 +31567,15 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         };
         sslContext.init(null,trustManagers , new SecureRandom());
-        sslFactory=new SSLSocketFactory(sslContext,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-        scheme=new Scheme("https",443,sslFactory);
-        factory=new HttpComponentsClientHttpRequestFactory();
+        
+        sslFactory = new SSLSocketFactory(sslContext,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        scheme = new Scheme("https",443,sslFactory);
+        factory = new HttpComponentsClientHttpRequestFactory();
         factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
-        return new RestTemplate(factory);
+        restTemplate = new RestTemplate(factory);
+        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
+        restTemplate.getMessageConverters().add(new ResourceHttpMessageConverter());
+        return restTemplate;
     }
 }
