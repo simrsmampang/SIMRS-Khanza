@@ -1016,6 +1016,8 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
 
         TabRawat.addTab("Piutang Belum Ditagihkan", Scroll1);
 
+        TabRawat.setSelectedIndex(1);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
