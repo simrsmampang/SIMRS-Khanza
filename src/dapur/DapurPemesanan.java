@@ -833,12 +833,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }                        
                    
                 if(sukses==true){
-                    Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Penerimaan_Dapur,"PERSEDIAAN BARANG DAPUR",""+(ttl+meterai),"0"});
-                    if(ppn>0){
-                        Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{PPN_Masukan,"PPN Masukan Barang Dapur",""+ppn,"0"});
+                    Sequel.deleteTampJurnal();
+                    Sequel.insertTampJurnal(Penerimaan_Dapur, "PERSEDIAAN BARANG DAPUR", ttl + meterai, 0);
+                    if (ppn > 0) {
+                        Sequel.insertTampJurnal(PPN_Masukan, "PPN Masukan Barang Dapur", ppn, 0);
                     }
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Kontra_Penerimaan_Dapur,"HUTANG BARANG NON MEDIS","0",""+(ttl+ppn+meterai)}); 
+                    Sequel.insertTampJurnal(Kontra_Penerimaan_Dapur, "HUTANG BARANG NON MEDIS", 0, ttl + ppn + meterai);
                     sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN BARANG DAPUR"+", OLEH "+akses.getkode());
                 }
                 

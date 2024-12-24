@@ -1563,7 +1563,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                     }
                     
                     if((tabModeObatUmum.getRowCount()>0)||(tabModeObatRacikan.getRowCount()>0)){
-                        nomor = Sequel.autoNomorSmc("resep_obat", "no_resep", 4, "0", tanggaldilakukan);
+                        nomor = Sequel.autonomorSmc("", "", "resep_obat", "no_resep", 4, "0", tanggaldilakukan);
                         if (Sequel.menyimpantfSmc(
                             "resep_obat", "no_resep, tgl_perawatan, jam, no_rawat, kd_dokter, tgl_peresepan, jam_peresepan, status, tgl_penyerahan, jam_penyerahan",
                             nomor, "0000-00-00", "00:00:00", noperawatan, kodedokter, tanggaldilakukan, jamdilakukan, "ralan", "0000-00-00", "00:00:00")
