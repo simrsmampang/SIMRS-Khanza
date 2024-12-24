@@ -1311,10 +1311,10 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
             "if (time_to_sec(?) > time_to_sec(?), (tanggal = ? and jam_mulai >= ?) or (tanggal = date_add(?, interval 1 day) and jam_mulai <= ?), " +
             "(tanggal = ? and jam_mulai between ? and ?)))",
             KdRuangOperasi.getText(), KdDokter.getText(), TNoRw.getText(),
-            Valid.getWaktuSmc(JamMulai, MenitMulai, DetikMulai), Valid.getWaktuSmc(JamSelesai, MenitSelesai, DetikSelesai),
-            Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(JamMulai, MenitMulai, DetikMulai),
-            Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(JamSelesai, MenitSelesai, DetikSelesai),
-            Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(JamMulai, MenitMulai, DetikMulai), Valid.getWaktuSmc(JamSelesai, MenitSelesai, DetikSelesai)
+            Valid.getJamSmc(JamMulai, MenitMulai, DetikMulai), Valid.getJamSmc(JamSelesai, MenitSelesai, DetikSelesai),
+            Valid.getTglSmc(DTPTgl), Valid.getJamSmc(JamMulai, MenitMulai, DetikMulai),
+            Valid.getTglSmc(DTPTgl), Valid.getJamSmc(JamSelesai, MenitSelesai, DetikSelesai),
+            Valid.getTglSmc(DTPTgl), Valid.getJamSmc(JamMulai, MenitMulai, DetikMulai), Valid.getJamSmc(JamSelesai, MenitSelesai, DetikSelesai)
         ) > 0) {
             JOptionPane.showMessageDialog(rootPane,"Jadwal bentrok dengan jam mulai operasi yang lain..!!");
             JamMulai.requestFocus();
@@ -1324,8 +1324,8 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
                 TCari.requestFocus();
             }else{
                 if (Sequel.menyimpantfSmc("booking_operasi", null,
-                    TNoRw.getText(), KdOperasi.getText(), Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(JamMulai, MenitMulai, DetikMulai),
-                    Valid.getWaktuSmc(JamSelesai, MenitSelesai, DetikSelesai), Status.getSelectedItem().toString(),
+                    TNoRw.getText(), KdOperasi.getText(), Valid.getTglSmc(DTPTgl), Valid.getJamSmc(JamMulai, MenitMulai, DetikMulai),
+                    Valid.getJamSmc(JamSelesai, MenitSelesai, DetikSelesai), Status.getSelectedItem().toString(),
                     KdDokter.getText(), KdRuangOperasi.getText(), Catatan.getText()
                 )) {
                     tampil();
@@ -1546,10 +1546,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             "if (time_to_sec(?) > time_to_sec(?), (tanggal = ? and jam_mulai >= ?) or (tanggal = date_add(?, interval 1 day) and jam_mulai <= ?), " +
             "(tanggal = ? and jam_mulai between ? and ?)))",
             KdRuangOperasi.getText(), KdDokter.getText(), TNoRw.getText(),
-            Valid.getWaktuSmc(JamMulai, MenitMulai, DetikMulai), Valid.getWaktuSmc(JamSelesai, MenitSelesai, DetikSelesai),
-            Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(JamMulai, MenitMulai, DetikMulai),
-            Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(JamSelesai, MenitSelesai, DetikSelesai),
-            Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(JamMulai, MenitMulai, DetikMulai), Valid.getWaktuSmc(JamSelesai, MenitSelesai, DetikSelesai)
+            Valid.getJamSmc(JamMulai, MenitMulai, DetikMulai), Valid.getJamSmc(JamSelesai, MenitSelesai, DetikSelesai),
+            Valid.getTglSmc(DTPTgl), Valid.getJamSmc(JamMulai, MenitMulai, DetikMulai),
+            Valid.getTglSmc(DTPTgl), Valid.getJamSmc(JamSelesai, MenitSelesai, DetikSelesai),
+            Valid.getTglSmc(DTPTgl), Valid.getJamSmc(JamMulai, MenitMulai, DetikMulai), Valid.getJamSmc(JamSelesai, MenitSelesai, DetikSelesai)
         ) > 0) {
             JOptionPane.showMessageDialog(rootPane,"Jadwal bentrok dengan jam mulai operasi yang lain..!!");
             JamMulai.requestFocus();
@@ -1558,7 +1558,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if (Sequel.mengupdatetfSmc("booking_operasi",
                     "no_rawat = ?, kode_paket = ?, tanggal = ?, jam_mulai = ?, jam_selesai = ?, status = ?, kd_dokter = ?, kd_ruang_ok = ?, catatan = ?",
                     "no_rawat = ? and kode_paket = ? and tanggal = ? and jam_mulai = ? and jam_selesai = ? and status = ? and kd_dokter = ? and kd_ruang_ok = ?",
-                    TNoRw.getText(), KdOperasi.getText(), Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(JamMulai, MenitMulai, DetikMulai), Valid.getWaktuSmc(JamSelesai, MenitSelesai, DetikSelesai),
+                    TNoRw.getText(), KdOperasi.getText(), Valid.getTglSmc(DTPTgl), Valid.getJamSmc(JamMulai, MenitMulai, DetikMulai), Valid.getJamSmc(JamSelesai, MenitSelesai, DetikSelesai),
                     Status.getSelectedItem().toString(), KdDokter.getText(), KdRuangOperasi.getText(), Catatan.getText(),
                     tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString(), tbObat.getValueAt(tbObat.getSelectedRow(), 11).toString(),
                     tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString(), tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString(),

@@ -1205,7 +1205,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }
                     }
                 }else if(ubah==true){
-                    if (Sequel.cariBooleanSmc("select * from resep_obat where no_resep = ? and tgl_perawatan = '0000-00-00'", NoResep.getText())) {
+                    if (Sequel.cariExistsSmc("select * from resep_obat where no_resep = ? and tgl_perawatan = '0000-00-00'", NoResep.getText())) {
                         Sequel.meghapus("resep_dokter","no_resep",NoResep.getText());
                         Sequel.meghapus("resep_dokter_racikan","no_resep",NoResep.getText());
                         Sequel.meghapus("resep_dokter_racikan_detail","no_resep",NoResep.getText());
@@ -1966,7 +1966,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
     
     public void autonomor(int next) {
-        Valid.autoNomorSmc(NoResep, "", "resep_obat", "no_resep", 4, "0", DTPBeri, next);
+        Valid.autonomorSmc(NoResep, "", "", "resep_obat", "no_resep", 4, "0", DTPBeri, next);
     }
 
     public JTable getTable(){

@@ -19282,7 +19282,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private boolean bisaPindahKamar() {
         if (! koneksiDB.VALIDASIULANGPINDAHKAMAR()) return true;
         
-        return Sequel.cariBooleanSmc(
+        return Sequel.cariExistsSmc(
             "select * from kamar_inap where no_rawat = ? and kd_kamar = ? and tgl_masuk = ? and jam_masuk = ? and stts_pulang != 'Pindah Kamar'",
             norawatpindah.getText(), kdkamarasal.getText(), tglmasuk, jammasuk
         );
