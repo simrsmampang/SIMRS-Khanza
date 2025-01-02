@@ -5347,8 +5347,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     private void kirimWAPengerjaan() {
         String templateValidasiWA = "Kepada %s\nPasien %s %s %s" +
-                                    "\n*RESEP OBAT SEDANG DALAMA PROSES PENGERJAAN %s* di Instalasi Farmasi Rawat Jalan. " +
-                                    "\nMohon untuk *MENUNGGU*. Estimasi pengerjaan resep *%s*. Kami akan mengirimkan pesan apabila resep anda telah selesai." +
+                                    "\n*RESEP OBAT SAAT INI DALAM PROSES PENGERJAAN %s* di Instalasi Farmasi Rawat Jalan. " +
+                                    "\nMohon untuk *MENUNGGU* terlebih dahulu. Kami akan mengirimkan pesan apabila resep anda telah selesai." +
                                     "\n\nTerima kasih, semoga lekas sembuh.";
         
         boolean adaRacikan = Sequel.cariBooleanSmc("select * from resep_dokter_racikan where resep_dokter_racikan.no_resep = ?", NoResep);
@@ -5356,8 +5356,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         kirimWA.setLocationRelativeTo(internalFrame1);
         kirimWA.setRM(NoRM, Pasien, Sequel.cariIsiSmc("select pasien.no_tlp from pasien where pasien.no_rkm_medis = ?", NoRM),
             String.format(templateValidasiWA, Pasien, Ruang, DokterPeresep, akses.getnamars(), 
-                adaRacikan ? "RACIKAN" : "NON RACIKAN",
-                adaRacikan ? "60 MENIT" : "30 MENIT"
+                adaRacikan ? "RACIKAN" : "NON RACIKAN"
         ), "FARMASI");
         kirimWA.setVisible(true);
     }

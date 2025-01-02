@@ -16,6 +16,7 @@ public class DlgKirimWA extends javax.swing.JDialog {
 
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
+    private final SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
     private String asal = "";
     
     public DlgKirimWA(java.awt.Frame parent, boolean modal) {
@@ -262,7 +263,6 @@ public class DlgKirimWA extends javax.swing.JDialog {
         TNoWA.setText(nohp);
         TIsiPesan.setText(pesan);
         this.asal = asal;
-        
         ChkJln.setSelected(true);
     }
     
@@ -278,7 +278,7 @@ public class DlgKirimWA extends javax.swing.JDialog {
         ActionListener taskPerformer = (ActionEvent e) -> {
             Date now = Calendar.getInstance().getTime();
             if (ChkJln.isSelected()) {
-                String jam = new SimpleDateFormat("HH:mm:ss").format(now);
+                String jam = df.format(now);
                 
                 Tgl.setDate(now);
                 Jam.setSelectedItem(jam.substring(0, 2));
