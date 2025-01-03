@@ -62,9 +62,9 @@ import widget.Button;
  */
 public final class DlgCariObat extends javax.swing.JDialog {
     private final DefaultTableModel tabModeobat,tabModeObatRacikan,tabModeDetailObatRacikan;
-    private final String templateValidasiWA = "Kepada %s\nPasien %s %s %s" +
-                                              "\n*RESEP OBAT SEDANG DALAMA PROSES PENGERJAAN %s* di Instalasi Farmasi Rawat Jalan. " +
-                                              "\nMohon untuk *MENUNGGU*. Estimasi pengerjaan resep *%s*. Kami akan mengirimkan pesan apabila resep anda telah selesai." +
+    private final String templateValidasiWA = "Kepada %s\nPasien %s %s %s (%s)" +
+                                              "\n*RESEP OBAT SAAT INI DALAM PROSES PENGERJAAN %s* di Instalasi Farmasi Rawat Jalan. " +
+                                              "\nMohon untuk *MENUNGGU* terlebih dahulu. Kami akan mengirimkan pesan apabila resep anda telah selesai." +
                                               "\n\nTerima kasih, semoga lekas sembuh.";
     private final DlgKirimWA kirimWA = new DlgKirimWA(null, false);
     private sekuel Sequel=new sekuel();
@@ -1785,9 +1785,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         noresep.isBlank()
                                             ? Sequel.cariIsiSmc("select dokter.nm_dokter from reg_periksa.join dokter on reg_periksa.kd_dokter = dokter.kd_dokter where reg_periksa.no_rawat = ?", TNoRw.getText())
                                             : Sequel.cariIsiSmc("select dokter.nm_dokter from resep_obat join dokter on resep_obat.kd_dokter = dokter.kd_dokter where resep_obat.no_resep = ?", noresep),
-                                        akses.getnamars(),
-                                        adaRacikan ? "RACIKAN" : "NON RACIKAN",
-                                        adaRacikan ? "60 MENIT" : "30 MENIT"
+                                        akses.getnamars(), new SimpleDateFormat("dd-MM-yyyy").format(DTPTgl.getDate()),
+                                        adaRacikan ? "RACIKAN" : "NON RACIKAN"
                                 ), "FARMASI");
                                 kirimWA.setVisible(true);
                             }
