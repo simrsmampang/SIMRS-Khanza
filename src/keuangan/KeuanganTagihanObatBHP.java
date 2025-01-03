@@ -1010,7 +1010,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
-        Valid.autoNomorSmc(NoTagihan, "TH", "titip_faktur", "no_tagihan", 3, "0", evt.getItem());
+        autoNomor();
     }//GEN-LAST:event_TanggalItemStateChanged
 
     /**
@@ -1202,7 +1202,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
     
     private void autoNomor() {
-        Valid.autoNomorSmc(NoTagihan, "TH", "titip_faktur", "no_tagihan", 3, "0", Tanggal.getSelectedItem());
+        Valid.autonomorSmc(NoTagihan, "TH", "", "titip_faktur", "no_tagihan", 3, "0", Tanggal);
     }
     
     public void isCek(){
