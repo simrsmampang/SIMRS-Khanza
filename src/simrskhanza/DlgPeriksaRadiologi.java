@@ -2227,7 +2227,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         boolean adaHasilRadiologi = false;
         
         if (VALIDASIULANGHASILPERMINTAANRAD) {
-            if (Sequel.cariBooleanSmc("select * from permintaan_radiologi where noorder = ? and tgl_hasil != '0000-00-00'", noorder)) {
+            if (Sequel.cariExistsSmc("select * from permintaan_radiologi where noorder = ? and tgl_hasil != '0000-00-00'", noorder)) {
                 JOptionPane.showMessageDialog(null, "Maaf, telah dilakukan pengisian hasil radiologi untuk No. Permintaan " + noorder + ",\nSilahkan cek kembali yang mau disimpan!");
             } else {
                 adaHasilRadiologi = true;

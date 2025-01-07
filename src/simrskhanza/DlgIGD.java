@@ -12007,7 +12007,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     
     private void isPas2() {
         if (validasicatatan.equals("Yes")) {
-            if (Sequel.cariBooleanSmc("select * from catatan_pasien where catatan_pasien.no_rkm_medis = ?", TNoRM.getText())) {
+            if (Sequel.cariExistsSmc("select * from catatan_pasien where catatan_pasien.no_rkm_medis = ?", TNoRM.getText())) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgCatatan catatan = new DlgCatatan(null, false);
                 catatan.setNoRm(TNoRM.getText());
@@ -12018,7 +12018,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }
         }
         if (validasiregistrasi.equals("Yes")) {
-            if (Sequel.cariBooleanSmc("select * from reg_periksa where reg_periksa.no_rkm_medis = ? and reg_periksa.status_bayar = 'Belum Bayar' and reg_periksa.stts != 'Batal'", TNoRM.getText())) {
+            if (Sequel.cariExistsSmc("select * from reg_periksa where reg_periksa.no_rkm_medis = ? and reg_periksa.status_bayar = 'Belum Bayar' and reg_periksa.stts != 'Batal'", TNoRM.getText())) {
                 labelKeterangan.setForeground(Color.red);
                 labelKeterangan.setText("Belum closing kasir pada kunjungan sebelumnya");
             } else {
@@ -12026,7 +12026,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 labelKeterangan.setText("");
             }
         } else if (validasiregistrasi.equals("Peringatan di hari yang sama")) {
-            if (Sequel.cariBooleanSmc("select * from reg_periksa where no_rkm_medis = ? and tgl_registrasi = ?", TNoRM.getText(), Valid.getTglSmc(DTPReg))) {
+            if (Sequel.cariExistsSmc("select * from reg_periksa where no_rkm_medis = ? and tgl_registrasi = ?", TNoRM.getText(), Valid.getTglSmc(DTPReg))) {
                 labelKeterangan.setForeground(new Color(161, 157, 53));
                 labelKeterangan.setText("Pasien sudah memiliki kunjungan pada hari ini");
             } else {

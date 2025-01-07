@@ -1095,7 +1095,7 @@ public final class SuratSakitPihak2 extends javax.swing.JDialog {
                 "join reg_periksa on diagnosa_pasien.no_rawat = reg_periksa.no_rawat join penyakit on diagnosa_pasien.kd_penyakit = penyakit.kd_penyakit " +
                 "where diagnosa_pasien.no_rawat = ? and diagnosa_pasien.prioritas = '1'", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString()));
             param.put("logo", Sequel.cariGambar("select setting.logo from setting"));
-            if (Sequel.cariBooleanSmc("select * from reg_periksa where reg_periksa.no_rawat = ? and reg_periksa.status_lanjut = 'Ranap'", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString())) {
+            if (Sequel.cariExistsSmc("select * from reg_periksa where reg_periksa.no_rawat = ? and reg_periksa.status_lanjut = 'Ranap'", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString())) {
                 kodedokter = Sequel.cariIsiSmc("select resume_pasien_ranap.kd_dokter from resume_pasien_ranap where resume_pasien_ranap.no_rawat = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
                 if (kodedokter.isBlank()) {
                     kodedokter = Sequel.cariIsiSmc("select maping_dokter_dpjpvclaim.kd_dokter from bridging_sep join maping_dokter_dpjpvclaim on bridging_sep.kddpjp = maping_dokter_dpjpvclaim.kd_dokter_bpjs where bridging_sep.no_rawat = ? and bridging_sep.jnspelayanan = '1'", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());

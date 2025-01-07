@@ -6,7 +6,6 @@
 package fungsi;
 
 
-import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
@@ -23,9 +22,6 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
 import java.nio.charset.CodingErrorAction;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,7 +36,6 @@ import java.util.Properties;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -101,37 +96,42 @@ public final class validasi {
     
     public String fingerSmc(String kodedokter, String tanggal) {
         String finger = sek.cariIsiSmc("select sha1(sidikjari.sidikjari) from sidikjari join pegawai on pegawai.id = sidikjari.id where pegawai.nik = ?", kodedokter);
-        
-        return "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " +
-            sek.cariIsiSmc("select dokter.nm_dokter from dokter where dokter.kd_dokter = ?", kodedokter) + "\nID " + (finger.isBlank() ? kodedokter : finger) + "\n" + tanggal;
+        return String.format("Dikeluarkan di %s, Kabupaten/Kota %s\nDitandatangani secara elektronik oleh %s\nID %s\n%s",
+            akses.getnamars(), akses.getkabupatenrs(), sek.cariIsiSmc("select dokter.nm_dokter from dokter where dokter.kd_dokter = ?", kodedokter),
+            finger.isBlank() ? kodedokter : finger, tanggal
+        );
     }
     
-    public void autoNomorSmc(JTextField component, String prefix, String table, String kolom, int panjang, String pad, String tanggal) {
-        component.setText(sek.autoNomorSmc(prefix, table, kolom, panjang, pad, tanggal));
+    public void autonomorSmc(JTextComponent component, String prefix, String separator, String table, String kolom, int panjang, String pad, String tanggal, int next) {
+        component.setText(sek.autonomorSmc(prefix, separator, table, kolom, panjang, pad, tanggal, next));
     }
     
-    public void autoNomorSmc(JTextField component, String prefix, String table, String kolom, int panjang, String pad, Tanggal tgl) {
-        component.setText(sek.autoNomorSmc(prefix, table, kolom, panjang, pad, getTglSmc(tgl)));
+    public void autonomorSmc(JTextComponent component, String prefix, String separator, String table, String kolom, int panjang, String pad, Tanggal tanggal, int next) {
+        autonomorSmc(component, prefix, separator, table, kolom, panjang, pad, getTglSmc(tanggal), next);
     }
     
-    public void autoNomorSmc(JTextField component, String prefix, String table, String kolom, int panjang, String pad, Object item) {
-        autoNomorSmc(component, prefix, table, kolom, panjang, pad, SetTgl(item.toString()));
+    public void autonomorSmc(JTextComponent component, String prefix, String separator, String table, String kolom, int panjang, String pad, String tanggal) {
+        component.setText(sek.autonomorSmc(prefix, separator, table, kolom, panjang, pad, tanggal));
     }
     
-    public void autoNomorSmc(JTextField component, String prefix, String table, String kolom, int panjang, String pad, Tanggal tgl, int next) {
-        component.setText(sek.autoNomorSmc(prefix, table, kolom, panjang, pad, getTglSmc(tgl), next));
+    public void autonomorSmc(JTextComponent component, String prefix, String separator, String table, String kolom, int panjang, String pad, Tanggal tanggal) {
+        autonomorSmc(component, prefix, separator, table, kolom, panjang, pad, getTglSmc(tanggal));
+    }
+    
+    public void autonomor1Smc(JTextComponent component, String prefix, String table, String kolom, int panjang, String pad, Tanggal tanggal) {
+        autonomorSmc(component, prefix, "", table, kolom, panjang, pad, getTglSmc(tanggal));
     }
     
     public String getTglSmc(Tanggal tgl) {
         return new SimpleDateFormat("yyyy-MM-dd").format(tgl.getDate());
     }
     
-    public String getWaktuSmc(ComboBox jam, ComboBox menit, ComboBox detik) {
+    public String getJamSmc(ComboBox jam, ComboBox menit, ComboBox detik) {
         return jam.getSelectedItem() + ":" + menit.getSelectedItem() + ":" + detik.getSelectedItem();
     }
     
     public String getTglJamSmc(Tanggal tgl, ComboBox jam, ComboBox menit, ComboBox detik) {
-        return getTglSmc(tgl) + " " + getWaktuSmc(jam, menit, detik);
+        return getTglSmc(tgl) + " " + getJamSmc(jam, menit, detik);
     }
     
     public String getTglJamSmc(Tanggal tgljam) {
