@@ -922,7 +922,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnSeek5ActionPerformed
 
     private void TanggalAwalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalAwalItemStateChanged
-        Valid.autoNomorSmc(NoSurat, "SKR", "surat_keterangan_rawat_inap", "no_surat", 3, "0", evt.getItem());
+        Valid.autonomorSmc(NoSurat, "SKR", "", "surat_keterangan_rawat_inap", "no_surat", 3, "0", TanggalAwal);
         hitungHari();
     }//GEN-LAST:event_TanggalAwalItemStateChanged
 
@@ -1039,7 +1039,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
         NmDokter.setText("");
         TanggalAwal.setDate(new Date());
         TanggalAkhir.setDate(new Date());
-        Valid.autoNomorSmc(NoSurat, "SKR", "surat_keterangan_rawat_inap", "no_surat", 3, "0", Valid.getTglSmc(TanggalAwal));
+        Valid.autonomorSmc(NoSurat, "SKR", "", "surat_keterangan_rawat_inap", "no_surat", 3, "0", TanggalAwal);
         NoSurat.requestFocus();
     }
 

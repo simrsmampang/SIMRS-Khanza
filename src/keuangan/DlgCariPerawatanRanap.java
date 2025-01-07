@@ -1781,7 +1781,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         switch (pilihtable) {
                             case "rawat_inap_dr":
                                 if (Sequel.menyimpantfSmc("rawat_inap_dr", null,
-                                    TNoRw.getText(), tbKamar.getValueAt(i, 1).toString(), kddokter.getText(), Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(cmbJam, cmbMnt, cmbDtk),
+                                    TNoRw.getText(), tbKamar.getValueAt(i, 1).toString(), kddokter.getText(), Valid.getTglSmc(DTPTgl), Valid.getJamSmc(cmbJam, cmbMnt, cmbDtk),
                                     tbKamar.getValueAt(i, 5).toString(), tbKamar.getValueAt(i, 6).toString(), tbKamar.getValueAt(i, 7).toString(), tbKamar.getValueAt(i, 9).toString(),
                                     tbKamar.getValueAt(i, 10).toString(), tbKamar.getValueAt(i, 4).toString()
                                 )) {
@@ -1794,7 +1794,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     if (aktifpcare.equals("yes")) {
                                         simpanTindakanPCare(
                                             nokunjungan, Sequel.cariIsiSmc("select kd_tindakan_pcare from maping_tindakan_pcare where kd_jenis_prw = ?", tbKamar.getValueAt(i, 1).toString()),
-                                            TNoRw.getText(), Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(cmbJam, cmbMnt, cmbDtk), tbKamar.getValueAt(i, 1).toString(), tbKamar.getValueAt(i, 5).toString(),
+                                            TNoRw.getText(), Valid.getTglSmc(DTPTgl), Valid.getJamSmc(cmbJam, cmbMnt, cmbDtk), tbKamar.getValueAt(i, 1).toString(), tbKamar.getValueAt(i, 5).toString(),
                                             tbKamar.getValueAt(i, 6).toString(), tbKamar.getValueAt(i, 7).toString(), "0", tbKamar.getValueAt(i, 9).toString(),
                                             tbKamar.getValueAt(i, 10).toString(), tbKamar.getValueAt(i, 4).toString()
                                         );
@@ -1806,7 +1806,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 break;
                             case "rawat_inap_pr":
                                 if (Sequel.menyimpantfSmc("rawat_inap_pr", null,
-                                    TNoRw.getText(), tbKamar.getValueAt(i, 1).toString(), kddokter.getText(), Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(cmbJam, cmbMnt, cmbDtk),
+                                    TNoRw.getText(), tbKamar.getValueAt(i, 1).toString(), kddokter.getText(), Valid.getTglSmc(DTPTgl), Valid.getJamSmc(cmbJam, cmbMnt, cmbDtk),
                                     tbKamar.getValueAt(i, 5).toString(), tbKamar.getValueAt(i, 6).toString(), tbKamar.getValueAt(i, 8).toString(), tbKamar.getValueAt(i, 9).toString(),
                                     tbKamar.getValueAt(i, 10).toString(), tbKamar.getValueAt(i, 4).toString()
                                 )) {
@@ -1819,7 +1819,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     if (aktifpcare.equals("yes")) {
                                         simpanTindakanPCare(
                                             nokunjungan, Sequel.cariIsiSmc("select kd_tindakan_pcare from maping_tindakan_pcare where kd_jenis_prw = ?", tbKamar.getValueAt(i, 1).toString()),
-                                            TNoRw.getText(), Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(cmbJam, cmbMnt, cmbDtk), tbKamar.getValueAt(i, 1).toString(), tbKamar.getValueAt(i, 5).toString(),
+                                            TNoRw.getText(), Valid.getTglSmc(DTPTgl), Valid.getJamSmc(cmbJam, cmbMnt, cmbDtk), tbKamar.getValueAt(i, 1).toString(), tbKamar.getValueAt(i, 5).toString(),
                                             tbKamar.getValueAt(i, 6).toString(), "0", tbKamar.getValueAt(i, 8).toString(), tbKamar.getValueAt(i, 9).toString(),
                                             tbKamar.getValueAt(i, 10).toString(), tbKamar.getValueAt(i, 4).toString()
                                         );
@@ -1831,7 +1831,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 break;
                             case "rawat_inap_drpr":
                                 if (Sequel.menyimpantfSmc("rawat_inap_drpr", null,
-                                    TNoRw.getText(), tbKamar.getValueAt(i, 1).toString(), kddokter.getText(), KdPtg2.getText(), Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(cmbJam, cmbMnt, cmbDtk),
+                                    TNoRw.getText(), tbKamar.getValueAt(i, 1).toString(), kddokter.getText(), KdPtg2.getText(), Valid.getTglSmc(DTPTgl), Valid.getJamSmc(cmbJam, cmbMnt, cmbDtk),
                                     tbKamar.getValueAt(i, 5).toString(), tbKamar.getValueAt(i, 6).toString(), tbKamar.getValueAt(i, 7).toString(), tbKamar.getValueAt(i, 8).toString(),
                                     tbKamar.getValueAt(i, 9).toString(), tbKamar.getValueAt(i, 10).toString(), tbKamar.getValueAt(i, 4).toString()
                                 )) {
@@ -1845,7 +1845,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     if (aktifpcare.equals("yes")) {
                                         simpanTindakanPCare(
                                             nokunjungan, Sequel.cariIsiSmc("select kd_tindakan_pcare from maping_tindakan_pcare where kd_jenis_prw = ?", tbKamar.getValueAt(i, 1).toString()),
-                                            TNoRw.getText(), Valid.getTglSmc(DTPTgl), Valid.getWaktuSmc(cmbJam, cmbMnt, cmbDtk), tbKamar.getValueAt(i, 1).toString(), tbKamar.getValueAt(i, 5).toString(),
+                                            TNoRw.getText(), Valid.getTglSmc(DTPTgl), Valid.getJamSmc(cmbJam, cmbMnt, cmbDtk), tbKamar.getValueAt(i, 1).toString(), tbKamar.getValueAt(i, 5).toString(),
                                             tbKamar.getValueAt(i, 6).toString(), tbKamar.getValueAt(i, 7).toString(), tbKamar.getValueAt(i, 8).toString(), tbKamar.getValueAt(i, 9).toString(),
                                             tbKamar.getValueAt(i, 10).toString(), tbKamar.getValueAt(i, 4).toString()
                                         );

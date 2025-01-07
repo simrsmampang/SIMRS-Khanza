@@ -3990,7 +3990,7 @@ public final class RMMCU extends javax.swing.JDialog {
     }
     
     private void autoPopulate() {
-        if (! Sequel.cariBooleanSmc("select * from pemeriksaan_ralan where no_rawat = ?", TNoRw.getText())) return;
+        if (! Sequel.cariExistsSmc("select * from pemeriksaan_ralan where no_rawat = ?", TNoRw.getText())) return;
         
         try (PreparedStatement ps = koneksi.prepareStatement("select * from pemeriksaan_ralan where no_rawat = ? order by tgl_perawatan desc, jam_rawat desc limit 1")) {
             ps.setString(1, TNoRw.getText());

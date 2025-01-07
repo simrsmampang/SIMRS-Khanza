@@ -100,7 +100,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         KdAsuransi.setDocument(new batasInput((byte)3).getKata(KdAsuransi));
-        NmAsuransi.setDocument(new batasInput((byte)50).getKata(NmAsuransi));
+        NmAsuransi.setDocument(new batasInput((int)50).getKata(NmAsuransi));
         Perusahaan.setDocument(new batasInput((int)100).getKata(Perusahaan));
         Attn.setDocument(new batasInput((int)60).getKata(Attn));
         AlamatAsuransi.setDocument(new batasInput((int)130).getKata(AlamatAsuransi));
@@ -457,6 +457,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
+        PanelInput.setPreferredSize(new java.awt.Dimension(660, 158));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -488,7 +489,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         label34.setName("label34"); // NOI18N
         label34.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label34);
-        label34.setBounds(0, 70, 123, 23);
+        label34.setBounds(0, 100, 123, 23);
 
         AlamatAsuransi.setHighlighter(null);
         AlamatAsuransi.setName("AlamatAsuransi"); // NOI18N
@@ -498,13 +499,13 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(AlamatAsuransi);
-        AlamatAsuransi.setBounds(127, 70, 490, 23);
+        AlamatAsuransi.setBounds(127, 100, 490, 23);
 
         label36.setText("Nama Asuransi :");
         label36.setName("label36"); // NOI18N
         label36.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label36);
-        label36.setBounds(185, 10, 95, 23);
+        label36.setBounds(0, 40, 123, 23);
 
         NmAsuransi.setHighlighter(null);
         NmAsuransi.setName("NmAsuransi"); // NOI18N
@@ -514,7 +515,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(NmAsuransi);
-        NmAsuransi.setBounds(284, 10, 160, 23);
+        NmAsuransi.setBounds(127, 40, 222, 23);
 
         label35.setText("Kode Asuransi :");
         label35.setName("label35"); // NOI18N
@@ -540,13 +541,13 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(Perusahaan);
-        Perusahaan.setBounds(127, 40, 220, 23);
+        Perusahaan.setBounds(127, 70, 490, 23);
 
         label37.setText("Perusahaan Asuransi :");
         label37.setName("label37"); // NOI18N
         label37.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label37);
-        label37.setBounds(0, 40, 123, 23);
+        label37.setBounds(0, 70, 123, 23);
 
         NoTelp.setHighlighter(null);
         NoTelp.setName("NoTelp"); // NOI18N
@@ -556,13 +557,13 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoTelp);
-        NoTelp.setBounds(492, 10, 125, 23);
+        NoTelp.setBounds(397, 10, 220, 23);
 
         label38.setText("Telp :");
         label38.setName("label38"); // NOI18N
         label38.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label38);
-        label38.setBounds(448, 10, 40, 23);
+        label38.setBounds(353, 10, 40, 23);
 
         label39.setText("Attn :");
         label39.setName("label39"); // NOI18N
@@ -589,7 +590,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255,250,250));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -1066,7 +1067,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,128));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,158));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           

@@ -14580,9 +14580,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     {//GEN-HEADEREND:event_buttonSimpanAntrianActionPerformed
         akses.setform("DlgReg");
         
-        if (Sequel.cariBooleanSmc("select * from antriloketcetak_smc where nomor = ? and tanggal = ? and no_rawat != ?", textNoAntrian.getText().trim(), Valid.getTglSmc(DTPReg), textNoRawatAntrian.getText())) {
+        if (Sequel.cariExistsSmc("select * from antriloketcetak_smc where nomor = ? and tanggal = ? and no_rawat != ?", textNoAntrian.getText().trim(), Valid.getTglSmc(DTPReg), textNoRawatAntrian.getText())) {
             JOptionPane.showMessageDialog(null, "Maaf, no. antrian ini sudah pernah digunakan!");
-        } else if (Sequel.cariBooleanSmc("select * from pasien where no_rkm_medis = ? and tgl_daftar = ?", TNoRM.getText().trim(), Valid.getTglSmc(DTPReg))) {
+        } else if (Sequel.cariExistsSmc("select * from pasien where no_rkm_medis = ? and tgl_daftar = ?", TNoRM.getText().trim(), Valid.getTglSmc(DTPReg))) {
             Sequel.mengupdateSmc("antriloketcetak_smc", "no_rawat = null, no_rkm_medis = null", "no_rawat = ?", textNoRawatAntrian.getText());
             Sequel.mengupdateSmc("antriloketcetak_smc", "no_rawat = ?, no_rkm_medis = ?", "tanggal = ? and nomor = ?", textNoRawatAntrian.getText(), TNoRM.getText(), Valid.getTglSmc(DTPReg), textNoAntrian.getText().trim());
         }
@@ -14604,9 +14604,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             akses.setform("DlgReg");
         
-            if (Sequel.cariBooleanSmc("select * from antriloketcetak_smc where nomor = ? and tanggal = ? and no_rawat != ?", textNoAntrian.getText().trim(), Valid.getTglSmc(DTPReg), textNoRawatAntrian.getText())) {
+            if (Sequel.cariExistsSmc("select * from antriloketcetak_smc where nomor = ? and tanggal = ? and no_rawat != ?", textNoAntrian.getText().trim(), Valid.getTglSmc(DTPReg), textNoRawatAntrian.getText())) {
                 JOptionPane.showMessageDialog(null, "Maaf, no. antrian ini sudah pernah digunakan!");
-            } else if (Sequel.cariBooleanSmc("select * from pasien where no_rkm_medis = ? and tgl_daftar = ?", TNoRM.getText().trim(), Valid.getTglSmc(DTPReg))) {
+            } else if (Sequel.cariExistsSmc("select * from pasien where no_rkm_medis = ? and tgl_daftar = ?", TNoRM.getText().trim(), Valid.getTglSmc(DTPReg))) {
                 Sequel.mengupdateSmc("antriloketcetak_smc", "no_rawat = null, no_rkm_medis = null", "no_rawat = ?", textNoRawatAntrian.getText());
                 Sequel.mengupdateSmc("antriloketcetak_smc", "no_rawat = ?, no_rkm_medis = ?", "tanggal = ? and nomor = ?", textNoRawatAntrian.getText(), TNoRM.getText(), Valid.getTglSmc(DTPReg), textNoAntrian.getText().trim());
             }
@@ -14623,9 +14623,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             akses.setform("DlgReg");
         
-            if (Sequel.cariBooleanSmc("select * from antriloketcetak_smc where nomor = ? and tanggal = ? and no_rawat != ?", textNoAntrian.getText().trim(), Valid.getTglSmc(DTPReg), textNoRawatAntrian.getText())) {
+            if (Sequel.cariExistsSmc("select * from antriloketcetak_smc where nomor = ? and tanggal = ? and no_rawat != ?", textNoAntrian.getText().trim(), Valid.getTglSmc(DTPReg), textNoRawatAntrian.getText())) {
                 JOptionPane.showMessageDialog(null, "Maaf, no. antrian ini sudah pernah digunakan!");
-            } else if (Sequel.cariBooleanSmc("select * from pasien where no_rkm_medis = ? and tgl_daftar = ?", TNoRM.getText().trim(), Valid.getTglSmc(DTPReg))) {
+            } else if (Sequel.cariExistsSmc("select * from pasien where no_rkm_medis = ? and tgl_daftar = ?", TNoRM.getText().trim(), Valid.getTglSmc(DTPReg))) {
                 Sequel.mengupdateSmc("antriloketcetak_smc", "no_rawat = null, no_rkm_medis = null", "no_rawat = ?", textNoRawatAntrian.getText());
                 Sequel.mengupdateSmc("antriloketcetak_smc", "no_rawat = ?, no_rkm_medis = ?", "tanggal = ? and nomor = ?", textNoRawatAntrian.getText(), TNoRM.getText(), Valid.getTglSmc(DTPReg), textNoAntrian.getText().trim());
             }
@@ -16379,7 +16379,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     
     private void isPas2() {
         if (validasicatatan.equals("Yes")) {
-            if (Sequel.cariBooleanSmc("select * from catatan_pasien where catatan_pasien.no_rkm_medis = ?", TNoRM.getText())) {
+            if (Sequel.cariExistsSmc("select * from catatan_pasien where catatan_pasien.no_rkm_medis = ?", TNoRM.getText())) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgCatatan catatan = new DlgCatatan(null, false);
                 catatan.setNoRm(TNoRM.getText());
@@ -16390,7 +16390,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }
         }
         if (validasiregistrasi.equals("Yes")) {
-            if (Sequel.cariBooleanSmc("select * from reg_periksa where reg_periksa.no_rkm_medis = ? and reg_periksa.status_bayar = 'Belum Bayar' and reg_periksa.stts != 'Batal'", TNoRM.getText())) {
+            if (Sequel.cariExistsSmc("select * from reg_periksa where reg_periksa.no_rkm_medis = ? and reg_periksa.status_bayar = 'Belum Bayar' and reg_periksa.stts != 'Batal'", TNoRM.getText())) {
                 labelKeterangan.setForeground(Color.red);
                 labelKeterangan.setText("Belum closing kasir pada kunjungan sebelumnya");
             } else {
@@ -16398,7 +16398,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 labelKeterangan.setText("");
             }
         } else if (validasiregistrasi.equals("Peringatan di hari yang sama")) {
-            if (Sequel.cariBooleanSmc("select * from reg_periksa where no_rkm_medis = ? and tgl_registrasi = ?", TNoRM.getText(), Valid.getTglSmc(DTPReg))) {
+            if (Sequel.cariExistsSmc("select * from reg_periksa where no_rkm_medis = ? and tgl_registrasi = ?", TNoRM.getText(), Valid.getTglSmc(DTPReg))) {
                 labelKeterangan.setForeground(new Color(161, 157, 53));
                 labelKeterangan.setText("Pasien sudah memiliki kunjungan pada hari ini");
             } else {
@@ -16979,10 +16979,10 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 ctk();
             }
             if (! TNoAntrian.getText().isBlank()) {
-                if (Sequel.cariBooleanSmc("select * from antriloketcetak_smc where nomor = ? and tanggal = current_date() and no_rawat != ?", TNoAntrian.getText().trim(), TNoRw.getText())) {
+                if (Sequel.cariExistsSmc("select * from antriloketcetak_smc where nomor = ? and tanggal = current_date() and no_rawat != ?", TNoAntrian.getText().trim(), TNoRw.getText())) {
                     JOptionPane.showMessageDialog(null, "Maaf, no. antrian ini sudah pernah digunakan!\nSilahkan lakukan update no. antrian!");
-                } else if (! Sequel.cariBooleanSmc("select * from antriloketcetak_smc where no_rkm_medis = ?", TNoRM.getText().trim())
-                        && Sequel.cariBooleanSmc("select * from pasien where no_rkm_medis = ? and tgl_daftar = current_date()", TNoRM.getText().trim())) {
+                } else if (! Sequel.cariExistsSmc("select * from antriloketcetak_smc where no_rkm_medis = ?", TNoRM.getText().trim())
+                        && Sequel.cariExistsSmc("select * from pasien where no_rkm_medis = ? and tgl_daftar = current_date()", TNoRM.getText().trim())) {
                     Sequel.mengupdateSmc("antriloketcetak_smc", "no_rawat = ?, no_rkm_medis = ?", "tanggal = current_date() and nomor = ?", TNoRw.getText(), TNoRM.getText(), TNoAntrian.getText().trim());
                 }
             }
@@ -17825,7 +17825,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             Sequel.mengupdateSmc("reg_periksa", "jam_reg = current_time()", "no_rawat = ?", noRawat);
         } else {
             if (
-                Sequel.cariBooleanSmc("select * from pemeriksaan_ralan where no_rawat = ?", noRawat) ||
+                Sequel.cariExistsSmc("select * from pemeriksaan_ralan where no_rawat = ?", noRawat) ||
                 Sequel.cariIsiSmc("select stts from reg_periksa where no_rawat = ?", noRawat).equalsIgnoreCase("sudah")
             ) {
                 JOptionPane.showMessageDialog(null, "Maaf, pasien sudah menerima pelayanan...!!!!");
