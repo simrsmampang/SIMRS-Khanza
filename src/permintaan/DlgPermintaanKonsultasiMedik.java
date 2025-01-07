@@ -1919,7 +1919,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     private void autoNomor() {
-        Valid.autoNomorSmc(NoPermintaan, "KM", "konsultasi_medik", "no_permintaan", 4, "0", TanggalPermintaan);
+        Valid.autonomorSmc(NoPermintaan, "KM", "", "konsultasi_medik", "no_permintaan", 4, "0", TanggalPermintaan);
     }
 
     private void ganti() {

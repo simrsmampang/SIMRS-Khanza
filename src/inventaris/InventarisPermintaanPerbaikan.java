@@ -1081,7 +1081,7 @@ private void tgl_permintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_no_inventarisKeyPressed
 
     private void tgl_permintaanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tgl_permintaanItemStateChanged
-        Valid.autoNomorSmc(nopermintaan, "PPI", "permintaan_perbaikan_inventaris", "no_permintaan", 3, "0", evt.getItem());
+        Valid.autonomorSmc(nopermintaan, "PPI", "", "permintaan_perbaikan_inventaris", "no_permintaan", 3, "0", tgl_permintaan);
     }//GEN-LAST:event_tgl_permintaanItemStateChanged
 
     /**

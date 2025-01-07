@@ -3120,7 +3120,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pg = false; sg = false; sr = false; mlm = false;
                     switch (pilihtable) {
                         case "rawat_inap_dr":
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_dr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '00:00:01' and '10:00:00'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3156,7 +3156,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
 
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_dr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '10:00:01' and '15:00:00'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3192,7 +3192,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
 
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_dr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '15:00:01' and '19:00:00'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3228,7 +3228,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
 
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_dr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '19:00:01' and '23:59:59'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3265,7 +3265,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                             break;
                         case "rawat_inap_pr":
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_pr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '00:00:01' and '10:00:00'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3301,7 +3301,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
 
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_pr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '10:00:01' and '15:00:00'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3337,7 +3337,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
 
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_pr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '15:00:01' and '19:00:00'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3373,7 +3373,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
 
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_pr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '19:00:01' and '23:59:59'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3410,7 +3410,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                             break;
                         case "rawat_inap_drpr":
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_drpr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '00:00:01' and '10:00:00'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3448,7 +3448,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
 
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_drpr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '10:00:01' and '15:00:00'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3486,7 +3486,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
 
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_drpr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '15:00:01' and '19:00:00'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
@@ -3524,7 +3524,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
 
-                            if (Sequel.cariBooleanSmc(
+                            if (Sequel.cariExistsSmc(
                                 "select * from rawat_inap_drpr where no_rawat = ? and kd_jenis_prw = ? and tgl_perawatan = ? and jam_rawat between '19:00:01' and '23:59:59'",
                                 TNoRw.getText(), tbKamar.getValueAt(i, 4).toString(), Valid.getTglSmc(DTPTgl)
                             )) {
