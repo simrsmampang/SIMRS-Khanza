@@ -2649,7 +2649,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void autoresep() {
         if(ChkRM.isSelected()==true){
-            Valid.autoNomorSmc(NoResep, null, "resep_obat", "no_resep", 4, "0", DTPBeri.getSelectedItem());
+            Valid.autonomorSmc(NoResep, "", "", "resep_obat", "no_resep", 4, "0", DTPBeri);
         }
     }
     
