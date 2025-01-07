@@ -1534,7 +1534,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     private void autoNomor() {
-        Valid.autoNomorSmc(Nomor, "PH", "pengeluaran_harian", "no_keluar", 3, "0", Tanggal);
+        Valid.autonomorSmc(Nomor, "PH", "", "pengeluaran_harian", "no_keluar", 3, "0", Tanggal);
     }
     
     public void setPengajuan(String nopengajuan,String keterangan,String pengeluaran){

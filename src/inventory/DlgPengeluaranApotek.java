@@ -1449,26 +1449,30 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         
     }
    
-    private void validasiStok(String kodeBarang, String namaBarang, double jumlah, String noBatch, String noFaktur)
-    {
+    private void validasiStok(String kodeBarang, String namaBarang, double jumlah, String noBatch, String noFaktur) {
         if (tabMode.getRowCount() < 0) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, tidak ada data yang bisa diproses..!!");
-
             return;
         }
-
-        String sql = "select ifnull(stok, 0) from gudangbarang where kode_brng = ? and kd_bangsal = ?";
-
-        if (aktifkanbatch.equals("yes")) {
-            sql = sql + " and no_batch = ? and no_faktur = ?";
-        } else {
-            sql = sql + " and no_batch = '' and no_faktur = ''";
-        }
         
-        if (Sequel.cariDoubleSmc(sql, 2, ! aktifkanbatch.equals("yes"), kodeBarang, kdgudang.getText(), noBatch, noFaktur) < jumlah) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, jumlah barang " + namaBarang + " yang dikeluarkan\nmelebihi stok di gudang saat ini..!!");
-            
-            sukses = false;
+        if (aktifkanbatch.equals("yes")) {
+            if (Sequel.cariDoubleSmc(
+                "select ifnull(gudangbarang.stok, 0) from gudangbarang where gudangbarang.kode_brng = ? " +
+                "and gudangbarang.kd_bangsal = ? and gudangbarang.no_batch = ? and gudangbarang.no_faktur = ?",
+                kodeBarang, kdgudang.getText(), noBatch, noFaktur
+            ) < jumlah) {
+                JOptionPane.showMessageDialog(rootPane, "Maaf, jumlah barang " + namaBarang + " yang dikeluarkan\nmelebihi stok di gudang saat ini..!!");
+                sukses = false;
+            }
+        } else {
+            if (Sequel.cariDoubleSmc(
+                "select ifnull(gudangbarang.stok, 0) from gudangbarang where gudangbarang.kode_brng = ? " +
+                "and gudangbarang.kd_bangsal = ? and gudangbarang.no_batch = '' and gudangbarang.no_faktur = ''",
+                kodeBarang, kdgudang.getText()
+            ) < jumlah) {
+                JOptionPane.showMessageDialog(rootPane, "Maaf, jumlah barang " + namaBarang + " yang dikeluarkan\nmelebihi stok di gudang saat ini..!!");
+                sukses = false;
+            }
         }
     }
 }
