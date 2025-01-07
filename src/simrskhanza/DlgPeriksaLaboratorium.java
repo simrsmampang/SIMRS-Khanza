@@ -3183,7 +3183,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void simpan() {
         if (VALIDASIULANGHASILPERMINTAANLABPK) {
-            if (Sequel.cariBooleanSmc("select * from permintaan_lab where noorder = ? and tgl_hasil != '0000-00-00'", noorder)) {
+            if (Sequel.cariExistsSmc("select * from permintaan_lab where noorder = ? and tgl_hasil != '0000-00-00'", noorder)) {
                 JOptionPane.showMessageDialog(null, "Maaf, telah dilakukan pengisian hasil lab untuk No. Permintaan " + noorder + ",\nSilahkan cek kembali yang mau disimpan!");
             } else {
                 jml=0;

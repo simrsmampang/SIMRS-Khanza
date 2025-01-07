@@ -825,13 +825,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         }
                     }
                         
-                    Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Retur_Beli_Dapur from set_akun2"),"RETUR BELI DAPUR",rs.getString("total"),"0"
-                    });    
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Kontra_Retur_Beli_Dapur from set_akun2"),"KONTRA RETUR BELI DAPUR","0",rs.getString("total")
-                    }); 
+                    Sequel.deleteTampJurnal();
+                    Sequel.insertTampJurnal(Sequel.cariIsi("select Retur_Beli_Dapur from set_akun2"), "RETUR BELI DAPUR", rs.getDouble("total"), 0);
+                    Sequel.insertTampJurnal(Sequel.cariIsi("select Kontra_Retur_Beli_Dapur from set_akun2"), "KONTRA RETUR BELI DAPUR", 0, rs.getDouble("total"));
                     sukses=jur.simpanJurnal(rs.getString("no_retur_beli"),"U","BATAL TRANSAKSI RETUR BELI BARANG DAPUR"+", OLEH "+akses.getkode());
                     
                     if(sukses==true){

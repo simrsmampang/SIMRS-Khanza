@@ -2889,10 +2889,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             JOptionPane.showMessageDialog(null,"Nilai APGAR harus valid...!!!");
         }else{
             if (RESTRIKSIRMKELAHIRANBAYI) {
-                if (Sequel.cariBooleanSmc("select * from pasien where pasien.no_rkm_medis = ?", NoRm.getText().trim())) {
+                if (Sequel.cariExistsSmc("select * from pasien where pasien.no_rkm_medis = ?", NoRm.getText().trim())) {
                     if (Sequel.menyimpantfSmc("pasien_bayi", null, 
                         NoRm.getText().trim(), UmurIbu.getText(), NmAyah.getText(), UmurAyah.getText(), Berat.getText(), Panjang.getText(), LingkarKepala.getText(),
-                        Proses.getText(), Anakke.getText(), Valid.getWaktuSmc(jam, menit, detik), Keterangan.getText(), Diagnosa.getText(), PenyulitKehamilan.getText(),
+                        Proses.getText(), Anakke.getText(), Valid.getJamSmc(jam, menit, detik), Keterangan.getText(), Diagnosa.getText(), PenyulitKehamilan.getText(),
                         Ketuban.getText(), LingkarPerut.getText(), LingkarDada.getText(), KdPenolong.getText(), NoSKL.getText(), G.getText(), P.getText(), A.getText(),
                         tbAPGAR.getValueAt(0, 4).toString(), tbAPGAR.getValueAt(1, 4).toString(), tbAPGAR.getValueAt(2, 4).toString(), tbAPGAR.getValueAt(3, 4).toString(),
                         tbAPGAR.getValueAt(4, 4).toString(), N1.getText(), tbAPGAR.getValueAt(0, 5).toString(), tbAPGAR.getValueAt(1, 5).toString(), tbAPGAR.getValueAt(2, 5).toString(),
