@@ -2927,7 +2927,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
         String corona = "BukanCorona";
         String aksi = "";
         
-        if (Sequel.cariBooleanSmc("select * from perawatan_corona where perawatan_corona.no_rawat = ?", lblNoRawat.getText())) {
+        if (Sequel.cariExistsSmc("select * from perawatan_corona where perawatan_corona.no_rawat = ?", lblNoRawat.getText())) {
             corona = "PasienCorona";
         }
         
@@ -3531,7 +3531,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
     }
     
     private void exportSOAP(String urutan) {
-        if (Sequel.cariBooleanSmc("select * from reg_periksa where no_rawat = ? and (kd_poli = 'IGDK' or status_lanjut = 'Ranap')", lblNoRawat.getText())) {
+        if (Sequel.cariExistsSmc("select * from reg_periksa where no_rawat = ? and (kd_poli = 'IGDK' or status_lanjut = 'Ranap')", lblNoRawat.getText())) {
             return;
         }
         
@@ -3727,7 +3727,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
     }
 
     private void exportAwalMedisIGD(String urutan) {
-        if (Sequel.cariBooleanSmc("select * from reg_periksa where no_rawat = ? and kd_poli != 'IGDK'", lblNoRawat.getText())) return;
+        if (Sequel.cariExistsSmc("select * from reg_periksa where no_rawat = ? and kd_poli != 'IGDK'", lblNoRawat.getText())) return;
         
         if (!btnAwalMedisIGD.isEnabled()) return;
         
@@ -4069,7 +4069,7 @@ public class BPJSKompilasiBerkasKlaim extends javax.swing.JDialog {
     }
     
     private void exportBerkasDigitalPerawatan(String urutan) {
-        if (!Sequel.cariBooleanSmc("select * from berkas_digital_perawatan where berkas_digital_perawatan.no_rawat = ?", lblNoRawat.getText())) return;
+        if (!Sequel.cariExistsSmc("select * from berkas_digital_perawatan where berkas_digital_perawatan.no_rawat = ?", lblNoRawat.getText())) return;
         
         String filename = "", exportPath = "";
         URL fileUrl;

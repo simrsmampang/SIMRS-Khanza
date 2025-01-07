@@ -36,7 +36,7 @@ public class Jurnal {
                 if (rscek.next()) {
                     if (rscek.getInt("jml") > 0) {
                         if (rscek.getInt("selisih") == 0) {
-                            nojur = Sequel.autoNomorSmc("JR", "jurnal", "no_jurnal", 6, "0", rscek.getString("tanggal"));
+                            nojur = Sequel.autonomorSmc("JR", "", "jurnal", "no_jurnal", 6, "0", rscek.getString("tanggal"));
                             try {
                                 sukses = true;
                                 ps = koneksi.prepareStatement("insert into jurnal values(?,?,?,?,?,?)");
@@ -58,7 +58,7 @@ public class Jurnal {
                                 }
 
                                 if (sukses == false) {
-                                    nojur = Sequel.autoNomorSmc("JR", "jurnal", "no_jurnal", 6, "0", rscek.getString("tanggal"));
+                                    nojur = Sequel.autonomorSmc("JR", "", "jurnal", "no_jurnal", 6, "0", rscek.getString("tanggal"));
                                     sukses = true;
                                     ps = koneksi.prepareStatement("insert into jurnal values(?,?,?,?,?,?)");
                                     try {
@@ -153,7 +153,7 @@ public class Jurnal {
                 if (rscek.next()) {
                     if (rscek.getInt("jml") > 0) {
                         if (rscek.getInt("selisih") == 0) {
-                            nojur = Sequel.autoNomorSmc("JR", "jurnal", "no_jurnal", 6, "0", rscek.getString("tanggal"));
+                            nojur = Sequel.autonomorSmc("JR", "", "jurnal", "no_jurnal", 6, "0", rscek.getString("tanggal"));
                             try {
                                 sukses = true;
                                 ps = koneksi.prepareStatement("insert into jurnal values(?, ?, ?, ?, ?, ?)");
@@ -175,7 +175,7 @@ public class Jurnal {
                                 }
 
                                 if (sukses == false) {
-                                    nojur = Sequel.autoNomorSmc("JR", "jurnal", "no_jurnal", 6, "0", rscek.getString("tanggal"));
+                                    nojur = Sequel.autonomorSmc("JR", "", "jurnal", "no_jurnal", 6, "0", rscek.getString("tanggal"));
                                     sukses = true;
                                     ps = koneksi.prepareStatement("insert into jurnal values(?, ?, ?, ?, ?, ?)");
                                     try {

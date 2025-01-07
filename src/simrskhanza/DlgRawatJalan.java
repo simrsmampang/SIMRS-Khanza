@@ -6219,7 +6219,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             if(i==JOptionPane.YES_OPTION){
                 if(Sequel.mengedittf("reg_periksa","no_rawat=?","stts=?",2,new String[]{"Sudah",TNoRw.getText()})==true){
                     if (TPegawai.getText().equals(dokter.tampil3(akses.getkode()))) {
-                        if (! Sequel.cariBooleanSmc("select * from mutasi_berkas where mutasi_berkas.no_rawat = ? and mutasi_berkas.status = 'Sudah Kembali'", TNoRw.getText())) {
+                        if (! Sequel.cariExistsSmc("select * from mutasi_berkas where mutasi_berkas.no_rawat = ? and mutasi_berkas.status = 'Sudah Kembali'", TNoRw.getText())) {
                             Sequel.menyimpan("mutasi_berkas","'"+TNoRw.getText()+"','Sudah Kembali',now(),'0000-00-00 00:00:00',now(),'0000-00-00 00:00:00','0000-00-00 00:00:00'","status='Sudah Kembali',kembali=now()","no_rawat='"+TNoRw.getText()+"'");
                         }
                     }

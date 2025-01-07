@@ -121,7 +121,7 @@ public class DlgJurnal extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });  
         
-        Valid.autoNomorSmc(NoJur, "JR", "jurnal", "no_jurnal", 6, "0", TglJurnal.getSelectedItem());
+        Valid.autonomorSmc(NoJur, "JR", "", "jurnal", "no_jurnal", 6, "0", TglJurnal);
     }
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
@@ -720,7 +720,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                Valid.autoNomorSmc(NoJur, "JR", "jurnal", "no_jurnal", 6, "0", TglJurnal.getSelectedItem());
+                Valid.autonomorSmc(NoJur, "JR", "", "jurnal", "no_jurnal", 6, "0", TglJurnal);
                 
                 Sequel.AutoComitFalse();
                 sukses=true;
@@ -770,7 +770,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         Valid.tabelKosong(tabMode);
         tampil();
-        Valid.autoNomorSmc(NoJur, "JR", "jurnal", "no_jurnal", 6, "0", TglJurnal.getSelectedItem());
+        Valid.autonomorSmc(NoJur, "JR", "", "jurnal", "no_jurnal", 6, "0", TglJurnal);
     }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -824,7 +824,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_formWindowOpened
 
     private void TglJurnalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TglJurnalItemStateChanged
-        Valid.autoNomorSmc(NoJur, "JR", "jurnal", "no_jurnal", 6, "0", evt.getItem());
+        Valid.autonomorSmc(NoJur, "JR", "", "jurnal", "no_jurnal", 6, "0", TglJurnal);
     }//GEN-LAST:event_TglJurnalItemStateChanged
 
     /**
