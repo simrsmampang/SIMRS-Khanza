@@ -200,6 +200,8 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         label38 = new widget.Label();
         label39 = new widget.Label();
         Attn = new widget.TextBox();
+        label40 = new widget.Label();
+        NoNPWP = new widget.TextBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
         FormPhoto = new widget.PanelBiasa();
@@ -457,7 +459,6 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(660, 158));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -489,7 +490,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         label34.setName("label34"); // NOI18N
         label34.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label34);
-        label34.setBounds(0, 100, 123, 23);
+        label34.setBounds(0, 70, 123, 23);
 
         AlamatAsuransi.setHighlighter(null);
         AlamatAsuransi.setName("AlamatAsuransi"); // NOI18N
@@ -499,13 +500,13 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(AlamatAsuransi);
-        AlamatAsuransi.setBounds(127, 100, 490, 23);
+        AlamatAsuransi.setBounds(127, 70, 347, 23);
 
         label36.setText("Nama Asuransi :");
         label36.setName("label36"); // NOI18N
         label36.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label36);
-        label36.setBounds(0, 40, 123, 23);
+        label36.setBounds(185, 10, 95, 23);
 
         NmAsuransi.setHighlighter(null);
         NmAsuransi.setName("NmAsuransi"); // NOI18N
@@ -515,7 +516,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(NmAsuransi);
-        NmAsuransi.setBounds(127, 40, 222, 23);
+        NmAsuransi.setBounds(284, 10, 190, 23);
 
         label35.setText("Kode Asuransi :");
         label35.setName("label35"); // NOI18N
@@ -541,13 +542,13 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(Perusahaan);
-        Perusahaan.setBounds(127, 70, 490, 23);
+        Perusahaan.setBounds(127, 40, 347, 23);
 
         label37.setText("Perusahaan Asuransi :");
         label37.setName("label37"); // NOI18N
         label37.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label37);
-        label37.setBounds(0, 70, 123, 23);
+        label37.setBounds(0, 40, 123, 23);
 
         NoTelp.setHighlighter(null);
         NoTelp.setName("NoTelp"); // NOI18N
@@ -557,19 +558,19 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoTelp);
-        NoTelp.setBounds(397, 10, 220, 23);
+        NoTelp.setBounds(532, 10, 180, 23);
 
         label38.setText("Telp :");
         label38.setName("label38"); // NOI18N
         label38.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label38);
-        label38.setBounds(353, 10, 40, 23);
+        label38.setBounds(478, 10, 50, 23);
 
         label39.setText("Attn :");
         label39.setName("label39"); // NOI18N
         label39.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label39);
-        label39.setBounds(353, 40, 40, 23);
+        label39.setBounds(478, 40, 50, 23);
 
         Attn.setHighlighter(null);
         Attn.setName("Attn"); // NOI18N
@@ -579,7 +580,23 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(Attn);
-        Attn.setBounds(397, 40, 220, 23);
+        Attn.setBounds(532, 40, 180, 23);
+
+        label40.setText("NPWP :");
+        label40.setName("label40"); // NOI18N
+        label40.setPreferredSize(new java.awt.Dimension(35, 23));
+        FormInput.add(label40);
+        label40.setBounds(478, 70, 50, 23);
+
+        NoNPWP.setHighlighter(null);
+        NoNPWP.setName("NoNPWP"); // NOI18N
+        NoNPWP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoNPWPKeyPressed(evt);
+            }
+        });
+        FormInput.add(NoNPWP);
+        NoNPWP.setBounds(532, 70, 180, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -926,6 +943,10 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         panggilPhoto();
     }//GEN-LAST:event_BtnRefreshPhotoActionPerformed
 
+    private void NoNPWPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoNPWPKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoNPWPKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -966,6 +987,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.editorpane LoadHTML;
     private javax.swing.JMenuItem MnRestore;
     private widget.TextBox NmAsuransi;
+    private widget.TextBox NoNPWP;
     private widget.TextBox NoTelp;
     private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelInput;
@@ -984,6 +1006,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Label label37;
     private widget.Label label38;
     private widget.Label label39;
+    private widget.Label label40;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
