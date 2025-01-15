@@ -6762,11 +6762,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         Scroll1.setComponentPopupMenu(jPopupMenu1);
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
-        Scroll1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Scroll1MousePressed(evt);
-            }
-        });
 
         tbKasirRalan.setToolTipText("Klik 2X Kd.Dokter= Jendela Tindakan, Dokter Dituju=Jendela Obat, Nomer RM=Jendela Billing, Pasien=Jendela Total Obat, Poliklinik=Set Sudah Periksa, Penanggung Jawab=Masukan tindakan otomatis");
         tbKasirRalan.setComponentPopupMenu(jPopupMenu1);
@@ -14034,12 +14029,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             }
         }
     }//GEN-LAST:event_tbKasirRalanMousePressed
-
-    private void Scroll1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Scroll1MousePressed
-        if (tbKasirRalan.getRowCount() == 0) {
-            emptTeks();
-        }
-    }//GEN-LAST:event_Scroll1MousePressed
 
     private void MnPenilaianPreInduksiActionPerformed(java.awt.event.ActionEvent evt) {                                                       
         if(tabModekasir.getRowCount()==0){
