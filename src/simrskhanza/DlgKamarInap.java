@@ -18785,7 +18785,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             Rganti4.setEnabled(true);
         }else{
             Rganti1.setEnabled(false);
-            Rganti2.setEnabled(false);
+            Rganti2.setEnabled(akses.getpindah_kamar_pilihan_2());
             Rganti4.setEnabled(false);
             if(aktifkan_hapus_data_salah.equals("Yes")){
                 MnHapusDataSalah.setEnabled(true);
