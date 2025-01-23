@@ -201,6 +201,8 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         label39 = new widget.Label();
         Attn = new widget.TextBox();
         label40 = new widget.Label();
+        Email = new widget.TextBox();
+        label41 = new widget.Label();
         NoNPWP = new widget.TextBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
@@ -558,19 +560,19 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoTelp);
-        NoTelp.setBounds(532, 10, 180, 23);
+        NoTelp.setBounds(552, 40, 180, 23);
 
-        label38.setText("Telp :");
+        label38.setText("No. Telp :");
         label38.setName("label38"); // NOI18N
         label38.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label38);
-        label38.setBounds(478, 10, 50, 23);
+        label38.setBounds(478, 40, 70, 23);
 
         label39.setText("Attn :");
         label39.setName("label39"); // NOI18N
         label39.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label39);
-        label39.setBounds(478, 40, 50, 23);
+        label39.setBounds(478, 10, 70, 23);
 
         Attn.setHighlighter(null);
         Attn.setName("Attn"); // NOI18N
@@ -580,13 +582,29 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(Attn);
-        Attn.setBounds(532, 40, 180, 23);
+        Attn.setBounds(552, 10, 180, 23);
 
-        label40.setText("NPWP :");
+        label40.setText("Emial :");
         label40.setName("label40"); // NOI18N
         label40.setPreferredSize(new java.awt.Dimension(35, 23));
         FormInput.add(label40);
-        label40.setBounds(478, 70, 50, 23);
+        label40.setBounds(478, 70, 70, 23);
+
+        Email.setHighlighter(null);
+        Email.setName("Email"); // NOI18N
+        Email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EmailKeyPressed(evt);
+            }
+        });
+        FormInput.add(Email);
+        Email.setBounds(552, 70, 180, 23);
+
+        label41.setText("No. NPWP :");
+        label41.setName("label41"); // NOI18N
+        label41.setPreferredSize(new java.awt.Dimension(35, 23));
+        FormInput.add(label41);
+        label41.setBounds(736, 10, 70, 23);
 
         NoNPWP.setHighlighter(null);
         NoNPWP.setName("NoNPWP"); // NOI18N
@@ -596,7 +614,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoNPWP);
-        NoNPWP.setBounds(532, 70, 180, 23);
+        NoNPWP.setBounds(810, 10, 180, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -943,6 +961,10 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         panggilPhoto();
     }//GEN-LAST:event_BtnRefreshPhotoActionPerformed
 
+    private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailKeyPressed
+
     private void NoNPWPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoNPWPKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_NoNPWPKeyPressed
@@ -978,6 +1000,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Button BtnSimpan;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
+    private widget.TextBox Email;
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormPass2;
     private widget.PanelBiasa FormPhoto;
@@ -1007,6 +1030,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Label label38;
     private widget.Label label39;
     private widget.Label label40;
+    private widget.Label label41;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
